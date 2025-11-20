@@ -212,4 +212,3 @@ Steve Ridder
 **Next Step**: Download CLASS and begin implementation
 
 *"The foundations are solid. The framework is sound. The path forward is clear."*
-
