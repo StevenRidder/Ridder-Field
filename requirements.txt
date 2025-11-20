@@ -1,0 +1,20 @@
+# Ridder Cosmology - Python Dependencies
+
+# Phase 1: Background Evolution
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.4.0
+
+# Phase 2: CLASS (will be added when we implement)
+# cython>=0.29.0
+# Will require CLASS source code compilation
+
+# Phase 3: MCMC (will be added when we implement)
+# Option 1: MontePython (manual install from GitHub)
+# Option 2: Cobaya
+# cobaya>=3.0
+
+# Development tools (optional)
+# jupyter>=1.0.0
+# ipython>=7.0.0
+
