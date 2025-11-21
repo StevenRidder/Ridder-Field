@@ -154,8 +154,6 @@ This project:
 - ✅ Provides honest error estimates
 - ✅ Follows standard cosmology practices
 
-**This is how real science works**: validate foundations, then build incrementally.
-
 ---
 
 ## Installation & Dependencies
