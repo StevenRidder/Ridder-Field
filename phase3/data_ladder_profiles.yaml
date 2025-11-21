@@ -1,0 +1,138 @@
+# ============================================================
+# RIDDER FIELD: DATA LADDER PROFILES
+# Structured likelihood combinations for incremental testing
+# ============================================================
+
+# Profile 1: Smoke Test (1 minute)
+# Purpose: Basic functionality check
+smoke_test:
+  likelihood:
+    rs_gaussian:
+      external: |
+        lambda _derived=None, **params_values: (
+          -0.5 * ((_derived.get('rs_rec', 139.0) - 139.06) / 0.5)**2
+        )
+      requires:
+        rs_rec:
+          latex: r_s
+  sampler:
+    mcmc:
+      max_samples: 50
+      Rminus1_stop: 0.2
+
+# Profile 2: Planck Core (5-10 minutes)
+# Purpose: Test with real CMB data
+planck_core:
+  likelihood:
+    planck_2018_lowl.TT:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik
+    planck_2018_lowl.EE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
+    planck_2018_highl_plik.TTTEEE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TTTEEE.clik
+    planck_2018_lensing.clik:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik
+  sampler:
+    mcmc:
+      max_samples: 500
+      Rminus1_stop: 0.05
+
+# Profile 3: Planck + BAO (Core comparison)
+# Purpose: Standard ΛCDM vs Ridder baseline
+planck_bao:
+  likelihood:
+    # Planck (same as planck_core)
+    planck_2018_lowl.TT:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik
+    planck_2018_lowl.EE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
+    planck_2018_highl_plik.TTTEEE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TTTEEE.clik
+    planck_2018_lensing.clik:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik
+    # BAO
+    bao_boss:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/boss_dr12/boss_dr12_consensus_bao.dat
+    bao_6df:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/6df/6df_bao.dat
+    bao_mgs:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/mgs/mgs_bao.dat
+  sampler:
+    mcmc:
+      max_samples: 2000
+      Rminus1_stop: 0.01
+
+# Profile 4: Planck + BAO + SH0ES (H₀ tension test)
+# Purpose: Test if Ridder relieves H₀ tension
+planck_bao_sh0es:
+  likelihood:
+    # Planck + BAO (same as planck_bao)
+    planck_2018_lowl.TT:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik
+    planck_2018_lowl.EE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
+    planck_2018_highl_plik.TTTEEE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TTTEEE.clik
+    planck_2018_lensing.clik:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik
+    bao_boss:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/boss_dr12/boss_dr12_consensus_bao.dat
+    bao_6df:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/6df/6df_bao.dat
+    bao_mgs:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/mgs/mgs_bao.dat
+    # SH0ES H₀ prior
+    sh0es_h0:
+      external: |
+        lambda H0=None, **params_values: (
+          -0.5 * ((H0 - 73.0) / 1.0)**2  # H₀ = 73.0 ± 1.0 km/s/Mpc
+        )
+      requires:
+        H0:
+          latex: H_0
+  sampler:
+    mcmc:
+      max_samples: 5000
+      Rminus1_stop: 0.01
+
+# Profile 5: Full Core (Planck + BAO + SH0ES + S₈)
+# Purpose: Complete tension test
+full_core:
+  likelihood:
+    # Planck + BAO + SH0ES (same as planck_bao_sh0es)
+    planck_2018_lowl.TT:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TT.clik
+    planck_2018_lowl.EE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
+    planck_2018_highl_plik.TTTEEE:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22_TTTEEE.clik
+    planck_2018_lensing.clik:
+      clik_file: ${COBAYA_PACKAGES_PATH}/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik
+    bao_boss:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/boss_dr12/boss_dr12_consensus_bao.dat
+    bao_6df:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/6df/6df_bao.dat
+    bao_mgs:
+      data_file: ${COBAYA_PACKAGES_PATH}/data/bao/mgs/mgs_bao.dat
+    sh0es_h0:
+      external: |
+        lambda H0=None, **params_values: (
+          -0.5 * ((H0 - 73.0) / 1.0)**2
+        )
+      requires:
+        H0:
+          latex: H_0
+    # S₈ prior (compressed from lensing surveys)
+    s8_prior:
+      external: |
+        lambda sigma8=None, **params_values: (
+          -0.5 * ((sigma8 * (0.3/0.3)**0.5 - 0.76) / 0.02)**2  # S₈ = 0.76 ± 0.02
+        )
+      requires:
+        sigma8:
+          latex: \sigma_8
+  sampler:
+    mcmc:
+      max_samples: 10000
+      Rminus1_stop: 0.01
+

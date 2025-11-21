@@ -1,0 +1,124 @@
+# ============================================================
+# RIDDER FIELD: 10-MINUTE METROPOLIS SAMPLER TEST
+# Purpose: Verify sampler moves through parameter space
+# - Single chain, no external data
+# - Tests proposal adaptation
+# - Checks acceptance rate
+# - Validates likelihood surface
+# ============================================================
+
+theory:
+  classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class
+    extra_args:
+      # Ridder Field activation
+      use_scf: yes
+      scf_tuning_index: 0
+      attractor_ic_scf: no
+      scf_parameters: "0.0, 0.0, 0.0, 0.0"
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27
+      n_ridder: 3
+      
+      # Standard cosmology (fixed for speed)
+      h: 0.72
+      omega_b: 0.02237
+      omega_cdm: 0.120
+      A_s: 2.1e-9
+      n_s: 0.9649
+      tau_reio: 0.054
+      
+      # Output settings (minimal for speed)
+      output: tCl
+      l_max_scalars: 1500
+      gauge: newtonian
+      
+      # Precision (reduced for speed)
+      tol_perturb_integration: 1.e-6
+      lensing: no
+      nonlinear: no
+
+# Likelihood: Simple Gaussian on r_s (target: 139.06 Mpc)
+# This is a "toy" likelihood that should allow movement
+likelihood:
+  rs_gaussian:
+    external: |
+      lambda _derived=None, **params_values: (
+        -0.5 * ((_derived.get('rs_rec', 139.0) - 139.06) / 0.5)**2
+      )
+    requires:
+      rs_rec:
+        latex: r_s
+
+# Parameters to sample (Ridder parameters only)
+params:
+  # Ridder Field parameters - these should move!
+  theta_i_ridder:
+    prior:
+      min: 2.0
+      max: 2.2
+    ref:
+      dist: norm
+      loc: 2.1
+      scale: 0.02
+    proposal: 0.01
+    latex: \theta_i
+  
+  beta_ridder:
+    prior:
+      min: 0.005
+      max: 0.015
+    ref:
+      dist: norm
+      loc: 0.01
+      scale: 0.002
+    proposal: 0.001
+    latex: \beta
+  
+  # Derived parameters
+  rs_rec:
+    latex: r_s
+    derived: 'lambda rs_drag: rs_drag'
+
+# Sampler configuration (Metropolis-Hastings)
+sampler:
+  mcmc:
+    # Convergence (relaxed for 10-minute test)
+    Rminus1_stop: 0.1  # Looser for quick test
+    Rminus1_cl_stop: 0.5
+    
+    # Chain length (10-minute target: ~100-200 samples)
+    max_samples: 200
+    
+    # Proposal adaptation (CRITICAL for movement)
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    
+    # Blocking (sample theta_i and beta together)
+    blocking:
+      - [1, [theta_i_ridder, beta_ridder]]
+    
+    # Output
+    oversample_power: 0.2
+    proposal_scale: 1.9  # Start with reasonable step size
+    
+    # Diagnostics
+    measure_speeds: true
+    check_every: 10  # Check convergence every 10 samples
+
+# Output configuration
+output: chains/ridder_10min_metropolis
+
+# Resume from checkpoint
+resume: false
+
+# Timing and diagnostics
+timing: true
+debug: false
+
+# Diagnostic output
+diagnostics:
+  - acceptance_rate  # Should be ~0.2-0.5
+  - proposal_scale  # Should adapt
+  - parameter_traces  # Should show movement
+
