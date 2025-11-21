@@ -8,7 +8,7 @@ import os
 # Load data
 # Find latest files
 lcdm_files = sorted(glob.glob('../phase2/class/output/scan_0.00_*_cl.dat'), key=os.path.getmtime)
-ridder_files = sorted(glob.glob('../phase2/class/output/scan_1.00_*_cl.dat'), key=os.path.getmtime)
+ridder_files = sorted(glob.glob('../phase2/class/output/final_run_*_cl.dat'), key=os.path.getmtime)
 
 if not lcdm_files or not ridder_files:
     print("Error: Could not find Cl files.")
@@ -66,6 +66,5 @@ ax2.grid(True, which='both', alpha=0.3)
 ax2.set_xlim(2, 2500)
 
 plt.tight_layout()
-plt.savefig('cmb_comparison_proven.png', dpi=300)
-print("✅ Plot saved: cmb_comparison_proven.png")
-
+plt.savefig('final_cmb_comparison.png', dpi=300)
+print("✅ Plot saved: final_cmb_comparison.png")

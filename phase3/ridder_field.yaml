@@ -1,5 +1,6 @@
 # Cobaya parameter file for Ridder Field model (RC-X*)
-# This file defines the model parameters and likelihoods
+# Phase 3: MCMC Parameter Estimation
+# Validated Configuration: Newtonian Gauge, Fluid-Only Perturbations, No P(k)
 
 # ============================================================================
 # THEORY: CLASS with Ridder field
@@ -8,24 +9,25 @@ theory:
   classy:
     path: "/Users/steveridder/Git/Ridder Field/phase2/class"
     extra_args:
-      output: "tCl,pCl,lCl,mPk"
+      output: "tCl,pCl,lCl"  # NO mPk due to gauge artifact
       lensing: "yes"
       modes: "s"
+      gauge: "newtonian"     # CRITICAL: Synchronous gauge causes crash
       l_max_scalars: 2500
-      P_k_max_h/Mpc: 1.0
 
 # ============================================================================
 # PARAMETERS
 # ============================================================================
 params:
   # Standard cosmological parameters
+  # --------------------------------
   H0:
     prior:
       min: 60
       max: 80
     ref:
       dist: norm
-      loc: 67.36
+      loc: 72.0
       scale: 2.0
     latex: H_0
   
@@ -79,39 +81,31 @@ params:
       scale: 0.008
     latex: \tau_{reio}
   
-  # Ridder field parameters
+  # Ridder field parameters (RC-X*)
+  # -------------------------------
   Lambda_EDE_ridder:
     prior:
-      min: 0.0
-      max: 2.0
+      min: 0.1
+      max: 3.0
     ref:
       dist: norm
-      loc: 0.5
-      scale: 0.3
-    latex: \Lambda_{\rm EDE}
-    drop: True  # Start with EDE disabled for baseline
+      loc: 1.0
+      scale: 0.2
+    latex: \Lambda_{\rm EDE} [eV]
   
   f_axion_ridder:
-    prior:
-      min: 1e15
-      max: 1e17
-    ref:
-      dist: lognorm
-      loc: 1e16
-      scale: 0.5
-    latex: f
-    drop: True
+    value: 1.0e27
+    latex: f [eV]
   
   theta_i_ridder:
     prior:
-      min: 0.1
-      max: 3.14
+      min: 1.5
+      max: 3.1
     ref:
       dist: norm
-      loc: 0.1
-      scale: 0.5
+      loc: 2.5
+      scale: 0.1
     latex: \theta_i
-    drop: True
   
   beta_ridder:
     prior:
@@ -119,10 +113,9 @@ params:
       max: 0.1
     ref:
       dist: norm
-      loc: 0.0
-      scale: 0.02
+      loc: 0.01
+      scale: 0.005
     latex: \beta
-    drop: True
   
   n_ridder:
     value: 3
@@ -133,37 +126,33 @@ params:
 # ============================================================================
 likelihood:
   # Planck 2018 CMB
-  planck_2018_highl_plik.TTTEEE:
-    # Will need to download Planck 2018 data
-    # For now, placeholder
-    pass
+  planck_2018_highl_plik.TTTEEE: {}
+  planck_2018_lowl.TT: {}
+  planck_2018_lowl.EE: {}
+  planck_2018_lensing.clik: {}
   
-  planck_2018_lowl.TT:
-    pass
+  # BAO (BOSS DR12)
+  bao.boss_dr12: {}
   
-  planck_2018_lensing:
-    pass
+  # SNe (Pantheon)
+  sn.pantheon: {}
   
-  # BAO
-  bao.boss:
-    pass
-  
-  # SH0ES H0 measurement
-  H0.riess2020:
-    # H0 = 73.2 ± 1.3 km/s/Mpc
-    pass
+  # SH0ES H0 measurement (Optional - enable to test tension resolution)
+  # H0.riess2020: {}
 
 # ============================================================================
 # SAMPLER
 # ============================================================================
 sampler:
   mcmc:
-    max_tries: 1000000
-    Rminus1_stop: 0.01
-    Rminus1_cl_stop: 0.025
+    max_tries: 10000
+    Rminus1_stop: 0.05
+    covmat: auto
+    drag: true
+    proposal_scale: 2.4
 
 # ============================================================================
 # OUTPUT
 # ============================================================================
 output: chains/ridder_field
-
+debug: true
