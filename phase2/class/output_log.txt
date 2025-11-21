@@ -1,0 +1,9 @@
+
+
+Error running input_init 
+=>input_init(L:81) :error in input_read_from_file(&fc,ppr,pba,pth,ppt,ptr,ppm,phr,pfo,ple,psd,pop, errmsg);
+=>input_read_from_file(L:431) :error in input_read_parameters(pfc,ppr,pba,pth,ppt,ptr,ppm,phr,pfo,ple,psd,pop, errmsg);
+=>input_read_parameters(L:1692) :error in input_read_parameters_species(pfc,ppr,pba,pth,ppt, input_verbose, errmsg);
+=>input_read_parameters_species(L:3347) :error in parser_read_string(pfc, "attractor_ic_scf", &string1, &flag1, errmsg);
+=>parser_read_string(L:356) :condition (strcmp(pfc->name[i],name) == 0) is true; multiple entry of parameter 'attractor_ic_scf' in file '../../phase3/ridder_smoketest_spec.ini'
+
