@@ -64,11 +64,11 @@ params:
   n_s:
     prior:
       min: 0.90
-      max: 1.00
+      max: 1.00  # Wider prior to accommodate damping tail effect from EDE
     ref:
       dist: norm
       loc: 0.9665
-      scale: 0.004
+      scale: 0.006  # Slightly wider proposal for MCMC exploration
     latex: n_s
   
   tau_reio:
