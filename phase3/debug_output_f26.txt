@@ -1,0 +1,41 @@
+DEBUG: Ridder field ENABLED. Lambda = 3.000000e+00
+DEBUG: Ridder field ENABLED. Lambda = 3.000000e+00
+Running CLASS version v3.3.3
+Computing background
+Chose ndf15 as generic_evolver
+BG_FUNC: a=3.45e-13 V=4.73e+02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.16e+61 rho_final=6.51e+05
+BG_FUNC: a=1.38e-11 V=4.73e+02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.16e+61 rho_final=6.51e+05
+BG_FUNC: a=5.59e-10 V=4.73e+02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.16e+61 rho_final=6.51e+05
+BG_FUNC: a=2.24e-08 V=4.73e+02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.16e+61 rho_final=6.51e+05
+BG_FUNC: a=8.99e-07 V=4.73e+02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.16e+61 rho_final=6.51e+05
+Ridder field: Switching to fluid approximation at z = 68885.19
+  3H = 3.151e+04 Mpc^-1, m_eff = 3.152e+04 Mpc^-1
+  rho_at_switch = 4.274e+05 Mpc^-2
+  w_eff = 0.50
+ -> age = 13.935465 Gyr
+ -> conformal age = 14317.464280 Mpc
+ -> N_eff = 3.046 (summed over all species that are non-relativistic at early times) 
+ -> radiation/matter equality at z = 3319.266583
+    corresponding to conformal time = 115.548579 Mpc
+ ---------------------------- Budget equation ----------------------- 
+ ---> Nonrelativistic Species 
+-> Bayrons                        Omega = 0.05            , omega = 0.022445       
+-> Cold Dark Matter               Omega = 0.26            , omega = 0.116714       
+ ---> Relativistic Species 
+-> Photons                        Omega = 5.50898e-05     , omega = 2.47298e-05    
+-> Ultra-relativistic relics      Omega = 3.81094e-05     , omega = 1.71073e-05    
+ ---> Other Content 
+-> Cosmological Constant          Omega = 0.689907        , omega = 0.309699       
+ ---> Total budgets 
+ Radiation                        Omega = 9.31991e-05     , omega = 4.18371e-05     
+ Non-relativistic                 Omega = 0.31            , omega = 0.139159        
+ Other Content                    Omega = 0.689907        , omega = 0.309699        
+ TOTAL                            Omega = 1               , omega = 0.4489          
+ -------------------------------------------------------------------- 
+
+
+Error in perturbations_init 
+=>operator()(L:943) :error in perturbations_solve(ppr, pba, pth, ppt, index_md, index_ic, index_k, &pw);
+=>perturbations_solve(L:3244) :error in generic_evolver(perturbations_derivs, interval_limit[index_interval], interval_limit[index_interval+1], ppw->pv->y, ppw->pv->used_in_sources, ppw->pv->pt_size, &ppaw, ppr->tol_perturbations_integration, ppr->smallest_allowed_variation, perturbations_timescale, ppr->perturbations_integration_stepsize, ppt->tau_sampling, tau_actual_size, perturbations_sources, perhaps_print_variables, ppt->error_message);
+=>evolver_ndf15(L:468) :condition (absh <= hmin) is true; Step size too small: step:3.26642e-13, minimum:3.26642e-13, in interval: [6.59884:204.151]
+
