@@ -15,6 +15,7 @@ __pycache__/
 Thumbs.db
 
 # CLASS build artifacts only (keep source!)
+# NOTE: Modified CLASS source files are in patches/class/ for backup
 phase2/class/build/
 phase2/class/output/
 phase2/class/libclass.a
@@ -24,6 +25,10 @@ phase2/class/python/classy.c
 *.o
 *.opp
 *.a
+
+# Keep patches directory (contains our CLASS modifications)
+!patches/
+!patches/**
 
 # MCMC chains (Phase 3)
 chains/
