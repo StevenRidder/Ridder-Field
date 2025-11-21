@@ -2,27 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-*.egg-info/
-dist/
-build/
-
-# Data files (keep out of git by default - too large)
-# Uncomment if you want to track them:
-# *.npz
-# *.npy
-
-# Plots (can regenerate)
-# Uncomment if you want to track them:
-# *.png
-# *.pdf
-
-# Logs
-*.log
 
 # IDEs
 .vscode/
@@ -35,10 +14,15 @@ build/
 .DS_Store
 Thumbs.db
 
-# CLASS build files (Phase 2)
-class/
-CLASS/
+# CLASS build artifacts only (keep source!)
+phase2/class/build/
+phase2/class/output/
+phase2/class/libclass.a
+phase2/class/class
+phase2/class/python/build/
+phase2/class/python/classy.c
 *.o
+*.opp
 *.a
 
 # MCMC chains (Phase 3)
