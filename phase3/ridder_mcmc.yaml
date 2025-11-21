@@ -1,0 +1,182 @@
+# ============================================================
+# RIDDER FIELD MCMC CONFIGURATION
+# Cobaya input file for production parameter estimation
+# ============================================================
+
+# Likelihood configuration
+likelihood:
+  # Planck 2018 baseline (TT+TE+EE+lowE)
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  
+  # BAO measurements
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # Supernovae (Pantheon)
+  sn.pantheon:
+
+# Theory code
+theory:
+  classy:
+    path: /path/to/class  # UPDATE THIS
+    extra_args:
+      # Ridder Field activation
+      use_scf: yes
+      scf_tuning_index: 0
+      attractor_ic_scf: no
+      scf_parameters: "0.0, 0.0, 0.0, 0.0"
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27
+      n_ridder: 3
+      
+      # Output settings
+      output: tCl, mPk
+      l_max_scalars: 3000
+      P_k_max_h/Mpc: 10.0
+      gauge: newtonian
+      
+      # Precision
+      tol_background_integration: 1.e-4
+      tol_perturb_integration: 1.e-8
+      
+      # Speed optimizations for MCMC
+      lensing: no
+      nonlinear: no
+
+# Parameters to sample
+params:
+  # Ridder Field parameters
+  theta_i_ridder:
+    prior:
+      min: 1.8
+      max: 2.15
+    ref:
+      dist: norm
+      loc: 2.1
+      scale: 0.05
+    proposal: 0.02
+    latex: \theta_i
+  
+  beta_ridder:
+    prior:
+      min: 0.0
+      max: 0.03
+    ref:
+      dist: norm
+      loc: 0.01
+      scale: 0.005
+    proposal: 0.002
+    latex: \beta
+  
+  # Standard cosmological parameters
+  logA:
+    prior:
+      min: 1.61
+      max: 3.91
+    ref:
+      dist: norm
+      loc: 3.05
+      scale: 0.001
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.00
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.004
+    proposal: 0.002
+    latex: n_s
+  
+  omega_b:
+    prior:
+      min: 0.020
+      max: 0.025
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.00015
+    proposal: 0.0001
+    latex: \omega_b
+  
+  omega_cdm:
+    prior:
+      min: 0.10
+      max: 0.14
+    ref:
+      dist: norm
+      loc: 0.120
+      scale: 0.001
+    proposal: 0.0005
+    latex: \omega_{\rm cdm}
+  
+  tau_reio:
+    prior:
+      min: 0.04
+      max: 0.08
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.003
+    latex: \tau_{\rm reio}
+  
+  H0:
+    latex: H_0
+    min: 60
+    max: 80
+  
+  sigma8:
+    latex: \sigma_8
+
+# Sampler configuration
+sampler:
+  mcmc:
+    # Convergence
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    
+    # Chain length
+    max_samples: 100000
+    
+    # Proposal covariance
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    
+    # Blocking (speed optimization)
+    blocking:
+      - [1, [theta_i_ridder, beta_ridder]]
+      - [4, [omega_b, omega_cdm, logA, n_s]]
+      - [8, [tau_reio]]
+    
+    # Output
+    oversample_power: 0.4
+    proposal_scale: 1.9
+    
+    # Parallelization
+    measure_speeds: true
+
+# Output configuration
+output: /path/to/output/ridder_mcmc  # UPDATE THIS
+
+# Resume from checkpoint
+resume: true
+
+# Timing
+timing: true
+
+# Debug
+debug: false
+
