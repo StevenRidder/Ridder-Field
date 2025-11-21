@@ -103,7 +103,7 @@ params:
       max: 3.1
     ref:
       dist: norm
-      loc: 2.5
+      loc: 2.2  # Detuned from 2.5 to fix damping tail
       scale: 0.1
     latex: \theta_i
   
