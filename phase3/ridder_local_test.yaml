@@ -1,0 +1,117 @@
+# ============================================================
+# RIDDER FIELD LOCAL MCMC TEST
+# Minimal configuration for testing on Mac (no Planck data needed)
+# ============================================================
+
+# Theory code only (no likelihood - just explore parameter space)
+theory:
+  classy:
+    path: /Users/steveridder/Git/Ridder-Field/phase2/class
+    extra_args:
+      # Ridder Field activation
+      use_scf: yes
+      scf_tuning_index: 0
+      attractor_ic_scf: no
+      scf_parameters: "0.0, 0.0, 0.0, 0.0"
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27
+      n_ridder: 3
+      
+      # Standard cosmology (fixed for speed)
+      h: 0.72
+      omega_b: 0.02237
+      omega_cdm: 0.120
+      A_s: 2.1e-9
+      n_s: 0.9649
+      tau_reio: 0.054
+      
+      # Output settings (minimal for speed)
+      output: tCl
+      l_max_scalars: 1500
+      gauge: newtonian
+      
+      # Precision (reduced for speed)
+      tol_perturb_integration: 1.e-6
+      
+      # Speed optimizations
+      lensing: no
+      nonlinear: no
+
+# Likelihood: Simple Gaussian on r_s (target: 139.06 Mpc)
+likelihood:
+  rs_gaussian:
+    external: |
+      lambda _derived=None, **params_values: (
+        -0.5 * ((_derived['rs_rec'] - 139.06) / 0.5)**2
+      )
+    requires:
+      rs_rec:
+        latex: r_s
+
+# Parameters to sample (just Ridder parameters for now)
+params:
+  # Ridder Field parameters
+  theta_i_ridder:
+    prior:
+      min: 2.0
+      max: 2.2
+    ref:
+      dist: norm
+      loc: 2.1
+      scale: 0.02
+    proposal: 0.01
+    latex: \theta_i
+  
+  beta_ridder:
+    prior:
+      min: 0.005
+      max: 0.015
+    ref:
+      dist: norm
+      loc: 0.01
+      scale: 0.002
+    proposal: 0.001
+    latex: \beta
+  
+  # Derived parameters
+  rs_rec:
+    latex: r_s
+    derived: 'lambda rs_drag: rs_drag'
+
+# Sampler configuration (minimal for testing)
+sampler:
+  mcmc:
+    # Convergence (relaxed for testing)
+    Rminus1_stop: 0.05
+    Rminus1_cl_stop: 0.3
+    
+    # Chain length (SHORT for local test)
+    max_samples: 500
+    
+    # Proposal covariance
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    
+    # Blocking
+    blocking:
+      - [1, [theta_i_ridder, beta_ridder]]
+    
+    # Output
+    oversample_power: 0.2
+    proposal_scale: 1.9
+    
+    # Timing
+    measure_speeds: true
+
+# Output configuration
+output: chains/ridder_local_test
+
+# Resume from checkpoint
+resume: false
+
+# Timing
+timing: true
+
+# Debug
+debug: false
+
