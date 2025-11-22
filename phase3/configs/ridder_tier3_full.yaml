@@ -5,23 +5,15 @@ theory:
   classy:
     path: /home/ridderadmin/Ridder-Field/phase2/class
     extra_args:
-      use_scf: yes
-      scf_potential: ridder
-      scf_tuning_index: 1
-      attractor_ic_scf: yes
-      scf_phi_prime_ini: 0.0
       output: tCl, mPk, lCl
       l_max_scalars: 2508
       lensing: yes
       gauge: newtonian
-      # Explicitly set recombination to avoid HYREC buffer issues
       recombination: recfast
-      # Disable non-linear for speed and to avoid issues
       non_linear: none
-      
-      # Fixed Ridder parameters mapping
-      Lambda_EDE_ridder: 1.0 # Tuned internally by CLASS if scf_tuning_index=1
-      f_axion_ridder: 1.0e27 # eV
+      # Ridder field parameters (fixed, field activated by theta_i_ridder and beta_ridder)
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27  # eV
       n_ridder: 3
 
 likelihood:
