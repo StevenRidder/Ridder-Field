@@ -11,6 +11,10 @@ theory:
       l_max_scalars: 2508
       lensing: yes
       gauge: newtonian
+      # Use recfast to avoid HYREC buffer overflow in classy build
+      recombination: recfast
+      # No non-linear corrections for this 200-sample smoke test
+      non_linear: none
       # Ridder field parameters (fixed)
       Lambda_EDE_ridder: 1.0
       f_axion_ridder: 1.0e27  # eV (converted to Mpl internally)
