@@ -79,9 +79,9 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.05
     burn_in: 0
-    max_samples: 200 # Quick test to verify it runs
+    max_samples: 400 # Aim for ~200 accepted samples
 
 output: chains/ridder_tier1_planck
-resume: true
+resume: false
 debug: true
 
