@@ -21,9 +21,10 @@ cd "${ROOT_DIR}"
 mkdir -p chains output
 
 # Function to run a single chain
+# Use same output base - Cobaya will auto-number them .1, .2, .3, .4
 run_chain() {
     local CHAIN_ID=$1
-    local CHAIN_OUTPUT="chains/ridder_tier1_planck_chain${CHAIN_ID}"
+    local CHAIN_OUTPUT="chains/ridder_tier1_planck"  # Same base for all
     local LOG_DIR="output/tier1_planck_chain${CHAIN_ID}"
     
     mkdir -p "${LOG_DIR}"
@@ -35,10 +36,13 @@ run_chain() {
     export MKL_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
     
-    # Run Cobaya with unique output path (overrides config)
+    # Run Cobaya - use same output base, Cobaya handles numbering
+    # Add small random delay to avoid file conflicts
+    sleep $((CHAIN_ID * 2))
+    
     nohup python3 -m cobaya.run "${CONFIG}" \
         --output "${CHAIN_OUTPUT}" \
-        --resume \
+        --force \
         > "${LOG_DIR}/log.txt" 2>&1 &
     
     local PID=$!
