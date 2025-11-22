@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../chains" && pwd)"
-NUM_RIDDER_CHAINS=8
+NUM_RIDDER_CHAINS=4
 NUM_LCDM_CHAINS=2
 
 echo "======================================================================"

@@ -1,7 +1,8 @@
 #!/bin/bash
-# Tier 1 Production Run: 8 Ridder chains + 2 ΛCDM baseline chains
+# Tier 1 Production Run: 4 Ridder chains + 2 ΛCDM baseline chains
 # 5000 samples each for V1 publication
 # Run on Australia VM (F8s_v2, 8 vCPU)
+# 4 chains is the industry standard for convergence diagnostics
 
 set -e
 
@@ -13,10 +14,10 @@ echo "=========================================="
 echo "TIER 1 PRODUCTION RUN - V1 PUBLICATION"
 echo "=========================================="
 echo "Target: 5000 samples per chain"
-echo "Ridder chains: 8"
+echo "Ridder chains: 4"
 echo "ΛCDM baseline: 2"
-echo "Total chains: 10"
-echo "Estimated runtime: 24-36 hours"
+echo "Total chains: 6"
+echo "Estimated runtime: 18-24 hours"
 echo "=========================================="
 
 # Clean previous production runs
@@ -31,10 +32,10 @@ rm -f $CHAINS_DIR/lcdm_production*.updated.yaml
 # Disable file locking (we're using isolated directories)
 export COBAYA_USE_FILE_LOCKING=False
 
-# Launch 8 Ridder chains (each in isolated directory)
+# Launch 4 Ridder chains (each in isolated directory)
 echo ""
-echo "Launching 8 Ridder field chains..."
-for i in {1..8}; do
+echo "Launching 4 Ridder field chains..."
+for i in {1..4}; do
     WORK_DIR="$CHAINS_DIR/ridder_prod_chain${i}_work"
     mkdir -p $WORK_DIR
     cp $CONFIG_DIR/ridder_tier1_planck.yaml $WORK_DIR/config.yaml
@@ -69,7 +70,7 @@ done
 
 echo ""
 echo "=========================================="
-echo "All 10 chains launched successfully!"
+echo "All 6 chains launched successfully!"
 echo "=========================================="
 echo ""
 echo "Monitor progress with:"
