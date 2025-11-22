@@ -18,7 +18,9 @@ theory:
       gauge: newtonian
 
 likelihood:
-  bao.boss_dr12: null
+  rs_gaussian:
+    external: |
+      (lambda: __import__('sys').path.insert(0, '/home/ridderadmin/Ridder-Field/phase3') or getattr(__import__('rs_likelihood_direct'), 'rs_likelihood'))()
 
 params:
   h:
