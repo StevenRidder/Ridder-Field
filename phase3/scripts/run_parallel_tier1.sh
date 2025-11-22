@@ -21,34 +21,40 @@ cd "${ROOT_DIR}"
 mkdir -p chains output
 
 # Function to run a single chain
-# Each chain needs a UNIQUE output path to avoid file locking conflicts
+# COMPLETE ISOLATION: Each chain gets its own working directory
 run_chain() {
     local CHAIN_ID=$1
-    # Use unique output path - we'll rename later to .1, .2, .3, .4 format
-    local CHAIN_OUTPUT="chains/ridder_tier1_planck_chain${CHAIN_ID}"
-    local LOG_DIR="output/tier1_planck_chain${CHAIN_ID}"
+    local CHAIN_WORK_DIR="${ROOT_DIR}/chain${CHAIN_ID}_work"
+    local CHAIN_OUTPUT="${CHAIN_WORK_DIR}/chains/ridder_tier1_planck"
+    local LOG_FILE="${CHAIN_WORK_DIR}/chain${CHAIN_ID}.log"
     
-    mkdir -p "${LOG_DIR}"
+    # Create completely isolated working directory
+    mkdir -p "${CHAIN_WORK_DIR}/chains"
+    mkdir -p "${CHAIN_WORK_DIR}/output"
     
-    echo "[$(date +%H:%M:%S)] Starting chain ${CHAIN_ID}..."
+    # Copy config to chain's work directory (avoids any shared file issues)
+    cp "${CONFIG}" "${CHAIN_WORK_DIR}/config.yaml"
     
-    # Set thread count to 1 per chain (CLASS will use 1 thread)
-    export OMP_NUM_THREADS=1
-    export MKL_NUM_THREADS=1
-    export OPENBLAS_NUM_THREADS=1
+    echo "[$(date +%H:%M:%S)] Starting chain ${CHAIN_ID} in isolated directory..."
     
-    # Disable file locking to allow parallel chains
-    export COBAYA_USE_FILE_LOCKING=False
-    
-    # Run Cobaya with unique output path
-    nohup python3 -m cobaya.run "${CONFIG}" \
-        --output "${CHAIN_OUTPUT}" \
-        --force \
-        > "${LOG_DIR}/log.txt" 2>&1 &
+    # Run in the isolated directory with all environment set
+    (
+        cd "${CHAIN_WORK_DIR}"
+        export OMP_NUM_THREADS=1
+        export MKL_NUM_THREADS=1
+        export OPENBLAS_NUM_THREADS=1
+        export COBAYA_USE_FILE_LOCKING=False
+        
+        # Run Cobaya in the isolated directory
+        python3 -m cobaya.run config.yaml \
+            --output "${CHAIN_OUTPUT}" \
+            --force \
+            > "${LOG_FILE}" 2>&1
+    ) &
     
     local PID=$!
-    echo ${PID} > "${LOG_DIR}/pid.txt"
-    echo "[$(date +%H:%M:%S)] Chain ${CHAIN_ID} started (PID: ${PID})"
+    echo ${PID} > "${ROOT_DIR}/output/tier1_planck_chain${CHAIN_ID}/pid.txt"
+    echo "[$(date +%H:%M:%S)] Chain ${CHAIN_ID} started (PID: ${PID}) in ${CHAIN_WORK_DIR}"
 }
 
 # Launch all chains
@@ -61,15 +67,27 @@ done
 
 echo ""
 echo "=============================================================="
-echo "All ${NUM_CHAINS} chains launched!"
+echo "All ${NUM_CHAINS} chains launched in isolated directories!"
 echo ""
-echo "Monitor with:"
-echo "  ./scripts/check_status.sh ridder_tier1_planck tier1_planck_chain1"
+echo "Chain directories:"
+for i in $(seq 1 ${NUM_CHAINS}); do
+    echo "  Chain $i: chain${i}_work/"
+done
 echo ""
-echo "Check all chains:"
+echo "Monitor chains:"
+echo "  tail -f chain1_work/chain1.log"
+echo "  tail -f chain2_work/chain2.log"
+echo "  etc."
+echo ""
+echo "Check processes:"
 echo "  ps aux | grep cobaya"
 echo ""
+echo "Chain files will be in:"
+echo "  chain1_work/chains/ridder_tier1_planck.1.txt"
+echo "  chain2_work/chains/ridder_tier1_planck.1.txt"
+echo "  etc."
+echo ""
 echo "Stop all chains:"
-echo "  pkill -f 'cobaya.*ridder_tier1_planck'"
+echo "  pkill -f 'cobaya.*ridder_tier1'"
 echo "=============================================================="
 
