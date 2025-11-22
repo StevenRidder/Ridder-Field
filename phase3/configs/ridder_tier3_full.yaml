@@ -37,9 +37,8 @@ likelihood:
   bao.sdss_dr12_consensus_bao: null
 
   # SH0ES (Forces high H0)
-  sn.pantheon: null  # Pantheon includes SH0ES calibration implicitly or we add H0 prior
-  H0: 
-    prior: {dist: norm, loc: 73.04, scale: 1.04} # Riess et al 2021 prior directly on H0
+  # We apply the SH0ES constraint directly as a prior on H0 in the params section
+  sn.pantheon: null
 
 params:
   # --- COSMOLOGY ---
@@ -57,9 +56,9 @@ params:
     proposal: 0.004
 
   H0:
-    prior: {min: 60, max: 80}
-    ref: 70.0             # bias ref closer to SH0ES now
-    proposal: 0.4
+    prior: {dist: norm, loc: 73.04, scale: 1.04} # SH0ES 2021 Prior
+    ref: 73.0
+    proposal: 0.5
 
   omega_b:
     prior: {min: 0.01, max: 0.03}
