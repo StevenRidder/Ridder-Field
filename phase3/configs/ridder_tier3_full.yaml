@@ -1,0 +1,106 @@
+# Tier 3: Planck + BAO + SH0ES - The Critical Test
+# This combines Planck precision with SH0ES H0 measurement to force EDE exploration
+
+theory:
+  classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class
+    extra_args:
+      use_scf: yes
+      scf_potential: ridder
+      scf_tuning_index: 1
+      attractor_ic_scf: yes
+      scf_phi_prime_ini: 0.0
+      output: tCl, mPk, lCl
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      # Explicitly set recombination to avoid HYREC buffer issues
+      recombination: recfast
+      # We need non-linear for BAO/S8 checks, but can disable for speed if needed
+      non_linear: halofit
+      
+      # Fixed Ridder parameters mapping
+      Lambda_EDE_ridder: 1.0 # Tuned internally by CLASS if scf_tuning_index=1
+      f_axion_ridder: 1.0e27 # eV
+      n_ridder: 3
+
+likelihood:
+  # Planck 2018
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+
+  # BAO
+  bao.sixdf_2011_bao: null
+  bao.sdss_mgs_2014_bao: null
+  bao.boss_dr12_consensus_bao: null
+
+  # SH0ES (Forces high H0)
+  sh0es: null
+
+params:
+  # --- COSMOLOGY ---
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 70.0             # bias ref closer to SH0ES now
+    proposal: 0.4
+
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+
+  omega_cdm:
+    prior: {min: 0.1, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: 0.054
+    proposal: 0.004
+
+  # --- RIDDER PARAMETERS ---
+  # Map to internal CLASS names:
+  # theta_i -> theta_i_ridder
+  # beta_ridder -> beta_ridder
+  
+  theta_i_ridder:
+    prior: {min: 1.0, max: 2.3}
+    ref: 2.0 # Start in Ridder valley
+    proposal: 0.05
+    latex: \theta_i
+
+  beta_ridder:
+    prior: {min: 0.0, max: 0.03}
+    ref: 0.01 # Start with coupling
+    proposal: 0.002
+    latex: \beta
+
+sampler:
+  mcmc:
+    drag: true
+    proposal_scale: 1.9
+    covmat: auto
+    Rminus1_stop: 0.03
+    burn_in: 0
+    max_samples: 200 # Quick test first
+
+output: chains/ridder_tier3_planck_bao_sh0es
+resume: false
+debug: true
+
