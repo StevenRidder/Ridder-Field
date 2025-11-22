@@ -110,7 +110,7 @@ echo ""
 echo "======================================================================"
 echo "TOP 5 REGIONS BY AVAILABLE DSv3 QUOTA"
 echo "======================================================================"
-
+    
 # Sort results by available DSv3 quota (descending)
 IFS=$'\n' sorted=($(sort -t'|' -k1 -nr <<<"${RESULTS[*]}"))
 unset IFS
