@@ -7,9 +7,14 @@ theory:
     extra_args:
       use_scf: yes
       scf_potential: ridder
-      scf_tuning_index: 1  # Tune Lambda to match Omega_scf
+      scf_tuning_index: 1  # Tune Lambda (scf_parameters[1]) to match Omega_scf
       attractor_ic_scf: yes
       scf_phi_prime_ini: 0.0
+      # scf_parameters: [f, Lambda, n] - Lambda will be tuned, f and n are fixed
+      # f = 0.4 Mpl (from f_axion_ridder = 1e27 eV conversion)
+      # Lambda = will be tuned by CLASS
+      # n = 3
+      scf_parameters: 0.4, 1.0, 3.0
       # Planck requires high l_max and lens calculation
       output: tCl, mPk, lCl
       l_max_scalars: 2508
