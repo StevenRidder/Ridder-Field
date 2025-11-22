@@ -53,8 +53,8 @@ if [ -f "${CHAIN_ROOT}.1.txt" ]; then
     
     # Show last few samples
     echo ""
-    echo "  Last 3 samples:"
-    tail -n 3 "${CHAIN_ROOT}.1.txt" | awk '{printf "    Sample %d: ", NR; for(i=3;i<=NF;i++) printf "%s ", $i; print ""}' | head -3
+    echo "  Last 3 samples (theta_i | beta | H0):"
+    tail -n 3 "${CHAIN_ROOT}.1.txt" | awk '{printf "    Sample %d: %.4f | %.5f | %.2f\n", NR, $9, $10, $5}' 2>/dev/null || echo "    (Columns may vary, check file manually)"
 else
     echo "⚠ Chain file not yet created: ${CHAIN_ROOT}.1.txt"
     echo "  (This is normal during initialization - Cobaya creates it after first accepted sample)"
@@ -123,7 +123,79 @@ if [ -f "${CHAIN_ROOT}.updated.yaml" ]; then
     echo ""
 fi
 
-# 6. Summary
+# 6. Check for 4-chain parallel run status
+echo "--- 4-CHAIN PARALLEL STATUS ---"
+if [ -d "${ROOT_DIR}/chain1_work" ]; then
+    python3 << "PYEOF"
+import glob
+import os
+import numpy as np
+
+work_dirs = sorted(glob.glob("${ROOT_DIR}/chain*_work"))
+all_chain_files = []
+for wd in work_dirs:
+    cf = glob.glob(f"{wd}/chains/ridder_tier1_planck*.txt")
+    all_chain_files.extend(cf)
+
+if all_chain_files:
+    print(f"Found {len(all_chain_files)} active chains.")
+    print("-" * 40)
+    
+    total_samples = 0
+    all_theta = []
+    all_beta = []
+    all_H0 = []
+    all_chi2 = []
+    
+    for cf in sorted(all_chain_files):
+        try:
+            data = np.loadtxt(cf, skiprows=1)
+            if data.ndim == 1: data = data.reshape(1, -1)
+            n_samples = len(data)
+            total_samples += n_samples
+            
+            # Cols: 8=theta, 9=beta, 4=H0, -5=chi2
+            all_theta.extend(data[:, 8].tolist())
+            all_beta.extend(data[:, 9].tolist())
+            all_H0.extend(data[:, 4].tolist())
+            all_chi2.extend(data[:, -5].tolist())
+            
+            # Get chain ID
+            chain_id = os.path.basename(os.path.dirname(os.path.dirname(cf))).replace("chain", "").replace("_work", "")
+            print(f"Chain {chain_id}: {n_samples} samples | theta={data[-1, 8]:.4f} | beta={data[-1, 9]:.5f} | chi2={data[-1, -5]:.1f}")
+        except:
+            pass
+    
+    print("-" * 40)
+    if all_theta:
+        print(f"TOTAL SAMPLES: {total_samples}")
+        print(f"THETA_I: {np.mean(all_theta):.4f} ± {np.std(all_theta):.4f}  (Range: {np.min(all_theta):.4f}-{np.max(all_theta):.4f})")
+        
+        # Interpretation of Theta
+        mean_theta = np.mean(all_theta)
+        if mean_theta > 1.8: print("  ✅ STATUS: In Ridder Valley")
+        elif mean_theta < 1.0: print("  ⚠️  STATUS: Drifted to ΛCDM")
+        else: print("  ⚠️  STATUS: Transition/Sweet Spot (1.0-1.8)")
+            
+        print(f"BETA:    {np.mean(all_beta):.5f} ± {np.std(all_beta):.5f}  (Range: {np.min(all_beta):.5f}-{np.max(all_beta):.5f})")
+        
+        # Interpretation of Beta
+        mean_beta = np.mean(all_beta)
+        if mean_beta > 0.005: print("  ✅ STATUS: Strong Coupling Detected (>0.005)")
+        elif mean_beta > 0.001: print("  ⚠️  STATUS: Weak Coupling")
+        else: print("  ❌ STATUS: No Coupling")
+            
+        print(f"H0:      {np.mean(all_H0):.2f} ± {np.std(all_H0):.2f}")
+        print(f"BEST CHI2: {np.min(all_chi2):.2f}")
+else:
+    print("No parallel chain files found yet.")
+PYEOF
+else
+    echo "No parallel work directories found."
+fi
+echo ""
+
+# 7. Summary
 echo "=============================================================="
 echo "QUICK COMMANDS:"
 echo "  Watch log:     tail -f ${LOG_FILE}"
