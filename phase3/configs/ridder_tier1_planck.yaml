@@ -60,10 +60,11 @@ params:
   # --- RIDDER PARAMETERS ---
   # For this Tier 1 test, keep Lambda_EDE_ridder fixed and sample theta_i, beta only
   # The Critical Parameter (theta_i_ridder in CLASS)
+  # FORCE START AT 2.1 (Ridder valley) - don't let it drift to ΛCDM valley (0.5)
   theta_i_ridder:
-    prior: {min: 0.1, max: 2.3} # Can it survive near 2.1?
-    ref: 1.5
-    proposal: 0.1
+    prior: {min: 0.1, max: 2.3}
+    ref: 2.1  # FORCE START IN RIDDER PHYSICS ZONE
+    proposal: 0.05
     latex: \theta_i
   # Coupling (Let's see if Planck tolerates it)
   beta_ridder:
