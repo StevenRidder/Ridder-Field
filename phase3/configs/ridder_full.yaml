@@ -1,0 +1,90 @@
+# Full production MCMC: Planck 2018 + BAO + SNe
+# Purpose: Full data suite for ΛCDM comparison
+
+theory:
+  classy:
+    path: ../../phase2/class
+    extra_args:
+      use_scf: yes
+      scf_potential: ridder
+      scf_tuning_index: 0
+      attractor_ic_scf: no
+      scf_parameters: 0.0, 0.0, 0.0, 0.0
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27
+      n_ridder: 3
+      output: tCl, pCl, mPk
+      l_max_scalars: 3000
+      gauge: newtonian
+
+likelihood:
+  # CMB (Planck 2018)
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  
+  # BAO
+  bao.boss_dr12: null
+  bao.6df: null
+  bao.sdss_mgs: null
+  
+  # SNe Ia (uncomment when data files are available)
+  # pantheonplus: null
+
+params:
+  h:
+    prior: {min: 0.6, max: 0.8}
+    ref: {dist: norm, loc: 0.72, scale: 0.02}
+    proposal: 0.01
+  omega_b:
+    prior: {min: 0.02, max: 0.025}
+    ref: {dist: norm, loc: 0.02237, scale: 0.0005}
+    proposal: 0.0001
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: {dist: norm, loc: 0.120, scale: 0.005}
+    proposal: 0.001
+  A_s:
+    prior: {min: 1.5e-9, max: 2.5e-9}
+    ref: {dist: norm, loc: 2.1e-9, scale: 0.2e-9}
+    proposal: 0.1e-9
+  n_s:
+    prior: {min: 0.9, max: 1.0}
+    ref: {dist: norm, loc: 0.9649, scale: 0.01}
+    proposal: 0.005
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: {dist: norm, loc: 0.054, scale: 0.01}
+    proposal: 0.005
+  
+  # Ridder field parameters
+  theta_i_ridder:
+    prior: {min: 2.0, max: 2.2}
+    ref: {dist: norm, loc: 2.1, scale: 0.02}
+    proposal: 0.01
+    latex: \theta_i
+  beta_ridder:
+    prior: {min: 0.005, max: 0.015}
+    ref: {dist: norm, loc: 0.01, scale: 0.002}
+    proposal: 0.001
+    latex: \beta
+
+sampler:
+  mcmc:
+    max_samples: 10000
+    burn_in: 1000
+    Rminus1_stop: 0.01          # strict convergence for production
+    learn_proposal: True
+    proposal_scale: 1.9
+    covmat: auto
+    blocking:
+      - [1, [h, omega_b, omega_cdm, A_s, n_s, tau_reio]]
+      - [2, [theta_i_ridder, beta_ridder]]
+    measure_speeds: true
+    check_every: 50
+
+output: chains/ridder_full
+resume: true
+debug: false
+
