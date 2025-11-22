@@ -35,7 +35,7 @@ echo "Launching 8 Ridder field chains..."
 for i in {1..8}; do
     WORK_DIR="$CHAINS_DIR/ridder_prod_chain${i}_work"
     mkdir -p $WORK_DIR
-    cp $CONFIG_DIR/ridder_tier1_planck.yaml $WORK_DIR/config.yaml
+    cp $CONFIG_DIR/ridder_tier1_lowl.yaml $WORK_DIR/config.yaml
     
     # Modify output path to include chain number
     sed -i "s|output: chains/ridder_tier1_production|output: ridder_tier1_production_chain${i}|g" $WORK_DIR/config.yaml
@@ -53,7 +53,7 @@ echo "Launching 2 ΛCDM baseline chains..."
 for i in {1..2}; do
     WORK_DIR="$CHAINS_DIR/lcdm_prod_chain${i}_work"
     mkdir -p $WORK_DIR
-    cp $CONFIG_DIR/lcdm_baseline.yaml $WORK_DIR/config.yaml
+    cp $CONFIG_DIR/lcdm_lowl.yaml $WORK_DIR/config.yaml
     
     # Modify output path to include chain number
     sed -i "s|output: chains/lcdm_production|output: lcdm_production_chain${i}|g" $WORK_DIR/config.yaml
