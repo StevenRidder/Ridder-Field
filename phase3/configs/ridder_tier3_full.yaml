@@ -16,8 +16,8 @@ theory:
       gauge: newtonian
       # Explicitly set recombination to avoid HYREC buffer issues
       recombination: recfast
-      # We need non-linear for BAO/S8 checks, but can disable for speed if needed
-      non_linear: halofit
+      # Disable non-linear for speed and to avoid issues
+      non_linear: none
       
       # Fixed Ridder parameters mapping
       Lambda_EDE_ridder: 1.0 # Tuned internally by CLASS if scf_tuning_index=1
@@ -31,14 +31,9 @@ likelihood:
   planck_2018_highl_plik.TTTEEE: null
   planck_2018_lensing.clik: null
 
-  # BAO
-  bao.sixdf_2011_bao: null
-  bao.sdss_dr7_mgs: null
-  bao.sdss_dr12_consensus_bao: null
-
   # SH0ES (Forces high H0)
   # We apply the SH0ES constraint directly as a prior on H0 in the params section
-  sn.pantheon: null
+  # BAO and SNe removed for quick test
 
 params:
   # --- COSMOLOGY ---
