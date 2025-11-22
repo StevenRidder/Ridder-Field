@@ -3,7 +3,7 @@
 
 resource "azurerm_resource_group" "batch_rg" {
   name     = "ridder-batch-rg"
-  location = "East US"
+  location = "Australia East"  # Closest to Polynesia
 }
 
 resource "azurerm_storage_account" "batch_sa" {
