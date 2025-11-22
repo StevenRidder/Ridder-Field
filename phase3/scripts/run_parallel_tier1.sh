@@ -23,7 +23,10 @@ mkdir -p chains output
 # Function to run a single chain
 run_chain() {
     local CHAIN_ID=$1
-    local OUTPUT_DIR="output/tier1_planck_chain${CHAIN_ID}"
+    local CHAIN_OUTPUT="chains/ridder_tier1_planck_chain${CHAIN_ID}"
+    local LOG_DIR="output/tier1_planck_chain${CHAIN_ID}"
+    
+    mkdir -p "${LOG_DIR}"
     
     echo "[$(date +%H:%M:%S)] Starting chain ${CHAIN_ID}..."
     
@@ -32,14 +35,15 @@ run_chain() {
     export MKL_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
     
-    # Run Cobaya with unique output path
-    python3 -m cobaya.run "${CONFIG}" \
-        --output "${OUTPUT_DIR}" \
+    # Run Cobaya with unique output path (overrides config)
+    nohup python3 -m cobaya.run "${CONFIG}" \
+        --output "${CHAIN_OUTPUT}" \
         --resume \
-        2>&1 | tee "${OUTPUT_DIR}/log.txt" &
+        > "${LOG_DIR}/log.txt" 2>&1 &
     
-    echo $! > "${OUTPUT_DIR}/pid.txt"
-    echo "[$(date +%H:%M:%S)] Chain ${CHAIN_ID} started (PID: $(cat ${OUTPUT_DIR}/pid.txt))"
+    local PID=$!
+    echo ${PID} > "${LOG_DIR}/pid.txt"
+    echo "[$(date +%H:%M:%S)] Chain ${CHAIN_ID} started (PID: ${PID})"
 }
 
 # Launch all chains
