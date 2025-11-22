@@ -42,8 +42,10 @@ temp/
 
 phase3/packages/
 
-# Terraform
+# Terraform (contains subscription IDs and sensitive data)
 azure/.terraform/
 azure/*.tfstate
 azure/*.tfstate.*
 azure/*.tfplan
+azure/*.tf
+azure/*.sh
