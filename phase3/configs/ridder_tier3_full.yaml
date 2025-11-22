@@ -37,7 +37,9 @@ likelihood:
   bao.boss_dr12_consensus_bao: null
 
   # SH0ES (Forces high H0)
-  sh0es: null
+  sn.pantheon: null  # Pantheon includes SH0ES calibration implicitly or we add H0 prior
+  H0: 
+    prior: {dist: norm, loc: 73.04, scale: 1.04} # Riess et al 2021 prior directly on H0
 
 params:
   # --- COSMOLOGY ---
