@@ -1,21 +1,7 @@
 # 1-minute smoke test: BAO only, tiny chain
 # Purpose: Verify CLASS + Cobaya integration works
 
-theory:
-  classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class
-    extra_args:
-      use_scf: yes
-      scf_potential: ridder
-      scf_tuning_index: 0
-      attractor_ic_scf: no
-      scf_parameters: 0.0, 0.0, 0.0, 0.0
-      Lambda_EDE_ridder: 1.0
-      f_axion_ridder: 1.0e27
-      n_ridder: 3
-      output: tCl, mPk
-      l_max_scalars: 1500
-      gauge: newtonian
+# No theory block needed - rs_gaussian calls CLASS directly
 
 likelihood:
   rs_gaussian:
