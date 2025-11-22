@@ -37,7 +37,10 @@ run_chain() {
     
     echo "[$(date +%H:%M:%S)] Starting chain ${CHAIN_ID} in isolated directory..."
     
-    # Run in the isolated directory with all environment set
+    # Create PID directory
+    mkdir -p "${ROOT_DIR}/output/tier1_planck_chain${CHAIN_ID}"
+    
+    # Run in the isolated directory with all environment set - use nohup for proper detachment
     (
         cd "${CHAIN_WORK_DIR}"
         export OMP_NUM_THREADS=1
@@ -45,8 +48,8 @@ run_chain() {
         export OPENBLAS_NUM_THREADS=1
         export COBAYA_USE_FILE_LOCKING=False
         
-        # Run Cobaya in the isolated directory
-        python3 -m cobaya.run config.yaml \
+        # Run Cobaya in the isolated directory with nohup
+        nohup python3 -m cobaya.run config.yaml \
             --output "${CHAIN_OUTPUT}" \
             --force \
             > "${LOG_FILE}" 2>&1
