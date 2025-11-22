@@ -5,22 +5,14 @@ theory:
   classy:
     path: /home/ridderadmin/Ridder-Field/phase2/class
     extra_args:
-      use_scf: yes
-      scf_potential: ridder
-      scf_tuning_index: 1  # Tune Lambda (scf_parameters[1]) to match Omega_scf
-      attractor_ic_scf: yes
-      scf_phi_prime_ini: 0.0
-      # scf_parameters: [f, Lambda, n] - Lambda will be tuned, f and n are fixed
-      # f = 0.4 Mpl (from f_axion_ridder = 1e27 eV conversion)
-      # Lambda = will be tuned by CLASS
-      # n = 3
-      scf_parameters: 0.4, 1.0, 3.0
+      # Minimal CLASS args (Ridder field handled internally)
       # Planck requires high l_max and lens calculation
       output: tCl, mPk, lCl
       l_max_scalars: 2508
       lensing: yes
       gauge: newtonian
       # Ridder field parameters (fixed)
+      Lambda_EDE_ridder: 1.0
       f_axion_ridder: 1.0e27  # eV (converted to Mpl internally)
       n_ridder: 3
 
@@ -62,12 +54,7 @@ params:
     proposal: 0.004
 
   # --- RIDDER PARAMETERS ---
-  # We let the model tune the energy scale (Lambda via Omega_scf)
-  Omega_scf:
-    prior: {min: 0.001, max: 0.15}
-    ref: 0.05
-    proposal: 0.01
-    latex: f_{EDE}
+  # For this Tier 1 test, keep Lambda_EDE_ridder fixed and sample theta_i, beta only
   # The Critical Parameter (theta_i_ridder in CLASS)
   theta_i_ridder:
     prior: {min: 0.1, max: 2.3} # Can it survive near 2.1?
