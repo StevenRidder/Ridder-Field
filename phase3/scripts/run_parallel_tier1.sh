@@ -65,8 +65,11 @@ echo ""
 echo "Launching ${NUM_CHAINS} chains in parallel..."
 for i in $(seq 1 ${NUM_CHAINS}); do
     run_chain $i
-    sleep 2  # Stagger starts slightly
+    sleep 1  # Small stagger to avoid race conditions
 done
+
+# Wait a moment for all processes to start
+sleep 3
 
 echo ""
 echo "=============================================================="
