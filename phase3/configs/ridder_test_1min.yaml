@@ -9,32 +9,7 @@ likelihood:
       (lambda: __import__('sys').path.insert(0, '/home/ridderadmin/Ridder-Field/phase3') or getattr(__import__('rs_likelihood_direct'), 'rs_likelihood'))()
 
 params:
-  h:
-    prior: {min: 0.6, max: 0.8}
-    ref: {dist: norm, loc: 0.72, scale: 0.02}
-    proposal: 0.01
-  omega_b:
-    prior: {min: 0.02, max: 0.025}
-    ref: {dist: norm, loc: 0.02237, scale: 0.0005}
-    proposal: 0.0001
-  omega_cdm:
-    prior: {min: 0.10, max: 0.14}
-    ref: {dist: norm, loc: 0.120, scale: 0.005}
-    proposal: 0.001
-  A_s:
-    prior: {min: 1.5e-9, max: 2.5e-9}
-    ref: {dist: norm, loc: 2.1e-9, scale: 0.2e-9}
-    proposal: 0.1e-9
-  n_s:
-    prior: {min: 0.9, max: 1.0}
-    ref: {dist: norm, loc: 0.9649, scale: 0.01}
-    proposal: 0.005
-  tau_reio:
-    prior: {min: 0.04, max: 0.08}
-    ref: {dist: norm, loc: 0.054, scale: 0.01}
-    proposal: 0.005
-  
-  # Ridder field parameters
+  # Ridder field parameters only (rs_gaussian calls CLASS directly with fixed cosmology)
   theta_i_ridder:
     prior: {min: 2.0, max: 2.2}
     ref: {dist: norm, loc: 2.1, scale: 0.02}
