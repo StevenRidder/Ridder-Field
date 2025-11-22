@@ -35,18 +35,18 @@ resource "azurerm_batch_account" "ridder_batch" {
 }
 
 resource "azurerm_batch_pool" "ridder_pool" {
-  name                = "ridder-pool-16core"
+  name                = "ridder-pool-4core"
   resource_group_name = azurerm_resource_group.batch_rg.name
   account_name        = azurerm_batch_account.ridder_batch.name
   node_agent_sku_id   = "batch.node.ubuntu 22.04"
-  vm_size             = "Standard_D16s_v3" # 16 vCPUs per node
+  vm_size             = "Standard_D4s_v3" # 4 vCPUs per node (fits quota)
 
-  # Auto-Scale Formula: If tasks exist, spin up nodes. Max 10 nodes (160 cores).
+  # Auto-Scale Formula: If tasks exist, spin up nodes. Max 2 nodes (8 cores total, fits 10 vCPU quota).
   auto_scale {
     evaluation_interval = "PT5M"
     formula = <<EOF
       startingNumberOfVMs = 0;
-      maxNumberofVMs = 10;
+      maxNumberofVMs = 2;
       pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
       pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
       $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
