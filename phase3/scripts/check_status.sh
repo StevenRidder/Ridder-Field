@@ -56,7 +56,18 @@ if [ -f "${CHAIN_ROOT}.1.txt" ]; then
     echo "  Last 3 samples:"
     tail -n 3 "${CHAIN_ROOT}.1.txt" | awk '{printf "    Sample %d: ", NR; for(i=3;i<=NF;i++) printf "%s ", $i; print ""}' | head -3
 else
-    echo "✗ Chain file not found: ${CHAIN_ROOT}.1.txt"
+    echo "⚠ Chain file not yet created: ${CHAIN_ROOT}.1.txt"
+    echo "  (This is normal during initialization - Cobaya creates it after first accepted sample)"
+    
+    # Check for progress/checkpoint files
+    if [ -f "${CHAIN_ROOT}.progress" ]; then
+        echo "  ✓ Progress file found (initialization in progress)"
+        PROGRESS=$(cat "${CHAIN_ROOT}.progress" 2>/dev/null | head -1 || echo "unknown")
+        echo "    Status: ${PROGRESS}"
+    fi
+    if [ -f "${CHAIN_ROOT}.checkpoint" ]; then
+        echo "  ✓ Checkpoint file found"
+    fi
 fi
 echo ""
 
