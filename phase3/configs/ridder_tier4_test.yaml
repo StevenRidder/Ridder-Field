@@ -84,7 +84,7 @@ params:
 
 sampler:
   mcmc:
-    drag: true
+    drag: false  # Disable drag - not enough speed separation
     proposal_scale: 1.9
     covmat: auto
     Rminus1_stop: 0.03
