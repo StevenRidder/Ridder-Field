@@ -1,5 +1,7 @@
 provider "azurerm" {
   features {}
+  # Using alternate subscription for larger VM/batch quotas
+  subscription_id = "7c45aa43-0e69-489b-b19b-79e79c8b30ac"
 }
 
 resource "azurerm_resource_group" "ridder_rg" {
@@ -68,7 +70,7 @@ resource "azurerm_linux_virtual_machine" "ridder_vm" {
   name                = "ridder-compute-01"
   resource_group_name = azurerm_resource_group.ridder_rg.name
   location            = azurerm_resource_group.ridder_rg.location
-  size                = "Standard_D16s_v3"  # 16 vCPUs, 64 GB RAM
+  size                = "Standard_D4s_v3"  # 4 vCPUs, 16 GB RAM (fits quota)
   admin_username      = "ridderadmin"
   network_interface_ids = [
     azurerm_network_interface.ridder_nic.id

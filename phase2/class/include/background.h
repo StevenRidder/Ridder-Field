@@ -608,7 +608,7 @@ extern "C" {
   double ddV_ridder(
                     struct background *pba,
                     double phi
-                    );
+               );
 
 #ifdef __cplusplus
 }

@@ -41,3 +41,5 @@ temp/
 *.tmp
 
 phase3/packages/
+
+azure/main.tf

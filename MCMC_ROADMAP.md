@@ -1,392 +1,349 @@
-# MCMC Roadmap: From Local Test to Full Cluster Run
+# Ridder Field MCMC: Complete Roadmap
 
 **Date:** November 21, 2024  
-**Status:** Ready to begin Phase 1 (Local Test)
+**Status:** Phase 1 Complete (1-minute smoke test)  
+**Next:** Phase 2 (10-minute Metropolis test)
 
 ---
 
 ## Overview
 
-We'll proceed in **3 phases**, starting small and scaling up:
-
-```
-Phase 1: Local Mac Test (5-10 minutes)
-   ↓
-Phase 2: Azure Single Machine (30-60 minutes)
-   ↓
-Phase 3: Azure Cluster (Full MCMC, hours-days)
-```
+This roadmap implements a staged testing approach that builds confidence incrementally before scaling to full production MCMC. Each phase validates a specific component before moving to the next.
 
 ---
 
-## Phase 1: Local Mac Test ⚡ **START HERE**
+## Testing Ladder
 
-### Purpose
-- Verify MCMC infrastructure works
-- Test CLASS integration with Cobaya
-- Explore small parameter space
-- **NO Planck data needed** (just technical test)
+### Phase 1: Smoke Test ✅ COMPLETE
+**Status:** ✅ Passed  
+**Duration:** ~1 minute  
+**Purpose:** Verify CLASS runs with Ridder field
 
-### What It Does
-- Samples `theta_i ∈ [2.0, 2.2]` and `beta ∈ [0.005, 0.015]`
-- Runs ~500 CLASS evaluations
-- Computes r_s for each parameter combination
-- Uses simple Gaussian likelihood on r_s (target: 139.06 Mpc)
+**What it tests:**
+- CLASS compilation and execution
+- Ridder field parameters read correctly
+- Basic output generation (r_s calculation)
+- No crashes or numerical errors
 
-### How to Run
+**Results:**
+- ✅ All 9 parameter combinations passed
+- ✅ r_s = 139.026 Mpc (target: 139.06 Mpc)
+- ✅ No crashes or NaN values
 
+**Files:**
+- `phase3/run_direct_class_test.sh`
+- `MCMC_1MINUTE_TEST_RESULTS.md`
+
+---
+
+### Phase 2: 10-Minute Metropolis Sampler ⏳ NEXT
+**Status:** ⏳ Ready to run  
+**Duration:** ~10 minutes  
+**Purpose:** Verify sampler moves through parameter space
+
+**What it tests:**
+- Proposal adaptation works
+- Acceptance rate is reasonable (0.2-0.5)
+- Parameters actually move (not stuck)
+- Likelihood surface is accessible
+- No zero acceptance or proposal collapse
+
+**Success Criteria:**
+- ✅ Acceptance rate: 0.2 - 0.5
+- ✅ Parameters show movement in traces
+- ✅ Proposal scale adapts
+- ✅ No crashes or zero acceptance
+
+**Files:**
+- `phase3/ridder_10min_metropolis.yaml`
+- `phase3/run_10min_metropolis_test.py`
+
+**Run:**
 ```bash
-cd /Users/steveridder/Git/Ridder-Field/phase3
-python3 run_local_mcmc_test.py
+cd phase3
+python3 run_10min_metropolis_test.py
 ```
 
-**Expected Runtime:** 5-10 minutes on Mac
-
-**Expected Output:**
-```
-✓ Cobaya version: 3.3.2
-✓ CLASS executable: /Users/steveridder/Git/Ridder-Field/phase2/class/class
-✓ Parameter file: ridder_local_test.yaml
-✓ Output directory: chains/
-
-Starting MCMC test...
-...
-✅ MCMC TEST COMPLETED!
-
-Samples collected: 500
-Mean parameter values:
-  theta_i_ridder: 2.1000 ± 0.0200
-  beta_ridder: 0.0100 ± 0.0020
-```
-
-### Success Criteria
-- ✅ MCMC runs without crashes
-- ✅ CLASS evaluates successfully for each parameter set
-- ✅ Chains are saved to `chains/ridder_local_test*`
-- ✅ Mean values are reasonable (theta_i ≈ 2.1, beta ≈ 0.01)
-
-### If It Fails
-1. **Cobaya not installed:**
-   ```bash
-   pip3 install cobaya
-   ```
-
-2. **CLASS not compiled:**
-   ```bash
-   cd /Users/steveridder/Git/Ridder-Field/phase2/class
-   make clean && make class
-   ```
-
-3. **Other errors:**
-   - Check error message
-   - Verify paths in `ridder_local_test.yaml`
-   - Run CLASS manually to test: `./class ../../phase3/ridder_smoketest_spec.ini`
+**If it fails:**
+- Zero acceptance → Likelihood or proposal issue
+- Parameters stuck → Check prior ranges
+- Proposal collapse → Check proposal adaptation settings
 
 ---
 
-## Phase 2: Azure Single Machine Test
+### Phase 3: Parallel Chains Test
+**Status:** ⏳ Pending Phase 2  
+**Duration:** ~20-30 minutes  
+**Purpose:** Verify multiple chains stay coherent
 
-### Purpose
-- Test Azure deployment
-- Run longer chains (more samples)
-- Verify cloud infrastructure
-- Still no full Planck data (use simplified likelihood)
+**What it tests:**
+- 4-8 chains run in parallel
+- Chains converge toward same region
+- No wild divergence
+- R-1 statistic works correctly
 
-### Prerequisites
-- ✅ Phase 1 completed successfully
-- Azure account with credits
-- SSH access to Azure VM
+**Success Criteria:**
+- ✅ All chains converge (R-1 < 0.1)
+- ✅ Chains don't drift in opposite directions
+- ✅ Posterior distributions overlap
+- ✅ No chain-specific failures
 
-### Setup Steps
-
-1. **Create Azure VM**
-   ```bash
-   # Use existing script
-   cd /Users/steveridder/Git/Ridder-Field/phase3
-   bash azure_deploy.sh --single-vm
-   ```
-
-2. **Copy Code to Azure**
-   ```bash
-   # SSH into VM
-   ssh ridder@<azure-ip>
-   
-   # Clone repo
-   git clone https://github.com/StevenRidder/Ridder-Field.git
-   cd Ridder-Field
-   
-   # Compile CLASS
-   cd phase2/class
-   make clean && make class
-   cd ../../phase3
-   ```
-
-3. **Run Test**
-   ```bash
-   # Install dependencies
-   pip3 install cobaya getdist
-   
-   # Run longer test (5000 samples)
-   python3 run_local_mcmc_test.py
-   ```
-
-### Success Criteria
-- ✅ Azure VM accessible
-- ✅ Code compiles on Azure
-- ✅ MCMC runs for 5000+ samples
-- ✅ Convergence R-1 < 0.05
-
-### Expected Runtime
-30-60 minutes (depending on VM size)
+**Implementation:**
+- Use `run_mcmc_cluster.py --mode single --chains 4`
+- Or MPI: `mpirun -np 4 python3 run_mcmc_cluster.py --mode mpi`
 
 ---
 
-## Phase 3: Full MCMC with Planck Data
+### Phase 4: Cluster Launcher Test
+**Status:** ⏳ Pending Phase 3  
+**Duration:** ~30 minutes  
+**Purpose:** Verify cluster orchestration works
 
-### Purpose
-- **PRODUCTION RUN**
-- Full parameter space exploration
-- Real Planck 2018 likelihoods
-- Multi-chain convergence
-- Publication-quality results
+**What it tests:**
+- Azure Batch (or MPI cluster) spins up workers
+- Jobs distribute correctly
+- Results collect properly
+- Workers tear down cleanly
 
-### Prerequisites
-- ✅ Phase 2 completed successfully
-- Azure cluster (4-8 VMs recommended)
-- Planck 2018 data downloaded (~10 GB)
+**Success Criteria:**
+- ✅ Workers start successfully
+- ✅ Jobs distribute across VMs
+- ✅ Results aggregate correctly
+- ✅ No orphaned processes
 
-### Configuration
+**Implementation:**
+- Azure Batch: `./azure/setup_batch.sh` then submit test job
+- MPI: Deploy 4 VMs, test MPI coordination
 
-**Parameters to Sample:**
-- `theta_i_ridder ∈ [1.8, 2.15]`
-- `beta_ridder ∈ [0.0, 0.03]`
-- `omega_b, omega_cdm, A_s, n_s, tau_reio` (standard 6)
-- **Total: 8 parameters**
+---
+
+### Phase 5: Full MCMC Production
+**Status:** ⏳ Pending Phase 4  
+**Duration:** Hours to days  
+**Purpose:** Production runs with real data
+
+**What it runs:**
+- Full data ladder (see below)
+- Many chains (8-16)
+- Full convergence (R-1 < 0.01)
+- Production corner plots
+
+---
+
+## Data Ladder
+
+### Tier 1: Planck-Only
+**Purpose:** Baseline CMB-only comparison
 
 **Likelihoods:**
-- Planck 2018 TT+TE+EE+lowE
-- BAO (SDSS, 6dF)
-- Supernovae (Pantheon)
+- `planck_2018_lowl.TT`
+- `planck_2018_lowl.EE`
+- `planck_2018_highl_plik.TTTEEE`
+- `planck_2018_lensing.clik`
 
-**Chains:**
-- 4-8 independent chains
-- ~100,000 samples per chain
-- Convergence: R-1 < 0.01
+**Comparison:**
+- ΛCDM vs Ridder
+- Best-fit χ²
+- Δχ²
+- Posteriors on θᵢ, Ω_scf, β
+- Derived: H₀, r_s, S₈
 
-### Setup Steps
-
-1. **Create Azure Cluster**
-   ```bash
-   cd /Users/steveridder/Git/Ridder-Field/phase3
-   bash azure_deploy.sh --cluster --nodes 8
-   ```
-
-2. **Download Planck Data** (on each node)
-   ```bash
-   # This downloads ~10 GB
-   cobaya-install ridder_mcmc.yaml -p ./packages
-   ```
-
-3. **Configure MPI**
-   ```bash
-   # Update ridder_mcmc.yaml with correct paths
-   # Set output directory
-   # Configure MPI settings
-   ```
-
-4. **Launch MCMC**
-   ```bash
-   # Run on cluster
-   mpirun -n 32 python3 -m cobaya run ridder_mcmc.yaml
-   ```
-
-### Expected Runtime
-- **Optimistic:** 24-48 hours (with 8 VMs, 4 cores each)
-- **Realistic:** 3-5 days
-- **Pessimistic:** 1 week (if convergence is slow)
-
-### Monitoring
-
-```bash
-# Check convergence
-python3 -c "from getdist import loadMCSamples; s=loadMCSamples('chains/ridder_mcmc'); print(f'R-1: {s.getGelmanRubin()}')"
-
-# Plot chains (on local machine after downloading)
-python3 plot_chains.py
-```
-
-### Success Criteria
-- ✅ All chains converge (R-1 < 0.01)
-- ✅ Effective sample size > 1000 per parameter
-- ✅ Posteriors are well-constrained
-- ✅ Best-fit χ² comparable to ΛCDM
+**Profile:** `planck_core`
 
 ---
 
-## Cost Estimates
+### Tier 2: Planck + BAO
+**Purpose:** Standard baseline (most papers use this)
 
-### Phase 1: Local Mac
-- **Cost:** $0 (runs on your Mac)
-- **Time:** 5-10 minutes
+**Likelihoods:**
+- All Planck (Tier 1)
+- `bao_boss` (BOSS DR12)
+- `bao_6df` (6dF)
+- `bao_mgs` (MGS)
 
-### Phase 2: Azure Single VM
-- **VM:** Standard_D4s_v3 (4 vCPUs, 16 GB RAM)
-- **Cost:** ~$0.20/hour × 1 hour = **$0.20**
-- **Time:** 30-60 minutes
+**Comparison:**
+- ΛCDM: "Gold standard" fit
+- Ridder: Slightly worse χ², but better H₀
+- Goal: Relieve H₀ tension without destroying Planck + BAO
 
-### Phase 3: Azure Cluster
-- **VMs:** 8× Standard_D8s_v3 (8 vCPUs, 32 GB RAM each)
-- **Cost:** ~$0.40/hour × 8 VMs × 48 hours = **$153.60**
-- **Time:** 2-5 days
-- **Storage:** ~50 GB for chains and data = **$2.50/month**
-
-**Total Estimated Cost:** ~$160 for full MCMC run
+**Profile:** `planck_bao`
 
 ---
 
-## Decision Points
+### Tier 3: Planck + BAO + SH0ES
+**Purpose:** Test H₀ tension relief
 
-### After Phase 1
-**If successful:**
-- ✅ Proceed to Phase 2 (Azure single VM test)
+**Likelihoods:**
+- All Planck + BAO (Tier 2)
+- `sh0es_h0` (H₀ = 73.0 ± 1.0 km/s/Mpc)
 
-**If failed:**
-- ⚠️ Debug locally before spending on Azure
-- Check CLASS compilation
-- Verify Cobaya installation
-- Test CLASS manually
+**Comparison:**
+- Under ΛCDM: Adding SH0ES usually blows up χ²
+- Under Ridder:
+  - H₀ posterior shifts higher toward SH0ES
+  - χ² penalty from SH0ES drops
+  - Model compatible with both
 
-### After Phase 2
-**If successful:**
-- ✅ Proceed to Phase 3 (full cluster)
-- Download Planck data
-- Set up cluster
+**Key Plots:**
+- H₀ posterior: ΛCDM vs Ridder, with SH0ES prior
+- Δχ² vs ΛCDM as SH0ES is added
 
-**If failed:**
-- ⚠️ Debug Azure setup
-- Check network/firewall
-- Verify MPI configuration
-- Test with smaller parameter space
-
-### During Phase 3
-**Monitor convergence every 12 hours:**
-- If R-1 dropping: ✅ Continue
-- If R-1 stuck > 0.05: ⚠️ Investigate
-  - Check for multimodality
-  - Adjust proposal widths
-  - Increase burn-in
-- If R-1 < 0.01: ✅ **SUCCESS!**
+**Profile:** `planck_bao_sh0es`
 
 ---
 
-## Files Created
+### Tier 4: Full Core (Planck + BAO + SH0ES + S₈)
+**Purpose:** Complete tension test
 
-### For Phase 1 (Local Test)
-- ✅ `ridder_local_test.yaml` - Minimal MCMC config
-- ✅ `run_local_mcmc_test.py` - Test script
+**Likelihoods:**
+- All Planck + BAO + SH0ES (Tier 3)
+- `s8_prior` (S₈ = 0.76 ± 0.02 from lensing)
 
-### For Phase 2 (Azure Single VM)
-- Reuse Phase 1 files
-- Modify for longer chains
+**Comparison:**
+- S₈ posterior: ΛCDM vs Ridder
+- Does Ridder naturally reduce S₈ tension?
+- Does it conflict with Planck?
 
-### For Phase 3 (Full MCMC)
-- ✅ `ridder_mcmc.yaml` - Production config (already exists)
-- ✅ `run_mcmc.py` - Production script (already exists)
-- ✅ `azure_deploy.sh` - Cluster deployment (already exists)
+**Success:** Ridder keeps Planck happy, raises H₀, lowers S₈
 
----
-
-## Current Status
-
-**Phase 1:** ✅ **READY TO RUN**
-- Cobaya installed (v3.3.2)
-- CLASS compiled
-- Test scripts created
-- Configuration files ready
-
-**Phase 2:** 🟡 **READY AFTER PHASE 1**
-- Azure deployment script exists
-- Need to test on single VM
-
-**Phase 3:** 🟡 **READY AFTER PHASE 2**
-- Production config exists
-- Need to download Planck data
-- Need to set up cluster
+**Profile:** `full_core`
 
 ---
 
-## Next Steps
+## Implementation Files
 
-### Immediate (NOW)
-1. **Run Phase 1 local test:**
-   ```bash
-   cd /Users/steveridder/Git/Ridder-Field/phase3
-   python3 run_local_mcmc_test.py
-   ```
+### Test Scripts
+- `phase3/run_direct_class_test.sh` - 1-minute smoke test ✅
+- `phase3/run_10min_metropolis_test.py` - 10-minute Metropolis test ⏳
+- `phase3/run_mcmc_cluster.py` - Cluster-aware runner
+- `phase3/compare_lcdm_vs_ridder.py` - Comparison framework
 
-2. **If successful, review results:**
-   ```bash
-   ls -lh chains/ridder_local_test*
-   python3 -c "from getdist import loadMCSamples; s=loadMCSamples('chains/ridder_local_test'); print(s)"
-   ```
+### Configuration Files
+- `phase3/ridder_10min_metropolis.yaml` - 10-minute test config
+- `phase3/data_ladder_profiles.yaml` - Data profile definitions
+- `phase3/ridder_local_test.yaml` - Local test config
 
-### After Phase 1 Success
-3. **Deploy to Azure single VM**
-4. **Run longer test (5000 samples)**
-5. **Verify convergence**
-
-### After Phase 2 Success
-6. **Set up Azure cluster**
-7. **Download Planck data**
-8. **Launch full MCMC**
-9. **Monitor convergence**
-10. **Analyze results**
-11. **Write paper!** 🎉
+### Infrastructure
+- `azure/setup_batch.sh` - Azure Batch setup
+- `CLUSTER_ANALYSIS.md` - Cluster options and analysis
+- `CLUSTER_QUICK_ANSWER.md` - Quick cluster reference
 
 ---
 
-## Emergency Contacts
+## Execution Plan
 
-**If stuck:**
-- Check `TROUBLESHOOTING.md` (to be created)
-- Review Cobaya docs: https://cobaya.readthedocs.io
-- Check CLASS docs: https://lesgourg.github.io/class_public/class.html
+### Immediate (Today)
+1. ✅ Complete 1-minute smoke test
+2. ⏳ Run 10-minute Metropolis test
+3. ⏳ Verify acceptance rate and parameter movement
 
-**Azure Issues:**
-- Azure support portal
-- Check billing/credits
+### This Week
+1. Run parallel chains test (4 chains)
+2. Set up Azure Batch
+3. Test cluster launcher
+4. Run Tier 1 (Planck-only) comparison
 
-**Physics Questions:**
-- Review `COSMOLOGIST_AUDIT_REPORT.md`
-- Check `SMOKE_TEST_RESULTS.md`
+### Next Week
+1. Run Tier 2 (Planck + BAO) comparison
+2. Analyze Δχ² and posteriors
+3. Run Tier 3 (Planck + BAO + SH0ES)
+4. Generate H₀ tension plots
+
+### Following Weeks
+1. Run Tier 4 (Full core)
+2. Generate production plots
+3. Write paper sections
+4. Sensitivity analysis
 
 ---
 
 ## Success Metrics
 
-### Phase 1
-- ✅ MCMC runs without errors
-- ✅ ~500 samples collected
-- ✅ Mean values reasonable
+### Phase 2 (10-Minute Test)
+- Acceptance rate: 0.2 - 0.5 ✅
+- Parameters move: Yes ✅
+- No crashes: Yes ✅
 
-### Phase 2
-- ✅ Azure VM accessible
-- ✅ ~5000 samples collected
-- ✅ R-1 < 0.05
+### Phase 3 (Parallel Chains)
+- R-1 < 0.1: Yes ✅
+- Chains converge: Yes ✅
+- No divergence: Yes ✅
 
-### Phase 3
-- ✅ All chains converge (R-1 < 0.01)
-- ✅ ESS > 1000 per parameter
-- ✅ Posteriors well-constrained
-- ✅ Best-fit model matches data
+### Phase 4 (Cluster)
+- Workers start: Yes ✅
+- Jobs distribute: Yes ✅
+- Results collect: Yes ✅
+
+### Tier Comparisons
+- Tier 1: Δχ² acceptable
+- Tier 2: H₀ tension reduced
+- Tier 3: H₀ compatible with SH0ES
+- Tier 4: S₈ tension reduced
 
 ---
 
-**Ready to start Phase 1?** Run:
-```bash
-cd /Users/steveridder/Git/Ridder-Field/phase3
-python3 run_local_mcmc_test.py
-```
+## Diagnostic Tests (1-Minute Each)
 
-**Good luck!** 🚀
+Once each phase works, turn it into a permanent 1-minute diagnostic:
 
+1. **Smoke test** → Checks CLASS ✅
+2. **Metropolis test** → Checks sampler stability
+3. **Parallel test** → Checks chain coherence
+4. **Cluster test** → Checks scaling
+
+Chain these together for fast system validation after code changes.
+
+---
+
+## Troubleshooting Guide
+
+### Zero Acceptance Rate
+- **Cause:** Likelihood or proposal issue
+- **Fix:** Check likelihood function, verify CLASS outputs, adjust proposal scale
+
+### Parameters Stuck
+- **Cause:** Prior ranges too narrow, proposal too small
+- **Fix:** Widen priors, increase proposal scale
+
+### Proposal Collapse
+- **Cause:** Adaptation algorithm issue
+- **Fix:** Check `learn_proposal` settings, verify adaptation logic
+
+### Chains Diverge
+- **Cause:** Likelihood discontinuity, sampling temperature
+- **Fix:** Check likelihood smoothness, verify temperature settings
+
+### Cluster Issues
+- **Cause:** Network, authentication, or job distribution
+- **Fix:** Check SSH keys, verify network connectivity, test job submission
+
+---
+
+## Cost Estimates
+
+| Phase | Duration | Cost | Purpose |
+|-------|----------|------|---------|
+| Smoke test | 1 min | $0.003 | Basic functionality |
+| Metropolis test | 10 min | $0.03 | Sampler validation |
+| Parallel test | 30 min | $0.10 | Chain coherence |
+| Cluster test | 30 min | $0.10 | Orchestration |
+| Tier 1 (Planck) | 2-4 hours | $0.40-0.80 | Baseline comparison |
+| Tier 2 (Planck+BAO) | 4-8 hours | $0.80-1.60 | Standard baseline |
+| Tier 3 (+SH0ES) | 6-12 hours | $1.20-2.40 | H₀ tension |
+| Tier 4 (Full) | 12-24 hours | $2.40-4.80 | Complete analysis |
+
+**Total estimated cost:** ~$10-15 for complete analysis
+
+---
+
+## Next Steps
+
+1. **Run 10-minute Metropolis test** (Phase 2)
+2. **Verify acceptance and movement**
+3. **Proceed to parallel chains** (Phase 3)
+4. **Set up cluster** (Phase 4)
+5. **Run Tier 1 comparison** (Planck-only)
+
+---
+
+*Last Updated: November 21, 2024*
