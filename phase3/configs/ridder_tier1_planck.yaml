@@ -7,7 +7,7 @@ theory:
     extra_args:
       use_scf: yes
       scf_potential: ridder
-      scf_tuning_index: 1
+      scf_tuning_index: 1  # Tune Lambda to match Omega_scf
       attractor_ic_scf: yes
       scf_phi_prime_ini: 0.0
       # Planck requires high l_max and lens calculation
@@ -15,6 +15,9 @@ theory:
       l_max_scalars: 2508
       lensing: yes
       gauge: newtonian
+      # Ridder field parameters (fixed)
+      f_axion_ridder: 1.0e27  # eV (converted to Mpl internally)
+      n_ridder: 3
 
 likelihood:
   # THE REAL DATA
@@ -54,34 +57,24 @@ params:
     proposal: 0.004
 
   # --- RIDDER PARAMETERS ---
-  # We fix f and n to reduce complexity for the first real data run
-  scf_f:
-    value: 0.4
-  scf_n:
-    value: 3.0
-  
-  # We let the model tune the energy scale (Lambda/Omega)
+  # We let the model tune the energy scale (Lambda via Omega_scf)
   Omega_scf:
     prior: {min: 0.001, max: 0.15}
     ref: 0.05
     proposal: 0.01
     latex: f_{EDE}
-  # The Critical Parameter
-  theta_i:
+  # The Critical Parameter (theta_i_ridder in CLASS)
+  theta_i_ridder:
     prior: {min: 0.1, max: 2.3} # Can it survive near 2.1?
     ref: 1.5
     proposal: 0.1
+    latex: \theta_i
   # Coupling (Let's see if Planck tolerates it)
   beta_ridder:
     prior: {min: 0.0, max: 0.03}
     ref: 0.0
     proposal: 0.005
-
-  # Mappings
-  scf_parameters:
-    value: 'lambda scf_f, scf_n: [scf_f, 0.0, scf_n]'
-  scf_phi_ini:
-    value: 'lambda scf_f, theta_i: scf_f * theta_i'
+    latex: \beta
 
 sampler:
   mcmc:
@@ -93,7 +86,7 @@ sampler:
     max_samples: 10000 # Shorter run to check viability
     blocking:
       - [1, [logA, n_s, H0, omega_b, omega_cdm, tau_reio]]
-      - [2, [Omega_scf, theta_i, beta_ridder]]
+      - [2, [Omega_scf, theta_i_ridder, beta_ridder]]
 
 output: chains/ridder_tier1_planck
 resume: true
