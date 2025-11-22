@@ -15,6 +15,9 @@ theory:
       recombination: recfast
       # No non-linear corrections for this 200-sample smoke test
       non_linear: none
+      # ACTIVATE RIDDER FIELD
+      has_ridder: yes
+      scf_potential: ridder
       # Ridder field parameters (fixed)
       Lambda_EDE_ridder: 1.0
       f_axion_ridder: 1.0e27  # eV (converted to Mpl internally)
