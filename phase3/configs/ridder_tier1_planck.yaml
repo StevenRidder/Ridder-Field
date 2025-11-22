@@ -83,7 +83,7 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.05
     burn_in: 0
-    max_samples: 10000 # Shorter run to check viability
+    max_samples: 200 # Quick test to verify it runs
     blocking:
       - [1, [logA, n_s, H0, omega_b, omega_cdm, tau_reio]]
       - [2, [Omega_scf, theta_i_ridder, beta_ridder]]
