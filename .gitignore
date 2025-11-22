@@ -42,4 +42,8 @@ temp/
 
 phase3/packages/
 
-azure/main.tf
+# Terraform
+azure/.terraform/
+azure/*.tfstate
+azure/*.tfstate.*
+azure/*.tfplan
