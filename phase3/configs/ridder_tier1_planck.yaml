@@ -80,9 +80,6 @@ sampler:
     Rminus1_stop: 0.05
     burn_in: 0
     max_samples: 200 # Quick test to verify it runs
-    blocking:
-      - [1, [logA, n_s, H0, omega_b, omega_cdm, tau_reio]]
-      - [2, [theta_i_ridder, beta_ridder]]
 
 output: chains/ridder_tier1_planck
 resume: true
