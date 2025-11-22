@@ -30,10 +30,15 @@ phase2/class/python/classy.c
 !patches/
 !patches/**
 
-# MCMC chains (Phase 3)
-chains/
+# MCMC chains (Phase 3) - Keep final results for proof
+# chains/  # Commented out to preserve final Tier 4 results
 *.chain
 *.covmat
+# Exclude intermediate files but keep final .txt chains
+chains/*.progress
+chains/*.updated.yaml
+chains/*.input.yaml
+chains/*.checkpoint
 
 # Temporary
 tmp/
