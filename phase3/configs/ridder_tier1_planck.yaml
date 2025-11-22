@@ -83,6 +83,6 @@ sampler:
     max_samples: 10000 # Full production run
 
 output: chains/ridder_tier1_planck
-resume: true  # Allow resuming if interrupted
+resume: false  # Use --force flag in launch script instead
 debug: true
 
