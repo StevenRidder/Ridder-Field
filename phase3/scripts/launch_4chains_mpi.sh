@@ -8,7 +8,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CONFIG="${ROOT_DIR}/configs/ridder_tier1_planck.yaml"
 NUM_CHAINS=4
 
-cd "${ROOT_DIR}
+cd "${ROOT_DIR}"
 
 echo "=============================================================="
 echo "TIER 1 PLANCK: 4 PARALLEL CHAINS (MPI)"
