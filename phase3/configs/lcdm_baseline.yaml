@@ -56,9 +56,9 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.05
     burn_in: 0
-    max_samples: 10000
+    max_samples: 5000
 
-output: chains/lcdm_baseline
+output: chains/lcdm_production
 resume: false
 debug: true
 

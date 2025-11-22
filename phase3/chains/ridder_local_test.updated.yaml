@@ -1,0 +1,126 @@
+theory:
+  classy:
+    path: /Users/steveridder/Git/Ridder-Field/phase2/class
+    speed: 0.2
+    stop_at_error: false
+    extra_args:
+      use_scf: true
+      scf_tuning_index: 0
+      attractor_ic_scf: false
+      scf_parameters: 0.0, 0.0, 0.0, 0.0
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e+27
+      n_ridder: 3
+      h: 0.72
+      omega_b: 0.02237
+      omega_cdm: 0.12
+      A_s: 2.1e-09
+      n_s: 0.9649
+      tau_reio: 0.054
+      output: tCl
+      l_max_scalars: 1500
+      gauge: newtonian
+      tol_perturb_integration: 1.0e-06
+      lensing: false
+      nonlinear: false
+    ignore_obsolete: false
+    use_renames: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: null
+likelihood:
+  rs_gaussian:
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    external: "lambda _derived=None, **params_values: (\n  -0.5 * ((_derived['rs_rec']\
+      \ - 139.06) / 0.5)**2\n)\n"
+    requires:
+      rs_rec:
+        latex: r_s
+params:
+  theta_i_ridder:
+    prior:
+      min: 2.0
+      max: 2.2
+    ref:
+      dist: norm
+      loc: 2.1
+      scale: 0.02
+    proposal: 0.01
+    latex: \theta_i
+  beta_ridder:
+    prior:
+      min: 0.005
+      max: 0.015
+    ref:
+      dist: norm
+      loc: 0.01
+      scale: 0.002
+    proposal: 0.001
+    latex: \beta
+  rs_rec:
+    latex: r_s
+    derived: 'lambda rs_drag: rs_drag'
+sampler:
+  mcmc:
+    burn_in: 0
+    max_tries: 40d
+    covmat: null
+    covmat_params: null
+    proposal_scale: 1.9
+    output_every: 60s
+    learn_every: 40d
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: 500
+    Rminus1_stop: 0.05
+    Rminus1_cl_stop: 0.3
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.2
+    oversample_thin: true
+    drag: false
+    blocking:
+    - - 1
+      - - theta_i_ridder
+        - beta_ridder
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: null
+output: ridder_local_test
+timing: true
+version: 3.3.2

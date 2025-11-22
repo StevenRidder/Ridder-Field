@@ -80,9 +80,9 @@ sampler:
     covmat: auto
     Rminus1_stop: 0.05
     burn_in: 0
-    max_samples: 10000 # Full production run
+    max_samples: 5000 # V1 Production run
 
-output: chains/ridder_tier1_planck
+output: chains/ridder_tier1_production
 resume: false  # Use --force flag in launch script instead
 debug: true
 

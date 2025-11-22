@@ -1,0 +1,70 @@
+theory:
+  classy:
+    path: /Users/steveridder/Git/Ridder-Field/phase2/class
+    extra_args:
+      use_scf: true
+      scf_tuning_index: 0
+      attractor_ic_scf: false
+      scf_parameters: 0.0, 0.0, 0.0, 0.0
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e+27
+      n_ridder: 3
+      h: 0.72
+      omega_b: 0.02237
+      omega_cdm: 0.12
+      A_s: 2.1e-09
+      n_s: 0.9649
+      tau_reio: 0.054
+      output: tCl
+      l_max_scalars: 1500
+      gauge: newtonian
+      tol_perturb_integration: 1.0e-06
+      lensing: false
+      nonlinear: false
+likelihood:
+  rs_gaussian:
+    external: "lambda _derived=None, **params_values: (\n  -0.5 * ((_derived['rs_rec']\
+      \ - 139.06) / 0.5)**2\n)\n"
+    requires:
+      rs_rec:
+        latex: r_s
+params:
+  theta_i_ridder:
+    prior:
+      min: 2.0
+      max: 2.2
+    ref:
+      dist: norm
+      loc: 2.1
+      scale: 0.02
+    proposal: 0.01
+    latex: \theta_i
+  beta_ridder:
+    prior:
+      min: 0.005
+      max: 0.015
+    ref:
+      dist: norm
+      loc: 0.01
+      scale: 0.002
+    proposal: 0.001
+    latex: \beta
+  rs_rec:
+    latex: r_s
+    derived: 'lambda rs_drag: rs_drag'
+sampler:
+  mcmc:
+    Rminus1_stop: 0.05
+    Rminus1_cl_stop: 0.3
+    max_samples: 500
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    blocking:
+    - - 1
+      - - theta_i_ridder
+        - beta_ridder
+    oversample_power: 0.2
+    proposal_scale: 1.9
+    measure_speeds: true
+output: ridder_local_test
+timing: true
