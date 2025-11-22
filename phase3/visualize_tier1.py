@@ -159,19 +159,19 @@ def main():
         chain = load_chain(cf)
         chains.append(chain)
     
-    # Parameter indices (based on Cobaya output format)
-    # Column 2: weight
-    # Column 3: -logpost
-    # Column 4: logA
-    # Column 5: n_s
-    # Column 6: H0
-    # Column 7: omega_b
-    # Column 8: omega_cdm
-    # Column 9: tau_reio
-    # Column 10: theta_i_ridder
-    # Column 11: beta_ridder
+    # Parameter indices (based on Cobaya output format, 0-indexed)
+    # Column 1 (idx 0): weight
+    # Column 2 (idx 1): -logpost
+    # Column 3 (idx 2): logA
+    # Column 4 (idx 3): n_s
+    # Column 5 (idx 4): H0
+    # Column 6 (idx 5): omega_b
+    # Column 7 (idx 6): omega_cdm
+    # Column 8 (idx 7): tau_reio
+    # Column 9 (idx 8): theta_i_ridder
+    # Column 10 (idx 9): beta_ridder
     
-    param_indices = [5, 8, 9, 10]  # H0, omega_cdm, theta_i_ridder, beta_ridder
+    param_indices = [4, 6, 8, 9]  # H0, omega_cdm, theta_i_ridder, beta_ridder
     param_names = ['H0', 'omega_cdm', 'theta_i_ridder', 'beta_ridder']
     
     # Generate plots
