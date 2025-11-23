@@ -35,6 +35,16 @@ likelihood:
   # Supernovae (Pantheon+)
   sn.pantheon: null
   
+  # SH0ES H0 Constraint (External Likelihood)
+  sh0es_h0:
+    external: |
+      lambda _self=None, H0=None, **params_values: (
+        -0.5 * ((H0 - 73.04) / 1.04)**2
+      )
+    requires:
+      H0:
+        latex: H_0
+  
   # Large Scale Structure - DES Year 1
   # Note: This requires cobaya-install des_y1
   # If not available, comment out and use planck_2018_lensing as S8 proxy
@@ -58,7 +68,7 @@ params:
     proposal: 0.004
 
   H0:
-    prior: {dist: norm, loc: 73.04, scale: 1.04}  # SH0ES 2021 Prior
+    prior: {min: 60, max: 80}  # Wide uniform prior
     ref: 73.0
     proposal: 0.5
 
