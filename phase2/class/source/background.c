@@ -2974,19 +2974,24 @@ int background_derivs(
           \f$ d\phi'/dlna = -2*phi' - (a/H) dV - (a/H) * β * ρ_DM / M_Pl \f$ */
           
     /* Unit Conversion Constants */
-    double M_Pl_eV = 2.435e27;
-    double eV_to_Mpc_inv = 1.5637e29; // 1 eV = 1.56e29 Mpc^-1
-    double factor_V = eV_to_Mpc_inv * eV_to_Mpc_inv; // Convert eV^2 to Mpc^-2
-    double factor_rho = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV);
+    double M_Pl_eV = 2.435e27;  // Planck mass in eV
+    
+    /* dV/dφ is in eV^3 (since V is eV^4 and φ is dimensionless) */
+    /* We need to convert to CLASS units: Mpc^-1 */
+    /* In CLASS, the equation is: φ'' + 2aHφ' + a^2 dV/dφ = 0 */
+    /* where φ' is in eV, H is in Mpc^-1, and we need dV/dφ in eV */
+    /* So dV_ridder (in eV^3) needs to be divided by M_Pl^2 to get Mpc^-1 units */
+    double dV_conversion = 1.0 / (M_Pl_eV * M_Pl_eV);  // eV^3 → eV^-1 → Mpc^-1
       
       /* Add coupling to dark matter if beta != 0 */
       coupling_term = 0.0;
       if (pba->beta_ridder != 0.0 && pba->has_cdm == _TRUE_ && rho_cdm > 0.0) {
-          coupling_term = pba->beta_ridder * rho_cdm * 3.0 * M_Pl_eV;
+          /* β * ρ_cdm / M_Pl in CLASS units */
+          coupling_term = pba->beta_ridder * rho_cdm / M_Pl_eV;
       }
       
-      /* dV_ridder returns eV^3. Convert to eV/Mpc^2 using factor_V */
-      double dV_val_units = dV_ridder(pba, y[pba->index_bi_phi_ridder]) * factor_V;
+      /* dV_ridder returns eV^3. Convert to CLASS units (Mpc^-1) */
+      double dV_val_units = dV_ridder(pba, y[pba->index_bi_phi_ridder]) * dV_conversion;
       
       /* Safety check: H must be positive */
       if (H <= 0.0 || !isfinite(H)) {
@@ -3020,11 +3025,15 @@ int background_derivs(
       /* Keep y[rho_ridder] synced to field density for smooth switching */
       /* Compute current field density */
       double phi_for_V = y[pba->index_bi_phi_ridder];
-      double V_current = V_ridder(pba, phi_for_V);
+      double V_current = V_ridder(pba, phi_for_V);  // in eV^4
       
-      double rho_field = (0.5 * y[pba->index_bi_phi_prime_ridder]*y[pba->index_bi_phi_prime_ridder]/(a*a) + V_current * factor_V) * factor_rho;
+      /* Same conversion as in background_functions */
+      double kinetic_eV2 = 0.5 * y[pba->index_bi_phi_prime_ridder] * y[pba->index_bi_phi_prime_ridder] / (a * a);
+      double kinetic_Mpc_inv2 = kinetic_eV2 / (3.0 * M_Pl_eV * M_Pl_eV);
+      double potential_Mpc_inv2 = V_current / (3.0 * M_Pl_eV * M_Pl_eV);
       
-      double p_field = (0.5 * y[pba->index_bi_phi_prime_ridder]*y[pba->index_bi_phi_prime_ridder]/(a*a) - V_current * factor_V) * factor_rho;
+      double rho_field = kinetic_Mpc_inv2 + potential_Mpc_inv2;
+      double p_field = kinetic_Mpc_inv2 - potential_Mpc_inv2;
       double w_field = (rho_field > 1e-100) ? p_field / rho_field : -1.0;
       
       /* Evolve rho to track field: drho/dlna = -3(1+w)rho */
