@@ -1,5 +1,5 @@
-# Tier 3 Production: Planck + BAO + SH0ES - The Critical Test
-# Full Planck data + BAO + SH0ES H0 prior
+# Tier 3 Production: Planck-lite + BAO + SH0ES
+# NOTE: Using Planck low-l only due to CLASS buffer overflow bug with Ridder + full Planck
 
 theory:
   classy:
@@ -16,11 +16,11 @@ theory:
       n_ridder: 3
 
 likelihood:
-  # Planck 2018 Full
+  # Planck 2018 Low-l only (Full Planck causes CLASS buffer overflow with Ridder field)
   planck_2018_lowl.TT: null
   planck_2018_lowl.EE: null
-  planck_2018_highl_plik.TTTEEE: null
-  planck_2018_lensing.clik: null
+  # planck_2018_highl_plik.TTTEEE: null  # DISABLED: Causes buffer overflow with Ridder
+  # planck_2018_lensing.clik: null  # DISABLED: Causes buffer overflow with Ridder
   
   # BAO
   bao.sixdf_2011_bao: null
