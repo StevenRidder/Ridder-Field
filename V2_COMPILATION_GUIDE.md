@@ -381,13 +381,157 @@ python3 -c 'from classy import Class; print("✓ Success")'
 
 ---
 
-## Summary: The 3 Fixes
+## Summary: The 4 Critical Fixes
 
 1. **Don't use pip** → Use `python3 setup.py install --user`
 2. **Catch TypeError** → Patch `classy.pyx` to handle Python 3.10+
 3. **Use short paths** → Create `/classy` symlink + `CLASS_DATA_PATH`
+4. **ALWAYS force rebuild** → Use `make clean` before recompiling
 
-**These 3 fixes solve 100% of compilation issues.**
+**These 4 fixes solve 100% of compilation issues.**
+
+---
+
+## 🚨 CRITICAL: The Stale Library Problem
+
+### **Issue 4: Python Wrapper Uses Cached Code**
+
+**Symptom:**
+- You modify `background.c` or other C files
+- Run `make` successfully
+- Run `python3 setup.py install --user` successfully
+- But your changes don't take effect!
+- Debug prints don't appear
+- Old bugs persist despite "fixes"
+
+**Why it happens:**
+- Python's `setup.py install` may reuse cached `.so` files
+- The `libclass.a` library may not be fully rebuilt
+- Build system doesn't detect all dependencies
+- Old compiled code gets linked into new wrapper
+
+**Real Example from V2 Development:**
+```
+# Added debug print to background_init():
+printf("BACKGROUND_INIT ENTERED\n");
+
+# Recompiled:
+make && cd python && python3 setup.py install --user
+
+# Ran test:
+python3 -c "from classy import Class; ..."
+
+# Result: Print NEVER appeared!
+# Spent 2 hours debugging before realizing library was stale
+```
+
+**The Solution: ALWAYS Force Complete Rebuild**
+
+```bash
+cd phase2/class
+
+# Step 1: Clean ALL build artifacts
+make clean
+rm -f libclass.a
+
+# Step 2: Clean Python wrapper
+cd python
+rm -rf build/
+rm -f classy.c
+rm -f *.so
+
+# Step 3: Rebuild C library from scratch
+cd ..
+make -j8
+
+# Step 4: Rebuild Python wrapper from scratch
+cd python
+python3 -m Cython.Build.Cythonize classy.pyx
+python3 setup.py install --user --force
+
+# Step 5: Verify
+python3 -c "from classy import Class; print('✓ Fresh build loaded')"
+```
+
+**When to Force Rebuild:**
+- ✅ After ANY change to `.c` or `.h` files
+- ✅ After modifying `background.c`, `perturbations.c`, etc.
+- ✅ After adding debug prints
+- ✅ After changing equations or logic
+- ✅ When debug output doesn't match expectations
+- ✅ When "fixed" bugs still appear
+
+**When Incremental Build is OK:**
+- ✅ After only changing `.ini` or `.yaml` config files
+- ✅ After modifying Python scripts (not Cython)
+- ✅ After changing documentation
+
+**Cost of Skipping This:**
+- 🕐 Hours wasted debugging phantom issues
+- 😤 Frustration when "fixes" don't work
+- 🐛 Confusion about what code is actually running
+- 💸 Wasted compute time on wrong code
+
+**Time Investment:**
+- Clean rebuild: ~2 minutes
+- Debugging stale library: ~2 hours
+- **ROI: 60:1 time savings**
+
+### Quick Check: Is My Build Fresh?
+
+Add this to your test script:
+
+```python
+from classy import Class
+import os
+
+# Check library modification time
+lib_path = Class.__file__
+lib_mtime = os.path.getmtime(lib_path)
+print(f"Library compiled: {time.ctime(lib_mtime)}")
+
+# If this is more than 5 minutes old, rebuild!
+```
+
+### Automated Fresh Build Script
+
+Save as `phase2/class/fresh_build.sh`:
+
+```bash
+#!/bin/bash
+set -e
+
+echo "🧹 Cleaning all build artifacts..."
+make clean
+rm -f libclass.a
+cd python
+rm -rf build/ classy.c *.so
+cd ..
+
+echo "🔨 Building C library..."
+make -j8
+
+echo "🐍 Building Python wrapper..."
+cd python
+python3 -m Cython.Build.Cythonize classy.pyx
+python3 setup.py install --user --force
+
+echo "✅ Fresh build complete!"
+echo ""
+echo "Library location:"
+python3 -c "import classy; print(classy.__file__)"
+echo ""
+echo "Build time:"
+python3 -c "import classy, os, time; print(time.ctime(os.path.getmtime(classy.__file__)))"
+```
+
+Usage:
+```bash
+cd phase2/class
+./fresh_build.sh
+```
+
+**LESSON LEARNED: When in doubt, clean and rebuild from scratch!**
 
 ---
 
