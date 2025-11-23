@@ -503,11 +503,22 @@ int background_functions(
     dV_ridder_val = dV_ridder(pba, phi_ridder);
     ddV_ridder_val = ddV_ridder(pba, phi_ridder);
     
+    /* DEBUG: Print raw potential value */
+    static int v_counter = 0;
+    v_counter++;
+    if (v_counter % 5000 == 0) {
+      printf("V_RIDDER_RAW: a=%.2e phi=%.2e V_eV4=%.2e Lambda=%.2e f=%.2e n=%d\n",
+             a, phi_ridder, V_ridder_val, pba->Lambda_EDE_ridder, pba->f_axion_ridder, pba->n_ridder);
+    }
+    
     /* Unit Conversion Constants */
     double M_Pl_eV = 2.435e27;
     double eV_to_Mpc_inv = 1.5637e29; // 1 eV = 1.56e29 Mpc^-1
-    double factor_V = eV_to_Mpc_inv * eV_to_Mpc_inv; // Convert eV^2 to Mpc^-2
-    double factor_rho = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV); // Convert energy density to H^2 units
+    /* V is in eV^4, need to convert to Mpc^-2 units for CLASS */
+    /* rho = V / (3 M_Pl^2), where V is in eV^4 and M_Pl is in eV */
+    /* Result should be in Mpc^-2 (CLASS units for H^2) */
+    double factor_V = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV); // Convert eV^4 to H^2 units (Mpc^-2)
+    double factor_rho = factor_V; // Same conversion for consistency
     
     /* Check for switching surface: when 3H < m_eff, switch to fluid approximation */
     /* This prevents numerical issues when field oscillates rapidly */
@@ -529,18 +540,28 @@ int background_functions(
     
     if (pba->ridder_fluid_mode == _FALSE_) {
       /* Standard scalar field evolution */
-      double rho_eV2_Mpc_inv2 = (0.5 * phi_prime_ridder*phi_prime_ridder/(a*a) + V_ridder_val * factor_V);
-      double p_eV2_Mpc_inv2 = (0.5 * phi_prime_ridder*phi_prime_ridder/(a*a) - V_ridder_val * factor_V);
+      /* phi_prime is in eV, phi_prime/a is in eV (CLASS uses comoving units) */
+      /* (phi_prime/a)^2 is in eV^2 */
+      /* V is in eV^4 */
+      /* We need to convert both to Mpc^-2 (CLASS H^2 units) */
+      double kinetic_eV2 = 0.5 * phi_prime_ridder * phi_prime_ridder / (a * a);
+      double potential_eV4 = V_ridder_val;
       
-      pvecback[pba->index_bg_rho_ridder] = rho_eV2_Mpc_inv2 * factor_rho;
-      pvecback[pba->index_bg_p_ridder] = p_eV2_Mpc_inv2 * factor_rho;
+      /* Convert kinetic term: eV^2 → Mpc^-2 */
+      double kinetic_Mpc_inv2 = kinetic_eV2 / (3.0 * M_Pl_eV * M_Pl_eV);
+      
+      /* Convert potential term: eV^4 → Mpc^-2 */
+      double potential_Mpc_inv2 = potential_eV4 * factor_V;
+      
+      pvecback[pba->index_bg_rho_ridder] = kinetic_Mpc_inv2 + potential_Mpc_inv2;
+      pvecback[pba->index_bg_p_ridder] = kinetic_Mpc_inv2 - potential_Mpc_inv2;
       
       /* Debug: print calculation details */
       static int bg_func_counter = 0;
       bg_func_counter++;
       if (bg_func_counter % 5000 == 0) {
-          printf("BG_FUNC: a=%.2e V=%.2e factor_V=%.2e factor_rho=%.2e rho_eV2=%.2e rho_final=%.2e\n",
-                 a, V_ridder_val, factor_V, factor_rho, rho_eV2_Mpc_inv2, pvecback[pba->index_bg_rho_ridder]);
+          printf("BG_FUNC: a=%.2e V_eV4=%.2e kinetic_eV2=%.2e V_Mpc2=%.2e KE_Mpc2=%.2e rho_final=%.2e\n",
+                 a, potential_eV4, kinetic_eV2, potential_Mpc_inv2, kinetic_Mpc_inv2, pvecback[pba->index_bg_rho_ridder]);
       }
     } else {
       /* Fluid approximation: use integrated energy density and w_eff */
@@ -557,6 +578,14 @@ int background_functions(
     if (pvecback[pba->index_bg_rho_ridder] < 0.0) {
       class_stop(pba->error_message, 
         "Negative Ridder field energy density detected at a=%e. Unphysical evolution.", a);
+    }
+    
+    /* DEBUG: Check if rho_ridder is being added */
+    static int rho_add_counter = 0;
+    rho_add_counter++;
+    if (rho_add_counter % 5000 == 0 || (a > 9.9e-4 && a < 1.01e-3)) {
+      printf("RIDDER DEBUG (adding to rho_tot): a=%e, rho_ridder=%e, rho_tot_before=%e, rho_tot_after=%e\n",
+             a, pvecback[pba->index_bg_rho_ridder], rho_tot, rho_tot + pvecback[pba->index_bg_rho_ridder]);
     }
     
     rho_tot += pvecback[pba->index_bg_rho_ridder];
@@ -887,6 +916,8 @@ int background_init(
                     ) {
 
   /** Summary: */
+  
+  printf("BACKGROUND_INIT ENTERED: Lambda=%.2e\n", pba->Lambda_EDE_ridder);
 
   /** - write class version */
   if (pba->background_verbose > 0) {
@@ -911,9 +942,12 @@ int background_init(
              pba->error_message);
 
   /** - integrate the background over log(a), allocate and fill the background table */
+  printf("ABOUT TO CALL background_solve: has_ridder=%d Lambda=%.2e\n",
+         pba->has_ridder, pba->Lambda_EDE_ridder);
   class_call(background_solve(ppr,pba),
              pba->error_message,
              pba->error_message);
+  printf("background_solve RETURNED\n");
 
   /** - find and store a few derived parameters at radiation-matter equality */
   class_call(background_find_equality(ppr,pba),
@@ -1106,6 +1140,14 @@ int background_indices(
     
   if (pba->Lambda_EDE_ridder > 0.0)
     pba->has_ridder = _TRUE_;
+  
+  /* DEBUG: Print Ridder parameters */
+  printf("RIDDER DEBUG (background_init): has_ridder=%d, Lambda_EDE_ridder=%e, f_axion_ridder=%e, theta_i_ridder=%e, beta_ridder=%e\n",
+         pba->has_ridder,
+         pba->Lambda_EDE_ridder,
+         pba->f_axion_ridder,
+         pba->theta_i_ridder,
+         pba->beta_ridder);
 
   /** - initialize all indices */
 
@@ -1967,6 +2009,9 @@ int background_solve(
                      ) {
 
   /** Summary: */
+  
+  printf("BACKGROUND_SOLVE ENTERED: has_ridder=%d Lambda=%.2e\n",
+         pba->has_ridder, pba->Lambda_EDE_ridder);
 
   /** - define local variables */
 
@@ -2053,6 +2098,8 @@ int background_solve(
   }
 
   /** - perform the integration */
+  printf("ABOUT TO INTEGRATE: bi_size=%d has_ridder=%d Lambda=%.2e\n",
+         pba->bi_size, pba->has_ridder, pba->Lambda_EDE_ridder);
   class_call(generic_evolver(background_derivs,
                              loga_ini,
                              loga_final,
@@ -2751,6 +2798,14 @@ int background_derivs(
 
   /** - scale factor a (in fact, given our normalisation conventions, this stands for a/a_0) */
   a = exp(loga);
+  
+  /* DEBUG: Check has_ridder at start of derivs */
+  static int derivs_entry_counter = 0;
+  derivs_entry_counter++;
+  if (derivs_entry_counter % 5000 == 0) {
+    printf("DERIVS_ENTRY: call#=%d has_ridder=%d Lambda=%.2e a=%.2e\n",
+           derivs_entry_counter, pba->has_ridder, pba->Lambda_EDE_ridder, a);
+  }
 
   /** - calculate functions of \f$ a \f$ with background_functions() */
   class_call(background_functions(pba, a, y, normal_info, pvecback),
@@ -2812,9 +2867,17 @@ int background_derivs(
     static int first_call = 1;
     if (first_call) {
       first_call = 0;
+      printf("RIDDER DERIVS: First call! has_ridder=%d Lambda=%.2e\n", pba->has_ridder, pba->Lambda_EDE_ridder);
     }
     
     double phi_ridder = y[pba->index_bi_phi_ridder];
+    
+    /* DEBUG: Print every N calls */
+    static int ridder_deriv_calls = 0;
+    ridder_deriv_calls++;
+    if (ridder_deriv_calls % 5000 == 0) {
+      printf("RIDDER DERIVS CALLED: call#=%d a=%.2e phi=%.2e\n", ridder_deriv_calls, exp(loga), phi_ridder);
+    }
     
     double rho_cdm = 0.0;
     double coupling_term = 0.0;
@@ -2840,8 +2903,19 @@ int background_derivs(
         double eV_to_Mpc_inv = 1.5637e29; /* Conversion: eV to Mpc^-1 */
         double m_eff_Mpc = m_eff_eV * eV_to_Mpc_inv; /* m_eff in Mpc^-1 */
         
-        /* Switching condition: 3H < m_eff */
-        if (3.0 * H < m_eff_Mpc) {
+        /* Switching condition: 3H < m_eff AND z < 10^6 (don't switch too early) */
+        double z_current = 1.0/a - 1.0;
+        
+        /* DEBUG: Print switching check */
+        static int switch_check_counter = 0;
+        switch_check_counter++;
+        if (switch_check_counter % 10000 == 0) {
+          printf("SWITCH_CHECK: z=%.2e a=%.2e 3H=%.2e m_eff=%.2e condition=%d\n",
+                 z_current, a, 3.0*H, m_eff_Mpc, (3.0*H < m_eff_Mpc && z_current < 1e6));
+        }
+        
+        /* TEMPORARILY DISABLED: Let field evolve fully without fluid approximation */
+        if (_FALSE_ && 3.0 * H < m_eff_Mpc && z_current < 1e6) {
           /* Oscillations have begun - switch to fluid approximation */
           pba->ridder_fluid_mode = _TRUE_;
           pba->z_osc_ridder = 1.0/a - 1.0; /* Current redshift */
@@ -2850,7 +2924,8 @@ int background_derivs(
           /* Store current energy density for analytic fluid evolution */
           pba->rho_ridder_at_switch = pvecback[pba->index_bg_rho_ridder];
           
-          printf("RIDDER SWITCHING: z_osc = %.2f, a_osc = %.6e\n", pba->z_osc_ridder, pba->a_osc_ridder);
+          printf("RIDDER SWITCHING: z_osc = %.2f, a_osc = %.6e, 3H=%.2e, m_eff=%.2e\n", 
+                 pba->z_osc_ridder, pba->a_osc_ridder, 3.0*H, m_eff_Mpc);
           
           /* Compute cycle-averaged equation of state */
           /* For V = Λ^4 [1-cos(φ/f)]^n, near minimum V ~ phi^2n */
@@ -2921,8 +2996,18 @@ int background_derivs(
       
       dy[pba->index_bi_phi_ridder] = y[pba->index_bi_phi_prime_ridder]/a/H;
       dy[pba->index_bi_phi_prime_ridder] = - 2*y[pba->index_bi_phi_prime_ridder] 
-        - a*dV_val_units/H 
-        - a*coupling_term/H;
+                                            - a*dV_val_units/H 
+                                            - a*coupling_term/H;
+      
+      /* DEBUG: Print derivatives */
+      static int deriv_counter = 0;
+      deriv_counter++;
+      if (deriv_counter % 5000 == 0) {
+        printf("DERIVS: a=%.2e phi=%.2e phi'=%.2e dphi/dlna=%.2e dphi'/dlna=%.2e dV=%.2e H=%.2e\n",
+               a, y[pba->index_bi_phi_ridder], y[pba->index_bi_phi_prime_ridder],
+               dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder],
+               dV_val_units, H);
+      }
         
       /* Safety check: derivatives must be finite */
       if (!isfinite(dy[pba->index_bi_phi_ridder]) || !isfinite(dy[pba->index_bi_phi_prime_ridder])) {
