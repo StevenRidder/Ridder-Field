@@ -34,7 +34,8 @@ params:
     proposal: 0.001
     drop: true
   A_s:
-    value: 'lambda logA: 1e-10*exp(logA)'
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: 'A_s'
   n_s:
     prior: {min: 0.9, max: 1.02}
     ref: 0.965
