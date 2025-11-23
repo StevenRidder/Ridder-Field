@@ -2,6 +2,8 @@
 # Based on working Tier 1 config, adding BAO and SH0ES
 # Fresh output directory with covmat:auto to learn new proposal
 
+debug: True
+
 theory:
   classy:
     extra_args:
