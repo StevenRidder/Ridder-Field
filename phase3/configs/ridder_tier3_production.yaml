@@ -16,14 +16,21 @@ theory:
       n_ridder: 3
 
 likelihood:
-  # Planck 2018 FULL (Explicit paths for US East)
-  planck_2018_lowl.TT:
+  # Planck 2018 FULL (Explicit .clik file loading)
+  planck_lowl_TT:
+    class: cobaya.likelihoods.clik
     path: /home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/low_l/commander/commander_dx12_v3_2_29.clik
-  planck_2018_lowl.EE:
+  
+  planck_lowl_EE:
+    class: cobaya.likelihoods.clik
     path: /home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/low_l/simall/simall_100x143_offlike5_EE_Aplanck_B.clik
-  planck_2018_highl_plik.TTTEEE:
+  
+  planck_highl_TTTEEE:
+    class: cobaya.likelihoods.clik
     path: /home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik
-  planck_2018_lensing.clik:
+  
+  planck_lensing:
+    class: cobaya.likelihoods.clik
     path: /home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing
   
   # BAO
