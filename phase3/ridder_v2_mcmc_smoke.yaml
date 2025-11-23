@@ -1,0 +1,113 @@
+# Ridder V2 MCMC Smoke Test
+# Goal: 500 steps to check stability and pipeline integrity
+
+theory:
+  classy:
+    # path: removed to use installed classy on VM
+    extra_args:
+      output: tCl, mPk, lCl
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      
+      # --- V2 RIDDER SETTINGS ---
+      use_scf: yes
+      scf_potential: ridder_v2
+      scf_tuning_index: 0          # Manual Lambda tuning for stability in smoke test
+      attractor_ic_scf: yes
+      scf_phi_prime_ini: 0.0
+      
+      # Dummy parameters for SCF logic (V2 uses explicit params)
+      scf_parameters: [0.0, 0.0, 0.0]
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+
+params:
+  # --- Standard LCDM ---
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*exp(logA)'
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 69.0
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+  omega_cdm:
+    prior: {min: 0.1, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: 0.054
+    proposal: 0.004
+
+  # --- V2 RIDDER PARAMETERS ---
+  
+  # 1. Energy Scale
+  Lambda_EDE_ridder:
+    prior: {min: 0.1, max: 2.0}
+    ref: 1.0
+    proposal: 0.1
+    latex: \Lambda
+
+  # 2. Initial Angle
+  theta_i_ridder:
+    prior: {min: 0.1, max: 3.0}
+    ref: 2.0
+    proposal: 0.1
+    latex: \theta_i
+
+  # 3. Flattening
+  c_ridder: 
+    prior: {min: 0.0, max: 5.0}
+    ref: 1.0
+    proposal: 0.2
+    latex: c_{flat}
+
+  # 4. Coupling
+  beta0_ridder:
+    prior: {min: 0.0, max: 0.1}
+    ref: 0.015
+    proposal: 0.005
+    latex: \beta_0
+
+  lambda_beta_ridder:
+    prior: {min: 0.1, max: 5.0}
+    ref: 2.0
+    proposal: 0.2
+    latex: \lambda_\beta
+
+  # 5. Fixed Structure
+  f_axion_ridder:
+    value: 0.4
+  n_ridder:
+    value: 3
+
+  # Initial field mapping
+  scf_phi_ini:
+    value: 'lambda f_axion_ridder, theta_i_ridder: f_axion_ridder * theta_i_ridder'
+
+sampler:
+  mcmc:
+    max_samples: 500
+    Rminus1_stop: 0.1
+    measure_speeds: true
+    drag: true
+
+output: chains/ridder_v2_smoke
+debug: true
