@@ -1,0 +1,6 @@
+DEBUG: has_ridder = 1, has_scf = 1
+DEBUG: Setting Ridder IC with phi_ini_scf = 8.624230e-01 (from input.c)
+ Ridder field IC: phi_i = 8.624230e-01 (dimensionless), V_i = 3.428190e+00, rho_i = 1.142730e+00
+DEBUG: has_ridder = 1, has_scf = 1
+DEBUG: Setting Ridder IC with phi_ini_scf = 8.624230e-01 (from input.c)
+ Ridder field IC: phi_i = 8.624230e-01 (dimensionless), V_i = 3.428190e+00, rho_i = 1.142730e+00
