@@ -1,0 +1,10 @@
+
+=== Generating Tier 3 Plots ===
+Traceback (most recent call last):
+  File "/Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/scripts/generate_plots.py", line 307, in <module>
+    main()
+  File "/Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/scripts/generate_plots.py", line 263, in main
+    plot_tier3_comparison(tier3_ridder, tier3_lcdm, plots_dir)
+  File "/Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/scripts/generate_plots.py", line 67, in plot_tier3_comparison
+    print(f"  Loaded Ridder chain {i+1}: {samples.samples.shape[0]} samples")
+AttributeError: 'NoneType' object has no attribute 'shape'

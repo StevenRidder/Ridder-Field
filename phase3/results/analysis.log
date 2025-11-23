@@ -1,0 +1,54 @@
+======================================================================
+MCMC CHAIN ANALYSIS
+======================================================================
+
+### TIER 3: Planck + BAO + SH0ES ###
+  Loaded ridder_tier3_prod_chain1.1.txt: 171 samples (after burn-in)
+  Loaded ridder_tier3_prod_chain2.1.txt: 187 samples (after burn-in)
+  Loaded ridder_tier3_prod_chain3.1.txt: 154 samples (after burn-in)
+  Loaded ridder_tier3_prod_chain4.1.txt: 157 samples (after burn-in)
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier3_ridder_traces.png
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier3_ridder_distributions.png
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier3_ridder_contours.png
+
+=== Tier 3 Ridder Field Statistics ===
+  H0                  :  70.3758 ±  0.6636  [ 69.7789,  71.1444]
+  omega_b             :   0.0229 ±  0.0002  [  0.0227,   0.0231]
+  omega_cdm           :   0.1179 ±  0.0013  [  0.1167,   0.1194]
+  n_s                 :   0.9714 ±  0.0051  [  0.9666,   0.9759]
+  theta_i             :   0.8756 ±  0.2750  [  0.6683,   1.1110]
+  beta                :   0.0104 ±  0.0081  [  0.0023,   0.0200]
+  chi2                : 2823.6514 ± 12.5771  [2812.2437, 2835.7396]
+  Loaded lcdm_tier3_prod_chain1.1.txt: 287 samples (after burn-in)
+  Loaded lcdm_tier3_prod_chain2.1.txt: 210 samples (after burn-in)
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier3_lcdm_traces.png
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier3_lcdm_distributions.png
+
+=== Tier 3 ΛCDM Statistics ===
+  H0                  :  69.2686 ±  0.2932  [ 69.0201,  69.5147]
+  omega_b             :   0.0226 ±  0.0001  [  0.0225,   0.0227]
+  omega_cdm           :   0.1170 ±  0.0006  [  0.1164,   0.1176]
+  n_s                 :   0.9722 ±  0.0035  [  0.9684,   0.9758]
+  chi2                : 396.2683 ±  0.7094  [395.7162, 396.8893]
+
+### TIER 4: Planck + BAO + SH0ES + SN ###
+  Loaded ridder_tier4_prod_chain1.1.txt: 141 samples (after burn-in)
+  Loaded ridder_tier4_prod_chain2.1.txt: 22 samples (after burn-in)
+  Loaded ridder_tier4_prod_chain3.1.txt: 108 samples (after burn-in)
+  Loaded ridder_tier4_prod_chain4.1.txt: 130 samples (after burn-in)
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier4_traces.png
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier4_distributions.png
+  Saved: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots/tier4_contours.png
+
+=== Tier 4 Ridder Field Statistics ===
+  H0                  :  71.1517 ±  0.6048  [ 70.5874,  71.8110]
+  omega_b             :   0.0230 ±  0.0002  [  0.0229,   0.0232]
+  omega_cdm           :   0.1180 ±  0.0009  [  0.1171,   0.1188]
+  n_s                 :   0.9708 ±  0.0042  [  0.9669,   0.9741]
+  theta_i             :   1.1553 ±  0.1567  [  1.0247,   1.2710]
+  beta                :   0.0045 ±  0.0039  [  0.0014,   0.0075]
+  chi2                :   2.9041 ±  0.9029  [  2.0737,   3.8130]
+
+======================================================================
+✅ All plots saved to: /Users/steveridder/.cursor/worktrees/Ridder-Field/moW4B/phase3/results/plots
+======================================================================
