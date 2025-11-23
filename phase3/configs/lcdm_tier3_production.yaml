@@ -1,5 +1,5 @@
-# Tier 3 ΛCDM Baseline: Planck-lite + BAO + SH0ES
-# Using Planck low-l only for fair comparison with Ridder (which crashes with full Planck)
+# Tier 3 ΛCDM Baseline: Planck FULL + BAO + SH0ES
+# Fresh run with covmat:auto to learn proposal from scratch
 
 theory:
   classy:
@@ -13,11 +13,11 @@ theory:
       non_linear: none
 
 likelihood:
-  # Planck 2018 Low-l only (matching Ridder config for fair comparison)
+  # Planck 2018 FULL
   planck_2018_lowl.TT: null
   planck_2018_lowl.EE: null
-  # planck_2018_highl_plik.TTTEEE: null  # DISABLED: For fair comparison with Ridder
-  # planck_2018_lensing.clik: null  # DISABLED: For fair comparison with Ridder
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
   
   # BAO
   bao.sixdf_2011_bao: null
@@ -77,6 +77,7 @@ params:
 
 sampler:
   mcmc:
+    covmat: auto  # Learn proposal from scratch - critical for new likelihood geometry
     max_samples: 5000
     Rminus1_stop: 0.01
     Rminus1_cl_stop: 0.2
