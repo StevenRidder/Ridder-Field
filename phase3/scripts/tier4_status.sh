@@ -20,22 +20,17 @@ declare -a RIDDER_CHI2_VALUES=()
 echo "RIDDER FIELD CHAINS:"
 echo "----------------------------------------------------------------------"
 
-# Process 4 Ridder chains
-for CHAIN_NUM in {1..4}; do
+# Loop through 4 Ridder chains
+for CHAIN_NUM in 1 2 3 4; do
     CHAIN_FILE="${CHAIN_DIR}/ridder_tier4_prod_chain${CHAIN_NUM}.1.txt"
     
     if [ ! -f "${CHAIN_FILE}" ]; then
-        echo "Chain ${CHAIN_NUM}: NOT STARTED"
+        echo "Chain ${CHAIN_NUM}: NOT FOUND"
         continue
     fi
     
     SAMPLE_COUNT=$(tail -n +2 "${CHAIN_FILE}" | grep -v '^$' | wc -l | tr -d ' ')
     RIDDER_TOTAL_SAMPLES=$((RIDDER_TOTAL_SAMPLES + SAMPLE_COUNT))
-    
-    if [ ${SAMPLE_COUNT} -eq 0 ]; then
-        echo "Chain ${CHAIN_NUM}: 0 samples (initializing...)"
-        continue
-    fi
     
     LAST_LINE=$(tail -1 "${CHAIN_FILE}")
     LAST_H0=$(echo "${LAST_LINE}"    | awk '{print $5}')
@@ -44,10 +39,6 @@ for CHAIN_NUM in {1..4}; do
     LAST_CHI2=$(echo "${LAST_LINE}"  | awk '{print $17}')
     
     BEST_CHI2=$(awk 'NR>1 && NF>0 {if ($17 < min_chi2 || NR==2) min_chi2=$17} END{printf "%.2f", min_chi2}' "${CHAIN_FILE}")
-    
-    if (( $(echo "${BEST_CHI2} < ${GLOBAL_BEST_CHI2}" | bc -l) )); then
-        GLOBAL_BEST_CHI2="${BEST_CHI2}"
-    fi
     
     # Use last 50% of samples
     HALF_SAMPLES=$((SAMPLE_COUNT / 2))
@@ -68,6 +59,10 @@ for CHAIN_NUM in {1..4}; do
         AVG_THETA="N/A"
         AVG_BETA="N/A"
         AVG_CHI2="N/A"
+    fi
+    
+    if (( $(echo "${BEST_CHI2} < ${GLOBAL_BEST_CHI2}" | bc -l) )); then
+        GLOBAL_BEST_CHI2="${BEST_CHI2}"
     fi
     
     echo "Chain ${CHAIN_NUM}: ${SAMPLE_COUNT} samples"
@@ -107,7 +102,5 @@ echo "----------------------------------------------------------------------"
 echo "SUMMARY"
 echo "----------------------------------------------------------------------"
 echo "Ridder Samples: ${RIDDER_TOTAL_SAMPLES}"
-if [ ${GLOBAL_BEST_CHI2} != "999999999" ]; then
-    printf "Global Best χ²: %.2f\n" "${GLOBAL_BEST_CHI2}"
-fi
+printf "Global Best χ²: %.2f\n" "${GLOBAL_BEST_CHI2}"
 echo "==================================================================="
