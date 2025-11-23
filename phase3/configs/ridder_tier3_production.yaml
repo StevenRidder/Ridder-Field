@@ -6,6 +6,7 @@ debug: True
 
 theory:
   classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class
     extra_args:
       output: tCl, mPk
       l_max_scalars: 2508
