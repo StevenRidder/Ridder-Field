@@ -25,7 +25,7 @@ declare -a LCDM_CHI2_VALUES=()
 echo "RIDDER FIELD CHAINS:"
 echo "----------------------------------------------------------------------"
 for i in $(seq 1 ${NUM_RIDDER_CHAINS}); do
-    CHAIN_FILE="${ROOT_DIR}/ridder_tier3_production_chain${i}.1.txt"
+    CHAIN_FILE="${ROOT_DIR}/ridder_tier3_prod_chain${i}.1.txt"
     
     if [ -f "${CHAIN_FILE}" ]; then
         SAMPLE_COUNT=$(tail -n +2 "${CHAIN_FILE}" | grep -v '^$' | wc -l | tr -d ' ')
