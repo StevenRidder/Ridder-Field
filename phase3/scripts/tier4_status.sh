@@ -8,31 +8,32 @@ echo "========================================================================"
 echo ""
 
 CHAIN_DIR="/home/ridderadmin/Ridder-Field/phase3/chains"
-CHAIN_FILE="$CHAIN_DIR/ridder_tier4_test.1.txt"
+# Main Tier 4 chain (Grand Slam run)
+CHAIN_FILE="$CHAIN_DIR/ridder_tier4_grand_slam.1.txt"
 
 # Check if chain file exists
-if ! ssh ridderadmin@20.58.129.33 "[ -f $CHAIN_FILE ]" 2>/dev/null; then
+if [ ! -f "$CHAIN_FILE" ]; then
     echo "❌ Chain file not found. MCMC may not have started yet."
     echo ""
     echo "Checking process status..."
-    ssh ridderadmin@20.58.129.33 "ps aux | grep cobaya-run | grep -v grep" 2>/dev/null || echo "No cobaya-run process found."
+    ps aux | grep cobaya-run | grep -v grep || echo "No cobaya-run process found."
     exit 1
 fi
 
 # Get total samples
-TOTAL_SAMPLES=$(ssh ridderadmin@20.58.129.33 "wc -l < $CHAIN_FILE" 2>/dev/null)
+TOTAL_SAMPLES=$(wc -l < "$CHAIN_FILE")
 TOTAL_SAMPLES=$((TOTAL_SAMPLES - 1))  # Subtract header line
 
-echo "📊 Total Samples: $TOTAL_SAMPLES / 1000"
+echo "📊 Total Samples: $TOTAL_SAMPLES"
 echo ""
 
 # Get last 20 samples and analyze
 echo "Recent Parameter Evolution (Last 20 samples):"
 echo "------------------------------------------------------------------------"
-ssh ridderadmin@20.58.129.33 "tail -20 $CHAIN_FILE | awk '{
-    printf \"Sample %4d: theta_i=%5.3f  beta=%6.4f  H0=%5.2f  chi2=%7.1f (CMB=%5.1f BAO=%4.1f SNe=%6.1f)\\n\", 
-    NR, \$9, \$10, \$5, \$17, \$13, \$12, \$14
-}'" 2>/dev/null
+tail -20 "$CHAIN_FILE" | awk 'NR>1 {
+    printf "Sample %4d: theta_i=%5.3f  beta=%6.4f  H0=%5.2f  chi2=%7.1f\n",
+           NR-1, $9, $10, $5, $17
+}'
 
 echo ""
 echo "------------------------------------------------------------------------"
@@ -40,7 +41,7 @@ echo "------------------------------------------------------------------------"
 # Calculate statistics from last 50 samples
 echo "Statistics (Last 50 samples):"
 echo "------------------------------------------------------------------------"
-ssh ridderadmin@20.58.129.33 "tail -50 $CHAIN_FILE | awk '
+tail -50 "$CHAIN_FILE" | awk '
 BEGIN {
     min_theta = 999; max_theta = 0; sum_theta = 0;
     min_beta = 999; max_beta = 0; sum_beta = 0;
@@ -79,37 +80,19 @@ END {
     printf \"chi2:    mean=%.1f  min=%.1f  max=%.1f  range=%.1f\\n\", 
            sum_chi2/count, min_chi2, max_chi2, max_chi2-min_chi2;
 }
-'" 2>/dev/null
+'
 
 echo "------------------------------------------------------------------------"
 echo ""
 
 # Check if still running
-if ssh ridderadmin@20.58.129.33 "ps aux | grep -q '[c]obaya-run'" 2>/dev/null; then
+if ps aux | grep -q '[c]obaya-run'; then
     echo "✅ Status: RUNNING"
-    
-    # Estimate completion time
-    if [ $TOTAL_SAMPLES -gt 10 ]; then
-        # Get timestamps of first and last samples
-        START_TIME=$(ssh ridderadmin@20.58.129.33 "stat -c %Y $CHAIN_FILE" 2>/dev/null)
-        CURRENT_TIME=$(date +%s)
-        ELAPSED=$((CURRENT_TIME - START_TIME))
-        
-        if [ $ELAPSED -gt 0 ]; then
-            SAMPLES_PER_SEC=$(echo "scale=4; $TOTAL_SAMPLES / $ELAPSED" | bc -l)
-            REMAINING=$((1000 - TOTAL_SAMPLES))
-            ETA_SECONDS=$(echo "$REMAINING / $SAMPLES_PER_SEC" | bc -l)
-            ETA_MINUTES=$(echo "scale=1; $ETA_SECONDS / 60" | bc -l)
-            
-            echo "⏱️  Speed: $(printf '%.2f' $SAMPLES_PER_SEC) samples/sec"
-            echo "⏳ ETA: ~$(printf '%.0f' $ETA_MINUTES) minutes to 1000 samples"
-        fi
-    fi
 else
     echo "⚠️  Status: STOPPED"
     echo ""
     echo "Last 10 lines of log:"
-    ssh ridderadmin@20.58.129.33 "tail -10 /home/ridderadmin/Ridder-Field/phase3/tier4_test.log 2>/dev/null | grep -v '^DEBUG:' | grep -v '^BG_FUNC:' | grep -v '^RIDDER'" 2>/dev/null
+    tail -10 /home/ridderadmin/Ridder-Field/phase3/tier4_full.log 2>/dev/null | grep -v '^DEBUG:' | grep -v '^BG_FUNC:' | grep -v '^RIDDER'
 fi
 
 echo ""
