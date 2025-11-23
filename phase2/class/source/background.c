@@ -2914,8 +2914,9 @@ int background_derivs(
                  z_current, a, 3.0*H, m_eff_Mpc, (3.0*H < m_eff_Mpc && z_current < 1e6));
         }
         
-        /* TEMPORARILY DISABLED: Let field evolve fully without fluid approximation */
-        if (_FALSE_ && 3.0 * H < m_eff_Mpc && z_current < 1e6) {
+        /* Switch to fluid approximation when oscillations begin */
+        /* Condition: 3H < m_eff (rapid oscillations) AND z < 10^10 (allow early switching) */
+        if (3.0 * H < m_eff_Mpc && z_current < 1e10) {
           /* Oscillations have begun - switch to fluid approximation */
           pba->ridder_fluid_mode = _TRUE_;
           pba->z_osc_ridder = 1.0/a - 1.0; /* Current redshift */
