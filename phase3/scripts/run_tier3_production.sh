@@ -30,6 +30,8 @@ rm -f $CHAINS_DIR/lcdm_tier3_prod_chain*.updated.yaml
 
 # Disable file locking (we're using isolated directories)
 export COBAYA_USE_FILE_LOCKING=False
+# Set packages path so Cobaya can find clipy
+export COBAYA_PACKAGES_PATH="/home/ridderadmin/.local/share/cobaya"
 
 # Launch 4 Ridder chains (each in isolated directory)
 echo ""
