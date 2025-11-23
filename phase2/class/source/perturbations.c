@@ -226,6 +226,9 @@ int perturbations_sources_at_k_and_z(
              ppt->error_message,
              ppt->error_message);
 
+  free(sources);
+  free(ddsources_dk2);
+
   return _SUCCESS_;
 }
 
@@ -945,7 +948,6 @@ int perturbations_init(
           class_call(perturbations_workspace_free(ppt,index_md,&pw),
                      ppt->error_message,
                      ppt->error_message);
-          return _SUCCESS_;
 
         );
 
@@ -980,7 +982,6 @@ int perturbations_init(
                                                 ppt->error_message),
                        ppt->error_message,
                        ppt->error_message);
-            return _SUCCESS_;
           );
 
         } /* end of loop over type of source function*/
