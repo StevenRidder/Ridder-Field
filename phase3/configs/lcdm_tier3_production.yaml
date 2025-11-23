@@ -27,7 +27,7 @@ likelihood:
   # SH0ES H0 Constraint (Riess et al. 2022)
   sh0es_h0:
     external: |
-      lambda H0=None, **params_values: (
+      lambda _self=None, H0=None, **params_values: (
         -0.5 * ((H0 - 73.04) / 1.04)**2
       )
     requires:
