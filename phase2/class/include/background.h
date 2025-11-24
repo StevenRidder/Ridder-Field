@@ -147,6 +147,10 @@ struct background
   double ridder_shoot_tol_f;       /**< Tolerance on f_EDE target (default 1e-3) */
   double ridder_c_slow;            /**< Slow-roll coefficient for phi'_ini (default 1.0) */
   
+  /** Ridder debug/control knobs (for testing integration without stiffness) */
+  double ridder_force_damping;     /**< Damping factor for dV term: 1.0=physical, 0.0=frozen, 1e-8=soft (default 1.0) */
+  short ridder_freeze_phi;         /**< If TRUE, keep phi and phi' constant (for structure tests) */
+  
   double varconst_alpha; /**< finestructure constant for varying fundamental constants */
   double varconst_me; /**< electron mass for varying fundamental constants */
   enum varconst_dependence varconst_dep; /**< dependence of the varying fundamental constants as a function of time */
