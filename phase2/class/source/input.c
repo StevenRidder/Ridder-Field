@@ -2418,6 +2418,16 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("beta_ridder",pba->beta_ridder);
   class_read_int("n_ridder",pba->n_ridder);
   
+  /* Ridder shooting mechanism parameters */
+  class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
+  class_read_double("ridder_fEDE_target",pba->ridder_fEDE_target);
+  class_read_double("ridder_zc_min",pba->ridder_zc_min);
+  class_read_double("ridder_zc_max",pba->ridder_zc_max);
+  class_read_double("ridder_shoot_log10Lambda_min",pba->ridder_shoot_log10Lambda_min);
+  class_read_double("ridder_shoot_log10Lambda_max",pba->ridder_shoot_log10Lambda_max);
+  class_read_double("ridder_shoot_tol_f",pba->ridder_shoot_tol_f);
+  class_read_double("ridder_c_slow",pba->ridder_c_slow);
+  
   /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
   if (pba->Lambda_EDE_ridder > 0.0) {
     pba->has_ridder = _TRUE_;
@@ -3342,6 +3352,16 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
   class_read_double("beta_ridder",pba->beta_ridder);
   class_read_int("n_ridder",pba->n_ridder);
+  
+  /* Ridder shooting mechanism parameters */
+  class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
+  class_read_double("ridder_fEDE_target",pba->ridder_fEDE_target);
+  class_read_double("ridder_zc_min",pba->ridder_zc_min);
+  class_read_double("ridder_zc_max",pba->ridder_zc_max);
+  class_read_double("ridder_shoot_log10Lambda_min",pba->ridder_shoot_log10Lambda_min);
+  class_read_double("ridder_shoot_log10Lambda_max",pba->ridder_shoot_log10Lambda_max);
+  class_read_double("ridder_shoot_tol_f",pba->ridder_shoot_tol_f);
+  class_read_double("ridder_c_slow",pba->ridder_c_slow);
   
   /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
   if (pba->Lambda_EDE_ridder > 0.0) {
@@ -6001,6 +6021,16 @@ int input_default_params(struct background *pba,
   pba->w_eff_ridder = 0.0;            /**< Effective equation of state */
   pba->rho_ridder_at_switch = 0.0;    /**< Energy density at switching */
   pba->a_osc_ridder = 1.0;            /**< Scale factor at switching */
+  
+  /** 9.c.2) Ridder shooting mechanism defaults */
+  pba->use_ridder_shooting = _FALSE_;               /**< Disabled by default, use manual Lambda */
+  pba->ridder_fEDE_target = 0.10;                   /**< Default target: 10% EDE */
+  pba->ridder_zc_min = 500.0;                       /**< Min z for peak search */
+  pba->ridder_zc_max = 10000.0;                     /**< Max z for peak search */
+  pba->ridder_shoot_log10Lambda_min = 10.0;         /**< Lower bracket: 10^10 eV */
+  pba->ridder_shoot_log10Lambda_max = 16.0;         /**< Upper bracket: 10^16 eV */
+  pba->ridder_shoot_tol_f = 1e-3;                   /**< Tolerance: 0.1% on f_EDE */
+  pba->ridder_c_slow = 1.0;                         /**< Full slow-roll ICs by default */
 
   /**
    * Deafult to input_read_parameters_heating

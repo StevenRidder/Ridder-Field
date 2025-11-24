@@ -136,6 +136,17 @@ struct background
   double w_eff_ridder;       /**< Effective equation of state */
   double rho_ridder_at_switch; /**< Energy density at switching */
   double a_osc_ridder;       /**< Scale factor at switching */
+  
+  /** Ridder EDE shooting controls */
+  short use_ridder_shooting;       /**< Enable Lambda shooting (_TRUE_/_FALSE_) */
+  double ridder_fEDE_target;       /**< Target peak f_EDE (e.g., 0.10 for 10%) */
+  double ridder_zc_min;            /**< Min z for peak search (default 500) */
+  double ridder_zc_max;            /**< Max z for peak search (default 10000) */
+  double ridder_shoot_log10Lambda_min; /**< Lower log10 Lambda bracket (default 10.0) */
+  double ridder_shoot_log10Lambda_max; /**< Upper log10 Lambda bracket (default 16.0) */
+  double ridder_shoot_tol_f;       /**< Tolerance on f_EDE target (default 1e-3) */
+  double ridder_c_slow;            /**< Slow-roll coefficient for phi'_ini (default 1.0) */
+  
   double varconst_alpha; /**< finestructure constant for varying fundamental constants */
   double varconst_me; /**< electron mass for varying fundamental constants */
   enum varconst_dependence varconst_dep; /**< dependence of the varying fundamental constants as a function of time */
