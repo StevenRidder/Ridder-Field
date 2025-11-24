@@ -2416,7 +2416,10 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("f_axion_ridder",pba->f_axion_ridder);
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
   class_read_double("beta_ridder",pba->beta_ridder);
+  class_read_double("beta_z_c",pba->beta_z_c);
+  class_read_double("beta_sigma_z",pba->beta_sigma_z);
   class_read_int("n_ridder",pba->n_ridder);
+  class_read_int("ridder_perturbation_mode",pba->ridder_perturbation_mode);
   
   /* Ridder shooting mechanism parameters */
   class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
@@ -3357,7 +3360,10 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("f_axion_ridder",pba->f_axion_ridder);
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
   class_read_double("beta_ridder",pba->beta_ridder);
+  class_read_double("beta_z_c",pba->beta_z_c);
+  class_read_double("beta_sigma_z",pba->beta_sigma_z);
   class_read_int("n_ridder",pba->n_ridder);
+  class_read_int("ridder_perturbation_mode",pba->ridder_perturbation_mode);
   
   /* Ridder shooting mechanism parameters */
   class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
@@ -3386,6 +3392,43 @@ int input_read_parameters_species(struct file_content * pfc,
   } else {
     pba->has_ridder = _FALSE_;
     printf("DEBUG: Ridder field DISABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+  }
+  
+  /* Read unified potential parameters */
+  if (pba->has_ridder == _TRUE_) {
+    /* Model type: simple_ede or unified */
+    class_read_string("ridder_model_type", string1);
+    if (strcmp(string1, "unified") == 0) {
+      pba->ridder_unified.model_type = ridder_model_unified;
+    } else {
+      pba->ridder_unified.model_type = ridder_model_simple_ede;
+    }
+    
+    /* Global field properties */
+    class_read_double("ridder_f", pba->ridder_unified.f);
+    
+    /* Component toggles */
+    class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+    class_read_flag("ridder_use_shelf", pba->ridder_unified.use_shelf);
+    class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
+    
+    /* Tail parameters */
+    class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+    class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+    
+    /* Shelf (EDE) parameters */
+    class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE);
+    class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+    class_read_double("ridder_theta_EDE_low", pba->ridder_unified.theta_EDE_low);
+    class_read_double("ridder_theta_EDE_high", pba->ridder_unified.theta_EDE_high);
+    class_read_double("ridder_sigma_theta_EDE", pba->ridder_unified.sigma_theta_EDE);
+    
+    /* Plateau (inflation) parameters */
+    class_read_double("ridder_Lambda_inf_eV", pba->ridder_unified.Lambda_inf);
+    class_read_double("ridder_theta0_inf", pba->ridder_unified.theta0_inf);
+    class_read_double("ridder_theta_inf_on", pba->ridder_unified.theta_inf_on);
+    class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
+    class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
   }
   
   /* Validation */
@@ -6027,7 +6070,37 @@ int input_default_params(struct background *pba,
   pba->f_axion_ridder = 1e16;         /**< Decay constant [eV] */
   pba->theta_i_ridder = 2.5;          /**< Initial misalignment angle [radians] */
   pba->beta_ridder = 0.0;             /**< DM coupling strength (dimensionless) */
+  pba->beta_z_c = 3276.0;             /**< Beta coupling peak redshift (default: EDE peak) */
+  pba->beta_sigma_z = 0.3;            /**< Beta coupling width in log(1+z) (default: narrow) */
+  
+  /** 9.c.2) Unified potential defaults */
+  pba->ridder_unified.model_type = ridder_model_simple_ede;
+  pba->ridder_unified.f = 2.435e27;   /**< M_Pl in eV */
+  
+  /* Component toggles: default to tail+shelf only (no inflation) */
+  pba->ridder_unified.use_tail = _TRUE_;
+  pba->ridder_unified.use_shelf = _TRUE_;
+  pba->ridder_unified.use_plateau = _FALSE_;
+  
+  /* Tail defaults (late DE) */
+  pba->ridder_unified.Lambda_tail = 2.3e-3;  /**< ~meV scale for Omega_Lambda */
+  pba->ridder_unified.n_tail = 3.0;
+  
+  /* Shelf defaults (EDE) - match v2 optimal */
+  pba->ridder_unified.Lambda_EDE = 1.5;      /**< eV, from v2 optimization */
+  pba->ridder_unified.n_EDE = 3.0;
+  pba->ridder_unified.theta_EDE_low = 0.5;
+  pba->ridder_unified.theta_EDE_high = 2.0;
+  pba->ridder_unified.sigma_theta_EDE = 0.2;
+  
+  /* Plateau defaults (inflation) - conservative initial values */
+  pba->ridder_unified.Lambda_inf = 1.0e-3;   /**< Will be tuned for inflation */
+  pba->ridder_unified.theta0_inf = 5.0;
+  pba->ridder_unified.theta_inf_on = 8.0;
+  pba->ridder_unified.sigma_inf = 1.0;
+  pba->ridder_unified.n_inf = 1.0;
   pba->n_ridder = 3;                  /**< Potential power (usually 3) */
+  pba->ridder_perturbation_mode = 0;  /**< Scalar mode by default (0=scalar, 1=fluid) */
   pba->ridder_fluid_mode = _FALSE_;   /**< Not in fluid mode initially */
   pba->z_osc_ridder = 0.0;            /**< Oscillation redshift (computed) */
   pba->w_eff_ridder = 0.0;            /**< Effective equation of state */

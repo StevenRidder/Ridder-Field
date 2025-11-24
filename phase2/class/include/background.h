@@ -18,6 +18,45 @@ enum equation_of_state {CLP,EDE};
 
 enum scf_potential_type {scf_pot_axion, scf_pot_ridder};
 
+/** Ridder field model types: simple_ede (v2) or unified (inflation + EDE + late DE) */
+
+enum ridder_model_type {
+  ridder_model_simple_ede = 0,  /**< V2 model: simple EDE with optional CDM coupling */
+  ridder_model_unified = 1      /**< Unified model: plateau + shelf + tail */
+};
+
+/** Ridder unified potential parameters */
+
+struct ridder_unified_params {
+  int model_type;        /**< ridder_model_simple_ede or ridder_model_unified */
+  
+  /* Global field properties */
+  double f;              /**< decay constant, same units as v2 */
+  
+  /* Component toggles */
+  short use_tail;        /**< include tail term (late DE) */
+  short use_shelf;       /**< include shelf term (EDE bump) */
+  short use_plateau;     /**< include plateau term (inflation) */
+  
+  /* Tail (late-time dark energy) */
+  double Lambda_tail;    /**< energy scale for tail term [eV] */
+  double n_tail;         /**< power for [1 - cos(theta)]^n_tail */
+  
+  /* Shelf (EDE bump) */
+  double Lambda_EDE;     /**< EDE amplitude [eV] */
+  double n_EDE;          /**< power for shelf term */
+  double theta_EDE_low;  /**< lower edge of shelf window in theta space */
+  double theta_EDE_high; /**< upper edge of shelf window */
+  double sigma_theta_EDE;/**< smoothing width of shelf window */
+  
+  /* Inflationary plateau */
+  double Lambda_inf;     /**< inflation energy scale [eV] */
+  double theta0_inf;     /**< scale where plateau rises */
+  double theta_inf_on;   /**< where plateau window turns on */
+  double sigma_inf;      /**< plateau window smoothing width */
+  double n_inf;          /**< extra shape parameter if needed */
+};
+
 /** list of possible parametrizations of the varying fundamental constants */
 
 enum varconst_dependence {varconst_none,varconst_instant};
@@ -123,14 +162,20 @@ struct background
   double phi_prime_ini_scf;/**< \f$ d\phi(t_0)/d\tau \f$: scalar field initial derivative wrt conformal time */
   int scf_parameters_size; /**< size of scf_parameters */
   
-  /** Ridder field parameters */
+  /** Ridder field parameters (v2 simple_ede - kept for backwards compatibility) */
   double LambdaEDE4;         /**< Ridder field EDE energy scale ^ 4 [Mpl^4] */
   double Lambda_EDE_ridder;  /**< Ridder field EDE energy scale [eV] */
   double f_axion_ridder;     /**< Ridder field decay constant [eV] */
   double theta_i_ridder;     /**< Ridder field initial misalignment angle [radians] */
   double beta_ridder;        /**< Ridder field DM coupling strength (dimensionless) */
+  double beta_z_c;           /**< Beta coupling peak redshift (tunable for optimization) */
+  double beta_sigma_z;       /**< Beta coupling width in log(1+z) (tunable for optimization) */
   int n_ridder;              /**< Ridder field potential power (usually 3) */
+  int ridder_perturbation_mode; /**< 0=scalar (KG), 1=fluid (effective w, cs2) */
   short has_ridder;          /**< whether Ridder field is active */
+  
+  /** Ridder unified potential parameters (inflation + EDE + late DE) */
+  struct ridder_unified_params ridder_unified; /**< Unified potential configuration */
   short ridder_fluid_mode;   /**< whether Ridder field is in fluid approximation mode */
   double z_osc_ridder;       /**< Oscillation redshift (computed) */
   double w_eff_ridder;       /**< Effective equation of state */

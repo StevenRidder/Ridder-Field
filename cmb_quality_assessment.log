@@ -1,0 +1,98 @@
+/home/ridderadmin/Ridder-Field/assess_cmb_quality.py:158: UserWarning: Glyph 10060 (\N{CROSS MARK}) missing from current font.
+  plt.tight_layout()
+/home/ridderadmin/Ridder-Field/assess_cmb_quality.py:159: UserWarning: Glyph 10060 (\N{CROSS MARK}) missing from current font.
+  plt.savefig(output_file, dpi=150, bbox_inches='tight')
+==========================================================================================
+CMB SPECTRUM QUALITY ASSESSMENT
+==========================================================================================
+
+Loaded ΛCDM reference: 2999 multipoles
+
+==========================================================================================
+Option A: θ=1.0
+==========================================================================================
+File: lambda1p50_theta1p00_00_cl.dat
+z_peak = 3276, f_peak = 13.7%, ΔH₀ = +2.06 km/s/Mpc
+
+Peak Location:
+  ΛCDM: ℓ = 221
+  EDE:  ℓ = 224
+  Δℓ = +3.0  [PASS]
+
+Fractional Differences (30 ≤ ℓ ≤ 2000):
+  Max |ΔC_ℓ/C_ℓ|: 26.65%  [MAYBE]
+  RMS ΔC_ℓ/C_ℓ:   10.64%  [MAYBE]
+
+High-ℓ Behavior (1000 ≤ ℓ ≤ 2000):
+  Mean |ΔC_ℓ/C_ℓ|: 10.89%  [PASS]
+
+Overall Assessment: ⚠️  MAYBE
+
+==========================================================================================
+Option B: θ=1.25
+==========================================================================================
+File: lambda1p50_theta1p25_00_cl.dat
+z_peak = 3871, f_peak = 22.4%, ΔH₀ = +3.28 km/s/Mpc
+
+Peak Location:
+  ΛCDM: ℓ = 221
+  EDE:  ℓ = 226
+  Δℓ = +5.0  [MAYBE]
+
+Fractional Differences (30 ≤ ℓ ≤ 2000):
+  Max |ΔC_ℓ/C_ℓ|: 40.95%  [FAIL]
+  RMS ΔC_ℓ/C_ℓ:   16.05%  [FAIL]
+
+High-ℓ Behavior (1000 ≤ ℓ ≤ 2000):
+  Mean |ΔC_ℓ/C_ℓ|: 16.28%  [PASS]
+
+Overall Assessment: ❌ FAIL
+
+==========================================================================================
+Option C: θ=1.5
+==========================================================================================
+File: lambda1p50_theta1p50_00_cl.dat
+z_peak = 4275, f_peak = 33.4%, ΔH₀ = +5.08 km/s/Mpc
+
+Peak Location:
+  ΛCDM: ℓ = 221
+  EDE:  ℓ = 229
+  Δℓ = +8.0  [FAIL]
+
+Fractional Differences (30 ≤ ℓ ≤ 2000):
+  Max |ΔC_ℓ/C_ℓ|: 59.13%  [FAIL]
+  RMS ΔC_ℓ/C_ℓ:   22.92%  [FAIL]
+
+High-ℓ Behavior (1000 ≤ ℓ ≤ 2000):
+  Mean |ΔC_ℓ/C_ℓ|: 22.74%  [MAYBE]
+
+Overall Assessment: ❌ FAIL
+
+Saved: plots/cmb_quality_assessment.png
+==========================================================================================
+SUMMARY TABLE
+==========================================================================================
+
+Config          ΔH₀        Δℓ₁      Max Δ%     RMS Δ%     Status         
+------------------------------------------------------------------------------------------
+Option A: θ=1.0 +2.06         +3.0 26.65      10.64      ⚠️  MAYBE      
+Option B: θ=1.25 3.28         +5.0 40.95      16.05      ❌ FAIL         
+Option C: θ=1.5 5.08         +8.0 59.13      22.92      ❌ FAIL         
+
+==========================================================================================
+RECOMMENDATIONS:
+------------------------------------------------------------------------------------------
+
+⚠️  1 configuration(s) in 'maybe' category - worth deeper investigation
+
+❌ 2 configuration(s) failed quality criteria:
+   Option B: θ=1.25: max diff 41.0%, RMS diff 16.1%
+   Option C: θ=1.5: peak shift Δℓ=+8.0, max diff 59.1%, RMS diff 22.9%
+
+Next steps:
+  1. Examine plots/cmb_quality_assessment.png for visual inspection
+  2. For PASS configs: proceed with full observable extraction (σ₈, θ_s, etc.)
+  3. For MAYBE configs: check TE/EE spectra and consider data fits
+  4. For FAIL configs: consider intermediate theta_i values or different Lambda
+
+==========================================================================================

@@ -114,6 +114,11 @@
 
 #include "background.h"
 
+/* Forward declarations for unified potential functions */
+double V_unified_theta(double theta, const struct ridder_unified_params *rp);
+double dV_unified_dtheta(double theta, const struct ridder_unified_params *rp);
+double d2V_unified_dtheta2(double theta, const struct ridder_unified_params *rp);
+
 /* Forward declarations for Ridder shooting mechanism */
 static int background_clear_tables(struct background *pba);
 static int background_init_trial(struct precision *ppr, struct background *pba);
@@ -448,9 +453,32 @@ int background_functions(
   /* cdm */
   if (pba->has_cdm == _TRUE_) {
     pvecback[pba->index_bg_rho_cdm] = pba->Omega0_cdm * pow(pba->H0,2) / pow(a,3);
-    rho_tot += pvecback[pba->index_bg_rho_cdm];
+    
+    /* Apply Ridder-CDM coupling: modifies effective CDM density */
+    double rho_cdm_eff = pvecback[pba->index_bg_rho_cdm];
+    if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
+      double z = 1.0/a - 1.0;
+      double z_c = pba->beta_z_c;
+      double sigma_z = pba->beta_sigma_z;
+      double log_z = log(1.0 + z);
+      double log_z_c = log(1.0 + z_c);
+      
+      /* Coupling modifies effective CDM density near EDE epoch */
+      double coupling_factor = 1.0 + pba->beta_ridder * exp(-0.5 * pow((log_z - log_z_c) / sigma_z, 2.0));
+      rho_cdm_eff *= coupling_factor;
+      
+      /* Debug coupling effect */
+      static int cdm_coupling_counter = 0;
+      cdm_coupling_counter++;
+      if (cdm_coupling_counter < 10 || (z > 1000.0 && z < 10000.0 && cdm_coupling_counter % 1000 == 0)) {
+        printf("CDM_COUPLING: z=%.1f coupling=%.6f rho_cdm_base=%.3e rho_cdm_eff=%.3e\n",
+               z, coupling_factor, pvecback[pba->index_bg_rho_cdm], rho_cdm_eff);
+      }
+    }
+    
+    rho_tot += rho_cdm_eff;  /* Use effective density for H(z) */
     p_tot += 0.;
-    rho_m += pvecback[pba->index_bg_rho_cdm];
+    rho_m += pvecback[pba->index_bg_rho_cdm];  /* Keep original for matter */
   }
 
   /* idm */
@@ -3197,11 +3225,14 @@ int background_derivs(
         /* Compute potential derivative: dV_ridder returns eV³ */
         double dV_val_units = dV_ridder(pba, phi_ridder) * dV_conversion;  // eV·Mpc⁻²
       
-      /* Add coupling to dark matter if beta != 0 */
+      /* Add coupling to photons if beta != 0 (affects sound horizon) */
         double coupling_term = 0.0;
-      if (pba->beta_ridder != 0.0 && pba->has_cdm == _TRUE_ && rho_cdm > 0.0) {
-          /* β * ρ_cdm / M_Pl in CLASS units */
-          coupling_term = pba->beta_ridder * rho_cdm / M_Pl_eV;
+      if (pba->beta_ridder != 0.0) {
+          /* β * ρ_gamma / M_Pl in CLASS units - couples to radiation for r_s shift */
+          double rho_gamma = pvecback[pba->index_bg_rho_g];
+          if (rho_gamma > 0.0) {
+              coupling_term = pba->beta_ridder * rho_gamma / M_Pl_eV;
+          }
       }
       
         /* Safety check: H must be positive and finite */
@@ -3224,6 +3255,18 @@ int background_derivs(
         dy[pba->index_bi_phi_prime_ridder] = - 2.0 * phi_prime_ridder
                                               - damp * a * dV_val_units / H
                                               - damp * a * coupling_term / H;
+        
+        /* DEBUG: Print coupling term magnitude */
+        static int coupling_counter = 0;
+        coupling_counter++;
+        if (pba->beta_ridder != 0.0 && (coupling_counter < 10 || coupling_counter % 5000 == 0)) {
+            double z = 1.0/a - 1.0;
+            printf("COUPLING: call#=%d z=%.1f beta=%.3f coupling_term=%.3e dV=%.3e ratio=%.3f%%\n",
+                   coupling_counter, z, pba->beta_ridder, 
+                   damp * a * coupling_term / H,
+                   damp * a * dV_val_units / H,
+                   100.0 * coupling_term / (dV_val_units + 1e-99));
+        }
       
         /* DEBUG: Print derivatives on first few calls */
       static int deriv_counter = 0;
@@ -3644,6 +3687,14 @@ double ddV_scf(
 double V_ridder(
                 struct background *pba,
                 double phi) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    return V_unified_theta(theta, &pba->ridder_unified);
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
@@ -3662,6 +3713,15 @@ double V_ridder(
 double dV_ridder(
                  struct background *pba,
                  double phi) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    double dV_dtheta = dV_unified_dtheta(theta, &pba->ridder_unified);
+    return dV_dtheta / pba->ridder_unified.f;  /* Convert to dV/dphi */
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
@@ -3685,6 +3745,16 @@ double dV_ridder(
 double ddV_ridder(
                   struct background *pba,
                   double phi) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    double d2V_dtheta2 = d2V_unified_dtheta2(theta, &pba->ridder_unified);
+    double f = pba->ridder_unified.f;
+    return d2V_dtheta2 / (f * f);  /* Convert to d²V/dphi² */
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
