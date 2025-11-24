@@ -23,17 +23,17 @@ This is the Hubble Tension. It is a disagreement over the expansion rate of the 
 
 **The View from Now**: On the other side, you have the Local Universe. Astronomers like Adam Riess use the Hubble Space Telescope and the James Webb to look at "standard candles"—pulsating stars called Cepheids and exploding Supernovae—to measure distances directly. When you measure how fast these nearby galaxies are rushing away from us, you get a different number: **73 kilometers per second per megaparsec**.
 
-**The Crisis**: 67 is not 73. The statistical chance of this being a fluke is less than one in a million. The modern universe is expanding faster than the laws of physics, as we understand them, say it should. It is as if a mysterious wind has picked up, pushing the galaxies apart faster than gravity can hold them back.
+**The Crisis**: 67 is not 73. The statistical chance of this being a fluke is less than one in a million. The modern universe is expanding faster than the laws of physics say it should. It is as if a mysterious wind has picked up, pushing the galaxies apart faster than gravity can hold them back.
 
 ### The S₈ Tension: The Web is Too Smooth
 
 If the Hubble Tension is about how fast the universe stretches, the S₈ Tension is about how much it clumps.
 
-Gravity is the great sculptor. It pulls matter together into the "Cosmic Web,"vast filaments of dark matter that bridge the voids, with galaxies sparkling like dew on a spiderweb. The parameter S₈ measures the "clumpiness" of this web.
+Gravity is the great sculptor. It pulls matter together into the "Cosmic Web," vast filaments of dark matter that bridge the voids, with galaxies sparkling like dew on a spiderweb. The parameter S₈ measures the "clumpiness" of this web.
 
-**The Prediction**: Again, you look at the baby picture (the CMB). It was very smooth, with tiny ripples. The existing theory says gravity should have amplified those ripples over 13.8 billion years, pulling matter into tight, dense clusters. They predict a high S₈—a universe with strong, dense clumps.
+**The Prediction**: Again, you look at the baby picture (the CMB). It was very smooth, with tiny ripples. The existing theory says gravity should have amplified those ripples over 13.8 billion years, pulling matter into tight, dense clusters. They predict a high S₈, a universe with strong, dense clumps.
 
-**The Reality**: But when you look at the sky today using "Weak Lensing," measuring how the gravity of galaxy clusters bends the light of background stars—I see something strange. The universe is smoother than I predicted. The shadows of dark matter are softer. The web is thinner.
+**The Reality**: But when you look at the sky today using "Weak Lensing," measuring how the gravity of galaxy clusters bends the light of background stars, we see something strange. The universe is smoother than we predicted. The shadows of dark matter are softer. The web is thinner.
 
 The universe is **expanding too fast (H₀)**, and it is **not clumping enough (S₈)**.
 
