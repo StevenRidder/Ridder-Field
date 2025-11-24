@@ -3171,30 +3171,30 @@ int background_derivs(
         /* ============================================================
          * FULL RIDDER KLEIN-GORDON EVOLUTION
          * ============================================================ */
-        
-        /* Unit Conversion Constants */
+          
+    /* Unit Conversion Constants */
         double M_Pl_eV = 2.435e27;        // Reduced Planck mass in eV
         double eV_to_Mpc_inv = 1.56e29;   // 1 eV ≈ 1.56×10²⁹ Mpc⁻¹
         double dV_conversion = eV_to_Mpc_inv * eV_to_Mpc_inv;  // eV³ → eV·Mpc⁻²
         
         /* Compute potential derivative: dV_ridder returns eV³ */
         double dV_val_units = dV_ridder(pba, phi_ridder) * dV_conversion;  // eV·Mpc⁻²
-        
-        /* Add coupling to dark matter if beta != 0 */
+      
+      /* Add coupling to dark matter if beta != 0 */
         double coupling_term = 0.0;
-        if (pba->beta_ridder != 0.0 && pba->has_cdm == _TRUE_ && rho_cdm > 0.0) {
+      if (pba->beta_ridder != 0.0 && pba->has_cdm == _TRUE_ && rho_cdm > 0.0) {
           /* β * ρ_cdm / M_Pl in CLASS units */
           coupling_term = pba->beta_ridder * rho_cdm / M_Pl_eV;
-        }
-        
+      }
+      
         /* Safety check: H must be positive and finite */
-        if (H <= 0.0 || !isfinite(H)) {
+      if (H <= 0.0 || !isfinite(H)) {
           sprintf(error_message,
                   "Invalid H = %.2e at a=%.2e (rho_ridder=%.2e)",
                   H, a, pvecback[pba->index_bg_rho_ridder]);
-          return _FAILURE_;
-        }
-        
+        return _FAILURE_;
+      }
+      
         /* Apply damping factor (1.0 = physical, 0.0 = frozen, 1e-8 = soft) */
         double damp = pba->ridder_force_damping;
         if (damp < 0.0) damp = 0.0;
@@ -3207,26 +3207,26 @@ int background_derivs(
         dy[pba->index_bi_phi_prime_ridder] = - 2.0 * phi_prime_ridder
                                               - damp * a * dV_val_units / H
                                               - damp * a * coupling_term / H;
-        
+      
         /* DEBUG: Print derivatives on first few calls */
-        static int deriv_counter = 0;
-        deriv_counter++;
-        if (deriv_counter < 10 || deriv_counter % 5000 == 0) {
+      static int deriv_counter = 0;
+      deriv_counter++;
+      if (deriv_counter < 10 || deriv_counter % 5000 == 0) {
           printf("DERIVS: call#=%d a=%.2e phi=%.2e phi'=%.2e dphi/dlna=%.2e dphi'/dlna=%.2e dV=%.2e H=%.2e damp=%.2e\n",
                  deriv_counter, a, phi_ridder, phi_prime_ridder,
-                 dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder],
+               dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder],
                  dV_val_units, H, damp);
-        }
+      }
         
-        /* Safety check: derivatives must be finite */
+      /* Safety check: derivatives must be finite */
         if (!isfinite(dy[pba->index_bi_phi_ridder]) || 
             !isfinite(dy[pba->index_bi_phi_prime_ridder])) {
           sprintf(error_message,
                   "Ridder non-finite derivatives: a=%.3e phi=%.3e phi'=%.3e dV=%.3e dphi=%.3e dphi'=%.3e",
                   a, phi_ridder, phi_prime_ridder, dV_val_units,
-                  dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder]);
-          return _FAILURE_;
-        }
+               dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder]);
+        return _FAILURE_;
+      }
         
       } // end else (full evolution)
       
