@@ -19,7 +19,7 @@ Imagine you take a child to the doctor. You measure their height, you look at th
 
 This is the Hubble Tension. It is a disagreement over the expansion rate of the universe, a number called H₀ (H-naught).
 
-**The View from the Beginning**: On one side, you have the Cosmic Microwave Background. This is the baby picture of the universe, taken just 380,000 years after the Big Bang. The Planck satellite measured this ancient light with exquisite precision. When I take that data and use our best theory of gravity to roll the clock forward to today, it predicts the universe should be expanding at **67 kilometers per second per megaparsec**.
+**The View from the Beginning**: On one side, you have the Cosmic Microwave Background. This is the baby picture of the universe, taken just 380,000 years after the Big Bang. The Planck satellite measured this ancient light with exquisite precision. When we take that data and use our best theory of gravity to roll the clock forward to today, it predicts the universe should be expanding at **67 kilometers per second per megaparsec**.
 
 **The View from Now**: On the other side, you have the Local Universe. Astronomers like Adam Riess use the Hubble Space Telescope and the James Webb to look at "standard candles"—pulsating stars called Cepheids and exploding Supernovae—to measure distances directly. When you measure how fast these nearby galaxies are rushing away from us, you get a different number: **73 kilometers per second per megaparsec**.
 
