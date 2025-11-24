@@ -36,9 +36,9 @@ echo "" | tee -a "$LOG_FILE"
 
 # Fixed parameters
 LAMBDA_EDE="1.0"
-THETA_I="2.0"
-THETA_LOW="0.1"
-THETA_HIGH="5.0"
+THETA_I="2.0"  # Not used anymore - set directly in INI to 0.01
+THETA_LOW="0.001"  # Match the validation working range
+THETA_HIGH="0.1"
 
 # Beta values to scan
 BETAS=(0.05 0.10 0.15 0.20)
@@ -73,12 +73,14 @@ ridder_model_type = unified
 ridder_f = 1.0e16  # Decay constant (phi/theta), NOT Planck mass!
 
 # Tail (late-time DE)
-ridder_use_tail = yes
+ridder_use_tail = no  # Turn OFF for now - focus on shelf only
 ridder_Lambda_tail_eV = 2.3e-3
 ridder_n_tail = 3.0
 
 # Shelf (EDE) - Conservative Lambda
 ridder_use_shelf = yes
+ridder_m_axion = 1e-3  # H0 units - much weaker for stability
+ridder_f_axion = 1e-6  # M_Pl units - much smaller
 ridder_Lambda_EDE_eV = ${LAMBDA_EDE}
 ridder_n_EDE = 3.0
 ridder_theta_EDE_low = ${THETA_LOW}
@@ -88,8 +90,8 @@ ridder_sigma_theta_EDE = 0.2
 # Plateau (inflation) - OFF for now
 ridder_use_plateau = no
 
-# Initial conditions
-theta_i_ridder = ${THETA_I}
+# Initial conditions - start near minimum to avoid early domination
+theta_i_ridder = 0.01
 
 # CDM coupling - THIS IS WHAT WE'RE SCANNING
 beta_ridder = ${BETA}
@@ -108,7 +110,7 @@ background_verbose = 2
 P_k_max_h/Mpc = 10.0
 z_pk = 0
 write parameters = yes
-root = output/unified_${TAG}_
+root = ${OUTPUT_DIR}/unified_${TAG}_
 
 # Precision (standard)
 tol_background_integration = 1e-6
@@ -127,7 +129,7 @@ EOF
         echo "  ✓ SUCCESS (${DURATION}s)" | tee -a "$LOG_FILE"
         
         # Check output files
-        BG_FILE="$REPO_ROOT/phase2/class/output/unified_${TAG}_00_background.dat"
+        BG_FILE="$OUTPUT_DIR/unified_${TAG}_00_background.dat"
         if [ -f "$BG_FILE" ]; then
             # Extract final Ridder fraction
             LAST_LINE=$(grep -v "^#" "$BG_FILE" | tail -1)
@@ -141,7 +143,7 @@ EOF
         fi
         
         # Check for CMB output
-        CL_FILE="$REPO_ROOT/phase2/class/output/unified_${TAG}_00_cl.dat"
+        CL_FILE="$OUTPUT_DIR/unified_${TAG}_00_cl.dat"
         if [ -f "$CL_FILE" ]; then
             echo "  CMB spectra: ✓" | tee -a "$LOG_FILE"
         else
