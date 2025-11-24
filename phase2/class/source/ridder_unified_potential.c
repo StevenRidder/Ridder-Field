@@ -139,6 +139,9 @@ static double dW_EDE_dtheta(double theta, const struct ridder_unified_params *rp
 
 /**
  * Shelf potential (EDE bump)
+ * 
+ * AxiCLASS form: V = m² f² [1-cos(theta)]^n × W(theta)
+ * where m = m_axion × H0, f = f_axion × M_Pl
  */
 double V_shelf_theta(double theta, const struct ridder_unified_params *rp) {
   if (rp->use_shelf == _FALSE_) return 0.0;
@@ -149,10 +152,14 @@ double V_shelf_theta(double theta, const struct ridder_unified_params *rp) {
   double one_minus_cos = 1.0 - cos(theta);
   if (one_minus_cos <= 0.0) return 0.0;
   
-  double Lambda4 = pow(rp->Lambda_EDE, 4.0);
+  /* AxiCLASS form: V = m² f² [1-cos]^n */
+  double m_eV = rp->m_eV;  /* pre-computed: m_axion * H0 */
+  double f_eV = rp->f_eV;  /* pre-computed: f_axion * M_Pl */
+  
+  double m2f2 = m_eV * m_eV * f_eV * f_eV;
   double base = pow(one_minus_cos, rp->n_EDE);
   
-  return Lambda4 * W * base;
+  return m2f2 * W * base;
 }
 
 /**
@@ -169,13 +176,17 @@ double dV_shelf_dtheta(double theta, const struct ridder_unified_params *rp) {
   
   double s = sin(theta);
   double n = rp->n_EDE;
-  double Lambda4 = pow(rp->Lambda_EDE, 4.0);
+  
+  /* AxiCLASS form: dV/dtheta for V = m² f² [1-cos]^n × W */
+  double m_eV = rp->m_eV;
+  double f_eV = rp->f_eV;
+  double m2f2 = m_eV * m_eV * f_eV * f_eV;
   
   double base = pow(one_minus_cos, n);
   double dbase = n * pow(one_minus_cos, n - 1.0) * s;
   
   /* Product rule: d(W * base) = dW * base + W * dbase */
-  double dV = Lambda4 * (dW * base + W * dbase);
+  double dV = m2f2 * (dW * base + W * dbase);
   
   return dV;
 }
@@ -315,11 +326,23 @@ double d2V_plateau_dtheta2(double theta, const struct ridder_unified_params *rp)
  * Total potential: V(θ) = V_tail + V_shelf + V_plateau
  */
 double V_unified_theta(double theta, const struct ridder_unified_params *rp) {
+  static int call_count = 0;
   double V = 0.0;
   
-  if (rp->use_tail)    V += V_tail_theta(theta, rp);
-  if (rp->use_shelf)   V += V_shelf_theta(theta, rp);
-  if (rp->use_plateau) V += V_plateau_theta(theta, rp);
+  double V_tail_val = 0.0, V_shelf_val = 0.0, V_plateau_val = 0.0;
+  
+  if (rp->use_tail)    { V_tail_val = V_tail_theta(theta, rp); V += V_tail_val; }
+  if (rp->use_shelf)   { V_shelf_val = V_shelf_theta(theta, rp); V += V_shelf_val; }
+  if (rp->use_plateau) { V_plateau_val = V_plateau_theta(theta, rp); V += V_plateau_val; }
+  
+  /* Debug: print every 1000 calls */
+  if (call_count % 1000 == 0) {
+    printf("V_UNIFIED_DEBUG [call %d]: theta=%e, use_tail=%d, use_shelf=%d, use_plateau=%d\n",
+           call_count, theta, rp->use_tail, rp->use_shelf, rp->use_plateau);
+    printf("  V_tail=%e, V_shelf=%e, V_plateau=%e, V_total=%e\n",
+           V_tail_val, V_shelf_val, V_plateau_val, V);
+  }
+  call_count++;
   
   return V;
 }

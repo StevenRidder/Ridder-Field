@@ -3495,6 +3495,9 @@ int input_read_parameters_species(struct file_content * pfc,
       
       /* Shelf (EDE) parameters */
       class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE);
+      /* AxiCLASS-style parameters (preferred over Lambda) */
+      class_read_double("ridder_m_axion", pba->ridder_unified.m_axion);  /* in H0 units */
+      class_read_double("ridder_f_axion", pba->ridder_unified.f_axion);  /* in M_Pl units */
       class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
       class_read_double("ridder_theta_EDE_low", pba->ridder_unified.theta_EDE_low);
       class_read_double("ridder_theta_EDE_high", pba->ridder_unified.theta_EDE_high);

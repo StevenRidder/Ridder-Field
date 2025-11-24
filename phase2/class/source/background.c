@@ -1229,8 +1229,29 @@ int background_indices(
   if (pba->varconst_dep != varconst_none)
     pba->has_varconst = _TRUE_;
     
+  /* Ridder field can be enabled by EITHER v2 Lambda OR unified mode */
   if (pba->Lambda_EDE_ridder > 0.0)
     pba->has_ridder = _TRUE_;
+  if (pba->ridder_unified.model_type == ridder_model_unified)
+    pba->has_ridder = _TRUE_;
+  
+  /* Initialize m_eV and f_eV for AxiCLASS-style unified potential */
+  if (pba->has_ridder == _TRUE_ && pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Physical constants */
+    double M_Pl_eV = 2.435e27;  /* Reduced Planck mass in eV */
+    
+    /* Compute m and f in eV from dimensionless parameters */
+    pba->ridder_unified.m_eV = pba->ridder_unified.m_axion * pba->H0 * 1e5 / _c_;  /* m_axion * H0 in eV */
+    pba->ridder_unified.f_eV = pba->ridder_unified.f_axion * M_Pl_eV;              /* f_axion * M_Pl in eV */
+    
+    printf("RIDDER UNIFIED INIT: m_axion=%e (H0 units), f_axion=%e (M_Pl units)\n",
+           pba->ridder_unified.m_axion, pba->ridder_unified.f_axion);
+    printf("  -> m_eV=%e eV, f_eV=%e eV\n",
+           pba->ridder_unified.m_eV, pba->ridder_unified.f_eV);
+    printf("  -> V_scale = m²f² ~ %e eV^4\n",
+           pba->ridder_unified.m_eV * pba->ridder_unified.m_eV * 
+           pba->ridder_unified.f_eV * pba->ridder_unified.f_eV);
+  }
   
   /* Debug knobs for Ridder field are initialized by input.c with defaults:
    *   ridder_force_damping = 1.0 (physical evolution)
@@ -1239,7 +1260,7 @@ int background_indices(
    */
   
   /* DEBUG: Print Ridder parameters */
-  printf("RIDDER DEBUG (background_init): has_ridder=%d, Lambda_EDE_ridder=%e, f_axion_ridder=%e, theta_i_ridder=%e, beta_ridder=%e\n",
+  printf("RIDDER DEBUG (background_init): has_ridder=%d, Lambda_EDE_ridder=%e, f_axion_ridder=%e, theta_i_ridder=%e, beta_ridder=%e\n",                         
          pba->has_ridder,
          pba->Lambda_EDE_ridder,
          pba->f_axion_ridder,

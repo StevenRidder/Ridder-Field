@@ -43,7 +43,11 @@ struct ridder_unified_params {
   double n_tail;         /**< power for [1 - cos(theta)]^n_tail */
   
   /* Shelf (EDE bump) */
-  double Lambda_EDE;     /**< EDE amplitude [eV] */
+  double Lambda_EDE;     /**< EDE amplitude [eV] - LEGACY, use m_axion/f_axion instead */
+  double m_axion;        /**< axion mass in units of H0 (AxiCLASS style) */
+  double f_axion;        /**< axion decay constant in units of M_Pl (AxiCLASS style) */
+  double m_eV;           /**< computed: m_axion * H0 in eV */
+  double f_eV;           /**< computed: f_axion * M_Pl in eV */
   double n_EDE;          /**< power for shelf term */
   double theta_EDE_low;  /**< lower edge of shelf window in theta space */
   double theta_EDE_high; /**< upper edge of shelf window */
