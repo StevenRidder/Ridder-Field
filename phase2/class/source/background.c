@@ -995,6 +995,23 @@ int background_init(
   printf("BG_INIT: background_solve OK\n");
   }
 
+  /** - Report final Ridder fraction for calibration/shooting */
+  if (pba->has_ridder == _TRUE_) {
+    /* Get today's values (last entry in background table) */
+    int last_index = pba->bt_size - 1;
+    double rho_ridder_today = pba->background_table[last_index * pba->bg_size + pba->index_bg_rho_ridder];
+    double rho_tot_today = pba->background_table[last_index * pba->bg_size + pba->index_bg_rho_tot];
+    double f_ridder_today = (rho_tot_today > 0.0) ? rho_ridder_today / rho_tot_today : 0.0;
+    
+    printf("\n========================================\n");
+    printf("RIDDER FINAL STATE (a=1, z=0):\n");
+    printf("  rho_ridder = %.6e Mpc^-2\n", rho_ridder_today);
+    printf("  rho_tot    = %.6e Mpc^-2\n", rho_tot_today);
+    printf("  f_ridder   = %.6e (fraction of total)\n", f_ridder_today);
+    printf("  Omega_ridder = %.6f (if f ~ Omega_Lambda)\n", f_ridder_today);
+    printf("========================================\n\n");
+  }
+
   /** - find and store a few derived parameters at radiation-matter equality */
   class_call(background_find_equality(ppr,pba),
              pba->error_message,
