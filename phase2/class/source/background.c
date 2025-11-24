@@ -3753,6 +3753,24 @@ static int background_shoot_Lambda(
         printf("Lambda shooting converged: Lambda=%.3e eV → f_EDE=%.4f at z=%.0f\n",
                pba->Lambda_EDE_ridder, fMid, zMid);
       }
+      
+      /* Lightweight sanity check: verify final result is still within reasonable tolerance */
+      double f_final_check, z_final_check;
+      class_call(background_ridder_measure_peak(pba, z_min, z_max, 
+                                                 &f_final_check, &z_final_check),
+                 pba->error_message,
+                 pba->error_message);
+      
+      double final_diff = fabs(f_final_check - pba->ridder_fEDE_target);
+      if (final_diff > 5.0 * tol_f) {
+        /* Soft failure: warn but do not crash */
+        fprintf(stdout,
+                "RIDDER_SHOOT warning: final f_peak=%.5f differs from target=%.5f by %.5f "
+                "(>5*tol=%.5f) at z=%.1f. Check bracket or tolerance.\n",
+                f_final_check, pba->ridder_fEDE_target, final_diff, 
+                5.0 * tol_f, z_final_check);
+      }
+      
       return _SUCCESS_;
     }
     
