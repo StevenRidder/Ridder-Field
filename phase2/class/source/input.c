@@ -3355,7 +3355,35 @@ int input_read_parameters_species(struct file_content * pfc,
   }
 
   /** 8.c) Ridder field (RC-X* model) parameters */
-  /* Read Ridder field parameters (always read, even if Lambda_EDE_ridder = 0) */
+  
+  /* STEP 1: Read new-style model selector FIRST (before Lambda check) */
+  class_call(parser_read_string(pfc,
+                                "ridder_model_type",
+                                &string1,
+                                &flag1,
+                                errmsg),
+             errmsg,
+             errmsg);
+  
+  if (flag1 == _TRUE_) {
+    if ((strcmp(string1, "unified") == 0) || (strcmp(string1, "UNIFIED") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_unified;
+      pba->has_ridder = _TRUE_;  /* unified mode always turns on Ridder */
+      printf("DEBUG: Ridder model_type = UNIFIED, has_ridder set to TRUE\n");
+    }
+    else if ((strcmp(string1, "simple_ede") == 0) || (strcmp(string1, "SIMPLE_EDE") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_simple_ede;
+      printf("DEBUG: Ridder model_type = SIMPLE_EDE\n");
+      /* has_ridder may still be set by Lambda_EDE_ridder below */
+    }
+    else {
+      class_stop(errmsg,
+        "Unknown ridder_model_type='%s'. Allowed: 'simple_ede' or 'unified'.",
+        string1);
+    }
+  }
+  
+  /* STEP 2: Read v2 parameters (always read for backwards compatibility) */
   class_read_double("Lambda_EDE_ridder",pba->Lambda_EDE_ridder);
   class_read_double("f_axion_ridder",pba->f_axion_ridder);
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
@@ -3381,17 +3409,16 @@ int input_read_parameters_species(struct file_content * pfc,
   printf("INPUT_READ: ridder_freeze_phi = %d _TRUE_=%d (after class_read_flag)\n", 
          pba->ridder_freeze_phi, _TRUE_);
   
-  /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
+  /* STEP 3: Legacy v2 trigger - if Lambda_EDE_ridder > 0, enable Ridder */
   if (pba->Lambda_EDE_ridder > 0.0) {
     pba->has_ridder = _TRUE_;
-    printf("DEBUG: Ridder field ENABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+    printf("DEBUG: Ridder field ENABLED via Lambda_EDE_ridder = %e\n", pba->Lambda_EDE_ridder);
     if (input_verbose > 0) {
       printf(" -> Ridder field enabled: Lambda_EDE = %.3e eV, f = %.3e eV, theta_i = %.3f, beta = %.3f\n",
              pba->Lambda_EDE_ridder, pba->f_axion_ridder, pba->theta_i_ridder, pba->beta_ridder);
     }
-  } else {
-    pba->has_ridder = _FALSE_;
-    printf("DEBUG: Ridder field DISABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+  } else if (pba->has_ridder == _FALSE_) {
+    printf("DEBUG: Ridder field DISABLED. Lambda = %e, model_type not set to unified\n", pba->Lambda_EDE_ridder);
   }
   
   /* Read unified potential parameters */
@@ -3448,6 +3475,44 @@ int input_read_parameters_species(struct file_content * pfc,
       if (input_verbose > 0) {
         printf(" -> Warning: |beta_ridder| = %.3f is large, may violate constraints\n", pba->beta_ridder);
       }
+    }
+    
+    /* STEP 4: Read unified-specific parameters if in unified mode */
+    if (pba->ridder_unified.model_type == ridder_model_unified) {
+      printf("\nDEBUG: Reading unified potential parameters...\n");
+      
+      /* Global field properties */
+      class_read_double("ridder_f", pba->ridder_unified.f);
+      
+      /* Component toggles */
+      class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+      class_read_flag("ridder_use_shelf", pba->ridder_unified.use_shelf);
+      class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
+      
+      /* Tail parameters */
+      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+      class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+      
+      /* Shelf (EDE) parameters */
+      class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE);
+      class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+      class_read_double("ridder_theta_EDE_low", pba->ridder_unified.theta_EDE_low);
+      class_read_double("ridder_theta_EDE_high", pba->ridder_unified.theta_EDE_high);
+      class_read_double("ridder_sigma_theta_EDE", pba->ridder_unified.sigma_theta_EDE);
+      
+      /* Plateau (inflation) parameters */
+      class_read_double("ridder_Lambda_inf_eV", pba->ridder_unified.Lambda_inf);
+      class_read_double("ridder_theta0_inf", pba->ridder_unified.theta0_inf);
+      class_read_double("ridder_theta_inf_on", pba->ridder_unified.theta_inf_on);
+      class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
+      class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
+      
+      printf("DEBUG: Unified parameters read successfully:\n");
+      printf("  f = %e eV\n", pba->ridder_unified.f);
+      printf("  use_tail=%d, use_shelf=%d, use_plateau=%d\n",
+             pba->ridder_unified.use_tail, pba->ridder_unified.use_shelf, pba->ridder_unified.use_plateau);
+      printf("  Lambda_EDE = %e eV, theta_low = %e, theta_high = %e\n",
+             pba->ridder_unified.Lambda_EDE, pba->ridder_unified.theta_EDE_low, pba->ridder_unified.theta_EDE_high);
     }
   }
 
