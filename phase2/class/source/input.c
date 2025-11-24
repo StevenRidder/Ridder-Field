@@ -3481,6 +3481,15 @@ int input_read_parameters_species(struct file_content * pfc,
     if (pba->ridder_unified.model_type == ridder_model_unified) {
       printf("\nDEBUG: Reading unified potential parameters...\n");
       
+      /* Initialize shooting defaults */
+      pba->ridder_unified.use_shooting_EDE = _FALSE_;
+      pba->ridder_unified.f_EDE_target = 0.13;
+      pba->ridder_unified.z_c_target = 3000.0;
+      pba->ridder_unified.shooting_m_min = 1.0e2;
+      pba->ridder_unified.shooting_m_max = 1.0e6;
+      pba->ridder_unified.shooting_tolerance = 1.0e-3;
+      pba->ridder_unified.shooting_max_iterations = 30;
+      
       /* Global field properties */
       class_read_double("ridder_f", pba->ridder_unified.f);
       
@@ -3509,6 +3518,19 @@ int input_read_parameters_species(struct file_content * pfc,
       class_read_double("ridder_theta_inf_on", pba->ridder_unified.theta_inf_on);
       class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
       class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
+      
+      /* Shooting mechanism for EDE calibration */
+      class_read_flag("ridder_use_shooting_EDE", pba->ridder_unified.use_shooting_EDE);
+      class_read_double("ridder_f_EDE_target", pba->ridder_unified.f_EDE_target);
+      class_read_double("ridder_z_c_target", pba->ridder_unified.z_c_target);
+      class_read_double("ridder_shooting_m_min", pba->ridder_unified.shooting_m_min);
+      class_read_double("ridder_shooting_m_max", pba->ridder_unified.shooting_m_max);
+      class_read_double("ridder_shooting_tolerance", pba->ridder_unified.shooting_tolerance);
+      class_read_int("ridder_shooting_max_iterations", pba->ridder_unified.shooting_max_iterations);
+      
+      printf("DEBUG: Shooting parameters read: use_shooting=%d, f_EDE_target=%.4f, z_c=%.1f\n",
+             pba->ridder_unified.use_shooting_EDE, pba->ridder_unified.f_EDE_target, 
+             pba->ridder_unified.z_c_target);
       
       printf("DEBUG: Unified parameters read successfully:\n");
       printf("  f = %e eV\n", pba->ridder_unified.f);

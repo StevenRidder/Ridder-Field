@@ -989,12 +989,35 @@ int background_init(
 
   /** - Report Ridder freeze flag from input */
   if (pba->has_ridder == _TRUE_) {
-    printf("RIDDER FREEZE FLAG (from input): ridder_freeze_phi = %d, force_damping = %.3e\n", 
+    printf("RIDDER FREEZE FLAG (from input): ridder_freeze_phi = %d, force_damping = %.3e\n",                                                                   
            pba->ridder_freeze_phi, pba->ridder_force_damping);
   }
 
-  /** - Ridder EDE shooting: adjust Lambda_EDE_ridder to hit target f_EDE */
-  if (pba->has_ridder == _TRUE_ && pba->use_ridder_shooting == _TRUE_) {
+  /** - Unified EDE shooting: adjust m_axion to hit target f_EDE (AxiCLASS-style) */
+  printf("DEBUG SHOOTING CHECK: has_ridder=%d, model_type=%d (unified=%d), use_shooting_EDE=%d\n",
+         pba->has_ridder, pba->ridder_unified.model_type, ridder_model_unified,
+         pba->ridder_unified.use_shooting_EDE);
+  
+  if (pba->has_ridder == _TRUE_ &&
+      pba->ridder_unified.model_type == ridder_model_unified &&
+      pba->ridder_unified.use_shooting_EDE == _TRUE_) {
+    
+    printf("\n🎯 UNIFIED EDE SHOOTING ENABLED\n");
+    
+    class_call(ridder_shoot_for_fEDE(ppr, pba, pba->error_message),
+               pba->error_message,
+               pba->error_message);
+    
+    /* Shooting complete: m_axion is calibrated.
+       Now run final background_solve with calibrated parameters. */
+    printf("BG_INIT: Running final background_solve with calibrated m_axion...\n");
+    class_call(background_solve(ppr,pba),
+               pba->error_message,
+               pba->error_message);
+    printf("BG_INIT: Final background_solve OK\n");
+  }
+  /** - Ridder EDE shooting (old v2 system): adjust Lambda_EDE_ridder to hit target f_EDE */
+  else if (pba->has_ridder == _TRUE_ && pba->use_ridder_shooting == _TRUE_) {
     
     if (pba->background_verbose > 0) {
       printf("\nRidder Lambda shooting enabled: target f_EDE = %.4f\n", pba->ridder_fEDE_target);
@@ -2111,6 +2134,211 @@ int background_checks(
   }
 
   return _SUCCESS_;
+}
+
+/**
+ * ============================================================================
+ * RIDDER FIELD SHOOTING MECHANISM
+ * ============================================================================
+ * Calibrate m_axion to hit target f_EDE at specified redshift z_c
+ */
+
+/**
+ * Find peak f_ridder in redshift range by scanning background table
+ */
+static int ridder_get_f_peak(
+  struct background *pba,
+  double z_min,
+  double z_max,
+  double *f_peak_out,
+  double *z_peak_out
+) {
+  int i_sample, n_samples;
+  double z, log_z_min, log_z_max, log_z;
+  double f_ridder, f_max;
+  double z_at_max;
+  double *pvecback;
+  int last_index;
+  
+  /* Allocate background vector */
+  pvecback = malloc(pba->bg_size * sizeof(double));
+  if (pvecback == NULL) return _FAILURE_;
+  
+  f_max = 0.0;
+  z_at_max = 0.0;
+  n_samples = 500;  /* Sample 500 points */
+  
+  log_z_min = log(z_min);
+  log_z_max = log(z_max);
+  
+  /* Scan redshift range logarithmically */
+  for (i_sample = 0; i_sample < n_samples; i_sample++) {
+    log_z = log_z_min + (log_z_max - log_z_min) * i_sample / (n_samples - 1.0);
+    z = exp(log_z);
+    
+    /* Get background at this z */
+    if (background_at_z(pba, z, normal_info, inter_normal, &last_index, pvecback) == _SUCCESS_) {
+      /* Extract f_ridder */
+      if (pba->has_ridder == _TRUE_) {
+        double rho_ridder = pvecback[pba->index_bg_rho_ridder];
+        double rho_crit = pvecback[pba->index_bg_rho_crit];
+        f_ridder = rho_ridder / rho_crit;
+        
+        if (f_ridder > f_max) {
+          f_max = f_ridder;
+          z_at_max = z;
+        }
+      }
+    }
+  }
+  
+  free(pvecback);
+  
+  *f_peak_out = f_max;
+  *z_peak_out = z_at_max;
+  
+  return _SUCCESS_;
+}
+
+/**
+ * Bisection shooting solver for m_axion
+ */
+int ridder_shoot_for_fEDE(
+  struct precision *ppr,
+  struct background *pba,
+  char errmsg[_MAX_LENGTH_]
+) {
+  double m_low, m_high, m_mid;
+  double f_low, f_high, f_mid;
+  double z_peak_low, z_peak_high, z_peak_mid;
+  int iteration;
+  double f_target, z_target;
+  double tolerance;
+  int max_iter;
+  double z_search_min, z_search_max;
+  double M_Pl_eV;
+  
+  /* Extract shooting parameters */
+  f_target = pba->ridder_unified.f_EDE_target;
+  z_target = pba->ridder_unified.z_c_target;
+  m_low = pba->ridder_unified.shooting_m_min;
+  m_high = pba->ridder_unified.shooting_m_max;
+  tolerance = pba->ridder_unified.shooting_tolerance;
+  max_iter = pba->ridder_unified.shooting_max_iterations;
+  
+  /* Search range for peak: factor of 10 around z_target */
+  z_search_min = z_target / 10.0;
+  z_search_max = z_target * 10.0;
+  
+  M_Pl_eV = 2.435e27;
+  
+  printf("\n");
+  printf("================================================================================\n");
+  printf("RIDDER SHOOTING: Calibrating m_axion for f_EDE = %.4f at z_c ~ %.1f\n", f_target, z_target);
+  printf("================================================================================\n");
+  printf("  Bracket: m_axion ∈ [%.2e, %.2e] H0\n", m_low, m_high);
+  printf("  Fixed: f_axion = %.4f M_Pl, theta_i = %.4f, n = %.1f\n",
+         pba->ridder_unified.f_axion, pba->theta_i_ridder, pba->ridder_unified.n_EDE);
+  printf("  Tolerance: %.2e, Max iterations: %d\n", tolerance, max_iter);
+  printf("--------------------------------------------------------------------------------\n");
+  
+  /* === Evaluate lower bracket === */
+  printf("\n[BRACKET] Testing m_low = %.4e H0...\n", m_low);
+  pba->ridder_unified.m_axion = m_low;
+  pba->ridder_unified.m_eV = m_low * pba->H0 * 1e5 / _c_;
+  pba->ridder_unified.f_eV = pba->ridder_unified.f_axion * M_Pl_eV;
+  
+  if (background_solve(ppr, pba) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: background_solve failed for m_low = %.2e H0", m_low);
+  }
+  if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_low, &z_peak_low) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: could not find f_peak for m_low");
+  }
+  printf("          → f_EDE = %.5f at z_peak = %.1f\n", f_low, z_peak_low);
+  
+  /* === Evaluate upper bracket === */
+  printf("\n[BRACKET] Testing m_high = %.4e H0...\n", m_high);
+  pba->ridder_unified.m_axion = m_high;
+  pba->ridder_unified.m_eV = m_high * pba->H0 * 1e5 / _c_;
+  
+  if (background_solve(ppr, pba) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: background_solve failed for m_high = %.2e H0", m_high);
+  }
+  if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_high, &z_peak_high) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: could not find f_peak for m_high");
+  }
+  printf("          → f_EDE = %.5f at z_peak = %.1f\n", f_high, z_peak_high);
+  
+  /* === Check bracketing === */
+  if ((f_low - f_target) * (f_high - f_target) > 0.0) {
+    class_stop(errmsg,
+               "\nShooting failed: target f_EDE = %.4f NOT bracketed by [%.4f, %.4f].\n"
+               "Adjust ridder_shooting_m_min/max in .ini file.",
+               f_target, f_low, f_high);
+  }
+  
+  printf("\n✓ Target is bracketed. Starting bisection...\n");
+  printf("--------------------------------------------------------------------------------\n");
+  
+  /* === Bisection loop === */
+  for (iteration = 1; iteration <= max_iter; iteration++) {
+    /* Midpoint */
+    m_mid = 0.5 * (m_low + m_high);
+    
+    /* Evaluate at midpoint */
+    pba->ridder_unified.m_axion = m_mid;
+    pba->ridder_unified.m_eV = m_mid * pba->H0 * 1e5 / _c_;
+    
+    if (background_solve(ppr, pba) == _FAILURE_) {
+      class_stop(errmsg, "Shooting iteration %d failed: background_solve failed for m = %.2e H0",
+                 iteration, m_mid);
+    }
+    if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_mid, &z_peak_mid) == _FAILURE_) {
+      class_stop(errmsg, "Shooting iteration %d failed: could not find f_peak", iteration);
+    }
+    
+    printf("[%2d]  m = %.5e H0  →  f_EDE = %.6f  (Δ = %+.2e)  at  z = %.1f\n",
+           iteration, m_mid, f_mid, f_mid - f_target, z_peak_mid);
+    
+    /* Check convergence */
+    if (fabs(f_mid - f_target) < tolerance) {
+      printf("--------------------------------------------------------------------------------\n");
+      printf("✅ SHOOTING CONVERGED in %d iterations!\n", iteration);
+      printf("================================================================================\n");
+      printf("  Final m_axion = %.6e H0\n", m_mid);
+      printf("  Final m_eV    = %.6e eV\n", pba->ridder_unified.m_eV);
+      printf("  Final f_EDE   = %.6f  (target: %.6f, error: %.2e)\n",
+             f_mid, f_target, f_mid - f_target);
+      printf("  Peak at z     = %.2f  (target: %.2f)\n", z_peak_mid, z_target);
+      printf("================================================================================\n\n");
+      
+      /* m_axion and m_eV already set */
+      return _SUCCESS_;
+    }
+    
+    /* Update bracket */
+    if ((f_mid - f_target) * (f_low - f_target) < 0.0) {
+      /* Root between m_low and m_mid */
+      m_high = m_mid;
+      f_high = f_mid;
+      z_peak_high = z_peak_mid;
+    } else {
+      /* Root between m_mid and m_high */
+      m_low = m_mid;
+      f_low = f_mid;
+      z_peak_low = z_peak_mid;
+    }
+  }
+  
+  /* Max iterations reached without convergence */
+  printf("--------------------------------------------------------------------------------\n");
+  class_stop(errmsg,
+             "\n❌ SHOOTING DID NOT CONVERGE after %d iterations.\n"
+             "   Final error: Δf = %.2e (tolerance: %.2e)\n"
+             "   Try increasing ridder_shooting_max_iterations or widening tolerance.",
+             max_iter, f_mid - f_target, tolerance);
+  
+  return _FAILURE_;
 }
 
 /**

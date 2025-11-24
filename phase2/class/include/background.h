@@ -53,6 +53,15 @@ struct ridder_unified_params {
   double theta_EDE_high; /**< upper edge of shelf window */
   double sigma_theta_EDE;/**< smoothing width of shelf window */
   
+  /* Shooting mechanism for EDE calibration */
+  short use_shooting_EDE;        /**< Enable shooting to hit f_EDE target */
+  double f_EDE_target;           /**< Target EDE fraction (e.g., 0.13) */
+  double z_c_target;             /**< Target redshift for EDE peak */
+  double shooting_m_min;         /**< Min m_axion for bisection (H0 units) */
+  double shooting_m_max;         /**< Max m_axion for bisection (H0 units) */
+  double shooting_tolerance;     /**< Tolerance on f_EDE (default 1e-3) */
+  int shooting_max_iterations;   /**< Max bisection iterations (default 50) */
+  
   /* Inflationary plateau */
   double Lambda_inf;     /**< inflation energy scale [eV] */
   double theta0_inf;     /**< scale where plateau rises */
