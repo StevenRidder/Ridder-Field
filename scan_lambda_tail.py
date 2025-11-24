@@ -71,9 +71,17 @@ tol_background_integration = 1e-5
     
     return H0, S8, Omega_m
 
-# Scan Lambda_tail
+# Scan Lambda_tail - tighter grid around baseline
 baseline = 1.6e-3
-lambdas = [baseline * 0.8, baseline * 0.9, baseline, baseline * 1.1, baseline * 1.2]
+lambdas = [
+    baseline * 0.80,  # 1.28 meV
+    baseline * 0.90,  # 1.44 meV
+    baseline * 0.95,  # 1.52 meV
+    baseline * 1.00,  # 1.60 meV (baseline)
+    baseline * 1.05,  # 1.68 meV
+    baseline * 1.10,  # 1.76 meV
+    baseline * 1.20,  # 1.92 meV
+]
 
 print("=" * 70)
 print("LAMBDA_TAIL SCAN - Robustness Check")
