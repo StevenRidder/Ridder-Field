@@ -40,6 +40,7 @@ struct ridder_unified_params {
   
   /* Tail (late-time dark energy) */
   double Lambda_tail;    /**< energy scale for tail term [eV] */
+  double alpha_tail;      /**< modulation strength for tail, default 1.0 */
   double n_tail;         /**< power for [1 - cos(theta)]^n_tail */
   
   /* Shelf (EDE bump) */

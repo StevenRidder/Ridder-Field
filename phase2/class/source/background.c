@@ -1265,15 +1265,15 @@ int background_indices(
     
     /* Compute m and f in eV from dimensionless parameters */
     pba->ridder_unified.m_eV = pba->ridder_unified.m_axion * pba->H0 * 1e5 / _c_;  /* m_axion * H0 in eV */
-    pba->ridder_unified.f_eV = pba->ridder_unified.f_axion * M_Pl_eV;              /* f_axion * M_Pl in eV */
+    if (pba->ridder_unified.f_axion > 0.0) pba->ridder_unified.f = pba->ridder_unified.f_axion * M_Pl_eV;  /* only if f_axion set */
     
     printf("RIDDER UNIFIED INIT: m_axion=%e (H0 units), f_axion=%e (M_Pl units)\n",
            pba->ridder_unified.m_axion, pba->ridder_unified.f_axion);
     printf("  -> m_eV=%e eV, f_eV=%e eV\n",
-           pba->ridder_unified.m_eV, pba->ridder_unified.f_eV);
+           pba->ridder_unified.m_eV, pba->ridder_unified.f);
     printf("  -> V_scale = m²f² ~ %e eV^4\n",
            pba->ridder_unified.m_eV * pba->ridder_unified.m_eV * 
-           pba->ridder_unified.f_eV * pba->ridder_unified.f_eV);
+           pba->ridder_unified.f * pba->ridder_unified.f_eV);
   }
   
   /* Debug knobs for Ridder field are initialized by input.c with defaults:
@@ -2253,7 +2253,7 @@ int ridder_shoot_for_fEDE(
   printf("\n[BRACKET] Testing m_low = %.4e H0...\n", m_low);
   pba->ridder_unified.m_axion = m_low;
   pba->ridder_unified.m_eV = m_low * pba->H0 * 1e5 / _c_;
-  pba->ridder_unified.f_eV = pba->ridder_unified.f_axion * M_Pl_eV;
+  if (pba->ridder_unified.f_axion > 0.0) pba->ridder_unified.f = pba->ridder_unified.f_axion * M_Pl_eV;
   
   if (background_solve(ppr, pba) == _FAILURE_) {
     class_stop(errmsg, "Shooting failed: background_solve failed for m_low = %.2e H0", m_low);
@@ -2793,7 +2793,7 @@ int background_initial_conditions(
     /* 1. Initial field value: displaced by angle theta_i */
     /* BUG FIX #15: Branch on model type for correct f parameter */
     double f_for_ic = (pba->ridder_unified.model_type == ridder_model_unified) 
-                      ? pba->ridder_unified.f_eV 
+                      ? pba->ridder_unified.f 
                       : pba->f_axion_ridder;
     
     double phi_ridder_ini = f_for_ic * pba->theta_i_ridder;

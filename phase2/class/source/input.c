@@ -3441,6 +3441,7 @@ int input_read_parameters_species(struct file_content * pfc,
     
     /* Tail parameters */
     class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+    class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
     class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
     
     /* Shelf (EDE) parameters */
@@ -3500,6 +3501,7 @@ int input_read_parameters_species(struct file_content * pfc,
       
       /* Tail parameters */
       class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+      class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
       class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
       
       /* Shelf (EDE) parameters */
@@ -6174,6 +6176,7 @@ int input_default_params(struct background *pba,
   
   /* Tail defaults (late DE) */
   pba->ridder_unified.Lambda_tail = 2.3e-3;  /**< ~meV scale for Omega_Lambda */
+  pba->ridder_unified.alpha_tail = 1.0;  /**< default modulation strength */
   pba->ridder_unified.n_tail = 3.0;
   
   /* Shelf defaults (EDE) - match v2 optimal */

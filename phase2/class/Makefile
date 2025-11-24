@@ -22,7 +22,7 @@ vpath .base build
 CC       = gcc
 #CC       = icc
 #CC       = pgcc
-CPP      = g++ --std=c++11 -fpermissive -Wno-write-strings -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
+CPP      = g++ --std=c++11 -fpermissive -Wno-write-strings  
 
 # your tool for creating static libraries:
 AR        = ar rv
