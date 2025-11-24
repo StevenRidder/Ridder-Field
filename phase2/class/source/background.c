@@ -2181,8 +2181,15 @@ static int ridder_get_f_peak(
       /* Extract f_ridder */
       if (pba->has_ridder == _TRUE_) {
         double rho_ridder = pvecback[pba->index_bg_rho_ridder];
-        double rho_crit = pvecback[pba->index_bg_rho_crit];
-        f_ridder = rho_ridder / rho_crit;
+        double rho_tot = pvecback[pba->index_bg_rho_tot];
+        
+        /* DEBUG: print values at a few sample points */
+        if (i_sample % 100 == 0) {
+          printf("  [f_peak scan] z=%.3e rho_ridder=%.3e rho_tot=%.3e f=%.6e\n",
+                 z, rho_ridder, rho_tot, rho_ridder/rho_tot);
+        }
+        
+        f_ridder = rho_ridder / rho_tot;
         
         if (f_ridder > f_max) {
           f_max = f_ridder;
@@ -2206,7 +2213,7 @@ static int ridder_get_f_peak(
 int ridder_shoot_for_fEDE(
   struct precision *ppr,
   struct background *pba,
-  char errmsg[_MAX_LENGTH_]
+  ErrorMsg errmsg
 ) {
   double m_low, m_high, m_mid;
   double f_low, f_high, f_mid;
@@ -2227,8 +2234,8 @@ int ridder_shoot_for_fEDE(
   max_iter = pba->ridder_unified.shooting_max_iterations;
   
   /* Search range for peak: factor of 10 around z_target */
-  z_search_min = z_target / 10.0;
-  z_search_max = z_target * 10.0;
+  z_search_min = 1.0;  /* Search full range */
+  z_search_max = 1.0e15;  /* To very high z */
   
   M_Pl_eV = 2.435e27;
   
@@ -2784,7 +2791,13 @@ int background_initial_conditions(
   if (pba->has_ridder == _TRUE_) {
     
     /* 1. Initial field value: displaced by angle theta_i */
-    double phi_ridder_ini = pba->f_axion_ridder * pba->theta_i_ridder;
+    /* BUG FIX #15: Branch on model type for correct f parameter */
+    double f_for_ic = (pba->ridder_unified.model_type == ridder_model_unified) 
+                      ? pba->ridder_unified.f_eV 
+                      : pba->f_axion_ridder;
+    
+    double phi_ridder_ini = f_for_ic * pba->theta_i_ridder;
+    
     pvecback_integration[pba->index_bi_phi_ridder] = phi_ridder_ini;
 
     /* 2. Temporarily set phi' = 0 so we can call background_functions to get H */
