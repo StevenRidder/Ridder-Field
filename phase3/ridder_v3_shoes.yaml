@@ -15,7 +15,7 @@ theory:
       non_linear: none
       
       # V3 Ridder configuration
-      use_ridder: yes
+      # V3 Ridder configuration (model_type enables the field automatically)
       ridder_model_type: v3_canon
       
       # EDE component - bump at origin, field starts displaced
