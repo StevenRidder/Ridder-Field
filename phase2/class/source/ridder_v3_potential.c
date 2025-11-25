@@ -78,63 +78,62 @@ static double V_EDE_v3(double theta, double a, const struct ridder_unified_param
   return Lambda4 * S * B;
 }
 
-static double dV_EDE_dtheta_v3(double theta, const struct ridder_unified_params *rp) {
+static double dV_EDE_dtheta_v3(double theta, double a, const struct ridder_unified_params *rp) {
   if (!rp->use_EDE) return 0.0;
   
   double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
-  double delta_theta = theta - rp->theta_E_center;
-  double sigma = rp->sigma_E;
-  double sigma2 = sigma * sigma;
-  double gaussian = exp(-0.5 * delta_theta * delta_theta / sigma2);
   
-  double one_minus_cos = 1.0 - cos(theta);
+  /* Time window S(a) - must be included in derivative! */
+  double S = S_time_window(a, rp->a_c, rp->sigma_lna);
+  if (S < 1e-100) return 0.0;  /* Guard against underflow */
+  
+  /* Field bump derivative: d/dtheta of B(theta) = (1 - cos(theta - theta_E))^n */
+  double delta_theta = theta - rp->theta_E_center;
+  double one_minus_cos = 1.0 - cos(delta_theta);
   if (one_minus_cos < 0.0) one_minus_cos = 0.0;
-  double s = sin(theta);
+  double s = sin(delta_theta);
   double n = rp->n_EDE;
   
-  double axion_shape = pow(one_minus_cos, n);
-  double daxion_shape = (one_minus_cos > 1e-30) ? n * pow(one_minus_cos, n - 1.0) * s : 0.0;
-  
-  /* Product rule: d/dtheta [gaussian * axion_shape] */
-  double dgaussian_dtheta = gaussian * (-delta_theta / sigma2);
-  
-  return Lambda4 * (dgaussian_dtheta * axion_shape + gaussian * daxion_shape);
-}
-
-static double d2V_EDE_dtheta2_v3(double theta, const struct ridder_unified_params *rp) {
-  if (!rp->use_EDE) return 0.0;
-  
-  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
-  double delta_theta = theta - rp->theta_E_center;
-  double sigma = rp->sigma_E;
-  double sigma2 = sigma * sigma;
-  double gaussian = exp(-0.5 * delta_theta * delta_theta / sigma2);
-  
-  double one_minus_cos = 1.0 - cos(theta);
-  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
-  double s = sin(theta);
-  double c = cos(theta);
-  double n = rp->n_EDE;
-  
-  double axion_shape = pow(one_minus_cos, n);
-  double daxion_shape = (one_minus_cos > 1e-30) ? n * pow(one_minus_cos, n - 1.0) * s : 0.0;
-  
-  /* Second derivative of axion shape */
-  double d2axion_shape = 0.0;
+  /* dB/dtheta = n * (1 - cos)^(n-1) * sin(delta_theta) */
+  double dB_dtheta = 0.0;
   if (one_minus_cos > 1e-30) {
-    double term1 = n * (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
-    double term2 = n * pow(one_minus_cos, n - 1.0) * c;
-    d2axion_shape = term1 + term2;
+    dB_dtheta = n * pow(one_minus_cos, n - 1.0) * s;
   }
   
-  /* Second derivative of Gaussian */
-  double dgaussian_dtheta = gaussian * (-delta_theta / sigma2);
-  double d2gaussian_dtheta2 = gaussian * (-1.0 / sigma2 + delta_theta * delta_theta / (sigma2 * sigma2));
+  return Lambda4 * S * dB_dtheta;
+}
+
+static double d2V_EDE_dtheta2_v3(double theta, double a, const struct ridder_unified_params *rp) {
+  if (!rp->use_EDE) return 0.0;
   
-  /* Product rule for second derivative */
-  return Lambda4 * (d2gaussian_dtheta2 * axion_shape 
-                    + 2.0 * dgaussian_dtheta * daxion_shape 
-                    + gaussian * d2axion_shape);
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  
+  /* Time window S(a) - must be included in derivative! */
+  double S = S_time_window(a, rp->a_c, rp->sigma_lna);
+  if (S < 1e-100) return 0.0;  /* Guard against underflow */
+  
+  /* Field bump second derivative: d2/dtheta2 of B(theta) = (1 - cos(theta - theta_E))^n */
+  double delta_theta = theta - rp->theta_E_center;
+  double one_minus_cos = 1.0 - cos(delta_theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  double s = sin(delta_theta);
+  double c = cos(delta_theta);
+  double n = rp->n_EDE;
+  
+  /* d2B/dtheta2 = n*(n-1)*(1-cos)^(n-2)*sin^2 + n*(1-cos)^(n-1)*cos */
+  double d2B_dtheta2 = 0.0;
+  if (one_minus_cos > 1e-30 && n >= 1.0) {
+    if (n >= 2.0) {
+      double term1 = n * (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
+      double term2 = n * pow(one_minus_cos, n - 1.0) * c;
+      d2B_dtheta2 = term1 + term2;
+    } else {
+      /* n = 1 case */
+      d2B_dtheta2 = c;
+    }
+  }
+  
+  return Lambda4 * S * d2B_dtheta2;
 }
 
 /* ======================================================================== */
@@ -242,7 +241,7 @@ double ridder_dV_v3_dtheta(double theta, double a, const struct ridder_unified_p
   double dV = 0.0;
   
   dV += dV_floor_dtheta_v3(rp);
-  dV += dV_EDE_dtheta_v3(theta, rp);
+  dV += dV_EDE_dtheta_v3(theta, a, rp);  /* Pass a for time window */
   dV += dV_tail_dtheta_v3(theta, rp);
   
   return dV;
@@ -255,7 +254,7 @@ double ridder_d2V_v3_dtheta2(double theta, double a, const struct ridder_unified
   double d2V = 0.0;
   
   d2V += d2V_floor_dtheta2_v3(rp);
-  d2V += d2V_EDE_dtheta2_v3(theta, rp);
+  d2V += d2V_EDE_dtheta2_v3(theta, a, rp);  /* Pass a for time window */
   d2V += d2V_tail_dtheta2_v3(theta, rp);
   
   return d2V;
