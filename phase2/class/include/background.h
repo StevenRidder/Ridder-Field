@@ -707,22 +707,22 @@ extern "C" {
 
   /** V3 canonical unified potential **/
   double ridder_V_v3_theta(
-                           double theta, 
+                           double theta, double a, 
                            const struct ridder_unified_params *rp
                            );
 
   double ridder_dV_v3_dtheta(
-                             double theta, 
+                             double theta, double a, 
                              const struct ridder_unified_params *rp
                              );
 
   double ridder_d2V_v3_dtheta2(
-                               double theta, 
+                               double theta, double a, 
                                const struct ridder_unified_params *rp
                                );
 
   int ridder_potential_v3(
-                          double phi, 
+                          double phi, double a, 
                           double *V, 
                           double *dV_dphi, 
                           double *d2V_dphi2,

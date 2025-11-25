@@ -217,11 +217,11 @@ static double d2V_floor_dtheta2_v3(const struct ridder_unified_params *rp) {
  * 
  * V(theta) = V_floor + V_EDE(theta) + V_tail(theta)
  */
-double ridder_V_v3_theta(double theta, const struct ridder_unified_params *rp) {
+double ridder_V_v3_theta(double theta, double a, const struct ridder_unified_params *rp) {
   double V = 0.0;
   
   V += V_floor_v3(rp);
-  V += V_EDE_v3(theta, rp);
+  V += V_EDE_v3(theta, a, rp);
   V += V_tail_v3(theta, rp);
   
   return V;
@@ -230,7 +230,7 @@ double ridder_V_v3_theta(double theta, const struct ridder_unified_params *rp) {
 /**
  * First derivative dV/dtheta
  */
-double ridder_dV_v3_dtheta(double theta, const struct ridder_unified_params *rp) {
+double ridder_dV_v3_dtheta(double theta, double a, const struct ridder_unified_params *rp) {
   double dV = 0.0;
   
   dV += dV_floor_dtheta_v3(rp);
@@ -243,7 +243,7 @@ double ridder_dV_v3_dtheta(double theta, const struct ridder_unified_params *rp)
 /**
  * Second derivative d2V/dtheta2
  */
-double ridder_d2V_v3_dtheta2(double theta, const struct ridder_unified_params *rp) {
+double ridder_d2V_v3_dtheta2(double theta, double a, const struct ridder_unified_params *rp) {
   double d2V = 0.0;
   
   d2V += d2V_floor_dtheta2_v3(rp);
@@ -261,7 +261,7 @@ double ridder_d2V_v3_dtheta2(double theta, const struct ridder_unified_params *r
  * d2V/dphi2 = (d2V/dtheta2) / f^2
  */
 int ridder_potential_v3(
-    double phi, 
+    double phi, double a, 
     double *V, 
     double *dV_dphi, 
     double *d2V_dphi2,
@@ -277,9 +277,9 @@ int ridder_potential_v3(
   
   double theta = phi / f;
   
-  double V_theta = ridder_V_v3_theta(theta, rp);
-  double dV_dtheta = ridder_dV_v3_dtheta(theta, rp);
-  double d2V_dtheta2 = ridder_d2V_v3_dtheta2(theta, rp);
+  double V_theta = ridder_V_v3_theta(theta, a, rp);
+  double dV_dtheta = ridder_dV_v3_dtheta(theta, a, rp);
+  double d2V_dtheta2 = ridder_d2V_v3_dtheta2(theta, a, rp);
   
   *V = V_theta;
   *dV_dphi = dV_dtheta / f;

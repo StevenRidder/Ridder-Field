@@ -109,7 +109,7 @@ HEADERFILES += $(wildcard ./$(HMCODE)/*.h)
 %.opp:  %.c .base $(HEADERFILES)
 	cd $(WRKDIR);$(CPP) $(OPTFLAG) $(OMPFLAG) $(CCFLAG) $(INCLUDES) -c ../$< -o $*.opp
 
-TOOLS = growTable.o dei_rkck.o sparse.o evolver_rkck.o  evolver_ndf15.o arrays.o parser.o quadrature.o hyperspherical.o common.o trigonometric_integrals.o
+TOOLS = growTable.o dei_rkck.o sparse.o evolver_rkck.o  evolver_ndf15.o arrays.opp parser.o quadrature.o hyperspherical.opp common.o trigonometric_integrals.o
 
 SOURCE = input.o background.o ridder_unified_potential.o ridder_v3_potential.o thermodynamics.o perturbations.opp primordial.opp fourier.o transfer.opp harmonic.opp lensing.opp distortions.o
 
@@ -155,7 +155,7 @@ TEST_THERMODYNAMICS = test_thermodynamics.o
 
 TEST_BACKGROUND = test_background.o
 
-TEST_HYPERSPHERICAL = test_hyperspherical.o
+TEST_HYPERSPHERICAL = test_hyperspherical.opp
 
 C_TOOLS =  $(addprefix tools/, $(addsuffix .c,$(basename $(TOOLS))))
 C_SOURCE = $(addprefix source/, $(addsuffix .c,$(basename $(SOURCE) $(OUTPUT))))

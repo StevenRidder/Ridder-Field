@@ -3376,9 +3376,15 @@ int input_read_parameters_species(struct file_content * pfc,
       printf("DEBUG: Ridder model_type = SIMPLE_EDE\n");
       /* has_ridder may still be set by Lambda_EDE_ridder below */
     }
+    else if ((strcmp(string1, "v3_canon") == 0) || (strcmp(string1, "V3_CANON") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_v3_canon;
+      pba->has_ridder = _TRUE_;
+      printf("DEBUG INPUT.C: Just set model_type to %d (should be 2)\n", pba->ridder_unified.model_type);
+      printf("DEBUG: Ridder model_type = V3_CANON, has_ridder set to TRUE\n");
+    }
     else {
       class_stop(errmsg,
-        "Unknown ridder_model_type='%s'. Allowed: 'simple_ede' or 'unified'.",
+        "Unknown ridder_model_type='%s'. Allowed: 'simple_ede', 'unified', or 'v3_canon'.",
         string1);
     }
   }
@@ -3427,6 +3433,8 @@ int input_read_parameters_species(struct file_content * pfc,
     class_read_string("ridder_model_type", string1);
     if (strcmp(string1, "unified") == 0) {
       pba->ridder_unified.model_type = ridder_model_unified;
+    } else if (strcmp(string1, "v3_canon") == 0 || strcmp(string1, "V3_CANON") == 0) {
+      pba->ridder_unified.model_type = ridder_model_v3_canon;
     } else {
       pba->ridder_unified.model_type = ridder_model_simple_ede;
     }
@@ -3440,7 +3448,7 @@ int input_read_parameters_species(struct file_content * pfc,
     class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
     
     /* Tail parameters */
-    class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+    class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
     class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
     class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
     
@@ -3500,7 +3508,7 @@ int input_read_parameters_species(struct file_content * pfc,
       class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
       
       /* Tail parameters */
-      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail);
+      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
       class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
       class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
       
@@ -6175,7 +6183,7 @@ int input_default_params(struct background *pba,
   pba->ridder_unified.use_plateau = _FALSE_;
   
   /* Tail defaults (late DE) */
-  pba->ridder_unified.Lambda_tail = 2.3e-3;  /**< ~meV scale for Omega_Lambda */
+  pba->ridder_unified.Lambda_tail_eV = 2.3e-3;  /**< ~meV scale for Omega_Lambda */
   pba->ridder_unified.alpha_tail = 1.0;  /**< default modulation strength */
   pba->ridder_unified.n_tail = 3.0;
   

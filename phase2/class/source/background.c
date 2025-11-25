@@ -962,6 +962,7 @@ int background_init(
   /** Summary: */
   
   printf("BACKGROUND_INIT ENTERED: Lambda=%.2e\n", pba->Lambda_EDE_ridder);
+  printf("DEBUG BG_INIT ENTRY: model_type=%d\n", pba->ridder_unified.model_type);
 
   /** - write class version */
   if (pba->background_verbose > 0) {
@@ -1257,7 +1258,10 @@ int background_indices(
     pba->has_ridder = _TRUE_;
   if (pba->ridder_unified.model_type == ridder_model_unified)
     pba->has_ridder = _TRUE_;
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon)
+    pba->has_ridder = _TRUE_;
   
+  printf("DEBUG AFTER CHECKS: model_type=%d has_ridder=%d\n", pba->ridder_unified.model_type, pba->has_ridder);
   /* Initialize m_eV and f_eV for AxiCLASS-style unified potential */
   if (pba->has_ridder == _TRUE_ && pba->ridder_unified.model_type == ridder_model_unified) {
     /* Physical constants */
