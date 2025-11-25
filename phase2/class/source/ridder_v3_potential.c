@@ -3,42 +3,71 @@
  * 
  * V3 CANONICAL UNIFIED POTENTIAL
  * 
- * V(theta) = V_floor + V_EDE(theta) + V_tail(theta)
+ * V(phi, a) = V_floor + V_EDE(theta, a) + V_tail(theta)
  * 
  * where:
  *   V_floor = Lambda_floor^4  (constant)
  * 
- *   V_EDE(theta) = Lambda_EDE^4 * exp[-(theta - theta_E_center)^2 / (2*sigma_E^2)] 
- *                   * [1 - cos(theta)]^n_EDE
+ *   V_EDE(theta, a) = Lambda_EDE^4 * S(a; a_c, sigma_lna) * B(theta; theta_E, n_EDE)
+ *     S(a) = exp[-(ln a - ln a_c)^2 / (2*sigma_lna^2)]  (time window)
+ *     B(theta) = [1 - cos(theta - theta_E)]^n_EDE       (field bump)
  * 
- *   V_tail(theta) = Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta - theta_T_center))^n_tail]
+ *   V_tail(theta) = Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta))^n_tail]
  * 
- * This is the frozen v3 canon. Do not modify without updating MODEL_DEFINITION.md.
+ * This is the frozen v3 canon. Do not modify without updating V3_COMPLETE_SPEC.md.
  */
 
 #include "background.h"
 #include <math.h>
 
+/* Helper to get scale factor from background pointer */
+static double get_scale_factor(struct background *pba) {
+  /* This will be passed from background.c - for now assume stored in pba */
+  /* In actual integration, 'a' will be passed as a parameter */
+  return 1.0; /* Placeholder - will be fixed when integrating with background.c */
+}
+
 /* ======================================================================== */
-/* EDE BUMP (Gaussian-windowed axion-like potential)                        */
+/* EDE BUMP (Time and field windowed)                                       */
 /* ======================================================================== */
 
-static double V_EDE_v3(double theta, const struct ridder_unified_params *rp) {
+/**
+ * Time window S(a; a_c, sigma_lna)
+ * Gaussian in log(a) space centered at a_c
+ */
+static double S_time_window(double a, double a_c, double sigma_lna) {
+  if (a_c <= 0.0 || sigma_lna <= 0.0) return 0.0;
+  
+  double ln_a = log(a);
+  double ln_a_c = log(a_c);
+  double delta_ln_a = ln_a - ln_a_c;
+  
+  return exp(-0.5 * (delta_ln_a * delta_ln_a) / (sigma_lna * sigma_lna));
+}
+
+/**
+ * Field bump B(theta; theta_E, n_EDE)
+ * Cosine-based bump centered at theta_E
+ */
+static double B_field_bump(double theta, double theta_E, double n_EDE) {
+  double delta_theta = theta - theta_E;
+  double one_minus_cos = 1.0 - cos(delta_theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  
+  return pow(one_minus_cos, n_EDE);
+}
+
+/**
+ * V_EDE(theta, a) = Lambda_EDE^4 * S(a) * B(theta)
+ */
+static double V_EDE_v3(double theta, double a, const struct ridder_unified_params *rp) {
   if (!rp->use_EDE) return 0.0;
   
   double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  double S = S_time_window(a, rp->a_c, rp->sigma_lna);
+  double B = B_field_bump(theta, rp->theta_E_center, rp->n_EDE);
   
-  /* Gaussian window centered at theta_E_center */
-  double delta_theta = theta - rp->theta_E_center;
-  double sigma = rp->sigma_E;
-  double gaussian = exp(-0.5 * (delta_theta * delta_theta) / (sigma * sigma));
-  
-  /* Axion-like shape */
-  double one_minus_cos = 1.0 - cos(theta);
-  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
-  double axion_shape = pow(one_minus_cos, rp->n_EDE);
-  
-  return Lambda4 * gaussian * axion_shape;
+  return Lambda4 * S * B;
 }
 
 static double dV_EDE_dtheta_v3(double theta, const struct ridder_unified_params *rp) {

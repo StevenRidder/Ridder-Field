@@ -22,7 +22,8 @@ enum scf_potential_type {scf_pot_axion, scf_pot_ridder};
 
 enum ridder_model_type {
   ridder_model_simple_ede = 0,  /**< V2 model: simple EDE with optional CDM coupling */
-  ridder_model_unified = 1      /**< Unified model: plateau + shelf + tail */
+  ridder_model_unified = 1,     /**< Unified model: plateau + shelf + tail (v2 legacy) */
+  ridder_model_v3_canon = 2     /**< V3 canonical: frozen potential shape per spec */
 };
 
 /** Ridder unified potential parameters */
@@ -35,11 +36,18 @@ struct ridder_unified_params {
   /* Global field normalization */
   double f_eV;           /**< field normalization: theta = phi / f [eV] */
   
-  /* EDE bump: Lambda_EDE^4 * exp[-(theta - theta_E_center)^2 / (2*sigma_E^2)] * [1-cos(theta)]^n_EDE */
+  /* EDE bump: Lambda_EDE^4 * S(a) * B(theta)
+   * S(a) = exp[-(ln a - ln a_c)^2 / (2*sigma_lna^2)]
+   * B(theta) = [1 - cos(theta - theta_E)]^n_EDE
+   */
   double Lambda_EDE_eV;  /**< EDE energy scale [eV] */
-  double theta_E_center; /**< EDE bump center in theta space */
-  double sigma_E;        /**< EDE Gaussian width */
-  double n_EDE;          /**< EDE power (default 2.0) */
+  double a_c;            /**< Central scale factor for EDE (z_c = 1/a_c - 1) */
+  double sigma_lna;      /**< Temporal width in log(a) space */
+  double theta_E_center; /**< EDE field center in theta space */
+  double n_EDE;          /**< EDE power (default 3.0) */
+  
+  /* LEGACY v2 EDE fields */
+  double sigma_E;        /**< LEGACY: old Gaussian width in theta */
   
   /* Tail: Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta - theta_T_center))^n_tail] */
   double Lambda_tail_eV; /**< Tail energy scale [eV] */
