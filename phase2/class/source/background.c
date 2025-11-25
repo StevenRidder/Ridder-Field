@@ -2807,6 +2807,9 @@ int background_initial_conditions(
     
     double phi_ridder_ini = f_for_ic * pba->theta_i_ridder;
     
+    printf("RIDDER IC DEBUG: model_type=%d f_for_ic=%e theta_i=%e phi_ini=%e\n",
+           pba->ridder_unified.model_type, f_for_ic, pba->theta_i_ridder, phi_ridder_ini);
+    
     pvecback_integration[pba->index_bi_phi_ridder] = phi_ridder_ini;
 
     /* 2. Temporarily set phi' = 0 so we can call background_functions to get H */
