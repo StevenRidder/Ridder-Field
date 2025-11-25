@@ -12,7 +12,8 @@ theory:
       gauge: newtonian
       recombination: recfast
       
-      # V3 Ridder configuration (model_type enables the field automatically)
+      # V3 Ridder configuration
+      use_ridder: yes
       ridder_model_type: v3_canon
       
       # EDE component - bump at origin, field starts displaced
