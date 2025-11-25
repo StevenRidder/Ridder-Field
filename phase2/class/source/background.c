@@ -3510,8 +3510,8 @@ int background_derivs(
           double exponent = -0.5 * delta_ln_a * delta_ln_a / 
                            (pba->ridder_unified.sigma_lna * pba->ridder_unified.sigma_lna);
           
-          /* If more than 10 sigma from peak, freeze field */
-          if (exponent < -50.0) {
+          /* If more than ~5 sigma from peak (exp(-25) ~ 1e-11), freeze field */
+          if (exponent < -25.0) {
             v3_freeze_active = _TRUE_;
             dy[pba->index_bi_phi_ridder] = 0.0;
             dy[pba->index_bi_phi_prime_ridder] = 0.0;
