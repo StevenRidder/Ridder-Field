@@ -51,16 +51,16 @@ PRESETS = {
     
     # === TRGB BRANCH (H0 ~ 69-70 km/s/Mpc) ===
     "v3_trgb_branch": {
-        "Lambda_tail_meV": 1.6,  # Gentle late-time contribution
+        "Lambda_tail_meV": 1.2,  # Calibrated: H0 = 69.33 (tail-only)
         "f_axion": 0.25,         # Moderate EDE (f_EDE ~ 0.10)
-        "description": "TRGB-aligned: supports Freedman et al. H0~70"
+        "description": "TRGB-aligned: H0~70 (Freedman et al. 69.8±1.7)"
     },
     
     # === SH0ES BRANCH (H0 ~ 72-73 km/s/Mpc) ===
     "v3_shoes_branch": {
-        "Lambda_tail_meV": 5.0,  # Stronger late-time push
+        "Lambda_tail_meV": 1.6,  # Calibrated: H0 = 73.19 (tail-only)
         "f_axion": 0.40,         # Strong EDE (f_EDE ~ 0.17)
-        "description": "SH0ES-targeted: aggressive H0 boost"
+        "description": "SH0ES-targeted: H0~73 (Riess et al. 73.04±1.04)"
     },
     
     # === LEGACY v2-like presets (kept for comparison) ===
