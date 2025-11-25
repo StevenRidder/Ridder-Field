@@ -101,14 +101,14 @@ params:
   # EDE amplitude
   ridder_Lambda_EDE_eV:
     prior: {min: 0.0, max: 0.80}
-    ref: 0.15
+    ref: 0.001  # Start near zero (LCDM-like) to ensure valid starting point
     proposal: 0.04
     latex: \Lambda_{EDE}
   
   # Tail amplitude (prior allows no tail)
   ridder_Lambda_tail_eV:
     prior: {min: 0.0, max: 0.003}  # 0 to 3 meV
-    ref: 0.0005
+    ref: 0.00001  # Start near zero (LCDM-like) to ensure valid starting point
     proposal: 0.0002
     latex: \Lambda_{tail}
   
