@@ -3498,7 +3498,8 @@ int background_derivs(
          * FULL RIDDER KLEIN-GORDON EVOLUTION
          * ============================================================ */
         
-        /* V3 EDE: Freeze field when far outside time window to prevent drift */
+        /* V3 EDE: Check if field should be frozen when far outside time window */
+        int v3_freeze_active = _FALSE_;
         if (pba->ridder_unified.model_type == ridder_model_v3_canon &&
             pba->ridder_unified.use_EDE == _TRUE_ && 
             pba->ridder_unified.a_c > 0.0 &&
@@ -3511,6 +3512,7 @@ int background_derivs(
           
           /* If more than 10 sigma from peak, freeze field */
           if (exponent < -50.0) {
+            v3_freeze_active = _TRUE_;
             dy[pba->index_bi_phi_ridder] = 0.0;
             dy[pba->index_bi_phi_prime_ridder] = 0.0;
             
@@ -3520,9 +3522,10 @@ int background_derivs(
                      a, 1.0/a - 1.0, fabs(delta_ln_a), pba->ridder_unified.sigma_lna);
               v3_freeze_print++;
             }
-            goto end_ridder_derivs;  /* Skip rest of evolution */
           }
         }
+        
+        if (v3_freeze_active == _FALSE_) {
           
     /* Unit Conversion Constants */
         double M_Pl_eV = 2.435e27;        // Reduced Planck mass in eV
@@ -3595,9 +3598,9 @@ int background_derivs(
         return _FAILURE_;
       }
         
+        } // end if (v3_freeze_active == _FALSE_)
+        
       } // end else (full evolution)
-      
-      end_ridder_derivs:  /* Label for early exit when field is frozen */
       
       /* Hard assertion: if freeze is ON, derivatives MUST be zero */
       if (pba->ridder_freeze_phi == _TRUE_) {
