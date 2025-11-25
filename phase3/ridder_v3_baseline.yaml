@@ -17,11 +17,11 @@ theory:
       use_ridder: yes
       ridder_model_type: v3_canon
       
-      # EDE component
+      # EDE component - bump at origin, field starts displaced
       ridder_use_shelf: yes
-      ridder_theta_E_center: 2.4
+      ridder_theta_E_center: 0.0
       ridder_sigma_E: 0.4
-      ridder_n_EDE: 2.0
+      ridder_n_EDE: 3.0
       
       # Tail component
       ridder_use_tail: yes

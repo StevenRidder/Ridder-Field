@@ -3357,10 +3357,14 @@ int background_derivs(
       printf("CHECKPOINT_C: call#=%d\n", ridder_deriv_calls);
     }
     
-    /* TODO: Implement proper switching with |V''| for hilltop models
-     * For now, keep field mode throughout (no fluidization) */
-    if (_FALSE_ && pba->ridder_fluid_mode == _FALSE_ && pba->Lambda_EDE_ridder > 0.0) {
-      /* Disabled: switching logic needs |V''| not V'' for hilltop models */
+    /* Fluid switching for rapid oscillations */
+    /* Check if EDE Lambda is nonzero (for either v2 or v3) */
+    int has_ede = (pba->Lambda_EDE_ridder > 0.0) || 
+                  (pba->ridder_unified.model_type == ridder_model_v3_canon && 
+                   pba->ridder_unified.Lambda_EDE_eV > 0.0);
+    
+    if (pba->ridder_fluid_mode == _FALSE_ && has_ede) {
+      /* Check if oscillations have begun */
       double ddV_val = ddV_ridder(pba, phi_ridder, a);
       
       if (fabs(ddV_val) > 0.0) {  /* Would need |ddV| here */
@@ -3407,7 +3411,9 @@ int background_derivs(
           /* Compute cycle-averaged equation of state */
           /* For V = Λ^4 [1-cos(φ/f)]^n, near minimum V ~ phi^2n */
           /* Average equation of state w = (n-1)/(n+1) */
-          pba->w_eff_ridder = (double)(pba->n_ridder - 1) / (double)(pba->n_ridder + 1);
+          double n_ede = (pba->ridder_unified.model_type == ridder_model_v3_canon) 
+                         ? pba->ridder_unified.n_EDE : pba->n_ridder;
+          pba->w_eff_ridder = (n_ede - 1.0) / (n_ede + 1.0);
           
           if (pba->background_verbose > 1) {
             printf("Ridder field: Switching to fluid approximation at z = %.2f\n", pba->z_osc_ridder);
