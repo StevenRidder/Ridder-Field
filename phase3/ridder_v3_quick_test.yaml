@@ -49,13 +49,8 @@ theory:
 
 # Simple likelihood: target H0 = 70
 likelihood:
-  H0_prior:
-    external: |
-      def logp(_self, H0):
-        return -0.5 * ((H0 - 70.0) / 2.0)**2
-    requires:
-      H0:
-        latex: H_0
+  H0_gaussian:
+    external: "lambda H0: -0.5 * ((H0 - 70.0) / 2.0)**2"
 
 # Fixed parameters for quick test
 params:
