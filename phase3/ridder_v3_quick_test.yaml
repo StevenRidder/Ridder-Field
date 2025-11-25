@@ -50,15 +50,23 @@ likelihood:
   H0_gaussian:
     external: "lambda H0: -0.5 * ((H0 - 70.0) / 2.0)**2"
 
-# Fixed parameters for quick test
+# Parameters
 params:
-  # Ridder parameters (fixed for quick test)
+  # Ridder parameters 
   ridder_Lambda_EDE_eV:
-    value: 0.1
+    prior:
+      min: 0.05
+      max: 0.15
+    ref: 0.1
+    proposal: 0.01
     latex: \Lambda_{EDE}
   
   ridder_Lambda_tail_eV:
-    value: 0.0001
+    prior:
+      min: 0.00005
+      max: 0.0002
+    ref: 0.0001
+    proposal: 0.00002
     latex: \Lambda_{tail}
   
   # Derived
