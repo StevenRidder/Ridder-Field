@@ -3357,6 +3357,24 @@ int input_read_parameters_species(struct file_content * pfc,
   /** 8.c) Ridder field (RC-X* model) parameters */
   
   /* STEP 1: Read new-style model selector FIRST (before Lambda check) */
+  /* Read use_ridder flag (for Python/Cobaya interface compatibility) */
+  class_call(parser_read_string(pfc,
+                                "use_ridder",
+                                &string1,
+                                &flag1,
+                                errmsg),
+             errmsg,
+             errmsg);
+  if (flag1 == _TRUE_) {
+    if ((strcmp(string1, "yes") == 0) || (strcmp(string1, "YES") == 0) ||
+        (strcmp(string1, "y") == 0) || (strcmp(string1, "Y") == 0) ||
+        (strcmp(string1, "true") == 0) || (strcmp(string1, "True") == 0) ||
+        (strcmp(string1, "1") == 0)) {
+      pba->has_ridder = _TRUE_;
+      printf("DEBUG: use_ridder = yes, has_ridder set to TRUE\n");
+    }
+  }
+  
   class_call(parser_read_string(pfc,
                                 "ridder_model_type",
                                 &string1,
