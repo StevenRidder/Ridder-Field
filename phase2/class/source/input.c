@@ -3474,15 +3474,18 @@ int input_read_parameters_species(struct file_content * pfc,
       class_stop(errmsg, "The Ridder field implementation currently only supports Newtonian gauge. Please set 'gauge = newtonian'.");
     }
 
-    if (pba->f_axion_ridder <= 0.0) {
-      class_stop(errmsg, "f_axion_ridder must be > 0");
-    }
-    if (pba->n_ridder < 1) {
-      class_stop(errmsg, "n_ridder must be >= 1");
-    }
-    if (fabs(pba->beta_ridder) > 0.1) {
-      if (input_verbose > 0) {
-        printf(" -> Warning: |beta_ridder| = %.3f is large, may violate constraints\n", pba->beta_ridder);
+    /* V2 parameter validation - skip for v3_canon which uses different parameters */
+    if (pba->ridder_unified.model_type != ridder_model_v3_canon) {
+      if (pba->f_axion_ridder <= 0.0) {
+        class_stop(errmsg, "f_axion_ridder must be > 0");
+      }
+      if (pba->n_ridder < 1) {
+        class_stop(errmsg, "n_ridder must be >= 1");
+      }
+      if (fabs(pba->beta_ridder) > 0.1) {
+        if (input_verbose > 0) {
+          printf(" -> Warning: |beta_ridder| = %.3f is large, may violate constraints\n", pba->beta_ridder);
+        }
       }
     }
     
