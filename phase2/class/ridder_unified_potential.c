@@ -37,7 +37,7 @@ static inline double sech_squared(double x) {
 }
 
 /* ========================================================================= */
-/* Tail Term: V_tail = Lambda_tail^4 * [1 - cos(theta)]^n_tail              */
+/* Tail Term: V_tail = Lambda_tail_eV^4 * [1 - cos(theta)]^n_tail              */
 /* ========================================================================= */
 
 /**
@@ -49,7 +49,7 @@ double V_tail_theta(double theta, const struct ridder_unified_params *rp) {
   double one_minus_cos = 1.0 - cos(theta);
   if (one_minus_cos <= 0.0) return 0.0;
   
-  double Lambda4 = pow(rp->Lambda_tail, 4.0);
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
   double base = pow(one_minus_cos, rp->n_tail);
   
   return Lambda4 * base;
@@ -64,7 +64,7 @@ double dV_tail_dtheta(double theta, const struct ridder_unified_params *rp) {
   double one_minus_cos = 1.0 - cos(theta);
   if (one_minus_cos <= 0.0) return 0.0;
   
-  double Lambda4 = pow(rp->Lambda_tail, 4.0);
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
   double n = rp->n_tail;
   
   /* d/dtheta [1 - cos]^n = n [1 - cos]^(n-1) * sin(theta) */
@@ -85,7 +85,7 @@ double d2V_tail_dtheta2(double theta, const struct ridder_unified_params *rp) {
   
   if (one_minus_cos <= 0.0) return 0.0;
   
-  double Lambda4 = pow(rp->Lambda_tail, 4.0);
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
   double n = rp->n_tail;
   
   /* Product rule on n [1 - cos]^(n-1) * sin(theta) */
