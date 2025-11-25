@@ -13,8 +13,6 @@ theory:
       
       # V3 unified potential parameters
       ridder_f_eV: 1.0e26
-      ridder_Lambda_EDE_eV: 0.1
-      ridder_Lambda_tail_eV: 0.0001
       ridder_theta_E_center: 0.0
       ridder_sigma_E: 0.5
       ridder_n_EDE: 3
