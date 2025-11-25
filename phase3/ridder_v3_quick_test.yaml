@@ -1,0 +1,90 @@
+# ============================================================
+# RIDDER FIELD V3 QUICK TEST
+# Minimal configuration for testing v3 on VM
+# ============================================================
+
+theory:
+  classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class
+    extra_args:
+      # V3 Ridder configuration
+      use_ridder: yes
+      ridder_model_type: v3_canon
+      
+      # V3 unified potential parameters
+      ridder_f_eV: 1.0e26
+      ridder_Lambda_EDE_eV: 0.1
+      ridder_Lambda_tail_eV: 0.0001
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.5
+      ridder_n_EDE: 3
+      ridder_alpha_tail: 0.1
+      ridder_n_tail: 2
+      ridder_use_shelf: yes
+      ridder_use_tail: yes
+      ridder_use_floor: yes
+      
+      # Field initial conditions (field starts displaced from bump center)
+      theta_i_ridder: 2.4
+      
+      # Standard cosmology
+      h: 0.70
+      omega_b: 0.02237
+      omega_cdm: 0.120
+      A_s: 2.1e-9
+      n_s: 0.9649
+      tau_reio: 0.054
+      
+      # Output settings
+      output: tCl,mPk
+      l_max_scalars: 2000
+      gauge: newtonian
+      
+      # Precision
+      tol_perturb_integration: 1.e-6
+      
+      # Speed optimizations
+      lensing: no
+      nonlinear: no
+
+# Simple likelihood: target H0 = 70
+likelihood:
+  H0_prior:
+    external: |
+      lambda _derived=None, **params_values: (
+        -0.5 * ((_derived.get('H0', 70.0) - 70.0) / 2.0)**2
+      )
+    requires:
+      H0:
+        latex: H_0
+
+# Fixed parameters for quick test
+params:
+  # Ridder parameters (fixed for quick test)
+  ridder_Lambda_EDE_eV:
+    value: 0.1
+    latex: \Lambda_{EDE}
+  
+  ridder_Lambda_tail_eV:
+    value: 0.0001
+    latex: \Lambda_{tail}
+  
+  # Derived
+  H0:
+    latex: H_0
+    derived: true
+
+# Sampler: just evaluate a few points
+sampler:
+  mcmc:
+    max_samples: 20
+    Rminus1_stop: 0.5
+    learn_proposal: false
+    measure_speeds: true
+
+# Output
+output: chains/ridder_v3_quick_test
+resume: false
+timing: true
+debug: true
+

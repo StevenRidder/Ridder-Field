@@ -1,0 +1,174 @@
+# ============================================================
+# RIDDER FIELD V3 SH0ES RUN
+# Planck + BAO + SH0ES H0 prior (H0 = 73.04 +/- 1.04)
+# ============================================================
+
+theory:
+  classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class
+    extra_args:
+      # V3 Ridder configuration
+      use_ridder: yes
+      ridder_model_type: v3_canon
+      
+      # V3 unified potential parameters
+      ridder_f_eV: 1.0e26
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.5
+      ridder_n_EDE: 3
+      ridder_alpha_tail: 0.1
+      ridder_n_tail: 2
+      ridder_use_shelf: yes
+      ridder_use_tail: yes
+      ridder_use_floor: yes
+      
+      # Field initial conditions
+      theta_i_ridder: 2.4
+      
+      # Output settings
+      output: tCl,pCl,lCl,mPk
+      l_max_scalars: 2600
+      gauge: newtonian
+      lensing: yes
+      nonlinear: no
+
+# Likelihoods
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  bao.sdss_dr12_consensus_final:
+  bao.sdss_dr7_mgs:
+  bao.sixdf_2011_bao:
+  # SH0ES H0 prior
+  H0_SH0ES:
+    external: |
+      lambda _derived=None, **params_values: (
+        -0.5 * ((_derived.get('H0', 70.0) - 73.04) / 1.04)**2
+      )
+    requires:
+      H0:
+        latex: H_0
+
+# Parameters
+params:
+  # Standard LCDM
+  logA:
+    prior:
+      min: 2.6
+      max: 3.5
+    ref:
+      dist: norm
+      loc: 3.044
+      scale: 0.02
+    proposal: 0.01
+    latex: \log(10^{10}A_s)
+    drop: true
+    
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+    
+  n_s:
+    prior:
+      min: 0.9
+      max: 1.1
+    ref:
+      dist: norm
+      loc: 0.9649
+      scale: 0.01
+    proposal: 0.005
+    latex: n_s
+    
+  theta_MC_100:
+    prior:
+      min: 0.5
+      max: 10
+    ref:
+      dist: norm
+      loc: 1.04092
+      scale: 0.0003
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    
+  omega_b:
+    prior:
+      min: 0.005
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.02237
+      scale: 0.0002
+    proposal: 0.0001
+    latex: \omega_b
+    
+  omega_cdm:
+    prior:
+      min: 0.001
+      max: 0.99
+    ref:
+      dist: norm
+      loc: 0.120
+      scale: 0.002
+    proposal: 0.001
+    latex: \omega_{cdm}
+    
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.8
+    ref:
+      dist: norm
+      loc: 0.054
+      scale: 0.01
+    proposal: 0.005
+    latex: \tau_{reio}
+  
+  # Ridder V3 parameters - SH0ES calibrated values (more aggressive)
+  ridder_Lambda_EDE_eV:
+    prior:
+      min: 0.0
+      max: 1.0
+    ref: 0.383
+    proposal: 0.02
+    latex: \Lambda_{EDE}
+    
+  ridder_Lambda_tail_eV:
+    prior:
+      min: 0.0
+      max: 0.01
+    ref: 0.0016
+    proposal: 0.0002
+    latex: \Lambda_{tail}
+  
+  # Derived
+  H0:
+    latex: H_0
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  Omega_m:
+    latex: \Omega_m
+    derived: true
+
+# Sampler
+sampler:
+  mcmc:
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.15
+    max_samples: 50000
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 1.9
+    oversample_power: 0.3
+    blocking:
+      - [1, [logA, n_s, theta_MC_100, omega_b, omega_cdm, tau_reio]]
+      - [3, [ridder_Lambda_EDE_eV, ridder_Lambda_tail_eV]]
+
+output: chains/ridder_v3_shoes
+resume: true
+timing: true
+debug: false
+
