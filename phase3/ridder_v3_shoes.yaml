@@ -5,7 +5,7 @@
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class
+    # Use pip-installed classy from ~/Ridder-Field/phase2/class
     extra_args:
       output: tCl, mPk, lCl
       l_max_scalars: 2508
