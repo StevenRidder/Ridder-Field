@@ -62,30 +62,31 @@ static double B_field_bump(double theta, double theta_E, double n_EDE) {
  */
 static double V_EDE_v3(double theta, double a, const struct ridder_unified_params *rp) {
   if (!rp->use_EDE) return 0.0;
+  if (rp->Lambda_EDE_eV <= 0.0) return 0.0;  /* Guard against zero Lambda */
+  
+  double S = S_time_window(a, rp->a_c, rp->sigma_lna);
+  if (S < 1e-50) return 0.0;  /* Return zero when time window is negligible */
   
   double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
-  double S = S_time_window(a, rp->a_c, rp->sigma_lna);
   double B = B_field_bump(theta, rp->theta_E_center, rp->n_EDE);
   
-  static int v_ede_count = 0;
-  v_ede_count++;
-  if (v_ede_count % 1000 == 0 || v_ede_count < 5) {
-    double z = 1.0/a - 1.0;
-    printf("V_EDE_DEBUG: call#=%d z=%.1f a=%.3e S=%.3e B=%.3e V=%.3e\n",
-           v_ede_count, z, a, S, B, Lambda4 * S * B);
-  }
+  double V = Lambda4 * S * B;
   
-  return Lambda4 * S * B;
+  /* Guard against numerical issues */
+  if (!isfinite(V)) return 0.0;
+  
+  return V;
 }
 
 static double dV_EDE_dtheta_v3(double theta, double a, const struct ridder_unified_params *rp) {
   if (!rp->use_EDE) return 0.0;
-  
-  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  if (rp->Lambda_EDE_eV <= 0.0) return 0.0;
   
   /* Time window S(a) - must be included in derivative! */
   double S = S_time_window(a, rp->a_c, rp->sigma_lna);
-  if (S < 1e-100) return 0.0;  /* Guard against underflow */
+  if (S < 1e-50) return 0.0;  /* Return zero when time window is negligible */
+  
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
   
   /* Field bump derivative: d/dtheta of B(theta) = (1 - cos(theta - theta_E))^n */
   double delta_theta = theta - rp->theta_E_center;
@@ -96,21 +97,25 @@ static double dV_EDE_dtheta_v3(double theta, double a, const struct ridder_unifi
   
   /* dB/dtheta = n * (1 - cos)^(n-1) * sin(delta_theta) */
   double dB_dtheta = 0.0;
-  if (one_minus_cos > 1e-30) {
+  if (one_minus_cos > 1e-20 && n > 0.0) {
     dB_dtheta = n * pow(one_minus_cos, n - 1.0) * s;
   }
   
-  return Lambda4 * S * dB_dtheta;
+  double dV = Lambda4 * S * dB_dtheta;
+  if (!isfinite(dV)) return 0.0;
+  
+  return dV;
 }
 
 static double d2V_EDE_dtheta2_v3(double theta, double a, const struct ridder_unified_params *rp) {
   if (!rp->use_EDE) return 0.0;
-  
-  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  if (rp->Lambda_EDE_eV <= 0.0) return 0.0;
   
   /* Time window S(a) - must be included in derivative! */
   double S = S_time_window(a, rp->a_c, rp->sigma_lna);
-  if (S < 1e-100) return 0.0;  /* Guard against underflow */
+  if (S < 1e-50) return 0.0;  /* Return zero when time window is negligible */
+  
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
   
   /* Field bump second derivative: d2/dtheta2 of B(theta) = (1 - cos(theta - theta_E))^n */
   double delta_theta = theta - rp->theta_E_center;
@@ -122,7 +127,7 @@ static double d2V_EDE_dtheta2_v3(double theta, double a, const struct ridder_uni
   
   /* d2B/dtheta2 = n*(n-1)*(1-cos)^(n-2)*sin^2 + n*(1-cos)^(n-1)*cos */
   double d2B_dtheta2 = 0.0;
-  if (one_minus_cos > 1e-30 && n >= 1.0) {
+  if (one_minus_cos > 1e-20 && n >= 1.0) {
     if (n >= 2.0) {
       double term1 = n * (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
       double term2 = n * pow(one_minus_cos, n - 1.0) * c;
@@ -133,7 +138,10 @@ static double d2V_EDE_dtheta2_v3(double theta, double a, const struct ridder_uni
     }
   }
   
-  return Lambda4 * S * d2B_dtheta2;
+  double d2V = Lambda4 * S * d2B_dtheta2;
+  if (!isfinite(d2V)) return 0.0;
+  
+  return d2V;
 }
 
 /* ======================================================================== */
@@ -142,6 +150,7 @@ static double d2V_EDE_dtheta2_v3(double theta, double a, const struct ridder_uni
 
 static double V_tail_v3(double theta, const struct ridder_unified_params *rp) {
   if (!rp->use_tail) return 0.0;
+  if (rp->Lambda_tail_eV <= 0.0) return 0.0;  /* Guard against zero Lambda */
   
   double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
   
@@ -153,7 +162,12 @@ static double V_tail_v3(double theta, const struct ridder_unified_params *rp) {
   double modulation = pow(one_minus_cos, rp->n_tail);
   
   /* V_tail = Lambda^4 * [1 + alpha * modulation] */
-  return Lambda4 * (1.0 + rp->alpha_tail * modulation);
+  double V = Lambda4 * (1.0 + rp->alpha_tail * modulation);
+  
+  /* Guard against numerical issues */
+  if (!isfinite(V)) return Lambda4;  /* Return base value if modulation is bad */
+  
+  return V;
 }
 
 static double dV_tail_dtheta_v3(double theta, const struct ridder_unified_params *rp) {
