@@ -1,0 +1,261 @@
+/**
+ * ridder_v3_potential.c
+ * 
+ * V3 CANONICAL UNIFIED POTENTIAL
+ * 
+ * V(theta) = V_floor + V_EDE(theta) + V_tail(theta)
+ * 
+ * where:
+ *   V_floor = Lambda_floor^4  (constant)
+ * 
+ *   V_EDE(theta) = Lambda_EDE^4 * exp[-(theta - theta_E_center)^2 / (2*sigma_E^2)] 
+ *                   * [1 - cos(theta)]^n_EDE
+ * 
+ *   V_tail(theta) = Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta - theta_T_center))^n_tail]
+ * 
+ * This is the frozen v3 canon. Do not modify without updating MODEL_DEFINITION.md.
+ */
+
+#include "background.h"
+#include <math.h>
+
+/* ======================================================================== */
+/* EDE BUMP (Gaussian-windowed axion-like potential)                        */
+/* ======================================================================== */
+
+static double V_EDE_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_EDE) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  
+  /* Gaussian window centered at theta_E_center */
+  double delta_theta = theta - rp->theta_E_center;
+  double sigma = rp->sigma_E;
+  double gaussian = exp(-0.5 * (delta_theta * delta_theta) / (sigma * sigma));
+  
+  /* Axion-like shape */
+  double one_minus_cos = 1.0 - cos(theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  double axion_shape = pow(one_minus_cos, rp->n_EDE);
+  
+  return Lambda4 * gaussian * axion_shape;
+}
+
+static double dV_EDE_dtheta_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_EDE) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  double delta_theta = theta - rp->theta_E_center;
+  double sigma = rp->sigma_E;
+  double sigma2 = sigma * sigma;
+  double gaussian = exp(-0.5 * delta_theta * delta_theta / sigma2);
+  
+  double one_minus_cos = 1.0 - cos(theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  double s = sin(theta);
+  double n = rp->n_EDE;
+  
+  double axion_shape = pow(one_minus_cos, n);
+  double daxion_shape = (one_minus_cos > 1e-30) ? n * pow(one_minus_cos, n - 1.0) * s : 0.0;
+  
+  /* Product rule: d/dtheta [gaussian * axion_shape] */
+  double dgaussian_dtheta = gaussian * (-delta_theta / sigma2);
+  
+  return Lambda4 * (dgaussian_dtheta * axion_shape + gaussian * daxion_shape);
+}
+
+static double d2V_EDE_dtheta2_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_EDE) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_EDE_eV, 4.0);
+  double delta_theta = theta - rp->theta_E_center;
+  double sigma = rp->sigma_E;
+  double sigma2 = sigma * sigma;
+  double gaussian = exp(-0.5 * delta_theta * delta_theta / sigma2);
+  
+  double one_minus_cos = 1.0 - cos(theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  double s = sin(theta);
+  double c = cos(theta);
+  double n = rp->n_EDE;
+  
+  double axion_shape = pow(one_minus_cos, n);
+  double daxion_shape = (one_minus_cos > 1e-30) ? n * pow(one_minus_cos, n - 1.0) * s : 0.0;
+  
+  /* Second derivative of axion shape */
+  double d2axion_shape = 0.0;
+  if (one_minus_cos > 1e-30) {
+    double term1 = n * (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
+    double term2 = n * pow(one_minus_cos, n - 1.0) * c;
+    d2axion_shape = term1 + term2;
+  }
+  
+  /* Second derivative of Gaussian */
+  double dgaussian_dtheta = gaussian * (-delta_theta / sigma2);
+  double d2gaussian_dtheta2 = gaussian * (-1.0 / sigma2 + delta_theta * delta_theta / (sigma2 * sigma2));
+  
+  /* Product rule for second derivative */
+  return Lambda4 * (d2gaussian_dtheta2 * axion_shape 
+                    + 2.0 * dgaussian_dtheta * daxion_shape 
+                    + gaussian * d2axion_shape);
+}
+
+/* ======================================================================== */
+/* TAIL (late-time quintessence with constant floor)                        */
+/* ======================================================================== */
+
+static double V_tail_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_tail) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
+  
+  /* Modulation around theta_T_center */
+  double delta_theta = theta - rp->theta_T_center;
+  double one_minus_cos = 1.0 - cos(delta_theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  
+  double modulation = pow(one_minus_cos, rp->n_tail);
+  
+  /* V_tail = Lambda^4 * [1 + alpha * modulation] */
+  return Lambda4 * (1.0 + rp->alpha_tail * modulation);
+}
+
+static double dV_tail_dtheta_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_tail) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
+  double delta_theta = theta - rp->theta_T_center;
+  double one_minus_cos = 1.0 - cos(delta_theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  
+  double s = sin(delta_theta);
+  double n = rp->n_tail;
+  
+  /* d/dtheta [1 - cos(delta_theta)]^n = n * [1 - cos]^(n-1) * sin(delta_theta) */
+  double dmodulation = (one_minus_cos > 1e-30) ? n * pow(one_minus_cos, n - 1.0) * s : 0.0;
+  
+  return Lambda4 * rp->alpha_tail * dmodulation;
+}
+
+static double d2V_tail_dtheta2_v3(double theta, const struct ridder_unified_params *rp) {
+  if (!rp->use_tail) return 0.0;
+  
+  double Lambda4 = pow(rp->Lambda_tail_eV, 4.0);
+  double delta_theta = theta - rp->theta_T_center;
+  double one_minus_cos = 1.0 - cos(delta_theta);
+  if (one_minus_cos < 0.0) one_minus_cos = 0.0;
+  
+  double s = sin(delta_theta);
+  double c = cos(delta_theta);
+  double n = rp->n_tail;
+  
+  double d2modulation = 0.0;
+  if (one_minus_cos > 1e-30) {
+    double term1 = n * (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
+    double term2 = n * pow(one_minus_cos, n - 1.0) * c;
+    d2modulation = term1 + term2;
+  }
+  
+  return Lambda4 * rp->alpha_tail * d2modulation;
+}
+
+/* ======================================================================== */
+/* CONSTANT FLOOR (optional)                                                */
+/* ======================================================================== */
+
+static double V_floor_v3(const struct ridder_unified_params *rp) {
+  if (!rp->use_floor) return 0.0;
+  return pow(rp->Lambda_floor_eV, 4.0);
+}
+
+/* Derivatives of constant are zero */
+static double dV_floor_dtheta_v3(const struct ridder_unified_params *rp) {
+  (void)rp; /* unused */
+  return 0.0;
+}
+
+static double d2V_floor_dtheta2_v3(const struct ridder_unified_params *rp) {
+  (void)rp; /* unused */
+  return 0.0;
+}
+
+/* ======================================================================== */
+/* TOTAL V3 POTENTIAL                                                       */
+/* ======================================================================== */
+
+/**
+ * V3 unified potential in theta space
+ * 
+ * V(theta) = V_floor + V_EDE(theta) + V_tail(theta)
+ */
+double ridder_V_v3_theta(double theta, const struct ridder_unified_params *rp) {
+  double V = 0.0;
+  
+  V += V_floor_v3(rp);
+  V += V_EDE_v3(theta, rp);
+  V += V_tail_v3(theta, rp);
+  
+  return V;
+}
+
+/**
+ * First derivative dV/dtheta
+ */
+double ridder_dV_v3_dtheta(double theta, const struct ridder_unified_params *rp) {
+  double dV = 0.0;
+  
+  dV += dV_floor_dtheta_v3(rp);
+  dV += dV_EDE_dtheta_v3(theta, rp);
+  dV += dV_tail_dtheta_v3(theta, rp);
+  
+  return dV;
+}
+
+/**
+ * Second derivative d2V/dtheta2
+ */
+double ridder_d2V_v3_dtheta2(double theta, const struct ridder_unified_params *rp) {
+  double d2V = 0.0;
+  
+  d2V += d2V_floor_dtheta2_v3(rp);
+  d2V += d2V_EDE_dtheta2_v3(theta, rp);
+  d2V += d2V_tail_dtheta2_v3(theta, rp);
+  
+  return d2V;
+}
+
+/**
+ * Convert from theta-space to phi-space
+ * 
+ * V(phi) = V(theta) where theta = phi / f
+ * dV/dphi = (dV/dtheta) * (dtheta/dphi) = (dV/dtheta) / f
+ * d2V/dphi2 = (d2V/dtheta2) / f^2
+ */
+int ridder_potential_v3(
+    double phi, 
+    double *V, 
+    double *dV_dphi, 
+    double *d2V_dphi2,
+    const struct ridder_unified_params *rp
+) {
+  double f = rp->f_eV;
+  if (f <= 0.0) {
+    *V = 0.0;
+    *dV_dphi = 0.0;
+    *d2V_dphi2 = 0.0;
+    return 0; /* error: invalid f */
+  }
+  
+  double theta = phi / f;
+  
+  double V_theta = ridder_V_v3_theta(theta, rp);
+  double dV_dtheta = ridder_dV_v3_dtheta(theta, rp);
+  double d2V_dtheta2 = ridder_d2V_v3_dtheta2(theta, rp);
+  
+  *V = V_theta;
+  *dV_dphi = dV_dtheta / f;
+  *d2V_dphi2 = d2V_dtheta2 / (f * f);
+  
+  return 1; /* success */
+}
+

@@ -30,29 +30,42 @@ enum ridder_model_type {
 struct ridder_unified_params {
   int model_type;        /**< ridder_model_simple_ede or ridder_model_unified */
   
-  /* Global field properties */
-  double f;              /**< decay constant, same units as v2 */
+  /* ===== V3 CANONICAL POTENTIAL ===== */
+  
+  /* Global field normalization */
+  double f_eV;           /**< field normalization: theta = phi / f [eV] */
+  
+  /* EDE bump: Lambda_EDE^4 * exp[-(theta - theta_E_center)^2 / (2*sigma_E^2)] * [1-cos(theta)]^n_EDE */
+  double Lambda_EDE_eV;  /**< EDE energy scale [eV] */
+  double theta_E_center; /**< EDE bump center in theta space */
+  double sigma_E;        /**< EDE Gaussian width */
+  double n_EDE;          /**< EDE power (default 2.0) */
+  
+  /* Tail: Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta - theta_T_center))^n_tail] */
+  double Lambda_tail_eV; /**< Tail energy scale [eV] */
+  double alpha_tail;     /**< Tail modulation strength (default 1.0) */
+  double theta_T_center; /**< Tail center in theta space (default 0.0) */
+  double n_tail;         /**< Tail power (default 1.0) */
+  
+  /* Optional constant floor */
+  double Lambda_floor_eV;/**< Constant floor Lambda_floor^4 (default 0.0) */
   
   /* Component toggles */
-  short use_tail;        /**< include tail term (late DE) */
-  short use_shelf;       /**< include shelf term (EDE bump) */
-  short use_plateau;     /**< include plateau term (inflation) */
+  short use_EDE;         /**< include EDE bump */
+  short use_tail;        /**< include tail term */
+  short use_floor;       /**< include constant floor */
   
-  /* Tail (late-time dark energy) */
-  double Lambda_tail;    /**< energy scale for tail term [eV] */
-  double alpha_tail;      /**< modulation strength for tail, default 1.0 */
-  double n_tail;         /**< power for [1 - cos(theta)]^n_tail */
-  
-  /* Shelf (EDE bump) */
-  double Lambda_EDE;     /**< EDE amplitude [eV] - LEGACY, use m_axion/f_axion instead */
-  double m_axion;        /**< axion mass in units of H0 (AxiCLASS style) */
-  double f_axion;        /**< axion decay constant in units of M_Pl (AxiCLASS style) */
-  double m_eV;           /**< computed: m_axion * H0 in eV */
-  double f_eV;           /**< computed: f_axion * M_Pl in eV */
-  double n_EDE;          /**< power for shelf term */
-  double theta_EDE_low;  /**< lower edge of shelf window in theta space */
-  double theta_EDE_high; /**< upper edge of shelf window */
-  double sigma_theta_EDE;/**< smoothing width of shelf window */
+  /* ===== LEGACY v2 FIELDS (for backwards compat) ===== */
+  double f;              /**< LEGACY: old decay constant */
+  short use_shelf;       /**< LEGACY: old shelf toggle */
+  short use_plateau;     /**< LEGACY: old plateau toggle */
+  double Lambda_EDE;     /**< LEGACY: old EDE amplitude */
+  double m_axion;        /**< LEGACY: axion mass */
+  double f_axion;        /**< LEGACY: axion decay constant in M_Pl units */
+  double m_eV;           /**< LEGACY: computed m in eV */
+  double theta_EDE_low;  /**< LEGACY: old shelf window */
+  double theta_EDE_high; /**< LEGACY: old shelf window */
+  double sigma_theta_EDE;/**< LEGACY: old shelf window */
   
   /* Shooting mechanism for EDE calibration */
   short use_shooting_EDE;        /**< Enable shooting to hit f_EDE target */
@@ -683,6 +696,30 @@ extern "C" {
                     struct background *pba,
                     double phi
                );
+
+  /** V3 canonical unified potential **/
+  double ridder_V_v3_theta(
+                           double theta, 
+                           const struct ridder_unified_params *rp
+                           );
+
+  double ridder_dV_v3_dtheta(
+                             double theta, 
+                             const struct ridder_unified_params *rp
+                             );
+
+  double ridder_d2V_v3_dtheta2(
+                               double theta, 
+                               const struct ridder_unified_params *rp
+                               );
+
+  int ridder_potential_v3(
+                          double phi, 
+                          double *V, 
+                          double *dV_dphi, 
+                          double *d2V_dphi2,
+                          const struct ridder_unified_params *rp
+                          );
 
 #ifdef __cplusplus
 }
