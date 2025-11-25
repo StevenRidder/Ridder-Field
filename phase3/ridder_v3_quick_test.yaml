@@ -51,9 +51,8 @@ theory:
 likelihood:
   H0_prior:
     external: |
-      lambda _derived=None, **params_values: (
-        -0.5 * ((_derived.get('H0', 70.0) - 70.0) / 2.0)**2
-      )
+      def logp(_self, H0):
+        return -0.5 * ((H0 - 70.0) / 2.0)**2
     requires:
       H0:
         latex: H_0

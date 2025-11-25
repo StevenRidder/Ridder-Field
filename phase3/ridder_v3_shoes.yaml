@@ -44,9 +44,8 @@ likelihood:
   # SH0ES H0 prior
   H0_SH0ES:
     external: |
-      lambda _derived=None, **params_values: (
-        -0.5 * ((_derived.get('H0', 70.0) - 73.04) / 1.04)**2
-      )
+      def logp(_self, H0):
+        return -0.5 * ((H0 - 73.04) / 1.04)**2
     requires:
       H0:
         latex: H_0

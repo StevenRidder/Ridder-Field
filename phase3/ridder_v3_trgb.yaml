@@ -44,9 +44,8 @@ likelihood:
   # TRGB H0 prior
   H0_TRGB:
     external: |
-      lambda _derived=None, **params_values: (
-        -0.5 * ((_derived.get('H0', 70.0) - 69.8) / 1.7)**2
-      )
+      def logp(_self, H0):
+        return -0.5 * ((H0 - 69.8) / 1.7)**2
     requires:
       H0:
         latex: H_0
