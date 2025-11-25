@@ -33,7 +33,7 @@ theory:
       ridder_Lambda_floor_eV: 0.0
       
       # Field normalization
-      ridder_f_eV: 1.0e26
+      ridder_f_eV: 1.0
       
       # Initial conditions
       theta_i_ridder: 2.4
