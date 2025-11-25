@@ -1,0 +1,20 @@
+{
+  "input": {
+    "preset": "unified_compromise",
+    "Lambda_tail_meV": 16.0,
+    "f_axion": 0.4,
+    "mode": "quick",
+    "potential_version": "v3"
+  },
+  "v3_params": {
+    "f_eV": 1e+26,
+    "Lambda_EDE_eV": 0.09999847564697266,
+    "Lambda_tail_eV": 0.016,
+    "theta_E_center": 2.4,
+    "sigma_E": 0.4,
+    "n_EDE": 2.0,
+    "alpha_tail": 1.0,
+    "n_tail": 1.0
+  },
+  "observables": {}
+}

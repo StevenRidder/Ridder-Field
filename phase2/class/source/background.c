@@ -537,9 +537,9 @@ int background_functions(
     pvecback[pba->index_bg_phi_ridder] = phi_ridder;
     pvecback[pba->index_bg_phi_prime_ridder] = phi_prime_ridder;
     
-    V_ridder_val = V_ridder(pba, phi_ridder);
-    dV_ridder_val = dV_ridder(pba, phi_ridder);
-    ddV_ridder_val = ddV_ridder(pba, phi_ridder);
+    V_ridder_val = V_ridder(pba, phi_ridder, a);
+    dV_ridder_val = dV_ridder(pba, phi_ridder, a);
+    ddV_ridder_val = ddV_ridder(pba, phi_ridder, a);
     
     /* DEBUG: Print raw potential value */
     static int v_counter = 0;
@@ -2796,9 +2796,14 @@ int background_initial_conditions(
     
     /* 1. Initial field value: displaced by angle theta_i */
     /* BUG FIX #15: Branch on model type for correct f parameter */
-    double f_for_ic = (pba->ridder_unified.model_type == ridder_model_unified) 
-                      ? pba->ridder_unified.f 
-                      : pba->f_axion_ridder;
+    double f_for_ic;
+    if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+      f_for_ic = pba->ridder_unified.f_eV;  /* V3: use f_eV */
+    } else if (pba->ridder_unified.model_type == ridder_model_unified) {
+      f_for_ic = pba->ridder_unified.f;  /* V2 unified: use f */
+    } else {
+      f_for_ic = pba->f_axion_ridder;  /* V2 simple: use f_axion */
+    }
     
     double phi_ridder_ini = f_for_ic * pba->theta_i_ridder;
     
@@ -2831,7 +2836,7 @@ int background_initial_conditions(
     double factor_V      = (eV_to_Mpc_inv * eV_to_Mpc_inv) / (3.0 * M_Pl_eV * M_Pl_eV);
 
     /* dV_ridder returns eV³; convert to eV·Mpc⁻² for use in slow-roll formula */
-    double dV_eV3        = dV_ridder(pba, phi_ridder_ini);                      // eV³
+    double dV_eV3        = dV_ridder(pba, phi_ridder_ini, a_ini);              // eV³
     double dV_eV_Mpc2    = dV_eV3 * (eV_to_Mpc_inv * eV_to_Mpc_inv);           // eV³ · Mpc⁻² / eV² = eV·Mpc⁻²
     double dV_val_units  = dV_eV_Mpc2 / (3.0 * M_Pl_eV);                       // eV·Mpc⁻² / eV = Mpc⁻²... wait
     
@@ -3163,7 +3168,8 @@ int background_output_data(
     class_store_double(dataptr,pvecback[pba->index_bg_ddV_scf],pba->has_scf,storeidx);
   
   if (pba->has_ridder == _TRUE_) {
-    double V_ridder_val = V_ridder(pba, pvecback[pba->index_bg_phi_ridder]);
+    double a = pvecback[pba->index_bg_a];
+    double V_ridder_val = V_ridder(pba, pvecback[pba->index_bg_phi_ridder], a);
     
     class_store_double(dataptr,pvecback[pba->index_bg_rho_ridder],_TRUE_,storeidx);
     class_store_double(dataptr,pvecback[pba->index_bg_p_ridder],_TRUE_,storeidx);
@@ -3355,7 +3361,7 @@ int background_derivs(
      * For now, keep field mode throughout (no fluidization) */
     if (_FALSE_ && pba->ridder_fluid_mode == _FALSE_ && pba->Lambda_EDE_ridder > 0.0) {
       /* Disabled: switching logic needs |V''| not V'' for hilltop models */
-      double ddV_val = ddV_ridder(pba, phi_ridder);
+      double ddV_val = ddV_ridder(pba, phi_ridder, a);
       
       if (fabs(ddV_val) > 0.0) {  /* Would need |ddV| here */
         /* m_eff^2 = V'' in CLASS units */
@@ -3426,7 +3432,7 @@ int background_derivs(
         /* Check switching condition explicitly for debug */
         double pr = y[pba->index_bi_phi_ridder];
         
-        double ddV_val = ddV_ridder(pba, pr);
+        double ddV_val = ddV_ridder(pba, pr, a);
         
         double m_eff_eV = (ddV_val > 0) ? sqrt(ddV_val) : 0.0; 
         double m_eff_Mpc = m_eff_eV * (1.973e-5 / 3.086e24); 
@@ -3489,7 +3495,7 @@ int background_derivs(
         double dV_conversion = eV_to_Mpc_inv * eV_to_Mpc_inv;  // eV³ → eV·Mpc⁻²
         
         /* Compute potential derivative: dV_ridder returns eV³ */
-        double dV_val_units = dV_ridder(pba, phi_ridder) * dV_conversion;  // eV·Mpc⁻²
+        double dV_val_units = dV_ridder(pba, phi_ridder, a) * dV_conversion;  // eV·Mpc⁻²
       
       /* Add coupling to photons if beta != 0 (affects sound horizon) */
         double coupling_term = 0.0;
@@ -3952,8 +3958,21 @@ double ddV_scf(
 
 double V_ridder(
                 struct background *pba,
-                double phi) {
+                double phi,
+                double a) {
   /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    static int v3_print_count = 0;
+    if (v3_print_count < 3) {
+      printf("V3_CANON BRANCH HIT! model_type=%d\n", pba->ridder_unified.model_type);
+      v3_print_count++;
+    }
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return V;
+  }
+  
   if (pba->ridder_unified.model_type == ridder_model_unified) {
     /* Use unified potential */
     double theta = phi / pba->ridder_unified.f;
@@ -3978,8 +3997,16 @@ double V_ridder(
 
 double dV_ridder(
                  struct background *pba,
-                 double phi) {
+                 double phi,
+                 double a) {
   /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return dV;
+  }
+  
   if (pba->ridder_unified.model_type == ridder_model_unified) {
     /* Use unified potential */
     double theta = phi / pba->ridder_unified.f;
@@ -4010,8 +4037,16 @@ double dV_ridder(
 
 double ddV_ridder(
                   struct background *pba,
-                  double phi) {
+                  double phi,
+                  double a) {
   /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return d2V;
+  }
+  
   if (pba->ridder_unified.model_type == ridder_model_unified) {
     /* Use unified potential */
     double theta = phi / pba->ridder_unified.f;

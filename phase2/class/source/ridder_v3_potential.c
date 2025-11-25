@@ -67,6 +67,14 @@ static double V_EDE_v3(double theta, double a, const struct ridder_unified_param
   double S = S_time_window(a, rp->a_c, rp->sigma_lna);
   double B = B_field_bump(theta, rp->theta_E_center, rp->n_EDE);
   
+  static int v_ede_count = 0;
+  v_ede_count++;
+  if (v_ede_count % 1000 == 0 || v_ede_count < 5) {
+    double z = 1.0/a - 1.0;
+    printf("V_EDE_DEBUG: call#=%d z=%.1f a=%.3e S=%.3e B=%.3e V=%.3e\n",
+           v_ede_count, z, a, S, B, Lambda4 * S * B);
+  }
+  
   return Lambda4 * S * B;
 }
 
@@ -280,6 +288,13 @@ int ridder_potential_v3(
   double V_theta = ridder_V_v3_theta(theta, a, rp);
   double dV_dtheta = ridder_dV_v3_dtheta(theta, a, rp);
   double d2V_dtheta2 = ridder_d2V_v3_dtheta2(theta, a, rp);
+  
+  static int v3_pot_count = 0;
+  if (v3_pot_count < 5) {
+    printf("V3_POT: a=%.3e theta=%.2f V_theta=%.3e Lambda_EDE=%.3e\n",
+           a, theta, V_theta, rp->Lambda_EDE_eV);
+    v3_pot_count++;
+  }
   
   *V = V_theta;
   *dV_dphi = dV_dtheta / f;

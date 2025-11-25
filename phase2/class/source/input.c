@@ -3549,6 +3549,42 @@ int input_read_parameters_species(struct file_content * pfc,
       printf("  Lambda_EDE = %e eV, theta_low = %e, theta_high = %e\n",
              pba->ridder_unified.Lambda_EDE, pba->ridder_unified.theta_EDE_low, pba->ridder_unified.theta_EDE_high);
     }
+    
+    /* STEP 5: Read v3_canon-specific parameters */
+    if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+      printf("\nDEBUG: Reading v3 canonical parameters...\n");
+      
+      /* Global field normalization */
+      class_read_double("ridder_f_eV", pba->ridder_unified.f_eV);
+      
+      /* Component toggles (v3: shelf→EDE) */
+      class_read_flag("ridder_use_shelf", pba->ridder_unified.use_EDE);
+      class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+      
+      /* EDE bump parameters */
+      class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE_eV);
+      class_read_double("ridder_a_c", pba->ridder_unified.a_c);
+      class_read_double("ridder_sigma_lna", pba->ridder_unified.sigma_lna);
+      class_read_double("ridder_theta_E_center", pba->ridder_unified.theta_E_center);
+      class_read_double("ridder_sigma_E", pba->ridder_unified.sigma_E);
+      class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+      
+      /* Tail parameters */
+      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
+      class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
+      class_read_double("ridder_theta_T_center", pba->ridder_unified.theta_T_center);
+      class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+      
+      /* Floor */
+      class_read_double("ridder_Lambda_floor_eV", pba->ridder_unified.Lambda_floor_eV);
+      
+      printf("DEBUG: V3 parameters read:\n");
+      printf("  f_eV = %e eV\n", pba->ridder_unified.f_eV);
+      printf("  Lambda_EDE = %e eV, theta_E_center = %.2f, sigma_E = %.2f\n",
+             pba->ridder_unified.Lambda_EDE_eV, pba->ridder_unified.theta_E_center, pba->ridder_unified.sigma_E);
+      printf("  Lambda_tail = %e eV, alpha_tail = %.2f\n",
+             pba->ridder_unified.Lambda_tail_eV, pba->ridder_unified.alpha_tail);
+    }
   }
 
   /** 8.b) If Omega scalar field (SCF) is different from 0 */

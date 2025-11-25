@@ -29,6 +29,8 @@ TEMPLATE_INI = CLASS_PATH / "explanatory.ini"
 # V3 Canonical defaults
 V3_DEFAULTS = {
     "f_eV": 1.0e26,
+    "z_c": 3000.0,  # EDE peak redshift
+    "sigma_lna": 0.3,  # Temporal width in log(a)
     "theta_E_center": 2.4,
     "sigma_E": 0.4,
     "n_EDE": 2.0,
@@ -92,17 +94,24 @@ def run_class_background_only(ini_path):
             capture_output=True,
             text=True,
             timeout=60,
-            check=True
+            check=True,
+            cwd=CLASS_PATH  # Run from CLASS directory so relative paths work
         )
         return True
-    except subprocess.CalledProcessError:
+    except subprocess.CalledProcessError as e:
+        print(f"CLASS failed: {e.stderr[:200]}", file=sys.stderr)
         return False
     except subprocess.TimeoutExpired:
+        print("CLASS timeout", file=sys.stderr)
         return False
 
 def extract_f_EDE_peak(background_file):
     """Extract peak f_EDE from background file"""
     try:
+        if not Path(background_file).exists():
+            print(f"Background file not found: {background_file}", file=sys.stderr)
+            return 0.0, 0.0
+            
         data = np.loadtxt(background_file)
         z = data[:, 0]
         rho_ridder = data[:, 14]
@@ -114,6 +123,7 @@ def extract_f_EDE_peak(background_file):
         # Find peak in z range [1000, 10000]
         mask = (z >= 1000) & (z <= 10000)
         if not np.any(mask):
+            print(f"No points in z range [1000, 10000]", file=sys.stderr)
             return 0.0, 0.0
         
         idx_max = np.argmax(f_ridder[mask])
@@ -122,8 +132,14 @@ def extract_f_EDE_peak(background_file):
         
         return f_peak, z_peak
     except Exception as e:
-        print(f"Error extracting f_EDE: {e}", file=sys.stderr)
+        print(f"Error extracting f_EDE from {background_file}: {e}", file=sys.stderr)
         return 0.0, 0.0
+
+def bool_to_yesno(val):
+    """Convert Python bool or int to CLASS yes/no"""
+    if isinstance(val, (int, float)):
+        return "yes" if val != 0 else "no"
+    return "yes" if val else "no"
 
 def write_ini_for_shooting(Lambda_EDE_eV, v3_params, mode="background_only"):
     """Generate temporary INI for shooting iteration"""
@@ -140,6 +156,9 @@ A_s = 2.1e-9
 n_s = 0.9649
 tau_reio = 0.0544
 
+# Gauge (required for Ridder field)
+gauge = newtonian
+
 # Ridder v3 unified field
 use_ridder = yes
 ridder_model_type = v3_canon
@@ -147,30 +166,31 @@ ridder_model_type = v3_canon
 # Field normalization
 ridder_f_eV = {v3_params['f_eV']:.6e}
 
-# EDE bump
-ridder_use_EDE = {v3_params['use_EDE']}
+# EDE bump (NOTE: C code calls this "shelf")
+ridder_use_shelf = {bool_to_yesno(v3_params['use_EDE'])}
 ridder_Lambda_EDE_eV = {Lambda_EDE_eV:.6e}
+ridder_a_c = {1.0 / (1.0 + v3_params['z_c']):.6e}
+ridder_sigma_lna = {v3_params['sigma_lna']:.6f}
 ridder_theta_E_center = {v3_params['theta_E_center']}
 ridder_sigma_E = {v3_params['sigma_E']}
 ridder_n_EDE = {v3_params['n_EDE']}
 
 # Tail
-ridder_use_tail = {v3_params['use_tail']}
+ridder_use_tail = {bool_to_yesno(v3_params['use_tail'])}
 ridder_Lambda_tail_eV = {v3_params['Lambda_tail_eV']:.6e}
 ridder_alpha_tail = {v3_params['alpha_tail']}
 ridder_theta_T_center = {v3_params['theta_T_center']}
 ridder_n_tail = {v3_params['n_tail']}
 
-# Floor
-ridder_use_floor = {v3_params['use_floor']}
+# Floor (v3: Lambda_floor absorbed into tail, no separate toggle)
 ridder_Lambda_floor_eV = {v3_params['Lambda_floor_eV']:.6e}
 
 # Initial conditions (Hubble-frozen)
 theta_i_ridder = {v3_params['theta_E_center']}
 ridder_c_slow = 0.0
 
-# Output
-root = {OUTPUT_DIR}/v3_shoot_test
+# Output (relative path from CLASS working directory)
+root = output/v3_shoot_test
 """
     
     tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.ini', delete=False)
@@ -187,8 +207,10 @@ def solve_Lambda_EDE_for_target(f_target, v3_params, max_iter=15, tol=0.005):
     """
     print(f"Shooting for f_EDE = {f_target:.3f}...")
     
-    Lambda_min = 1e-4  # eV
-    Lambda_max = 1e-1  # eV
+    # V3 with time window + field bump is VERY efficient
+    # Lambda ~ 0.01-0.1 eV gives f_EDE ~ 0.01-0.20
+    Lambda_min = 0.001  # eV
+    Lambda_max = 0.5    # eV
     
     for iteration in range(max_iter):
         Lambda_mid = 0.5 * (Lambda_min + Lambda_max)
@@ -204,8 +226,13 @@ def solve_Lambda_EDE_for_target(f_target, v3_params, max_iter=15, tol=0.005):
             os.unlink(ini_path)
             continue
         
-        # Extract f_EDE
-        bg_file = OUTPUT_DIR / "v3_shoot_test00_background.dat"
+        # Extract f_EDE (find latest v3_shoot_test file)
+        bg_files = list(OUTPUT_DIR.glob("v3_shoot_test*_background.dat"))
+        if not bg_files:
+            print(f"  [iter {iteration}] No background file found!", file=sys.stderr)
+            os.unlink(ini_path)
+            continue
+        bg_file = max(bg_files, key=lambda p: p.stat().st_mtime)  # Latest file
         f_mid, z_peak = extract_f_EDE_peak(bg_file)
         
         os.unlink(ini_path)
@@ -254,6 +281,9 @@ A_s = 2.1e-9
 n_s = 0.9649
 tau_reio = 0.0544
 
+# Gauge (required for Ridder field)
+gauge = newtonian
+
 # Ridder v3 unified field
 use_ridder = yes
 ridder_model_type = v3_canon
@@ -261,30 +291,31 @@ ridder_model_type = v3_canon
 # Field normalization
 ridder_f_eV = {v3_params['f_eV']:.6e}
 
-# EDE bump
-ridder_use_EDE = {v3_params['use_EDE']}
+# EDE bump (NOTE: C code calls this "shelf")
+ridder_use_shelf = {bool_to_yesno(v3_params['use_EDE'])}
 ridder_Lambda_EDE_eV = {v3_params['Lambda_EDE_eV']:.6e}
+ridder_a_c = {1.0 / (1.0 + v3_params['z_c']):.6e}
+ridder_sigma_lna = {v3_params['sigma_lna']:.6f}
 ridder_theta_E_center = {v3_params['theta_E_center']}
 ridder_sigma_E = {v3_params['sigma_E']}
 ridder_n_EDE = {v3_params['n_EDE']}
 
 # Tail
-ridder_use_tail = {v3_params['use_tail']}
+ridder_use_tail = {bool_to_yesno(v3_params['use_tail'])}
 ridder_Lambda_tail_eV = {v3_params['Lambda_tail_eV']:.6e}
 ridder_alpha_tail = {v3_params['alpha_tail']}
 ridder_theta_T_center = {v3_params['theta_T_center']}
 ridder_n_tail = {v3_params['n_tail']}
 
-# Floor
-ridder_use_floor = {v3_params['use_floor']}
+# Floor (v3: Lambda_floor absorbed into tail, no separate toggle)
 ridder_Lambda_floor_eV = {v3_params['Lambda_floor_eV']:.6e}
 
 # Initial conditions
 theta_i_ridder = {v3_params['theta_E_center']}
 ridder_c_slow = 0.0
 
-# Output
-root = {OUTPUT_DIR}/v3_run
+# Output (relative path from CLASS working directory)
+root = output/v3_run
 """
     
     tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.ini', delete=False)
@@ -300,7 +331,8 @@ def run_class_full(ini_path):
             capture_output=True,
             text=True,
             timeout=300,
-            check=True
+            check=True,
+            cwd=CLASS_PATH  # Run from CLASS directory
         )
         return True, result.stdout + result.stderr
     except subprocess.CalledProcessError as e:
@@ -357,6 +389,8 @@ def main():
     parser = argparse.ArgumentParser(description="V3 Unified Model Button")
     parser.add_argument("--Lambda_tail_meV", type=float, help="Tail energy scale [meV]")
     parser.add_argument("--f_axion", type=float, help="EDE strength parameter")
+    parser.add_argument("--z_c", type=float, help="EDE peak redshift (overrides default)")
+    parser.add_argument("--sigma_lna", type=float, help="EDE time window width (overrides default)")
     parser.add_argument("--preset", type=str, choices=list(PRESETS.keys()), help="Use preset configuration")
     parser.add_argument("--mode", type=str, choices=["quick", "full"], default="quick", help="Run mode")
     parser.add_argument("--output_json", type=str, help="Output JSON file path")
@@ -389,6 +423,12 @@ def main():
     # Map to v3 parameters
     v3_params = map_button_to_v3(Lambda_tail_meV, f_axion)
     
+    # Apply overrides if provided
+    if args.z_c is not None:
+        v3_params["z_c"] = args.z_c
+    if args.sigma_lna is not None:
+        v3_params["sigma_lna"] = args.sigma_lna
+    
     # Shoot for Lambda_EDE (if EDE is active)
     if v3_params["use_EDE"] and not args.skip_shooting:
         Lambda_EDE, f_achieved, z_peak = solve_Lambda_EDE_for_target(
@@ -409,14 +449,25 @@ def main():
     if not success:
         print("CLASS FAILED:", file=sys.stderr)
         print(output, file=sys.stderr)
+        # Save failed INI for debugging
+        debug_ini = OUTPUT_DIR / "debug_failed.ini"
+        shutil.copy(ini_path, debug_ini)
+        print(f"Failed INI saved to {debug_ini}", file=sys.stderr)
         os.unlink(ini_path)
         sys.exit(1)
     
     print("✓ CLASS completed")
-    os.unlink(ini_path)
+    # Save successful INI for debugging
+    debug_ini = OUTPUT_DIR / "debug_success.ini"
+    shutil.copy(ini_path, debug_ini)
+    # os.unlink(ini_path)  # Keep for debugging
     
-    # Extract observables
-    bg_file = OUTPUT_DIR / "v3_run00_background.dat"
+    # Extract observables (find latest v3_run file)
+    bg_files = list(OUTPUT_DIR.glob("v3_run*_background.dat"))
+    if not bg_files:
+        print("ERROR: No background file found!", file=sys.stderr)
+        sys.exit(1)
+    bg_file = max(bg_files, key=lambda p: p.stat().st_mtime)  # Latest file
     observables = extract_observables(bg_file, mode=args.mode)
     
     # Build JSON summary

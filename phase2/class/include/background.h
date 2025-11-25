@@ -692,17 +692,20 @@ extern "C" {
   /** Ridder field potential and its derivatives **/
   double V_ridder(
                   struct background *pba,
-                  double phi
+                  double phi,
+                  double a
                   );
 
   double dV_ridder(
                    struct background *pba,
-                   double phi
+                   double phi,
+                   double a
                    );
 
   double ddV_ridder(
                     struct background *pba,
-                    double phi
+                    double phi,
+                    double a
                );
 
   /** V3 canonical unified potential **/
