@@ -42,7 +42,11 @@ static double S_time_window(double a, double a_c, double sigma_lna) {
   double ln_a_c = log(a_c);
   double delta_ln_a = ln_a - ln_a_c;
   
-  return exp(-0.5 * (delta_ln_a * delta_ln_a) / (sigma_lna * sigma_lna));
+  /* Early return for very far from peak - avoids tiny nonzero values */
+  double exponent = -0.5 * (delta_ln_a * delta_ln_a) / (sigma_lna * sigma_lna);
+  if (exponent < -100.0) return 0.0;  /* exp(-100) ~ 4e-44, negligible */
+  
+  return exp(exponent);
 }
 
 /**

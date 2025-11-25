@@ -3497,6 +3497,32 @@ int background_derivs(
         /* ============================================================
          * FULL RIDDER KLEIN-GORDON EVOLUTION
          * ============================================================ */
+        
+        /* V3 EDE: Freeze field when far outside time window to prevent drift */
+        if (pba->ridder_unified.model_type == ridder_model_v3_canon &&
+            pba->ridder_unified.use_EDE == _TRUE_ && 
+            pba->ridder_unified.a_c > 0.0 &&
+            pba->ridder_unified.sigma_lna > 0.0) {
+          double ln_a = log(a);
+          double ln_a_c = log(pba->ridder_unified.a_c);
+          double delta_ln_a = ln_a - ln_a_c;
+          double exponent = -0.5 * delta_ln_a * delta_ln_a / 
+                           (pba->ridder_unified.sigma_lna * pba->ridder_unified.sigma_lna);
+          
+          /* If more than 10 sigma from peak, freeze field */
+          if (exponent < -50.0) {
+            dy[pba->index_bi_phi_ridder] = 0.0;
+            dy[pba->index_bi_phi_prime_ridder] = 0.0;
+            
+            static int v3_freeze_print = 0;
+            if (v3_freeze_print < 3) {
+              printf("V3 EDE FREEZE: a=%.3e z=%.1f |delta_ln_a|=%.1f >> sigma_lna=%.1f\n",
+                     a, 1.0/a - 1.0, fabs(delta_ln_a), pba->ridder_unified.sigma_lna);
+              v3_freeze_print++;
+            }
+            goto end_ridder_derivs;  /* Skip rest of evolution */
+          }
+        }
           
     /* Unit Conversion Constants */
         double M_Pl_eV = 2.435e27;        // Reduced Planck mass in eV
@@ -3570,6 +3596,8 @@ int background_derivs(
       }
         
       } // end else (full evolution)
+      
+      end_ridder_derivs:  /* Label for early exit when field is frozen */
       
       /* Hard assertion: if freeze is ON, derivatives MUST be zero */
       if (pba->ridder_freeze_phi == _TRUE_) {
