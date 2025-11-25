@@ -4,7 +4,7 @@
 
 theory:
   classy:
-    path: /home/azureuser/Ridder-Field/phase2/class
+    path: /home/ridderadmin/Ridder-Field/phase2/class
     extra_args:
       output: tCl, mPk, lCl
       l_max_scalars: 2508
