@@ -365,19 +365,42 @@ def extract_observables(bg_file, mode="full"):
     """Extract observables from CLASS output"""
     try:
         data = np.loadtxt(bg_file)
+        
+        # Columns: z, proper_time, conf_time, H[1/Mpc], comov_dist, ang_diam_dist, ...
+        # Check shape
+        if data.shape[1] < 20:
+            print(f"WARNING: background file has only {data.shape[1]} columns, expected 20+", file=sys.stderr)
+        
         z = data[:, 0]
-        H = data[:, 3]
-        rho_ridder = data[:, 14]
-        rho_tot = data[:, 19]
+        H_Mpc = data[:, 3]  # H in 1/Mpc
+        
+        # Convert H from 1/Mpc to km/s/Mpc: H_km_s_Mpc = H_Mpc * c_km_s
+        c_km_s = 299792.458  # km/s
+        H = H_Mpc * c_km_s
+        
+        # Find rho_ridder column (may vary depending on CLASS configuration)
+        # Typical columns after basic ones: rho_g, rho_b, rho_cdm, rho_lambda, rho_ur, rho_ncdm, ..., rho_ridder
+        # For now, try column 14 and 19, but be defensive
+        try:
+            if data.shape[1] > 19:
+                rho_ridder = data[:, 14]
+                rho_tot = data[:, 19]
+            else:
+                # Fallback: can't compute f_EDE
+                rho_ridder = np.zeros_like(z)
+                rho_tot = np.ones_like(z)
+        except IndexError:
+            rho_ridder = np.zeros_like(z)
+            rho_tot = np.ones_like(z)
         
         # H0
         idx_0 = np.argmin(np.abs(z))
-        H0 = H[idx_0] * 299792.458  # Convert to km/s/Mpc
+        H0 = H[idx_0]
         
         # f_EDE peak
         f_ridder = rho_ridder / rho_tot
         mask = (z >= 1000) & (z <= 10000)
-        if np.any(mask):
+        if np.any(mask) and np.max(f_ridder[mask]) > 1e-6:
             idx_max = np.argmax(f_ridder[mask])
             f_EDE_peak = f_ridder[mask][idx_max]
             z_peak = z[mask][idx_max]
@@ -385,12 +408,11 @@ def extract_observables(bg_file, mode="full"):
             f_EDE_peak = 0.0
             z_peak = 0.0
         
-        # w(z) at late times
+        # w(z) at late times (placeholder, would need p_ridder column)
         w_samples = []
         for z_check in [0.0, 1.0, 2.0]:
             idx = np.argmin(np.abs(z - z_check))
-            # w = p / rho for ridder field (would need p_ridder column)
-            w_samples.append({"z": z[idx], "w": -1.0})  # Placeholder
+            w_samples.append({"z": float(z[idx]), "w": -1.0})
         
         return {
             "H0_km_s_Mpc": float(H0),
@@ -399,7 +421,9 @@ def extract_observables(bg_file, mode="full"):
             "w_samples": w_samples
         }
     except Exception as e:
-        print(f"Error extracting observables: {e}", file=sys.stderr)
+        print(f"Error extracting observables from {bg_file}: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
         return {}
 
 # =============================================================================

@@ -52,6 +52,9 @@ future_output.clear();
 //
 #ifndef THREAD_POOL_H
 #define THREAD_POOL_H
+
+/* C++11 threading - use if available */
+#ifdef __cplusplus
 #include <atomic>
 #include <condition_variable>
 #include <deque>
@@ -228,5 +231,8 @@ private:
   std::vector<NotificationQueue> queues_;
 };
 
-}
-#endif
+} // namespace Tools
+
+#endif /* __cplusplus */
+
+#endif /* THREAD_POOL_H */
