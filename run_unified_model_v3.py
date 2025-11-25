@@ -42,7 +42,28 @@ V3_DEFAULTS = {
 
 # Presets
 PRESETS = {
-    "lcdm_baseline": {"Lambda_tail_meV": 0.0, "f_axion": 0.0},
+    # === BASELINE ===
+    "lcdm_baseline": {
+        "Lambda_tail_meV": 0.0, 
+        "f_axion": 0.0,
+        "description": "Pure ΛCDM (no EDE, no tail)"
+    },
+    
+    # === TRGB BRANCH (H0 ~ 69-70 km/s/Mpc) ===
+    "v3_trgb_branch": {
+        "Lambda_tail_meV": 1.6,  # Gentle late-time contribution
+        "f_axion": 0.25,         # Moderate EDE (f_EDE ~ 0.10)
+        "description": "TRGB-aligned: supports Freedman et al. H0~70"
+    },
+    
+    # === SH0ES BRANCH (H0 ~ 72-73 km/s/Mpc) ===
+    "v3_shoes_branch": {
+        "Lambda_tail_meV": 5.0,  # Stronger late-time push
+        "f_axion": 0.40,         # Strong EDE (f_EDE ~ 0.17)
+        "description": "SH0ES-targeted: aggressive H0 boost"
+    },
+    
+    # === LEGACY v2-like presets (kept for comparison) ===
     "unified_compromise": {"Lambda_tail_meV": 16.0, "f_axion": 0.40},
     "unified_hero": {"Lambda_tail_meV": 20.0, "f_axion": 0.45},
 }

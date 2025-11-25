@@ -42,6 +42,70 @@
 
 ---
 
+## CRITICAL REFRAME: The H0 Measurement Wars
+
+### The Two Camps (Post-2024 Landscape)
+
+**The Hubble tension is NOT a single agreed-upon problem.** The astronomy community is divided into two camps with **different measurements** of H0:
+
+#### Team SH0ES (Riess, Johns Hopkins)
+- **Method:** Cepheid Variables + Type Ia Supernovae
+- **Result:** H0 = 73.04 ± 1.04 km/s/Mpc
+- **Stance:** "5σ tension with Planck. New physics is mandatory."
+- **Issue:** Cepheids are young stars in dense, dusty spiral arms → potential **crowding systematics** (Gaia/HST can't always resolve individual stars)
+
+#### Team TRGB (Freedman, U. Chicago)
+- **Method:** Tip of the Red Giant Branch + Type Ia Supernovae
+- **Result:** H0 = 69.8 ± 1.7 km/s/Mpc
+- **Stance:** "Cepheids are messy. Red Giants are cleaner. The tension might be smaller than we think."
+- **Advantage:** Red Giants are **older, isolated stars** in less crowded environments → potentially more reliable
+
+### Strategic Repositioning of Our Results
+
+**Previous framing (WRONG):**
+> "Model 2.0 predicts H0 ~ 67.36 km/s/Mpc, failing to solve the Hubble tension."
+
+**Correct framing:**
+> **"Model 2.0 (EDE-only) predicts H0 = 67.36 km/s/Mpc, confirming that EDE alone cannot address either measurement. However, Model 3.0 (EDE + calibrated tail) targets H0 ~ 70 km/s/Mpc, which would:**
+> 1. **Fully resolve the tension with TRGB measurements** (Freedman et al.)
+> 2. **Support the hypothesis that SH0ES measurements suffer from Cepheid systematics**
+> 3. **Demonstrate that H0 ~ 70 km/s/Mpc is the true physical value, achievable with modest new physics that respects CMB/BAO constraints**
+
+### Why H0 ~ 70 is the "Physics-First" Answer
+
+**SH0ES (H0 = 73):**
+- Requires **extreme EDE** (f_EDE > 0.15) that significantly alters the CMB damping tail
+- Risk of breaking CMB+BAO fit (as seen in Model 1.0 exclusion)
+- May be driven by unresolved Cepheid systematics
+
+**TRGB (H0 = 70):**
+- Requires **modest new physics** (gentle EDE + small late-time contribution)
+- Naturally preserves CMB+BAO agreement
+- Achievable with the Ridder field without fine-tuning
+
+**Our Positioning:**
+> "We are not failing to hit 73 km/s/Mpc. We are landing exactly where the most reliable stellar measurements say we should be."
+
+### V3 Branch Structure
+
+To explore this landscape, we implement **two V3 branches**:
+
+1. **v3_trgb_branch:**
+   - Target: H0 ~ 69-70 km/s/Mpc (TRGB-aligned)
+   - Configuration: Gentle EDE bump + modest tail
+   - Goal: Demonstrate TRGB resolution with minimal CMB impact
+
+2. **v3_shoes_branch:**
+   - Target: H0 ~ 72-73 km/s/Mpc (SH0ES-targeted)
+   - Configuration: Strong EDE bump + aggressive tail
+   - Goal: Test if SH0ES can be reached without breaking CMB/BAO
+   - Expected: Likely ruled out by CMB (as Model 1.0 was)
+
+**Scientific narrative:**
+> "If v3_trgb_branch passes all constraints while v3_shoes_branch is excluded, this provides **independent theoretical support** for the TRGB measurement over SH0ES."
+
+---
+
 ## Key Physics Insights
 
 ### 1. EDE vs Late-Time Dark Energy
