@@ -36,17 +36,23 @@ static double get_scale_factor(struct background *pba) {
  * Gaussian in log(a) space centered at a_c
  */
 static double S_time_window(double a, double a_c, double sigma_lna) {
+  /* TEMPORARY: Disable time window to test standard axion-like EDE dynamics */
+  /* The time window creates stiff dynamics that cause integrator issues */
+  /* Standard EDE uses Hubble friction for field freezing, not an explicit window */
+  return 1.0;
+  
+  /* ORIGINAL CODE (commented out for debugging):
   if (a_c <= 0.0 || sigma_lna <= 0.0) return 0.0;
   
   double ln_a = log(a);
   double ln_a_c = log(a_c);
   double delta_ln_a = ln_a - ln_a_c;
   
-  /* Early return for very far from peak - avoids tiny nonzero values */
   double exponent = -0.5 * (delta_ln_a * delta_ln_a) / (sigma_lna * sigma_lna);
-  if (exponent < -25.0) return 0.0;  /* exp(-25) ~ 1e-11, negligible */
+  if (exponent < -25.0) return 0.0;
   
   return exp(exponent);
+  */
 }
 
 /**
