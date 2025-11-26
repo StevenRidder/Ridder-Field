@@ -120,6 +120,6 @@ sampler:
     proposal_scale: 1.9
 
 output: chains/v3_tier3_test
-debug: false
+debug: true
 resume: false
 
