@@ -9587,10 +9587,21 @@ int perturbations_derivs(double tau,
           double ca2 = cs2;
           
           /* 4. Calculate DM Coupling Source */
+          /* STABILITY FIX: Only apply coupling when Ridder field is dynamically significant */
+          /* This prevents numerical instability when rho_ridder << rho_tot */
           double coupling_force = 0.0;
           if (pba->has_cdm == _TRUE_ && pba->beta_ridder > 0.0) {
-             /* Force density ~ beta * rho * k^2 * delta_cdm */
-             coupling_force = pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
+             /* Calculate critical density (H^2 in natural units) */
+             double rho_crit_here = pow(a_prime_over_a/a, 2);
+             /* Check if Ridder field is significant (f_ridder > 1e-6) */
+             double f_ridder = rho_ridder / (rho_crit_here + 1.e-50);
+             if (f_ridder > 1.e-6) {
+                /* Force density ~ beta * rho * k^2 * delta_cdm */
+                /* Scale by f_ridder to smooth turn-off as field becomes subdominant */
+                double f_cap = (f_ridder < 0.01) ? f_ridder * 100.0 : 1.0;
+                double coupling_strength = pba->beta_ridder * f_cap;
+                coupling_force = coupling_strength * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
+             }
           }
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
