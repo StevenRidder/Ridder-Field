@@ -74,7 +74,7 @@ params:
     latex: n_s
   H0:
     prior: {min: 65, max: 80}  # Allow it to go high for SH0ES
-    ref: 73.0
+    ref: 69.5  # Start at intermediate value, let SH0ES prior pull it up
     proposal: 0.4
     latex: H_0
   omega_b:
@@ -96,7 +96,7 @@ params:
   # --- V3 Ridder Parameters ---
   ridder_Lambda_EDE_eV:
     prior: {min: 0.05, max: 0.80}
-    ref: 0.383  # Start at SH0ES calibrated value
+    ref: 0.321  # Start at TRGB calibrated value (more stable)
     proposal: 0.03
     latex: \Lambda_{EDE}
   ridder_a_c:
