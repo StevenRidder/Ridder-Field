@@ -4,6 +4,11 @@
 
 set -e
 
+# OPTIMIZATION: Prevent thread contention
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NUMEXPR_NUM_THREADS=1
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PHASE3_DIR="$SCRIPT_DIR/.."
 CHAINS_DIR="$PHASE3_DIR/chains"
