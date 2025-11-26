@@ -1,0 +1,125 @@
+# V3 Tier 3 Quick Test: Planck FULL + BAO + SH0ES
+# Runtime: ~2-3 hours
+# Purpose: Verify full likelihood pipeline with V3 model
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, mPk
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      recombination: recfast
+      
+      # V3 Ridder configuration
+      use_ridder: yes
+      ridder_model_type: v3_canon
+      
+      # EDE component
+      ridder_use_shelf: yes
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.4
+      ridder_n_EDE: 3.0
+      
+      # Tail component (Use TRGB calibration as starting point)
+      ridder_use_tail: yes
+      ridder_Lambda_tail_eV: 0.0012
+      ridder_alpha_tail: 1.0
+      ridder_theta_T_center: 0.0
+      ridder_n_tail: 1.0
+      
+      # Field normalization
+      ridder_f_eV: 1.0e26
+      
+      # Initial conditions
+      theta_i_ridder: 2.4
+      ridder_c_slow: 0.0
+
+likelihood:
+  # Planck 2018 FULL
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  
+  # BAO
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  
+  # SH0ES H0 Constraint (Riess et al. 2022)
+  sh0es_h0:
+    external: |
+      lambda _self=None, H0=None, **params_values: (
+        -0.5 * ((H0 - 73.04) / 1.04)**2
+      )
+    requires:
+      H0:
+        latex: H_0
+
+params:
+  # --- Standard ΛCDM ---
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+  A_s:
+    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.00}
+    ref: 0.9649
+    proposal: 0.003
+    latex: n_s
+  H0:
+    prior: {min: 65, max: 80}  # Allow it to go high for SH0ES
+    ref: 73.0
+    proposal: 0.4
+    latex: H_0
+  omega_b:
+    prior: {min: 0.021, max: 0.024}
+    ref: 0.02237
+    proposal: 0.00015
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: 0.1200
+    proposal: 0.001
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.10}
+    ref: 0.0544
+    proposal: 0.005
+    latex: \tau_{reio}
+
+  # --- V3 Ridder Parameters ---
+  ridder_Lambda_EDE_eV:
+    prior: {min: 0.05, max: 0.80}
+    ref: 0.383  # Start at SH0ES calibrated value
+    proposal: 0.03
+    latex: \Lambda_{EDE}
+  ridder_a_c:
+    prior: {min: 2.5e-4, max: 8.0e-4}
+    ref: 4.8e-4
+    proposal: 4.0e-5
+    latex: a_c
+  ridder_sigma_lna:
+    prior: {min: 0.6, max: 1.8}
+    ref: 1.0
+    proposal: 0.08
+    latex: \sigma_{\ln a}
+
+sampler:
+  mcmc:
+    max_samples: 200
+    Rminus1_stop: 0.2
+    burn_in: 20
+    drag: true
+    oversample_power: 0.4
+    proposal_scale: 1.9
+
+output: chains/v3_tier3_test
+debug: false
+resume: false
+
