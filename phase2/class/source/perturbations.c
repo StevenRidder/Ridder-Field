@@ -9547,19 +9547,31 @@ int perturbations_derivs(double tau,
           if (rho_ridder > 0.0) {
              double M_Pl_eV = 2.435e27;
              double eV_to_Mpc_inv = 1.5637e29;
+             
+             /* For v3_canon, use unified Lambda; otherwise use Lambda_EDE_ridder */
              double Lambda = pba->Lambda_EDE_ridder;
+             if (Lambda <= 0.0 && pba->ridder_unified.Lambda_EDE_eV > 0.0) {
+                Lambda = pba->ridder_unified.Lambda_EDE_eV;
+             }
              double f = pba->f_axion_ridder;
+             if (f <= 0.0 && pba->ridder_unified.f > 0.0) {
+                f = pba->ridder_unified.f;
+             }
              int n = pba->n_ridder;
+             if (n <= 0) n = 3; /* default */
              
-             /* rho_class to rho_eV conversion */
-             double rho_eV = rho_ridder * 3.0 * pow(M_Pl_eV/eV_to_Mpc_inv, 2.0);
-             
-             /* m^2 from potential curvature V'' */
-             double V_eff = rho_eV / 2.0; 
-             double term_V = V_eff / pow(Lambda, 4.0);
-             double m2_eV = n * (2*n - 1) * pow(Lambda, 4.0) * pow(term_V, (double)(n-1)/n) / (f*f);
-             
-             m2_eff = m2_eV * pow(eV_to_Mpc_inv, 2.0);
+             /* Only compute if Lambda and f are valid (avoid division by zero) */
+             if (Lambda > 0.0 && f > 0.0) {
+                /* rho_class to rho_eV conversion */
+                double rho_eV = rho_ridder * 3.0 * pow(M_Pl_eV/eV_to_Mpc_inv, 2.0);
+                
+                /* m^2 from potential curvature V'' */
+                double V_eff = rho_eV / 2.0; 
+                double term_V = V_eff / pow(Lambda, 4.0);
+                double m2_eV = n * (2*n - 1) * pow(Lambda, 4.0) * pow(term_V, (double)(n-1)/n) / (f*f);
+                
+                m2_eff = m2_eV * pow(eV_to_Mpc_inv, 2.0);
+             }
           }
           
           /* 2. Calculate Sound Speed cs2(k,a) */
