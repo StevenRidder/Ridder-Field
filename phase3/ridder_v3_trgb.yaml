@@ -87,7 +87,7 @@ params:
   H0:
     prior: {min: 60, max: 80}
     ref: 69.8  # Start at TRGB value
-    proposal: 0.5
+    proposal: 1.5  # Larger steps for better exploration
     latex: H_0
   
   omega_b:
@@ -301,7 +301,8 @@ sampler:
     learn_proposal_Rminus1_max_early: 30.0
     measure_speeds: true
     oversample_power: 0.4
-    drag: true
+    drag: false  # Disable dragging for faster H0 exploration
+    proposal_scale: 2.4  # Larger steps
 
 output: chains/v3_trgb
 debug: false

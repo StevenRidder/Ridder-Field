@@ -33,26 +33,30 @@ static double get_scale_factor(struct background *pba) {
 
 /**
  * Time window S(a; a_c, sigma_lna)
- * Gaussian in log(a) space centered at a_c
+ * 
+ * DISABLED: The time-modulated potential approach doesn't work for proper EDE physics.
+ * 
+ * For EDE to reduce the sound horizon, we need:
+ * 1. Field frozen at high potential BEFORE z_c (Hubble friction >> mass)
+ * 2. Field becomes dynamical at z_c when H ~ m_eff
+ * 3. Field oscillates rapidly and dilutes like a^(-6)
+ * 
+ * The time window artificially turns OFF the potential at early times,
+ * which means no frozen field energy = no EDE effect.
+ * 
+ * SOLUTION: Use standard axion-like potential WITHOUT time modulation.
+ * The field dynamics naturally create the EDE window through Hubble friction.
+ * 
+ * We now return 1.0 (always active) and let the field dynamics handle the rest.
+ * The a_c parameter instead controls the MASS of the field via Lambda_EDE.
  */
 static double S_time_window(double a, double a_c, double sigma_lna) {
-  /* TEMPORARY: Disable time window to test standard axion-like EDE dynamics */
-  /* The time window creates stiff dynamics that cause integrator issues */
-  /* Standard EDE uses Hubble friction for field freezing, not an explicit window */
+  (void)a;          /* unused */
+  (void)a_c;        /* unused - mass controls timing instead */
+  (void)sigma_lna;  /* unused */
+  
+  /* Always return 1.0 - field dynamics handle the timing */
   return 1.0;
-  
-  /* ORIGINAL CODE (commented out for debugging):
-  if (a_c <= 0.0 || sigma_lna <= 0.0) return 0.0;
-  
-  double ln_a = log(a);
-  double ln_a_c = log(a_c);
-  double delta_ln_a = ln_a - ln_a_c;
-  
-  double exponent = -0.5 * (delta_ln_a * delta_ln_a) / (sigma_lna * sigma_lna);
-  if (exponent < -25.0) return 0.0;
-  
-  return exp(exponent);
-  */
 }
 
 /**

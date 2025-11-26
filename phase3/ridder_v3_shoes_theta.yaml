@@ -1,5 +1,5 @@
-# V3 Tier 3 Quick Test: Planck FULL + BAO + SH0ES
-# FIXED: Using H0 directly with proper blocking
+# V3 SH0ES: Planck FULL + BAO + SH0ES H0 prior
+# FIX: Sample theta_s, H0 prior applied directly as Gaussian prior
 
 theory:
   classy:
@@ -28,7 +28,7 @@ theory:
       ridder_n_tail: 1.0
       
       # Field normalization
-      ridder_f_eV: 1.0e26
+      ridder_f_eV: 5.0e26
       
       # Initial conditions
       theta_i_ridder: 2.4
@@ -46,15 +46,8 @@ likelihood:
   bao.sdss_dr7_mgs: null
   bao.sdss_dr12_consensus_bao: null
   
-  # SH0ES H0 Constraint
-  sh0es_h0:
-    external: |
-      lambda _self=None, H0=None, **params_values: (
-        -0.5 * ((H0 - 73.04) / 1.04)**2
-      )
-    requires:
-      H0:
-        latex: H_0
+  # NOTE: Removed external sh0es_h0 likelihood
+  # H0 prior is now applied directly via the params section below
 
 params:
   # --- Standard ΛCDM ---
@@ -73,9 +66,13 @@ params:
     proposal: 0.003
     latex: n_s
   
-  # H0 sampled directly - FORCE SPEED TO SLOW
+  # Sample H0 DIRECTLY with SH0ES prior (Gaussian)
+  # This applies the prior directly instead of via external likelihood
   H0:
-    prior: {min: 65, max: 80}
+    prior:
+      dist: norm
+      loc: 73.04
+      scale: 1.04
     ref: 72.0
     proposal: 1.5
     latex: H_0
@@ -118,10 +115,11 @@ sampler:
     max_samples: 500
     Rminus1_stop: 0.2
     burn_in: 20
-    drag: false
-    measure_speeds: false  # Don't measure speeds - sample all together
+    # Enable dragging to couple H0 with theta_s-sensitive parameters
+    drag: true
+    measure_speeds: true
     proposal_scale: 2.4
 
-output: chains/v3_tier3_test
+output: chains/v3_shoes_theta
 debug: false
 resume: false

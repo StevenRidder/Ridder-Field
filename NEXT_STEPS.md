@@ -102,7 +102,7 @@ python3 mcmc_v3_robust.py
 
 **On Azure VM:**
 
-```bash
+   ```bash
 # Install Cobaya
 pip install cobaya
 
@@ -138,12 +138,12 @@ cobaya-run cobaya_v3_trgb.yaml -o chains/v3_trgb
 ```
 
 **SH0ES run**:
-```bash
+   ```bash
 cobaya-run cobaya_v3_shoes.yaml -o chains/v3_shoes
 ```
 
 **Monitor progress:**
-```bash
+   ```bash
 # Check convergence (R-1 statistic)
 getdist-plot chains/v3_baseline -p H0 omega_cdm
 

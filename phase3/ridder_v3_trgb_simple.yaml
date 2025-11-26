@@ -1,4 +1,4 @@
-# V3 Tier 3 Quick Test: Planck FULL + BAO + SH0ES
+# V3 TRGB: Planck FULL + BAO + TRGB H0 prior
 # FIXED: Using H0 directly with proper blocking
 
 theory:
@@ -46,11 +46,11 @@ likelihood:
   bao.sdss_dr7_mgs: null
   bao.sdss_dr12_consensus_bao: null
   
-  # SH0ES H0 Constraint
-  sh0es_h0:
+  # TRGB H0 Constraint (Freedman 2024)
+  trgb_h0:
     external: |
       lambda _self=None, H0=None, **params_values: (
-        -0.5 * ((H0 - 73.04) / 1.04)**2
+        -0.5 * ((H0 - 69.8) / 1.7)**2
       )
     requires:
       H0:
@@ -73,10 +73,10 @@ params:
     proposal: 0.003
     latex: n_s
   
-  # H0 sampled directly - FORCE SPEED TO SLOW
+  # H0 sampled directly
   H0:
     prior: {min: 65, max: 80}
-    ref: 72.0
+    ref: 69.8
     proposal: 1.5
     latex: H_0
   
@@ -122,6 +122,6 @@ sampler:
     measure_speeds: false  # Don't measure speeds - sample all together
     proposal_scale: 2.4
 
-output: chains/v3_tier3_test
+output: chains/v3_trgb_simple
 debug: false
 resume: false
