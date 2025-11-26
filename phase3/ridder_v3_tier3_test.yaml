@@ -7,22 +7,22 @@ theory:
     extra_args:
       output: tCl, mPk
       l_max_scalars: 2508
-      lensing: yes
+      lensing: "yes"
       gauge: newtonian
       recombination: recfast
       
       # V3 Ridder configuration
-      use_ridder: yes
+      use_ridder: "yes"
       ridder_model_type: v3_canon
       
       # EDE component
-      ridder_use_shelf: yes
+      ridder_use_shelf: "yes"
       ridder_theta_E_center: 0.0
       ridder_sigma_E: 0.4
       ridder_n_EDE: 3.0
       
       # Tail component (Use TRGB calibration as starting point)
-      ridder_use_tail: yes
+      ridder_use_tail: "yes"
       ridder_Lambda_tail_eV: 0.0012
       ridder_alpha_tail: 1.0
       ridder_theta_T_center: 0.0
