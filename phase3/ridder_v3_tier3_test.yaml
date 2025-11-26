@@ -63,9 +63,10 @@ params:
     prior: {min: 2.5, max: 3.5}
     ref: 3.044
     proposal: 0.001
+    drop: true
     latex: \log(10^{10} A_s)
   A_s:
-    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+    value: 'lambda logA: 1e-10*np.exp(logA)'
     latex: A_s
   n_s:
     prior: {min: 0.92, max: 1.00}
@@ -120,6 +121,6 @@ sampler:
     proposal_scale: 1.9
 
 output: chains/v3_tier3_test
-debug: true
+debug: false
 resume: false
 
