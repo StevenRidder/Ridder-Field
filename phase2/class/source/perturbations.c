@@ -9326,7 +9326,7 @@ int perturbations_derivs(double tau,
 
         /* CDM velocity with optional Ridder field coupling */
         double cdm_coupling_force = 0.0;
-        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
+        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0 && pv->index_pt_phi_ridder >= 0) {
            /* Fifth force: CDM feels gradient of Ridder field potential */
            /* F = -β ∇φ → in Fourier: F = β k² δ_ridder (with appropriate normalization) */
            double rho_ridder = pvecback[pba->index_bg_rho_ridder];
