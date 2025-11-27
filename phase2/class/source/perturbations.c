@@ -9324,28 +9324,8 @@ int perturbations_derivs(double tau,
       if (ppt->gauge == newtonian) {
         dy[pv->index_pt_delta_cdm] = -(y[pv->index_pt_theta_cdm]+metric_continuity); /* cdm density */
 
-        /* CDM velocity with optional Ridder field coupling */
+        /* CDM velocity - coupling TODO: implement perturbation-level coupling */
         double cdm_coupling_force = 0.0;
-        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
-           /* Check that Ridder perturbation index is valid before accessing */
-           int ridder_idx = pv->index_pt_phi_ridder;
-           if (ridder_idx >= 0 && ridder_idx < pv->pt_size) {
-              double rho_ridder = pvecback[pba->index_bg_rho_ridder];
-              double rho_cdm = pvecback[pba->index_bg_rho_cdm];
-              double delta_ridder = y[ridder_idx];
-              
-              /* k-dependent suppression */
-              double k_here = sqrt(k2);
-              double k_cut = 0.25;
-              double k_width = 0.1;
-              double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
-              
-              /* Only couple when both fields are non-negligible */
-              if (rho_ridder > 1.e-20 && rho_cdm > 1.e-20) {
-                 cdm_coupling_force = k_suppress * pba->beta_ridder * k2 * delta_ridder;
-              }
-           }
-        }
         
         dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler + cdm_coupling_force; /* cdm velocity */
       }
@@ -9609,28 +9589,8 @@ int perturbations_derivs(double tau,
           /* Enforce adiabaticity (ca2=cs2) to kill 1/k^2 term instability */
           double ca2 = cs2;
           
-          /* 4. Calculate DM Coupling Back-Reaction */
-          /* PHYSICS: Conservation of momentum requires back-reaction on Ridder field */
+          /* 4. DM Coupling Back-Reaction - TODO: implement */
           double coupling_backreaction = 0.0;
-          double beta_ridder_abs = (pba->beta_ridder > 0) ? pba->beta_ridder : -pba->beta_ridder;
-          if (pba->has_cdm == _TRUE_ && beta_ridder_abs > 1.e-10 && rho_ridder > 1.e-20) {
-             int ridder_idx = pv->index_pt_phi_ridder;
-             if (ridder_idx >= 0 && ridder_idx < pv->pt_size) {
-                double rho_cdm = pvecback[pba->index_bg_rho_cdm];
-                double delta_ridder = y[ridder_idx];
-                
-                /* k-dependent suppression */
-                double k_here = sqrt(k2);
-                double k_cut = 0.25;
-                double k_width = 0.1;
-                double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
-                
-                if (rho_cdm > 1.e-20) {
-                   /* Back-reaction: F_ridder = -β k² δ_ridder * (ρ_cdm / ρ_ridder) */
-                   coupling_backreaction = -k_suppress * pba->beta_ridder * k2 * delta_ridder * (rho_cdm / rho_ridder);
-                }
-             }
-          }
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
           /* With ca2=cs2, delta_p = cs2 * delta_rho */
