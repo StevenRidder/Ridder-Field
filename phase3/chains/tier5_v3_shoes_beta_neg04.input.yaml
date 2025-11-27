@@ -1,0 +1,109 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: 'yes'
+      gauge: newtonian
+      use_ridder: 'yes'
+      ridder_model_type: v3_canon
+      ridder_use_shelf: 'yes'
+      ridder_use_tail: 'no'
+      ridder_f_eV: 2.0e+26
+      theta_i_ridder: 2.8
+      ridder_c_slow: 0.0
+      ridder_sigma_E: 0.4
+      beta_ridder: -0.04
+      beta_z_c: 3000.0
+      beta_sigma_z: 0.5
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  sh0es_h0:
+    external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2'
+    requires:
+      H0:
+        latex: H_0
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 70.5
+    proposal: 0.5
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0002
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    proposal: 0.002
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.006
+  ridder_Lambda_EDE_eV:
+    prior:
+      min: 0.3
+      max: 0.7
+    ref: 0.5
+    proposal: 0.03
+  ridder_a_c:
+    prior:
+      min: 0.00025
+      max: 0.00035
+    ref: 0.0003
+    proposal: 1.5e-05
+  ridder_sigma_lna:
+    prior:
+      min: 0.4
+      max: 0.8
+    ref: 0.6
+    proposal: 0.04
+  rs_drag:
+    latex: r_s
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  Omega_m:
+    latex: \Omega_m
+    derived: true
+  S8:
+    latex: S_8
+    derived: 'lambda sigma8, Omega_m: sigma8 * (Omega_m/0.3)**0.5'
+sampler:
+  mcmc:
+    max_samples: 3000
+    Rminus1_stop: 0.03
+    burn_in: 0
+    drag: false
+    proposal_scale: 2.0
+output: tier5_v3_shoes_beta_neg04

@@ -1,0 +1,19 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier5_lcdm_trgb'
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase2/class
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[trgb_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+[mcmc] Initial point: logA:3.044, n_s:0.9649, H0:67.5, omega_b:0.02237, omega_cdm:0.12, tau_reio:0.0544, A_planck:1.002554, calib_100T:0.9998485, calib_217T:0.9984859, A_cib_217:69.48131, xi_sz_cib:0.05938608, A_sz:3.5835, ksz_norm:6.129762, gal545_A_100:6.706028, gal545_A_143:10.51534, gal545_A_143_217:17.17476, gal545_A_217:68.21105, ps_A_100_100:251.7048, ps_A_143_143:48.17897, ps_A_143_217:55.37221, ps_A_217_217:91.21811, galf_TE_A_100:0.1063901, galf_TE_A_100_143:0.03261233, galf_TE_A_100_217:0.558932, galf_TE_A_143:0.2193202, galf_TE_A_143_217:0.6718707, galf_TE_A_217:1.851055
+[model] Measuring speeds... (this may take a few seconds)
