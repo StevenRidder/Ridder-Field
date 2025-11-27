@@ -9325,27 +9325,9 @@ int perturbations_derivs(double tau,
         dy[pv->index_pt_delta_cdm] = -(y[pv->index_pt_theta_cdm]+metric_continuity); /* cdm density */
 
         /* CDM velocity with optional Ridder field coupling */
+        /* TEMPORARILY DISABLED FOR DEBUGGING - enable once working */
         double cdm_coupling_force = 0.0;
-        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0 && pv->index_pt_phi_ridder >= 0) {
-           /* Fifth force: CDM feels gradient of Ridder field potential */
-           /* F = -β ∇φ → in Fourier: F = β k² δ_ridder (with appropriate normalization) */
-           double rho_ridder = pvecback[pba->index_bg_rho_ridder];
-           double rho_cdm = pvecback[pba->index_bg_rho_cdm];
-           double delta_ridder = y[pv->index_pt_phi_ridder];
-           
-           /* k-dependent suppression (same as in Ridder equations) */
-           double k_here = sqrt(k2);
-           double k_cut = 0.25;
-           double k_width = 0.1;
-           double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
-           
-           /* Only couple when Ridder field is non-negligible */
-           if (rho_ridder > 1.e-20 && rho_cdm > 1.e-20) {
-              /* Fifth force on CDM: proportional to Ridder field gradient */
-              /* Dimensionally: [force/mass] ~ k² * δ_ridder * β */
-              cdm_coupling_force = k_suppress * pba->beta_ridder * k2 * delta_ridder;
-           }
-        }
+        /* Coupling disabled - will re-enable after fixing segfault */
         
         dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler + cdm_coupling_force; /* cdm velocity */
       }
@@ -9610,28 +9592,9 @@ int perturbations_derivs(double tau,
           double ca2 = cs2;
           
           /* 4. Calculate DM Coupling Back-Reaction */
-          /* PHYSICS: Conservation of momentum requires back-reaction on Ridder field */
-          /* If CDM feels force F_cdm, Ridder field feels -F_cdm * (ρ_cdm / ρ_ridder) */
-          /* This ensures total momentum is conserved: ρ_cdm * v_cdm + ρ_ridder * v_ridder = const */
+          /* TEMPORARILY DISABLED FOR DEBUGGING */
           double coupling_backreaction = 0.0;
-          double beta_ridder_abs = (pba->beta_ridder > 0) ? pba->beta_ridder : -pba->beta_ridder;
-          if (pba->has_cdm == _TRUE_ && beta_ridder_abs > 1.e-10 && rho_ridder > 1.e-20) {
-             double rho_cdm = pvecback[pba->index_bg_rho_cdm];
-             double theta_cdm = y[pv->index_pt_theta_cdm];
-             double delta_ridder = y[pv->index_pt_phi_ridder];
-             
-             /* k-dependent suppression (same as CDM coupling) */
-             double k_here = sqrt(k2);
-             double k_cut = 0.25;
-             double k_width = 0.1;
-             double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
-             
-             if (rho_cdm > 1.e-20) {
-                /* Back-reaction: opposite of force on CDM, scaled by mass ratio */
-                /* F_ridder = -F_cdm * (ρ_cdm / ρ_ridder) = -β k² δ_ridder * (ρ_cdm / ρ_ridder) */
-                coupling_backreaction = -k_suppress * pba->beta_ridder * k2 * delta_ridder * (rho_cdm / rho_ridder);
-             }
-          }
+          /* Will re-enable after fixing segfault */
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
           /* With ca2=cs2, delta_p = cs2 * delta_rho */
