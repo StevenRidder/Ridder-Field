@@ -129,6 +129,7 @@ static int background_shoot_Lambda(struct precision *ppr, struct background *pba
                                     double log10_Lambda_min, double log10_Lambda_max,
                                     double z_min, double z_max,
                                     double tol_f);
+int ridder_shoot_for_fEDE(struct precision *ppr, struct background *pba, ErrorMsg error_message);
 
 /**
  * Background quantities at given redshift z.
