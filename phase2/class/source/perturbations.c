@@ -9587,15 +9587,29 @@ int perturbations_derivs(double tau,
           double ca2 = cs2;
           
           /* 4. Calculate DM Coupling Source */
-          /* NOTE: Perturbation coupling temporarily disabled due to numerical stiffness */
-          /* The background coupling (in background.c) is still active and affects H(z) */
-          /* This is a known limitation - full perturbation coupling needs implicit solver */
+          /* STABILITY FIX: k-dependent suppression to prevent stiffness at small scales */
+          /* Physics: CDM coupling matters for H(z) and large-scale structure (k < 0.1) */
+          /*          At high k, the coupling term causes numerical stiffness */
           double coupling_force = 0.0;
-          /* DISABLED FOR STABILITY:
-          if (pba->has_cdm == _TRUE_ && pba->beta_ridder > 0.0) {
-             coupling_force = pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
+          if (pba->has_cdm == _TRUE_ && pba->beta_ridder > 0.0 && rho_ridder > 1.e-20) {
+             /* k in Mpc^-1, k_cut = 0.1 Mpc^-1 (BAO/CMB scale) */
+             double k_here = sqrt(k2);
+             double k_cut = 0.1;  /* Cutoff wavenumber */
+             double k_width = 0.05; /* Transition width */
+             /* Smooth suppression: 1 at k<<k_cut, 0 at k>>k_cut */
+             double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
+             
+             /* Also suppress when Ridder field is subdominant */
+             double rho_crit_local = pow(a_prime_over_a/a, 2);
+             double f_ridder = rho_ridder / (rho_crit_local + 1.e-50);
+             double f_suppress = (f_ridder > 0.001) ? 1.0 : f_ridder / 0.001;
+             
+             /* Combined suppression */
+             double suppress = k_suppress * f_suppress;
+             
+             /* Force density with suppression */
+             coupling_force = suppress * pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
           }
-          */
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
           /* With ca2=cs2, delta_p = cs2 * delta_rho */
