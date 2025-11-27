@@ -9324,7 +9324,30 @@ int perturbations_derivs(double tau,
       if (ppt->gauge == newtonian) {
         dy[pv->index_pt_delta_cdm] = -(y[pv->index_pt_theta_cdm]+metric_continuity); /* cdm density */
 
-        dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler; /* cdm velocity */
+        /* CDM velocity with optional Ridder field coupling */
+        double cdm_coupling_force = 0.0;
+        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
+           /* Fifth force: CDM feels gradient of Ridder field potential */
+           /* F = -β ∇φ → in Fourier: F = β k² δ_ridder (with appropriate normalization) */
+           double rho_ridder = pvecback[pba->index_bg_rho_ridder];
+           double rho_cdm = pvecback[pba->index_bg_rho_cdm];
+           double delta_ridder = y[pv->index_pt_phi_ridder];
+           
+           /* k-dependent suppression (same as in Ridder equations) */
+           double k_here = sqrt(k2);
+           double k_cut = 0.25;
+           double k_width = 0.1;
+           double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
+           
+           /* Only couple when Ridder field is non-negligible */
+           if (rho_ridder > 1.e-20 && rho_cdm > 1.e-20) {
+              /* Fifth force on CDM: proportional to Ridder field gradient */
+              /* Dimensionally: [force/mass] ~ k² * δ_ridder * β */
+              cdm_coupling_force = k_suppress * pba->beta_ridder * k2 * delta_ridder;
+           }
+        }
+        
+        dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler + cdm_coupling_force; /* cdm velocity */
       }
 
       /** - ----> synchronous gauge: cdm density only (velocity set to zero by definition of the gauge) */
@@ -9586,30 +9609,28 @@ int perturbations_derivs(double tau,
           /* Enforce adiabaticity (ca2=cs2) to kill 1/k^2 term instability */
           double ca2 = cs2;
           
-          /* 4. Calculate DM Coupling Source */
-          /* STABILITY FIX: k-dependent suppression to prevent stiffness at small scales */
-          /* Physics: CDM coupling matters for H(z), BAO, and CMB (keep active through k ~ 0.5) */
-          /*          Only suppress deep into nonlinear regime to avoid ODE stiffness */
-          double coupling_force = 0.0;
+          /* 4. Calculate DM Coupling Back-Reaction */
+          /* PHYSICS: Conservation of momentum requires back-reaction on Ridder field */
+          /* If CDM feels force F_cdm, Ridder field feels -F_cdm * (ρ_cdm / ρ_ridder) */
+          /* This ensures total momentum is conserved: ρ_cdm * v_cdm + ρ_ridder * v_ridder = const */
+          double coupling_backreaction = 0.0;
           double beta_ridder_abs = (pba->beta_ridder > 0) ? pba->beta_ridder : -pba->beta_ridder;
           if (pba->has_cdm == _TRUE_ && beta_ridder_abs > 1.e-10 && rho_ridder > 1.e-20) {
-             /* k in Mpc^-1, k_cut = 0.25 Mpc^-1 (gentler - large scales only) */
+             double rho_cdm = pvecback[pba->index_bg_rho_cdm];
+             double theta_cdm = y[pv->index_pt_theta_cdm];
+             double delta_ridder = y[pv->index_pt_phi_ridder];
+             
+             /* k-dependent suppression (same as CDM coupling) */
              double k_here = sqrt(k2);
-             double k_cut = 0.25;  /* Cutoff wavenumber - more conservative */
-             double k_width = 0.1; /* Sharper transition */
-             /* Smooth suppression: 1 at k<<k_cut, 0 at k>>k_cut */
+             double k_cut = 0.25;
+             double k_width = 0.1;
              double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
              
-             /* Also suppress when Ridder field is subdominant */
-             double rho_crit_local = pow(a_prime_over_a/a, 2);
-             double f_ridder = rho_ridder / (rho_crit_local + 1.e-50);
-             double f_suppress = (f_ridder > 0.001) ? 1.0 : f_ridder / 0.001;
-             
-             /* Combined suppression */
-             double suppress = k_suppress * f_suppress;
-             
-             /* Force density with suppression - note: beta can be negative! */
-             coupling_force = suppress * pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
+             if (rho_cdm > 1.e-20) {
+                /* Back-reaction: opposite of force on CDM, scaled by mass ratio */
+                /* F_ridder = -F_cdm * (ρ_cdm / ρ_ridder) = -β k² δ_ridder * (ρ_cdm / ρ_ridder) */
+                coupling_backreaction = -k_suppress * pba->beta_ridder * k2 * delta_ridder * (rho_cdm / rho_ridder);
+             }
           }
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
@@ -9627,11 +9648,12 @@ int perturbations_derivs(double tau,
              - (rho_ridder + p_ridder) * metric_continuity;
              
           /* Momentum Conservation: Theta_flux' */
+          /* Includes back-reaction from CDM coupling (conserves total momentum) */
           dy[pv->index_pt_phi_prime_ridder] =
              -4.0 * a_prime_over_a * Theta_flux
              + k2 * delta_p
              + (rho_ridder + p_ridder) * metric_euler
-             + coupling_force;
+             + coupling_backreaction;
       }
     }
 
