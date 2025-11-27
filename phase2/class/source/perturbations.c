@@ -9588,14 +9588,15 @@ int perturbations_derivs(double tau,
           
           /* 4. Calculate DM Coupling Source */
           /* STABILITY FIX: k-dependent suppression to prevent stiffness at small scales */
-          /* Physics: CDM coupling matters for H(z) and large-scale structure (k < 0.1) */
-          /*          At high k, the coupling term causes numerical stiffness */
+          /* Physics: CDM coupling matters for H(z), BAO, and CMB (keep active through k ~ 0.5) */
+          /*          Only suppress deep into nonlinear regime to avoid ODE stiffness */
           double coupling_force = 0.0;
-          if (pba->has_cdm == _TRUE_ && pba->beta_ridder > 0.0 && rho_ridder > 1.e-20) {
-             /* k in Mpc^-1, k_cut = 0.1 Mpc^-1 (BAO/CMB scale) */
+          double beta_ridder_abs = (pba->beta_ridder > 0) ? pba->beta_ridder : -pba->beta_ridder;
+          if (pba->has_cdm == _TRUE_ && beta_ridder_abs > 1.e-10 && rho_ridder > 1.e-20) {
+             /* k in Mpc^-1, k_cut = 0.5 Mpc^-1 (well above CMB/BAO scales) */
              double k_here = sqrt(k2);
-             double k_cut = 0.1;  /* Cutoff wavenumber */
-             double k_width = 0.05; /* Transition width */
+             double k_cut = 0.5;   /* Cutoff wavenumber - above BAO/CMB */
+             double k_width = 0.2; /* Wider transition for stability */
              /* Smooth suppression: 1 at k<<k_cut, 0 at k>>k_cut */
              double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
              
@@ -9607,7 +9608,7 @@ int perturbations_derivs(double tau,
              /* Combined suppression */
              double suppress = k_suppress * f_suppress;
              
-             /* Force density with suppression */
+             /* Force density with suppression - note: beta can be negative! */
              coupling_force = suppress * pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
           }
 
