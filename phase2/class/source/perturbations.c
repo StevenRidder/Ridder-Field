@@ -9593,10 +9593,10 @@ int perturbations_derivs(double tau,
           double coupling_force = 0.0;
           double beta_ridder_abs = (pba->beta_ridder > 0) ? pba->beta_ridder : -pba->beta_ridder;
           if (pba->has_cdm == _TRUE_ && beta_ridder_abs > 1.e-10 && rho_ridder > 1.e-20) {
-             /* k in Mpc^-1, k_cut = 0.5 Mpc^-1 (well above CMB/BAO scales) */
+             /* k in Mpc^-1, k_cut = 0.25 Mpc^-1 (gentler - large scales only) */
              double k_here = sqrt(k2);
-             double k_cut = 0.5;   /* Cutoff wavenumber - above BAO/CMB */
-             double k_width = 0.2; /* Wider transition for stability */
+             double k_cut = 0.25;  /* Cutoff wavenumber - more conservative */
+             double k_width = 0.1; /* Sharper transition */
              /* Smooth suppression: 1 at k<<k_cut, 0 at k>>k_cut */
              double k_suppress = 1.0 / (1.0 + exp((k_here - k_cut) / k_width));
              
