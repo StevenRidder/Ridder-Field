@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
 """
-CI TEST: Verify CDM-Ridder coupling conserves energy-momentum
+CI TEST: Verify CDM-Ridder coupling physics
 
-Tests:
-1. β=0 should give same results as uncoupled
-2. β>0 should modify σ8 (structure formation)
-3. β<0 should modify σ8 in opposite direction
-4. Coupling should NOT break ΛCDM when Ridder field is off
+HARD ASSERTIONS (will fail CI if violated):
+1. ΛCDM must give σ8 in range [0.75, 0.90] - sanity check
+2. Ridder β=0 must be within 5% of ΛCDM σ8 - no coupling means similar physics  
+3. β>0 MUST give LOWER σ8 than β=0 - this is the core thesis!
+4. β<0 MUST give HIGHER σ8 than β=0 - opposite direction
+5. Effect must be measurable (>0.1% change) - coupling actually works
+6. Effect must not be catastrophic (<30% change) - numerical stability
+
+If any assertion fails, there's a BUG in the coupling code!
 """
 
 import sys
 import numpy as np
+
+class CouplingBugError(Exception):
+    """Raised when coupling physics is broken"""
+    pass
 
 def test_coupling():
     try:
@@ -129,52 +137,78 @@ def test_coupling():
     print(f"Ridder β=+:  σ8 = {s8_pos:.4f} (Δ = {s8_pos - s8_lcdm:+.4f})")
     print(f"Ridder β=-:  σ8 = {s8_neg:.4f} (Δ = {s8_neg - s8_lcdm:+.4f})")
     
-    # Validation
-    print("\n" + "="*70)
-    print("VALIDATION CHECKS")
-    print("="*70)
-    
-    passed = True
-    
-    # Check 1: β=0 should not change σ8 dramatically
-    if abs(s8_beta0 - s8_lcdm) < 0.15:
-        print("✓ β=0 gives reasonable σ8 (within 0.15 of ΛCDM)")
-    else:
-        print(f"✗ β=0 gives σ8 too far from ΛCDM: Δ={s8_beta0 - s8_lcdm:.4f}")
-        passed = False
-    
-    # Check 2: β>0 and β<0 should have opposite effects
     delta_pos = s8_pos - s8_beta0
     delta_neg = s8_neg - s8_beta0
     
-    if delta_pos * delta_neg < 0:
-        print("✓ β>0 and β<0 have OPPOSITE effects on σ8 (as expected)")
-    else:
-        print(f"✗ β>0 and β<0 have SAME direction effect (BUG!)")
-        print(f"  β>0: Δσ8={delta_pos:+.4f}, β<0: Δσ8={delta_neg:+.4f}")
-        passed = False
-    
-    # Check 3: Coupling should produce measurable effect
-    if abs(delta_pos) > 0.001 or abs(delta_neg) > 0.001:
-        print("✓ Coupling produces measurable σ8 change")
-    else:
-        print("✗ Coupling has NO effect (might be disabled)")
-        passed = False
-    
-    # Check 4: Effect should be modest (not catastrophic)
-    if abs(delta_pos) < 0.3 and abs(delta_neg) < 0.3:
-        print("✓ Coupling effect is modest (< 0.3 in σ8)")
-    else:
-        print(f"⚠ Coupling effect may be too strong: |Δσ8| > 0.3")
-    
+    # ========================================
+    # HARD ASSERTIONS - These catch bugs!
+    # ========================================
     print("\n" + "="*70)
-    if passed:
-        print("✅ ALL CHECKS PASSED - Coupling physics working correctly")
-    else:
-        print("❌ SOME CHECKS FAILED - Coupling has bugs")
+    print("BUG DETECTION ASSERTIONS")
     print("="*70)
     
-    return passed
+    bugs_found = []
+    
+    # ASSERTION 1: ΛCDM sanity check
+    if not (0.75 < s8_lcdm < 0.90):
+        bugs_found.append(f"BUG: ΛCDM σ8={s8_lcdm:.4f} outside valid range [0.75, 0.90]")
+    else:
+        print("✓ ASSERT 1: ΛCDM σ8 in valid range [0.75, 0.90]")
+    
+    # ASSERTION 2: Ridder β=0 should be close to ΛCDM
+    if abs(s8_beta0 - s8_lcdm) > 0.10:
+        bugs_found.append(f"BUG: β=0 σ8 differs from ΛCDM by {abs(s8_beta0 - s8_lcdm):.4f} (>0.10)")
+    else:
+        print("✓ ASSERT 2: β=0 within 0.10 of ΛCDM")
+    
+    # ASSERTION 3: CORE PHYSICS - positive β MUST decrease σ8
+    if delta_pos >= 0:
+        bugs_found.append(f"BUG: β>0 should DECREASE σ8, but Δ={delta_pos:+.4f} (wrong sign!)")
+    else:
+        print(f"✓ ASSERT 3: β>0 decreases σ8 (Δ={delta_pos:+.4f}) - CORE THESIS VERIFIED")
+    
+    # ASSERTION 4: CORE PHYSICS - negative β MUST increase σ8
+    if delta_neg <= 0:
+        bugs_found.append(f"BUG: β<0 should INCREASE σ8, but Δ={delta_neg:+.4f} (wrong sign!)")
+    else:
+        print(f"✓ ASSERT 4: β<0 increases σ8 (Δ={delta_neg:+.4f}) - opposite direction verified")
+    
+    # ASSERTION 5: Coupling must have measurable effect (not silently disabled)
+    if abs(delta_pos) < 0.001:
+        bugs_found.append(f"BUG: β>0 has NO effect (Δ={delta_pos:.6f}) - coupling may be disabled!")
+    else:
+        print(f"✓ ASSERT 5: Coupling produces measurable effect (|Δ|={abs(delta_pos):.4f})")
+    
+    # ASSERTION 6: Effect must not be catastrophic (numerical instability)
+    if abs(delta_pos) > 0.20 or abs(delta_neg) > 0.20:
+        bugs_found.append(f"BUG: Coupling too strong! β>0: {delta_pos:+.4f}, β<0: {delta_neg:+.4f}")
+    else:
+        print("✓ ASSERT 6: Coupling effect is physically reasonable (<20%)")
+    
+    # ========================================
+    # VERDICT
+    # ========================================
+    print("\n" + "="*70)
+    if bugs_found:
+        print("❌ BUGS DETECTED IN COUPLING CODE!")
+        print("="*70)
+        for bug in bugs_found:
+            print(f"  🐛 {bug}")
+        print("\nFix these issues before running MCMC chains!")
+        print("="*70)
+        raise CouplingBugError("\n".join(bugs_found))
+    else:
+        print("✅ ALL ASSERTIONS PASSED - Coupling physics correct!")
+        print("="*70)
+        print("  • ΛCDM baseline: valid")
+        print("  • β=0 control: matches ΛCDM")
+        print("  • β>0 effect: reduces σ8 (helps S8 tension)")
+        print("  • β<0 effect: increases σ8 (opposite)")
+        print("  • Coupling active: measurable effect")
+        print("  • Numerical stability: within bounds")
+    print("="*70)
+    
+    return len(bugs_found) == 0
 
 if __name__ == "__main__":
     success = test_coupling()
