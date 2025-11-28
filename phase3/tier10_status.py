@@ -56,14 +56,14 @@ if not chain_files:
     print("Check again in a few minutes.")
     exit(0)
 
-# Group by model type
+# Group by model type with paper-facing names
 groups = {
-    "LCDM Reference (SHOES)": [],
-    "CPL Control (SHOES)": [],
-    "EDE Minimal Gold (SHOES)": [],
-    "EDE High H0 (SHOES)": [],
-    "EDE Minimal (BASE)": [],
-    "EDE Minimal (TRGB)": [],
+    "Standard Model (ΛCDM) — Planck + BAO + SH0ES": [],
+    "Late-Time Dynamical (w₀wₐCDM) — Planck + BAO + SH0ES": [],
+    "Geometric EDE (ϕCDM) — Planck + BAO + SH0ES": [],
+    "Geometric EDE High H₀ Stress Test": [],
+    "Geometric EDE (ϕCDM) — Planck + BAO only": [],
+    "Geometric EDE (ϕCDM) — Planck + BAO + TRGB": [],
 }
 
 for f in chain_files:
@@ -71,17 +71,17 @@ for f in chain_files:
     data = load_chain(f)
     
     if "lcdm_ref" in name:
-        groups["LCDM Reference (SHOES)"].append((name, data))
+        groups["Standard Model (ΛCDM) — Planck + BAO + SH0ES"].append((name, data))
     elif "cpl_control" in name:
-        groups["CPL Control (SHOES)"].append((name, data))
+        groups["Late-Time Dynamical (w₀wₐCDM) — Planck + BAO + SH0ES"].append((name, data))
     elif "ede_minimal_gold" in name:
-        groups["EDE Minimal Gold (SHOES)"].append((name, data))
+        groups["Geometric EDE (ϕCDM) — Planck + BAO + SH0ES"].append((name, data))
     elif "ede_highH0" in name:
-        groups["EDE High H0 (SHOES)"].append((name, data))
+        groups["Geometric EDE High H₀ Stress Test"].append((name, data))
     elif "ede_minimal_base" in name:
-        groups["EDE Minimal (BASE)"].append((name, data))
+        groups["Geometric EDE (ϕCDM) — Planck + BAO only"].append((name, data))
     elif "ede_minimal_trgb" in name:
-        groups["EDE Minimal (TRGB)"].append((name, data))
+        groups["Geometric EDE (ϕCDM) — Planck + BAO + TRGB"].append((name, data))
 
 # Print status
 total_samples = 0

@@ -38,19 +38,20 @@ def compute_aic_bic(chi2, k, n_data):
     return aic, bic
 
 # Chains with parameter counts
+# Paper names: ΛCDM = Standard Model, w₀wₐCDM = Late-Time Dynamical, ϕCDM = Geometric EDE
 chains = {
-    "tier9_lcdm_shoes": ("LCDM", 6, "SHOES"),
-    "tier9_phenom_shoes": ("CPL", 8, "SHOES"),
-    "tier9_v3_shoes_fresh": ("EDE(k=9)", 9, "SHOES"),
-    "tier9_v3_shoes_wide_ocdm": ("EDE(k=9)", 9, "SHOES"),
-    "tier9_v3_shoes_minimal": ("EDE(k=8)", 8, "SHOES"),
-    "tier9_v3_shoes_optimal": ("EDE(k=9)", 9, "SHOES"),
-    "tier9_lcdm_baseline": ("LCDM", 6, "BASE"),
-    "tier9_phenom_baseline": ("CPL", 8, "BASE"),
-    "tier9_v3_baseline": ("EDE(k=9)", 9, "BASE"),
-    "tier9_v3_baseline_minimal": ("EDE(k=8)", 8, "BASE"),
-    "tier9_lcdm_trgb": ("LCDM", 6, "TRGB"),
-    "tier9_v3_trgb": ("EDE(k=9)", 9, "TRGB"),
+    "tier9_lcdm_shoes": ("ΛCDM", 6, "SHOES"),
+    "tier9_phenom_shoes": ("w₀wₐCDM", 8, "SHOES"),
+    "tier9_v3_shoes_fresh": ("ϕCDM(9)", 9, "SHOES"),
+    "tier9_v3_shoes_wide_ocdm": ("ϕCDM(9)", 9, "SHOES"),
+    "tier9_v3_shoes_minimal": ("ϕCDM(8)", 8, "SHOES"),
+    "tier9_v3_shoes_optimal": ("ϕCDM(9)", 9, "SHOES"),
+    "tier9_lcdm_baseline": ("ΛCDM", 6, "BASE"),
+    "tier9_phenom_baseline": ("w₀wₐCDM", 8, "BASE"),
+    "tier9_v3_baseline": ("ϕCDM(9)", 9, "BASE"),
+    "tier9_v3_baseline_minimal": ("ϕCDM(8)", 8, "BASE"),
+    "tier9_lcdm_trgb": ("ΛCDM", 6, "TRGB"),
+    "tier9_v3_trgb": ("ϕCDM(9)", 9, "TRGB"),
 }
 
 # Load all chains
@@ -77,7 +78,7 @@ for world in ["SHOES", "BASE", "TRGB"]:
     if not world_chains:
         continue
     
-    ref_name = [k for k, v in world_chains.items() if v["model"] == "LCDM"]
+    ref_name = [k for k, v in world_chains.items() if v["model"] == "ΛCDM"]
     if not ref_name:
         continue
     ref = world_chains[ref_name[0]]
@@ -96,9 +97,9 @@ for world in ["SHOES", "BASE", "TRGB"]:
         dbic = bic - ref_bic
         
         marker = ""
-        if data["model"] == "LCDM":
+        if data["model"] == "ΛCDM":
             marker = " [REF]"
-        elif data["model"] == "EDE(k=8)":
+        elif data["model"] == "ϕCDM(8)":
             marker = " ***"
         
         print("%-12s %-28s %2d %8.1f %+7.1f %6.2f %6.3f %+7.1f %+7.1f%s" % 
@@ -107,34 +108,34 @@ for world in ["SHOES", "BASE", "TRGB"]:
 
 print()
 print("=" * 95)
-print("KEY COMPARISON: SHOES World - Same Parameter Count (k=8)")
+print("KEY COMPARISON: Full Dataset (Planck + BAO + SH0ES) - Same Parameter Count (k=8)")
 print("=" * 95)
 
 ref = results["tier9_lcdm_shoes"]
 ref_aic, ref_bic = compute_aic_bic(ref["chi2"], 6, n_data)
 
 print()
-print("%-12s %7s %7s %8s %8s %8s %s" % ("Model", "H0", "S8", "Dchi2", "DAIC", "DBIC", "Verdict"))
-print("-" * 75)
+print("%-20s %7s %7s %8s %8s %8s %s" % ("Model", "H0", "S8", "Dchi2", "DAIC", "DBIC", "Verdict"))
+print("-" * 85)
 
-# CPL
+# Late-Time Dynamical (w0waCDM)
 cpl = results["tier9_phenom_shoes"]
 aic, bic = compute_aic_bic(cpl["chi2"], cpl["k"], n_data)
-print("%-12s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
-      ("CPL(k=8)", cpl["H0"], cpl["S8"], cpl["chi2"]-ref["chi2"], 
+print("%-20s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
+      ("w₀wₐCDM (k=8)", cpl["H0"], cpl["S8"], cpl["chi2"]-ref["chi2"], 
        aic-ref_aic, bic-ref_bic, "chi2 win, NO tension fix"))
 
-# EDE minimal
+# Geometric EDE (ϕCDM)
 ede = results["tier9_v3_shoes_minimal"]
 aic, bic = compute_aic_bic(ede["chi2"], ede["k"], n_data)
 verdict = "TENSIONS RESOLVED" if ede["H0"] > 70 and ede["S8"] < 0.81 else "partial"
-print("%-12s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
-      ("EDE(k=8)", ede["H0"], ede["S8"], ede["chi2"]-ref["chi2"], 
+print("%-20s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
+      ("ϕCDM (k=8)", ede["H0"], ede["S8"], ede["chi2"]-ref["chi2"], 
        aic-ref_aic, bic-ref_bic, verdict))
 
-# LCDM
-print("%-12s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
-      ("LCDM(k=6)", ref["H0"], ref["S8"], 0, 0, 0, "[REF]"))
+# Standard Model (ΛCDM)
+print("%-20s %7.2f %7.3f %+8.1f %+8.1f %+8.1f %s" % 
+      ("ΛCDM (k=6)", ref["H0"], ref["S8"], 0, 0, 0, "[REF]"))
 
 print()
 print("=" * 95)
@@ -143,16 +144,21 @@ print("=" * 95)
 print("""
 At equal parameter count (k=8):
 
-  CPL:  Best chi2 (-9.7), but H0=69.3, S8=0.83 -> NO tension resolution
-  EDE:  Modest chi2 penalty, but H0=70.8, S8=0.79 -> BOTH tensions addressed
+  Late-Time Dynamical (w₀wₐCDM):  Best chi2, but H0≈69, S8≈0.83 → NO tension resolution
+  Geometric EDE (ϕCDM):          Modest chi2 cost, H0≈71, S8≈0.79 → BOTH tensions addressed
 
   "Same degrees of freedom, opposite physics strategies, only one solves tensions."
 
-DBIC Interpretation (Kass & Raftery):
-  |DBIC| < 2:   Not worth mentioning
-  |DBIC| 2-6:   Positive evidence
-  |DBIC| 6-10:  Strong evidence
-  |DBIC| > 10:  Very strong evidence
+Model naming for paper:
+  Standard Model (ΛCDM)           - 6 parameters
+  Late-Time Dynamical (w₀wₐCDM)   - 8 parameters  
+  Geometric EDE (ϕCDM)            - 8 parameters
+
+ΔBIC Interpretation (Kass & Raftery):
+  |ΔBIC| < 2:   Not worth mentioning
+  |ΔBIC| 2-6:   Positive evidence
+  |ΔBIC| 6-10:  Strong evidence
+  |ΔBIC| > 10:  Very strong evidence
 """)
 print("=" * 95)
 

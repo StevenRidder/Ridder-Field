@@ -43,15 +43,15 @@ def load_chain(name):
         "chi2": chi2_best
     }
 
-# Define models to plot (SHOES world focus)
+# Define models to plot (Full dataset: Planck + BAO + SH0ES)
 models = [
     # (name, display_name, color, style)
-    ("tier9_lcdm_shoes", "ΛCDM (Reference)", "#666666", "ref"),
-    ("tier9_phenom_shoes", "CPL (k=8)", "#888888", "cpl"),
-    ("tier9_v3_shoes_minimal", "EDE Minimal (k=8)", "#CC0000", "gold"),
-    ("tier9_v3_shoes_wide_ocdm", "EDE Wide ωcdm (k=9)", "#FF6666", "ede"),
-    ("tier9_v3_shoes_fresh", "EDE Fresh (k=9)", "#FF9999", "ede"),
-    ("tier9_v3_shoes_optimal", "EDE Optimal (k=9)", "#FFAAAA", "ede"),
+    ("tier9_lcdm_shoes", "Standard Model (ΛCDM)", "#666666", "ref"),
+    ("tier9_phenom_shoes", "Late-Time Dynamical (w₀wₐCDM)", "#888888", "cpl"),
+    ("tier9_v3_shoes_minimal", "Geometric EDE (ϕCDM)", "#CC0000", "gold"),
+    ("tier9_v3_shoes_wide_ocdm", "Geometric EDE (wide ωcdm)", "#FF6666", "ede"),
+    ("tier9_v3_shoes_fresh", "Geometric EDE (variant)", "#FF9999", "ede"),
+    ("tier9_v3_shoes_optimal", "Geometric EDE (optimized)", "#FFAAAA", "ede"),
 ]
 
 # Load all data
@@ -168,7 +168,7 @@ ax2.set_xlabel("Δχ²", fontsize=12)
 ax2.set_xlim(-20, 10)
 ax2.grid(True, alpha=0.3, axis='x')
 
-plt.suptitle('Ridder Field EDE Model Comparison (SHOES World)', 
+plt.suptitle('Model Comparison (Planck + BAO + SH0ES)', 
              fontsize=16, fontweight='bold', y=1.02)
 
 plt.tight_layout()
@@ -182,9 +182,9 @@ fig2, ax = plt.subplots(figsize=(10, 5))
 
 # Just the key models
 key_models = [
-    ("tier9_lcdm_shoes", "ΛCDM (k=6)", "#666666", "o", 10),
-    ("tier9_phenom_shoes", "CPL (k=8)", "#888888", "d", 10),
-    ("tier9_v3_shoes_minimal", "EDE Minimal (k=8)", "#CC0000", "s", 14),
+    ("tier9_lcdm_shoes", "ΛCDM", "#666666", "o", 10),
+    ("tier9_phenom_shoes", "w₀wₐCDM", "#888888", "d", 10),
+    ("tier9_v3_shoes_minimal", "Geometric EDE (ϕCDM)", "#CC0000", "s", 14),
 ]
 
 for i, (name, display, color, marker, ms) in enumerate(key_models):
@@ -209,7 +209,7 @@ ax.axvline(67.4, color='#A23B72', linestyle=':', linewidth=2, alpha=0.7)
 # Labels
 ax.set_xlabel('H₀ [km/s/Mpc]', fontsize=12)
 ax.set_ylabel('Δχ² (relative to ΛCDM)', fontsize=12)
-ax.set_title('Model Comparison: H₀ vs Δχ² Trade-off (SHOES World)', fontsize=14, fontweight='bold')
+ax.set_title('Model Comparison: H₀ vs Δχ² Trade-off (Planck + BAO + SH0ES)', fontsize=14, fontweight='bold')
 ax.legend(loc='upper left', fontsize=10)
 ax.grid(True, alpha=0.3)
 ax.set_xlim(66, 75)
