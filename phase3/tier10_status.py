@@ -100,11 +100,13 @@ for group_name, chains in groups.items():
             print(f"{name:<40} {'---':>8} {'---':>8} {'---':>6} {'---':>8} {'---':>10} Initializing...")
         else:
             total_samples += data["n"]
-            # Status based on sample count
-            if data["n"] >= 1000:
+            # Status based on sample count (target: 3000)
+            if data["n"] >= 3000:
                 status = "✅ Ready"
-            elif data["n"] >= 500:
-                status = "🔄 >50%"
+            elif data["n"] >= 2000:
+                status = "🔄 >66%"
+            elif data["n"] >= 1000:
+                status = "🔄 >33%"
             elif data["n"] >= 100:
                 status = "🔄 Running"
             else:
