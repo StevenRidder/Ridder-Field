@@ -9342,6 +9342,22 @@ int perturbations_derivs(double tau,
         
         if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
           double beta = pba->beta_ridder;
+          
+          /* CRITICAL FIX: Apply redshift window to avoid affecting CMB!
+           * Coupling is Gaussian-windowed around z_c with width sigma_z
+           * This prevents the coupling from modifying CMB-era perturbations
+           * which would force omega_cdm compensation in MCMC */
+          double z = 1.0/a - 1.0;
+          double z_c = pba->beta_z_c;        /* center redshift (default 3000) */
+          double sigma_z = pba->beta_sigma_z; /* width (default 0.5 in ln(1+z)) */
+          
+          /* Gaussian window in ln(1+z) space */
+          double ln_ratio = log((1.0 + z) / (1.0 + z_c));
+          double window = exp(-0.5 * ln_ratio * ln_ratio / (sigma_z * sigma_z));
+          
+          /* Apply window to beta */
+          double beta_eff = beta * window;
+          
           double phi_prime = pvecback[pba->index_bg_phi_prime_ridder]; /* eV/Mpc */
           double Theta_ridder = y[pv->index_pt_phi_prime_ridder];      /* momentum flux Mpc^-3 */
           double rho_ridder = pvecback[pba->index_bg_rho_ridder];
@@ -9350,12 +9366,12 @@ int perturbations_derivs(double tau,
           /* Constants for unit conversion */
           double M_Pl_eV = 2.435e27;  /* reduced Planck mass in eV */
           
-          /* Only apply when Ridder field is dynamically significant */
+          /* Only apply when Ridder field is dynamically significant and window is active */
           double f_ridder = (rho_cdm > 0.0) ? rho_ridder / rho_cdm : 0.0;
           
-          if (f_ridder > 1.e-6 && fabs(phi_prime) > 1.e-30) {
-            /* The coupling: θ'_cdm += 3 * β * a² * Θ * M_Pl / φ' */
-            double raw_coupling = 3.0 * beta * a2 * Theta_ridder * M_Pl_eV / phi_prime;
+          if (f_ridder > 1.e-6 && fabs(phi_prime) > 1.e-30 && window > 1.e-4) {
+            /* The coupling: θ'_cdm += 3 * β_eff * a² * Θ * M_Pl / φ' */
+            double raw_coupling = 3.0 * beta_eff * a2 * Theta_ridder * M_Pl_eV / phi_prime;
             
             /* Limit to prevent numerical instability */
             double max_coupling = 10.0 * fabs(a_prime_over_a * y[pv->index_pt_theta_cdm]);
