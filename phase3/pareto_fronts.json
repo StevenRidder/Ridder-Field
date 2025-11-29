@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "max_delta_chi2_budget": 15.0
+  },
+  "fronts": {
+    "shoes": [
+      {
+        "chain": "tier9_v3_shoes_wide_ocdm",
+        "model": "EDE (wide)",
+        "k": 9,
+        "H0": 70.8,
+        "S8": 0.79,
+        "chi2": 2812.2,
+        "rs": 146.88,
+        "delta_chi2": 6.599999999999909,
+        "tension_score": 7.01799999999992
+      },
+      {
+        "chain": "tier9_v3_shoes_fresh",
+        "model": "EDE (fresh)",
+        "k": 9,
+        "H0": 71.0,
+        "S8": 0.787,
+        "chi2": 2815.0,
+        "rs": 147.01,
+        "delta_chi2": 9.400000000000091,
+        "tension_score": 9.414580000000091
+      },
+      {
+        "chain": "tier9_v3_shoes_minimal",
+        "model": "EDE (k=8)",
+        "k": 8,
+        "H0": 71.1,
+        "S8": 0.791,
+        "chi2": 2815.6,
+        "rs": 147.05,
+        "delta_chi2": 10.0,
+        "tension_score": 10.11921999999999
+      },
+      {
+        "chain": "tier9_v3_shoes_optimal",
+        "model": "EDE (optimal)",
+        "k": 9,
+        "H0": 71.1,
+        "S8": 0.783,
+        "chi2": 2820.5,
+        "rs": 147.21,
+        "delta_chi2": 14.900000000000091,
+        "tension_score": 15.010580000000079
+      },
+      {
+        "chain": "tier9_phenom_shoes",
+        "model": "w\u2080w\u2090CDM",
+        "k": 8,
+        "H0": 69.3,
+        "S8": 0.826,
+        "chi2": 2795.9,
+        "rs": 147.11,
+        "delta_chi2": -9.699999999999818,
+        "tension_score": 19.287120000000275
+      }
+    ],
+    "base": [
+      {
+        "chain": "tier9_v3_baseline_minimal",
+        "model": "EDE (k=8)",
+        "k": 8,
+        "H0": 70.1,
+        "S8": 0.809,
+        "chi2": 2804.8,
+        "rs": 146.26,
+        "delta_chi2": 13.800000000000182,
+        "tension_score": 21.948020000000284
+      },
+      {
+        "chain": "tier9_lcdm_baseline",
+        "model": "\u039bCDM",
+        "k": 6,
+        "H0": 67.6,
+        "S8": 0.844,
+        "chi2": 2791.0,
+        "rs": 146.89,
+        "delta_chi2": 0.0,
+        "tension_score": 115.74112000000038
+      },
+      {
+        "chain": "tier9_phenom_baseline",
+        "model": "w\u2080w\u2090CDM",
+        "k": 8,
+        "H0": 67.4,
+        "S8": 0.83,
+        "chi2": 2786.9,
+        "rs": 147.39,
+        "delta_chi2": -4.099999999999909,
+        "tension_score": 125.59799999999966
+      }
+    ],
+    "trgb": [
+      {
+        "chain": "tier9_lcdm_trgb",
+        "model": "\u039bCDM",
+        "k": 6,
+        "H0": 68.0,
+        "S8": 0.832,
+        "chi2": 2782.7,
+        "rs": 147.18,
+        "delta_chi2": 0.0,
+        "tension_score": 90.10368
+      }
+    ]
+  }
+}

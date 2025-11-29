@@ -1,0 +1,44 @@
+{
+  "shoes_world": [
+    {
+      "Model": "\u039bCDM",
+      "k": 6,
+      "chi2_best": 2823.0,
+      "delta_chi2": 0.0,
+      "AIC": 2835.0,
+      "BIC": 2870.1796003440572,
+      "delta_AIC": 0.0,
+      "delta_BIC": 0.0,
+      "H0": 68.29,
+      "S8": 0.825,
+      "interpretation": "Reference"
+    },
+    {
+      "Model": "w\u2080w\u2090CDM",
+      "k": 8,
+      "chi2_best": 2819.7,
+      "delta_chi2": -3.300000000000182,
+      "AIC": 2835.7,
+      "BIC": 2882.6061337920764,
+      "delta_AIC": 0.6999999999998181,
+      "delta_BIC": 12.4265334480192,
+      "H0": 69.17,
+      "S8": 0.828,
+      "interpretation": "\u03c7\u00b2 gain, tensions intact"
+    },
+    {
+      "Model": "Geometric EDE",
+      "k": 8,
+      "chi2_best": 2812.9,
+      "delta_chi2": -10.099999999999909,
+      "AIC": 2828.9,
+      "BIC": 2875.8061337920767,
+      "delta_AIC": -6.099999999999909,
+      "delta_BIC": 5.626533448019472,
+      "H0": 70.62,
+      "S8": 0.798,
+      "interpretation": "TRIPLE WIN: \u03c7\u00b2 + H\u2080 + S\u2088"
+    }
+  ],
+  "n_data": 2600
+}

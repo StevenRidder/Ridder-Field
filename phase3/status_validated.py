@@ -284,7 +284,7 @@ for world in ["BASE", "SHOES", "TRGB"]:
         print("%-24s %s %5d %6.1f %6.2f %s %8.1f | %6s %5s %6s | %-2s %s" % (
             name, marker, c["N"], c["H0"], c["rs"], s8_str, c["chi2"],
             dchi2_str, dH0_str, dS8_str, g, detail))
-    
+
     # Print Pareto front for this world
     if ref:
         print_pareto_section(world, world_chains, ref["chi2"])

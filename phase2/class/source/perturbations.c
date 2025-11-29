@@ -9350,7 +9350,7 @@ int perturbations_derivs(double tau,
           double z = 1.0/a - 1.0;
           double z_c = pba->beta_z_c;        /* center redshift (default 3000) */
           double sigma_z = pba->beta_sigma_z; /* width (default 0.5 in ln(1+z)) */
-          
+
           /* Gaussian window in ln(1+z) space */
           double ln_ratio = log((1.0 + z) / (1.0 + z_c));
           double window = exp(-0.5 * ln_ratio * ln_ratio / (sigma_z * sigma_z));
@@ -9376,7 +9376,7 @@ int perturbations_derivs(double tau,
             /* Limit to prevent numerical instability */
             double max_coupling = 10.0 * fabs(a_prime_over_a * y[pv->index_pt_theta_cdm]);
             if (max_coupling < 1.e-10) max_coupling = 1.e-10;
-            
+        
             if (raw_coupling > max_coupling) raw_coupling = max_coupling;
             if (raw_coupling < -max_coupling) raw_coupling = -max_coupling;
             
