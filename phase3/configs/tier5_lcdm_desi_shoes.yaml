@@ -1,0 +1,78 @@
+# Tier 5: ΛCDM Reference with DESI Y1 BAO + SH0ES
+# Reference for Δχ² comparison
+
+theory:
+  classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class/python
+    extra_args:
+      non_linear: hmcode
+
+likelihood:
+  # CMB
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE_lite:
+  planck_2018_lensing.clik:
+  
+  # DESI Y1 BAO
+  bao.desi_2024_bao_all:
+  
+  # Local H0 prior (SH0ES)
+  H0.riess2020:
+    H0_mean: 73.04
+    H0_std: 1.04
+
+params:
+  # Base ΛCDM (k=6)
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+    latex: \Omega_c h^2
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    latex: \log(10^{10} A_s)
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.9, max: 1.05}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  tau_reio:
+    prior: {min: 0.01, max: 0.12}
+    ref: 0.054
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # Derived
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rdrag:
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 10000
+    Rminus1_stop: 0.01
+    burn_in: 100
+
+output: chains/tier5_lcdm_desi_shoes
+
