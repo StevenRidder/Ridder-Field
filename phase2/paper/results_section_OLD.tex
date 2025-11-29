@@ -154,6 +154,34 @@ Geometric EDE breaks this degeneracy by altering $r_s$ itself. By injecting a sm
 
 Crucially, in our ``gravity-only'' implementation ($\beta \approx 0$), this geometric modification does \emph{not} couple directly to dark matter perturbations. The result is a clean separation: the early shelf modifies distances, while structure growth follows the standard $\Lambda$CDM path (with minor shifts from the changed background). This explains why our EDE chains lower $S_8$ rather than raising it---a historically problematic ``see-saw'' effect in other EDE implementations.
 
+\subsection{Cross-World Control: TRGB and BASE}
+
+A critical consistency check is whether Geometric EDE ``forces'' early dark energy on data that do not want it. We test this by examining the TRGB and BASE worlds, which place less aggressive demands on $H_0$:
+
+\begin{itemize}
+    \item \textbf{BASE world} (no local $H_0$ prior): Geometric EDE achieves $\Delta\chi^2 = +2.2$ relative to $\Lambda$CDM---a negligible penalty. The CMB+BAO data alone are essentially agnostic about the early geometric modification.
+    
+    \item \textbf{TRGB world} ($H_0 = 69.8 \pm 1.7$ prior): EDE achieves $\Delta\chi^2 = +3.4$ with $H_0 = 70.03$, landing squarely in the JWST/CCHP concordance window without strain.
+\end{itemize}
+
+In both control worlds, $\Lambda$CDM remains the $\chi^2$ winner, but the margin is small. This confirms that:
+\begin{enumerate}
+    \item We are \emph{not} forcing EDE on data that reject it.
+    \item The model sits in a statistically viable region across all data combinations.
+    \item The stronger $\chi^2$ penalty in SH0ES world ($\Delta\chi^2 = +11.6$) reflects the cost of bridging the gap between Geometric EDE's natural $H_0 \approx 70.6$ and the SH0ES target of $73.04$.
+\end{enumerate}
+
+\subsection{The Coupling Story: Why $\beta = 0$}
+
+In earlier exploration (Tier 9), we tested scalar field--CDM couplings with $\beta \neq 0$. The results were unambiguous:
+\begin{itemize}
+    \item $\beta > 0$: Over-suppresses structure growth, worsening $S_8$ tension and incurring $\chi^2$ penalties of $+20$ or more.
+    \item $\beta < 0$: Over-amplifies structure, pushing $S_8$ \emph{above} the $\Lambda$CDM value.
+    \item $\beta = 0$: The ``gravity-only'' configuration, where the scalar field interacts only through the metric, provides the best fit.
+\end{itemize}
+
+This empirical finding has a clean physical interpretation: the data prefer a \emph{geometric} modification of the expansion history, not a direct energy exchange between dark sectors. We therefore fix $\beta = 0$ in all Tier 10 publication chains, reducing the parameter count and keeping the model ``pure geometry.''
+
 \subsection{Consistency with Recent Observations}
 
 Our result that $H_0 \approx 70.6$ is remarkably consistent with recent developments:

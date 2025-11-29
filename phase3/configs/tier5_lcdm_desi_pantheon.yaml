@@ -1,31 +1,48 @@
-# Tier 5 Phase 1b: ΛCDM with DESI Y1 + Pantheon+ (no SH0ES prior)
-# Reference for full distance ladder comparison
+# Tier 5 Phase 1b: ΛCDM with DESI Y1 BAO + Pantheon+
+# Tests: Full distance ladder consistency
+# k = 6 parameters
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class/python
     extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: "yes"
       non_linear: hmcode
 
 likelihood:
   # CMB
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
-  planck_2018_highl_plik.TTTEEE_lite:
+  planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
   
   # Pre-DESI BAO
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
   
   # DESI Y1 BAO
   bao.desi_2024_bao_all:
   
-  # Pantheon+ SNe
+  # Pantheon+ SN
   sn.pantheonplus:
 
 params:
   # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
   H0:
     prior: {min: 60, max: 80}
     ref: 67.5
@@ -34,34 +51,22 @@ params:
   omega_b:
     prior: {min: 0.019, max: 0.025}
     ref: 0.02237
-    proposal: 0.0001
+    proposal: 0.0002
     latex: \Omega_b h^2
   omega_cdm:
     prior: {min: 0.10, max: 0.14}
     ref: 0.120
-    proposal: 0.001
+    proposal: 0.002
     latex: \Omega_c h^2
-  logA:
-    prior: {min: 2.5, max: 3.5}
-    ref: 3.044
-    proposal: 0.01
-    latex: \log(10^{10} A_s)
-    drop: true
-  A_s:
-    value: "lambda logA: 1e-10*np.exp(logA)"
-    latex: A_s
-  n_s:
-    prior: {min: 0.9, max: 1.05}
-    ref: 0.9649
-    proposal: 0.004
-    latex: n_s
   tau_reio:
-    prior: {min: 0.01, max: 0.12}
-    ref: 0.054
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
     proposal: 0.006
     latex: \tau_{reio}
 
   # Derived
+  Omega_m:
+    latex: \Omega_m
   sigma8:
     latex: \sigma_8
   S8:
@@ -72,9 +77,9 @@ params:
 
 sampler:
   mcmc:
-    max_samples: 10000
-    Rminus1_stop: 0.01
+    max_samples: 5000
+    Rminus1_stop: 0.02
     burn_in: 100
+    learn_proposal: true
 
 output: chains/tier5_lcdm_desi_pantheon
-

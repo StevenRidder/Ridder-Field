@@ -1,33 +1,40 @@
-# Tier 5 Phase 2: ΛCDM with ACT DR4
-# Tests: High-ℓ CMB consistency with damping tail
-# k = 6 parameters
+# Tier 5 Phase 3: Geometric EDE with DES Y1 3x2pt
+# Tests: Does EDE S8 suppression match weak lensing?
+# k = 8 parameters
 
 theory:
   classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class/python
     extra_args:
       output: tCl, pCl, lCl, mPk
-      l_max_scalars: 5000
+      l_max_scalars: 2508
       lensing: "yes"
-      non_linear: hmcode
+      gauge: newtonian
+      use_ridder: "yes"
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 2.0e26
+      theta_i_ridder: 2.8
+      beta_ridder: 0.0
+      ridder_sigma_lna: 0.656
 
 likelihood:
-  # Planck low-ℓ
+  # CMB
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
-  
-  # Planck high-ℓ (for overlap region)
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
-  
-  # ACT DR4 (pyactlike)
-  pyactlike.ACTPol_lite_DR4:
   
   # BAO
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
   
-  # SH0ES for H0 anchor
+  # DES Y1 3x2pt
+  des_y1.joint:
+  
+  # SH0ES
   sh0es_h0:
     external: "lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2"
     requires:
@@ -51,7 +58,7 @@ params:
     latex: n_s
   H0:
     prior: {min: 60, max: 80}
-    ref: 68.0
+    ref: 70.5
     proposal: 0.5
     latex: H_0
   omega_b:
@@ -60,15 +67,27 @@ params:
     proposal: 0.0002
     latex: \Omega_b h^2
   omega_cdm:
-    prior: {min: 0.10, max: 0.14}
-    ref: 0.120
-    proposal: 0.002
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
     latex: \Omega_c h^2
   tau_reio:
     prior: {min: 0.01, max: 0.1}
     ref: 0.0544
     proposal: 0.006
     latex: \tau_{reio}
+
+  # EDE parameters (k=8)
+  ridder_Lambda_EDE_eV:
+    prior: {min: 0.3, max: 0.7}
+    ref: 0.467
+    proposal: 0.03
+    latex: \Lambda_{EDE}
+  ridder_a_c:
+    prior: {min: 0.00025, max: 0.00035}
+    ref: 0.000309
+    proposal: 1.5e-05
+    latex: a_c
 
   # Derived
   Omega_m:
@@ -78,7 +97,8 @@ params:
   S8:
     derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
     latex: S_8
-  rdrag:
+  rs_drag:
+    derived: true
     latex: r_s
 
 sampler:
@@ -88,4 +108,4 @@ sampler:
     burn_in: 100
     learn_proposal: true
 
-output: chains/tier5_lcdm_act
+output: chains/tier5_ede_des
