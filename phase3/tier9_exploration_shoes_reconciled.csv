@@ -1,0 +1,8 @@
+internal_name,paper_name,model_type,k,n,H0,H0_std,S8,chi2,dchi2
+tier9_v3_shoes_wide_ocdm,ϕCDM (wide ωcdm),EDE,9,1000,70.7,0.18,0.794,2813.0,-15.3
+tier9_v3_shoes_optimal,ϕCDM (optimized),EDE,9,1000,70.94,0.21,0.788,2814.1,-14.2
+tier9_v3_shoes_minimal,ϕCDM (k=8),EDE,8,1000,71.17,0.04,0.787,2816.0,-12.3
+tier9_v3_shoes_fresh,ϕCDM (variant),EDE,9,1000,70.72,0.14,0.792,2816.9,-11.4
+tier9_phenom_shoes,w₀wₐCDM,CPL,8,1000,69.48,0.17,0.821,2824.1,-4.2
+tier9_lcdm_shoes,ΛCDM,LCDM,6,1000,68.25,0.11,0.834,2828.3,0.0
+tier9_v3_shoes_verywide_ocdm,ϕCDM (very wide ωcdm),EDE,9,1000,71.67,0.29,0.764,2829.5,1.2
