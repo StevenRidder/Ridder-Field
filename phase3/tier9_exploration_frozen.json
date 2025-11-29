@@ -1,0 +1,198 @@
+{
+  "frozen_at": "2025-11-29T01:05:09.824859",
+  "description": "Tier 9 chain exploration - informed Tier 10 model selection",
+  "worlds": {
+    "BASE": {
+      "tier9_lcdm_baseline": {
+        "n": 1000,
+        "H0": 67.62,
+        "H0_std": 0.08,
+        "S8": 0.844,
+        "rs": 147.0,
+        "chi2": 2819.0,
+        "dchi2": 0.0
+      },
+      "tier9_phenom_baseline": {
+        "n": 1000,
+        "H0": 67.45,
+        "H0_std": 0.06,
+        "S8": 0.831,
+        "rs": 147.0,
+        "chi2": 2814.9,
+        "dchi2": -4.1
+      },
+      "tier9_v3_baseline": {
+        "n": 1000,
+        "H0": 70.24,
+        "H0_std": 0.19,
+        "S8": 0.807,
+        "rs": 147.0,
+        "chi2": 2807.7,
+        "dchi2": -11.3
+      },
+      "tier9_v3_baseline_minimal": {
+        "n": 1000,
+        "H0": 69.4,
+        "H0_std": 0.58,
+        "S8": 0.823,
+        "rs": 147.0,
+        "chi2": 2807.4,
+        "dchi2": -11.6
+      }
+    },
+    "SHOES": {
+      "tier9_lcdm_shoes": {
+        "n": 1000,
+        "H0": 68.25,
+        "H0_std": 0.11,
+        "S8": 0.834,
+        "rs": 147.0,
+        "chi2": 2828.3,
+        "dchi2": 0.0
+      },
+      "tier9_phenom_shoes": {
+        "n": 1000,
+        "H0": 69.48,
+        "H0_std": 0.17,
+        "S8": 0.821,
+        "rs": 147.0,
+        "chi2": 2824.1,
+        "dchi2": -4.2
+      },
+      "tier9_v3_shoes_fresh": {
+        "n": 1000,
+        "H0": 70.72,
+        "H0_std": 0.14,
+        "S8": 0.792,
+        "rs": 147.0,
+        "chi2": 2816.9,
+        "dchi2": -11.4
+      },
+      "tier9_v3_shoes_minimal": {
+        "n": 1000,
+        "H0": 71.17,
+        "H0_std": 0.04,
+        "S8": 0.787,
+        "rs": 147.0,
+        "chi2": 2816.0,
+        "dchi2": -12.3
+      },
+      "tier9_v3_shoes_optimal": {
+        "n": 1000,
+        "H0": 70.94,
+        "H0_std": 0.21,
+        "S8": 0.788,
+        "rs": 147.0,
+        "chi2": 2814.1,
+        "dchi2": -14.2
+      },
+      "tier9_v3_shoes_verywide_ocdm": {
+        "n": 1000,
+        "H0": 71.67,
+        "H0_std": 0.29,
+        "S8": 0.764,
+        "rs": 147.0,
+        "chi2": 2829.5,
+        "dchi2": 1.2
+      },
+      "tier9_v3_shoes_wide_ocdm": {
+        "n": 1000,
+        "H0": 70.7,
+        "H0_std": 0.18,
+        "S8": 0.794,
+        "rs": 147.0,
+        "chi2": 2813.0,
+        "dchi2": -15.3
+      }
+    },
+    "TRGB": {
+      "tier9_lcdm_trgb": {
+        "n": 1000,
+        "H0": 68.12,
+        "H0_std": 0.13,
+        "S8": 0.827,
+        "rs": 147.0,
+        "chi2": 2804.8,
+        "dchi2": 0.0
+      },
+      "tier9_v3_trgb": {
+        "n": 1000,
+        "H0": 70.06,
+        "H0_std": 0.09,
+        "S8": 0.808,
+        "rs": 147.0,
+        "chi2": 2810.7,
+        "dchi2": 5.9
+      }
+    }
+  },
+  "pareto_fronts": {
+    "BASE": [
+      {
+        "chain": "tier9_v3_baseline",
+        "H0": 70.24,
+        "S8": 0.807,
+        "dchi2": -11.3,
+        "score": -5.5
+      },
+      {
+        "chain": "tier9_v3_baseline_minimal",
+        "H0": 69.4,
+        "S8": 0.823,
+        "dchi2": -11.6,
+        "score": 14.1
+      }
+    ],
+    "SHOES": [
+      {
+        "chain": "tier9_v3_shoes_wide_ocdm",
+        "H0": 70.7,
+        "S8": 0.794,
+        "dchi2": -15.3,
+        "score": -14.4
+      },
+      {
+        "chain": "tier9_v3_shoes_optimal",
+        "H0": 70.94,
+        "S8": 0.788,
+        "dchi2": -14.2,
+        "score": -14.1
+      },
+      {
+        "chain": "tier9_v3_shoes_minimal",
+        "H0": 71.17,
+        "S8": 0.787,
+        "dchi2": -12.3,
+        "score": -12.0
+      },
+      {
+        "chain": "tier9_v3_shoes_verywide_ocdm",
+        "H0": 71.67,
+        "S8": 0.764,
+        "dchi2": 1.2,
+        "score": 5.7
+      }
+    ],
+    "TRGB": [
+      {
+        "chain": "tier9_v3_trgb",
+        "H0": 70.06,
+        "S8": 0.808,
+        "dchi2": 5.9,
+        "score": 14.8
+      },
+      {
+        "chain": "tier9_lcdm_trgb",
+        "H0": 68.12,
+        "S8": 0.827,
+        "dchi2": 0.0,
+        "score": 83.0
+      }
+    ]
+  },
+  "scoring": {
+    "formula": "Score = dchi2 + 10*(H0-71)^2 + 20*(S8-0.76)^2",
+    "alpha": 10,
+    "beta": 20
+  }
+}
