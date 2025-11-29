@@ -1,0 +1,9 @@
+world,chain,H0,S8,dchi2,score
+BASE,tier9_v3_baseline,70.24,0.807,-11.3,-5.5
+BASE,tier9_v3_baseline_minimal,69.4,0.823,-11.6,14.1
+SHOES,tier9_v3_shoes_wide_ocdm,70.7,0.794,-15.3,-14.4
+SHOES,tier9_v3_shoes_optimal,70.94,0.788,-14.2,-14.1
+SHOES,tier9_v3_shoes_minimal,71.17,0.787,-12.3,-12.0
+SHOES,tier9_v3_shoes_verywide_ocdm,71.67,0.764,1.2,5.7
+TRGB,tier9_v3_trgb,70.06,0.808,5.9,14.8
+TRGB,tier9_lcdm_trgb,68.12,0.827,0.0,83.0
