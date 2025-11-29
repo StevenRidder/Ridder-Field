@@ -120,14 +120,20 @@ print(f"{'='*100}")
 print(f"Total chains found: {len(chain_files)}")
 print(f"Total samples: {total_samples}")
 
-# Check for reference chi2 to compute deltas
+# Check for reference chi2 to compute deltas - use BEST across all ΛCDM chains
 ref_chains = [c for c in chain_files if "lcdm_ref" in c]
 if ref_chains:
-    ref_data = load_chain(ref_chains[0])
-    if ref_data and ref_data["n"] >= 100:
-        ref_chi2 = ref_data["chi2"]
-        print(f"\nReference χ² (LCDM): {ref_chi2:.1f}")
-        print(f"\nΔχ² Summary:")
+    # Find the MINIMUM chi2 across all ΛCDM reference chains
+    ref_chi2_values = []
+    for rc in ref_chains:
+        rd = load_chain(rc)
+        if rd and rd["n"] >= 100:
+            ref_chi2_values.append((rd["chi2"], os.path.basename(rc)))
+    
+    if ref_chi2_values:
+        ref_chi2, ref_chain_name = min(ref_chi2_values, key=lambda x: x[0])
+        print(f"\nReference χ² (ΛCDM best): {ref_chi2:.1f} [{ref_chain_name}]")
+        print(f"\nΔχ² Summary (vs best ΛCDM):")
         
         for f in chain_files:
             name = os.path.basename(f).replace(".1.txt", "")
