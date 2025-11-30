@@ -103,10 +103,10 @@ sampler:
   mcmc:
     max_samples: 5000
     Rminus1_stop: 0.02
-    burn_in: 100
+    burn_in: 50
     learn_proposal: true
     max_tries: 20000
     proposal_scale: 2.0
-    resume: true
 
 output: chains/tier5_ede_trgb_desi
+resume: true

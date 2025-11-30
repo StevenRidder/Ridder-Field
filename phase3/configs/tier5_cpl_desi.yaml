@@ -92,7 +92,7 @@ sampler:
   mcmc:
     max_samples: 5000
     Rminus1_stop: 0.02
-    burn_in: 100
+    burn_in: 50
     learn_proposal: true
 
 output: chains/tier5_cpl_desi

@@ -92,7 +92,7 @@ sampler:
   mcmc:
     max_samples: 10000
     Rminus1_stop: 0.01
-    burn_in: 100
+    burn_in: 50
 
 output: chains/tier5_ede_full_shoes
 
