@@ -88,3 +88,4 @@ sampler:
 
 output: chains/tier5_cpl_desi_shoes
 
+resume: true

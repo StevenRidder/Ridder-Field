@@ -88,3 +88,4 @@ sampler:
 
 output: chains/tier5_lcdm_des
 
+resume: true

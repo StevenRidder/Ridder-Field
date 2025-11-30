@@ -76,3 +76,4 @@ sampler:
 
 output: chains/tier5_lcdm_desi_shoes
 
+resume: true

@@ -96,3 +96,4 @@ sampler:
     learn_proposal: true
 
 output: chains/tier5_cpl_desi
+resume: true

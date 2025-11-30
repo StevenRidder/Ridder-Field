@@ -109,3 +109,4 @@ sampler:
     learn_proposal: true
 
 output: chains/tier5_ede_des
+resume: true

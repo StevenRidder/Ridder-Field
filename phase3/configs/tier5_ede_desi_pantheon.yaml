@@ -111,3 +111,4 @@ sampler:
     covmat: chains/tier10_ede_minimal_base.covmat
 
 output: chains/tier5_ede_desi_pantheon
+resume: true
