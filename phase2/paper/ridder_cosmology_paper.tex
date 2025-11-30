@@ -1038,6 +1038,41 @@ The SH0ES-anchored Geometric EDE branch, which pushes $H_0 \approx 72$--$73$ km 
 
 These stress tests confirm that once DESI Y1 is included, extreme early-time solutions that ``chase 73'' are no longer viable. The convergence window narrows considerably: Geometric EDE can still operate, but only in the moderate-$H_0$ regime ($H_0 \sim 70$--$71$) where the sound horizon reduction is percent-level rather than the $\sim 3$--$4\%$ reduction required to match SH0ES. This result strengthens our earlier conclusion that Geometric EDE naturally lands in the emerging JWST/TRGB convergence window rather than at the high-SH0ES extreme.
 
+\subsection*{DESI Y1 Geometry-First Tests: No Local $H_0$ Prior}
+
+To isolate the geometry constraints from local calibration effects, we ran a second suite of DESI Y1 tests with \emph{no} local $H_0$ prior. These ``geometry-first'' worlds combine Planck 2018, pre-DESI BAO, DESI Y1 BAO, and optionally Pantheon+ supernovae, asking what $H_0$, $r_s$, and $\chi^2$ the data prefer when cosmology is not told where the local distance ladder lands. The results are summarized in Table~\ref{tab:desi_geometry}.
+
+\begin{table}[ht]
+\centering
+\caption{DESI Y1 geometry-first tests (no local $H_0$ prior). Pure distance data prefer $\Lambda$CDM; EDE pays a $\chi^2$ cost of $+120$--$130$ for a $\sim 1.7\%$ reduction in $r_s$. CPL is penalized when Pantheon+ is included.}
+\label{tab:desi_geometry}
+\begin{tabular}{llcccccc}
+\hline
+World & Model & $k$ & $H_0$ & $r_s$ [Mpc] & $S_8$ & $\chi^2$ & $\Delta\chi^2$ \\
+\hline
+DESI only & $\Lambda$CDM & 6 & $68.9 \pm 0.6$ & 147.9 & 0.81 & 2917 & ref \\
+DESI only & CPL & 8 & 69.2 & 147.3 & 0.81 & 2921 & $+4$ \\
+DESI only & EDE & 8 & 69.7 & 145.2 & 0.82 & 3044 & $\mathbf{+127}$ \\
+\hline
+DESI+Pantheon & $\Lambda$CDM & 6 & $69.0 \pm 0.5$ & 147.3 & 0.81 & 4330 & ref \\
+DESI+Pantheon & CPL & 8 & 69.2 & 147.3 & 0.84 & 4355 & $+25$ \\
+DESI+Pantheon & EDE & 8 & 70.3 & 144.8 & 0.80 & 4452 & $\mathbf{+122}$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Several conclusions emerge from these geometry-first runs:
+
+\textbf{1. DESI+Planck baseline.} Without any local anchor, $\Lambda$CDM yields $H_0 = 68.9 \pm 0.6$ km s$^{-1}$ Mpc$^{-1}$---approximately $1.5\sigma$ above Planck-only and $4\sigma$ below SH0ES. The sound horizon remains at the Planck value, $r_s \approx 147$--$148$ Mpc. This establishes the ``geometry anchor'' against which extensions are tested.
+
+\textbf{2. CPL cannot raise $H_0$.} Late-time $w(z)$ flexibility provides marginal improvement in DESI-only fits ($\Delta\chi^2 \approx +4$) but is \emph{penalized} when Pantheon+ supernovae are included ($\Delta\chi^2 \approx +25$). The $H_0$ gain is negligible ($\Delta H_0 < 0.3$ km s$^{-1}$ Mpc$^{-1}$). This confirms that late-time dark energy gymnastics are not a path to resolving the Hubble tension.
+
+\textbf{3. Convergence-window EDE is expensive but viable.} The mild EDE configuration with $r_s \approx 145$ Mpc raises $H_0$ to $\sim 70$ km s$^{-1}$ Mpc$^{-1}$ at a cost of $\Delta\chi^2 \approx +120$--$130$. This is substantially better than the catastrophic $\Delta\chi^2 \sim +700$ incurred by the aggressive SH0ES-like configuration ($r_s \approx 142$ Mpc), but it remains a significant penalty. Pure distance data do not \emph{prefer} the EDE geometry; they merely tolerate it.
+
+\textbf{4. The geometry cost must be offset elsewhere.} The $\Delta\chi^2 \approx +120$--$130$ penalty establishes a ``budget'' that other probes must pay back for EDE to sit on the Pareto front. As shown in Table~\ref{tab:desi_stress}, the TRGB-anchored EDE branch reduces this cost to $\Delta\chi^2 \approx +60$, and it simultaneously lowers $S_8$ to 0.76---closer to the DES Y3 preferred value. This suggests that the full multi-probe combination (CMB + BAO + DESI + local $H_0$ + growth data) may favor the EDE geometry even though pure distance data do not.
+
+These geometry-first tests sharpen the interpretation of our main results. Geometric EDE is not ``preferred'' by DESI in the sense of having lower $\chi^2$ than $\Lambda$CDM. Rather, it occupies a region of parameter space that is \emph{allowed} by geometry constraints while providing relief on other axes ($H_0$, $S_8$). The case for EDE is therefore not a single-metric victory but a multi-probe tradeoff---exactly the Pareto-front picture we set out to quantify.
+
 We also perform a set of robustness checks that probe other possible weak spots. We vary the priors on the EDE amplitude and timing within reasonable ranges and re-run the chains to see whether the best-fit region is prior driven. We find that the posterior support for a shelf near $z \sim 3000$ is stable and that pushing the priors to extremes either degrades the fit or returns the model toward the $\Lambda$CDM limit. We test alternative combinations of CMB likelihoods and include or exclude Planck lensing to check for sensitivity to a single dataset. The qualitative behavior of Geometric EDE persists. Finally, we explore a small number of runs with localized dark matter couplings $\beta(\phi)$ to confirm that our main conclusions do not depend on setting $\beta$ exactly to zero. These runs show that modest couplings can slightly sharpen the reduction in $S_8$ but are not required to obtain it.
 
 Taken together, these tests support two claims. First, the Geometric EDE solution is robust under reasonable variations in data and priors. Second, it sits in a region of parameter space that aligns naturally with the evolving observational picture from JWST and DESI. The model is therefore a plausible candidate for the kind of dynamical dark energy that recent surveys appear to favor, with the additional virtue that its main effects are concentrated at early times.

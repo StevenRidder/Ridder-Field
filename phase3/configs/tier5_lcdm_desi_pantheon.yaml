@@ -5,10 +5,12 @@
 theory:
   classy:
     extra_args:
-      output: tCl, pCl, lCl, mPk
+      output: tCl, mPk
       l_max_scalars: 2508
-      lensing: "yes"
-      non_linear: hmcode
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
 
 likelihood:
   # CMB
@@ -23,7 +25,8 @@ likelihood:
   bao.sdss_dr12_consensus_bao:
   
   # DESI Y1 BAO
-  bao.desi_2024_bao_all:
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/ridderadmin/Ridder-Field/phase3
   
   # Pantheon+ SN
   sn.pantheonplus:
