@@ -1,10 +1,9 @@
-# Tier 5: Geometric EDE with TRGB + DESI Y1 BAO
-# FIXED: Using CORRECT CLASS parameters
+# Tier 5: Geometric EDE with SH0ES (Pre-DESI) - Paper's original world
+# CORRECT parameterization: Sample Lambda (amplitude), fix shape
 # k = 7 parameters (6 base + 1 EDE amplitude)
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class/python
     extra_args:
       output: tCl, pCl, lCl, mPk
       l_max_scalars: 2508
@@ -12,11 +11,11 @@ theory:
       gauge: newtonian
       recombination: recfast
       non_linear: none
-      # FIXED Ridder shape parameters
-      n_ridder: 3
+      # FIXED EDE shape parameters
+      f_axion_ridder: 1.0e+27
       theta_i_ridder: 1.0
       beta_ridder: 0.0
-      f_axion_ridder: 1.0e+27
+      n_ridder: 3
 
 likelihood:
   # CMB
@@ -25,22 +24,18 @@ likelihood:
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
   
-  # Pre-DESI BAO
+  # Pre-DESI BAO only
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
   
-  # DESI Y1 BAO
-  likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
-  
   # Pantheon+ Supernovae
   sn.pantheonplus:
   
-  # TRGB/JWST H0 prior
-  trgb_h0:
-    external: "lambda H0: -0.5*((H0 - 69.8)/1.7)**2"
-    output_params: [chi2__trgb_h0]
+  # SH0ES H0 prior: 73.04 ± 1.04 km/s/Mpc
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
 
 params:
   # Base ΛCDM (k=6)
@@ -59,7 +54,7 @@ params:
     latex: n_s
   H0:
     prior: {min: 60, max: 80}
-    ref: 70.0
+    ref: 70.5
     proposal: 0.5
     latex: H_0
   omega_b:
@@ -78,15 +73,11 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE amplitude - SAMPLED
-  log10_Lambda_EDE_ridder:
-    prior: {min: -1.0, max: 1.0}
-    ref: 0.0
-    proposal: 0.1
-    latex: \log_{10} \Lambda_{EDE}
-  
+  # EDE amplitude - SAMPLED DIRECTLY
   Lambda_EDE_ridder:
-    value: "lambda log10_Lambda_EDE_ridder: 10**log10_Lambda_EDE_ridder"
+    prior: {min: 0.1, max: 3.0}
+    ref: 1.0
+    proposal: 0.2
     latex: \Lambda_{EDE}
 
   # Derived
@@ -110,5 +101,5 @@ sampler:
     max_tries: 20000
     proposal_scale: 2.0
 
-output: chains/tier5_ede_trgb_desi
+output: chains/tier5_ede_shoes_predesi
 resume: true

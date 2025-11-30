@@ -180,14 +180,27 @@ for world_name, world_results in all_results.items():
         continue
     
     # Find ΛCDM reference
-    lcdm_key = [k for k in world_results if "ΛCDM" in k]
-    if not lcdm_key:
+    # Prefer SH0ES LCDM if available, otherwise TRGB, otherwise any LCDM
+    lcdm_shoes = [k for k in world_results if "ΛCDM" in k and "SH0ES" in k.upper()]
+    lcdm_trgb = [k for k in world_results if "ΛCDM" in k and "TRGB" in k.upper()]
+    lcdm_any = [k for k in world_results if "ΛCDM" in k]
+    
+    if lcdm_shoes:
+        ref_key = lcdm_shoes[0]
+        ref_label = "SH0ES ΛCDM"
+    elif lcdm_trgb:
+        ref_key = lcdm_trgb[0]
+        ref_label = "TRGB ΛCDM"
+    elif lcdm_any:
+        ref_key = lcdm_any[0]
+        ref_label = "ΛCDM"
+    else:
         continue
     
-    ref = world_results[lcdm_key[0]]
+    ref = world_results[ref_key]
     
     print(f"\n{'='*120}")
-    print(f"📐 Δχ² ANALYSIS: {world_name} (ref: ΛCDM χ²={ref['chi2']:.1f})")
+    print(f"📐 Δχ² ANALYSIS: {world_name} (ref: {ref_label} χ²={ref['chi2']:.1f})")
     print(f"{'='*120}")
     print(f"{'Model':<15} {'Δχ²':>8} {'H0':>7} {'ΔH0':>6} {'r_s':>7} {'Δr_s':>6} {'Δr_s%':>7} {'Assessment':<25}")
     print("-"*120)
@@ -312,9 +325,6 @@ for world_name, world_results in all_results.items():
         print(f"      Regime: {regime}")
 
 print(f"\n{'='*120}")
-print("🎯 SCIENCE GOALS:")
-print("   1. DESI kills SH0ES-like EDE (r_s ~142 Mpc, Δχ² >> 100) — CONFIRMED by archived chains")
-print("   2. Late-time CPL cannot raise H₀ with DESI+SN — testing...")
-print("   3. Convergence-window EDE (r_s ~145 Mpc) survives DESI? — testing...")
+print("🎯 SCIENCE QUESTION: Compare 'convergence window' (H₀~70.5, r_s~145.5) against 'chasing 73' under DESI Y1 BAO")
 print("Target: R̂-1 < 0.01, 1500-2500 samples/chain, ESS ≥ 1500 for H₀/S₈")
 print("="*120)

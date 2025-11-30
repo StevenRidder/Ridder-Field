@@ -1,19 +1,22 @@
-# Tier 5 Phase 2: Geometric EDE with SH0ES + DESI Y1 BAO
-# Tests: Does EDE beat ΛCDM when SH0ES prior is included with DESI?
-# k = 8 parameters (minimal EDE shelf)
+# Tier 5: Geometric EDE with SH0ES + DESI Y1 BAO
+# FIXED: Using CORRECT CLASS parameters
+# k = 7 parameters (6 base + 1 EDE amplitude)
 
 theory:
   classy:
+    path: /home/ridderadmin/Ridder-Field/phase2/class/python
     extra_args:
-      output: tCl, mPk
+      output: tCl, pCl, lCl, mPk
       l_max_scalars: 2508
       lensing: true
       gauge: newtonian
       recombination: recfast
       non_linear: none
-      Lambda_EDE_ridder: 1.0
-      f_axion_ridder: 1.0e+27
+      # FIXED Ridder shape parameters
       n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
 
 likelihood:
   # CMB
@@ -34,7 +37,7 @@ likelihood:
   # Pantheon+ Supernovae
   sn.pantheonplus:
   
-  # SH0ES H0 prior: 73.04 ± 1.04 km/s/Mpc
+  # SH0ES H0 prior
   shoes_h0:
     external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
     output_params: [chi2__shoes_h0]
@@ -75,17 +78,16 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE parameters (k=8) - priors tuned for convergence window
-  theta_i_ridder:
-    prior: {min: 1.0, max: 2.5}
-    ref: 1.5
+  # EDE amplitude - SAMPLED
+  log10_Lambda_EDE_ridder:
+    prior: {min: -1.0, max: 1.0}
+    ref: 0.0
     proposal: 0.1
-    latex: \theta_i
-  beta_ridder:
-    prior: {min: 0.0, max: 0.01}
-    ref: 0.003
-    proposal: 0.001
-    latex: \beta
+    latex: \log_{10} \Lambda_{EDE}
+  
+  Lambda_EDE_ridder:
+    value: "lambda log10_Lambda_EDE_ridder: 10**log10_Lambda_EDE_ridder"
+    latex: \Lambda_{EDE}
 
   # Derived
   Omega_m:

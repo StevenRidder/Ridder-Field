@@ -1,4 +1,4 @@
-# Tier 5: Geometric EDE with TRGB + DESI Y1 BAO
+# Tier 5: Geometric EDE - Growth World (DES Y1)
 # FIXED: Using CORRECT CLASS parameters
 # k = 7 parameters (6 base + 1 EDE amplitude)
 
@@ -25,22 +25,18 @@ likelihood:
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
   
-  # Pre-DESI BAO
+  # Pre-DESI BAO only
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
   
-  # DESI Y1 BAO
-  likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
-  
   # Pantheon+ Supernovae
   sn.pantheonplus:
   
-  # TRGB/JWST H0 prior
-  trgb_h0:
-    external: "lambda H0: -0.5*((H0 - 69.8)/1.7)**2"
-    output_params: [chi2__trgb_h0]
+  # SH0ES H0 prior
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
 
 params:
   # Base ΛCDM (k=6)
@@ -59,7 +55,7 @@ params:
     latex: n_s
   H0:
     prior: {min: 60, max: 80}
-    ref: 70.0
+    ref: 70.5
     proposal: 0.5
     latex: H_0
   omega_b:
@@ -110,5 +106,5 @@ sampler:
     max_tries: 20000
     proposal_scale: 2.0
 
-output: chains/tier5_ede_trgb_desi
+output: chains/tier5_ede_des_y1
 resume: true
