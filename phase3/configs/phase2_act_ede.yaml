@@ -1,30 +1,35 @@
-# Tier 5: Geometric EDE - Growth World (DES Y1)
-# FIXED: Using CORRECT CLASS parameters
+# Phase 2: ACT DR6 World - Geometric EDE (Ridder Field)
+# Testing: Does EDE fit high-ℓ CMB damping tail? Is the "soft shoulder" visible?
+# Likelihoods: Planck 2018 + Pre-DESI BAO + SH0ES + ACT DR6
 # k = 7 parameters (6 base + 1 EDE amplitude)
 
 theory:
   classy:
     extra_args:
       output: tCl, pCl, lCl, mPk
-      l_max_scalars: 2508
+      l_max_scalars: 9000  # Higher for ACT
       lensing: true
       gauge: newtonian
       recombination: recfast
-      non_linear: halofit  # Required for DES lensing
-      # FIXED Ridder shape parameters
+      non_linear: halofit
+      # FIXED Ridder shape parameters (same as Tier 5)
       n_ridder: 3
       theta_i_ridder: 1.0
       beta_ridder: 0.0
       f_axion_ridder: 1.0e+27
 
 likelihood:
-  # CMB
+  # Planck 2018 CMB (low-ℓ)
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
   
-  # Pre-DESI BAO only
+  # ACT DR6 high-ℓ TT/TE/EE (the damping tail - where the shoulder lives!)
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: true
+  
+  # Pre-DESI BAO
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
@@ -36,10 +41,6 @@ likelihood:
   shoes_h0:
     external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
     output_params: [chi2__shoes_h0]
-
-  # DES Y1 Joint (3x2pt) - Growth Test
-  des_y1.joint:
-    stop_at_error: true
 
 params:
   # Base ΛCDM (k=6)
@@ -58,7 +59,7 @@ params:
     latex: n_s
   H0:
     prior: {min: 60, max: 80}
-    ref: 70.5
+    ref: 70.0
     proposal: 0.5
     latex: H_0
   omega_b:
@@ -68,7 +69,7 @@ params:
     latex: \Omega_b h^2
   omega_cdm:
     prior: {min: 0.09, max: 0.14}
-    ref: 0.117
+    ref: 0.12
     proposal: 0.003
     latex: \Omega_c h^2
   tau_reio:
@@ -77,7 +78,7 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE amplitude - SAMPLED DIRECTLY
+  # EDE amplitude - SAMPLED DIRECTLY (same as Tier 5)
   Lambda_EDE_ridder:
     prior: {min: 0.1, max: 3.0}
     ref: 1.0
@@ -99,11 +100,11 @@ params:
 sampler:
   mcmc:
     max_samples: 5000
-    Rminus1_stop: 0.02
+    Rminus1_stop: 0.01
     burn_in: 50
     learn_proposal: true
     max_tries: 20000
     proposal_scale: 2.0
 
-output: chains/tier5_ede_des_y1
+output: chains/phase2_act_ede
 resume: true
