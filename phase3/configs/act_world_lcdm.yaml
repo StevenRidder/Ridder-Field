@@ -1,53 +1,32 @@
-# Phase 2: ACT DR6 World - ΛCDM
-# Testing: Does ΛCDM fit high-ℓ CMB damping tail?
-# Likelihoods: Planck 2018 + Pre-DESI BAO + SH0ES + ACT DR6
-# k = 6 parameters (base ΛCDM)
+# ACT World: ΛCDM - Planck + Pre-DESI BAO + SH0ES + ACT DR6
+# 4 chains for convergence (R-1 < 0.01, ESS > 2000)
+# k = 6 parameters
 
 theory:
-  classy:
+  camb:
     extra_args:
-      output: tCl, pCl, lCl, mPk
-      l_max_scalars: 9000  # Higher for ACT
-      lensing: true
-      gauge: newtonian
-      recombination: recfast
-      non_linear: halofit
-  # Foreground theory for ACT
-  mflike.TheoryForge_MFLike:
-    data_folder: ACTDR6MFLike/v1.0
-    efficiencies_file: null
-    spectra:
-      polarizations: [TT, TE, EE]
-      lmin: 2
-      lmax: 9000
-    systematics_template:
-      has_calib: True
-      has_calib_pol: True
-      has_bandint_shift: True
-    foregrounds:
-      normalisation:
-        nu_0: 150.0
-        ell_0: 3000
-        T_CMB: 2.725
-      components:
-        tt:
-          - kSZ
-          - tSZ
-          - cibc
-          - dust_tt
-          - radio
-        te: []
-        ee:
-          - dust_ee
+      lens_potential_accuracy: 1
+      lmax: 3000
+  # ACT foreground theory
+  mflike.BandpowerForeground:
+    experiments:
+      - dr6_pa4_f220
+      - dr6_pa5_f090
+      - dr6_pa5_f150
+      - dr6_pa6_f090
+      - dr6_pa6_f150
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
 
 likelihood:
-  # Planck 2018 CMB (low-ℓ)
+  # CMB
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
   
-  # ACT DR6 high-ℓ TT/TE/EE (the damping tail!)
+  # ACT DR6 high-ℓ TT/TE/EE (damping tail)
   act_dr6_mflike.ACTDR6MFLike:
     stop_at_error: true
   
@@ -65,7 +44,12 @@ likelihood:
     output_params: [chi2__shoes_h0]
 
 params:
-  # Base ΛCDM (k=6)
+  # Base ΛCDM (k=6) - CAMB parameterization
+  cosmomc_theta:
+    prior: {min: 0.0104, max: 0.0108}
+    ref: 0.010409
+    proposal: 0.0001
+    latex: 100\theta_{MC}
   logA:
     prior: {min: 2.5, max: 3.5}
     ref: 3.044
@@ -79,29 +63,23 @@ params:
     ref: 0.9649
     proposal: 0.004
     latex: n_s
-  H0:
-    prior: {min: 60, max: 80}
-    ref: 68.0
-    proposal: 0.5
-    latex: H_0
-  omega_b:
+  ombh2:
     prior: {min: 0.019, max: 0.025}
     ref: 0.02237
     proposal: 0.0002
     latex: \Omega_b h^2
-  omega_cdm:
+  omch2:
     prior: {min: 0.09, max: 0.14}
     ref: 0.12
     proposal: 0.003
     latex: \Omega_c h^2
-  tau_reio:
+  tau:
     prior: {min: 0.01, max: 0.1}
     ref: 0.0544
     proposal: 0.006
-    latex: \tau_{reio}
+    latex: \tau
 
   # ACT foreground parameters
-  # Bandpass shifts
   bandint_shift_dr6_pa4_f220:
     prior: {dist: norm, loc: 0.0, scale: 3.6}
     ref: 0.0
@@ -122,8 +100,6 @@ params:
     prior: {dist: norm, loc: 0.0, scale: 1.1}
     ref: 0.0
     proposal: 0.55
-    
-  # Temperature calibration
   cal_dr6_pa4_f220:
     prior: {dist: norm, loc: 1.0, scale: 0.01}
     ref: 1.0
@@ -144,8 +120,6 @@ params:
     prior: {dist: norm, loc: 1.0, scale: 0.01}
     ref: 1.0
     proposal: 0.005
-    
-  # Polarization calibration
   calE_dr6_pa5_f090:
     prior: {dist: norm, loc: 1.0, scale: 0.01}
     ref: 1.0
@@ -162,8 +136,6 @@ params:
     prior: {dist: norm, loc: 1.0, scale: 0.01}
     ref: 1.0
     proposal: 0.005
-
-  # Foreground amplitudes
   a_tSZ:
     prior: {min: 0, max: 20}
     ref: 3.3
@@ -203,12 +175,12 @@ params:
 
 sampler:
   mcmc:
-    max_samples: 5000
+    max_samples: 2000
     Rminus1_stop: 0.01
     burn_in: 50
     learn_proposal: true
     max_tries: 20000
     proposal_scale: 2.0
 
-output: chains/phase2_act_lcdm
+output: chains/act_world_lcdm
 resume: true

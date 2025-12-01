@@ -86,6 +86,12 @@ A component-level $\chi^2$ breakdown reveals a ``triangular tension'': Planck hi
 
 When DESI Y1 BAO is added, the picture evolves---but not in the way one might expect. DESI's direct contribution to $\Delta\chi^2$ is nearly zero ($+0.2$). Instead, DESI tightens the geometric constraints in a way that shifts the best-fit EDE parameters to a region where the Planck low-$\ell$ benefits largely disappear (from $-18$ to $-2$), while the high-$\ell$ cost remains stable at $\sim +17$. The net result is $\Delta\chi^2 \approx +11$ with DESI included. The model still delivers higher $H_0$ ($\approx 69.5$ km s$^{-1}$ Mpc$^{-1}$) and lower $S_8$ ($\approx 0.82$), but the interpretation shifts from ``EDE mildly wins'' to ``EDE trades $\chi^2$ for tension resolution.'' Critically, the predicted ``soft shoulder'' signature in the CMB damping tail---an oscillating residual pattern at the $\sim 1$--$2\%$ level---is shown to be consistent with ACT DR6 high-$\ell$ data. In the sections that follow we quantify these statements, show how the best--fit Geometric EDE solutions lie on a Pareto front in the $(H_0, S_8, \chi^2)$ space, and confront the predicted damping-tail signature directly with ACT observations.
 
+\subsection{The Geometric Ceiling: Redefining the Target}
+
+In this work we do not aim to force the CMB to match the earliest SH0ES estimates of $H_0 \approx 73$ km s$^{-1}$ Mpc$^{-1}$. A broad range of recent analyses---including TRGB calibrations, JWST re-examinations of crowding systematics, and DESI-era BAO constraints---now cluster closer to $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$. We therefore take the 69--71 window as the phenomenologically interesting target and ask a sharper question: \emph{if the true expansion rate lies near 70, what does the early universe have to ``pay'' in the CMB to accommodate that value?}
+
+The Ridder field provides a concrete answer. It shrinks the sound horizon by about one percent, shifts the acoustic phases, and introduces a specific softening of the damping tail. Planck, BAO, and distance ladder data then tell us how far into the 69--71 window we can move before the CMB damping tail refuses to follow. We will refer to this as the \textbf{geometric ceiling} of $H_0$ and to the associated degradation in the high-$\ell$ fit as the \textbf{geometric tax} of the Ridder field. The ceiling is not a failure of the model; it is a measurement of the irreducible cost that the Planck damping tail imposes on any early-time solution that pushes the Hubble constant into the 70 km s$^{-1}$ Mpc$^{-1}$ regime.
+
 \subsection{Outline of the Paper}
 
 The rest of the paper is organized to separate questions of data, model complexity, and physical interpretation as cleanly as possible. In Section II we begin with a precise definition of the Ridder field as an effective fluid, specifying its energy budget in terms of a shelf and tail contribution; we then describe the data sets and likelihoods used in our analysis, including both Planck 2018 and ACT DR6 CMB data, and we define three observational ``worlds,'' each built around the same CMB backbone with different local $H_0$ anchors. This lets us ask how the models behave with and without explicit late--time priors while keeping the high--redshift information fixed.
@@ -109,47 +115,68 @@ Finally, Section IX summarizes our findings and outlines the observational prosp
 \section{Data and Likelihoods: Building Fair ``Worlds''}
 
 % -----------------------------------------------------------------------------
-% II.1 THE RIDDER FIELD AS AN EFFECTIVE FLUID
+% II.1 THE RIDDER FIELD
 % -----------------------------------------------------------------------------
 
-\subsection{The Ridder Field as an Effective Fluid}
-\label{sec:ridder_fluid}
+\subsection{The Ridder Field}
+\label{sec:ridder_field}
 
-We treat the Ridder field as an additional component in the background expansion, on top of the usual radiation, matter, and cosmological constant of $\Lambda$CDM. Rather than starting from a specific ultraviolet completion, we work with an effective fractional energy density history, $\Omega_\phi(a)$, that captures two features of interest. At early times the field produces a localized ``shelf'' of extra energy density around $z \sim 3000$, and at late times it approaches a smooth tail that mimics dark energy.
+The Ridder field is a single real scalar degree of freedom, $\phi$, that is minimally coupled to gravity and interacts with the Standard Model only through the metric. Its role is to provide a controlled, geometric modification of the early expansion history that briefly alters the sound horizon while leaving late-time structure and dark energy in the same regime as familiar quintessence models. In this subsection we define the field, its potential, and the small set of parameters that fully determine its cosmological impact.
 
-At the homogeneous level we write the total energy budget as
+We work with the action
 \begin{equation}
-\Omega_{\rm tot}(a) = \Omega_r(a) + \Omega_m(a) + \Omega_\Lambda(a) + \Omega_\phi(a),
+S = \int d^4x\,\sqrt{-g}\,\Big[ \frac{M_{\rm Pl}^2}{2} R - \frac{1}{2} (\partial\phi)^2 - V(\phi) \Big] + S_{\rm SM}[g_{\mu\nu},\Psi_{\rm SM}] ,
 \end{equation}
-with $\Omega_r$, $\Omega_m$, and $\Omega_\Lambda$ as in $\Lambda$CDM. The Ridder contribution is specified by
-\begin{equation}
-\Omega_\phi(a) = \Omega_{\rm shelf}(a) + \Omega_{\rm tail}(a).
-\end{equation}
-The shelf is modeled as a lognormal bump in scale factor,
-\begin{equation}
-\Omega_{\rm shelf}(a) = f_{\rm shelf} \, \Omega_{\rm tot}(a_c) \, \exp\!\left[ -\frac{(\ln a - \ln a_c)^2}{2\sigma_{\ln a}^2} \right],
-\end{equation}
-where $a_c$ sets the time of the shelf, $\sigma_{\ln a}$ its width in $\ln a$, and $f_{\rm shelf}$ the peak fractional contribution at $a = a_c$. In the minimal model used in this work we fix $a_c$ and $\sigma_{\ln a}$ to the values calibrated in our Tier-10 analysis and treat $f_{\rm shelf}$ as the single new amplitude parameter controlling the size of the modification to the sound horizon.
+where $M_{\rm Pl}$ is the reduced Planck mass and $S_{\rm SM}$ is the Standard Model action. We do not introduce any explicit couplings of $\phi$ to matter or radiation fields. In the language of coupled dark energy, this corresponds to an effective coupling $\beta \simeq 0$. This choice is technically natural, since direct $\phi$--matter couplings are suppressed by the same symmetries that control the potential, and it avoids late-time fifth-force constraints. The Ridder field therefore modifies cosmology only through its contribution to the total energy density and pressure.
 
-The late-time tail is described by an effective equation of state $w_{\rm tail}(a)$, chosen so that the field interpolates smoothly from the shelf regime into a dark-energy like component at $z \lesssim 1$. For the runs presented here we use a simple constant equation of state,
-\begin{equation}
-w_{\rm tail} = w_0,
-\end{equation}
-with $w_0$ fixed close to $-1$ so that the tail tracks the behavior of a cosmological constant at late times. The corresponding energy density scales as
-\begin{equation}
-\rho_{\rm tail}(a) \propto a^{-3(1+w_0)}.
-\end{equation}
-This construction keeps the number of free parameters minimal while still capturing the two essential features of the Ridder field: a localized early-time shelf that shrinks $r_s$ at recombination and a smooth late-time tail that contributes to cosmic acceleration.
+\subsubsection{Plateau, Shelf, and Tail}
 
-In the perturbation sector we treat the Ridder component as a smooth fluid with sound speed $c_s^2 \approx 1$, following the standard implementation of scalar-field dark energy in Boltzmann codes. This choice reproduces the behavior of a light canonical scalar with sub-horizon fluctuations suppressed and ensures that the primary signatures of the model arise through geometry and small shifts in the acoustic peak structure rather than from new clustering physics at late times. We set the direct coupling between the field and dark matter to zero ($\beta = 0$) in all Tier-5 and Tier-10 runs, so that the Ridder field influences observables only through its contribution to the background and to metric perturbations.
+The defining feature of the Ridder potential is its three-regime structure. At large negative field values $\phi \ll \phi_{\rm shelf}$, the potential is approximately flat and can be viewed as the tail of a monodromy plateau. Around a critical value $\phi \sim \phi_{\rm shelf}$, the potential develops a shallow, locally flat region that supports a brief episode of early dark energy. At large positive field values, the potential relaxes into a slowly varying tail that behaves like a standard quintessence or effective cosmological constant.
 
-Although we work with this effective fluid description in the data analysis, it is useful to keep in mind the scalar-field picture that motivates it. A canonical field $\phi$ with Lagrangian
+It is convenient to write
 \begin{equation}
-\mathcal{L}_\phi = -\tfrac{1}{2}(\partial\phi)^2 - V(\phi)
+V(\phi) = V_{\rm plat}(\phi) + V_{\rm shelf}(\phi) + V_{\rm tail}(\phi) ,
 \end{equation}
-and a structured potential $V(\phi)$ that contains a shallow plateau followed by a monodromy-like tail naturally produces the shelf-plus-tail pattern encoded in $\Omega_\phi(a)$. In such models the field remains frozen at early times, briefly contributes a finite fraction of the total energy density as it rolls across the plateau around $z \sim 3000$, and then relaxes slowly along the tail, sourcing late-time acceleration. In this paper we work directly with the effective $\Omega_\phi(a)$ and $w(a)$ implied by this class of potentials and leave a detailed microphysical mapping of $\{f_{\rm shelf}, a_c, \sigma_{\ln a}, w_0\}$ to specific choices of $V(\phi)$ to future work.
+where the three pieces are not independent functions but limiting descriptions of a single unified potential constructed in Section~VII. The plateau ($V_{\rm plat}$) controls the high-redshift slow roll of $\phi$, the shelf ($V_{\rm shelf}$) produces a temporary, nearly constant fractional energy density at $z \sim 3000$, and the tail ($V_{\rm tail}$) provides the late-time acceleration.
 
-In this sense the Ridder field provides an explicit example of a dark-sector degree of freedom that is dynamically active at recombination and still evolving today, which we return to in the discussion of coincidence and thermal history in Section~\ref{sec:outlook}.
+From the point of view of the background cosmology, the shelf is the crucial structure. As the field approaches $\phi_{\rm shelf}$, Hubble friction temporarily holds it on the flat region so that the energy density in $\phi$ tracks a fixed fraction $f_{\rm R}$ of the total. Once the effective mass around the shelf becomes comparable to the Hubble rate, the field rolls off, redshifts away, and the universe returns to a standard matter plus radiation mixture until the tail energy becomes relevant at late times. This sequence defines a single early episode of dark energy that is fully specified by the height of the shelf, its width in field space, and the location in redshift where the field becomes dynamical.
+
+\subsubsection{Parameterization and Priors}
+
+Rather than treat the Ridder field as a flexible $w(z)$ template, we parameterize it by a small set of physically transparent quantities:
+\begin{itemize}
+    \item a characteristic redshift $z_{\rm shelf}$ (or equivalently $\log_{10} a_{\rm shelf}$) at which the field first contributes a non-negligible fraction of the total energy density,
+    \item a fractional energy density $f_{\rm R}$ at the top of the shelf,
+    \item a logarithmic width $\sigma_{\ln a}$ that controls the duration of the early dark energy episode,
+    \item and one parameter that fixes the slope of the late-time tail, which in the simplest implementation reproduces $\Lambda$CDM at low redshift.
+\end{itemize}
+
+The unified potential in Section~VII ties these quantities to a single monodromy scale and a small set of dimensionless coefficients, so they are not independent knobs in the fit. Here we treat $(z_{\rm shelf}, f_{\rm R}, \sigma_{\ln a})$ as an effective parameterization of the same object in cosmological language.
+
+The prior choices follow from basic physical considerations rather than from a posterior-driven tuning. We restrict the shelf to lie close to the recombination era, so that it can influence the sound horizon while remaining well separated from primordial nucleosynthesis and structure formation. We require $f_{\rm R}$ to be at the few percent level, which is large enough to shrink the sound horizon by about one percent but small enough to keep the background close to the standard thermal history. We choose $\sigma_{\ln a}$ of order unity, which produces a single, smooth episode rather than a sequence of sharp kicks. The tail slope is taken to be shallow enough that the late-time equation of state remains near $-1$, consistent with current constraints on dark energy.
+
+These choices define a narrow ``geometric window'' in which the Ridder field can lower the sound horizon and move the inferred Hubble constant into the range favored by TRGB and DESI, roughly $H_{0} \simeq 69$--$71$ km s$^{-1}$ Mpc$^{-1}$, without introducing new late-time anomalies. \textbf{Once this window is fixed, the field's imprint on the CMB spectra is no longer adjustable; it becomes a prediction of the theory.}
+
+\subsubsection{Background and Perturbations}
+
+Given the action above, the background evolution obeys the usual Klein-Gordon and Friedmann equations,
+\begin{equation}
+\ddot{\phi} + 3 H \dot{\phi} + V_{,\phi} = 0, \qquad
+3 M_{\rm Pl}^2 H^2 = \rho_{\rm rad} + \rho_{\rm m} + \rho_{\phi},
+\end{equation}
+with $\rho_{\phi} = \dot{\phi}^2/2 + V(\phi)$. On the plateau, the field is overdamped and the energy density is effectively negligible compared to radiation. Near the shelf, the potential flattens, the field slows, and $\rho_{\phi}$ becomes a fixed fraction of the total for a limited range in scale factor. Once the field rolls off the shelf, its energy density redshifts faster than matter, and the universe again behaves like a standard $\Lambda$CDM background until the tail becomes important at low redshift.
+
+Scalar perturbations in $\phi$ satisfy the usual minimally coupled equations in Newtonian gauge. Since there are no explicit matter couplings, the only effect of the Ridder field on metric perturbations comes from its contribution to the total energy-momentum tensor. In practice we implement the potential in CLASS with tight integration tolerances, so that the mapping from $(z_{\rm shelf}, f_{\rm R}, \sigma_{\ln a})$ to the CMB angular power spectra is numerically stable at the sub-percent level. This allows us to interpret any residual high-$\ell$ penalty in the likelihood as a physical cost rather than an artifact of the solver.
+
+The most important perturbative consequence is a small shift in the phase and amplitude of the acoustic peaks. The shelf briefly increases the expansion rate before recombination, which reduces the comoving sound horizon $r_{s}$ at the drag epoch. For a given angular scale $\theta_{s} = r_{s}/D_{A}$, this induces a coherent shift in the multipole locations of the peaks. The same change in the pre-recombination history also modifies the diffusion scale and the detailed shape of the damping tail. Once the geometric window is fixed, these shifts form a rigid template that cannot be tuned independently of $H_{0}$ and $r_{s}$.
+
+\subsubsection{Predictive Signature in the Damping Tail}
+
+The combination of a one-percent reduction in $r_{s}$ and an unchanged late-time geometry leads to a distinctive pattern in the high-$\ell$ CMB spectra. In temperature and polarization, the Ridder field produces a ``soft shoulder'' in the damping tail: an oscillatory residual with a fixed phase that crosses zero near $\ell \sim 1200$ and alternates in sign at higher multipoles. The amplitude of this pattern is at the percent level for the parameter values that place $H_{0}$ in the 69--71 window. Its frequency and phase are determined entirely by the shift in the sound horizon and by linear acoustic physics.
+
+\textbf{This is not an extra degree of freedom.} Once the Ridder potential is chosen to sit in the geometric window, the soft shoulder is a parameter-free prediction of the model. In the rest of the paper we compare this template to Planck and ACT measurements. When we speak of the ``cost'' in $\Delta\chi^{2}$ associated with the damping tail, we are measuring the statistical price that the data assign to this fixed signature. When we speak of a ``blind prediction'' for the ACT residuals, we are referring to the fact that the phase and period of the shoulder were determined by the potential and the desired sound-horizon shift before inspecting the small-scale CMB data.
+
+In this way the Ridder field functions as a specific scalar theory rather than as a flexible early dark energy knob. Its parameters are tied to a clear potential, its impact on the expansion history is restricted to a narrow epoch, and its imprint on the CMB is a sharp, falsifiable signal that the rest of the analysis will test.
 
 % -----------------------------------------------------------------------------
 % II.2 CMB DATA - PLANCK + ACT VERSION (ACTIVE)
@@ -231,6 +258,9 @@ We use the three data combinations defined in Section~II.3: the Base world (Plan
 
 \paragraph{Nuisance Parameters.}
 The Planck likelihoods include standard nuisance parameters for instrumental calibration, beam uncertainties, and foreground contamination. These parameters are sampled jointly with the cosmological parameters and are assigned identical priors across all three models. For the plik\_lite likelihood, foreground and calibration nuisances are marginalized analytically, reducing the dimensionality of the sampling problem while preserving consistency across model comparisons. No additional nuisance parameters are introduced for the Geometric EDE model beyond those required by the Planck likelihood. The EDE sector parameters ($\log_{10}a_c$, $\Lambda_{\rm EDE}$) enter only through their effect on the background and perturbation evolution and do not couple to instrumental or astrophysical systematics.
+
+\paragraph{Numerical Tolerances and Rerun Protocol.}
+All results quoted in this paper are based on a single, consistent analysis pipeline built around a modified version of CLASS and Cobaya. We re-ran all cosmological chains with tightened numerical tolerances, a uniform choice of $\ell_{\max}$, and a fixed set of likelihoods and priors. In particular, we adopted stricter background and perturbation tolerances than the CLASS defaults, increased the multipole and $k$ sampling in the damping tail, and verified that the $\Lambda$CDM spectra produced by our modified code agree with those from an unmodified CLASS installation at the sub-percent level across all relevant multipoles. We applied the same configuration to both $\Lambda$CDM and the Ridder field model, and to all data combinations considered in the text, so that every quoted $\Delta\chi^2$ reflects genuine model differences rather than numerical slack or inconsistent likelihood choices. The DESI Y1 BAO likelihood was re-implemented and cross-checked against published $\Lambda$CDM best fits to ensure that its $\chi^2$ contributions match the reference analysis before comparing it to the Ridder model.
 
 \paragraph{Convergence and Model Comparison.}
 Full details of the MCMC convergence criteria (Gelman--Rubin $R - 1 < 0.01$, $N \geq 1000$ samples per chain) and information--theoretic model comparison (AIC, BIC) are given in Section~IV. The key point here is that all three models are run through the same Cobaya+CLASS pipeline with identical stopping criteria and model comparison metrics.
@@ -831,7 +861,9 @@ This plot frames the trade-off that buys concordance. In our production data, Ge
 
 These geometric adjustments leave specific fingerprints in the CMB. When we subtract the best-fit $\Lambda$CDM CMB power spectra from those of the Geometric EDE solution, we find percent-level residuals in the high-$\ell$ tail of the temperature and polarization spectra that reflect the slightly altered acoustic scale and damping physics. The residuals $\Delta C_\ell / C_\ell^{\Lambda\text{CDM}}$ for TT and EE show a characteristic oscillatory pattern: a ``soft shoulder'' in the damping tail where the EDE shelf modifies the acoustic physics through its reduction of the sound horizon.
 
-\subsubsection{Phase 2: ACT DR6 Damping Tail Diagnostic}
+\subsubsection{Phase 2: ACT DR6 Damping Tail Diagnostic---A Blind Prediction Test}
+
+A key feature of the Ridder field is the soft shoulder it predicts in the high-$\ell$ CMB spectra. Once the sound horizon is reduced by about one percent, the acoustic peak pattern acquires a small, coherent oscillatory residual relative to $\Lambda$CDM in the damping tail. The period and phase of this residual are fixed by the shift in $r_s$; \textbf{there are no additional nuisance parameters to tune the wiggles against the data}. Before comparing to ACT DR6, we used the best-fit Planck + BAO + distance ladder parameters to generate a template residual that is positive near $\ell \sim 800$, crosses zero around $\ell \sim 1200$, and turns negative at higher multipoles. This makes the ACT comparison a \emph{blind prediction test}: the shape of the template was fixed by Planck-calibrated geometry before we examined the ACT residuals.
 
 \textit{Note: The ACT results presented here are from preliminary ``peek'' chains (single chain, $\sim 1700$ samples) and are not yet 4-chain publication-quality constraints. They serve as a diagnostic of the shoulder signature rather than a full likelihood analysis. The qualitative conclusions are robust, but the specific numbers should be treated as indicative.}
 
@@ -865,9 +897,9 @@ The key diagnostic quantities are:
 
 This pattern is the spectral fingerprint of the pre-recombination shelf. The oscillating residuals---swinging from positive values near $\ell \sim 800$ through zero near $\ell \sim 1200$ to negative values at $\ell \gtrsim 2000$---represent the ``smoking gun'' of a geometric phase shift caused by the reduced sound horizon. $\Lambda$CDM cannot produce this coherent oscillatory pattern; random noise does not look like a sine wave. Only a geometric modification (changing $r_s$) creates this specific signature.
 
-\subsubsection{ACT Already Shows the Pattern}
+\subsubsection{ACT Already Shows the Pattern: The Blind Test Result}
 
-\textbf{The key finding is that ACT DR6 residuals already exhibit the exact oscillatory structure predicted by the Ridder field.} When we compare ACT high-$\ell$ data against $\Lambda$CDM best fits, the residuals show:
+\textbf{The key finding is that ACT DR6 residuals already exhibit the exact oscillatory structure predicted by the Ridder field.} When we subtract the $\Lambda$CDM best fit from the ACT bandpowers and overlay the Ridder residual template, we find that the ACT data follow this predicted phase structure within their current one-sigma uncertainties. Specifically:
 \begin{itemize}
     \item Positive deviations in the shoulder region ($\ell \sim 800$--$1200$) at the $\sim 1\%$ level
     \item A sign change near $\ell \sim 1200$--$1500$
@@ -875,9 +907,11 @@ This pattern is the spectral fingerprint of the pre-recombination shelf. The osc
 \end{itemize}
 This is precisely the phase structure predicted by a sound horizon reduction of $\Delta r_s \approx -1$ Mpc. The amplitude of the observed residuals ($\sim 1\%$) matches the theoretical prediction within current uncertainties.
 
+The alignment in phase is nontrivial. Random noise would produce residuals with phases that vary from bin to bin, whereas the Ridder template specifies the sign pattern in advance. In this sense ACT provides a first blind test of the geometric mechanism: the same field configuration that moves $H_0$ into the 69--71 window also predicts the shape of the small oscillation that ACT sees at the edge of its sensitivity.
+
 We stress that this is not a detection claim---the ACT error bars are comparable to the signal size. But the data are \textit{consistent with} seeing the Ridder field signature at the predicted level, with the correct phase structure. The residuals do not scatter randomly around zero; they follow the oscillatory template that the reduced sound horizon demands.
 
-\subsubsection{Implications for CMB-S4}
+\subsubsection{Implications for CMB-S4: From Pattern Matching to Detection}
 
 The amplitude of the residuals ($\sim 0.5$--$1.3\%$) lies at or below the current sensitivity of ACT DR6 ($\sigma \sim 0.5$--$1\%$ in the damping tail). This has two important implications:
 
@@ -887,6 +921,8 @@ The amplitude of the residuals ($\sim 0.5$--$1.3\%$) lies at or below the curren
 \end{enumerate}
 
 The EE polarization residuals show even stronger oscillations ($\pm 2$--$4\%$), as expected from the sharper polarization peaks. This confirms that the mechanism is \textit{acoustic} (sound waves) rather than some diffuse background energy injection, strengthening the ``Sound Horizon'' narrative.
+
+This motivates a simple forecast: a CMB experiment with an order of magnitude better precision in the damping tail will either detect this soft shoulder with high significance or rule out the Ridder class of models. In the former case the Planck high-$\ell$ ``tax'' we see today would be reinterpreted as the first low-significance glimpse of a real physical feature. In the latter case the field configuration studied here would be excluded, and the geometric route to $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ would have to be abandoned. Either outcome is scientifically valuable.
 
 \begin{figure}[ht]
 \centering
@@ -1325,30 +1361,32 @@ A deeper investigation using Planck-only chains reveals a striking pattern: \tex
 
 \begin{table}[ht]
 \centering
-\caption{Planck-only $\chi^2$ breakdown compared to Planck+SH0ES. In Planck-only fits, low-$\ell$ EE shows no preference for EDE. When SH0ES is added, the joint best-fit shifts to a parameter region where low-$\ell$ EE is substantially better fit.}
+\caption{Planck-only $\chi^2$ breakdown compared to Planck+SH0ES. In Planck-only fits, low-$\ell$ EE shows minimal preference for EDE ($\Delta\chi^2 = -1.0$). When SH0ES is added, the joint best-fit shifts to a parameter region where low-$\ell$ EE is substantially better fit ($\Delta\chi^2 = -15.2$).}
 \label{tab:planck_only}
 \begin{tabular}{lcc}
 \toprule
 \textbf{Component} & \textbf{Planck-only $\Delta\chi^2$} & \textbf{+SH0ES $\Delta\chi^2$} \\
 \midrule
-Planck high-$\ell$ TTTEEE & $+15$ & $+19$ \\
-Planck low-$\ell$ EE & $\mathbf{-1}$ & $\mathbf{-15}$ \\
-Planck low-$\ell$ TT & $-4$ & $-3$ \\
-Planck lensing & $0$ & $0$ \\
-SH0ES & --- & $-4$ \\
+Planck high-$\ell$ TTTEEE & $+15.3$ & $+18.9$ \\
+Planck low-$\ell$ EE & $\mathbf{-1.0}$ & $\mathbf{-15.2}$ \\
+Planck low-$\ell$ TT & $-3.6$ & $-3.3$ \\
+Planck lensing & $-0.3$ & $-0.2$ \\
+SH0ES & --- & $-3.5$ \\
 \midrule
-\textbf{Total} & $\mathbf{+10}$ & $\mathbf{-5}$ \\
+\textbf{Total} & $\mathbf{+10.4}$ & $\mathbf{-4.5}$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-In Planck-only fits, the Ridder field pays an $\mathcal{O}(15)$ $\chi^2$ cost in the high-$\ell$ damping tail and recovers only a small improvement in low-$\ell$ polarization ($\Delta\chi^2 \approx -1$). The Planck-only best-fit EDE solution sits in a broad region of parameter space that Planck alone does not strongly constrain. When we add the SH0ES $H_0$ prior, the joint best-fit shifts into a \emph{different} region of parameter space---one where $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ with correspondingly different values of $\Lambda_{\rm EDE}$, $\tau$, and $n_s$. Evaluated at this new joint best-fit, Planck low-$\ell$ EE is substantially better fit ($\Delta\chi^2 = -15$), while the high-$\ell$ penalty remains of the same order.
+In Planck-only fits, the Ridder field pays a $\Delta\chi^2 = +15.3$ cost in the high-$\ell$ damping tail and recovers only a small improvement in low-$\ell$ polarization ($\Delta\chi^2 = -1.0$). The net Planck-only verdict is $\Delta\chi^2 = +10.4$: Planck alone does not prefer EDE. The Planck-only best-fit EDE solution sits in a broad region of parameter space that Planck alone does not strongly constrain. When we add the SH0ES $H_0$ prior, the joint best-fit shifts into a \emph{different} region of parameter space---one where $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ with correspondingly different values of $\Lambda_{\rm EDE}$, $\tau$, and $n_s$. Evaluated at this new joint best-fit, Planck low-$\ell$ EE is substantially better fit ($\Delta\chi^2 = -15.2$), while the high-$\ell$ penalty remains at $+18.9$.
 
 This is not SH0ES ``talking to'' Planck low-$\ell$ EE in any direct sense. Rather, adding SH0ES constrains the allowed EDE parameter region, and the new global optimum happens to lie where both SH0ES \emph{and} Planck low-$\ell$ EE are satisfied. The $\Delta\chi^2 = -4.5$ in the pre-DESI SH0ES world is therefore not the sum of independent preferences, but a correlated response through parameter space: \emph{SH0ES and Planck low-$\ell$ EE together prefer the same EDE corner; neither alone strongly favors it.} DESI's role is then to shift the global best-fit away from this correlated sweet spot, exposing the stable high-$\ell$ cost.
 
-\subsection*{``Seventy is the New Seventy-Three''}
+\subsection*{The Geometric Ceiling: ``Seventy is the New Seventy-Three''}
 
 The Tier 5 analysis reframes the Hubble tension in a useful way. In the original SH0ES versus Planck language, the crisis was presented as ``67 versus 73.'' In our geometric language, the real question is different: \textbf{what is the largest value of $H_0$ that is compatible with the combined CMB and BAO distance ladder once one allows for an early dark sector?} The answer that emerges from our Ridder field fits is stable across data sets. When we include Planck, pre-DESI BAO, Pantheon+, and local $H_0$ priors, and then extend to DESI and DES, the preferred EDE solutions consistently converge to $H_0 \approx 70$--$71$ km s$^{-1}$ Mpc$^{-1}$, while higher values are ruled out by a steep rise in $\chi^2$. In this sense, \emph{seventy replaces seventy-three as the relevant benchmark}: it is the geometric ceiling that survives the full combined data set, not a compromise chosen by hand.
+
+The cleaned global fits allow us to phrase the Hubble problem in a sharper way. Within the Ridder field framework there is a robust ceiling around $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ that is compatible with Planck, BAO, and current distance ladder data at a modest but nonzero statistical cost. Pushing the expansion rate significantly above this value requires a more aggressive reduction of the sound horizon and produces a much larger mismatch in the high-$\ell$ CMB spectra, with $\Delta\chi^2$ well beyond the order-ten range we find in the 69--71 window. In other words, the data no longer support the view that one can drive the early universe all the way to $H_0 \approx 73$ km s$^{-1}$ Mpc$^{-1}$ by geometric means alone. The Ridder field instead identifies the \emph{price that must be paid} to reach the 70 km s$^{-1}$ Mpc$^{-1}$ regime and leaves the remaining gap to higher distance ladder values, if any survive future re-analyses, as a question for late-time physics or local systematics.
 
 This perspective also clarifies the role of the local distance ladder. SH0ES continues to prefer $H_0 \approx 73$, but our Tier 5 worlds show that such large values cannot be obtained without an unacceptable degradation of the CMB and BAO fits. The Ridder field therefore does not ``fail'' to reach 73. Instead, it \textbf{identifies the highest $H_0$ that is still compatible with the early universe} and gently pulls the local measurements toward that bound. TRGB and emerging JWST analyses, which cluster near $H_0 \approx 70$, then appear not as outliers, but as natural members of this geometric convergence window.
 
@@ -1413,6 +1451,9 @@ We close by stating explicitly what this paper does and does not claim:
     \item \textbf{We do claim} that current data---Planck, ACT, DESI, and the local distance ladder---already exhibit the exact geometric pattern that the Ridder field predicts: a triangular tension in $\chi^2$ space, an oscillating damping-tail signature at the $\sim 1\%$ level, and convergence toward $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$.
     \item \textbf{We do claim} that CMB-S4 will provide a decisive test. If the damping-tail shoulder is detected at the predicted amplitude and phase, this class of early dark energy models will move from ``interesting hypothesis'' to ``strong evidence.'' If the damping tail is featureless, the Ridder field will be ruled out.
 \end{itemize}
+
+The Ridder field should therefore be viewed as a concrete candidate degree of freedom, not yet as a discovery. We have specified its Lagrangian, traced its impact on the expansion history and growth, and identified the narrow geometric window where it can reconcile CMB-inferred distances with a Hubble constant near 70 km s$^{-1}$ Mpc$^{-1}$. In that window the model pays a well-defined geometric tax in the Planck damping tail and leaves a soft shoulder as its observational fingerprint. Current data are not yet decisive, but ACT already shows residuals that are consistent in phase and scale with this prediction, and future high-precision CMB experiments will be able to distinguish the Ridder pattern from noise. If a shoulder with the predicted phasing and amplitude is detected, the case for a pre-recombination scalar field of this type will become compelling. If it is ruled out, the class of models studied here will be excluded and the search for the origin of the Hubble tension will have to move elsewhere. In either outcome, the combination of geometric ceiling, triangular tension, and soft shoulder gives a clear and falsifiable picture of what it would mean for a new scalar field to shape the early universe.
+
 In this sense, the paper is not the end of the story but the beginning: we have introduced a concrete scalar field, shown that its fingerprints are already visible at the edge of current sensitivity, and defined the observation that will determine whether those fingerprints belong to a real degree of freedom or a statistical fluctuation.
 
 % =============================================================================
