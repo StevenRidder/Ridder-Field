@@ -128,7 +128,7 @@ def load_chain(chain_file):
         return None
 
 # Find ACT chains
-chain_files = glob.glob(f"{CHAIN_DIR}/phase2_act_*.1.txt")
+chain_files = glob.glob(f"{CHAIN_DIR}/act_world_*.1.txt")
 chain_files = sorted(chain_files)
 
 print(f"\n📂 Found {len(chain_files)} chain files:")
@@ -136,7 +136,7 @@ for f in chain_files:
     print(f"   - {os.path.basename(f)}")
 
 # Check for progress files (chains initializing)
-progress_files = glob.glob(f"{CHAIN_DIR}/phase2_act_*.progress")
+progress_files = glob.glob(f"{CHAIN_DIR}/act_world_*.progress")
 if progress_files and not chain_files:
     print(f"\n🔄 Chains initializing ({len(progress_files)} progress files found)")
     for pf in progress_files:
@@ -151,7 +151,7 @@ if progress_files and not chain_files:
 if not chain_files and not progress_files:
     print("\n⚠️  No ACT chains found yet.")
     print(f"   Looking in: {CHAIN_DIR}")
-    print("   Run: cobaya-run configs/phase2_act_lcdm.yaml -o chains/phase2_act_lcdm")
+    print("   Run: cobaya-run configs/act_world_lcdm.yaml -o chains/act_world_lcdm")
     sys.exit(0)
 
 # Process each chain
@@ -256,7 +256,7 @@ print("📋 RECENT LOG OUTPUT")
 print(f"{'='*110}")
 
 for name in sorted(chains.keys()):
-    log_file = f"{LOG_DIR}/phase2_act_{name.replace('phase2_act_', '')}.log"
+    log_file = f"{LOG_DIR}/act_world_{name.replace('act_world_', '')}.log"
     if os.path.exists(log_file):
         try:
             result = subprocess.run(

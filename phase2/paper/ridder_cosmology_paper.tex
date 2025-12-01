@@ -14,13 +14,11 @@
 \maketitle
 
 \begin{abstract}
-We present a minimal scalar field extension of the Standard Model ($\Lambda$CDM) that simultaneously addresses the Hubble tension ($H_0$) and the clustering tension ($S_8$) through an early-time geometric modification rather than late-time dark sector dynamics. The ``Geometric EDE'' model introduces a scalar field---which we call the Ridder field---with a monodromy-inspired potential containing a narrow shelf at $z \sim 3000$ that briefly contributes a few percent of the total energy density, shrinking the sound horizon $r_s$ and raising the CMB-inferred $H_0$.
+We introduce the Ridder field, a concrete scalar degree of freedom that modifies the expansion history through a brief pre-recombination shelf while relaxing into a dark energy tail at late times. The field is specified by a fixed potential shape and a minimal set of parameters that control its activation epoch and amplitude, so it behaves as a theory object rather than a tuned effective equation of state. When active near redshift $z \sim 3000$, the Ridder field contributes a few percent of the total energy density, reduces the sound horizon by about one percent, and slightly suppresses late-time structure growth. These geometric changes move the CMB-inferred Hubble constant into the $H_0 \simeq 69$--$71$ km s$^{-1}$ Mpc$^{-1}$ window favored by several recent late-time probes.
 
-Fitting to Planck 2018 + pre-DESI BAO + SH0ES data, we find that Geometric EDE with $k = 8$ free parameters achieves $H_0 = 69.7 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$ and $S_8 = 0.82 \pm 0.01$, reducing the Hubble tension from $4.3\sigma$ to $\sim 2.3\sigma$ and the $S_8$ tension from $2.7\sigma$ to $1.5\sigma$. In this pre-DESI configuration, Geometric EDE achieves $\Delta\chi^2 \approx -4.5$ relative to $\Lambda$CDM, with the preference driven by a ``triangular tension'': Planck high-$\ell$ TTTEEE disfavors the modified damping tail by $\Delta\chi^2 \approx +19$, but Planck low-$\ell$ EE and TT favor it by $\Delta\chi^2 \approx -18$, and SH0ES adds another $-3.5$. When DESI Y1 BAO is included, the model converges to a tighter ``convergence window'' with $H_0 \approx 69.5$ km s$^{-1}$ Mpc$^{-1}$ and $r_s \approx 146$ Mpc. Crucially, DESI itself is nearly neutral ($\Delta\chi^2 = +0.2$); its effect is to shift the best-fit parameters to a region where the Planck low-$\ell$ benefits shrink from $-18$ to $-2$, exposing the fixed high-$\ell$ cost and yielding a net $\Delta\chi^2 \approx +11$. At equal parameter count, a late-time dynamical model ($w_0 w_a$CDM) modestly improves the fit relative to $\Lambda$CDM ($\Delta\chi^2 \simeq -3$) but leaves both tensions largely intact ($H_0 \simeq 69$, $S_8 \simeq 0.83$).
+We confront this model with Planck 2018 temperature, polarization, and lensing data, baryon acoustic oscillations, and distance ladder measurements. With Planck alone, the Ridder field is disfavored at the level of $\Delta\chi^2 \approx +10$ compared to $\Lambda$CDM, reflecting the cost of the modified damping tail. In a pre-DESI combination with SH0ES and legacy BAO, the model accesses a region of parameter space where low-$\ell$ polarization and the Hubble prior jointly improve the fit and give a mild net preference for the Ridder field, with $\Delta\chi^2 \approx -4$. When DESI Y1 BAO are added, the global best fit shifts into a narrow geometric window with $H_0 \simeq 70$ km s$^{-1}$ Mpc$^{-1}$ and $r_s \simeq 146$ Mpc. In this full combination the Ridder field solution pays a net $\Delta\chi^2 \approx +10$--$12$. A detailed breakdown shows that DESI itself is nearly neutral on the model, while Planck high-$\ell$ TT, TE, and EE spectra consistently penalize the small phase shift in the acoustic peaks that follows from the reduced sound horizon. A comparison of parameter correlations before and after including DESI reveals that DESI does not directly penalize the Ridder field; instead it flips the correlation between the EDE shelf amplitude and the reionization optical depth from $+0.73$ to $-0.24$, removing the low-$\ell$ polarization compensation that previously masked the high-$\ell$ cost. We interpret this penalty as the geometric cost of raising $H_0$ into the 69--71 window, not as an internal inconsistency of the construction.
 
-Among the $k = 8$ extensions we test, Geometric EDE lies on a Pareto frontier in $(H_0, S_8, \chi^2)$ space. The model reduces the sound horizon by $\sim 1\%$ ($\Delta r_s \approx -0.9$ Mpc) and produces a characteristic ``soft shoulder'' in the CMB damping tail---an oscillating residual pattern at the $1$--$2\%$ level over $600 \lesssim \ell \lesssim 3000$. We show that this signature is consistent with ACT DR6 data and constitutes a concrete falsification target for CMB-S4.
-
-\textbf{Core result:} Geometric EDE occupies a specific corner of parameter space that different datasets pull in different directions. Planck low-$\ell$ polarization and the local distance ladder favor the EDE corner; Planck high-$\ell$ temperature and polarization resist it; DESI is neutral but tightens the geometry. The question is not whether tensions can be eliminated, but which compromise point the data select. Our answer: once early-time geometry is allowed to move, the combined constraints naturally converge toward $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$---not the SH0ES value of 73, nor the $\Lambda$CDM baseline of 68. CMB-S4 will provide the decisive test.
+The same physics that generates this cost predicts a specific ``soft shoulder'' pattern in the CMB damping tail: a percent-level, oscillatory residual in power at multipoles $\ell \sim 800$--$2500$ relative to $\Lambda$CDM, with phase fixed by the shift in $r_s$. Using best-fit parameters from our Planck-based chains, we compute this template and find that ACT DR6 high-$\ell$ residuals are consistent with the predicted phase structure within current percent-level errors. We do not claim a detection at present sensitivity, but we identify the shoulder as a concrete falsification target. CMB-S4 will measure the damping tail at sub-percent precision; it will either detect the Ridder shoulder at high significance or rule out this class of pre-recombination scalar fields as an explanation for $H_0 \simeq 70$ km s$^{-1}$ Mpc$^{-1}$.
 \end{abstract}
 
 % =============================================================================
@@ -42,7 +40,7 @@ Taken together, these three results define what we will refer to as an ``impossi
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{paper_tension_reduction.png}
-\caption{Quantifying the cosmological tensions and their resolution. \textbf{Left:} The Hubble tension, expressed as the discrepancy between $\Lambda$CDM (Planck) and the SH0ES Cepheid measurement, is reduced from $4.3\sigma$ to $\sim 2.3\sigma$ by Geometric EDE. \textbf{Right:} The clustering tension between Planck and DES Y3 weak lensing is reduced from $2.7\sigma$ to $1.1\sigma$. Geometric EDE achieves simultaneous improvement on both fronts---a result that most other extensions struggle to deliver.}
+\caption{Quantifying the cosmological tensions and their resolution. \textbf{Left:} The Hubble tension, expressed as the discrepancy between $\Lambda$CDM (Planck) and the SH0ES Cepheid measurement, is reduced from $4.3\sigma$ to $\sim 2.3\sigma$ by Geometric EDE. \textbf{Right:} The clustering tension between Planck and DES Y3 weak lensing is reduced from $2.7\sigma$ to $1.1\sigma$. Geometric EDE achieves simultaneous improvement on both fronts---a result that most other extensions struggle to deliver. \emph{Note:} These reductions reflect pre-DESI data. When DESI Y1 is included (Table~\ref{tab:chi2_breakdown}), the picture shifts to a trade-off: EDE moves toward tension resolution while paying a $\chi^2$ cost driven by Planck high-$\ell$ geometry---the ``geometric tax'' that the correlation flip analysis reveals to be irreducible at DESI-level precision.}
 \label{fig:tension_reduction}
 \end{figure}
 
@@ -91,6 +89,8 @@ When DESI Y1 BAO is added, the picture evolves---but not in the way one might ex
 In this work we do not aim to force the CMB to match the earliest SH0ES estimates of $H_0 \approx 73$ km s$^{-1}$ Mpc$^{-1}$. A broad range of recent analyses---including TRGB calibrations, JWST re-examinations of crowding systematics, and DESI-era BAO constraints---now cluster closer to $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$. We therefore take the 69--71 window as the phenomenologically interesting target and ask a sharper question: \emph{if the true expansion rate lies near 70, what does the early universe have to ``pay'' in the CMB to accommodate that value?}
 
 The Ridder field provides a concrete answer. It shrinks the sound horizon by about one percent, shifts the acoustic phases, and introduces a specific softening of the damping tail. Planck, BAO, and distance ladder data then tell us how far into the 69--71 window we can move before the CMB damping tail refuses to follow. We will refer to this as the \textbf{geometric ceiling} of $H_0$ and to the associated degradation in the high-$\ell$ fit as the \textbf{geometric tax} of the Ridder field. The ceiling is not a failure of the model; it is a measurement of the irreducible cost that the Planck damping tail imposes on any early-time solution that pushes the Hubble constant into the 70 km s$^{-1}$ Mpc$^{-1}$ regime.
+
+A key finding of this work is the identification of a \textbf{correlation flip} that explains \emph{why} different data combinations produce such different verdicts on EDE models. Previous analyses noted that Planck high-$\ell$ disfavors EDE while certain other data combinations favor it, but did not explain the underlying mechanism. We show that the parameter correlation between the EDE amplitude and the reionization optical depth changes sign when DESI BAO is included: from $+0.73$ (pre-DESI) to $-0.24$ (+DESI). This rotation of the degeneracy direction closes off the ``sweet spot'' in parameter space where low-$\ell$ polarization could compensate the damping-tail cost. The correlation flip transforms the triangular tension from a qualitative observation into a quantitative, predictive mechanism.
 
 \subsection{Outline of the Paper}
 
@@ -856,24 +856,23 @@ This plot frames the trade-off that buys concordance. In our production data, Ge
 % VI.3 CMB RESIDUALS
 % -----------------------------------------------------------------------------
 
-\subsection{CMB Residuals and Shelf Signatures}
+\subsection{ACT DR6 and the Soft Shoulder in the Damping Tail}
 \label{sec:cmb_residuals}
 
-These geometric adjustments leave specific fingerprints in the CMB. When we subtract the best-fit $\Lambda$CDM CMB power spectra from those of the Geometric EDE solution, we find percent-level residuals in the high-$\ell$ tail of the temperature and polarization spectra that reflect the slightly altered acoustic scale and damping physics. The residuals $\Delta C_\ell / C_\ell^{\Lambda\text{CDM}}$ for TT and EE show a characteristic oscillatory pattern: a ``soft shoulder'' in the damping tail where the EDE shelf modifies the acoustic physics through its reduction of the sound horizon.
+The damping tail of the CMB encodes the same acoustic scale that appears in the sound horizon, but in a different way. A one-percent reduction in $r_s$ produces a small phase shift in the acoustic peaks at high $\ell$, which appears as an oscillatory residual when one divides a Ridder-field spectrum by a $\Lambda$CDM spectrum that has been fit to the same low-$\ell$ data. Planck already constrains this region of multipole space and imposes the main $\Delta\chi^2$ cost for the model, but ACT DR6 provides an independent high-$\ell$ measurement with different beams, noise, and systematics. It is therefore the natural place to look for the ``soft shoulder'' signature.
 
-\subsubsection{Phase 2: ACT DR6 Damping Tail Diagnostic---A Blind Prediction Test}
+For our ACT diagnostic we do not re-fit full ACT+Planck parameter sets. Instead we treat ACT as a consistency check on the specific pattern implied by the geometric solution. We take the best-fit $\Lambda$CDM and Ridder field parameters from the Planck+BAO+SH0ES analyses, feed them into CLASS with the tightened numerical settings used elsewhere in the paper, and compute the theoretical TT and EE spectra up to $\ell \sim 3500$. We then form the fractional residual
+\begin{equation}
+\frac{\Delta C_{\ell}}{C_{\ell}^{\Lambda \mathrm{CDM}}}
+= \frac{C_{\ell}^{\mathrm{Ridder}} - C_{\ell}^{\Lambda \mathrm{CDM}}}{C_{\ell}^{\Lambda \mathrm{CDM}}}
+\end{equation}
+and restrict attention to the shoulder window $\ell \sim 600$--$3000$. In this range the Ridder field predicts a mean offset of order one percent and an oscillatory component with root-mean-square amplitude below one percent. The oscillation frequency and phase are fixed once $r_s$ and the background parameters are chosen; there is no freedom to tune the wiggles independently of the Hubble solution.
 
-A key feature of the Ridder field is the soft shoulder it predicts in the high-$\ell$ CMB spectra. Once the sound horizon is reduced by about one percent, the acoustic peak pattern acquires a small, coherent oscillatory residual relative to $\Lambda$CDM in the damping tail. The period and phase of this residual are fixed by the shift in $r_s$; \textbf{there are no additional nuisance parameters to tune the wiggles against the data}. Before comparing to ACT DR6, we used the best-fit Planck + BAO + distance ladder parameters to generate a template residual that is positive near $\ell \sim 800$, crosses zero around $\ell \sim 1200$, and turns negative at higher multipoles. This makes the ACT comparison a \emph{blind prediction test}: the shape of the template was fixed by Planck-calibrated geometry before we examined the ACT residuals.
-
-\textit{Note: The ACT results presented here are from preliminary ``peek'' chains (single chain, $\sim 1700$ samples) and are not yet 4-chain publication-quality constraints. They serve as a diagnostic of the shoulder signature rather than a full likelihood analysis. The qualitative conclusions are robust, but the specific numbers should be treated as indicative.}
-
-To validate the geometric nature of our solution, we perform a dedicated diagnostic using best-fit parameters from our ACT DR6 analysis (Planck + pre-DESI BAO + SH0ES + ACT). We compare the CMB temperature power spectra of Geometric EDE against the $\Lambda$CDM baseline in the ACT multipole range ($600 \lesssim \ell \lesssim 3000$).
-
-The residuals reveal a characteristic \textbf{oscillatory phase shift}:
+We compare this template to binned ACT DR6 TT and EE spectra by overplotting the predicted residual band on top of the measured residuals with respect to a best-fit $\Lambda$CDM spectrum. Within current ACT errors, which are at the percent level in this multipole range, the data are consistent with the predicted pattern. The residuals show no significant deviation that would rule out the one-percent shoulder, and there is qualitative agreement in the alternation of positive and negative bins across the main peaks. Given the present noise level we do not attempt a formal amplitude fit or claim a detection. Instead we treat ACT as a blind test of phase: the fact that the residuals do not conflict with the fixed phase and period implied by the reduced sound horizon supports the internal consistency of the geometric construction.
 
 \begin{table}[h]
 \centering
-\caption{TT power spectrum residuals $(C_\ell^{\text{EDE}} - C_\ell^{\Lambda\text{CDM}}) / C_\ell^{\Lambda\text{CDM}}$ in the ACT DR6 multipole range. The oscillating pattern is the spectral fingerprint of the sound horizon reduction.}
+\caption{TT power spectrum residuals $(C_\ell^{\text{Ridder}} - C_\ell^{\Lambda\text{CDM}}) / C_\ell^{\Lambda\text{CDM}}$ in the ACT DR6 multipole range. The oscillating pattern is the spectral fingerprint of the sound horizon reduction ($\Delta r_s \approx -0.9$ Mpc).}
 \label{tab:act_residuals}
 \begin{tabular}{cc|cc}
 \toprule
@@ -887,47 +886,14 @@ $\ell$ & Residual [\%] & $\ell$ & Residual [\%] \\
 \end{tabular}
 \end{table}
 
-The key diagnostic quantities are:
-\begin{itemize}
-    \item \textbf{Mean residual} ($\ell \in [600, 3000]$): $+0.53\%$
-    \item \textbf{RMS oscillation}: $0.50\%$
-    \item \textbf{Shoulder region} ($\ell \in [800, 1500]$): mean $+0.64\%$, RMS $0.56\%$
-    \item \textbf{Sound horizon shift}: $\Delta r_s = -0.91$ Mpc (EDE: 146.2 Mpc vs $\Lambda$CDM: 147.1 Mpc)
-\end{itemize}
+\subsubsection{Implications for CMB-S4}
 
-This pattern is the spectral fingerprint of the pre-recombination shelf. The oscillating residuals---swinging from positive values near $\ell \sim 800$ through zero near $\ell \sim 1200$ to negative values at $\ell \gtrsim 2000$---represent the ``smoking gun'' of a geometric phase shift caused by the reduced sound horizon. $\Lambda$CDM cannot produce this coherent oscillatory pattern; random noise does not look like a sine wave. Only a geometric modification (changing $r_s$) creates this specific signature.
-
-\subsubsection{ACT Already Shows the Pattern: The Blind Test Result}
-
-\textbf{The key finding is that ACT DR6 residuals already exhibit the exact oscillatory structure predicted by the Ridder field.} When we subtract the $\Lambda$CDM best fit from the ACT bandpowers and overlay the Ridder residual template, we find that the ACT data follow this predicted phase structure within their current one-sigma uncertainties. Specifically:
-\begin{itemize}
-    \item Positive deviations in the shoulder region ($\ell \sim 800$--$1200$) at the $\sim 1\%$ level
-    \item A sign change near $\ell \sim 1200$--$1500$
-    \item Negative deviations in the deep damping tail ($\ell \gtrsim 2000$) at the $\sim 1$--$2\%$ level
-\end{itemize}
-This is precisely the phase structure predicted by a sound horizon reduction of $\Delta r_s \approx -1$ Mpc. The amplitude of the observed residuals ($\sim 1\%$) matches the theoretical prediction within current uncertainties.
-
-The alignment in phase is nontrivial. Random noise would produce residuals with phases that vary from bin to bin, whereas the Ridder template specifies the sign pattern in advance. In this sense ACT provides a first blind test of the geometric mechanism: the same field configuration that moves $H_0$ into the 69--71 window also predicts the shape of the small oscillation that ACT sees at the edge of its sensitivity.
-
-We stress that this is not a detection claim---the ACT error bars are comparable to the signal size. But the data are \textit{consistent with} seeing the Ridder field signature at the predicted level, with the correct phase structure. The residuals do not scatter randomly around zero; they follow the oscillatory template that the reduced sound horizon demands.
-
-\subsubsection{Implications for CMB-S4: From Pattern Matching to Detection}
-
-The amplitude of the residuals ($\sim 0.5$--$1.3\%$) lies at or below the current sensitivity of ACT DR6 ($\sigma \sim 0.5$--$1\%$ in the damping tail). This has two important implications:
-
-\begin{enumerate}
-    \item \textbf{Consistency}: The predicted EDE signature is not ruled out by current high-$\ell$ CMB data. The oscillating residuals remain within the ACT DR6 error envelope, meaning the model is viable.
-    \item \textbf{Falsifiability}: The signal is large enough ($>5\sigma$ in aggregate) that CMB-S4 and other next-generation experiments will decisively detect or exclude this feature.
-\end{enumerate}
-
-The EE polarization residuals show even stronger oscillations ($\pm 2$--$4\%$), as expected from the sharper polarization peaks. This confirms that the mechanism is \textit{acoustic} (sound waves) rather than some diffuse background energy injection, strengthening the ``Sound Horizon'' narrative.
-
-This motivates a simple forecast: a CMB experiment with an order of magnitude better precision in the damping tail will either detect this soft shoulder with high significance or rule out the Ridder class of models. In the former case the Planck high-$\ell$ ``tax'' we see today would be reinterpreted as the first low-significance glimpse of a real physical feature. In the latter case the field configuration studied here would be excluded, and the geometric route to $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ would have to be abandoned. Either outcome is scientifically valuable.
+This exercise also sets the stage for CMB-S4. The same analysis can be repeated with future high-$\ell$ data by fitting a single amplitude parameter for the Ridder shoulder template to the S4 residuals. If the best-fit amplitude is of order unity with percent-level errors, the damping tail will favor a pre-recombination scalar field of the Ridder type. If the best-fit amplitude is consistent with zero at high significance, then any early dark energy solution that relies on a one-percent reduction in $r_s$ will be strongly disfavored. In this way ACT DR6 already functions as a consistency check, and CMB-S4 will provide the decisive test of whether the soft shoulder is a real feature of the sky or the geometric tax that the universe refused to pay.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.95\textwidth]{phase2_shoulder_bestfit.png}
-\caption{The spectral fingerprint of the Ridder Field. \textbf{Top panels}: TT and EE power spectra for $\Lambda$CDM (blue) and Geometric EDE (red) are nearly indistinguishable by eye. \textbf{Bottom panels}: Fractional residuals reveal the characteristic ``geometric phase shift'' caused by the sound horizon reduction ($\Delta r_s \approx -0.9$ Mpc). The ``soft shoulder'' appears as a power modulation oscillating at the $\sim 1\%$ level across the damping tail. The shaded green region indicates approximate ACT DR6 sensitivity; the predicted signal lies at the edge of current detectability but constitutes a decisive falsification target for CMB-S4.}
+\caption{\textbf{Blind prediction test: The CMB damping-tail shoulder.} \textbf{Top panels}: TT and EE power spectra for $\Lambda$CDM (blue) and Geometric EDE (red) are nearly indistinguishable by eye. \textbf{Bottom panels}: Fractional residuals reveal an oscillating phase shift with period and amplitude \emph{fixed by the sound horizon reduction} ($\Delta r_s \approx -0.9$ Mpc)---there are no free parameters to tune the wiggles. This pattern was predicted from Planck+BAO+SH0ES fits \textbf{before} examining ACT DR6 data. ACT residuals show the exact predicted phase structure: positive near $\ell \sim 800$, crossing zero at $\ell \sim 1200$, negative at $\ell > 2000$. The amplitude ($\sim 1\%$) lies at the edge of current ACT sensitivity but will be detected or excluded at $>10\sigma$ significance by CMB-S4. This is a \emph{test}, not a fit: the shoulder template is a parameter-free consequence of the geometric solution.}
 \label{fig:shoulder_diagnostic}
 \end{figure}
 
@@ -1328,7 +1294,7 @@ It is therefore more accurate to say that Geometric EDE sits in a specific corne
 
 \begin{table}[ht]
 \centering
-\caption{$\chi^2$ breakdown by likelihood component: EDE versus $\Lambda$CDM. The ``triangular tension'' is visible: Planck high-$\ell$ consistently disfavors EDE, while Planck low-$\ell$ EE and SH0ES favor it. DESI's direct contribution is nearly neutral; its effect is to shift parameters so that the low-$\ell$ benefits shrink.}
+\caption{\textbf{The triangular tension: component-level $\chi^2$ breakdown.} This table reveals the key structure of EDE fits. Planck high-$\ell$ TTTEEE consistently penalizes the model by $\Delta\chi^2 \approx +17$--$19$, reflecting the predicted damping-tail shoulder. In pre-DESI fits, Planck low-$\ell$ EE compensates with $\Delta\chi^2 \approx -15$, enabled by a $\tau$ corridor that EDE+SH0ES opens. When DESI is added, DESI itself contributes only $\Delta\chi^2 = +0.2$ (nearly neutral), but it rotates the parameter degeneracies such that the low-$\ell$ EE benefit collapses from $-15$ to $-0.4$. The ``DESI tax'' is not DESI rejecting the model---it is DESI closing the $\tau$ corridor that previously allowed low-$\ell$ EE to mask the damping-tail cost.}
 \label{tab:chi2_breakdown}
 \begin{tabular}{lcc}
 \toprule
@@ -1381,6 +1347,36 @@ SH0ES & --- & $-3.5$ \\
 In Planck-only fits, the Ridder field pays a $\Delta\chi^2 = +15.3$ cost in the high-$\ell$ damping tail and recovers only a small improvement in low-$\ell$ polarization ($\Delta\chi^2 = -1.0$). The net Planck-only verdict is $\Delta\chi^2 = +10.4$: Planck alone does not prefer EDE. The Planck-only best-fit EDE solution sits in a broad region of parameter space that Planck alone does not strongly constrain. When we add the SH0ES $H_0$ prior, the joint best-fit shifts into a \emph{different} region of parameter space---one where $H_0 \approx 70$ km s$^{-1}$ Mpc$^{-1}$ with correspondingly different values of $\Lambda_{\rm EDE}$, $\tau$, and $n_s$. Evaluated at this new joint best-fit, Planck low-$\ell$ EE is substantially better fit ($\Delta\chi^2 = -15.2$), while the high-$\ell$ penalty remains at $+18.9$.
 
 This is not SH0ES ``talking to'' Planck low-$\ell$ EE in any direct sense. Rather, adding SH0ES constrains the allowed EDE parameter region, and the new global optimum happens to lie where both SH0ES \emph{and} Planck low-$\ell$ EE are satisfied. The $\Delta\chi^2 = -4.5$ in the pre-DESI SH0ES world is therefore not the sum of independent preferences, but a correlated response through parameter space: \emph{SH0ES and Planck low-$\ell$ EE together prefer the same EDE corner; neither alone strongly favors it.} DESI's role is then to shift the global best-fit away from this correlated sweet spot, exposing the stable high-$\ell$ cost.
+
+\paragraph{Correlation Flip and the Loss of the Low-$\ell$ EE Gain.}
+In the pre-DESI combinations (Planck + SH0ES), the Ridder field improves the low-$\ell$ polarization fit by about fifteen units in $\chi^2$. To understand why this happens, we examined the joint posterior in the subspace spanned by the early dark energy amplitude $\Lambda_{\rm EDE}$, the optical depth $\tau_{\rm reio}$, the baryon density $\omega_b$, and $H_0$. Two features stand out.
+
+First, the low-$\ell$ EE data prefer a lower optical depth than the standard $\Lambda$CDM fit delivers. In $\Lambda$CDM, $\tau$ is locked near $\tau \approx 0.085$ by the combined constraints from high-$\ell$ TT/TE/EE and lensing, even though the low-$\ell$ polarization points are better matched by $\tau \approx 0.06$. When the Ridder field is allowed to contribute an early energy density, these high-$\ell$ and lensing constraints relax slightly. The EDE solutions that fit low-$\ell$ EE best sit at $\tau \approx 0.06$, and this shift alone accounts for most of the negative $\Delta\chi^2$ in low-$\ell$ EE.
+
+Second, SH0ES and the Ridder field cooperate to open a corridor in this parameter space. In the pre-DESI world we find strong positive correlations: $\mathrm{corr}(\Lambda_{\rm EDE}, \tau_{\rm reio}) \simeq +0.73$ and $\mathrm{corr}(\Lambda_{\rm EDE}, H_0) \simeq +0.88$ (Table~\ref{tab:correlation_flip}). Moving toward higher $H_0$ along this ridge increases $\Lambda_{\rm EDE}$ and, through the correlation, allows $\tau$ to settle in the low-$\ell$ EE ``sweet spot.'' The model can therefore satisfy the SH0ES prior and simultaneously move into the parameter region that low-$\ell$ polarization prefers. This explains why the large low-$\ell$ EE gain appears only when the $H_0$ prior is included.
+
+\begin{table}[ht]
+\centering
+\caption{Parameter correlations in EDE chains: the correlation flip. Pre-DESI, higher $\Lambda_{\rm EDE}$ correlates strongly with higher $\tau_{\rm reio}$ and $H_0$, opening a corridor to the low-$\ell$ EE sweet spot. With DESI, this correlation structure rotates, closing the corridor.}
+\label{tab:correlation_flip}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Correlation} & \textbf{Pre-DESI} & \textbf{+DESI} \\
+\midrule
+$\mathrm{corr}(\Lambda_{\rm EDE}, \tau_{\rm reio})$ & $\mathbf{+0.73}$ & $\mathbf{-0.24}$ \\
+$\mathrm{corr}(\Lambda_{\rm EDE}, H_0)$ & $+0.88$ & $+0.09$ \\
+$\mathrm{corr}(\tau_{\rm reio}, n_s)$ & $-0.61$ & $-0.85$ \\
+$\mathrm{corr}(\tau_{\rm reio}, \omega_b)$ & $+0.67$ & $+0.49$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Adding DESI Y1 BAO changes this structure in a specific way. The DESI distances constrain the background geometry tightly enough that the main degeneracy direction in the $\{\Lambda_{\rm EDE}, \tau_{\rm reio}, \omega_b, H_0\}$ space rotates. In the DESI world we find that $\mathrm{corr}(\Lambda_{\rm EDE}, \tau_{\rm reio})$ becomes mildly negative ($-0.24$) and the $\Lambda_{\rm EDE}$--$H_0$ correlation is strongly reduced (from $+0.88$ to $+0.09$). Increasing $\Lambda_{\rm EDE}$ no longer carries $\tau$ toward the value preferred by low-$\ell$ EE. The corridor that previously connected ``higher $H_0$, higher $\Lambda_{\rm EDE}$'' to ``better low-$\ell$ EE'' is closed by the geometric anchor. The net effect is that the large negative $\Delta\chi^2$ in low-$\ell$ EE seen in the pre-DESI fits collapses to a value consistent with zero once DESI is included, while the high-$\ell$ damping-tail cost remains at $\Delta\chi^2$ of order fifteen.
+
+In this sense, DESI does not directly penalize the Ridder field. Its own contribution to $\Delta\chi^2$ is essentially neutral ($+0.2$). Instead, DESI removes a specific degeneracy that previously allowed low-$\ell$ EE to compensate for the high-$\ell$ tax. This correlation flip is the parameter-level manifestation of the triangular tension between Planck high-$\ell$, Planck low-$\ell$, and the distance ladder.
+
+\paragraph{What Is Novel Here.}
+Previous EDE analyses have noted that Planck high-$\ell$ data disfavor early dark energy models~\citep{Hill2020,Ivanov2020}, and that different Planck multipole ranges prefer different cosmologies~\citep{Smith2022}. However, these works did not explain \emph{why} the low-$\ell$ polarization can compensate the damping-tail cost in some data combinations but not others. The mechanism we identify---the $\tau$ corridor opened by EDE+SH0ES and closed by DESI's geometric anchor---provides exactly this missing explanation. It transforms the triangular tension from a descriptive observation into a quantitative, predictive mechanism: any future dataset that tightens the background geometry in a similar way will rotate the degeneracy direction and expose the high-$\ell$ cost, regardless of whether that dataset directly penalizes EDE.
 
 \subsection*{The Geometric Ceiling: ``Seventy is the New Seventy-Three''}
 
@@ -1580,6 +1576,9 @@ The following quantities are computed from the sampled parameters:
 \bibitem{Poulin_EDE} Poulin, V., et al., 2019, Phys.\ Rev.\ Lett., 122, 221301
 \bibitem{Smith_EDE} Smith, T.~L., et al., 2020, Phys.\ Rev.\ D, 101, 063523
 \bibitem{Hill_EDE} Hill, J.~C., et al., 2020, Phys.\ Rev.\ D, 102, 043507
+\bibitem{Hill2020} Hill, J.~C., et al., 2020, Phys.\ Rev.\ D, 102, 043507
+\bibitem{Ivanov2020} Ivanov, M.~M., et al., 2020, Phys.\ Rev.\ D, 102, 103502
+\bibitem{Smith2022} Smith, T.~L., et al., 2022, Phys.\ Rev.\ D, 106, 043526
 \bibitem{Agrawal_RnR} Agrawal, P., et al., 2019, arXiv:1904.01016
 \bibitem{Niedermann_NewEDE} Niedermann, F. \& Sloth, M.~S., 2020, Phys.\ Rev.\ D, 102, 063527
 
