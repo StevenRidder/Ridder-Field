@@ -16,7 +16,7 @@
 \begin{abstract}
 We present a minimal scalar field extension of the Standard Model ($\Lambda$CDM) that simultaneously addresses the Hubble tension ($H_0$) and the clustering tension ($S_8$) through an early-time geometric modification rather than late-time dark sector dynamics. The ``Geometric EDE'' model introduces a scalar field---which we call the Ridder field---with a monodromy-inspired potential containing a narrow shelf at $z \sim 3000$ that briefly contributes a few percent of the total energy density, shrinking the sound horizon $r_s$ and raising the CMB-inferred $H_0$.
 
-Fitting to Planck 2018 + ACT DR6 + pre-DESI BAO + SH0ES data, we find that Geometric EDE with $k = 8$ free parameters achieves $H_0 = 70.6 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$ and $S_8 = 0.80 \pm 0.01$, reducing the Hubble tension from $4.3\sigma$ to $2.1\sigma$ and the $S_8$ tension from $2.7\sigma$ to $1.1\sigma$, bringing both into statistical agreement with local and weak-lensing probes. In this baseline configuration, Geometric EDE achieves $\Delta\chi^2 = -10$ relative to $\Lambda$CDM---it fits the data \emph{better}. When DESI Y1 BAO is included, the model converges to a tighter ``convergence window'' with $H_0 \approx 69.5$--$70.5$ km s$^{-1}$ Mpc$^{-1}$ and $r_s \approx 146$--$147$ Mpc, though DESI's preference for a larger sound horizon imposes a $\chi^2$ cost of $\sim +15$--$20$. At equal parameter count, a late-time dynamical model ($w_0 w_a$CDM) modestly improves the fit relative to $\Lambda$CDM ($\Delta\chi^2 \simeq -3$) but leaves both tensions largely intact ($H_0 \simeq 69$, $S_8 \simeq 0.83$). Geometric EDE, by contrast, achieves both better $\chi^2$ (pre-DESI) \emph{and} moves $(H_0, S_8)$ toward the values preferred by local and weak-lensing probes.
+Fitting to Planck 2018 + ACT DR6 + pre-DESI BAO + SH0ES data, we find that Geometric EDE with $k = 8$ free parameters achieves $H_0 = 70.6 \pm 0.5$ km s$^{-1}$ Mpc$^{-1}$ and $S_8 = 0.80 \pm 0.01$, reducing the Hubble tension from $4.3\sigma$ to $\sim 2.3\sigma$ and the $S_8$ tension from $2.7\sigma$ to $1.1\sigma$, bringing both into statistical agreement with local and weak-lensing probes. In this baseline configuration, Geometric EDE achieves $\Delta\chi^2 = -10$ relative to $\Lambda$CDM---it fits the data \emph{better}. When DESI Y1 BAO is included, the model converges to a tighter ``convergence window'' with $H_0 \approx 69.5$--$70.5$ km s$^{-1}$ Mpc$^{-1}$ and $r_s \approx 146$--$147$ Mpc, though DESI's preference for a larger sound horizon imposes a $\chi^2$ cost of $\sim +15$--$20$. At equal parameter count, a late-time dynamical model ($w_0 w_a$CDM) modestly improves the fit relative to $\Lambda$CDM ($\Delta\chi^2 \simeq -3$) but leaves both tensions largely intact ($H_0 \simeq 69$, $S_8 \simeq 0.83$). Geometric EDE, by contrast, achieves both better $\chi^2$ (pre-DESI) \emph{and} moves $(H_0, S_8)$ toward the values preferred by local and weak-lensing probes.
 
 Among the $k = 8$ extensions we test, Geometric EDE lies on a Pareto frontier in $(H_0, S_8, \chi^2)$ space: one cannot further improve $H_0$ or $S_8$ without degrading the global fit. At fixed parameter count, geometric early-time changes are statistically preferred over late-time $w_0 w_a$ freedom. The model reduces the sound horizon by $\sim 1\%$ ($\Delta r_s \approx -0.9$ Mpc) and produces a characteristic ``soft shoulder'' in the CMB damping tail---an oscillating residual pattern at the $0.5$--$1.3\%$ level over $600 \lesssim \ell \lesssim 3000$. We show that this signature is consistent with ACT DR6 data and constitutes a concrete falsification target for CMB-S4.
 
@@ -42,7 +42,7 @@ Taken together, these three results define what we will refer to as an ``impossi
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{paper_tension_reduction.png}
-\caption{Quantifying the cosmological tensions and their resolution. \textbf{Left:} The Hubble tension, expressed as the discrepancy between $\Lambda$CDM (Planck) and the SH0ES Cepheid measurement, is reduced from $4.3\sigma$ to $2.1\sigma$ by Geometric EDE. \textbf{Right:} The clustering tension between Planck and DES Y3 weak lensing is reduced from $2.7\sigma$ to $1.1\sigma$. Geometric EDE achieves simultaneous improvement on both fronts---a result that most other extensions struggle to deliver.}
+\caption{Quantifying the cosmological tensions and their resolution. \textbf{Left:} The Hubble tension, expressed as the discrepancy between $\Lambda$CDM (Planck) and the SH0ES Cepheid measurement, is reduced from $4.3\sigma$ to $\sim 2.3\sigma$ by Geometric EDE. \textbf{Right:} The clustering tension between Planck and DES Y3 weak lensing is reduced from $2.7\sigma$ to $1.1\sigma$. Geometric EDE achieves simultaneous improvement on both fronts---a result that most other extensions struggle to deliver.}
 \label{fig:tension_reduction}
 \end{figure}
 
@@ -86,7 +86,7 @@ When DESI Y1 BAO is added, the picture evolves. DESI's precise BAO measurements 
 
 \subsection{Outline of the Paper}
 
-The rest of the paper is organized to separate questions of data, model complexity, and physical interpretation as cleanly as possible. In Section II we describe the data sets and likelihoods used in our analysis, including both Planck 2018 and ACT DR6 CMB data, and we define three observational ``worlds,'' each built around the same CMB backbone with different local $H_0$ anchors. This lets us ask how the models behave with and without explicit late--time priors while keeping the high--redshift information fixed.
+The rest of the paper is organized to separate questions of data, model complexity, and physical interpretation as cleanly as possible. In Section II we begin with a precise definition of the Ridder field as an effective fluid, specifying its energy budget in terms of a shelf and tail contribution; we then describe the data sets and likelihoods used in our analysis, including both Planck 2018 and ACT DR6 CMB data, and we define three observational ``worlds,'' each built around the same CMB backbone with different local $H_0$ anchors. This lets us ask how the models behave with and without explicit late--time priors while keeping the high--redshift information fixed.
 
 Section III introduces the three cosmological models we compare: the Standard Model $\Lambda$CDM, a late--time dynamical dark energy model of the Chevallier--Polarski--Linder form ($w_0 w_a$CDM), and the Geometric EDE ($\phi$CDM) model described above. We spell out the parameter counting, explain the ``parameter diet'' that keeps Geometric EDE at the same effective dimensionality as CPL, and define the derived diagnostics such as $H_0$, $S_8$, and $r_s H_0$ that we use throughout.
 
@@ -107,11 +107,54 @@ Finally, Section IX summarizes our findings and outlines the observational prosp
 \section{Data and Likelihoods: Building Fair ``Worlds''}
 
 % -----------------------------------------------------------------------------
-% II.1 CMB DATA - PLANCK + ACT VERSION (ACTIVE)
+% II.1 THE RIDDER FIELD AS AN EFFECTIVE FLUID
+% -----------------------------------------------------------------------------
+
+\subsection{The Ridder Field as an Effective Fluid}
+\label{sec:ridder_fluid}
+
+We treat the Ridder field as an additional component in the background expansion, on top of the usual radiation, matter, and cosmological constant of $\Lambda$CDM. Rather than starting from a specific ultraviolet completion, we work with an effective fractional energy density history, $\Omega_\phi(a)$, that captures two features of interest. At early times the field produces a localized ``shelf'' of extra energy density around $z \sim 3000$, and at late times it approaches a smooth tail that mimics dark energy.
+
+At the homogeneous level we write the total energy budget as
+\begin{equation}
+\Omega_{\rm tot}(a) = \Omega_r(a) + \Omega_m(a) + \Omega_\Lambda(a) + \Omega_\phi(a),
+\end{equation}
+with $\Omega_r$, $\Omega_m$, and $\Omega_\Lambda$ as in $\Lambda$CDM. The Ridder contribution is specified by
+\begin{equation}
+\Omega_\phi(a) = \Omega_{\rm shelf}(a) + \Omega_{\rm tail}(a).
+\end{equation}
+The shelf is modeled as a lognormal bump in scale factor,
+\begin{equation}
+\Omega_{\rm shelf}(a) = f_{\rm shelf} \, \Omega_{\rm tot}(a_c) \, \exp\!\left[ -\frac{(\ln a - \ln a_c)^2}{2\sigma_{\ln a}^2} \right],
+\end{equation}
+where $a_c$ sets the time of the shelf, $\sigma_{\ln a}$ its width in $\ln a$, and $f_{\rm shelf}$ the peak fractional contribution at $a = a_c$. In the minimal model used in this work we fix $a_c$ and $\sigma_{\ln a}$ to the values calibrated in our Tier-10 analysis and treat $f_{\rm shelf}$ as the single new amplitude parameter controlling the size of the modification to the sound horizon.
+
+The late-time tail is described by an effective equation of state $w_{\rm tail}(a)$, chosen so that the field interpolates smoothly from the shelf regime into a dark-energy like component at $z \lesssim 1$. For the runs presented here we use a simple constant equation of state,
+\begin{equation}
+w_{\rm tail} = w_0,
+\end{equation}
+with $w_0$ fixed close to $-1$ so that the tail tracks the behavior of a cosmological constant at late times. The corresponding energy density scales as
+\begin{equation}
+\rho_{\rm tail}(a) \propto a^{-3(1+w_0)}.
+\end{equation}
+This construction keeps the number of free parameters minimal while still capturing the two essential features of the Ridder field: a localized early-time shelf that shrinks $r_s$ at recombination and a smooth late-time tail that contributes to cosmic acceleration.
+
+In the perturbation sector we treat the Ridder component as a smooth fluid with sound speed $c_s^2 \approx 1$, following the standard implementation of scalar-field dark energy in Boltzmann codes. This choice reproduces the behavior of a light canonical scalar with sub-horizon fluctuations suppressed and ensures that the primary signatures of the model arise through geometry and small shifts in the acoustic peak structure rather than from new clustering physics at late times. We set the direct coupling between the field and dark matter to zero ($\beta = 0$) in all Tier-5 and Tier-10 runs, so that the Ridder field influences observables only through its contribution to the background and to metric perturbations.
+
+Although we work with this effective fluid description in the data analysis, it is useful to keep in mind the scalar-field picture that motivates it. A canonical field $\phi$ with Lagrangian
+\begin{equation}
+\mathcal{L}_\phi = -\tfrac{1}{2}(\partial\phi)^2 - V(\phi)
+\end{equation}
+and a structured potential $V(\phi)$ that contains a shallow plateau followed by a monodromy-like tail naturally produces the shelf-plus-tail pattern encoded in $\Omega_\phi(a)$. In such models the field remains frozen at early times, briefly contributes a finite fraction of the total energy density as it rolls across the plateau around $z \sim 3000$, and then relaxes slowly along the tail, sourcing late-time acceleration. In this paper we work directly with the effective $\Omega_\phi(a)$ and $w(a)$ implied by this class of potentials and leave a detailed microphysical mapping of $\{f_{\rm shelf}, a_c, \sigma_{\ln a}, w_0\}$ to specific choices of $V(\phi)$ to future work.
+
+In this sense the Ridder field provides an explicit example of a dark-sector degree of freedom that is dynamically active at recombination and still evolving today, which we return to in the discussion of coincidence and thermal history in Section~\ref{sec:outlook}.
+
+% -----------------------------------------------------------------------------
+% II.2 CMB DATA - PLANCK + ACT VERSION (ACTIVE)
 % -----------------------------------------------------------------------------
 
 \subsection{CMB Data (Planck 2018 + ACT DR6)}
-\label{sec:cmb_planck_act}
+\label{sec:cmb_data}
 
 Our high--redshift constraints come from a combined Planck 2018 and ACT DR6 analysis. Planck provides all--sky coverage and exquisite control of large and intermediate angular scales, while ACT sharpens the view of the damping tail at high multipoles ($\ell \gtrsim 600$). Taken together they define the early--universe baseline against which we test $\Lambda$CDM, CPL, and Geometric EDE.
 
@@ -138,7 +181,7 @@ In all of the ``worlds'' defined below, the baseline CMB block consists of the f
 % Because our goal is to compare $\Lambda$CDM, CPL, and Geometric EDE on equal footing, each model is run against the same Planck likelihood combination with identical data cuts and priors. The Planck CMB block therefore serves as the common backbone for all the data combinations we consider. ACT DR6 and other small--scale CMB experiments provide valuable independent checks on high--$\ell$ structure, but a full joint treatment lies beyond the scope of this initial analysis. Where relevant, we comment on how our preferred solutions sit relative to published ACT and SPT constraints, while keeping the formal likelihood analysis anchored in the Planck 2018 data set.
 
 % -----------------------------------------------------------------------------
-% II.2 LOW-REDSHIFT PROBES
+% II.3 LOW-REDSHIFT PROBES
 % -----------------------------------------------------------------------------
 
 \subsection{Low--Redshift Probes}
@@ -155,7 +198,7 @@ Local measurements of the Hubble constant enter through explicit priors. We cons
 The combination of CMB, BAO, supernovae, and local $H_0$ priors defines the low--redshift structure of each ``world'' we analyze. The next subsection formalizes these worlds and clarifies how we use them to separate questions about early geometry from questions about late--time calibration.
 
 % -----------------------------------------------------------------------------
-% II.3 DEFINING THE THREE WORLDS
+% II.4 DEFINING THE THREE WORLDS
 % -----------------------------------------------------------------------------
 
 \subsection{Defining the Three ``Worlds''}
@@ -172,7 +215,7 @@ The \textbf{TRGB world} instead augments the Base combination with a Gaussian pr
 Throughout the paper we emphasize that these worlds are not different theories but different posterior slices of the same models under different late--time conditions. Each world applies the same data and nuisance treatment across $\Lambda$CDM, CPL, and Geometric EDE. This structure makes it straightforward to present normalized $\Delta\chi^2$, AIC, and BIC comparisons in Section IV and to interpret the movement of $H_0$ and $S_8$ across worlds as genuine geometric responses rather than artifacts of an inconsistent likelihood setup.
 
 % -----------------------------------------------------------------------------
-% II.4 LIKELIHOOD PIPELINE AND NUISANCE PARAMETERS
+% II.5 LIKELIHOOD PIPELINE AND NUISANCE PARAMETERS
 % -----------------------------------------------------------------------------
 
 \subsection{Likelihood Pipeline and Nuisance Parameters}
@@ -191,7 +234,7 @@ The Planck likelihoods include standard nuisance parameters for instrumental cal
 Full details of the MCMC convergence criteria (Gelman--Rubin $R - 1 < 0.01$, $N \geq 1000$ samples per chain) and information--theoretic model comparison (AIC, BIC) are given in Section~IV. The key point here is that all three models are run through the same Cobaya+CLASS pipeline with identical stopping criteria and model comparison metrics.
 
 % -----------------------------------------------------------------------------
-% II.5 FAIRNESS CHECKLIST
+% II.6 FAIRNESS CHECKLIST
 % -----------------------------------------------------------------------------
 
 \subsection{Summary: The Fairness Checklist}
@@ -744,7 +787,20 @@ A useful way to visualize the situation is to consider the $(H_0, S_8)$ plane wi
 \label{fig:h0_s8_plane}
 \end{figure}
 
-The origin of this behavior lies in the way Geometric EDE modifies the sound horizon and the growth history. By injecting a narrow shelf of energy density near $z \sim 3000$, the model reduces the physical size of the sound horizon $r_s$ without significantly altering the late-time expansion rate. This allows the CMB and BAO to be reconciled at a higher $H_0$ without invoking phantom equations of state at low redshift. At the same time, the transient modification of the early expansion history changes the mapping between primordial fluctuations and late-time clustering in a way that can bring $S_8$ closer to weak-lensing values. Because the field couples only through gravity, there is no additional fifth force to enhance clustering, which helps avoid the upward push in $S_8$ that affects many interacting EDE and modified gravity models.
+The origin of this behavior lies in the way Geometric EDE modifies both the sound horizon and the growth history through distinct physical mechanisms.
+
+\paragraph{Why $H_0$ increases.}
+The brief EDE shelf at $z \sim 3000$ adds energy density that temporarily increases the expansion rate $H(z)$. Because the sound horizon is an integral over the pre-recombination expansion history,
+\begin{equation}
+r_s = \int_0^{t_{\rm drag}} \frac{c_s(t)}{a(t)} \, dt,
+\end{equation}
+a faster expansion (larger $H$) means less time for sound waves to propagate before recombination, shrinking $r_s$ by $\sim 1\%$. Since the CMB acoustic scale $\theta_s = r_s / D_A$ is precisely measured, reducing $r_s$ while holding $\theta_s$ fixed requires a smaller angular diameter distance $D_A$, which in turn demands a higher $H_0$. This is the standard EDE mechanism for raising the Hubble constant.
+
+\paragraph{Why $S_8$ decreases.}
+The same brief epoch of enhanced expansion rate also suppresses the growth of matter perturbations. During the EDE shelf, the increased Hubble friction ($\dot{\delta} \propto -H\delta$ in the growth equation) slows the rate at which density perturbations can grow. In effect, the EDE epoch ``clips'' the growth function: perturbations that would otherwise grow unimpeded during radiation-matter equality experience a brief period of enhanced damping. This reduces the amplitude of fluctuations at late times, lowering $\sigma_8$ and hence $S_8$. Quantitatively, the $\sim 1\%$ reduction in $r_s$ corresponds to a $\sim 2\%$ suppression in $S_8$ (from 0.83 to 0.80), which is sufficient to bring the model into agreement with weak-lensing surveys.
+
+\paragraph{Why $\beta = 0$ is preferred.}
+Many coupled dark energy and interacting dark matter models attempt to lower $S_8$ through direct momentum exchange between dark matter and dark energy, which modifies the perturbation evolution. However, our exploratory runs with nonzero $\beta$ (the coupling between the Ridder field and CDM) incur large $\chi^2$ penalties of $+100$ to $+500$, because the CMB is highly sensitive to modifications of CDM perturbation evolution around recombination. The data therefore prefer the ``pure geometry'' configuration with $\beta = 0$, where $S_8$ suppression arises solely from the modified background expansion history rather than from exotic dark sector interactions. This is not a limitation of our model---it is the configuration that the data select when given the choice. The absence of a fifth force also means that the model automatically satisfies bounds from solar system tests and laboratory experiments.
 
 % -----------------------------------------------------------------------------
 % VI.2 DELTA CHI2 VS H0 TRADE-OFF
@@ -789,10 +845,10 @@ The residuals reveal a characteristic \textbf{oscillatory phase shift}:
 \toprule
 $\ell$ & Residual [\%] & $\ell$ & Residual [\%] \\
 \midrule
-600 & $+0.31$ & 1500 & $+0.14$ \\
-800 & $+0.90$ & 2000 & $+1.29$ \\
-1000 & $+0.43$ & 2500 & $+0.03$ \\
-1200 & $+0.22$ & 3000 & $+0.56$ \\
+600 & $+1.14$ & 1500 & $-0.72$ \\
+800 & $+1.45$ & 2000 & $+0.25$ \\
+1000 & $+0.98$ & 2500 & $-1.95$ \\
+1200 & $+0.09$ & 3000 & $-2.24$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1233,6 +1289,7 @@ Finally, the preference for $\beta \approx 0$ in our fits points to a sequestere
 We therefore view Geometric EDE not as an exotic alternative, but as a minimal extension that captures the emerging structure in the data with a modest change in physics. Our goal has not been to rule out $\Lambda$CDM, but to test whether a simple extension can provide a more coherent joint description of early and late universe data. The exercise of treating the tensions as a problem in geometry rather than in ad hoc fluid dynamics yields insight. It shows that a narrow, early-time adjustment to the expansion history can bring disparate probes into closer concordance with a minimal set of new ingredients. It organizes the space of possible fixes into a measurable Pareto front rather than a collection of loosely related models. Most importantly, it turns the Hubble and $S_8$ tensions from a purely statistical puzzle into an opportunity to probe the time structure of dark energy with concrete, falsifiable hypotheses.
 
 \subsection*{Outlook}
+\label{sec:outlook}
 
 Taken together, the elements presented in this paper place Geometric EDE firmly within mainstream dark sector phenomenology while giving it a distinctive niche. It employs standard tools---scalar fields, monodromy-inspired potentials, and time-dependent dark sector dynamics---and arranges them in a way that simultaneously addresses the Hubble and $S_8$ tensions, aligns with emerging hints of evolving dark energy and early dark matter dominance from DESI and related analyses, and avoids modifications to well-tested visible sector physics. Within its parameter space, a TRGB-concordant branch emerges as a particularly attractive region where modest EDE fractions raise $H_0$ into the high 60s to low 70s, the growth of structure is modestly suppressed, and BAO and CMB residuals remain small. In this sense the model provides a concrete realization of the idea that ``70 is the new 73'': once geometric constraints from DESI-era data are imposed, the viable high-$H_0$ corridor narrows around $H_0 \simeq 70$ km s$^{-1}$ Mpc$^{-1}$ rather than 73, and Geometric EDE naturally populates that corridor rather than attempting to force the distance ladder all the way to its original central value. Furthermore, by tying the late-time acceleration to a field that was dynamically active at recombination, this framework offers a potential path to addressing the cosmic coincidence problem, framing the current epoch of acceleration as a natural stage in the relaxation of a dark sector that has been evolving since the early universe.
 
