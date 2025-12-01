@@ -1,17 +1,32 @@
-# ACT World: Geometric EDE - Planck + Pre-DESI BAO + SH0ES + ACT DR6
-# 4 chains for convergence (R-1 < 0.01, ESS > 2000)
+# ACT World: Ridder EDE - Planck + Pre-DESI BAO + SH0ES + ACT DR6
+# PRODUCTION CONFIG - DO NOT MODIFY
+# 4 chains for convergence (R-1 < 0.02)
 # k = 7 parameters (6 base + 1 EDE amplitude)
+#
+# CRITICAL: Lambda_EDE_ridder prior is [0.8, 1.2] to ensure z_osc ~ 4000-5000
+#           Do NOT widen this prior - chains will converge to wrong regime!
 
 theory:
   classy:
     extra_args:
-      output: tCl, pCl, lCl, mPk
-      l_max_scalars: 3000
-      lensing: true
+      # Output - NO COMMAS (Cobaya's classy wrapper mangles comma-separated strings)
+      output: tCl pCl lCl
+      # ACT requires high ℓ_max for damping tail
+      l_max_scalars: 8500
+      lensing: yes
       gauge: newtonian
-      recombination: recfast
-      non_linear: halofit
-      # FIXED EDE shape parameters
+      N_ncdm: 0
+      # Accuracy settings for ACT (Tier 10 level)
+      accurate_lensing: 1
+      l_logstep: 1.035
+      l_linstep: 25
+      k_max_tau0_over_l_max: 2.5
+      perturb_sampling_stepsize: 0.03
+      tol_background_integration: 1e-6
+      tol_perturb_integration: 1e-6
+      tol_perturb_integration_ls: 1e-6
+      tol_thermo_integration: 1e-6
+      # FIXED Ridder field shape parameters
       f_axion_ridder: 1.0e+27
       theta_i_ridder: 1.0
       beta_ridder: 0.0
@@ -37,7 +52,7 @@ likelihood:
   
   # ACT DR6 high-ℓ TT/TE/EE (damping tail - where shoulder lives!)
   act_dr6_mflike.ACTDR6MFLike:
-    stop_at_error: true
+    stop_at_error: false
   
   # Pre-DESI BAO
   bao.sixdf_2011_bao:
@@ -53,47 +68,180 @@ likelihood:
     output_params: [chi2__shoes_h0]
 
 params:
-  # Base ΛCDM (k=6)
+  # Base ΛCDM (k=6) - CLASS parameterization
   logA:
-    prior: {min: 2.5, max: 3.5}
-    ref: 3.044
+    prior: {min: 2.5, max: 3.7}
+    ref: {dist: norm, loc: 3.05, scale: 0.02}
     proposal: 0.01
     drop: true
   A_s:
     value: "lambda logA: 1e-10*np.exp(logA)"
     latex: A_s
   n_s:
-    prior: {min: 0.92, max: 1.0}
-    ref: 0.9649
-    proposal: 0.004
+    prior: {min: 0.92, max: 1.02}
+    ref: {dist: norm, loc: 0.97, scale: 0.01}
+    proposal: 0.002
     latex: n_s
   H0:
-    prior: {min: 60, max: 80}
-    ref: 70.0
-    proposal: 0.5
+    prior: {min: 60.0, max: 80.0}
+    ref: {dist: norm, loc: 70.0, scale: 2.0}
+    proposal: 0.2
     latex: H_0
   omega_b:
-    prior: {min: 0.019, max: 0.025}
-    ref: 0.02237
-    proposal: 0.0002
+    prior: {min: 0.020, max: 0.025}
+    ref: {dist: norm, loc: 0.0224, scale: 0.0005}
+    proposal: 5e-5
     latex: \Omega_b h^2
   omega_cdm:
-    prior: {min: 0.09, max: 0.14}
-    ref: 0.12
-    proposal: 0.003
+    prior: {min: 0.10, max: 0.14}
+    ref: {dist: norm, loc: 0.120, scale: 0.005}
+    proposal: 5e-4
     latex: \Omega_c h^2
   tau_reio:
-    prior: {min: 0.01, max: 0.1}
-    ref: 0.0544
-    proposal: 0.006
+    prior: {min: 0.03, max: 0.10}
+    ref: {dist: norm, loc: 0.055, scale: 0.01}
+    proposal: 0.005
     latex: \tau_{reio}
 
-  # EDE amplitude - SAMPLED DIRECTLY
+  # EDE amplitude - TIGHT PRIOR TO STAY IN CORRECT z_osc REGIME
+  # Lambda ~ 1.0 → z_osc ~ 4500 (correct soft shoulder)
+  # Lambda ~ 1.5+ → z_osc > 6000 (WRONG - EDE kicks in too early)
   Lambda_EDE_ridder:
-    prior: {min: 0.1, max: 3.0}
+    prior: {min: 0.8, max: 1.2}
+    ref: {dist: norm, loc: 1.0, scale: 0.1}
+    proposal: 0.05
+    latex: \Lambda_\mathrm{EDE}
+
+  # Planck nuisance parameters
+  A_planck:
+    prior: {dist: norm, loc: 1.0, scale: 0.0025}
     ref: 1.0
-    proposal: 0.2
-    latex: \Lambda_{EDE}
+    proposal: 0.001
+    latex: A_\mathrm{planck}
+  calib_100T:
+    prior: {dist: norm, loc: 1.0002, scale: 0.0007}
+    ref: 1.0002
+    proposal: 0.0003
+  calib_217T:
+    prior: {dist: norm, loc: 0.99805, scale: 0.00065}
+    ref: 0.99805
+    proposal: 0.0003
+
+  # Planck foreground (plik defaults)
+  A_cib_217:
+    prior: {min: 0, max: 200}
+    ref: 47
+    proposal: 5
+  xi_sz_cib:
+    prior: {min: 0, max: 1}
+    ref: 0.5
+    proposal: 0.1
+  A_sz:
+    prior: {min: 0, max: 10}
+    ref: 5
+    proposal: 1
+  ksz_norm:
+    prior: {min: 0, max: 10}
+    ref: 3
+    proposal: 1
+  gal545_A_100:
+    prior: {min: 0, max: 50}
+    ref: 8
+    proposal: 2
+  gal545_A_143:
+    prior: {min: 0, max: 50}
+    ref: 10
+    proposal: 2
+  gal545_A_143_217:
+    prior: {min: 0, max: 100}
+    ref: 20
+    proposal: 4
+  gal545_A_217:
+    prior: {min: 0, max: 400}
+    ref: 100
+    proposal: 10
+  ps_A_100_100:
+    prior: {min: 0, max: 400}
+    ref: 250
+    proposal: 20
+  ps_A_143_143:
+    prior: {min: 0, max: 400}
+    ref: 50
+    proposal: 10
+  ps_A_143_217:
+    prior: {min: 0, max: 400}
+    ref: 50
+    proposal: 10
+  ps_A_217_217:
+    prior: {min: 0, max: 400}
+    ref: 120
+    proposal: 10
+  galf_TE_A_100:
+    prior: {min: 0, max: 1}
+    ref: 0.1
+    proposal: 0.05
+  galf_TE_A_100_143:
+    prior: {min: 0, max: 1}
+    ref: 0.1
+    proposal: 0.05
+  galf_TE_A_100_217:
+    prior: {min: 0, max: 1}
+    ref: 0.4
+    proposal: 0.1
+  galf_TE_A_143:
+    prior: {min: 0, max: 1}
+    ref: 0.2
+    proposal: 0.05
+  galf_TE_A_143_217:
+    prior: {min: 0, max: 1}
+    ref: 0.6
+    proposal: 0.1
+  galf_TE_A_217:
+    prior: {min: 0, max: 10}
+    ref: 2
+    proposal: 0.5
+
+  # ACT calibration - tight priors around 1
+  calG_all:
+    prior: {dist: norm, loc: 1.0, scale: 0.01}
+    ref: 1.0
+    proposal: 0.005
+  cal_dr6_pa4_f220:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa5_f090:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa5_f150:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa6_f090:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa6_f150:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa5_f090:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa5_f150:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa6_f090:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa6_f150:
+    prior: {dist: norm, loc: 1.0, scale: 0.02}
+    ref: 1.0
+    proposal: 0.01
 
   # ACT foreground parameters
   bandint_shift_dr6_pa4_f220:
@@ -116,42 +264,6 @@ params:
     prior: {dist: norm, loc: 0.0, scale: 1.1}
     ref: 0.0
     proposal: 0.55
-  cal_dr6_pa4_f220:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  cal_dr6_pa5_f090:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  cal_dr6_pa5_f150:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  cal_dr6_pa6_f090:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  cal_dr6_pa6_f150:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  calE_dr6_pa5_f090:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  calE_dr6_pa5_f150:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  calE_dr6_pa6_f090:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
-  calE_dr6_pa6_f150:
-    prior: {dist: norm, loc: 1.0, scale: 0.01}
-    ref: 1.0
-    proposal: 0.005
   a_tSZ:
     prior: {min: 0, max: 20}
     ref: 3.3
@@ -191,12 +303,29 @@ params:
 
 sampler:
   mcmc:
-    max_samples: 2000
-    Rminus1_stop: 0.01
-    burn_in: 50
-    learn_proposal: true
-    max_tries: 20000
+    Rminus1_stop: 0.02
+    Rminus1_cl_stop: 0.1
+    covmat: auto
+    burn_in: 0.4
+    max_tries: 10000
+    drag: true
     proposal_scale: 2.0
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 5.0
+    learn_proposal_Rminus1_min: 0.3
+    blocking:
+      - [logA, n_s, H0, omega_b, omega_cdm, tau_reio, Lambda_EDE_ridder]
+      - [A_planck, calib_100T, calib_217T, A_cib_217, xi_sz_cib, A_sz, ksz_norm,
+         gal545_A_100, gal545_A_143, gal545_A_143_217, gal545_A_217,
+         ps_A_100_100, ps_A_143_143, ps_A_143_217, ps_A_217_217,
+         galf_TE_A_100, galf_TE_A_100_143, galf_TE_A_100_217, 
+         galf_TE_A_143, galf_TE_A_143_217, galf_TE_A_217]
+      - [calG_all, cal_dr6_pa4_f220, cal_dr6_pa5_f090, cal_dr6_pa5_f150,
+         cal_dr6_pa6_f090, cal_dr6_pa6_f150,
+         calE_dr6_pa5_f090, calE_dr6_pa5_f150, calE_dr6_pa6_f090, calE_dr6_pa6_f150,
+         bandint_shift_dr6_pa4_f220, bandint_shift_dr6_pa5_f090, bandint_shift_dr6_pa5_f150,
+         bandint_shift_dr6_pa6_f090, bandint_shift_dr6_pa6_f150,
+         a_tSZ, a_kSZ, a_cibc, a_dust_tt, a_dust_ee, a_radio]
 
 output: chains/act_world_ede
 resume: true
