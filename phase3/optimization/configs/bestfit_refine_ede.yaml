@@ -1,0 +1,105 @@
+# Best-Fit Refinement: EDE
+# Uses local minimizer starting from best MCMC sample
+# Run this AFTER main MCMC to squeeze out final χ² improvement
+#
+# Usage: 
+#   1. Get best sample from MCMC chain
+#   2. Update 'ref' values below with those parameters
+#   3. Run: cobaya-run bestfit_refine_ede.yaml
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 3500
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      
+      # MAXIMUM PRECISION for best-fit
+      tol_background_integration: 1e-5
+      tol_perturb_integration: 1e-9
+      k_per_decade_for_pk: 30
+      k_per_decade_for_bao: 300
+      
+      # Fixed Ridder shape parameters
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  sn.pantheonplus:
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
+
+params:
+  # UPDATE THESE with best sample from MCMC chain!
+  logA:
+    prior: {min: 2.9, max: 3.2}
+    ref: 3.044
+    proposal: 0.005
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.94, max: 0.99}
+    ref: 0.9649
+    proposal: 0.002
+    latex: n_s
+  H0:
+    prior: {min: 68, max: 74}
+    ref: 70.5
+    proposal: 0.2
+    latex: H_0
+  omega_b:
+    prior: {min: 0.021, max: 0.024}
+    ref: 0.02237
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.11, max: 0.13}
+    ref: 0.117
+    proposal: 0.001
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.04, max: 0.07}
+    ref: 0.0544
+    proposal: 0.003
+    latex: \tau_{reio}
+  Lambda_EDE_ridder:
+    prior: {min: 0.5, max: 2.0}
+    ref: 1.0
+    proposal: 0.1
+    latex: \Lambda_{EDE}
+
+  # Derived
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+# Use minimizer instead of MCMC
+sampler:
+  minimize:
+    method: bobyqa
+    max_evals: 5000
+    ignore_prior: false
+
+output: chains/bestfit_ede_refined
