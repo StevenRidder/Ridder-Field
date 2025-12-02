@@ -336,3 +336,128 @@ A wide prior may converge to a mathematically valid but physically wrong solutio
 - `configs/act_world_lcdm.yaml` - ΛCDM production config
 - `configs/act_world_ede.yaml` - EDE production config (with tight Lambda prior)
 - `run_act_analysis.sh` - Launch script (`--clean` to restart fresh)
+
+---
+
+## Issue #6: CAMB-Style Accuracy Params Passed to CLASS (Added 2025-12-01)
+
+### Problem
+
+During the Tier 6 ACT runs, CLASS started failing with:
+
+```
+Error in Class: Class did not read input parameter(s):
+  perturb_sampling_stepsize, tol_perturb_integration, tol_perturb_integration_ls
+```
+
+These knobs were copied from CAMB-style configs and are **not valid CLASS
+parameters**. Cobaya was happily passing them through, and CLASS was
+correctly complaining.
+
+### Fix
+
+1. **Remove CAMB-only parameters** from all ACT configs:
+   - `perturb_sampling_stepsize`
+   - `tol_perturb_integration`
+   - `tol_perturb_integration_ls`
+
+2. Keep only the CLASS-supported accuracy controls:
+
+```yaml
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 8500
+      lensing: yes
+      gauge: newtonian
+      N_ncdm: 0
+      non_linear: none
+      accurate_lensing: 1
+      l_logstep: 1.035
+      l_linstep: 25
+      k_max_tau0_over_l_max: 2.5
+      tol_background_integration: 1e-6
+      tol_thermo_integration: 1e-6
+```
+
+3. Verified in a standalone CLASS test that:
+   - The above parameter set computes successfully.
+   - Adding the CAMB-style knobs reproduces the exact error seen in cobaya.
+
+### Lesson Learned
+
+**Do not blindly copy CAMB accuracy parameters into CLASS configs.**
+Only use knobs that CLASS actually documents and accepts; otherwise you
+get mysterious “did not read input parameter(s)” errors that mask the
+real physics you are trying to test.
+
+---
+
+## Issue #7: CLASS Ridder Field Hangs at High l_max (Added 2025-12-02)
+
+### Problem
+
+EDE chains hang during "Getting initial point" phase. No error message,
+just silent hang. Process uses CPU but never completes.
+
+### Root Cause
+
+**CLASS Ridder field implementation hangs when computing high-l spectra
+(l_max >= 1000) with EDE enabled.**
+
+Testing shows:
+- CLASS works fine with LCDM at l_max=7000 ✓
+- CLASS hangs with EDE at l_max=7000 ✗ (even with simple parameters)
+- CLASS works with EDE at l_max=100 ✓ (but ACT needs high-l)
+- The hang occurs in `compute()`, not `set()`
+
+This is a **numerical stability bug in the Ridder field implementation**
+when computing high multipole moments.
+
+### Evidence
+
+```python
+# This hangs (timeout after 60s):
+params = {
+    'l_max_scalars': 7000,
+    'lensing': 'yes',
+    'gauge': 'newtonian',
+    'Lambda_EDE_ridder': 1.0,
+    # ... other params
+}
+cosmo.compute()  # ← HANGS HERE
+```
+
+All tested Lambda values (0.7-1.2) hang with l_max=7000.
+Even with `lensing: no`, it still hangs.
+
+### Workaround
+
+**Provide a good starting point** so Cobaya doesn't need to search randomly.
+Since LCDM chains work, use LCDM best-fit as starting point for EDE:
+
+1. **Extract LCDM best-fit** from running chain
+2. **Add Lambda_EDE_ridder=1.0** to those parameters  
+3. **Use as starting point** for EDE chain
+
+Or reduce `l_max_scalars` temporarily for initial point search, then increase
+it once chain starts (but this is hacky).
+
+### Long-term Fix
+
+This requires fixing the Ridder field implementation in CLASS to handle
+high-l computations without hanging. The bug is likely in the numerical
+integration or ODE solver for the Ridder field evolution.
+
+### Current Status
+
+- **LCDM chains**: Working fine (no EDE, no hang) ✓
+- **EDE chains**: Hang during initial point search ✗
+- **Solution**: Need to provide manual starting point or fix CLASS bug
+
+### Lesson Learned
+
+**When CLASS hangs silently (no error), it's usually a numerical issue
+in the physics computation, not a configuration problem.** Test CLASS
+directly with the exact parameters to isolate the bug.

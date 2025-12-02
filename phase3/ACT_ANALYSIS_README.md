@@ -54,6 +54,56 @@ ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 act_template_f
 - `configs/act_world_lcdm.yaml` - ΛCDM with ACT+Planck+BAO+SH0ES
 - `configs/act_world_ede.yaml` - EDE with ACT+Planck+BAO+SH0ES
 
+### Production ACT world configs (2025-12-01)
+
+To stop the churn, we fix **one canonical ACT world stack** for both ΛCDM and EDE:
+
+- **Likelihoods (no lensing block):**
+  - `planck_2018_lowl.TT`
+  - `planck_2018_lowl.EE`
+  - `planck_2018_highl_plik.TTTEEE`
+  - `act_dr6_mflike.ACTDR6MFLike`
+  - `bao.sixdf_2011_bao`, `bao.sdss_dr7_mgs`, `bao.sdss_dr12_consensus_bao`
+  - `shoes_h0` (Gaussian 73.04 ± 1.04 km/s/Mpc)
+
+- **CLASS theory settings (`theory.classy.extra_args`):**
+  - `output: tCl pCl lCl`  (space‑separated, **no commas**)
+  - `l_max_scalars: 7000`  (ACT damping tail; reduced from 8500 to save memory)
+  - `lensing: yes`, `gauge: newtonian`, `N_ncdm: 0`, `non_linear: none`
+  - Accuracy: `accurate_lensing: 1`, `l_logstep: 1.04`, `l_linstep: 30`,
+    `k_max_tau0_over_l_max: 2.5`,
+    `tol_background_integration: 1e-5`,
+    `tol_thermo_integration: 1e-5`
+  - **Memory constraint:** Each ACT world chain uses ~6-8GB RAM. With 15GB total,
+    run **maximum 2 chains simultaneously** to avoid OOM kills.
+  - **No CAMB‑only knobs** like `perturb_sampling_stepsize`,
+    `tol_perturb_integration`, `tol_perturb_integration_ls`
+  - Use `input_params` so CLASS only sees true cosmological parameters:
+    - ΛCDM: `[A_s, n_s, H0, omega_b, omega_cdm, tau_reio]`
+    - EDE: add `Lambda_EDE_ridder`
+
+- **Parameters and priors:**
+  - Base ΛCDM: `omega_b`, `omega_cdm`, `H0`, `tau_reio`, `n_s`, `logA`
+    with the priors in the Tier 10 templates (see configs).
+  - EDE: add **only** `Lambda_EDE_ridder` with a physics‑motivated prior.
+    - Template / “wide” prior: `{min: 0.0, max: 2.5}` (for generic scans).
+    - **ACT shoulder runs:** use tight prior `{min: 0.8, max: 1.2}` to keep
+      \(z_{\rm osc} \sim 4000{-}5000\) and avoid the wrong early‑EDE regime.
+  - ACT calibration params (`calG_all`, `cal_dr6_*`, `calE_dr6_*`) have
+    tight normal priors around 1.0 with small proposal widths.
+
+- **Sampler (`sampler.mcmc`):**
+  - `Rminus1_stop: 0.02`, `Rminus1_cl_stop: 0.1`
+  - `covmat: auto`, `burn_in: 0.4`, `max_tries: 10`
+  - `drag: true`, `proposal_scale: 2.0`, `learn_proposal: true`
+  - Manual `blocking` is **disabled** in ACT world configs because the
+    current Cobaya version on the cluster rejects the old blocking syntax.
+
+- **Launch scripts:**
+  - `run_act_analysis.sh` – legacy ACT world launcher
+  - `run_tier6_act.sh` – Tier‑6 “SH0ES World + ACT” launcher using
+    `tier6_lcdm_shoes_act.yaml` and `tier6_ede_shoes_act.yaml`
+
 ### What to Check:
 1. **Convergence**: R-1 < 0.01, effective sample size ≥ 2000
 2. **Δχ²(ACT)**: Should be small (|Δχ²| < 5) if ACT is neutral

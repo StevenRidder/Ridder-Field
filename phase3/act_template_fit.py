@@ -369,6 +369,20 @@ def main():
     print(f"  LCDM: H0={params_lcdm.get('H0', 'N/A'):.2f}")
     print(f"  EDE:  H0={params_ede.get('H0', 'N/A'):.2f}, Λ={params_ede.get('Lambda_EDE_ridder', 'N/A'):.3f}")
     
+    # CRITICAL: Validate Lambda is in correct regime
+    # Lambda ~ 1.0 → z_osc ~ 4500 (correct soft shoulder)
+    # Lambda > 1.5 → z_osc > 6000 (WRONG - EDE kicks in too early)
+    lambda_val = params_ede.get('Lambda_EDE_ridder', 1.0)
+    if lambda_val < 0.7 or lambda_val > 1.3:
+        print(f"\n⚠️  WARNING: Lambda = {lambda_val:.2f} is outside optimal range [0.8, 1.2]!")
+        print(f"   This may give z_osc in wrong regime.")
+        if lambda_val > 1.5:
+            print(f"   Lambda > 1.5 → z_osc > 6000 (EDE too early, NOT soft shoulder)")
+            print(f"   Consider re-running chains with tighter Lambda prior.")
+        elif lambda_val < 0.7:
+            print(f"   Lambda < 0.7 → z_osc < 3000 (EDE too late)")
+        print(f"   Expected: Lambda ~ 1.0 → z_osc ~ 4500")
+    
     # Extract ACT data
     if not HAS_ACT:
         print("\nERROR: ACT likelihood not available!")

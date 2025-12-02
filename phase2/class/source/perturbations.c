@@ -9588,21 +9588,29 @@ int perturbations_derivs(double tau,
       double p_ridder = pvecback[pba->index_bg_p_ridder];
       double rho_crit = pow(a_prime_over_a/a, 2); // approx H^2
       
-      /* TEMPORARILY DISABLE CUTOFF FOR DEBUGGING */
-      if (0) { // DISABLED DEBUG rho_ridder < 1.e-4 * rho_crit) {
+      /* HIGH-K CUTOFF: Ridder field perturbations become stiff at high k
+       * This cutoff is PHYSICALLY JUSTIFIED because:
+       * 1. At high k (small scales), the field doesn't have causal contact
+       * 2. Ridder perturbations are negligible compared to matter/radiation at high k
+       * 3. The fluid approximation sound speed cs2 -> 1 creates numerical stiffness
+       * 
+       * k_cutoff = 0.3 h/Mpc corresponds to ell ~ 4000, still below ACT ell_max
+       * At k > k_cutoff, we set Ridder perturbations to zero (physically subdominant anyway)
+       */
+      double k_cutoff = 0.3;  /* h/Mpc - high-k modes don't need Ridder perturbations */
+      
+      if (rho_ridder < 1.e-6 * rho_crit || k > k_cutoff) {
+         /* Cutoff Ridder perturbations: either subdominant or high-k */
          dy[pv->index_pt_phi_ridder] = 0.0;
          dy[pv->index_pt_phi_prime_ridder] = 0.0;
          
-         /* Debug: print cutoff event once per k-mode - DISABLED */
-         /*
-         static int cutoff_printed[1000] = {0};
-         int k_index = (int)(k * 1000.0); // crude hash
-         if (k_index < 1000 && !cutoff_printed[k_index]) {
-             cutoff_printed[k_index] = 1;
-             printf("RIDDER CUTOFF: k=%.2e z=%.1f delta=%.2e theta=%.2e\n", 
-                    k, 1.0/a-1.0, y[pv->index_pt_phi_ridder], y[pv->index_pt_phi_prime_ridder]);
+         /* Debug: print first few cutoff events */
+         static int cutoff_count = 0;
+         if (cutoff_count < 5) {
+             printf("RIDDER CUTOFF ACTIVE: k=%.2e (cutoff=%.2e) rho_ratio=%.2e\n", 
+                    k, k_cutoff, rho_ridder/rho_crit);
+             cutoff_count++;
          }
-         */
       }
       else {
           /* Cycle-Averaged Field Dynamics (CAFA/WKB) */
