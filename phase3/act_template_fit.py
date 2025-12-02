@@ -342,8 +342,18 @@ def main():
     # Load parameters from chains
     chain_dir = os.path.expanduser("~/Ridder-Field/phase3/chains")
     
-    lcdm_files = sorted([f for f in os.listdir(chain_dir) if 'act_world_lcdm' in f and f.endswith('.1.txt')])
-    ede_files = sorted([f for f in os.listdir(chain_dir) if 'act_world_ede' in f and f.endswith('.1.txt')])
+    # Look for chain files with multiple naming patterns
+    all_files = os.listdir(chain_dir)
+    
+    # Find LCDM chains (try multiple patterns)
+    lcdm_files = sorted([f for f in all_files if ('act_lcdm' in f or 'act_world_lcdm' in f) and f.endswith('.1.txt')])
+    
+    # Find EDE chains (try multiple patterns)  
+    ede_files = sorted([f for f in all_files if ('act_ede' in f or 'act_world_ede' in f) and 'lcdm' not in f and f.endswith('.1.txt')])
+    
+    print(f"\nFound chain files:")
+    print(f"  LCDM: {lcdm_files}")
+    print(f"  EDE:  {ede_files}")
     
     # Check if EDE chains are still in burn-in
     if not ede_files:
