@@ -1,0 +1,107 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier4L_v3_shoes'
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase2/class
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[sh0es_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+[model] *ERROR* Could not find random point giving finite posterior after 10000 tries
+[exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/usr/local/bin/cobaya-run", line 7, in <module>
+    sys.exit(run_script())
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 265, in run_script
+    run(info, **arguments.__dict__)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 160, in run
+    sampler = sampler_class(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/sampler.py", line 320, in __init__
+    self.initialize()
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/samplers/mcmc/mcmc.py", line 219, in initialize
+    initial_point, results = self.model.get_valid_point(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/model.py", line 748, in get_valid_point
+    raise LoggedError(
+cobaya.log.LoggedError: Could not find random point giving finite posterior after 10000 tries
+-------------------------------------------------------------
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 4.300000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+V3_CANON BRANCH HIT! model_type=2
+V3_POT: a=1.000e-14 theta=2.80 V_theta=2.505e-01 Lambda_EDE=4.300e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=2.505e-01 Lambda_EDE=4.300e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=2.505e-01 Lambda_EDE=4.300e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=2.505e-01 Lambda_EDE=4.300e-01
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+BG_DERIVS: FIRST CALL at a = 1.000e-14
+  phi_ridder = 5.600e+26 eV, phi_prime_ridder = 0.000e+00 eV/Mpc
+V3_CANON BRANCH HIT! model_type=2
+V3_POT: a=1.000e-14 theta=2.80 V_theta=2.505e-01 Lambda_EDE=4.300e-01
+RIDDER DERIVS: First call! has_ridder=1 Lambda=0.00e+00 fluid_mode=0
+CHECKPOINT_A: call#=1
+CHECKPOINT_B: call#=1
+CHECKPOINT_C: call#=1
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=1 fluid_mode=0 _FALSE_=0 condition=1
+V3_CANON BRANCH HIT! model_type=2
+CHECKPOINT_A: call#=2
+CHECKPOINT_B: call#=2
+CHECKPOINT_C: call#=2
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=2 fluid_mode=0 _FALSE_=0 condition=1
+CHECKPOINT_A: call#=3
+CHECKPOINT_B: call#=3
+CHECKPOINT_C: call#=3
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=3 fluid_mode=0 _FALSE_=0 condition=1
+CHECKPOINT_A: call#=4
+CHECKPOINT_B: call#=4
+CHECKPOINT_C: call#=4
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=4 fluid_mode=0 _FALSE_=0 condition=1
+PRE_IF: call#=5 fluid_mode=0 _FALSE_=0 condition=1
+PRE_IF: call#=6 fluid_mode=0 _FALSE_=0 condition=1
+PRE_IF: call#=7 fluid_mode=0 _FALSE_=0 condition=1
+PRE_IF: call#=8 fluid_mode=0 _FALSE_=0 condition=1
+PRE_IF: call#=9 fluid_mode=0 _FALSE_=0 condition=1
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.184606e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.894914e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+RIDDER IC: k=9.473e+00 coeff=0.000e+00 delta_g=-1.633e-03
+RIDDER IC: k=1.501e+01 coeff=0.000e+00 delta_g=-1.633e-03
+RIDDER IC: k=1.193e+01 coeff=0.000e+00 delta_g=-1.633e-03

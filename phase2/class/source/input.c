@@ -2416,7 +2416,26 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("f_axion_ridder",pba->f_axion_ridder);
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
   class_read_double("beta_ridder",pba->beta_ridder);
+  class_read_double("beta_z_c",pba->beta_z_c);
+  class_read_double("beta_sigma_z",pba->beta_sigma_z);
   class_read_int("n_ridder",pba->n_ridder);
+  class_read_int("ridder_perturbation_mode",pba->ridder_perturbation_mode);
+  
+  /* Ridder shooting mechanism parameters */
+  class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
+  class_read_double("ridder_fEDE_target",pba->ridder_fEDE_target);
+  class_read_double("ridder_zc_min",pba->ridder_zc_min);
+  class_read_double("ridder_zc_max",pba->ridder_zc_max);
+  class_read_double("ridder_shoot_log10Lambda_min",pba->ridder_shoot_log10Lambda_min);
+  class_read_double("ridder_shoot_log10Lambda_max",pba->ridder_shoot_log10Lambda_max);
+  class_read_double("ridder_shoot_tol_f",pba->ridder_shoot_tol_f);
+  class_read_double("ridder_c_slow",pba->ridder_c_slow);
+  class_read_double("ridder_force_damping",pba->ridder_force_damping);
+  class_read_flag("ridder_freeze_phi",pba->ridder_freeze_phi);
+  
+  /* Debug: print freeze_phi value after reading (unconditional for now) */
+  printf("INPUT_READ: ridder_freeze_phi = %d _TRUE_=%d (after class_read_flag)\n", 
+         pba->ridder_freeze_phi, _TRUE_);
   
   /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
   if (pba->Lambda_EDE_ridder > 0.0) {
@@ -3336,24 +3355,134 @@ int input_read_parameters_species(struct file_content * pfc,
   }
 
   /** 8.c) Ridder field (RC-X* model) parameters */
-  /* Read Ridder field parameters (always read, even if Lambda_EDE_ridder = 0) */
+  
+  /* STEP 1: Read new-style model selector FIRST (before Lambda check) */
+  /* Read use_ridder flag (for Python/Cobaya interface compatibility) */
+  class_call(parser_read_string(pfc,
+                                "use_ridder",
+                                &string1,
+                                &flag1,
+                                errmsg),
+             errmsg,
+             errmsg);
+  if (flag1 == _TRUE_) {
+    if ((strcmp(string1, "yes") == 0) || (strcmp(string1, "YES") == 0) ||
+        (strcmp(string1, "y") == 0) || (strcmp(string1, "Y") == 0) ||
+        (strcmp(string1, "true") == 0) || (strcmp(string1, "True") == 0) ||
+        (strcmp(string1, "1") == 0)) {
+      pba->has_ridder = _TRUE_;
+      printf("DEBUG: use_ridder = yes, has_ridder set to TRUE\n");
+    }
+  }
+  
+  class_call(parser_read_string(pfc,
+                                "ridder_model_type",
+                                &string1,
+                                &flag1,
+                                errmsg),
+             errmsg,
+             errmsg);
+  
+  if (flag1 == _TRUE_) {
+    if ((strcmp(string1, "unified") == 0) || (strcmp(string1, "UNIFIED") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_unified;
+      pba->has_ridder = _TRUE_;  /* unified mode always turns on Ridder */
+      printf("DEBUG: Ridder model_type = UNIFIED, has_ridder set to TRUE\n");
+    }
+    else if ((strcmp(string1, "simple_ede") == 0) || (strcmp(string1, "SIMPLE_EDE") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_simple_ede;
+      printf("DEBUG: Ridder model_type = SIMPLE_EDE\n");
+      /* has_ridder may still be set by Lambda_EDE_ridder below */
+    }
+    else if ((strcmp(string1, "v3_canon") == 0) || (strcmp(string1, "V3_CANON") == 0)) {
+      pba->ridder_unified.model_type = ridder_model_v3_canon;
+      pba->has_ridder = _TRUE_;
+      printf("DEBUG INPUT.C: Just set model_type to %d (should be 2)\n", pba->ridder_unified.model_type);
+      printf("DEBUG: Ridder model_type = V3_CANON, has_ridder set to TRUE\n");
+    }
+    else {
+      class_stop(errmsg,
+        "Unknown ridder_model_type='%s'. Allowed: 'simple_ede', 'unified', or 'v3_canon'.",
+        string1);
+    }
+  }
+  
+  /* STEP 2: Read v2 parameters (always read for backwards compatibility) */
   class_read_double("Lambda_EDE_ridder",pba->Lambda_EDE_ridder);
   class_read_double("f_axion_ridder",pba->f_axion_ridder);
   class_read_double("theta_i_ridder",pba->theta_i_ridder);
   class_read_double("beta_ridder",pba->beta_ridder);
+  class_read_double("beta_z_c",pba->beta_z_c);
+  class_read_double("beta_sigma_z",pba->beta_sigma_z);
   class_read_int("n_ridder",pba->n_ridder);
+  class_read_int("ridder_perturbation_mode",pba->ridder_perturbation_mode);
   
-  /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
+  /* Ridder shooting mechanism parameters */
+  class_read_int("use_ridder_shooting",pba->use_ridder_shooting);
+  class_read_double("ridder_fEDE_target",pba->ridder_fEDE_target);
+  class_read_double("ridder_zc_min",pba->ridder_zc_min);
+  class_read_double("ridder_zc_max",pba->ridder_zc_max);
+  class_read_double("ridder_shoot_log10Lambda_min",pba->ridder_shoot_log10Lambda_min);
+  class_read_double("ridder_shoot_log10Lambda_max",pba->ridder_shoot_log10Lambda_max);
+  class_read_double("ridder_shoot_tol_f",pba->ridder_shoot_tol_f);
+  class_read_double("ridder_c_slow",pba->ridder_c_slow);
+  class_read_double("ridder_force_damping",pba->ridder_force_damping);
+  class_read_flag("ridder_freeze_phi",pba->ridder_freeze_phi);
+  
+  /* Debug: print freeze_phi value after reading (unconditional for now) */
+  printf("INPUT_READ: ridder_freeze_phi = %d _TRUE_=%d (after class_read_flag)\n", 
+         pba->ridder_freeze_phi, _TRUE_);
+  
+  /* STEP 3: Legacy v2 trigger - if Lambda_EDE_ridder > 0, enable Ridder */
   if (pba->Lambda_EDE_ridder > 0.0) {
     pba->has_ridder = _TRUE_;
-    printf("DEBUG: Ridder field ENABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+    printf("DEBUG: Ridder field ENABLED via Lambda_EDE_ridder = %e\n", pba->Lambda_EDE_ridder);
     if (input_verbose > 0) {
       printf(" -> Ridder field enabled: Lambda_EDE = %.3e eV, f = %.3e eV, theta_i = %.3f, beta = %.3f\n",
              pba->Lambda_EDE_ridder, pba->f_axion_ridder, pba->theta_i_ridder, pba->beta_ridder);
     }
-  } else {
-    pba->has_ridder = _FALSE_;
-    printf("DEBUG: Ridder field DISABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+  } else if (pba->has_ridder == _FALSE_) {
+    printf("DEBUG: Ridder field DISABLED. Lambda = %e, model_type not set to unified\n", pba->Lambda_EDE_ridder);
+  }
+  
+  /* Read unified potential parameters */
+  if (pba->has_ridder == _TRUE_) {
+    /* Model type: simple_ede or unified */
+    class_read_string("ridder_model_type", string1);
+    if (strcmp(string1, "unified") == 0) {
+      pba->ridder_unified.model_type = ridder_model_unified;
+    } else if (strcmp(string1, "v3_canon") == 0 || strcmp(string1, "V3_CANON") == 0) {
+      pba->ridder_unified.model_type = ridder_model_v3_canon;
+    } else {
+      pba->ridder_unified.model_type = ridder_model_simple_ede;
+    }
+    
+    /* Global field properties */
+    class_read_double("ridder_f", pba->ridder_unified.f);
+    
+    /* Component toggles */
+    class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+    class_read_flag("ridder_use_shelf", pba->ridder_unified.use_shelf);
+    class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
+    
+    /* Tail parameters */
+    class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
+    class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
+    class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+    
+    /* Shelf (EDE) parameters */
+    class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE);
+    class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+    class_read_double("ridder_theta_EDE_low", pba->ridder_unified.theta_EDE_low);
+    class_read_double("ridder_theta_EDE_high", pba->ridder_unified.theta_EDE_high);
+    class_read_double("ridder_sigma_theta_EDE", pba->ridder_unified.sigma_theta_EDE);
+    
+    /* Plateau (inflation) parameters */
+    class_read_double("ridder_Lambda_inf_eV", pba->ridder_unified.Lambda_inf);
+    class_read_double("ridder_theta0_inf", pba->ridder_unified.theta0_inf);
+    class_read_double("ridder_theta_inf_on", pba->ridder_unified.theta_inf_on);
+    class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
+    class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
   }
   
   /* Validation */
@@ -3363,16 +3492,119 @@ int input_read_parameters_species(struct file_content * pfc,
       class_stop(errmsg, "The Ridder field implementation currently only supports Newtonian gauge. Please set 'gauge = newtonian'.");
     }
 
-    if (pba->f_axion_ridder <= 0.0) {
-      class_stop(errmsg, "f_axion_ridder must be > 0");
-    }
-    if (pba->n_ridder < 1) {
-      class_stop(errmsg, "n_ridder must be >= 1");
-    }
-    if (fabs(pba->beta_ridder) > 0.1) {
-      if (input_verbose > 0) {
-        printf(" -> Warning: |beta_ridder| = %.3f is large, may violate constraints\n", pba->beta_ridder);
+    /* V2 parameter validation - skip for v3_canon which uses different parameters */
+    if (pba->ridder_unified.model_type != ridder_model_v3_canon) {
+      if (pba->f_axion_ridder <= 0.0) {
+        class_stop(errmsg, "f_axion_ridder must be > 0");
       }
+      if (pba->n_ridder < 1) {
+        class_stop(errmsg, "n_ridder must be >= 1");
+      }
+      if (fabs(pba->beta_ridder) > 0.1) {
+        if (input_verbose > 0) {
+          printf(" -> Warning: |beta_ridder| = %.3f is large, may violate constraints\n", pba->beta_ridder);
+        }
+      }
+    }
+    
+    /* STEP 4: Read unified-specific parameters if in unified mode */
+    if (pba->ridder_unified.model_type == ridder_model_unified) {
+      printf("\nDEBUG: Reading unified potential parameters...\n");
+      
+      /* Initialize shooting defaults */
+      pba->ridder_unified.use_shooting_EDE = _FALSE_;
+      pba->ridder_unified.f_EDE_target = 0.13;
+      pba->ridder_unified.z_c_target = 3000.0;
+      pba->ridder_unified.shooting_m_min = 1.0e2;
+      pba->ridder_unified.shooting_m_max = 1.0e6;
+      pba->ridder_unified.shooting_tolerance = 1.0e-3;
+      pba->ridder_unified.shooting_max_iterations = 30;
+      
+      /* Global field properties */
+      class_read_double("ridder_f", pba->ridder_unified.f);
+      
+      /* Component toggles */
+      class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+      class_read_flag("ridder_use_shelf", pba->ridder_unified.use_shelf);
+      class_read_flag("ridder_use_plateau", pba->ridder_unified.use_plateau);
+      
+      /* Tail parameters */
+      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
+      class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
+      class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+      
+      /* Shelf (EDE) parameters */
+      class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE);
+      /* AxiCLASS-style parameters (preferred over Lambda) */
+      class_read_double("ridder_m_axion", pba->ridder_unified.m_axion);  /* in H0 units */
+      class_read_double("ridder_f_axion", pba->ridder_unified.f_axion);  /* in M_Pl units */
+      class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+      class_read_double("ridder_theta_EDE_low", pba->ridder_unified.theta_EDE_low);
+      class_read_double("ridder_theta_EDE_high", pba->ridder_unified.theta_EDE_high);
+      class_read_double("ridder_sigma_theta_EDE", pba->ridder_unified.sigma_theta_EDE);
+      
+      /* Plateau (inflation) parameters */
+      class_read_double("ridder_Lambda_inf_eV", pba->ridder_unified.Lambda_inf);
+      class_read_double("ridder_theta0_inf", pba->ridder_unified.theta0_inf);
+      class_read_double("ridder_theta_inf_on", pba->ridder_unified.theta_inf_on);
+      class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
+      class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
+      
+      /* Shooting mechanism for EDE calibration */
+      class_read_flag("ridder_use_shooting_EDE", pba->ridder_unified.use_shooting_EDE);
+      class_read_double("ridder_f_EDE_target", pba->ridder_unified.f_EDE_target);
+      class_read_double("ridder_z_c_target", pba->ridder_unified.z_c_target);
+      class_read_double("ridder_shooting_m_min", pba->ridder_unified.shooting_m_min);
+      class_read_double("ridder_shooting_m_max", pba->ridder_unified.shooting_m_max);
+      class_read_double("ridder_shooting_tolerance", pba->ridder_unified.shooting_tolerance);
+      class_read_int("ridder_shooting_max_iterations", pba->ridder_unified.shooting_max_iterations);
+      
+      printf("DEBUG: Shooting parameters read: use_shooting=%d, f_EDE_target=%.4f, z_c=%.1f\n",
+             pba->ridder_unified.use_shooting_EDE, pba->ridder_unified.f_EDE_target, 
+             pba->ridder_unified.z_c_target);
+      
+      printf("DEBUG: Unified parameters read successfully:\n");
+      printf("  f = %e eV\n", pba->ridder_unified.f);
+      printf("  use_tail=%d, use_shelf=%d, use_plateau=%d\n",
+             pba->ridder_unified.use_tail, pba->ridder_unified.use_shelf, pba->ridder_unified.use_plateau);
+      printf("  Lambda_EDE = %e eV, theta_low = %e, theta_high = %e\n",
+             pba->ridder_unified.Lambda_EDE, pba->ridder_unified.theta_EDE_low, pba->ridder_unified.theta_EDE_high);
+    }
+    
+    /* STEP 5: Read v3_canon-specific parameters */
+    if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+      printf("\nDEBUG: Reading v3 canonical parameters...\n");
+      
+      /* Global field normalization */
+      class_read_double("ridder_f_eV", pba->ridder_unified.f_eV);
+      
+      /* Component toggles (v3: shelf→EDE) */
+      class_read_flag("ridder_use_shelf", pba->ridder_unified.use_EDE);
+      class_read_flag("ridder_use_tail", pba->ridder_unified.use_tail);
+      
+      /* EDE bump parameters */
+      class_read_double("ridder_Lambda_EDE_eV", pba->ridder_unified.Lambda_EDE_eV);
+      class_read_double("ridder_a_c", pba->ridder_unified.a_c);
+      class_read_double("ridder_sigma_lna", pba->ridder_unified.sigma_lna);
+      class_read_double("ridder_theta_E_center", pba->ridder_unified.theta_E_center);
+      class_read_double("ridder_sigma_E", pba->ridder_unified.sigma_E);
+      class_read_double("ridder_n_EDE", pba->ridder_unified.n_EDE);
+      
+      /* Tail parameters */
+      class_read_double("ridder_Lambda_tail_eV", pba->ridder_unified.Lambda_tail_eV);
+      class_read_double("ridder_alpha_tail", pba->ridder_unified.alpha_tail);
+      class_read_double("ridder_theta_T_center", pba->ridder_unified.theta_T_center);
+      class_read_double("ridder_n_tail", pba->ridder_unified.n_tail);
+      
+      /* Floor */
+      class_read_double("ridder_Lambda_floor_eV", pba->ridder_unified.Lambda_floor_eV);
+      
+      printf("DEBUG: V3 parameters read:\n");
+      printf("  f_eV = %e eV\n", pba->ridder_unified.f_eV);
+      printf("  Lambda_EDE = %e eV, theta_E_center = %.2f, sigma_E = %.2f\n",
+             pba->ridder_unified.Lambda_EDE_eV, pba->ridder_unified.theta_E_center, pba->ridder_unified.sigma_E);
+      printf("  Lambda_tail = %e eV, alpha_tail = %.2f\n",
+             pba->ridder_unified.Lambda_tail_eV, pba->ridder_unified.alpha_tail);
     }
   }
 
@@ -5995,12 +6227,55 @@ int input_default_params(struct background *pba,
   pba->f_axion_ridder = 1e16;         /**< Decay constant [eV] */
   pba->theta_i_ridder = 2.5;          /**< Initial misalignment angle [radians] */
   pba->beta_ridder = 0.0;             /**< DM coupling strength (dimensionless) */
+  pba->beta_z_c = 3276.0;             /**< Beta coupling peak redshift (default: EDE peak) */
+  pba->beta_sigma_z = 0.3;            /**< Beta coupling width in log(1+z) (default: narrow) */
+  
+  /** 9.c.2) Unified potential defaults */
+  pba->ridder_unified.model_type = ridder_model_simple_ede;
+  pba->ridder_unified.f = 2.435e27;   /**< M_Pl in eV */
+  
+  /* Component toggles: default to tail+shelf only (no inflation) */
+  pba->ridder_unified.use_tail = _TRUE_;
+  pba->ridder_unified.use_shelf = _TRUE_;
+  pba->ridder_unified.use_plateau = _FALSE_;
+  
+  /* Tail defaults (late DE) */
+  pba->ridder_unified.Lambda_tail_eV = 2.3e-3;  /**< ~meV scale for Omega_Lambda */
+  pba->ridder_unified.alpha_tail = 1.0;  /**< default modulation strength */
+  pba->ridder_unified.n_tail = 3.0;
+  
+  /* Shelf defaults (EDE) - match v2 optimal */
+  pba->ridder_unified.Lambda_EDE = 1.5;      /**< eV, from v2 optimization */
+  pba->ridder_unified.n_EDE = 3.0;
+  pba->ridder_unified.theta_EDE_low = 0.5;
+  pba->ridder_unified.theta_EDE_high = 2.0;
+  pba->ridder_unified.sigma_theta_EDE = 0.2;
+  
+  /* Plateau defaults (inflation) - conservative initial values */
+  pba->ridder_unified.Lambda_inf = 1.0e-3;   /**< Will be tuned for inflation */
+  pba->ridder_unified.theta0_inf = 5.0;
+  pba->ridder_unified.theta_inf_on = 8.0;
+  pba->ridder_unified.sigma_inf = 1.0;
+  pba->ridder_unified.n_inf = 1.0;
   pba->n_ridder = 3;                  /**< Potential power (usually 3) */
+  pba->ridder_perturbation_mode = 0;  /**< Scalar mode by default (0=scalar, 1=fluid) */
   pba->ridder_fluid_mode = _FALSE_;   /**< Not in fluid mode initially */
   pba->z_osc_ridder = 0.0;            /**< Oscillation redshift (computed) */
   pba->w_eff_ridder = 0.0;            /**< Effective equation of state */
   pba->rho_ridder_at_switch = 0.0;    /**< Energy density at switching */
   pba->a_osc_ridder = 1.0;            /**< Scale factor at switching */
+  
+  /** 9.c.2) Ridder shooting mechanism defaults */
+  pba->use_ridder_shooting = _FALSE_;               /**< Disabled by default, use manual Lambda */
+  pba->ridder_fEDE_target = 0.10;                   /**< Default target: 10% EDE */
+  pba->ridder_zc_min = 500.0;                       /**< Min z for peak search */
+  pba->ridder_zc_max = 10000.0;                     /**< Max z for peak search */
+  pba->ridder_shoot_log10Lambda_min = 10.0;         /**< Lower bracket: 10^10 eV */
+  pba->ridder_shoot_log10Lambda_max = 16.0;         /**< Upper bracket: 10^16 eV */
+  pba->ridder_shoot_tol_f = 1e-3;                   /**< Tolerance: 0.1% on f_EDE */
+  pba->ridder_c_slow = 1.0;                         /**< Full slow-roll ICs by default */
+  pba->ridder_force_damping = 1.0;                  /**< Physical force by default (1.0=physical, 0.0=frozen, 1e-8=soft) */
+  pba->ridder_freeze_phi = _FALSE_;                 /**< Field evolves by default (FALSE=evolve, TRUE=freeze) */
 
   /**
    * Deafult to input_read_parameters_heating

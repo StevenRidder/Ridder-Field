@@ -1,0 +1,108 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl, mPk
+      l_max_scalars: 2508
+      lensing: 'yes'
+      gauge: newtonian
+      recombination: recfast
+      use_ridder: 'yes'
+      ridder_model_type: v3_canon
+      ridder_use_shelf: 'yes'
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.4
+      ridder_n_EDE: 3.0
+      ridder_use_tail: 'yes'
+      ridder_Lambda_tail_eV: 0.0012
+      ridder_alpha_tail: 1.0
+      ridder_theta_T_center: 0.0
+      ridder_n_tail: 1.0
+      ridder_f_eV: 5.0e+26
+      theta_i_ridder: 2.4
+      ridder_c_slow: 0.0
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+    latex: \log(10^{10} A_s)
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.003
+    latex: n_s
+  H0:
+    prior:
+      dist: norm
+      loc: 69.8
+      scale: 1.7
+    ref: 69.8
+    proposal: 1.5
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.021
+      max: 0.024
+    ref: 0.02237
+    proposal: 0.00015
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    proposal: 0.001
+    latex: \Omega_c h^2
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.005
+    latex: \tau_{reio}
+  ridder_Lambda_EDE_eV:
+    prior:
+      min: 0.05
+      max: 0.8
+    ref: 0.321
+    proposal: 0.03
+    latex: \Lambda_{EDE}
+  ridder_a_c:
+    prior:
+      min: 0.00025
+      max: 0.0008
+    ref: 0.00048
+    proposal: 4.0e-05
+    latex: a_c
+  ridder_sigma_lna:
+    prior:
+      min: 0.6
+      max: 1.8
+    ref: 1.0
+    proposal: 0.08
+    latex: \sigma_{\ln a}
+sampler:
+  mcmc:
+    max_samples: 500
+    Rminus1_stop: 0.2
+    burn_in: 20
+    drag: true
+    measure_speeds: true
+    proposal_scale: 2.4
+output: v3_trgb_theta_chain1

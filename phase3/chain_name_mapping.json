@@ -1,0 +1,190 @@
+{
+  "_description": "Master mapping from internal chain names to paper-facing names",
+  "_paper_models": {
+    "LCDM": "Standard Model (ΛCDM)",
+    "CPL": "Late-Time Dynamical (w₀wₐCDM)", 
+    "EDE": "Geometric EDE (ϕCDM)"
+  },
+  "_worlds": {
+    "baseline": "Planck + BAO only (inverse distance ladder)",
+    "shoes": "Planck + BAO + SH0ES (full dataset)",
+    "trgb": "Planck + BAO + TRGB"
+  },
+  
+  "tier9_chains": {
+    "tier9_lcdm_baseline": {
+      "paper_name": "ΛCDM",
+      "paper_name_full": "Standard Model (ΛCDM)",
+      "model_type": "LCDM",
+      "world": "BASE",
+      "world_full": "Planck + BAO only",
+      "k": 6
+    },
+    "tier9_lcdm_shoes": {
+      "paper_name": "ΛCDM",
+      "paper_name_full": "Standard Model (ΛCDM)",
+      "model_type": "LCDM",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 6
+    },
+    "tier9_lcdm_trgb": {
+      "paper_name": "ΛCDM",
+      "paper_name_full": "Standard Model (ΛCDM)",
+      "model_type": "LCDM",
+      "world": "TRGB",
+      "world_full": "Planck + BAO + TRGB",
+      "k": 6
+    },
+    "tier9_phenom_baseline": {
+      "paper_name": "w₀wₐCDM",
+      "paper_name_full": "Late-Time Dynamical (w₀wₐCDM)",
+      "model_type": "CPL",
+      "world": "BASE",
+      "world_full": "Planck + BAO only",
+      "k": 8
+    },
+    "tier9_phenom_shoes": {
+      "paper_name": "w₀wₐCDM",
+      "paper_name_full": "Late-Time Dynamical (w₀wₐCDM)",
+      "model_type": "CPL",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 8
+    },
+    "tier9_v3_baseline": {
+      "paper_name": "ϕCDM (k=9)",
+      "paper_name_full": "Geometric EDE (ϕCDM)",
+      "model_type": "EDE",
+      "world": "BASE",
+      "world_full": "Planck + BAO only",
+      "k": 9,
+      "variant": "standard"
+    },
+    "tier9_v3_baseline_minimal": {
+      "paper_name": "ϕCDM (k=8)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Minimal",
+      "model_type": "EDE",
+      "world": "BASE",
+      "world_full": "Planck + BAO only",
+      "k": 8,
+      "variant": "minimal"
+    },
+    "tier9_v3_shoes_minimal": {
+      "paper_name": "ϕCDM (k=8)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Minimal",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 8,
+      "variant": "minimal"
+    },
+    "tier9_v3_shoes_wide_ocdm": {
+      "paper_name": "ϕCDM (wide ωcdm)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Wide ωcdm prior",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 9,
+      "variant": "wide_ocdm"
+    },
+    "tier9_v3_shoes_fresh": {
+      "paper_name": "ϕCDM (variant)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Fresh start",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 9,
+      "variant": "fresh"
+    },
+    "tier9_v3_shoes_optimal": {
+      "paper_name": "ϕCDM (optimized)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Optimized",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 9,
+      "variant": "optimal"
+    },
+    "tier9_v3_shoes_verywide_ocdm": {
+      "paper_name": "ϕCDM (very wide ωcdm)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — Very wide ωcdm prior",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 9,
+      "variant": "verywide_ocdm"
+    },
+    "tier9_v3_trgb": {
+      "paper_name": "ϕCDM (k=9)",
+      "paper_name_full": "Geometric EDE (ϕCDM)",
+      "model_type": "EDE",
+      "world": "TRGB",
+      "world_full": "Planck + BAO + TRGB",
+      "k": 9,
+      "variant": "standard"
+    }
+  },
+
+  "tier10_chains": {
+    "tier10_lcdm_ref_shoes": {
+      "paper_name": "ΛCDM",
+      "paper_name_full": "Standard Model (ΛCDM)",
+      "model_type": "LCDM",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 6,
+      "n_chains": 4
+    },
+    "tier10_cpl_control_shoes": {
+      "paper_name": "w₀wₐCDM",
+      "paper_name_full": "Late-Time Dynamical (w₀wₐCDM)",
+      "model_type": "CPL",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 8,
+      "n_chains": 2
+    },
+    "tier10_ede_minimal_gold_shoes": {
+      "paper_name": "ϕCDM",
+      "paper_name_full": "Geometric EDE (ϕCDM)",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 8,
+      "variant": "minimal_gold",
+      "n_chains": 4
+    },
+    "tier10_ede_highH0_shoes": {
+      "paper_name": "ϕCDM (high H₀)",
+      "paper_name_full": "Geometric EDE (ϕCDM) — High H₀ stress test",
+      "model_type": "EDE",
+      "world": "SHOES",
+      "world_full": "Planck + BAO + SH0ES",
+      "k": 8,
+      "variant": "highH0_stress",
+      "n_chains": 1
+    },
+    "tier10_ede_minimal_base": {
+      "paper_name": "ϕCDM",
+      "paper_name_full": "Geometric EDE (ϕCDM)",
+      "model_type": "EDE",
+      "world": "BASE",
+      "world_full": "Planck + BAO only",
+      "k": 8,
+      "variant": "minimal",
+      "n_chains": 1
+    },
+    "tier10_ede_minimal_trgb": {
+      "paper_name": "ϕCDM",
+      "paper_name_full": "Geometric EDE (ϕCDM)",
+      "model_type": "EDE",
+      "world": "TRGB",
+      "world_full": "Planck + BAO + TRGB",
+      "k": 8,
+      "variant": "minimal",
+      "n_chains": 1
+    }
+  }
+}
+

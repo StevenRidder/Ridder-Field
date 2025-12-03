@@ -1,0 +1,55 @@
+# V3 OPTIMIZED Chain 3 - Starting near best fit
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl
+      l_max_scalars: 2508
+      lensing: "yes"
+      gauge: newtonian
+      recombination: recfast
+      use_ridder: "yes"
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 2.0e26
+      theta_i_ridder: 2.8
+      ridder_c_slow: 0.0
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  sh0es_h0:
+    external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2'
+    requires:
+      H0:
+        latex: H_0
+
+params:
+  logA: {prior: {min: 2.5, max: 3.5}, ref: 3.044, proposal: 0.01, drop: true}
+  A_s: {value: 'lambda logA: 1e-10*np.exp(logA)'}
+  n_s: {prior: {min: 0.92, max: 1.00}, ref: 0.9649, proposal: 0.004}
+  H0: {prior: {min: 60, max: 80}, ref: 70.6, proposal: 0.5}
+  omega_b: {prior: {min: 0.019, max: 0.025}, ref: 0.02237, proposal: 0.0002}
+  omega_cdm: {prior: {min: 0.10, max: 0.14}, ref: 0.1200, proposal: 0.002}
+  tau_reio: {prior: {min: 0.01, max: 0.10}, ref: 0.0544, proposal: 0.006}
+  ridder_Lambda_EDE_eV: {prior: {min: 0.35, max: 0.55}, ref: 0.44864714, proposal: 0.02}
+  ridder_a_c: {prior: {min: 2.8e-4, max: 3.4e-4}, ref: 0.00031238429, proposal: 1.0e-5}
+  ridder_sigma_lna: {prior: {min: 0.45, max: 0.70}, ref: 0.5490714, proposal: 0.03}
+  rs_drag: {latex: r_s}
+
+sampler:
+  mcmc:
+    max_samples: 2000
+    Rminus1_stop: 0.03
+    burn_in: 0
+    drag: false
+    proposal_scale: 2.0
+
+output: chains/tier4_v3_shoes_opt3
+debug: false
+resume: false

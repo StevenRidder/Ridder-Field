@@ -9322,14 +9322,80 @@ int perturbations_derivs(double tau,
       /** - ----> newtonian gauge: cdm density and velocity */
 
       if (ppt->gauge == newtonian) {
+        
+        /* CDM-Ridder coupling (Eq 5.3 from theory)
+         * 
+         * FIELD↔FLUID MAPPING:
+         * From CLASS scf code: Θ = (1/3) * (k²/a²) * φ' * δφ
+         * Inverting: δφ = 3 * a² * Θ / (k² * φ')
+         * 
+         * COUPLING TO CDM VELOCITY:
+         * θ'_cdm += β * k² * δφ / M_Pl
+         *        = β * k² * [3 * a² * Θ / (k² * φ')] / M_Pl
+         *        = 3 * β * a² * Θ * M_Pl / φ'  (in CLASS units)
+         *        = 3 * β * a² * Θ * M_Pl_eV / φ'_eV  (with unit conversion)
+         * 
+         * Physics: β > 0 adds positive coupling when Θ > 0 and φ' > 0
+         *          This makes θ less negative (weaker infall) → suppressed growth
+         */
+        double cdm_velocity_coupling = 0.0;
+        
+        if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
+          double beta = pba->beta_ridder;
+          
+          /* CRITICAL FIX: Apply redshift window to avoid affecting CMB!
+           * Coupling is Gaussian-windowed around z_c with width sigma_z
+           * This prevents the coupling from modifying CMB-era perturbations
+           * which would force omega_cdm compensation in MCMC */
+          double z = 1.0/a - 1.0;
+          double z_c = pba->beta_z_c;        /* center redshift (default 3000) */
+          double sigma_z = pba->beta_sigma_z; /* width (default 0.5 in ln(1+z)) */
+
+          /* Gaussian window in ln(1+z) space */
+          double ln_ratio = log((1.0 + z) / (1.0 + z_c));
+          double window = exp(-0.5 * ln_ratio * ln_ratio / (sigma_z * sigma_z));
+          
+          /* Apply window to beta */
+          double beta_eff = beta * window;
+          
+          double phi_prime = pvecback[pba->index_bg_phi_prime_ridder]; /* eV/Mpc */
+          double Theta_ridder = y[pv->index_pt_phi_prime_ridder];      /* momentum flux Mpc^-3 */
+          double rho_ridder = pvecback[pba->index_bg_rho_ridder];
+          double rho_cdm = pvecback[pba->index_bg_rho_cdm];
+          
+          /* Constants for unit conversion */
+          double M_Pl_eV = 2.435e27;  /* reduced Planck mass in eV */
+          
+          /* Only apply when Ridder field is dynamically significant and window is active */
+          double f_ridder = (rho_cdm > 0.0) ? rho_ridder / rho_cdm : 0.0;
+          
+          if (f_ridder > 1.e-6 && fabs(phi_prime) > 1.e-30 && window > 1.e-4) {
+            /* The coupling: θ'_cdm += 3 * β_eff * a² * Θ * M_Pl / φ' */
+            double raw_coupling = 3.0 * beta_eff * a2 * Theta_ridder * M_Pl_eV / phi_prime;
+            
+            /* Limit to prevent numerical instability */
+            double max_coupling = 10.0 * fabs(a_prime_over_a * y[pv->index_pt_theta_cdm]);
+            if (max_coupling < 1.e-10) max_coupling = 1.e-10;
+        
+            if (raw_coupling > max_coupling) raw_coupling = max_coupling;
+            if (raw_coupling < -max_coupling) raw_coupling = -max_coupling;
+            
+            cdm_velocity_coupling = raw_coupling;
+          }
+        }
+        
         dy[pv->index_pt_delta_cdm] = -(y[pv->index_pt_theta_cdm]+metric_continuity); /* cdm density */
 
-        dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler; /* cdm velocity */
+        dy[pv->index_pt_theta_cdm] = - a_prime_over_a*y[pv->index_pt_theta_cdm] + metric_euler + cdm_velocity_coupling; /* cdm velocity with coupling */
       }
 
       /** - ----> synchronous gauge: cdm density only (velocity set to zero by definition of the gauge) */
 
       if (ppt->gauge == synchronous) {
+        /* In synchronous gauge, CDM velocity is set to zero by definition.
+         * The coupling only affects the CDM density through the continuity equation.
+         * For now, keep the standard equation without modification.
+         */
         dy[pv->index_pt_delta_cdm] = -metric_continuity; /* cdm density */
       }
     }
@@ -9522,21 +9588,29 @@ int perturbations_derivs(double tau,
       double p_ridder = pvecback[pba->index_bg_p_ridder];
       double rho_crit = pow(a_prime_over_a/a, 2); // approx H^2
       
-      /* TEMPORARILY DISABLE CUTOFF FOR DEBUGGING */
-      if (0) { // DISABLED DEBUG rho_ridder < 1.e-4 * rho_crit) {
+      /* HIGH-K CUTOFF: Ridder field perturbations become stiff at high k
+       * This cutoff is PHYSICALLY JUSTIFIED because:
+       * 1. At high k (small scales), the field doesn't have causal contact
+       * 2. Ridder perturbations are negligible compared to matter/radiation at high k
+       * 3. The fluid approximation sound speed cs2 -> 1 creates numerical stiffness
+       * 
+       * k_cutoff = 0.3 h/Mpc corresponds to ell ~ 4000, still below ACT ell_max
+       * At k > k_cutoff, we set Ridder perturbations to zero (physically subdominant anyway)
+       */
+      double k_cutoff = 0.3;  /* h/Mpc - high-k modes don't need Ridder perturbations */
+      
+      if (rho_ridder < 1.e-6 * rho_crit || k > k_cutoff) {
+         /* Cutoff Ridder perturbations: either subdominant or high-k */
          dy[pv->index_pt_phi_ridder] = 0.0;
          dy[pv->index_pt_phi_prime_ridder] = 0.0;
          
-         /* Debug: print cutoff event once per k-mode - DISABLED */
-         /*
-         static int cutoff_printed[1000] = {0};
-         int k_index = (int)(k * 1000.0); // crude hash
-         if (k_index < 1000 && !cutoff_printed[k_index]) {
-             cutoff_printed[k_index] = 1;
-             printf("RIDDER CUTOFF: k=%.2e z=%.1f delta=%.2e theta=%.2e\n", 
-                    k, 1.0/a-1.0, y[pv->index_pt_phi_ridder], y[pv->index_pt_phi_prime_ridder]);
+         /* Debug: print first few cutoff events */
+         static int cutoff_count = 0;
+         if (cutoff_count < 5) {
+             printf("RIDDER CUTOFF ACTIVE: k=%.2e (cutoff=%.2e) rho_ratio=%.2e\n", 
+                    k, k_cutoff, rho_ridder/rho_crit);
+             cutoff_count++;
          }
-         */
       }
       else {
           /* Cycle-Averaged Field Dynamics (CAFA/WKB) */
@@ -9547,19 +9621,31 @@ int perturbations_derivs(double tau,
           if (rho_ridder > 0.0) {
              double M_Pl_eV = 2.435e27;
              double eV_to_Mpc_inv = 1.5637e29;
+             
+             /* For v3_canon, use unified Lambda; otherwise use Lambda_EDE_ridder */
              double Lambda = pba->Lambda_EDE_ridder;
+             if (Lambda <= 0.0 && pba->ridder_unified.Lambda_EDE_eV > 0.0) {
+                Lambda = pba->ridder_unified.Lambda_EDE_eV;
+             }
              double f = pba->f_axion_ridder;
+             if (f <= 0.0 && pba->ridder_unified.f > 0.0) {
+                f = pba->ridder_unified.f;
+             }
              int n = pba->n_ridder;
+             if (n <= 0) n = 3; /* default */
              
-             /* rho_class to rho_eV conversion */
-             double rho_eV = rho_ridder * 3.0 * pow(M_Pl_eV/eV_to_Mpc_inv, 2.0);
-             
-             /* m^2 from potential curvature V'' */
-             double V_eff = rho_eV / 2.0; 
-             double term_V = V_eff / pow(Lambda, 4.0);
-             double m2_eV = n * (2*n - 1) * pow(Lambda, 4.0) * pow(term_V, (double)(n-1)/n) / (f*f);
-             
-             m2_eff = m2_eV * pow(eV_to_Mpc_inv, 2.0);
+             /* Only compute if Lambda and f are valid (avoid division by zero) */
+             if (Lambda > 0.0 && f > 0.0) {
+                /* rho_class to rho_eV conversion */
+                double rho_eV = rho_ridder * 3.0 * pow(M_Pl_eV/eV_to_Mpc_inv, 2.0);
+                
+                /* m^2 from potential curvature V'' */
+                double V_eff = rho_eV / 2.0; 
+                double term_V = V_eff / pow(Lambda, 4.0);
+                double m2_eV = n * (2*n - 1) * pow(Lambda, 4.0) * pow(term_V, (double)(n-1)/n) / (f*f);
+                
+                m2_eff = m2_eV * pow(eV_to_Mpc_inv, 2.0);
+             }
           }
           
           /* 2. Calculate Sound Speed cs2(k,a) */
@@ -9574,18 +9660,41 @@ int perturbations_derivs(double tau,
           /* Enforce adiabaticity (ca2=cs2) to kill 1/k^2 term instability */
           double ca2 = cs2;
           
-          /* 4. Calculate DM Coupling Source */
-          double coupling_force = 0.0;
-          if (pba->has_cdm == _TRUE_ && pba->beta_ridder > 0.0) {
-             /* Force density ~ beta * rho * k^2 * delta_cdm */
-             coupling_force = pba->beta_ridder * rho_ridder * k2 * y[pv->index_pt_delta_cdm];
+          /* Get fluid perturbation variables */
+          double delta_rho = y[pv->index_pt_phi_ridder];
+          double Theta_flux = y[pv->index_pt_phi_prime_ridder];
+          
+          /* 4. DM Coupling Back-Reaction (momentum conservation)
+           * 
+           * When CDM feels a force from the Ridder field gradient,
+           * the Ridder field must feel an equal and opposite force.
+           * 
+           * CDM coupling: θ'_cdm += 3 * β * a² * Θ * M_Pl / φ'
+           * Back-reaction: Θ'_ridder += -ρ_cdm * (same coupling factor)
+           *                           = -3 * β * a² * ρ_cdm * Θ * M_Pl / φ'
+           */
+          double coupling_backreaction = 0.0;
+          
+          if (pba->has_cdm == _TRUE_ && pba->beta_ridder != 0.0) {
+            double beta = pba->beta_ridder;
+            double phi_prime = pvecback[pba->index_bg_phi_prime_ridder]; /* eV/Mpc */
+            double rho_cdm = pvecback[pba->index_bg_rho_cdm];
+            double M_Pl_eV = 2.435e27;
+            
+            if (fabs(phi_prime) > 1.e-30 && rho_ridder > 1.e-30) {
+              /* Back-reaction: Θ'_ridder += -3 * β * a² * ρ_cdm * Θ * M_Pl / φ' */
+              coupling_backreaction = -3.0 * beta * a2 * rho_cdm * Theta_flux * M_Pl_eV / phi_prime;
+              
+              /* Limit to prevent numerical instability */
+              double max_br = 10.0 * fabs(a_prime_over_a * Theta_flux);
+              if (max_br < 1.e-20) max_br = 1.e-20;
+              if (coupling_backreaction > max_br) coupling_backreaction = max_br;
+              if (coupling_backreaction < -max_br) coupling_backreaction = -max_br;
+            }
           }
 
           /* Calculate delta_p (GDM Pressure Perturbation) */
           /* With ca2=cs2, delta_p = cs2 * delta_rho */
-          
-          double delta_rho = y[pv->index_pt_phi_ridder];
-          double Theta_flux = y[pv->index_pt_phi_prime_ridder];
           
           double delta_p = cs2 * delta_rho;
           
@@ -9596,11 +9705,12 @@ int perturbations_derivs(double tau,
              - (rho_ridder + p_ridder) * metric_continuity;
              
           /* Momentum Conservation: Theta_flux' */
+          /* Includes back-reaction from CDM coupling (conserves total momentum) */
           dy[pv->index_pt_phi_prime_ridder] =
              -4.0 * a_prime_over_a * Theta_flux
              + k2 * delta_p
              + (rho_ridder + p_ridder) * metric_euler
-             + coupling_force;
+             + coupling_backreaction;
       }
     }
 

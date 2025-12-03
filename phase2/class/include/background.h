@@ -18,6 +18,80 @@ enum equation_of_state {CLP,EDE};
 
 enum scf_potential_type {scf_pot_axion, scf_pot_ridder};
 
+/** Ridder field model types: simple_ede (v2) or unified (inflation + EDE + late DE) */
+
+enum ridder_model_type {
+  ridder_model_simple_ede = 0,  /**< V2 model: simple EDE with optional CDM coupling */
+  ridder_model_unified = 1,     /**< Unified model: plateau + shelf + tail (v2 legacy) */
+  ridder_model_v3_canon = 2     /**< V3 canonical: frozen potential shape per spec */
+};
+
+/** Ridder unified potential parameters */
+
+struct ridder_unified_params {
+  int model_type;        /**< ridder_model_simple_ede or ridder_model_unified */
+  
+  /* ===== V3 CANONICAL POTENTIAL ===== */
+  
+  /* Global field normalization */
+  double f_eV;           /**< field normalization: theta = phi / f [eV] */
+  
+  /* EDE bump: Lambda_EDE^4 * S(a) * B(theta)
+   * S(a) = exp[-(ln a - ln a_c)^2 / (2*sigma_lna^2)]
+   * B(theta) = [1 - cos(theta - theta_E)]^n_EDE
+   */
+  double Lambda_EDE_eV;  /**< EDE energy scale [eV] */
+  double a_c;            /**< Central scale factor for EDE (z_c = 1/a_c - 1) */
+  double sigma_lna;      /**< Temporal width in log(a) space */
+  double theta_E_center; /**< EDE field center in theta space */
+  double n_EDE;          /**< EDE power (default 3.0) */
+  
+  /* LEGACY v2 EDE fields */
+  double sigma_E;        /**< LEGACY: old Gaussian width in theta */
+  
+  /* Tail: Lambda_tail^4 * [1 + alpha_tail * (1 - cos(theta - theta_T_center))^n_tail] */
+  double Lambda_tail_eV; /**< Tail energy scale [eV] */
+  double alpha_tail;     /**< Tail modulation strength (default 1.0) */
+  double theta_T_center; /**< Tail center in theta space (default 0.0) */
+  double n_tail;         /**< Tail power (default 1.0) */
+  
+  /* Optional constant floor */
+  double Lambda_floor_eV;/**< Constant floor Lambda_floor^4 (default 0.0) */
+  
+  /* Component toggles */
+  short use_EDE;         /**< include EDE bump */
+  short use_tail;        /**< include tail term */
+  short use_floor;       /**< include constant floor */
+  
+  /* ===== LEGACY v2 FIELDS (for backwards compat) ===== */
+  double f;              /**< LEGACY: old decay constant */
+  short use_shelf;       /**< LEGACY: old shelf toggle */
+  short use_plateau;     /**< LEGACY: old plateau toggle */
+  double Lambda_EDE;     /**< LEGACY: old EDE amplitude */
+  double m_axion;        /**< LEGACY: axion mass */
+  double f_axion;        /**< LEGACY: axion decay constant in M_Pl units */
+  double m_eV;           /**< LEGACY: computed m in eV */
+  double theta_EDE_low;  /**< LEGACY: old shelf window */
+  double theta_EDE_high; /**< LEGACY: old shelf window */
+  double sigma_theta_EDE;/**< LEGACY: old shelf window */
+  
+  /* Shooting mechanism for EDE calibration */
+  short use_shooting_EDE;        /**< Enable shooting to hit f_EDE target */
+  double f_EDE_target;           /**< Target EDE fraction (e.g., 0.13) */
+  double z_c_target;             /**< Target redshift for EDE peak */
+  double shooting_m_min;         /**< Min m_axion for bisection (H0 units) */
+  double shooting_m_max;         /**< Max m_axion for bisection (H0 units) */
+  double shooting_tolerance;     /**< Tolerance on f_EDE (default 1e-3) */
+  int shooting_max_iterations;   /**< Max bisection iterations (default 50) */
+  
+  /* Inflationary plateau */
+  double Lambda_inf;     /**< inflation energy scale [eV] */
+  double theta0_inf;     /**< scale where plateau rises */
+  double theta_inf_on;   /**< where plateau window turns on */
+  double sigma_inf;      /**< plateau window smoothing width */
+  double n_inf;          /**< extra shape parameter if needed */
+};
+
 /** list of possible parametrizations of the varying fundamental constants */
 
 enum varconst_dependence {varconst_none,varconst_instant};
@@ -123,19 +197,40 @@ struct background
   double phi_prime_ini_scf;/**< \f$ d\phi(t_0)/d\tau \f$: scalar field initial derivative wrt conformal time */
   int scf_parameters_size; /**< size of scf_parameters */
   
-  /** Ridder field parameters */
+  /** Ridder field parameters (v2 simple_ede - kept for backwards compatibility) */
   double LambdaEDE4;         /**< Ridder field EDE energy scale ^ 4 [Mpl^4] */
   double Lambda_EDE_ridder;  /**< Ridder field EDE energy scale [eV] */
   double f_axion_ridder;     /**< Ridder field decay constant [eV] */
   double theta_i_ridder;     /**< Ridder field initial misalignment angle [radians] */
   double beta_ridder;        /**< Ridder field DM coupling strength (dimensionless) */
+  double beta_z_c;           /**< Beta coupling peak redshift (tunable for optimization) */
+  double beta_sigma_z;       /**< Beta coupling width in log(1+z) (tunable for optimization) */
   int n_ridder;              /**< Ridder field potential power (usually 3) */
+  int ridder_perturbation_mode; /**< 0=scalar (KG), 1=fluid (effective w, cs2) */
   short has_ridder;          /**< whether Ridder field is active */
+  
+  /** Ridder unified potential parameters (inflation + EDE + late DE) */
+  struct ridder_unified_params ridder_unified; /**< Unified potential configuration */
   short ridder_fluid_mode;   /**< whether Ridder field is in fluid approximation mode */
   double z_osc_ridder;       /**< Oscillation redshift (computed) */
   double w_eff_ridder;       /**< Effective equation of state */
   double rho_ridder_at_switch; /**< Energy density at switching */
   double a_osc_ridder;       /**< Scale factor at switching */
+  
+  /** Ridder EDE shooting controls */
+  short use_ridder_shooting;       /**< Enable Lambda shooting (_TRUE_/_FALSE_) */
+  double ridder_fEDE_target;       /**< Target peak f_EDE (e.g., 0.10 for 10%) */
+  double ridder_zc_min;            /**< Min z for peak search (default 500) */
+  double ridder_zc_max;            /**< Max z for peak search (default 10000) */
+  double ridder_shoot_log10Lambda_min; /**< Lower log10 Lambda bracket (default 10.0) */
+  double ridder_shoot_log10Lambda_max; /**< Upper log10 Lambda bracket (default 16.0) */
+  double ridder_shoot_tol_f;       /**< Tolerance on f_EDE target (default 1e-3) */
+  double ridder_c_slow;            /**< Slow-roll coefficient for phi'_ini (default 1.0) */
+  
+  /** Ridder debug/control knobs (for testing integration without stiffness) */
+  double ridder_force_damping;     /**< Damping factor for dV term: 1.0=physical, 0.0=frozen, 1e-8=soft (default 1.0) */
+  short ridder_freeze_phi;         /**< If TRUE, keep phi and phi' constant (for structure tests) */
+  
   double varconst_alpha; /**< finestructure constant for varying fundamental constants */
   double varconst_me; /**< electron mass for varying fundamental constants */
   enum varconst_dependence varconst_dep; /**< dependence of the varying fundamental constants as a function of time */
@@ -597,18 +692,45 @@ extern "C" {
   /** Ridder field potential and its derivatives **/
   double V_ridder(
                   struct background *pba,
-                  double phi
+                  double phi,
+                  double a
                   );
 
   double dV_ridder(
                    struct background *pba,
-                   double phi
+                   double phi,
+                   double a
                    );
 
   double ddV_ridder(
                     struct background *pba,
-                    double phi
+                    double phi,
+                    double a
                );
+
+  /** V3 canonical unified potential **/
+  double ridder_V_v3_theta(
+                           double theta, double a, 
+                           const struct ridder_unified_params *rp
+                           );
+
+  double ridder_dV_v3_dtheta(
+                             double theta, double a, 
+                             const struct ridder_unified_params *rp
+                             );
+
+  double ridder_d2V_v3_dtheta2(
+                               double theta, double a, 
+                               const struct ridder_unified_params *rp
+                               );
+
+  int ridder_potential_v3(
+                          double phi, double a, 
+                          double *V, 
+                          double *dV_dphi, 
+                          double *d2V_dphi2,
+                          const struct ridder_unified_params *rp
+                          );
 
 #ifdef __cplusplus
 }

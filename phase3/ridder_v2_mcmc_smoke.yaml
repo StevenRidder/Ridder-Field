@@ -1,0 +1,91 @@
+# Ridder V2 MCMC Smoke Test
+# Goal: 500 steps to check stability and pipeline integrity
+
+theory:
+  classy:
+    # Use system classy - no path needed
+    extra_args:
+      output: tCl, mPk, lCl
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      
+      # --- RIDDER SETTINGS ---
+      # Ridder field is enabled via Lambda_EDE_ridder > 0
+      # No SCF settings needed
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+
+params:
+  # --- Standard LCDM ---
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: 'A_s'
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 69.0
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+  omega_cdm:
+    prior: {min: 0.1, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: 0.054
+    proposal: 0.004
+
+  # --- RIDDER FIELD PARAMETERS ---
+  
+  # 1. Energy Scale (EDE amplitude)
+  Lambda_EDE_ridder:
+    prior: {min: 0.1, max: 2.0}
+    ref: 1.0
+    proposal: 0.1
+    latex: \Lambda_{EDE}
+
+  # 2. Initial Misalignment Angle
+  theta_i_ridder:
+    prior: {min: 0.1, max: 3.0}
+    ref: 2.0
+    proposal: 0.1
+    latex: \theta_i
+
+  # 3. DM Coupling Strength
+  beta_ridder:
+    prior: {min: 0.0, max: 0.1}
+    ref: 0.02
+    proposal: 0.005
+    latex: \beta
+
+  # 4. Fixed Parameters
+  f_axion_ridder:
+    value: 1.0  # Decay constant in eV
+  n_ridder:
+    value: 3    # Potential power
+
+sampler:
+  mcmc:
+    max_samples: 500
+    Rminus1_stop: 0.1
+    measure_speeds: true
+    drag: true
+
+output: chains/ridder_v2_smoke
+debug: true

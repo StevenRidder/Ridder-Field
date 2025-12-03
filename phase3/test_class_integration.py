@@ -11,8 +11,14 @@ This script tests if:
 import sys
 import os
 
-# Add CLASS Python path
-class_dir = "/Users/steveridder/Git/Ridder Field/phase2/class"
+# Detect environment and set CLASS path
+home = os.path.expanduser("~")
+if os.path.exists(os.path.join(home, "Ridder-Field")):
+    # VM environment
+    class_dir = os.path.join(home, "Ridder-Field/phase2/class")
+else:
+    # Mac environment  
+    class_dir = "/Users/steveridder/Git/Ridder-Field/phase2/class"
 sys.path.insert(0, os.path.join(class_dir, "python"))
 
 def test_class_interface():
@@ -69,22 +75,32 @@ def test_ridder_parameters():
         import classy
         cosmo = classy.Class()
         
-        # Try to set Ridder field parameters
+        # Try to set Ridder field parameters (v3_canon mode)
         params = {
             'h': 0.6736,
             'omega_b': 0.02237,
             'omega_cdm': 0.1200,
-            'Omega_Lambda': 0.6911,
             'A_s': 2.1e-9,
             'n_s': 0.9665,
             'tau_reio': 0.0561,
-            'Lambda_EDE_ridder': 0.5,
-            'f_axion_ridder': 1e16,
-            'theta_i_ridder': 0.1,
-            'beta_ridder': 0.0,
-            'n_ridder': 3,
             'output': 'tCl',
             'l_max_scalars': 10,
+            'gauge': 'newtonian',
+            # Ridder v3 parameters
+            'use_ridder': 'yes',
+            'ridder_model_type': 'v3_canon',
+            'ridder_use_shelf': 'yes',
+            'ridder_use_tail': 'no',
+            'ridder_f_eV': 2.0e26,
+            'theta_i_ridder': 2.8,
+            'ridder_Lambda_EDE_eV': 0.5,
+            'ridder_a_c': 0.0003,
+            'ridder_sigma_lna': 0.6,
+            'ridder_c_slow': 0.0,
+            'ridder_sigma_E': 0.4,
+            'beta_ridder': 0.0,
+            'beta_z_c': 3000.0,
+            'beta_sigma_z': 0.5,
         }
         
         cosmo.set(params)
@@ -129,7 +145,7 @@ def test_cobaya_integration():
         print("  Run: pip3 install --user cobaya")
         return False
     
-    # Create minimal info dict
+    # Create minimal info dict with v3 Ridder parameters
     info = {
         'theory': {
             'classy': {
@@ -137,6 +153,18 @@ def test_cobaya_integration():
                 'extra_args': {
                     'output': 'tCl',
                     'l_max_scalars': 10,
+                    'gauge': 'newtonian',
+                    'use_ridder': 'yes',
+                    'ridder_model_type': 'v3_canon',
+                    'ridder_use_shelf': 'yes',
+                    'ridder_use_tail': 'no',
+                    'ridder_f_eV': 2.0e26,
+                    'theta_i_ridder': 2.8,
+                    'ridder_c_slow': 0.0,
+                    'ridder_sigma_E': 0.4,
+                    'beta_ridder': 0.0,
+                    'beta_z_c': 3000.0,
+                    'beta_sigma_z': 0.5,
                 }
             }
         },
@@ -147,11 +175,9 @@ def test_cobaya_integration():
             'logA': 3.044,
             'n_s': 0.9665,
             'tau_reio': 0.0561,
-            'Lambda_EDE_ridder': 0.0,  # Start with EDE disabled
-            'f_axion_ridder': 1e16,
-            'theta_i_ridder': 0.1,
-            'beta_ridder': 0.0,
-            'n_ridder': 3,
+            'ridder_Lambda_EDE_eV': 0.5,
+            'ridder_a_c': 0.0003,
+            'ridder_sigma_lna': 0.6,
         },
         'likelihood': {
             'one': None  # Dummy likelihood for testing

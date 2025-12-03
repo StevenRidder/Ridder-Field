@@ -1,0 +1,196 @@
+# ------------------------------------------------------------------------
+# TIER 7: V4 "GEOMETRIC RESOLUTION" CHAIN (SH0ES WORLD)
+# ------------------------------------------------------------------------
+#
+# PURPOSE
+#   V4 is a data-driven evolution of V3. It keeps the same Ridder field
+#   potential and likelihoods as tier4_v3_shoes, but:
+#     - Anchors the late-time tail to what CPL fits prefer (w ≈ -1)
+#     - Pushes all H0 movement into an early-time EDE "shelf"
+#     - Hard-locks the dark coupling beta = 0 (pure geometry)
+#     - Floats the tail exponent n_EDE so the sampler can find the shape
+#
+# DESIGN GOAL
+#   Use the *same* monodromy/EDE potential as V3, but:
+#     - Free the tail exponent ridder_n_EDE (was fixed at 3)
+#     - Free the initial angle theta_i_ridder (was fixed at 2.8)
+#     - Widen the prior on the shelf parameters around V3 best-fit region
+#     - Let the sampler find the EDE configuration that best balances:
+#         • raising H0 toward 70-71
+#         • minimizing Δχ² relative to ΛCDM + SH0ES
+#
+# WHAT CHANGES VS V3
+#   1) ridder_n_EDE: fixed → sampled (2 ≤ n ≤ 6)
+#   2) theta_i_ridder: fixed → sampled (-3.14 to 3.14)
+#   3) beta_ridder: fixed at 0 (no fifth force, pure geometry)
+#   4) Wider priors on ridder_a_c and ridder_sigma_lna
+#   5) More samples and tighter convergence
+#
+# INTERPRETATION
+#   - CPL chains show late-time tail wants w ≈ -1
+#   - V3 chains show early EDE can push H0 toward 70-71 but pays χ² cost
+#   - V4 is the "data-first" pass: same physics, freed shape knobs
+# ------------------------------------------------------------------------
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: 'yes'
+      gauge: newtonian
+      recombination: recfast
+      use_ridder: 'yes'
+      ridder_model_type: v3_canon
+      ridder_use_shelf: 'yes'
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.4
+      # ridder_n_EDE: NOW SAMPLED (removed from here)
+      ridder_use_tail: 'no'
+      ridder_f_eV: 2.0e26
+      # theta_i_ridder: NOW SAMPLED (removed from here)
+      ridder_c_slow: 0.0
+      # beta_ridder fixed to 0 in params below
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  sh0es_h0:
+    external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2'
+    requires:
+      H0:
+        latex: H_0
+
+params:
+  # --------------------------------------------------------------------
+  # 1. STANDARD COSMOLOGY
+  # --------------------------------------------------------------------
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 70.5
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0002
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    proposal: 0.002
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.006
+
+  # --------------------------------------------------------------------
+  # 2. RIDDER FIELD – V4 SETTINGS
+  # --------------------------------------------------------------------
+  
+  # 2.1 Amplitude of EDE injection (widened prior)
+  ridder_Lambda_EDE_eV:
+    prior:
+      min: 0.2
+      max: 1.0
+    ref: 0.5
+    proposal: 0.05
+    latex: \Lambda_{EDE}
+
+  # 2.2 Timing of EDE shelf (widened prior)
+  ridder_a_c:
+    prior:
+      min: 0.00015
+      max: 0.0005
+    ref: 0.0003
+    proposal: 2.0e-05
+    latex: a_c
+
+  # 2.3 Width of EDE shelf (widened prior)
+  ridder_sigma_lna:
+    prior:
+      min: 0.3
+      max: 1.2
+    ref: 0.6
+    proposal: 0.1
+    latex: \sigma_{\ln a}
+
+  # 2.4 Tail exponent: NOW SAMPLED (was fixed at 3 in V3)
+  ridder_n_EDE:
+    prior:
+      min: 2.0
+      max: 6.0
+    ref: 3.0
+    proposal: 0.2
+    latex: n_{EDE}
+
+  # 2.5 Initial field angle: NOW SAMPLED (was fixed at 2.8 in V3)
+  theta_i_ridder:
+    prior:
+      min: 0.5
+      max: 3.14
+    ref: 2.8
+    proposal: 0.2
+    latex: \theta_i
+
+  # 2.6 Coupling: FIXED AT ZERO (pure geometry)
+  # This encodes the result of the β sweep: nonzero β is ruled out
+  beta_ridder:
+    value: 0.0
+    latex: \beta_{Ridder}
+
+  # --------------------------------------------------------------------
+  # 3. DERIVED PARAMETERS
+  # --------------------------------------------------------------------
+  rs_drag:
+    latex: r_s
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  Omega_m:
+    latex: \Omega_m
+    derived: true
+  S8:
+    latex: S_8
+    derived: 'lambda sigma8, Omega_m: sigma8 * (Omega_m/0.3)**0.5'
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 0
+    drag: false
+    proposal_scale: 2.0
+
+output: chains/tier7_v4_shoes
+debug: false
+resume: false
+

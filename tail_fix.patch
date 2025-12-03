@@ -1,0 +1,102 @@
+--- ridder_unified_potential.c.orig
++++ ridder_unified_potential.c
+@@ -1,7 +1,7 @@
+ /**
+  * @file ridder_unified_potential.c
+  * 
+- * Unified Ridder Potential: One field from inflation to heat death
++ * Unified Ridder Potential: One field from inflation to dark energy
+  * 
+  * V(θ) = V_tail(θ) + V_shelf(θ) + V_plateau(θ)
+  * 
+@@ -39,17 +39,22 @@ static inline double sech_squared(double x) {
+ }
+
+ /* ========================================================================= */
+-/* Tail Term: V_tail = Lambda_tail^4 * [1 - cos(theta)]^n_tail              */
++/* Tail Term: V_tail = Lambda_tail^4 * [1 + alpha * (1-cos(theta))^n_tail]  */
++/*                                                                           */
++/* FIXED: Now has non-zero floor at theta=0 so it can act as dark energy!   */
+ /* ========================================================================= */
+
+ /**
+  * Tail potential (late-time dark energy)
++ * 
++ * V_tail = Λ⁴ * [1 + α * (1 - cos(θ))^n]
++ * 
++ * At θ=0: V = Λ⁴ (cosmological constant floor)
++ * At θ≠0: V > Λ⁴ (dynamics)
+  */
+ double V_tail_theta(double theta, const struct ridder_unified_params *rp) {
+   if (rp->use_tail == _FALSE_) return 0.0;
+   
+-  double one_minus_cos = 1.0 - cos(theta);
+-  if (one_minus_cos <= 0.0) return 0.0;
+-  
+   double Lambda4 = pow(rp->Lambda_tail, 4.0);
++  double alpha = rp->alpha_tail;  /* Modulation strength, default 1.0 */
++  double one_minus_cos = 1.0 - cos(theta);
+   double base = pow(one_minus_cos, rp->n_tail);
+   
+-  return Lambda4 * base;
++  /* Floor + modulation: V = Λ⁴[1 + α(1-cos)^n] */
++  return Lambda4 * (1.0 + alpha * base);
+ }
+
+ /**
+@@ -58,12 +63,14 @@ double V_tail_theta(double theta, const struct ridder_unified_params *rp) {
+ double dV_tail_dtheta(double theta, const struct ridder_unified_params *rp) {
+   if (rp->use_tail == _FALSE_) return 0.0;
+   
+-  double one_minus_cos = 1.0 - cos(theta);
+-  if (one_minus_cos <= 0.0) return 0.0;
+-  
+   double Lambda4 = pow(rp->Lambda_tail, 4.0);
++  double alpha = rp->alpha_tail;
+   double n = rp->n_tail;
++  double one_minus_cos = 1.0 - cos(theta);
+   
+-  /* d/dtheta [1 - cos]^n = n [1 - cos]^(n-1) * sin(theta) */
+-  double factor = n * pow(one_minus_cos, n - 1.0) * sin(theta);
++  /* d/dtheta [1 + α(1-cos)^n] = α * n * (1-cos)^(n-1) * sin(θ) */
++  double factor = 0.0;
++  if (n > 0.0 && one_minus_cos > 0.0) {
++    factor = alpha * n * pow(one_minus_cos, n - 1.0) * sin(theta);
++  }
+   
+   return Lambda4 * factor;
+ }
+@@ -74,19 +81,21 @@ double dV_tail_dtheta(double theta, const struct ridder_unified_params *rp) {
+ double d2V_tail_dtheta2(double theta, const struct ridder_unified_params *rp) {
+   if (rp->use_tail == _FALSE_) return 0.0;
+   
+-  double one_minus_cos = 1.0 - cos(theta);
++  double Lambda4 = pow(rp->Lambda_tail, 4.0);
++  double alpha = rp->alpha_tail;
++  double n = rp->n_tail;
+   double s = sin(theta);
+   double c = cos(theta);
++  double one_minus_cos = 1.0 - cos(theta);
+   
+-  if (one_minus_cos <= 0.0) return 0.0;
+-  
+-  double Lambda4 = pow(rp->Lambda_tail, 4.0);
+-  double n = rp->n_tail;
+-  
+-  /* Product rule on n [1 - cos]^(n-1) * sin(theta) */
+-  double term1 = (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
+-  double term2 = pow(one_minus_cos, n - 1.0) * c;
+-  
+-  double d2 = n * (term1 + term2);
++  /* d²/dθ² [1 + α(1-cos)^n] = α * n * d/dθ[(1-cos)^(n-1) * sin] */
++  double d2 = 0.0;
++  if (n > 0.0 && one_minus_cos > 0.0) {
++    /* Product rule: (n-1)(1-cos)^(n-2)*sin² + (1-cos)^(n-1)*cos */
++    double term1 = (n - 1.0) * pow(one_minus_cos, n - 2.0) * s * s;
++    double term2 = pow(one_minus_cos, n - 1.0) * c;
++    d2 = alpha * n * (term1 + term2);
++  }
+   
+   return Lambda4 * d2;
+ }
+

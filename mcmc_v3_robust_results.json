@@ -1,0 +1,22 @@
+{
+  "lcdm": {
+    "bg_file": "/Users/steveridder/Git/Ridder-Field/phase2/class/output/v3_run03_background.dat",
+    "cl_file": "/Users/steveridder/Git/Ridder-Field/phase2/class/output/v3_run03_cl.dat"
+  },
+  "branches": [
+    {
+      "preset": "v3_trgb_branch",
+      "H0": 67.36000000000743,
+      "f_EDE": 0.0,
+      "cmb_rms": 0.0,
+      "bao_max": 0.0
+    },
+    {
+      "preset": "v3_shoes_branch",
+      "H0": 67.36000000000743,
+      "f_EDE": 0.0,
+      "cmb_rms": 0.0,
+      "bao_max": 0.0
+    }
+  ]
+}

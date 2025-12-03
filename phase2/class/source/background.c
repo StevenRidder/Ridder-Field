@@ -114,6 +114,23 @@
 
 #include "background.h"
 
+/* Forward declarations for unified potential functions */
+double V_unified_theta(double theta, const struct ridder_unified_params *rp);
+double dV_unified_dtheta(double theta, const struct ridder_unified_params *rp);
+double d2V_unified_dtheta2(double theta, const struct ridder_unified_params *rp);
+
+/* Forward declarations for Ridder shooting mechanism */
+static int background_clear_tables(struct background *pba);
+static int background_init_trial(struct precision *ppr, struct background *pba);
+static int background_ridder_measure_peak(struct background *pba,
+                                           double z_min, double z_max,
+                                           double *f_peak, double *z_at_peak);
+static int background_shoot_Lambda(struct precision *ppr, struct background *pba,
+                                    double log10_Lambda_min, double log10_Lambda_max,
+                                    double z_min, double z_max,
+                                    double tol_f);
+int ridder_shoot_for_fEDE(struct precision *ppr, struct background *pba, ErrorMsg error_message);
+
 /**
  * Background quantities at given redshift z.
  *
@@ -437,9 +454,32 @@ int background_functions(
   /* cdm */
   if (pba->has_cdm == _TRUE_) {
     pvecback[pba->index_bg_rho_cdm] = pba->Omega0_cdm * pow(pba->H0,2) / pow(a,3);
-    rho_tot += pvecback[pba->index_bg_rho_cdm];
+    
+    /* Apply Ridder-CDM coupling: modifies effective CDM density */
+    double rho_cdm_eff = pvecback[pba->index_bg_rho_cdm];
+    if (pba->has_ridder == _TRUE_ && pba->beta_ridder != 0.0) {
+      double z = 1.0/a - 1.0;
+      double z_c = pba->beta_z_c;
+      double sigma_z = pba->beta_sigma_z;
+      double log_z = log(1.0 + z);
+      double log_z_c = log(1.0 + z_c);
+      
+      /* Coupling modifies effective CDM density near EDE epoch */
+      double coupling_factor = 1.0 + pba->beta_ridder * exp(-0.5 * pow((log_z - log_z_c) / sigma_z, 2.0));
+      rho_cdm_eff *= coupling_factor;
+      
+      /* Debug coupling effect */
+      static int cdm_coupling_counter = 0;
+      cdm_coupling_counter++;
+      if (cdm_coupling_counter < 10 || (z > 1000.0 && z < 10000.0 && cdm_coupling_counter % 1000 == 0)) {
+        printf("CDM_COUPLING: z=%.1f coupling=%.6f rho_cdm_base=%.3e rho_cdm_eff=%.3e\n",
+               z, coupling_factor, pvecback[pba->index_bg_rho_cdm], rho_cdm_eff);
+      }
+    }
+    
+    rho_tot += rho_cdm_eff;  /* Use effective density for H(z) */
     p_tot += 0.;
-    rho_m += pvecback[pba->index_bg_rho_cdm];
+    rho_m += pvecback[pba->index_bg_rho_cdm];  /* Keep original for matter */
   }
 
   /* idm */
@@ -494,31 +534,43 @@ int background_functions(
     double phi_ridder = pvecback_B[pba->index_bi_phi_ridder];
     double phi_prime_ridder = pvecback_B[pba->index_bi_phi_prime_ridder];
     double V_ridder_val, dV_ridder_val, ddV_ridder_val;
-    double H_local;
     
     pvecback[pba->index_bg_phi_ridder] = phi_ridder;
     pvecback[pba->index_bg_phi_prime_ridder] = phi_prime_ridder;
     
-    V_ridder_val = V_ridder(pba, phi_ridder);
-    dV_ridder_val = dV_ridder(pba, phi_ridder);
-    ddV_ridder_val = ddV_ridder(pba, phi_ridder);
+    V_ridder_val = V_ridder(pba, phi_ridder, a);
+    dV_ridder_val = dV_ridder(pba, phi_ridder, a);
+    ddV_ridder_val = ddV_ridder(pba, phi_ridder, a);
     
-    /* Unit Conversion Constants */
-    double M_Pl_eV = 2.435e27;
-    double eV_to_Mpc_inv = 1.5637e29; // 1 eV = 1.56e29 Mpc^-1
-    double factor_V = eV_to_Mpc_inv * eV_to_Mpc_inv; // Convert eV^2 to Mpc^-2
-    double factor_rho = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV); // Convert energy density to H^2 units
+    /* DEBUG: Print raw potential value */
+    static int v_counter = 0;
+    v_counter++;
+    if (v_counter % 5000 == 0) {
+      printf("V_RIDDER_RAW: a=%.2e phi=%.2e V_eV4=%.2e Lambda=%.2e f=%.2e n=%d\n",
+             a, phi_ridder, V_ridder_val, pba->Lambda_EDE_ridder, pba->f_axion_ridder, pba->n_ridder);
+    }
     
-    /* Check for switching surface: when 3H < m_eff, switch to fluid approximation */
-    /* This prevents numerical issues when field oscillates rapidly */
-    if (pba->ridder_fluid_mode == _FALSE_ && pba->Lambda_EDE_ridder > 0.0) {
-      /* Get current H (will be computed later, but we need a preliminary estimate) */
-      /* For now, use a simple check based on V'' */
-      if (ddV_ridder_val > 0.0) {
-        /* m_eff^2 = V'' in CLASS units (need to check unit conversion) */
-        /* For switching condition, we'll check in background_derivs where H is available */
-        /* This is just a placeholder - actual check happens in background_derivs() */
-      }
+    /* Unit Conversion Constants:
+     * V_ridder returns eV⁴, CLASS needs ρ in Mpc⁻²
+     * φ is in eV, φ' is in eV/Mpc
+     * Correct conversion chain:
+     *   - V (eV⁴) → V * (eV→Mpc⁻¹)² gives eV²·Mpc⁻²
+     *   - Then divide by (3 M_Pl²) in eV² to get ρ_CLASS in Mpc⁻²
+     * 
+     * Conversion factor: 1 eV ≈ 5.07×10⁶ m⁻¹, 1 Mpc ≈ 3.09×10²² m
+     * Therefore: 1 eV ≈ 1.56×10²⁹ Mpc⁻¹
+     */
+    double M_Pl_eV       = 2.435e27;       // Reduced Planck mass in eV
+    double eV_to_Mpc_inv = 1.56e29;        // 1 eV ≈ 1.56×10²⁹ Mpc⁻¹ (CORRECT!)
+    double factor_V      = (eV_to_Mpc_inv * eV_to_Mpc_inv) / (3.0 * M_Pl_eV * M_Pl_eV);  // eV⁴ → Mpc⁻²
+    double factor_rho    = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV);  // eV²·Mpc⁻² → Mpc⁻²
+    
+    /* Debug: Check ddV value to understand switching logic */
+    static int ddV_debug_counter = 0;
+    ddV_debug_counter++;
+    if (ddV_debug_counter < 10 || ddV_debug_counter % 10000 == 0) {
+      printf("DDV_CHECK: call#=%d a=%.2e phi=%.2e ddV_eV2=%.2e (positive=%d)\n",
+             ddV_debug_counter, a, phi_ridder, ddV_ridder_val, (ddV_ridder_val > 0.0));
     }
     
     /* Energy density: ρ_φ = (1/2) * (φ')^2 / a^2 + V(φ) */
@@ -529,18 +581,32 @@ int background_functions(
     
     if (pba->ridder_fluid_mode == _FALSE_) {
       /* Standard scalar field evolution */
-      double rho_eV2_Mpc_inv2 = (0.5 * phi_prime_ridder*phi_prime_ridder/(a*a) + V_ridder_val * factor_V);
-      double p_eV2_Mpc_inv2 = (0.5 * phi_prime_ridder*phi_prime_ridder/(a*a) - V_ridder_val * factor_V);
+      /* φ is in eV, φ' is in eV/Mpc (derivative w.r.t. conformal time τ in Mpc) */
+      /* Kinetic: (1/2)(φ'/a)² in (eV/Mpc)² = eV²·Mpc⁻² */
+      /* Potential: V(φ) in eV⁴ */
       
-      pvecback[pba->index_bg_rho_ridder] = rho_eV2_Mpc_inv2 * factor_rho;
-      pvecback[pba->index_bg_p_ridder] = p_eV2_Mpc_inv2 * factor_rho;
+      double kinetic_eV2_Mpc_inv2 = 0.5 * phi_prime_ridder * phi_prime_ridder / (a * a);  // eV²·Mpc⁻²
+      double potential_eV4        = V_ridder_val;                                         // eV⁴
       
-      /* Debug: print calculation details */
+      /* Convert to CLASS units (Mpc⁻²):
+       *   - Kinetic already in eV²·Mpc⁻², divide by (3 M_Pl²) in eV² → Mpc⁻²
+       *   - Potential in eV⁴, multiply by factor_V → Mpc⁻²
+       */
+      double kinetic_Mpc_inv2   = kinetic_eV2_Mpc_inv2 * factor_rho;   // Mpc⁻²
+      double potential_Mpc_inv2 = potential_eV4 * factor_V;            // Mpc⁻²
+      
+      pvecback[pba->index_bg_rho_ridder] = kinetic_Mpc_inv2 + potential_Mpc_inv2;
+      pvecback[pba->index_bg_p_ridder]   = kinetic_Mpc_inv2 - potential_Mpc_inv2;
+      
+      /* Debug: print calculation details (gated for performance) */
+      if (pba->background_verbose > 2) {
       static int bg_func_counter = 0;
       bg_func_counter++;
       if (bg_func_counter % 5000 == 0) {
-          printf("BG_FUNC: a=%.2e V=%.2e factor_V=%.2e factor_rho=%.2e rho_eV2=%.2e rho_final=%.2e\n",
-                 a, V_ridder_val, factor_V, factor_rho, rho_eV2_Mpc_inv2, pvecback[pba->index_bg_rho_ridder]);
+          printf("BG_FUNC: a=%.2e V_eV4=%.2e KE_eV2Mpc2=%.2e V_Mpc2=%.2e KE_Mpc2=%.2e rho=%.2e\n",
+                 a, potential_eV4, kinetic_eV2_Mpc_inv2, potential_Mpc_inv2, kinetic_Mpc_inv2, 
+                 pvecback[pba->index_bg_rho_ridder]);
+        }
       }
     } else {
       /* Fluid approximation: use integrated energy density and w_eff */
@@ -557,6 +623,14 @@ int background_functions(
     if (pvecback[pba->index_bg_rho_ridder] < 0.0) {
       class_stop(pba->error_message, 
         "Negative Ridder field energy density detected at a=%e. Unphysical evolution.", a);
+    }
+    
+    /* DEBUG: Check if rho_ridder is being added */
+    static int rho_add_counter = 0;
+    rho_add_counter++;
+    if (rho_add_counter % 5000 == 0 || (a > 9.9e-4 && a < 1.01e-3)) {
+      printf("RIDDER DEBUG (adding to rho_tot): a=%e, rho_ridder=%e, rho_tot_before=%e, rho_tot_after=%e\n",
+             a, pvecback[pba->index_bg_rho_ridder], rho_tot, rho_tot + pvecback[pba->index_bg_rho_ridder]);
     }
     
     rho_tot += pvecback[pba->index_bg_rho_ridder];
@@ -887,6 +961,9 @@ int background_init(
                     ) {
 
   /** Summary: */
+  
+  printf("BACKGROUND_INIT ENTERED: Lambda=%.2e\n", pba->Lambda_EDE_ridder);
+  printf("DEBUG BG_INIT ENTRY: model_type=%d\n", pba->ridder_unified.model_type);
 
   /** - write class version */
   if (pba->background_verbose > 0) {
@@ -906,14 +983,87 @@ int background_init(
              pba->error_message);
 
   /** - check that input parameters make sense and write additional information about them */
+  printf("BG_INIT: entering background_checks\n");
   class_call(background_checks(ppr,pba),
              pba->error_message,
              pba->error_message);
+  printf("BG_INIT: background_checks OK\n");
 
+  /** - Report Ridder freeze flag from input */
+  if (pba->has_ridder == _TRUE_) {
+    printf("RIDDER FREEZE FLAG (from input): ridder_freeze_phi = %d, force_damping = %.3e\n",                                                                   
+           pba->ridder_freeze_phi, pba->ridder_force_damping);
+  }
+
+  /** - Unified EDE shooting: adjust m_axion to hit target f_EDE (AxiCLASS-style) */
+  printf("DEBUG SHOOTING CHECK: has_ridder=%d, model_type=%d (unified=%d), use_shooting_EDE=%d\n",
+         pba->has_ridder, pba->ridder_unified.model_type, ridder_model_unified,
+         pba->ridder_unified.use_shooting_EDE);
+  
+  if (pba->has_ridder == _TRUE_ &&
+      pba->ridder_unified.model_type == ridder_model_unified &&
+      pba->ridder_unified.use_shooting_EDE == _TRUE_) {
+    
+    printf("\n🎯 UNIFIED EDE SHOOTING ENABLED\n");
+    
+    class_call(ridder_shoot_for_fEDE(ppr, pba, pba->error_message),
+               pba->error_message,
+               pba->error_message);
+    
+    /* Shooting complete: m_axion is calibrated.
+       Now run final background_solve with calibrated parameters. */
+    printf("BG_INIT: Running final background_solve with calibrated m_axion...\n");
+    class_call(background_solve(ppr,pba),
+               pba->error_message,
+               pba->error_message);
+    printf("BG_INIT: Final background_solve OK\n");
+  }
+  /** - Ridder EDE shooting (old v2 system): adjust Lambda_EDE_ridder to hit target f_EDE */
+  else if (pba->has_ridder == _TRUE_ && pba->use_ridder_shooting == _TRUE_) {
+    
+    if (pba->background_verbose > 0) {
+      printf("\nRidder Lambda shooting enabled: target f_EDE = %.4f\n", pba->ridder_fEDE_target);
+    }
+    
+    printf("BG_INIT: entering background_shoot_Lambda\n");
+    class_call(background_shoot_Lambda(ppr, pba,
+                                       pba->ridder_shoot_log10Lambda_min,
+                                       pba->ridder_shoot_log10Lambda_max,
+                                       pba->ridder_zc_min,
+                                       pba->ridder_zc_max,
+                                       pba->ridder_shoot_tol_f),
+               pba->error_message,
+               pba->error_message);
+    printf("BG_INIT: background_shoot_Lambda OK\n");
+    
+    /* Shooting complete: Lambda is tuned, tables are filled.
+       Skip the standard background_solve below. */
+  }
+  else {
   /** - integrate the background over log(a), allocate and fill the background table */
+  printf("BG_INIT: entering background_solve\n");
   class_call(background_solve(ppr,pba),
              pba->error_message,
              pba->error_message);
+  printf("BG_INIT: background_solve OK\n");
+  }
+
+  /** - Report final Ridder fraction for calibration/shooting */
+  if (pba->has_ridder == _TRUE_) {
+    /* Get today's values (last entry in background table) */
+    int last_index = pba->bt_size - 1;
+    double rho_ridder_today = pba->background_table[last_index * pba->bg_size + pba->index_bg_rho_ridder];
+    double rho_tot_today = pba->background_table[last_index * pba->bg_size + pba->index_bg_rho_tot];
+    double f_ridder_today = (rho_tot_today > 0.0) ? rho_ridder_today / rho_tot_today : 0.0;
+    
+    printf("\n========================================\n");
+    printf("RIDDER FINAL STATE (a=1, z=0):\n");
+    printf("  rho_ridder = %.6e Mpc^-2\n", rho_ridder_today);
+    printf("  rho_tot    = %.6e Mpc^-2\n", rho_tot_today);
+    printf("  f_ridder   = %.6e (fraction of total)\n", f_ridder_today);
+    printf("  Omega_ridder = %.6f (if f ~ Omega_Lambda)\n", f_ridder_today);
+    printf("========================================\n\n");
+  }
 
   /** - find and store a few derived parameters at radiation-matter equality */
   class_call(background_find_equality(ppr,pba),
@@ -1104,8 +1254,46 @@ int background_indices(
   if (pba->varconst_dep != varconst_none)
     pba->has_varconst = _TRUE_;
     
+  /* Ridder field can be enabled by EITHER v2 Lambda OR unified mode */
   if (pba->Lambda_EDE_ridder > 0.0)
     pba->has_ridder = _TRUE_;
+  if (pba->ridder_unified.model_type == ridder_model_unified)
+    pba->has_ridder = _TRUE_;
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon)
+    pba->has_ridder = _TRUE_;
+  
+  printf("DEBUG AFTER CHECKS: model_type=%d has_ridder=%d\n", pba->ridder_unified.model_type, pba->has_ridder);
+  /* Initialize m_eV and f_eV for AxiCLASS-style unified potential */
+  if (pba->has_ridder == _TRUE_ && pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Physical constants */
+    double M_Pl_eV = 2.435e27;  /* Reduced Planck mass in eV */
+    
+    /* Compute m and f in eV from dimensionless parameters */
+    pba->ridder_unified.m_eV = pba->ridder_unified.m_axion * pba->H0 * 1e5 / _c_;  /* m_axion * H0 in eV */
+    if (pba->ridder_unified.f_axion > 0.0) pba->ridder_unified.f = pba->ridder_unified.f_axion * M_Pl_eV;  /* only if f_axion set */
+    
+    printf("RIDDER UNIFIED INIT: m_axion=%e (H0 units), f_axion=%e (M_Pl units)\n",
+           pba->ridder_unified.m_axion, pba->ridder_unified.f_axion);
+    printf("  -> m_eV=%e eV, f_eV=%e eV\n",
+           pba->ridder_unified.m_eV, pba->ridder_unified.f);
+    printf("  -> V_scale = m²f² ~ %e eV^4\n",
+           pba->ridder_unified.m_eV * pba->ridder_unified.m_eV * 
+           pba->ridder_unified.f * pba->ridder_unified.f_eV);
+  }
+  
+  /* Debug knobs for Ridder field are initialized by input.c with defaults:
+   *   ridder_force_damping = 1.0 (physical evolution)
+   *   ridder_freeze_phi = 0 (FALSE, field evolves)
+   * These can be overridden in .ini files for testing.
+   */
+  
+  /* DEBUG: Print Ridder parameters */
+  printf("RIDDER DEBUG (background_init): has_ridder=%d, Lambda_EDE_ridder=%e, f_axion_ridder=%e, theta_i_ridder=%e, beta_ridder=%e\n",                         
+         pba->has_ridder,
+         pba->Lambda_EDE_ridder,
+         pba->f_axion_ridder,
+         pba->theta_i_ridder,
+         pba->beta_ridder);
 
   /** - initialize all indices */
 
@@ -1954,6 +2142,218 @@ int background_checks(
 }
 
 /**
+ * ============================================================================
+ * RIDDER FIELD SHOOTING MECHANISM
+ * ============================================================================
+ * Calibrate m_axion to hit target f_EDE at specified redshift z_c
+ */
+
+/**
+ * Find peak f_ridder in redshift range by scanning background table
+ */
+static int ridder_get_f_peak(
+  struct background *pba,
+  double z_min,
+  double z_max,
+  double *f_peak_out,
+  double *z_peak_out
+) {
+  int i_sample, n_samples;
+  double z, log_z_min, log_z_max, log_z;
+  double f_ridder, f_max;
+  double z_at_max;
+  double *pvecback;
+  int last_index;
+  
+  /* Allocate background vector */
+  pvecback = malloc(pba->bg_size * sizeof(double));
+  if (pvecback == NULL) return _FAILURE_;
+  
+  f_max = 0.0;
+  z_at_max = 0.0;
+  n_samples = 500;  /* Sample 500 points */
+  
+  log_z_min = log(z_min);
+  log_z_max = log(z_max);
+  
+  /* Scan redshift range logarithmically */
+  for (i_sample = 0; i_sample < n_samples; i_sample++) {
+    log_z = log_z_min + (log_z_max - log_z_min) * i_sample / (n_samples - 1.0);
+    z = exp(log_z);
+    
+    /* Get background at this z */
+    if (background_at_z(pba, z, normal_info, inter_normal, &last_index, pvecback) == _SUCCESS_) {
+      /* Extract f_ridder */
+      if (pba->has_ridder == _TRUE_) {
+        double rho_ridder = pvecback[pba->index_bg_rho_ridder];
+        double rho_tot = pvecback[pba->index_bg_rho_tot];
+        
+        /* DEBUG: print values at a few sample points */
+        if (i_sample % 100 == 0) {
+          printf("  [f_peak scan] z=%.3e rho_ridder=%.3e rho_tot=%.3e f=%.6e\n",
+                 z, rho_ridder, rho_tot, rho_ridder/rho_tot);
+        }
+        
+        f_ridder = rho_ridder / rho_tot;
+        
+        if (f_ridder > f_max) {
+          f_max = f_ridder;
+          z_at_max = z;
+        }
+      }
+    }
+  }
+  
+  free(pvecback);
+  
+  *f_peak_out = f_max;
+  *z_peak_out = z_at_max;
+  
+  return _SUCCESS_;
+}
+
+/**
+ * Bisection shooting solver for m_axion
+ */
+int ridder_shoot_for_fEDE(
+  struct precision *ppr,
+  struct background *pba,
+  ErrorMsg errmsg
+) {
+  double m_low, m_high, m_mid;
+  double f_low, f_high, f_mid;
+  double z_peak_low, z_peak_high, z_peak_mid;
+  int iteration;
+  double f_target, z_target;
+  double tolerance;
+  int max_iter;
+  double z_search_min, z_search_max;
+  double M_Pl_eV;
+  
+  /* Extract shooting parameters */
+  f_target = pba->ridder_unified.f_EDE_target;
+  z_target = pba->ridder_unified.z_c_target;
+  m_low = pba->ridder_unified.shooting_m_min;
+  m_high = pba->ridder_unified.shooting_m_max;
+  tolerance = pba->ridder_unified.shooting_tolerance;
+  max_iter = pba->ridder_unified.shooting_max_iterations;
+  
+  /* Search range for peak: factor of 10 around z_target */
+  z_search_min = 1.0;  /* Search full range */
+  z_search_max = 1.0e15;  /* To very high z */
+  
+  M_Pl_eV = 2.435e27;
+  
+  printf("\n");
+  printf("================================================================================\n");
+  printf("RIDDER SHOOTING: Calibrating m_axion for f_EDE = %.4f at z_c ~ %.1f\n", f_target, z_target);
+  printf("================================================================================\n");
+  printf("  Bracket: m_axion ∈ [%.2e, %.2e] H0\n", m_low, m_high);
+  printf("  Fixed: f_axion = %.4f M_Pl, theta_i = %.4f, n = %.1f\n",
+         pba->ridder_unified.f_axion, pba->theta_i_ridder, pba->ridder_unified.n_EDE);
+  printf("  Tolerance: %.2e, Max iterations: %d\n", tolerance, max_iter);
+  printf("--------------------------------------------------------------------------------\n");
+  
+  /* === Evaluate lower bracket === */
+  printf("\n[BRACKET] Testing m_low = %.4e H0...\n", m_low);
+  pba->ridder_unified.m_axion = m_low;
+  pba->ridder_unified.m_eV = m_low * pba->H0 * 1e5 / _c_;
+  if (pba->ridder_unified.f_axion > 0.0) pba->ridder_unified.f = pba->ridder_unified.f_axion * M_Pl_eV;
+  
+  if (background_solve(ppr, pba) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: background_solve failed for m_low = %.2e H0", m_low);
+  }
+  if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_low, &z_peak_low) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: could not find f_peak for m_low");
+  }
+  printf("          → f_EDE = %.5f at z_peak = %.1f\n", f_low, z_peak_low);
+  
+  /* === Evaluate upper bracket === */
+  printf("\n[BRACKET] Testing m_high = %.4e H0...\n", m_high);
+  pba->ridder_unified.m_axion = m_high;
+  pba->ridder_unified.m_eV = m_high * pba->H0 * 1e5 / _c_;
+  
+  if (background_solve(ppr, pba) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: background_solve failed for m_high = %.2e H0", m_high);
+  }
+  if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_high, &z_peak_high) == _FAILURE_) {
+    class_stop(errmsg, "Shooting failed: could not find f_peak for m_high");
+  }
+  printf("          → f_EDE = %.5f at z_peak = %.1f\n", f_high, z_peak_high);
+  
+  /* === Check bracketing === */
+  if ((f_low - f_target) * (f_high - f_target) > 0.0) {
+    class_stop(errmsg,
+               "\nShooting failed: target f_EDE = %.4f NOT bracketed by [%.4f, %.4f].\n"
+               "Adjust ridder_shooting_m_min/max in .ini file.",
+               f_target, f_low, f_high);
+  }
+  
+  printf("\n✓ Target is bracketed. Starting bisection...\n");
+  printf("--------------------------------------------------------------------------------\n");
+  
+  /* === Bisection loop === */
+  for (iteration = 1; iteration <= max_iter; iteration++) {
+    /* Midpoint */
+    m_mid = 0.5 * (m_low + m_high);
+    
+    /* Evaluate at midpoint */
+    pba->ridder_unified.m_axion = m_mid;
+    pba->ridder_unified.m_eV = m_mid * pba->H0 * 1e5 / _c_;
+    
+    if (background_solve(ppr, pba) == _FAILURE_) {
+      class_stop(errmsg, "Shooting iteration %d failed: background_solve failed for m = %.2e H0",
+                 iteration, m_mid);
+    }
+    if (ridder_get_f_peak(pba, z_search_min, z_search_max, &f_mid, &z_peak_mid) == _FAILURE_) {
+      class_stop(errmsg, "Shooting iteration %d failed: could not find f_peak", iteration);
+    }
+    
+    printf("[%2d]  m = %.5e H0  →  f_EDE = %.6f  (Δ = %+.2e)  at  z = %.1f\n",
+           iteration, m_mid, f_mid, f_mid - f_target, z_peak_mid);
+    
+    /* Check convergence */
+    if (fabs(f_mid - f_target) < tolerance) {
+      printf("--------------------------------------------------------------------------------\n");
+      printf("✅ SHOOTING CONVERGED in %d iterations!\n", iteration);
+      printf("================================================================================\n");
+      printf("  Final m_axion = %.6e H0\n", m_mid);
+      printf("  Final m_eV    = %.6e eV\n", pba->ridder_unified.m_eV);
+      printf("  Final f_EDE   = %.6f  (target: %.6f, error: %.2e)\n",
+             f_mid, f_target, f_mid - f_target);
+      printf("  Peak at z     = %.2f  (target: %.2f)\n", z_peak_mid, z_target);
+      printf("================================================================================\n\n");
+      
+      /* m_axion and m_eV already set */
+      return _SUCCESS_;
+    }
+    
+    /* Update bracket */
+    if ((f_mid - f_target) * (f_low - f_target) < 0.0) {
+      /* Root between m_low and m_mid */
+      m_high = m_mid;
+      f_high = f_mid;
+      z_peak_high = z_peak_mid;
+    } else {
+      /* Root between m_mid and m_high */
+      m_low = m_mid;
+      f_low = f_mid;
+      z_peak_low = z_peak_mid;
+    }
+  }
+  
+  /* Max iterations reached without convergence */
+  printf("--------------------------------------------------------------------------------\n");
+  class_stop(errmsg,
+             "\n❌ SHOOTING DID NOT CONVERGE after %d iterations.\n"
+             "   Final error: Δf = %.2e (tolerance: %.2e)\n"
+             "   Try increasing ridder_shooting_max_iterations or widening tolerance.",
+             max_iter, f_mid - f_target, tolerance);
+  
+  return _FAILURE_;
+}
+
+/**
  *  This function integrates the background over time, allocates and
  *  fills the background table
  *
@@ -1967,6 +2367,9 @@ int background_solve(
                      ) {
 
   /** Summary: */
+  
+  printf("BACKGROUND_SOLVE ENTERED: has_ridder=%d Lambda=%.2e\n",
+         pba->has_ridder, pba->Lambda_EDE_ridder);
 
   /** - define local variables */
 
@@ -2053,6 +2456,8 @@ int background_solve(
   }
 
   /** - perform the integration */
+  printf("ABOUT TO INTEGRATE: bi_size=%d has_ridder=%d Lambda=%.2e\n",
+         pba->bi_size, pba->has_ridder, pba->Lambda_EDE_ridder);
   class_call(generic_evolver(background_derivs,
                              loga_ini,
                              loga_final,
@@ -2386,54 +2791,143 @@ int background_initial_conditions(
   }
 
   /** - Fix initial value of Ridder field \f$ \phi, \phi' \f$
-   * Field starts displaced on EDE shelf, Hubble-frozen at early times
+   *  Field starts displaced on EDE shelf; optionally use slow-roll ICs.
    */
   if (pba->has_ridder == _TRUE_) {
     
-    /* Initial field value: displaced by angle theta_i */
-    double phi_ridder_ini = pba->f_axion_ridder * pba->theta_i_ridder;
+    /* 1. Initial field value: displaced by angle theta_i */
+    /* BUG FIX #15: Branch on model type for correct f parameter */
+    double f_for_ic;
+    if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+      f_for_ic = pba->ridder_unified.f_eV;  /* V3: use f_eV */
+    } else if (pba->ridder_unified.model_type == ridder_model_unified) {
+      f_for_ic = pba->ridder_unified.f;  /* V2 unified: use f */
+    } else {
+      f_for_ic = pba->f_axion_ridder;  /* V2 simple: use f_axion */
+    }
     
-    /* Initial velocity: field is Hubble-frozen at early times, so φ' ≈ 0 */
-    double phi_prime_ridder_ini = 0.0;
+    double phi_ridder_ini = f_for_ic * pba->theta_i_ridder;
+    
+    printf("RIDDER IC DEBUG: model_type=%d f_for_ic=%e theta_i=%e phi_ini=%e\n",
+           pba->ridder_unified.model_type, f_for_ic, pba->theta_i_ridder, phi_ridder_ini);
     
     pvecback_integration[pba->index_bi_phi_ridder] = phi_ridder_ini;
-    pvecback_integration[pba->index_bi_phi_prime_ridder] = phi_prime_ridder_ini;
-    
-    /* Initial energy density (potential dominated) */
-    /* Units: needs to be in Mpc^-2 */
-    /* V_ridder returns eV^4 */
-    double V_ini_val = V_ridder(pba, phi_ridder_ini);
-    double M_Pl_eV = 2.435e27;
-    double eV_to_Mpc_inv = 1.5637e29; // 1 eV = 1.56e29 Mpc^-1
-    double factor_V = eV_to_Mpc_inv * eV_to_Mpc_inv; // Convert eV^2 to Mpc^-2
-    double factor_rho = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV); // Convert energy density to H^2 units
-    
-    
-    double rho_ini_eV2_Mpc_inv2 = V_ini_val * factor_V;
-    
-    // rho_ridder not integrated separately
-    
-    double rho_ini = rho_ini_eV2_Mpc_inv2 * factor_rho;
-    
-    class_test(!isfinite(pvecback_integration[pba->index_bi_phi_ridder]) ||
-               !isfinite(pvecback_integration[pba->index_bi_phi_prime_ridder]),
+
+    /* 2. Temporarily set phi' = 0 so we can call background_functions to get H */
+    pvecback_integration[pba->index_bi_phi_prime_ridder] = 0.0;
+
+    class_test(!isfinite(pvecback_integration[pba->index_bi_phi_ridder]),
                pba->error_message,
-               "initial phi_ridder = %e phi_prime_ridder = %e -> check initial conditions",
-               pvecback_integration[pba->index_bi_phi_ridder],
-               pvecback_integration[pba->index_bi_phi_prime_ridder]);
+               "initial phi_ridder = %e -> check initial conditions",
+               pvecback_integration[pba->index_bi_phi_ridder]);
   }
 
-  /* Infer pvecback from pvecback_integration */
+  /* Infer pvecback from pvecback_integration - this computes H_ini */
   class_call(background_functions(pba, a, pvecback_integration, normal_info, pvecback),
              pba->error_message,
              pba->error_message);
 
+  /* Now compute slow-roll ICs using the H we just computed */
+  if (pba->has_ridder == _TRUE_) {
+
+    double phi_ridder_ini = pvecback_integration[pba->index_bi_phi_ridder];
+    double a_ini = a;
+    double H_ini = pvecback[pba->index_bg_H];  /* Now available! */
+
+    /* Compute dV in internal CLASS units (SAME conversion as background_functions) */
+    double M_Pl_eV       = 2.435e27;
+    double eV_to_Mpc_inv = 1.56e29;           // 1 eV ≈ 1.56×10²⁹ Mpc⁻¹
+    double factor_V      = (eV_to_Mpc_inv * eV_to_Mpc_inv) / (3.0 * M_Pl_eV * M_Pl_eV);
+
+    /* dV_ridder returns eV³; convert to eV·Mpc⁻² for use in slow-roll formula */
+    double dV_eV3        = dV_ridder(pba, phi_ridder_ini, a_ini);              // eV³
+    double dV_eV_Mpc2    = dV_eV3 * (eV_to_Mpc_inv * eV_to_Mpc_inv);           // eV³ · Mpc⁻² / eV² = eV·Mpc⁻²
+    double dV_val_units  = dV_eV_Mpc2 / (3.0 * M_Pl_eV);                       // eV·Mpc⁻² / eV = Mpc⁻²... wait
+    
+    /* Actually, for the slow-roll formula φ' = -(a/2H) dV/dφ,
+     * we need dV/dφ in the same units as used in the evolution equation.
+     * From background_derivs: dV/dφ in eV³, convert to internal units for force term.
+     * The force term in the evolution is: a² · (dV/dφ)_CLASS
+     * where (dV/dφ)_CLASS = (dV/dφ)_phys [eV³] · conversion
+     * 
+     * Following the pattern in derivs (line ~3000), the conversion should match.
+     * For slow-roll: φ' ≈ - (a/2H) · (dV/dφ)_CLASS
+     * where (dV/dφ)_CLASS needs to give φ' in eV/Mpc.
+     * 
+     * Dimensionally: [φ'] = eV/Mpc, [a] = 1, [H] = Mpc⁻¹, [dV/dφ] = ?
+     * From φ' = -(a/2H) dV/dφ: [eV/Mpc] = [1]/[Mpc⁻¹] · [dV/dφ] = [Mpc] · [dV/dφ]
+     * So [dV/dφ]_CLASS = eV/Mpc²
+     * 
+     * dV_ridder returns eV³. To get eV/Mpc²:
+     * eV³ · (Mpc⁻²/eV²) = eV·Mpc⁻²  ✓
+     */
+    double dV_for_slowroll = dV_eV3 * (eV_to_Mpc_inv * eV_to_Mpc_inv);  // eV·Mpc⁻²
+
+    /* Slow-roll in conformal time: φ' ≈ - (a / 2H) · dV/dφ
+     * Optionally scaled by ridder_c_slow.
+     */
+    double c_slow = pba->ridder_c_slow;  /* e.g. default 1.0 */
+
+    double phi_prime_ridder_ini;
+    if (c_slow > 0.0 && dV_for_slowroll != 0.0) {
+      phi_prime_ridder_ini = - c_slow * (a_ini / (2.0 * H_ini)) * dV_for_slowroll;
+    } else {
+      /* Fallback: strictly Hubble-frozen */
+      phi_prime_ridder_ini = 0.0;
+    }
+
+    /* Update φ' with the slow-roll value */
+    pvecback_integration[pba->index_bi_phi_prime_ridder] = phi_prime_ridder_ini;
+
+    /* Debug print (gate on verbose level) */
+    if (pba->background_verbose > 0) {
+      printf("RIDDER IC: a_ini=%.3e z_ini=%.1f H_ini=%.3e Mpc^-1\n", 
+             a_ini, 1.0/a_ini - 1.0, H_ini);
+      printf("  phi_ini=%.3e eV, phi_prime_ini=%.3e eV/Mpc\n", 
+             phi_ridder_ini, phi_prime_ridder_ini);
+      printf("  dV/dphi=%.3e eV^3, dV_slowroll=%.3e eV·Mpc^-2, c_slow=%.2f\n", 
+             dV_eV3, dV_for_slowroll, c_slow);
+    }
+
+    class_test(!isfinite(pvecback_integration[pba->index_bi_phi_prime_ridder]),
+               pba->error_message,
+               "initial phi_prime_ridder = %e -> check slow-roll IC computation",
+               pvecback_integration[pba->index_bi_phi_prime_ridder]);
+  }
+
   /* Just checking that our initial time indeed is deep enough in the radiation
-     dominated regime */
+     dominated regime. 
+     
+     For Ridder EDE field: relax this check since the field sits on a plateau
+     at early times and contributes a few percent. The field is still subdominant
+     as long as Omega_nonr < 0.1 (10%).
+  */
+  if (pba->background_verbose > 0) {
+    printf("IC CHECK: Omega_r = %.6e (tol = %.2e)\n", 
+           pvecback[pba->index_bg_Omega_r], ppr->tol_initial_Omega_r);
+    if (pba->has_ridder == _TRUE_) {
+      printf("  rho_ridder = %.3e, rho_tot = %.3e, f_ridder = %.3e\n",
+             pvecback[pba->index_bg_rho_ridder], 
+             pvecback[pba->index_bg_rho_tot],
+             pvecback[pba->index_bg_rho_ridder] / (pvecback[pba->index_bg_rho_tot] + 1e-100));
+    }
+  }
+  
+  if (pba->has_ridder == _TRUE_) {
+    /* Relaxed check for Ridder field: allow up to 10% non-radiation */
+    double Omega_nonr = 1.0 - pvecback[pba->index_bg_Omega_r];
+    class_test(Omega_nonr > 0.1,
+               pba->error_message,
+               "Too much non-radiation at early times with Ridder field: Omega_nonr = %e (should be < 0.1). The field may be too strong at early times.",
+               Omega_nonr);
+  }
+  else {
+    /* Standard check for non-Ridder runs: strict radiation domination */
   class_test(fabs(pvecback[pba->index_bg_Omega_r]-1.) > ppr->tol_initial_Omega_r,
              pba->error_message,
              "Omega_r = %e, not close enough to 1. Decrease a_ini_over_a_today_default in order to start from radiation domination.",
              pvecback[pba->index_bg_Omega_r]);
+  }
 
   /** - compute initial proper time, assuming radiation-dominated
       universe since Big Bang and therefore \f$ t=1/(2H) \f$ (good
@@ -2678,7 +3172,8 @@ int background_output_data(
     class_store_double(dataptr,pvecback[pba->index_bg_ddV_scf],pba->has_scf,storeidx);
   
   if (pba->has_ridder == _TRUE_) {
-    double V_ridder_val = V_ridder(pba, pvecback[pba->index_bg_phi_ridder]);
+    double a = pvecback[pba->index_bg_a];
+    double V_ridder_val = V_ridder(pba, pvecback[pba->index_bg_phi_ridder], a);
     
     class_store_double(dataptr,pvecback[pba->index_bg_rho_ridder],_TRUE_,storeidx);
     class_store_double(dataptr,pvecback[pba->index_bg_p_ridder],_TRUE_,storeidx);
@@ -2751,6 +3246,26 @@ int background_derivs(
 
   /** - scale factor a (in fact, given our normalisation conventions, this stands for a/a_0) */
   a = exp(loga);
+  
+  /* DEBUG: First call diagnostic */
+  static int derivs_first_call = 1;
+  if (derivs_first_call) {
+    printf("BG_DERIVS: FIRST CALL at a = %.3e\n", a);
+    if (pba->has_ridder == _TRUE_) {
+      double phi_r = y[pba->index_bi_phi_ridder];
+      double phi_p = y[pba->index_bi_phi_prime_ridder];
+      printf("  phi_ridder = %.3e eV, phi_prime_ridder = %.3e eV/Mpc\n", phi_r, phi_p);
+    }
+    derivs_first_call = 0;
+  }
+  
+  /* DEBUG: Check has_ridder at start of derivs */
+  static int derivs_entry_counter = 0;
+  derivs_entry_counter++;
+  if (derivs_entry_counter % 5000 == 0) {
+    printf("DERIVS_ENTRY: call#=%d has_ridder=%d Lambda=%.2e a=%.2e\n",
+           derivs_entry_counter, pba->has_ridder, pba->Lambda_EDE_ridder, a);
+  }
 
   /** - calculate functions of \f$ a \f$ with background_functions() */
   class_call(background_functions(pba, a, y, normal_info, pvecback),
@@ -2812,23 +3327,51 @@ int background_derivs(
     static int first_call = 1;
     if (first_call) {
       first_call = 0;
+      printf("RIDDER DERIVS: First call! has_ridder=%d Lambda=%.2e fluid_mode=%d\n", 
+             pba->has_ridder, pba->Lambda_EDE_ridder, pba->ridder_fluid_mode);
     }
     
     double phi_ridder = y[pba->index_bi_phi_ridder];
     
+    /* DEBUG: Print every N calls AND fluid mode status */
+    static int ridder_deriv_calls = 0;
+    ridder_deriv_calls++;
+    if (ridder_deriv_calls % 5000 == 0 || ridder_deriv_calls < 5) {
+      printf("RIDDER DERIVS CALLED: call#=%d a=%.2e phi=%.2e fluid_mode=%d\n", 
+             ridder_deriv_calls, exp(loga), phi_ridder, pba->ridder_fluid_mode);
+    }
+    
+    if (ridder_deriv_calls < 5) {
+      printf("CHECKPOINT_A: call#=%d\n", ridder_deriv_calls);
+    }
+    
     double rho_cdm = 0.0;
     double coupling_term = 0.0;
+    
+    if (ridder_deriv_calls < 5) {
+      printf("CHECKPOINT_B: call#=%d\n", ridder_deriv_calls);
+    }
     
     /* Get CDM density if it exists */
     if (pba->has_cdm == _TRUE_) {
       rho_cdm = pvecback[pba->index_bg_rho_cdm];
     }
     
-    /* Check for switching surface: when 3H < m_eff, switch to fluid approximation */
-    if (pba->ridder_fluid_mode == _FALSE_ && pba->Lambda_EDE_ridder > 0.0) {
-      double ddV_val = ddV_ridder(pba, phi_ridder);
+    if (ridder_deriv_calls < 5) {
+      printf("CHECKPOINT_C: call#=%d\n", ridder_deriv_calls);
+    }
+    
+    /* Fluid switching for rapid oscillations */
+    /* Check if EDE Lambda is nonzero (for either v2 or v3) */
+    int has_ede = (pba->Lambda_EDE_ridder > 0.0) || 
+                  (pba->ridder_unified.model_type == ridder_model_v3_canon && 
+                   pba->ridder_unified.Lambda_EDE_eV > 0.0);
+    
+    if (pba->ridder_fluid_mode == _FALSE_ && has_ede) {
+      /* Check if oscillations have begun */
+      double ddV_val = ddV_ridder(pba, phi_ridder, a);
       
-      if (ddV_val > 0.0) {
+      if (fabs(ddV_val) > 0.0) {  /* Would need |ddV| here */
         /* m_eff^2 = V'' in CLASS units */
         /* Need to convert to same units as H for comparison */
         /* H is in Mpc^-1, V'' is in eV^2, need to convert */
@@ -2837,11 +3380,27 @@ int background_derivs(
         /* 1 eV^2 = (6.39×10^-30)^2 Mpc^-2 = 4.08×10^-59 Mpc^-2 */
         /* But we need m_eff in Mpc^-1, so m_eff = sqrt(V'') in eV, then convert */
         double m_eff_eV = sqrt(ddV_val); /* m_eff in eV */
-        double eV_to_Mpc_inv = 1.5637e29; /* Conversion: eV to Mpc^-1 */
+        /* Correct conversion: hbar*c = 197.3 eV*nm, so 1 eV = 5.07e6 m^-1 */
+        /* 1 Mpc = 3.086e22 m, therefore 1 eV = 1.64e-16 Mpc^-1 */
+        double eV_to_Mpc_inv = 1.64e-16; /* Conversion: eV to Mpc^-1 (CORRECTED) */
         double m_eff_Mpc = m_eff_eV * eV_to_Mpc_inv; /* m_eff in Mpc^-1 */
         
-        /* Switching condition: 3H < m_eff */
-        if (3.0 * H < m_eff_Mpc) {
+        /* Switching condition: 3H < m_eff AND z < 10^6 (don't switch too early) */
+        double z_current = 1.0/a - 1.0;
+        
+        /* DEBUG: Print switching check */
+        static int switch_check_counter = 0;
+        switch_check_counter++;
+        if (switch_check_counter % 10000 == 0) {
+          int cond_H = (3.0*H < m_eff_Mpc);
+          int cond_z = (z_current < 1e10);
+          printf("SWITCH_CHECK: z=%.2e a=%.2e 3H=%.2e m_eff=%.2e H_cond=%d z_cond=%d both=%d\n",
+                 z_current, a, 3.0*H, m_eff_Mpc, cond_H, cond_z, (cond_H && cond_z));
+        }
+        
+        /* Switch to fluid approximation when oscillations begin */
+        /* Condition: 3H < m_eff (rapid oscillations) AND z < 10^10 (allow early switching) */
+        if (3.0 * H < m_eff_Mpc && z_current < 1e10) {
           /* Oscillations have begun - switch to fluid approximation */
           pba->ridder_fluid_mode = _TRUE_;
           pba->z_osc_ridder = 1.0/a - 1.0; /* Current redshift */
@@ -2850,12 +3409,15 @@ int background_derivs(
           /* Store current energy density for analytic fluid evolution */
           pba->rho_ridder_at_switch = pvecback[pba->index_bg_rho_ridder];
           
-          printf("RIDDER SWITCHING: z_osc = %.2f, a_osc = %.6e\n", pba->z_osc_ridder, pba->a_osc_ridder);
+          printf("RIDDER SWITCHING: z_osc = %.2f, a_osc = %.6e, 3H=%.2e, m_eff=%.2e\n", 
+                 pba->z_osc_ridder, pba->a_osc_ridder, 3.0*H, m_eff_Mpc);
           
           /* Compute cycle-averaged equation of state */
           /* For V = Λ^4 [1-cos(φ/f)]^n, near minimum V ~ phi^2n */
           /* Average equation of state w = (n-1)/(n+1) */
-          pba->w_eff_ridder = (double)(pba->n_ridder - 1) / (double)(pba->n_ridder + 1);
+          double n_ede = (pba->ridder_unified.model_type == ridder_model_v3_canon) 
+                         ? pba->ridder_unified.n_EDE : pba->n_ridder;
+          pba->w_eff_ridder = (n_ede - 1.0) / (n_ede + 1.0);
           
           if (pba->background_verbose > 1) {
             printf("Ridder field: Switching to fluid approximation at z = %.2f\n", pba->z_osc_ridder);
@@ -2867,6 +3429,10 @@ int background_derivs(
       }
     }
     
+    if (ridder_deriv_calls < 5) {
+      printf("CHECKPOINT_E: After switching block\n");
+    }
+    
     /* Debug print for Ridder field evolution */
     if (pba->Lambda_EDE_ridder > 0.0) {
         static int ridder_debug_counter = 0;
@@ -2876,7 +3442,7 @@ int background_derivs(
         /* Check switching condition explicitly for debug */
         double pr = y[pba->index_bi_phi_ridder];
         
-        double ddV_val = ddV_ridder(pba, pr);
+        double ddV_val = ddV_ridder(pba, pr, a);
         
         double m_eff_eV = (ddV_val > 0) ? sqrt(ddV_val) : 0.0; 
         double m_eff_Mpc = m_eff_eV * (1.973e-5 / 3.086e24); 
@@ -2890,61 +3456,143 @@ int background_derivs(
         if (pba->ridder_fluid_mode == _FALSE_ && 3.0*H < m_eff_Mpc) {
         }
     }
+    
+    if (ridder_deriv_calls < 5) {
+      printf("CHECKPOINT_F: After debug block\n");
+    }
 
+    /* DEBUG: Check fluid mode BEFORE the if */
+    static int pre_if_counter = 0;
+    pre_if_counter++;
+    if (pre_if_counter < 10) {
+      printf("PRE_IF: call#=%d fluid_mode=%d _FALSE_=%d condition=%d\n",
+             pre_if_counter, pba->ridder_fluid_mode, _FALSE_, (pba->ridder_fluid_mode == _FALSE_));
+    }
     
     if (pba->ridder_fluid_mode == _FALSE_) {
       
-      /** - Ridder field equation: \f$ \phi'' + 2 a H \phi' + a^2 dV/dφ + β * ρ_DM * a^2 / M_Pl = 0 \f$
-          written as \f$ d\phi/dlna = phi' / (aH) \f$ and 
-          \f$ d\phi'/dlna = -2*phi' - (a/H) dV - (a/H) * β * ρ_DM / M_Pl \f$ */
+      /* ============================================================
+       * RIDDER FIELD MODE: Full Klein-Gordon evolution
+       * ============================================================ */
+      
+      /* Current field values */
+      double phi_ridder       = y[pba->index_bi_phi_ridder];
+      double phi_prime_ridder = y[pba->index_bi_phi_prime_ridder];
+      
+      /* Check freeze mode FIRST - if true, skip ALL evolution */
+      if (pba->ridder_freeze_phi == _TRUE_) {
+        
+        /* Completely freeze the field - acts as pure cosmological constant */
+        dy[pba->index_bi_phi_ridder]       = 0.0;
+        dy[pba->index_bi_phi_prime_ridder] = 0.0;
+        
+        static int freeze_print = 0;
+        if (freeze_print < 5) {
+          printf("RIDDER FREEZE ACTIVE: call#=%d a=%.3e phi=%.3e phi_prime=%.3e dy[phi]=0 dy[phi']=0\n",
+                 freeze_print+1, a, phi_ridder, phi_prime_ridder);
+          freeze_print++;
+        }
+        
+      } else {
+        
+        /* ============================================================
+         * FULL RIDDER KLEIN-GORDON EVOLUTION
+         * ============================================================ */
+        
+        /* V3 EDE: Let natural Hubble friction handle field freezing (like v2)
+         * The explicit time-window freeze was causing issues by releasing 
+         * the field when H was already too small to provide damping.
+         */
+        {
           
     /* Unit Conversion Constants */
-    double M_Pl_eV = 2.435e27;
-    double eV_to_Mpc_inv = 1.5637e29; // 1 eV = 1.56e29 Mpc^-1
-    double factor_V = eV_to_Mpc_inv * eV_to_Mpc_inv; // Convert eV^2 to Mpc^-2
-    double factor_rho = 1.0 / (3.0 * M_Pl_eV * M_Pl_eV);
+        double M_Pl_eV = 2.435e27;        // Reduced Planck mass in eV
+        double eV_to_Mpc_inv = 1.56e29;   // 1 eV ≈ 1.56×10²⁹ Mpc⁻¹
+        double dV_conversion = eV_to_Mpc_inv * eV_to_Mpc_inv;  // eV³ → eV·Mpc⁻²
+        
+        /* Compute potential derivative: dV_ridder returns eV³ */
+        double dV_val_units = dV_ridder(pba, phi_ridder, a) * dV_conversion;  // eV·Mpc⁻²
       
-      /* Add coupling to dark matter if beta != 0 */
-      coupling_term = 0.0;
-      if (pba->beta_ridder != 0.0 && pba->has_cdm == _TRUE_ && rho_cdm > 0.0) {
-          coupling_term = pba->beta_ridder * rho_cdm * 3.0 * M_Pl_eV;
+      /* Add coupling to photons if beta != 0 (affects sound horizon) */
+        double coupling_term = 0.0;
+      if (pba->beta_ridder != 0.0) {
+          /* β * ρ_gamma / M_Pl in CLASS units - couples to radiation for r_s shift */
+          double rho_gamma = pvecback[pba->index_bg_rho_g];
+          if (rho_gamma > 0.0) {
+              coupling_term = pba->beta_ridder * rho_gamma / M_Pl_eV;
+          }
       }
       
-      /* dV_ridder returns eV^3. Convert to eV/Mpc^2 using factor_V */
-      double dV_val_units = dV_ridder(pba, y[pba->index_bi_phi_ridder]) * factor_V;
-      
-      /* Safety check: H must be positive */
+        /* Safety check: H must be positive and finite */
       if (H <= 0.0 || !isfinite(H)) {
-        printf("ERROR: H = %.2e is invalid! a=%.2e rho_ridder=%.2e\n", H, a, pvecback[pba->index_bg_rho_ridder]);
+          sprintf(error_message,
+                  "Invalid H = %.2e at a=%.2e (rho_ridder=%.2e)",
+                  H, a, pvecback[pba->index_bg_rho_ridder]);
         return _FAILURE_;
       }
       
-      dy[pba->index_bi_phi_ridder] = y[pba->index_bi_phi_prime_ridder]/a/H;
-      dy[pba->index_bi_phi_prime_ridder] = - 2*y[pba->index_bi_phi_prime_ridder] 
-        - a*dV_val_units/H 
-        - a*coupling_term/H;
+        /* Apply damping factor (1.0 = physical, 0.0 = frozen, 1e-8 = soft) */
+        double damp = pba->ridder_force_damping;
+        if (damp < 0.0) damp = 0.0;
+        if (damp > 1.0) damp = 1.0;
+        
+        /* Klein-Gordon equations in conformal time (d/dlna):
+         * dphi/dlna = phi' / (aH)
+         * dphi'/dlna = -2*phi' - damp*(a/H)*dV/dphi - damp*(a/H)*coupling */
+        dy[pba->index_bi_phi_ridder] = phi_prime_ridder / (a * H);
+        dy[pba->index_bi_phi_prime_ridder] = - 2.0 * phi_prime_ridder
+                                              - damp * a * dV_val_units / H
+                                              - damp * a * coupling_term / H;
+        
+        /* DEBUG: Print coupling term magnitude */
+        static int coupling_counter = 0;
+        coupling_counter++;
+        if (pba->beta_ridder != 0.0 && (coupling_counter < 10 || coupling_counter % 5000 == 0)) {
+            double z = 1.0/a - 1.0;
+            printf("COUPLING: call#=%d z=%.1f beta=%.3f coupling_term=%.3e dV=%.3e ratio=%.3f%%\n",
+                   coupling_counter, z, pba->beta_ridder, 
+                   damp * a * coupling_term / H,
+                   damp * a * dV_val_units / H,
+                   100.0 * coupling_term / (dV_val_units + 1e-99));
+        }
+      
+        /* DEBUG: Print derivatives on first few calls */
+      static int deriv_counter = 0;
+      deriv_counter++;
+      if (deriv_counter < 10 || deriv_counter % 5000 == 0) {
+          printf("DERIVS: call#=%d a=%.2e phi=%.2e phi'=%.2e dphi/dlna=%.2e dphi'/dlna=%.2e dV=%.2e H=%.2e damp=%.2e\n",
+                 deriv_counter, a, phi_ridder, phi_prime_ridder,
+               dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder],
+                 dV_val_units, H, damp);
+      }
         
       /* Safety check: derivatives must be finite */
-      if (!isfinite(dy[pba->index_bi_phi_ridder]) || !isfinite(dy[pba->index_bi_phi_prime_ridder])) {
-        printf("ERROR: Non-finite derivatives! dy[phi]=%.2e dy[phi']=%.2e\n", 
+        if (!isfinite(dy[pba->index_bi_phi_ridder]) || 
+            !isfinite(dy[pba->index_bi_phi_prime_ridder])) {
+          sprintf(error_message,
+                  "Ridder non-finite derivatives: a=%.3e phi=%.3e phi'=%.3e dV=%.3e dphi=%.3e dphi'=%.3e",
+                  a, phi_ridder, phi_prime_ridder, dV_val_units,
                dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder]);
-        printf("  H=%.2e a=%.2e dV=%.2e\n", H, a, dV_val_units);
         return _FAILURE_;
       }
         
-      /* Keep y[rho_ridder] synced to field density for smooth switching */
-      /* Compute current field density */
-      double phi_for_V = y[pba->index_bi_phi_ridder];
-      double V_current = V_ridder(pba, phi_for_V);
+        } // end of evolution block
+        
+      } // end else (full evolution)
       
-      double rho_field = (0.5 * y[pba->index_bi_phi_prime_ridder]*y[pba->index_bi_phi_prime_ridder]/(a*a) + V_current * factor_V) * factor_rho;
+      /* Hard assertion: if freeze is ON, derivatives MUST be zero */
+      if (pba->ridder_freeze_phi == _TRUE_) {
+        if (fabs(dy[pba->index_bi_phi_ridder]) > 1e-20 ||
+            fabs(dy[pba->index_bi_phi_prime_ridder]) > 1e-20) {
+          sprintf(error_message,
+                  "RIDDER FREEZE BUG: freeze is ON but derivatives are nonzero! dphi=%.3e dphi'=%.3e",
+                  dy[pba->index_bi_phi_ridder], dy[pba->index_bi_phi_prime_ridder]);
+          return _FAILURE_;
+        }
+      }
       
-      double p_field = (0.5 * y[pba->index_bi_phi_prime_ridder]*y[pba->index_bi_phi_prime_ridder]/(a*a) - V_current * factor_V) * factor_rho;
-      double w_field = (rho_field > 1e-100) ? p_field / rho_field : -1.0;
-      
-      /* Evolve rho to track field: drho/dlna = -3(1+w)rho */
-      
-    } else {
+    } // end if (ridder_fluid_mode == _FALSE_)
+    else {
       /** - Fluid approximation: evolve energy density as a fluid with w_eff */
       /**   d ρ_φ / d loga = -3 (1 + w_eff) ρ_φ */
       
@@ -3328,7 +3976,28 @@ double ddV_scf(
 
 double V_ridder(
                 struct background *pba,
-                double phi) {
+                double phi,
+                double a) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    static int v3_print_count = 0;
+    if (v3_print_count < 3) {
+      printf("V3_CANON BRANCH HIT! model_type=%d\n", pba->ridder_unified.model_type);
+      v3_print_count++;
+    }
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return V;
+  }
+  
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    return V_unified_theta(theta, &pba->ridder_unified);
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
@@ -3346,7 +4015,24 @@ double V_ridder(
 
 double dV_ridder(
                  struct background *pba,
-                 double phi) {
+                 double phi,
+                 double a) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return dV;
+  }
+  
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    double dV_dtheta = dV_unified_dtheta(theta, &pba->ridder_unified);
+    return dV_dtheta / pba->ridder_unified.f;  /* Convert to dV/dphi */
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
@@ -3369,7 +4055,25 @@ double dV_ridder(
 
 double ddV_ridder(
                   struct background *pba,
-                  double phi) {
+                  double phi,
+                  double a) {
+  /* Branch on model type */
+  if (pba->ridder_unified.model_type == ridder_model_v3_canon) {
+    /* V3 canonical potential */
+    double V, dV, d2V;
+    ridder_potential_v3(phi, a, &V, &dV, &d2V, &pba->ridder_unified);
+    return d2V;
+  }
+  
+  if (pba->ridder_unified.model_type == ridder_model_unified) {
+    /* Use unified potential */
+    double theta = phi / pba->ridder_unified.f;
+    double d2V_dtheta2 = d2V_unified_dtheta2(theta, &pba->ridder_unified);
+    double f = pba->ridder_unified.f;
+    return d2V_dtheta2 / (f * f);  /* Convert to d²V/dphi² */
+  }
+  
+  /* Simple EDE (v2) potential */
   double Lambda = pba->Lambda_EDE_ridder;
   double f = pba->f_axion_ridder;
   int n = pba->n_ridder;
@@ -3395,4 +4099,224 @@ double ddV_ridder(
       pow(base, n-1) * cos_term
     );
   }
+}
+
+/**
+ * Helper: clear background tables between trial runs
+ */
+static int background_clear_tables(struct background *pba) {
+  
+  if (pba->background_table != NULL) {
+    free(pba->background_table);
+    pba->background_table = NULL;
+  }
+  
+  if (pba->tau_table != NULL) {
+    free(pba->tau_table);
+    pba->tau_table = NULL;
+  }
+  
+  if (pba->z_table != NULL) {
+    free(pba->z_table);
+    pba->z_table = NULL;
+  }
+  
+  pba->bt_size = 0;
+  
+  return _SUCCESS_;
+}
+
+/**
+ * Trial initializer used by Lambda shooting.
+ * Assumes background_indices has already been called.
+ */
+static int background_init_trial(
+  struct precision *ppr,
+  struct background *pba
+) {
+  int status;
+  
+  /* Remove any tables from a previous trial */
+  class_call(background_clear_tables(pba),
+             pba->error_message,
+             pba->error_message);
+  
+  /* Rebuild background tables with current parameters, including current Lambda */
+  class_call(background_solve(ppr, pba),
+             pba->error_message,
+             pba->error_message);
+  
+  return _SUCCESS_;
+}
+
+/**
+ * Measure the peak f_EDE = rho_ridder/rho_tot in a given redshift range
+ * 
+ * @param pba        Input: background structure with filled background_table
+ * @param z_min      Input: minimum redshift to search
+ * @param z_max      Input: maximum redshift to search
+ * @param f_peak     Output: peak fractional energy density
+ * @param z_at_peak  Output: redshift where peak occurs
+ * @return the error status
+ */
+static int background_ridder_measure_peak(
+  struct background *pba,
+  double z_min,
+  double z_max,
+  double *f_peak,
+  double *z_at_peak
+) {
+  int i;
+  double f, f_max = 0.0, z_peak = 0.0;
+
+  for (i = 0; i < pba->bt_size; i++) {
+    double z = pba->z_table[i];
+    
+    /* Skip points outside search range */
+    if (z < z_min || z > z_max) continue;
+
+    double rho_ridder = pba->background_table[i * pba->bg_size + pba->index_bg_rho_ridder];
+    double rho_tot    = pba->background_table[i * pba->bg_size + pba->index_bg_rho_tot];
+
+    /* Skip invalid points */
+    if (rho_tot <= 0.0) continue;
+
+    f = rho_ridder / rho_tot;
+    if (f > f_max) {
+      f_max = f;
+      z_peak = z;
+    }
+  }
+
+  *f_peak = f_max;
+  *z_at_peak = z_peak;
+
+  return _SUCCESS_;
+}
+
+/**
+ * Shoot on Lambda_EDE_ridder to match a target peak f_EDE
+ */
+static int background_shoot_Lambda(
+  struct precision *ppr,
+  struct background *pba,
+  double log10_Lambda_min,
+  double log10_Lambda_max,
+  double z_min,
+  double z_max,
+  double tol_f
+) {
+  int status;
+  double logLo, logHi, logMid;
+  double fLo, fHi, fMid;
+  double zLo, zHi, zMid;
+  
+  logLo = log10_Lambda_min;
+  logHi = log10_Lambda_max;
+  
+  /* Lower bracket */
+  pba->Lambda_EDE_ridder = pow(10.0, logLo);
+  
+  class_call(background_init_trial(ppr, pba),
+             pba->error_message,
+             pba->error_message);
+  
+  class_call(background_ridder_measure_peak(pba, z_min, z_max, &fLo, &zLo),
+             pba->error_message,
+             pba->error_message);
+  
+  if (pba->background_verbose > 0) {
+    printf("Lambda shooting: lower bracket Lambda=10^%.1f eV → f_EDE=%.4f at z=%.0f\n",
+           logLo, fLo, zLo);
+  }
+  
+  /* Upper bracket */
+  pba->Lambda_EDE_ridder = pow(10.0, logHi);
+  
+  class_call(background_init_trial(ppr, pba),
+             pba->error_message,
+             pba->error_message);
+  
+  class_call(background_ridder_measure_peak(pba, z_min, z_max, &fHi, &zHi),
+             pba->error_message,
+             pba->error_message);
+  
+  if (pba->background_verbose > 0) {
+    printf("Lambda shooting: upper bracket Lambda=10^%.1f eV → f_EDE=%.4f at z=%.0f\n",
+           logHi, fHi, zHi);
+  }
+  
+  /* Check that target lies between fLo and fHi */
+  if ((fLo - pba->ridder_fEDE_target) * (fHi - pba->ridder_fEDE_target) > 0.0) {
+    class_stop(pba->error_message,
+               "background_shoot_Lambda: target fEDE=%g is not bracketed. "
+               "fLo=%g (Lambda=10^%g), fHi=%g (Lambda=10^%g)",
+               pba->ridder_fEDE_target, fLo, logLo, fHi, logHi);
+  }
+  
+  for (int iter = 0; iter < 30; iter++) {
+    logMid = 0.5 * (logLo + logHi);
+    pba->Lambda_EDE_ridder = pow(10.0, logMid);
+    
+    class_call(background_init_trial(ppr, pba),
+               pba->error_message,
+               pba->error_message);
+    
+    class_call(background_ridder_measure_peak(pba, z_min, z_max, &fMid, &zMid),
+               pba->error_message,
+               pba->error_message);
+    
+    double diff = fMid - pba->ridder_fEDE_target;
+    
+    /* DIAGNOSTIC: Always log during development, guard with #ifdef later */
+    printf("RIDDER_SHOOT iter=%2d  log10_Lambda=%6.3f  f_peak=%7.5f  z_peak=%6.1f  target=%7.5f\n",
+           iter+1, logMid, fMid, zMid, pba->ridder_fEDE_target);
+    
+    if (fabs(diff) < tol_f) {
+      /* Accept this Lambda, keep current tables */
+      if (pba->background_verbose > 0) {
+        printf("Lambda shooting converged: Lambda=%.3e eV → f_EDE=%.4f at z=%.0f\n",
+               pba->Lambda_EDE_ridder, fMid, zMid);
+      }
+      
+      /* Lightweight sanity check: verify final result is still within reasonable tolerance */
+      double f_final_check, z_final_check;
+      class_call(background_ridder_measure_peak(pba, z_min, z_max, 
+                                                 &f_final_check, &z_final_check),
+                 pba->error_message,
+                 pba->error_message);
+      
+      double final_diff = fabs(f_final_check - pba->ridder_fEDE_target);
+      if (final_diff > 5.0 * tol_f) {
+        /* Soft failure: warn but do not crash */
+        fprintf(stdout,
+                "RIDDER_SHOOT warning: final f_peak=%.5f differs from target=%.5f by %.5f "
+                "(>5*tol=%.5f) at z=%.1f. Check bracket or tolerance.\n",
+                f_final_check, pba->ridder_fEDE_target, final_diff, 
+                5.0 * tol_f, z_final_check);
+      }
+      
+      return _SUCCESS_;
+    }
+    
+    if ((fLo - pba->ridder_fEDE_target) * diff < 0.0) {
+      /* Root is between logLo and logMid */
+      logHi = logMid;
+      fHi   = fMid;
+      zHi   = zMid;
+    }
+    else {
+      /* Root is between logMid and logHi */
+      logLo = logMid;
+      fLo   = fMid;
+      zLo   = zMid;
+    }
+  }
+  
+  class_stop(pba->error_message,
+             "background_shoot_Lambda: did not converge in 30 iterations. "
+             "Last fEDE=%g, target=%g, Lambda=10^%g eV",
+             fMid, pba->ridder_fEDE_target, logMid);
+  
+  return _FAILURE_;
 }

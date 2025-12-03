@@ -1,0 +1,65 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl
+      l_max_scalars: 1500
+      lensing: 'no'
+      gauge: newtonian
+      recombination: recfast
+      use_ridder: 'no'
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.01
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 67.4
+    proposal: 1.0
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.02
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0005
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    proposal: 0.003
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.008
+  rs_drag:
+    latex: r_s
+sampler:
+  mcmc:
+    max_samples: 500
+    burn_in: 100
+    drag: false
+    proposal_scale: 2.0
+output: lcdm_plumbing_check

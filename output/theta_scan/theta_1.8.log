@@ -1,0 +1,762 @@
+DEBUG: Ridder field ENABLED. Lambda = 1.000000e+13
+DEBUG: Ridder field ENABLED. Lambda = 1.000000e+13
+BACKGROUND_INIT ENTERED: Lambda=1.00e+13
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=1.000000e+13, f_axion_ridder=2.435000e+27, theta_i_ridder=1.800000e+00, beta_ridder=0.000000e+00
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=1.00e+10
+DDV_CHECK: call#=1 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=1.00e+10
+DDV_CHECK: call#=2 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+RIDDER DERIVS: First call! has_ridder=1 Lambda=1.00e+10 fluid_mode=0
+RIDDER DERIVS CALLED: call#=1 a=1.00e-14 phi=4.38e+27 fluid_mode=0
+CHECKPOINT_A: call#=1
+CHECKPOINT_B: call#=1
+CHECKPOINT_C: call#=1
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=1 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=1 a=1.00e-14 fluid_mode=0
+DERIVS: call#=1 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=3 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+RIDDER DERIVS CALLED: call#=2 a=1.00e-14 phi=4.38e+27 fluid_mode=0
+CHECKPOINT_A: call#=2
+CHECKPOINT_B: call#=2
+CHECKPOINT_C: call#=2
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=2 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=2 a=1.00e-14 fluid_mode=0
+DERIVS: call#=2 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=4 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+RIDDER DERIVS CALLED: call#=3 a=1.00e-14 phi=4.38e+27 fluid_mode=0
+CHECKPOINT_A: call#=3
+CHECKPOINT_B: call#=3
+CHECKPOINT_C: call#=3
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=3 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=3 a=1.00e-14 fluid_mode=0
+DERIVS: call#=3 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=5 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+RIDDER DERIVS CALLED: call#=4 a=1.00e-14 phi=4.38e+27 fluid_mode=0
+CHECKPOINT_A: call#=4
+CHECKPOINT_B: call#=4
+CHECKPOINT_C: call#=4
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=4 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=4 a=1.00e-14 fluid_mode=0
+DERIVS: call#=4 a=1.00e-14 phi=4.38e+27 phi'=1.21e-23 dphi/dlna=5.61e-32 dphi'/dlna=-2.42e-23 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=6 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+PRE_IF: call#=5 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=5 a=1.00e-14 fluid_mode=0
+DERIVS: call#=5 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=7 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+PRE_IF: call#=6 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=6 a=1.00e-14 fluid_mode=0
+DERIVS: call#=6 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=8 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+PRE_IF: call#=7 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=7 a=1.00e-14 fluid_mode=0
+DERIVS: call#=7 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+DDV_CHECK: call#=9 a=1.00e-14 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+PRE_IF: call#=8 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=8 a=1.00e-14 fluid_mode=0
+DERIVS: call#=8 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+PRE_IF: call#=9 fluid_mode=0 _FALSE_=0 condition=1
+FIELD_MODE: call#=9 a=1.00e-14 fluid_mode=0
+DERIVS: call#=9 a=1.00e-14 phi=4.38e+27 phi'=-2.79e-24 dphi/dlna=-1.29e-32 dphi'/dlna=5.58e-24 dV=2.47e-15 H=2.16e+22
+V_RIDDER_RAW: a=4.65e-13 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+BG_FUNC: a=4.65e-13 V_eV4=1.85e+40 kinetic_eV2=3.87e-30 V_Mpc2=1.04e-15 KE_Mpc2=2.18e-85 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=4.646133e-13, rho_ridder=1.039032e-15, rho_tot_before=5.904898e+37, rho_tot_after=5.904898e+37
+V_RIDDER_RAW: a=2.28e-11 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+DDV_CHECK: call#=10000 a=2.28e-11 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+BG_FUNC: a=2.28e-11 V_eV4=1.85e+40 kinetic_eV2=2.75e-40 V_Mpc2=1.04e-15 KE_Mpc2=1.54e-95 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=2.283936e-11, rho_ridder=1.039032e-15, rho_tot_before=1.011214e+31, rho_tot_after=1.011214e+31
+V_RIDDER_RAW: a=8.77e-10 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+BG_FUNC: a=8.77e-10 V_eV4=1.85e+40 kinetic_eV2=8.59e-50 V_Mpc2=1.04e-15 KE_Mpc2=4.83e-105 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=8.766446e-10, rho_ridder=1.039032e-15, rho_tot_before=4.658939e+24, rho_tot_after=4.658939e+24
+V_RIDDER_RAW: a=3.23e-08 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+DDV_CHECK: call#=20000 a=3.23e-08 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+BG_FUNC: a=3.23e-08 V_eV4=1.85e+40 kinetic_eV2=2.87e-50 V_Mpc2=1.04e-15 KE_Mpc2=1.61e-105 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=3.231936e-08, rho_ridder=1.039032e-15, rho_tot_before=2.522371e+18, rho_tot_after=2.522371e+18
+V_RIDDER_RAW: a=1.21e-06 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+BG_FUNC: a=1.21e-06 V_eV4=1.85e+40 kinetic_eV2=5.57e-44 V_Mpc2=1.04e-15 KE_Mpc2=3.13e-99 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=1.207531e-06, rho_ridder=1.039032e-15, rho_tot_before=1.303152e+12, rho_tot_after=1.303152e+12
+V_RIDDER_RAW: a=4.39e-05 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+DDV_CHECK: call#=30000 a=4.39e-05 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+BG_FUNC: a=4.39e-05 V_eV4=1.85e+40 kinetic_eV2=8.65e-38 V_Mpc2=1.04e-15 KE_Mpc2=4.87e-93 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=4.385722e-05, rho_ridder=1.039032e-15, rho_tot_before=9.315508e+05, rho_tot_after=9.315508e+05
+RIDDER DEBUG (adding to rho_tot): a=9.944477e-04, rho_ridder=1.039032e-15, rho_tot_before=1.892453e+01, rho_tot_after=1.892453e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.039032e-15, rho_tot_before=1.916023e+01, rho_tot_after=1.916023e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.039032e-15, rho_tot_before=1.911166e+01, rho_tot_after=1.911166e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.039032e-15, rho_tot_before=1.906322e+01, rho_tot_after=1.906322e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.039032e-15, rho_tot_before=1.901490e+01, rho_tot_after=1.901490e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.039032e-15, rho_tot_before=1.896671e+01, rho_tot_after=1.896671e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.039032e-15, rho_tot_before=1.891864e+01, rho_tot_after=1.891864e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.039032e-15, rho_tot_before=1.887069e+01, rho_tot_after=1.887069e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.039032e-15, rho_tot_before=1.882287e+01, rho_tot_after=1.882287e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.039032e-15, rho_tot_before=1.877517e+01, rho_tot_after=1.877517e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.039032e-15, rho_tot_before=1.872759e+01, rho_tot_after=1.872759e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.039032e-15, rho_tot_before=1.868014e+01, rho_tot_after=1.868014e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.039032e-15, rho_tot_before=1.863280e+01, rho_tot_after=1.863280e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.039032e-15, rho_tot_before=1.858559e+01, rho_tot_after=1.858559e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.039032e-15, rho_tot_before=1.853850e+01, rho_tot_after=1.853850e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.039032e-15, rho_tot_before=1.849153e+01, rho_tot_after=1.849153e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.039032e-15, rho_tot_before=1.844468e+01, rho_tot_after=1.844468e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.039032e-15, rho_tot_before=1.839795e+01, rho_tot_after=1.839795e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.039032e-15, rho_tot_before=1.835134e+01, rho_tot_after=1.835134e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.039032e-15, rho_tot_before=1.830485e+01, rho_tot_after=1.830485e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.039032e-15, rho_tot_before=1.825848e+01, rho_tot_after=1.825848e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.039032e-15, rho_tot_before=1.821223e+01, rho_tot_after=1.821223e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.039032e-15, rho_tot_before=1.816609e+01, rho_tot_after=1.816609e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.039032e-15, rho_tot_before=1.812008e+01, rho_tot_after=1.812008e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.039032e-15, rho_tot_before=1.807418e+01, rho_tot_after=1.807418e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.039032e-15, rho_tot_before=1.802840e+01, rho_tot_after=1.802840e+01
+V_RIDDER_RAW: a=1.82e-03 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+BG_FUNC: a=1.82e-03 V_eV4=1.85e+40 kinetic_eV2=4.73e-32 V_Mpc2=1.04e-15 KE_Mpc2=2.66e-87 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=1.815856e-03, rho_ridder=1.039032e-15, rho_tot_before=2.899286e+00, rho_tot_after=2.899286e+00
+V_RIDDER_RAW: a=8.07e-02 phi=4.38e+27 V_eV4=1.85e+40 Lambda=1.00e+10 f=2.43e+27 n=3
+DDV_CHECK: call#=40000 a=8.07e-02 phi=4.38e+27 ddV_eV2=1.00e-14 (positive=1)
+BG_FUNC: a=8.07e-02 V_eV4=1.85e+40 kinetic_eV2=4.99e-27 V_Mpc2=1.04e-15 KE_Mpc2=2.80e-82 rho_final=1.04e-15
+RIDDER DEBUG (adding to rho_tot): a=8.070913e-02, rho_ridder=1.039032e-15, rho_tot_before=3.020188e-05, rho_tot_after=3.020188e-05
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=1.00e+16
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=1.00e+16
+V_RIDDER_RAW: a=2.95e-14 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+BG_FUNC: a=2.95e-14 V_eV4=1.85e+64 kinetic_eV2=5.92e+25 V_Mpc2=1.04e+09 KE_Mpc2=3.33e-30 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=2.949251e-14, rho_ridder=1.039032e+09, rho_tot_before=3.636906e+42, rho_tot_after=3.636906e+42
+V_RIDDER_RAW: a=1.32e-12 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+DDV_CHECK: call#=50000 a=1.32e-12 phi=4.38e+27 ddV_eV2=1.00e+10 (positive=1)
+BG_FUNC: a=1.32e-12 V_eV4=1.85e+64 kinetic_eV2=7.33e+15 V_Mpc2=1.04e+09 KE_Mpc2=4.12e-40 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=1.321162e-12, rho_ridder=1.039032e+09, rho_tot_before=9.031402e+35, rho_tot_after=9.031402e+35
+V_RIDDER_RAW: a=5.77e-11 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+BG_FUNC: a=5.77e-11 V_eV4=1.85e+64 kinetic_eV2=1.06e+06 V_Mpc2=1.04e+09 KE_Mpc2=5.97e-50 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=5.765594e-11, rho_ridder=1.039032e+09, rho_tot_before=2.490022e+29, rho_tot_after=2.490022e+29
+V_RIDDER_RAW: a=2.55e-09 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+DDV_CHECK: call#=60000 a=2.55e-09 phi=4.38e+27 ddV_eV2=1.00e+10 (positive=1)
+BG_FUNC: a=2.55e-09 V_eV4=1.85e+64 kinetic_eV2=1.69e-04 V_Mpc2=1.04e+09 KE_Mpc2=9.48e-60 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=2.548210e-09, rho_ridder=1.039032e+09, rho_tot_before=6.525966e+22, rho_tot_after=6.525966e+22
+DERIVS_ENTRY: call#=5000 has_ridder=1 Lambda=1.00e+16 a=2.09e-08
+RIDDER DERIVS CALLED: call#=5000 a=2.09e-08 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=5000 a=2.09e-08 fluid_mode=0
+DERIVS: call#=5000 a=2.09e-08 phi=4.38e+27 phi'=-2.10e-09 dphi/dlna=-2.04e-11 dphi'/dlna=-6.31e-09 dV=2.47e+09 H=4.92e+09
+V_RIDDER_RAW: a=7.82e-08 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+BG_FUNC: a=7.82e-08 V_eV4=1.85e+64 kinetic_eV2=9.85e-01 V_Mpc2=1.04e+09 KE_Mpc2=5.54e-56 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=7.823883e-08, rho_ridder=1.039032e+09, rho_tot_before=7.346582e+16, rho_tot_after=7.346582e+16
+V_RIDDER_RAW: a=2.37e-06 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+DDV_CHECK: call#=70000 a=2.37e-06 phi=4.38e+27 ddV_eV2=1.00e+10 (positive=1)
+BG_FUNC: a=2.37e-06 V_eV4=1.85e+64 kinetic_eV2=8.28e+05 V_Mpc2=1.04e+09 KE_Mpc2=4.65e-50 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=2.374973e-06, rho_ridder=1.039032e+09, rho_tot_before=8.766841e+10, rho_tot_after=8.870744e+10
+V_RIDDER_RAW: a=9.13e-05 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+BG_FUNC: a=9.13e-05 V_eV4=1.85e+64 kinetic_eV2=3.26e+08 V_Mpc2=1.04e+09 KE_Mpc2=1.83e-47 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=9.131645e-05, rho_ridder=1.039032e+09, rho_tot_before=6.037912e+04, rho_tot_after=1.039093e+09
+RIDDER DEBUG (adding to rho_tot): a=1.004964e-03, rho_ridder=1.039032e+09, rho_tot_before=1.830808e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.039032e+09, rho_tot_before=1.916023e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.039032e+09, rho_tot_before=1.911166e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.039032e+09, rho_tot_before=1.906322e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.039032e+09, rho_tot_before=1.901490e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.039032e+09, rho_tot_before=1.896671e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.039032e+09, rho_tot_before=1.891864e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.039032e+09, rho_tot_before=1.887069e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.039032e+09, rho_tot_before=1.882287e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.039032e+09, rho_tot_before=1.877517e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.039032e+09, rho_tot_before=1.872759e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.039032e+09, rho_tot_before=1.868014e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.039032e+09, rho_tot_before=1.863280e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.039032e+09, rho_tot_before=1.858559e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.039032e+09, rho_tot_before=1.853850e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.039032e+09, rho_tot_before=1.849153e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.039032e+09, rho_tot_before=1.844468e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.039032e+09, rho_tot_before=1.839795e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.039032e+09, rho_tot_before=1.835134e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.039032e+09, rho_tot_before=1.830485e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.039032e+09, rho_tot_before=1.825848e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.039032e+09, rho_tot_before=1.821223e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.039032e+09, rho_tot_before=1.816609e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.039032e+09, rho_tot_before=1.812008e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.039032e+09, rho_tot_before=1.807418e+01, rho_tot_after=1.039032e+09
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.039032e+09, rho_tot_before=1.802840e+01, rho_tot_after=1.039032e+09
+V_RIDDER_RAW: a=4.50e-03 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+DDV_CHECK: call#=80000 a=4.50e-03 phi=4.38e+27 ddV_eV2=1.00e+10 (positive=1)
+BG_FUNC: a=4.50e-03 V_eV4=1.85e+64 kinetic_eV2=3.27e+08 V_Mpc2=1.04e+09 KE_Mpc2=1.84e-47 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=4.503408e-03, rho_ridder=1.039032e+09, rho_tot_before=1.801679e-01, rho_tot_after=1.039032e+09
+V_RIDDER_RAW: a=2.23e-01 phi=4.38e+27 V_eV4=1.85e+64 Lambda=1.00e+16 f=2.43e+27 n=3
+BG_FUNC: a=2.23e-01 V_eV4=1.85e+64 kinetic_eV2=3.27e+08 V_Mpc2=1.04e+09 KE_Mpc2=1.84e-47 rho_final=1.04e+09
+RIDDER DEBUG (adding to rho_tot): a=2.228095e-01, rho_ridder=1.039032e+09, rho_tot_before=1.433527e-06, rho_tot_after=1.039032e+09
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=1.00e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=1.00e+13
+V_RIDDER_RAW: a=9.25e-14 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=90000 a=9.25e-14 phi=4.38e+27 ddV_eV2=1.00e-02 (positive=1)
+BG_FUNC: a=9.25e-14 V_eV4=1.85e+52 kinetic_eV2=6.20e-02 V_Mpc2=1.04e-03 KE_Mpc2=3.49e-57 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=9.254952e-14, rho_ridder=1.039032e-03, rho_tot_before=3.750442e+40, rho_tot_after=3.750442e+40
+V_RIDDER_RAW: a=4.08e-12 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+BG_FUNC: a=4.08e-12 V_eV4=1.85e+52 kinetic_eV2=8.48e-12 V_Mpc2=1.04e-03 KE_Mpc2=4.77e-67 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=4.077230e-12, rho_ridder=1.039032e-03, rho_tot_before=9.956760e+33, rho_tot_after=9.956760e+33
+V_RIDDER_RAW: a=1.77e-10 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=100000 a=1.77e-10 phi=4.38e+27 ddV_eV2=1.00e-02 (positive=1)
+BG_FUNC: a=1.77e-10 V_eV4=1.85e+52 kinetic_eV2=1.28e-21 V_Mpc2=1.04e-03 KE_Mpc2=7.19e-77 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=1.767487e-10, rho_ridder=1.039032e-03, rho_tot_before=2.819388e+27, rho_tot_after=2.819388e+27
+V_RIDDER_RAW: a=6.51e-09 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+BG_FUNC: a=6.51e-09 V_eV4=1.85e+52 kinetic_eV2=5.75e-29 V_Mpc2=1.04e-03 KE_Mpc2=3.23e-84 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=6.505719e-09, rho_ridder=1.039032e-03, rho_tot_before=1.536081e+21, rho_tot_after=1.536081e+21
+V_RIDDER_RAW: a=2.39e-07 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=110000 a=2.39e-07 phi=4.38e+27 ddV_eV2=1.00e-02 (positive=1)
+BG_FUNC: a=2.39e-07 V_eV4=1.85e+52 kinetic_eV2=8.64e-23 V_Mpc2=1.04e-03 KE_Mpc2=4.86e-78 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=2.394608e-07, rho_ridder=1.039032e-03, rho_tot_before=8.379914e+14, rho_tot_after=8.379914e+14
+V_RIDDER_RAW: a=7.98e-06 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.98e-06 V_eV4=1.85e+52 kinetic_eV2=1.04e-16 V_Mpc2=1.04e-03 KE_Mpc2=5.85e-72 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=7.975769e-06, rho_ridder=1.039032e-03, rho_tot_before=7.111971e+08, rho_tot_after=7.111971e+08
+DERIVS_ENTRY: call#=10000 has_ridder=1 Lambda=1.00e+13 a=6.35e-05
+RIDDER DERIVS CALLED: call#=10000 a=6.35e-05 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=10000 a=6.35e-05 fluid_mode=0
+DERIVS: call#=10000 a=6.35e-05 phi=4.38e+27 phi'=-5.41e-11 dphi/dlna=-1.44e-09 dphi'/dlna=-1.58e-10 dV=2.47e-03 H=5.90e+02
+V_RIDDER_RAW: a=2.49e-04 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=120000 a=2.49e-04 phi=4.38e+27 ddV_eV2=1.00e-02 (positive=1)
+BG_FUNC: a=2.49e-04 V_eV4=1.85e+52 kinetic_eV2=5.99e-11 V_Mpc2=1.04e-03 KE_Mpc2=3.37e-66 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=2.494652e-04, rho_ridder=1.039032e-03, rho_tot_before=1.731020e+03, rho_tot_after=1.731021e+03
+RIDDER DEBUG (adding to rho_tot): a=9.980552e-04, rho_ridder=1.039032e-03, rho_tot_before=1.871001e+01, rho_tot_after=1.871105e+01
+RIDDER DEBUG (adding to rho_tot): a=9.980552e-04, rho_ridder=1.039032e-03, rho_tot_before=1.871001e+01, rho_tot_after=1.871105e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.039032e-03, rho_tot_before=1.916023e+01, rho_tot_after=1.916127e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.039032e-03, rho_tot_before=1.911166e+01, rho_tot_after=1.911270e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.039032e-03, rho_tot_before=1.906322e+01, rho_tot_after=1.906426e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.039032e-03, rho_tot_before=1.901490e+01, rho_tot_after=1.901594e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.039032e-03, rho_tot_before=1.896671e+01, rho_tot_after=1.896775e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.039032e-03, rho_tot_before=1.891864e+01, rho_tot_after=1.891968e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.039032e-03, rho_tot_before=1.887069e+01, rho_tot_after=1.887173e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.039032e-03, rho_tot_before=1.882287e+01, rho_tot_after=1.882391e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.039032e-03, rho_tot_before=1.877517e+01, rho_tot_after=1.877621e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.039032e-03, rho_tot_before=1.872759e+01, rho_tot_after=1.872863e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007637e-03, rho_ridder=1.039032e-03, rho_tot_before=1.815571e+01, rho_tot_after=1.815675e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007637e-03, rho_ridder=1.039032e-03, rho_tot_before=1.815571e+01, rho_tot_after=1.815675e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.039032e-03, rho_tot_before=1.868014e+01, rho_tot_after=1.868118e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.039032e-03, rho_tot_before=1.863280e+01, rho_tot_after=1.863384e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.039032e-03, rho_tot_before=1.858559e+01, rho_tot_after=1.858663e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.039032e-03, rho_tot_before=1.853850e+01, rho_tot_after=1.853954e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.039032e-03, rho_tot_before=1.849153e+01, rho_tot_after=1.849257e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.039032e-03, rho_tot_before=1.844468e+01, rho_tot_after=1.844572e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.039032e-03, rho_tot_before=1.839795e+01, rho_tot_after=1.839899e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.039032e-03, rho_tot_before=1.835134e+01, rho_tot_after=1.835238e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.039032e-03, rho_tot_before=1.830485e+01, rho_tot_after=1.830589e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.039032e-03, rho_tot_before=1.825848e+01, rho_tot_after=1.825952e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.039032e-03, rho_tot_before=1.821223e+01, rho_tot_after=1.821327e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.039032e-03, rho_tot_before=1.816609e+01, rho_tot_after=1.816713e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.039032e-03, rho_tot_before=1.812008e+01, rho_tot_after=1.812112e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.039032e-03, rho_tot_before=1.807418e+01, rho_tot_after=1.807522e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.039032e-03, rho_tot_before=1.802840e+01, rho_tot_after=1.802944e+01
+V_RIDDER_RAW: a=8.34e-03 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+BG_FUNC: a=8.34e-03 V_eV4=1.85e+52 kinetic_eV2=5.17e-06 V_Mpc2=1.04e-03 KE_Mpc2=2.91e-61 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=8.335814e-03, rho_ridder=1.039032e-03, rho_tot_before=2.792412e-02, rho_tot_after=2.896315e-02
+V_RIDDER_RAW: a=3.36e-01 phi=4.38e+27 V_eV4=1.85e+52 Lambda=1.00e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=130000 a=3.36e-01 phi=4.38e+27 ddV_eV2=1.00e-02 (positive=1)
+BG_FUNC: a=3.36e-01 V_eV4=1.85e+52 kinetic_eV2=3.26e-04 V_Mpc2=1.04e-03 KE_Mpc2=1.83e-59 rho_final=1.04e-03
+RIDDER DEBUG (adding to rho_tot): a=3.358058e-01, rho_ridder=1.039032e-03, rho_tot_before=4.186284e-07, rho_tot_after=1.039451e-03
+RIDDER_SHOOT iter= 1  log10_Lambda=13.000  f_peak=0.00045  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=3.16e+14
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=3.16e+14
+V_RIDDER_RAW: a=1.33e-13 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+BG_FUNC: a=1.33e-13 V_eV4=1.85e+58 kinetic_eV2=7.14e+09 V_Mpc2=1.04e+03 KE_Mpc2=4.02e-46 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=1.326869e-13, rho_ridder=1.039032e+03, rho_tot_before=8.877012e+39, rho_tot_after=8.877012e+39
+V_RIDDER_RAW: a=5.86e-12 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+DDV_CHECK: call#=140000 a=5.86e-12 phi=4.38e+27 ddV_eV2=1.00e+04 (positive=1)
+BG_FUNC: a=5.86e-12 V_eV4=1.85e+58 kinetic_eV2=9.58e-01 V_Mpc2=1.04e+03 KE_Mpc2=5.39e-56 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=5.864341e-12, rho_ridder=1.039032e+03, rho_tot_before=2.326496e+33, rho_tot_after=2.326496e+33
+V_RIDDER_RAW: a=2.59e-10 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+BG_FUNC: a=2.59e-10 V_eV4=1.85e+58 kinetic_eV2=1.29e-10 V_Mpc2=1.04e+03 KE_Mpc2=7.23e-66 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=2.591853e-10, rho_ridder=1.039032e+03, rho_tot_before=6.097311e+26, rho_tot_after=6.097311e+26
+V_RIDDER_RAW: a=1.13e-08 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+DDV_CHECK: call#=150000 a=1.13e-08 phi=4.38e+27 ddV_eV2=1.00e+04 (positive=1)
+BG_FUNC: a=1.13e-08 V_eV4=1.85e+58 kinetic_eV2=4.36e-16 V_Mpc2=1.04e+03 KE_Mpc2=2.45e-71 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=1.130840e-08, rho_ridder=1.039032e+03, rho_tot_before=1.682682e+20, rho_tot_after=1.682682e+20
+V_RIDDER_RAW: a=3.41e-07 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+BG_FUNC: a=3.41e-07 V_eV4=1.85e+58 kinetic_eV2=3.57e-10 V_Mpc2=1.04e+03 KE_Mpc2=2.01e-65 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=3.413802e-07, rho_ridder=1.039032e+03, rho_tot_before=2.029919e+14, rho_tot_after=2.029919e+14
+V_RIDDER_RAW: a=1.02e-05 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+DDV_CHECK: call#=160000 a=1.02e-05 phi=4.38e+27 ddV_eV2=1.00e+04 (positive=1)
+BG_FUNC: a=1.02e-05 V_eV4=1.85e+58 kinetic_eV2=2.81e-04 V_Mpc2=1.04e+03 KE_Mpc2=1.58e-59 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=1.023942e-05, rho_ridder=1.039032e+03, rho_tot_before=2.650684e+08, rho_tot_after=2.650695e+08
+V_RIDDER_RAW: a=3.42e-04 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+BG_FUNC: a=3.42e-04 V_eV4=1.85e+58 kinetic_eV2=1.05e+02 V_Mpc2=1.04e+03 KE_Mpc2=5.91e-54 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=3.421475e-04, rho_ridder=1.039032e+03, rho_tot_before=5.963571e+02, rho_tot_after=1.635389e+03
+RIDDER DEBUG (adding to rho_tot): a=1.001779e-03, rho_ridder=1.039032e+03, rho_tot_before=1.849194e+01, rho_tot_after=1.057524e+03
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.039032e+03, rho_tot_before=1.916023e+01, rho_tot_after=1.058193e+03
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.039032e+03, rho_tot_before=1.911166e+01, rho_tot_after=1.058144e+03
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.039032e+03, rho_tot_before=1.906322e+01, rho_tot_after=1.058096e+03
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.039032e+03, rho_tot_before=1.901490e+01, rho_tot_after=1.058047e+03
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.039032e+03, rho_tot_before=1.896671e+01, rho_tot_after=1.057999e+03
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.039032e+03, rho_tot_before=1.891864e+01, rho_tot_after=1.057951e+03
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.039032e+03, rho_tot_before=1.887069e+01, rho_tot_after=1.057903e+03
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.039032e+03, rho_tot_before=1.882287e+01, rho_tot_after=1.057855e+03
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.039032e+03, rho_tot_before=1.877517e+01, rho_tot_after=1.057808e+03
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.039032e+03, rho_tot_before=1.872759e+01, rho_tot_after=1.057760e+03
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.039032e+03, rho_tot_before=1.868014e+01, rho_tot_after=1.057713e+03
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.039032e+03, rho_tot_before=1.863280e+01, rho_tot_after=1.057665e+03
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.039032e+03, rho_tot_before=1.858559e+01, rho_tot_after=1.057618e+03
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.039032e+03, rho_tot_before=1.853850e+01, rho_tot_after=1.057571e+03
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.039032e+03, rho_tot_before=1.849153e+01, rho_tot_after=1.057524e+03
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.039032e+03, rho_tot_before=1.844468e+01, rho_tot_after=1.057477e+03
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.039032e+03, rho_tot_before=1.839795e+01, rho_tot_after=1.057430e+03
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.039032e+03, rho_tot_before=1.835134e+01, rho_tot_after=1.057384e+03
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.039032e+03, rho_tot_before=1.830485e+01, rho_tot_after=1.057337e+03
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.039032e+03, rho_tot_before=1.825848e+01, rho_tot_after=1.057291e+03
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.039032e+03, rho_tot_before=1.821223e+01, rho_tot_after=1.057245e+03
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.039032e+03, rho_tot_before=1.816609e+01, rho_tot_after=1.057198e+03
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.039032e+03, rho_tot_before=1.812008e+01, rho_tot_after=1.057152e+03
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.039032e+03, rho_tot_before=1.807418e+01, rho_tot_after=1.057107e+03
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.039032e+03, rho_tot_before=1.802840e+01, rho_tot_after=1.057061e+03
+DERIVS_ENTRY: call#=15000 has_ridder=1 Lambda=3.16e+14 a=1.13e-03
+RIDDER DERIVS CALLED: call#=15000 a=1.13e-03 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=15000 a=1.13e-03 fluid_mode=0
+DERIVS: call#=15000 a=1.13e-03 phi=4.38e+27 phi'=-2.80e-02 dphi/dlna=-7.59e-01 dphi'/dlna=-3.06e-02 dV=2.47e+03 H=3.24e+01
+V_RIDDER_RAW: a=1.59e-02 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+DDV_CHECK: call#=170000 a=1.59e-02 phi=4.38e+27 ddV_eV2=1.00e+04 (positive=1)
+BG_FUNC: a=1.59e-02 V_eV4=1.85e+58 kinetic_eV2=3.27e+02 V_Mpc2=1.04e+03 KE_Mpc2=1.84e-53 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=1.587103e-02, rho_ridder=1.039032e+03, rho_tot_before=4.006636e-03, rho_tot_after=1.039036e+03
+V_RIDDER_RAW: a=7.85e-01 phi=4.38e+27 V_eV4=1.85e+58 Lambda=3.16e+14 f=2.43e+27 n=3
+BG_FUNC: a=7.85e-01 V_eV4=1.85e+58 kinetic_eV2=3.27e+02 V_Mpc2=1.04e+03 KE_Mpc2=1.84e-53 rho_final=1.04e+03
+RIDDER DEBUG (adding to rho_tot): a=7.852309e-01, rho_ridder=1.039032e+03, rho_tot_before=3.273200e-08, rho_tot_after=1.039032e+03
+RIDDER_SHOOT iter= 2  log10_Lambda=14.500  f_peak=0.99780  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=5.62e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=5.62e+13
+V_RIDDER_RAW: a=3.15e-13 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=180000 a=3.15e-13 phi=4.38e+27 ddV_eV2=1.00e+01 (positive=1)
+BG_FUNC: a=3.15e-13 V_eV4=1.85e+55 kinetic_eV2=4.02e+01 V_Mpc2=1.04e+00 KE_Mpc2=2.26e-54 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=3.145484e-13, rho_ridder=1.039032e+00, rho_tot_before=2.810796e+38, rho_tot_after=2.810796e+38
+V_RIDDER_RAW: a=1.39e-11 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.39e-11 V_eV4=1.85e+55 kinetic_eV2=5.40e-09 V_Mpc2=1.04e+00 KE_Mpc2=3.04e-64 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=1.390204e-11, rho_ridder=1.039032e+00, rho_tot_before=7.366561e+31, rho_tot_after=7.366561e+31
+V_RIDDER_RAW: a=5.11e-10 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=190000 a=5.11e-10 phi=4.38e+27 ddV_eV2=1.00e+01 (positive=1)
+BG_FUNC: a=5.11e-10 V_eV4=1.85e+55 kinetic_eV2=2.18e-18 V_Mpc2=1.04e+00 KE_Mpc2=1.23e-73 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=5.112905e-10, rho_ridder=1.039032e+00, rho_tot_before=4.026331e+25, rho_tot_after=4.026331e+25
+V_RIDDER_RAW: a=1.81e-08 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.81e-08 V_eV4=1.85e+55 kinetic_eV2=2.85e-21 V_Mpc2=1.04e+00 KE_Mpc2=1.60e-76 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=1.813454e-08, rho_ridder=1.039032e+00, rho_tot_before=2.544477e+19, rho_tot_after=2.544477e+19
+V_RIDDER_RAW: a=5.91e-07 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=200000 a=5.91e-07 phi=4.38e+27 ddV_eV2=1.00e+01 (positive=1)
+BG_FUNC: a=5.91e-07 V_eV4=1.85e+55 kinetic_eV2=3.21e-15 V_Mpc2=1.04e+00 KE_Mpc2=1.81e-70 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=5.914858e-07, rho_ridder=1.039032e+00, rho_tot_before=2.255685e+13, rho_tot_after=2.255685e+13
+V_RIDDER_RAW: a=1.76e-05 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.76e-05 V_eV4=1.85e+55 kinetic_eV2=2.42e-09 V_Mpc2=1.04e+00 KE_Mpc2=1.36e-64 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=1.762711e-05, rho_ridder=1.039032e+00, rho_tot_before=3.139347e+07, rho_tot_after=3.139348e+07
+V_RIDDER_RAW: a=5.34e-04 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=210000 a=5.34e-04 phi=4.38e+27 ddV_eV2=1.00e+01 (positive=1)
+BG_FUNC: a=5.34e-04 V_eV4=1.85e+55 kinetic_eV2=8.54e-04 V_Mpc2=1.04e+00 KE_Mpc2=4.80e-59 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=5.338487e-04, rho_ridder=1.039032e+00, rho_tot_before=1.380163e+02, rho_tot_after=1.390553e+02
+RIDDER DEBUG (adding to rho_tot): a=9.907632e-04, rho_ridder=1.039032e+00, rho_tot_before=1.914704e+01, rho_tot_after=2.018607e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.039032e+00, rho_tot_before=1.916023e+01, rho_tot_after=2.019926e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004253e-03, rho_ridder=1.039032e+00, rho_tot_before=1.834895e+01, rho_tot_after=1.938799e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.039032e+00, rho_tot_before=1.911166e+01, rho_tot_after=2.015069e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.039032e+00, rho_tot_before=1.906322e+01, rho_tot_after=2.010225e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.039032e+00, rho_tot_before=1.901490e+01, rho_tot_after=2.005393e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.039032e+00, rho_tot_before=1.896671e+01, rho_tot_after=2.000574e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.039032e+00, rho_tot_before=1.891864e+01, rho_tot_after=1.995767e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.039032e+00, rho_tot_before=1.887069e+01, rho_tot_after=1.990973e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.039032e+00, rho_tot_before=1.882287e+01, rho_tot_after=1.986190e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.039032e+00, rho_tot_before=1.877517e+01, rho_tot_after=1.981420e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.039032e+00, rho_tot_before=1.872759e+01, rho_tot_after=1.976662e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.039032e+00, rho_tot_before=1.868014e+01, rho_tot_after=1.971917e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.039032e+00, rho_tot_before=1.863280e+01, rho_tot_after=1.967184e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.039032e+00, rho_tot_before=1.858559e+01, rho_tot_after=1.962462e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.039032e+00, rho_tot_before=1.853850e+01, rho_tot_after=1.957753e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.039032e+00, rho_tot_before=1.849153e+01, rho_tot_after=1.953056e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.039032e+00, rho_tot_before=1.844468e+01, rho_tot_after=1.948371e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.039032e+00, rho_tot_before=1.839795e+01, rho_tot_after=1.943698e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.039032e+00, rho_tot_before=1.835134e+01, rho_tot_after=1.939037e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.039032e+00, rho_tot_before=1.830485e+01, rho_tot_after=1.934388e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.039032e+00, rho_tot_before=1.825848e+01, rho_tot_after=1.929751e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.039032e+00, rho_tot_before=1.821223e+01, rho_tot_after=1.925126e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.039032e+00, rho_tot_before=1.816609e+01, rho_tot_after=1.920513e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.039032e+00, rho_tot_before=1.812008e+01, rho_tot_after=1.915911e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.039032e+00, rho_tot_before=1.807418e+01, rho_tot_after=1.911321e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.039032e+00, rho_tot_before=1.802840e+01, rho_tot_after=1.906743e+01
+V_RIDDER_RAW: a=2.26e-02 phi=4.38e+27 V_eV4=1.85e+55 Lambda=5.62e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.26e-02 V_eV4=1.85e+55 kinetic_eV2=3.24e-01 V_Mpc2=1.04e+00 KE_Mpc2=1.82e-56 rho_final=1.04e+00
+RIDDER DEBUG (adding to rho_tot): a=2.260783e-02, rho_ridder=1.039032e+00, rho_tot_before=1.381705e-03, rho_tot_after=1.040414e+00
+RIDDER_SHOOT iter= 3  log10_Lambda=13.750  f_peak=0.31232  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=2.37e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=2.37e+13
+V_RIDDER_RAW: a=1.02e-14 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=220000 a=1.02e-14 phi=4.38e+27 ddV_eV2=3.18e-01 (positive=1)
+BG_FUNC: a=1.02e-14 V_eV4=5.84e+53 kinetic_eV2=3.50e+07 V_Mpc2=3.29e-02 KE_Mpc2=1.97e-48 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=1.017888e-14, rho_ridder=3.285709e-02, rho_tot_before=2.563175e+44, rho_tot_after=2.563175e+44
+DERIVS_ENTRY: call#=20000 has_ridder=1 Lambda=2.37e+13 a=1.11e-14
+RIDDER DERIVS CALLED: call#=20000 a=1.11e-14 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=20000 a=1.11e-14 fluid_mode=0
+DERIVS: call#=20000 a=1.11e-14 phi=4.38e+27 phi'=-7.15e-11 dphi/dlna=-3.68e-19 dphi'/dlna=1.43e-10 dV=7.82e-02 H=1.75e+22
+V_RIDDER_RAW: a=4.27e-13 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+BG_FUNC: a=4.27e-13 V_eV4=5.84e+53 kinetic_eV2=6.47e-03 V_Mpc2=3.29e-02 KE_Mpc2=3.64e-58 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=4.265704e-13, rho_ridder=3.285709e-02, rho_tot_before=8.310288e+37, rho_tot_after=8.310288e+37
+V_RIDDER_RAW: a=1.86e-11 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=230000 a=1.86e-11 phi=4.38e+27 ddV_eV2=3.18e-01 (positive=1)
+BG_FUNC: a=1.86e-11 V_eV4=5.84e+53 kinetic_eV2=9.38e-13 V_Mpc2=3.29e-02 KE_Mpc2=5.27e-68 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=1.861152e-11, rho_ridder=3.285709e-02, rho_tot_before=2.293254e+31, rho_tot_after=2.293254e+31
+V_RIDDER_RAW: a=7.26e-10 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.26e-10 V_eV4=5.84e+53 kinetic_eV2=2.66e-22 V_Mpc2=3.29e-02 KE_Mpc2=1.50e-77 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=7.259748e-10, rho_ridder=3.285709e-02, rho_tot_before=9.905920e+24, rho_tot_after=9.905920e+24
+V_RIDDER_RAW: a=2.69e-08 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=240000 a=2.69e-08 phi=4.38e+27 ddV_eV2=3.18e-01 (positive=1)
+BG_FUNC: a=2.69e-08 V_eV4=5.84e+53 kinetic_eV2=1.37e-23 V_Mpc2=3.29e-02 KE_Mpc2=7.68e-79 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=2.685102e-08, rho_ridder=3.285709e-02, rho_tot_before=5.294236e+18, rho_tot_after=5.294236e+18
+V_RIDDER_RAW: a=9.42e-07 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+BG_FUNC: a=9.42e-07 V_eV4=5.84e+53 kinetic_eV2=2.06e-17 V_Mpc2=3.29e-02 KE_Mpc2=1.16e-72 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=9.416713e-07, rho_ridder=3.285709e-02, rho_tot_before=3.518279e+12, rho_tot_after=3.518279e+12
+V_RIDDER_RAW: a=2.96e-05 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=250000 a=2.96e-05 phi=4.38e+27 ddV_eV2=3.18e-01 (positive=1)
+BG_FUNC: a=2.96e-05 V_eV4=5.84e+53 kinetic_eV2=1.86e-11 V_Mpc2=3.29e-02 KE_Mpc2=1.05e-66 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=2.959626e-05, rho_ridder=3.285709e-02, rho_tot_before=4.197344e+06, rho_tot_after=4.197344e+06
+V_RIDDER_RAW: a=9.30e-04 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+BG_FUNC: a=9.30e-04 V_eV4=5.84e+53 kinetic_eV2=5.48e-06 V_Mpc2=3.29e-02 KE_Mpc2=3.08e-61 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=9.301955e-04, rho_ridder=3.285709e-02, rho_tot_before=2.336069e+01, rho_tot_after=2.339354e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913783e-04, rho_ridder=3.285709e-02, rho_tot_before=1.910965e+01, rho_tot_after=1.914251e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913783e-04, rho_ridder=3.285709e-02, rho_tot_before=1.910965e+01, rho_tot_after=1.914251e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=3.285709e-02, rho_tot_before=1.916023e+01, rho_tot_after=1.919308e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=3.285709e-02, rho_tot_before=1.911166e+01, rho_tot_after=1.914452e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000984e-03, rho_ridder=3.285709e-02, rho_tot_before=1.853820e+01, rho_tot_after=1.857105e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000984e-03, rho_ridder=3.285709e-02, rho_tot_before=1.853820e+01, rho_tot_after=1.857105e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=3.285709e-02, rho_tot_before=1.906322e+01, rho_tot_after=1.909608e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=3.285709e-02, rho_tot_before=1.901490e+01, rho_tot_after=1.904776e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=3.285709e-02, rho_tot_before=1.896671e+01, rho_tot_after=1.899957e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=3.285709e-02, rho_tot_before=1.891864e+01, rho_tot_after=1.895150e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=3.285709e-02, rho_tot_before=1.887069e+01, rho_tot_after=1.890355e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=3.285709e-02, rho_tot_before=1.882287e+01, rho_tot_after=1.885573e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=3.285709e-02, rho_tot_before=1.877517e+01, rho_tot_after=1.880803e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=3.285709e-02, rho_tot_before=1.872759e+01, rho_tot_after=1.876045e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=3.285709e-02, rho_tot_before=1.868014e+01, rho_tot_after=1.871299e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=3.285709e-02, rho_tot_before=1.863280e+01, rho_tot_after=1.866566e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=3.285709e-02, rho_tot_before=1.858559e+01, rho_tot_after=1.861845e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=3.285709e-02, rho_tot_before=1.853850e+01, rho_tot_after=1.857136e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=3.285709e-02, rho_tot_before=1.849153e+01, rho_tot_after=1.852439e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=3.285709e-02, rho_tot_before=1.844468e+01, rho_tot_after=1.847754e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=3.285709e-02, rho_tot_before=1.839795e+01, rho_tot_after=1.843081e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=3.285709e-02, rho_tot_before=1.835134e+01, rho_tot_after=1.838420e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=3.285709e-02, rho_tot_before=1.830485e+01, rho_tot_after=1.833771e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=3.285709e-02, rho_tot_before=1.825848e+01, rho_tot_after=1.829134e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=3.285709e-02, rho_tot_before=1.821223e+01, rho_tot_after=1.824508e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=3.285709e-02, rho_tot_before=1.816609e+01, rho_tot_after=1.819895e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=3.285709e-02, rho_tot_before=1.812008e+01, rho_tot_after=1.815293e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=3.285709e-02, rho_tot_before=1.807418e+01, rho_tot_after=1.810704e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=3.285709e-02, rho_tot_before=1.802840e+01, rho_tot_after=1.806126e+01
+V_RIDDER_RAW: a=3.73e-02 phi=4.38e+27 V_eV4=5.84e+53 Lambda=2.37e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=260000 a=3.73e-02 phi=4.38e+27 ddV_eV2=3.18e-01 (positive=1)
+BG_FUNC: a=3.73e-02 V_eV4=5.84e+53 kinetic_eV2=9.86e-03 V_Mpc2=3.29e-02 KE_Mpc2=5.54e-58 rho_final=3.29e-02
+RIDDER DEBUG (adding to rho_tot): a=3.732195e-02, rho_ridder=3.285709e-02, rho_tot_before=3.061906e-04, rho_tot_after=3.316328e-02
+RIDDER_SHOOT iter= 4  log10_Lambda=13.375  f_peak=0.01416  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=3.65e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=3.65e+13
+V_RIDDER_RAW: a=1.48e-14 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.48e-14 V_eV4=3.29e+54 kinetic_eV2=1.17e+08 V_Mpc2=1.85e-01 KE_Mpc2=6.58e-48 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.480656e-14, rho_ridder=1.847690e-01, rho_tot_before=5.724823e+43, rho_tot_after=5.724823e+43
+V_RIDDER_RAW: a=6.43e-13 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=270000 a=6.43e-13 phi=4.38e+27 ddV_eV2=1.79e+00 (positive=1)
+BG_FUNC: a=6.43e-13 V_eV4=3.29e+54 kinetic_eV2=1.74e-02 V_Mpc2=1.85e-01 KE_Mpc2=9.77e-58 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=6.434210e-13, rho_ridder=1.847690e-01, rho_tot_before=1.605455e+37, rho_tot_after=1.605455e+37
+DERIVS_ENTRY: call#=25000 has_ridder=1 Lambda=3.65e+13 a=5.98e-12
+RIDDER DERIVS CALLED: call#=25000 a=5.98e-12 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=25000 a=5.98e-12 fluid_mode=0
+DERIVS: call#=25000 a=5.98e-12 phi=4.38e+27 phi'=-1.39e-15 dphi/dlna=-3.85e-21 dphi'/dlna=2.78e-15 dV=4.40e-01 H=6.04e+16
+V_RIDDER_RAW: a=2.78e-11 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.78e-11 V_eV4=3.29e+54 kinetic_eV2=2.69e-12 V_Mpc2=1.85e-01 KE_Mpc2=1.51e-67 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=2.775787e-11, rho_ridder=1.847690e-01, rho_tot_before=4.634841e+30, rho_tot_after=4.634841e+30
+V_RIDDER_RAW: a=1.26e-09 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=280000 a=1.26e-09 phi=4.38e+27 ddV_eV2=1.79e+00 (positive=1)
+BG_FUNC: a=1.26e-09 V_eV4=3.29e+54 kinetic_eV2=3.07e-22 V_Mpc2=1.85e-01 KE_Mpc2=1.73e-77 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.261908e-09, rho_ridder=1.847690e-01, rho_tot_before=1.085106e+24, rho_tot_after=1.085106e+24
+V_RIDDER_RAW: a=5.73e-08 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+BG_FUNC: a=5.73e-08 V_eV4=3.29e+54 kinetic_eV2=8.95e-21 V_Mpc2=1.85e-01 KE_Mpc2=5.03e-76 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=5.727551e-08, rho_ridder=1.847690e-01, rho_tot_before=2.557682e+17, rho_tot_after=2.557682e+17
+V_RIDDER_RAW: a=1.89e-06 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=290000 a=1.89e-06 phi=4.38e+27 ddV_eV2=1.79e+00 (positive=1)
+BG_FUNC: a=1.89e-06 V_eV4=3.29e+54 kinetic_eV2=1.05e-14 V_Mpc2=1.85e-01 KE_Mpc2=5.92e-70 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.889326e-06, rho_ridder=1.847690e-01, rho_tot_before=2.182985e+11, rho_tot_after=2.182985e+11
+V_RIDDER_RAW: a=5.52e-05 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+BG_FUNC: a=5.52e-05 V_eV4=3.29e+54 kinetic_eV2=6.69e-09 V_Mpc2=1.85e-01 KE_Mpc2=3.76e-64 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=5.522600e-05, rho_ridder=1.847690e-01, rho_tot_before=3.898717e+05, rho_tot_after=3.898719e+05
+RIDDER DEBUG (adding to rho_tot): a=9.921152e-04, rho_ridder=1.847690e-01, rho_tot_before=1.906499e+01, rho_tot_after=1.924976e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=1.847690e-01, rho_tot_before=1.916023e+01, rho_tot_after=1.934500e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=1.847690e-01, rho_tot_before=1.911166e+01, rho_tot_after=1.929643e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002096e-03, rho_ridder=1.847690e-01, rho_tot_before=1.847355e+01, rho_tot_after=1.865832e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=1.847690e-01, rho_tot_before=1.906322e+01, rho_tot_after=1.924799e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=1.847690e-01, rho_tot_before=1.901490e+01, rho_tot_after=1.919967e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=1.847690e-01, rho_tot_before=1.896671e+01, rho_tot_after=1.915148e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=1.847690e-01, rho_tot_before=1.891864e+01, rho_tot_after=1.910341e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=1.847690e-01, rho_tot_before=1.887069e+01, rho_tot_after=1.905546e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=1.847690e-01, rho_tot_before=1.882287e+01, rho_tot_after=1.900764e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=1.847690e-01, rho_tot_before=1.877517e+01, rho_tot_after=1.895994e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=1.847690e-01, rho_tot_before=1.872759e+01, rho_tot_after=1.891236e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=1.847690e-01, rho_tot_before=1.868014e+01, rho_tot_after=1.886491e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=1.847690e-01, rho_tot_before=1.863280e+01, rho_tot_after=1.881757e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=1.847690e-01, rho_tot_before=1.858559e+01, rho_tot_after=1.877036e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=1.847690e-01, rho_tot_before=1.853850e+01, rho_tot_after=1.872327e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=1.847690e-01, rho_tot_before=1.849153e+01, rho_tot_after=1.867630e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=1.847690e-01, rho_tot_before=1.844468e+01, rho_tot_after=1.862945e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=1.847690e-01, rho_tot_before=1.839795e+01, rho_tot_after=1.858272e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=1.847690e-01, rho_tot_before=1.835134e+01, rho_tot_after=1.853611e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=1.847690e-01, rho_tot_before=1.830485e+01, rho_tot_after=1.848962e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=1.847690e-01, rho_tot_before=1.825848e+01, rho_tot_after=1.844325e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=1.847690e-01, rho_tot_before=1.821223e+01, rho_tot_after=1.839700e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=1.847690e-01, rho_tot_before=1.816609e+01, rho_tot_after=1.835086e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=1.847690e-01, rho_tot_before=1.812008e+01, rho_tot_after=1.830485e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=1.847690e-01, rho_tot_before=1.807418e+01, rho_tot_after=1.825895e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=1.847690e-01, rho_tot_before=1.802840e+01, rho_tot_after=1.821317e+01
+V_RIDDER_RAW: a=1.80e-03 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=300000 a=1.80e-03 phi=4.38e+27 ddV_eV2=1.79e+00 (positive=1)
+BG_FUNC: a=1.80e-03 V_eV4=3.29e+54 kinetic_eV2=1.41e-03 V_Mpc2=1.85e-01 KE_Mpc2=7.91e-59 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.799830e-03, rho_ridder=1.847690e-01, rho_tot_before=2.979743e+00, rho_tot_after=3.164512e+00
+V_RIDDER_RAW: a=7.79e-02 phi=4.38e+27 V_eV4=3.29e+54 Lambda=3.65e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.79e-02 V_eV4=3.29e+54 kinetic_eV2=5.81e-02 V_Mpc2=1.85e-01 KE_Mpc2=3.27e-57 rho_final=1.85e-01
+RIDDER DEBUG (adding to rho_tot): a=7.789728e-02, rho_ridder=1.847690e-01, rho_tot_before=3.359455e-05, rho_tot_after=1.848026e-01
+RIDDER_SHOOT iter= 5  log10_Lambda=13.562  f_peak=0.07473  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=4.53e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=4.53e+13
+V_RIDDER_RAW: a=3.17e-14 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=310000 a=3.17e-14 phi=4.38e+27 ddV_eV2=4.24e+00 (positive=1)
+BG_FUNC: a=3.17e-14 V_eV4=7.79e+54 kinetic_eV2=6.82e+06 V_Mpc2=4.38e-01 KE_Mpc2=3.83e-49 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=3.171119e-14, rho_ridder=4.381563e-01, rho_tot_before=2.721003e+42, rho_tot_after=2.721003e+42
+V_RIDDER_RAW: a=1.40e-12 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.40e-12 V_eV4=7.79e+54 kinetic_eV2=9.15e-04 V_Mpc2=4.38e-01 KE_Mpc2=5.14e-59 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=1.401534e-12, rho_ridder=4.381563e-01, rho_tot_before=7.131230e+35, rho_tot_after=7.131230e+35
+V_RIDDER_RAW: a=5.99e-11 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=320000 a=5.99e-11 phi=4.38e+27 ddV_eV2=4.24e+00 (positive=1)
+BG_FUNC: a=5.99e-11 V_eV4=7.79e+54 kinetic_eV2=1.50e-13 V_Mpc2=4.38e-01 KE_Mpc2=8.41e-69 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=5.993002e-11, rho_ridder=4.381563e-01, rho_tot_before=2.133052e+29, rho_tot_after=2.133052e+29
+V_RIDDER_RAW: a=2.18e-09 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.18e-09 V_eV4=7.79e+54 kinetic_eV2=6.91e-23 V_Mpc2=4.38e-01 KE_Mpc2=3.88e-78 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=2.184658e-09, rho_ridder=4.381563e-01, rho_tot_before=1.207955e+23, rho_tot_after=1.207955e+23
+DERIVS_ENTRY: call#=30000 has_ridder=1 Lambda=4.53e+13 a=1.29e-08
+RIDDER DERIVS CALLED: call#=30000 a=1.29e-08 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=30000 a=1.29e-08 fluid_mode=0
+DERIVS: call#=30000 a=1.29e-08 phi=4.38e+27 phi'=-2.07e-19 dphi/dlna=-1.24e-21 dphi'/dlna=-6.18e-19 dV=1.04e+00 H=1.30e+10
+V_RIDDER_RAW: a=7.96e-08 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=330000 a=7.96e-08 phi=4.38e+27 ddV_eV2=4.24e+00 (positive=1)
+BG_FUNC: a=7.96e-08 V_eV4=7.79e+54 kinetic_eV2=1.88e-19 V_Mpc2=4.38e-01 KE_Mpc2=1.06e-74 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=7.963840e-08, rho_ridder=4.381563e-01, rho_tot_before=6.843654e+16, rho_tot_after=6.843654e+16
+V_RIDDER_RAW: a=2.52e-06 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.52e-06 V_eV4=7.79e+54 kinetic_eV2=1.87e-13 V_Mpc2=4.38e-01 KE_Mpc2=1.05e-68 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=2.519185e-06, rho_ridder=4.381563e-01, rho_tot_before=6.930963e+10, rho_tot_after=6.930963e+10
+V_RIDDER_RAW: a=7.78e-05 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=340000 a=7.78e-05 phi=4.38e+27 ddV_eV2=4.24e+00 (positive=1)
+BG_FUNC: a=7.78e-05 V_eV4=7.79e+54 kinetic_eV2=1.40e-07 V_Mpc2=4.38e-01 KE_Mpc2=7.89e-63 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=7.778525e-05, rho_ridder=4.381563e-01, rho_tot_before=1.088254e+05, rho_tot_after=1.088259e+05
+RIDDER DEBUG (adding to rho_tot): a=1.000467e-03, rho_ridder=4.381563e-01, rho_tot_before=1.856841e+01, rho_tot_after=1.900657e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000467e-03, rho_ridder=4.381563e-01, rho_tot_before=1.856841e+01, rho_tot_after=1.900657e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=4.381563e-01, rho_tot_before=1.916023e+01, rho_tot_after=1.959838e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=4.381563e-01, rho_tot_before=1.911166e+01, rho_tot_after=1.954982e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=4.381563e-01, rho_tot_before=1.906322e+01, rho_tot_after=1.950138e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=4.381563e-01, rho_tot_before=1.901490e+01, rho_tot_after=1.945306e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=4.381563e-01, rho_tot_before=1.896671e+01, rho_tot_after=1.940487e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=4.381563e-01, rho_tot_before=1.891864e+01, rho_tot_after=1.935680e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=4.381563e-01, rho_tot_before=1.887069e+01, rho_tot_after=1.930885e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=4.381563e-01, rho_tot_before=1.882287e+01, rho_tot_after=1.926103e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=4.381563e-01, rho_tot_before=1.877517e+01, rho_tot_after=1.921333e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=4.381563e-01, rho_tot_before=1.872759e+01, rho_tot_after=1.916575e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=4.381563e-01, rho_tot_before=1.868014e+01, rho_tot_after=1.911829e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=4.381563e-01, rho_tot_before=1.863280e+01, rho_tot_after=1.907096e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=4.381563e-01, rho_tot_before=1.858559e+01, rho_tot_after=1.902375e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=4.381563e-01, rho_tot_before=1.853850e+01, rho_tot_after=1.897666e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=4.381563e-01, rho_tot_before=1.849153e+01, rho_tot_after=1.892969e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=4.381563e-01, rho_tot_before=1.844468e+01, rho_tot_after=1.888284e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=4.381563e-01, rho_tot_before=1.839795e+01, rho_tot_after=1.883611e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=4.381563e-01, rho_tot_before=1.835134e+01, rho_tot_after=1.878950e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=4.381563e-01, rho_tot_before=1.830485e+01, rho_tot_after=1.874301e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=4.381563e-01, rho_tot_before=1.825848e+01, rho_tot_after=1.869663e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=4.381563e-01, rho_tot_before=1.821223e+01, rho_tot_after=1.865038e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=4.381563e-01, rho_tot_before=1.816609e+01, rho_tot_after=1.860425e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=4.381563e-01, rho_tot_before=1.812008e+01, rho_tot_after=1.855823e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=4.381563e-01, rho_tot_before=1.807418e+01, rho_tot_after=1.851234e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=4.381563e-01, rho_tot_before=1.802840e+01, rho_tot_after=1.846656e+01
+V_RIDDER_RAW: a=2.71e-03 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.71e-03 V_eV4=7.79e+54 kinetic_eV2=2.30e-02 V_Mpc2=4.38e-01 KE_Mpc2=1.29e-57 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=2.708232e-03, rho_ridder=4.381563e-01, rho_tot_before=8.487966e-01, rho_tot_after=1.286953e+00
+V_RIDDER_RAW: a=1.19e-01 phi=4.38e+27 V_eV4=7.79e+54 Lambda=4.53e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=350000 a=1.19e-01 phi=4.38e+27 ddV_eV2=4.24e+00 (positive=1)
+BG_FUNC: a=1.19e-01 V_eV4=7.79e+54 kinetic_eV2=1.38e-01 V_Mpc2=4.38e-01 KE_Mpc2=7.75e-57 rho_final=4.38e-01
+RIDDER DEBUG (adding to rho_tot): a=1.191179e-01, rho_ridder=4.381563e-01, rho_tot_before=9.387946e-06, rho_tot_after=4.381657e-01
+RIDDER_SHOOT iter= 6  log10_Lambda=13.656  f_peak=0.16074  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=4.07e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=4.07e+13
+V_RIDDER_RAW: a=4.92e-14 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+BG_FUNC: a=4.92e-14 V_eV4=5.06e+54 kinetic_eV2=2.07e+05 V_Mpc2=2.85e-01 KE_Mpc2=1.16e-50 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=4.916061e-14, rho_ridder=2.845307e-01, rho_tot_before=4.710965e+41, rho_tot_after=4.710965e+41
+V_RIDDER_RAW: a=2.17e-12 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=360000 a=2.17e-12 phi=4.38e+27 ddV_eV2=2.75e+00 (positive=1)
+BG_FUNC: a=2.17e-12 V_eV4=5.06e+54 kinetic_eV2=2.78e-05 V_Mpc2=2.85e-01 KE_Mpc2=1.56e-60 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=2.172743e-12, rho_ridder=2.845307e-01, rho_tot_before=1.234654e+35, rho_tot_after=1.234654e+35
+V_RIDDER_RAW: a=9.08e-11 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+BG_FUNC: a=9.08e-11 V_eV4=5.06e+54 kinetic_eV2=5.20e-15 V_Mpc2=2.85e-01 KE_Mpc2=2.93e-70 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=9.083411e-11, rho_ridder=2.845307e-01, rho_tot_before=4.041881e+28, rho_tot_after=4.041881e+28
+V_RIDDER_RAW: a=3.36e-09 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=370000 a=3.36e-09 phi=4.38e+27 ddV_eV2=2.75e+00 (positive=1)
+BG_FUNC: a=3.36e-09 V_eV4=5.06e+54 kinetic_eV2=3.71e-24 V_Mpc2=2.85e-01 KE_Mpc2=2.09e-79 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=3.359605e-09, rho_ridder=2.845307e-01, rho_tot_before=2.159906e+22, rho_tot_after=2.159906e+22
+V_RIDDER_RAW: a=1.24e-07 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.24e-07 V_eV4=5.06e+54 kinetic_eV2=4.70e-19 V_Mpc2=2.85e-01 KE_Mpc2=2.64e-74 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.242589e-07, rho_ridder=2.845307e-01, rho_tot_before=1.154995e+16, rho_tot_after=1.154995e+16
+DERIVS_ENTRY: call#=35000 has_ridder=1 Lambda=4.07e+13 a=4.99e-07
+RIDDER DERIVS CALLED: call#=35000 a=4.99e-07 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=35000 a=4.99e-07 fluid_mode=0
+DERIVS: call#=35000 a=4.99e-07 phi=4.38e+27 phi'=-7.80e-15 dphi/dlna=-1.80e-15 dphi'/dlna=-2.34e-14 dV=6.77e-01 H=8.67e+06
+V_RIDDER_RAW: a=3.94e-06 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=380000 a=3.94e-06 phi=4.38e+27 ddV_eV2=2.75e+00 (positive=1)
+BG_FUNC: a=3.94e-06 V_eV4=5.06e+54 kinetic_eV2=4.69e-13 V_Mpc2=2.85e-01 KE_Mpc2=2.63e-68 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=3.936995e-06, rho_ridder=2.845307e-01, rho_tot_before=1.171265e+10, rho_tot_after=1.171265e+10
+V_RIDDER_RAW: a=1.24e-04 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.24e-04 V_eV4=5.06e+54 kinetic_eV2=3.45e-07 V_Mpc2=2.85e-01 KE_Mpc2=1.94e-62 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=1.239374e-04, rho_ridder=2.845307e-01, rho_tot_before=1.998456e+04, rho_tot_after=1.998485e+04
+RIDDER DEBUG (adding to rho_tot): a=9.973295e-04, rho_ridder=2.845307e-01, rho_tot_before=1.875290e+01, rho_tot_after=1.903743e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=2.845307e-01, rho_tot_before=1.916023e+01, rho_tot_after=1.944476e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=2.845307e-01, rho_tot_before=1.911166e+01, rho_tot_after=1.939619e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=2.845307e-01, rho_tot_before=1.906322e+01, rho_tot_after=1.934775e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=2.845307e-01, rho_tot_before=1.901490e+01, rho_tot_after=1.929943e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=2.845307e-01, rho_tot_before=1.896671e+01, rho_tot_after=1.925124e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=2.845307e-01, rho_tot_before=1.891864e+01, rho_tot_after=1.920317e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=2.845307e-01, rho_tot_before=1.887069e+01, rho_tot_after=1.915522e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=2.845307e-01, rho_tot_before=1.882287e+01, rho_tot_after=1.910740e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=2.845307e-01, rho_tot_before=1.877517e+01, rho_tot_after=1.905970e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007713e-03, rho_ridder=2.845307e-01, rho_tot_before=1.815139e+01, rho_tot_after=1.843592e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=2.845307e-01, rho_tot_before=1.872759e+01, rho_tot_after=1.901212e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=2.845307e-01, rho_tot_before=1.868014e+01, rho_tot_after=1.896467e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=2.845307e-01, rho_tot_before=1.863280e+01, rho_tot_after=1.891733e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=2.845307e-01, rho_tot_before=1.858559e+01, rho_tot_after=1.887012e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=2.845307e-01, rho_tot_before=1.853850e+01, rho_tot_after=1.882303e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=2.845307e-01, rho_tot_before=1.849153e+01, rho_tot_after=1.877606e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=2.845307e-01, rho_tot_before=1.844468e+01, rho_tot_after=1.872921e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=2.845307e-01, rho_tot_before=1.839795e+01, rho_tot_after=1.868248e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=2.845307e-01, rho_tot_before=1.835134e+01, rho_tot_after=1.863587e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=2.845307e-01, rho_tot_before=1.830485e+01, rho_tot_after=1.858938e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=2.845307e-01, rho_tot_before=1.825848e+01, rho_tot_after=1.854301e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=2.845307e-01, rho_tot_before=1.821223e+01, rho_tot_after=1.849676e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=2.845307e-01, rho_tot_before=1.816609e+01, rho_tot_after=1.845062e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=2.845307e-01, rho_tot_before=1.812008e+01, rho_tot_after=1.840461e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=2.845307e-01, rho_tot_before=1.807418e+01, rho_tot_after=1.835871e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=2.845307e-01, rho_tot_before=1.802840e+01, rho_tot_after=1.831293e+01
+V_RIDDER_RAW: a=4.47e-03 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=390000 a=4.47e-03 phi=4.38e+27 ddV_eV2=2.75e+00 (positive=1)
+BG_FUNC: a=4.47e-03 V_eV4=5.06e+54 kinetic_eV2=3.23e-02 V_Mpc2=2.85e-01 KE_Mpc2=1.81e-57 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=4.474467e-03, rho_ridder=2.845307e-01, rho_tot_before=1.837308e-01, rho_tot_after=4.682614e-01
+V_RIDDER_RAW: a=2.03e-01 phi=4.38e+27 V_eV4=5.06e+54 Lambda=4.07e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.03e-01 V_eV4=5.06e+54 kinetic_eV2=8.96e-02 V_Mpc2=2.85e-01 KE_Mpc2=5.04e-57 rho_final=2.85e-01
+RIDDER DEBUG (adding to rho_tot): a=2.029121e-01, rho_ridder=2.845307e-01, rho_tot_before=1.898089e-06, rho_tot_after=2.845326e-01
+RIDDER_SHOOT iter= 7  log10_Lambda=13.609  f_peak=0.11061  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=3.85e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=3.85e+13
+V_RIDDER_RAW: a=8.12e-14 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=400000 a=8.12e-14 phi=4.38e+27 ddV_eV2=2.22e+00 (positive=1)
+BG_FUNC: a=8.12e-14 V_eV4=4.08e+54 kinetic_eV2=6.64e+03 V_Mpc2=2.29e-01 KE_Mpc2=3.73e-52 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=8.115639e-14, rho_ridder=2.292868e-01, rho_tot_before=6.342904e+40, rho_tot_after=6.342904e+40
+V_RIDDER_RAW: a=3.59e-12 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+BG_FUNC: a=3.59e-12 V_eV4=4.08e+54 kinetic_eV2=8.87e-07 V_Mpc2=2.29e-01 KE_Mpc2=4.99e-62 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=3.589747e-12, rho_ridder=2.292868e-01, rho_tot_before=1.657004e+34, rho_tot_after=1.657004e+34
+V_RIDDER_RAW: a=1.57e-10 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=410000 a=1.57e-10 phi=4.38e+27 ddV_eV2=2.22e+00 (positive=1)
+BG_FUNC: a=1.57e-10 V_eV4=4.08e+54 kinetic_eV2=1.28e-16 V_Mpc2=2.29e-01 KE_Mpc2=7.19e-72 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=1.567490e-10, rho_ridder=2.292868e-01, rho_tot_before=4.557849e+27, rho_tot_after=4.557849e+27
+V_RIDDER_RAW: a=7.10e-09 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.10e-09 V_eV4=4.08e+54 kinetic_eV2=3.70e-24 V_Mpc2=2.29e-01 KE_Mpc2=2.08e-79 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=7.097351e-09, rho_ridder=2.292868e-01, rho_tot_before=1.084455e+21, rho_tot_after=1.084455e+21
+V_RIDDER_RAW: a=2.97e-07 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=420000 a=2.97e-07 phi=4.38e+27 ddV_eV2=2.22e+00 (positive=1)
+BG_FUNC: a=2.97e-07 V_eV4=4.08e+54 kinetic_eV2=1.00e-17 V_Mpc2=2.29e-01 KE_Mpc2=5.63e-73 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=2.974314e-07, rho_ridder=2.292868e-01, rho_tot_before=3.521883e+14, rho_tot_after=3.521883e+14
+V_RIDDER_RAW: a=9.47e-06 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+BG_FUNC: a=9.47e-06 V_eV4=4.08e+54 kinetic_eV2=1.00e-11 V_Mpc2=2.29e-01 KE_Mpc2=5.64e-67 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=9.469442e-06, rho_ridder=2.292868e-01, rho_tot_before=3.608604e+08, rho_tot_after=3.608604e+08
+DERIVS_ENTRY: call#=40000 has_ridder=1 Lambda=3.85e+13 a=2.40e-04
+RIDDER DERIVS CALLED: call#=40000 a=2.40e-04 phi=4.38e+27 fluid_mode=0
+FIELD_MODE: call#=40000 a=2.40e-04 fluid_mode=0
+DERIVS: call#=40000 a=2.40e-04 phi=4.38e+27 phi'=-5.40e-07 dphi/dlna=-4.45e-05 dphi'/dlna=-1.51e-06 dV=5.46e-01 H=5.05e+01
+V_RIDDER_RAW: a=3.01e-04 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=430000 a=3.01e-04 phi=4.38e+27 ddV_eV2=2.22e+00 (positive=1)
+BG_FUNC: a=3.01e-04 V_eV4=4.08e+54 kinetic_eV2=5.73e-06 V_Mpc2=2.29e-01 KE_Mpc2=3.22e-61 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=3.014824e-04, rho_ridder=2.292868e-01, rho_tot_before=9.112727e+02, rho_tot_after=9.115020e+02
+RIDDER DEBUG (adding to rho_tot): a=9.970591e-04, rho_ridder=2.292868e-01, rho_tot_before=1.876892e+01, rho_tot_after=1.899821e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=2.292868e-01, rho_tot_before=1.916023e+01, rho_tot_after=1.938951e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=2.292868e-01, rho_tot_before=1.911166e+01, rho_tot_after=1.934095e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=2.292868e-01, rho_tot_before=1.906322e+01, rho_tot_after=1.929251e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=2.292868e-01, rho_tot_before=1.901490e+01, rho_tot_after=1.924419e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=2.292868e-01, rho_tot_before=1.896671e+01, rho_tot_after=1.919600e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=2.292868e-01, rho_tot_before=1.891864e+01, rho_tot_after=1.914793e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=2.292868e-01, rho_tot_before=1.887069e+01, rho_tot_after=1.909998e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=2.292868e-01, rho_tot_before=1.882287e+01, rho_tot_after=1.905216e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=2.292868e-01, rho_tot_before=1.877517e+01, rho_tot_after=1.900446e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007255e-03, rho_ridder=2.292868e-01, rho_tot_before=1.817735e+01, rho_tot_after=1.840663e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=2.292868e-01, rho_tot_before=1.872759e+01, rho_tot_after=1.895688e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=2.292868e-01, rho_tot_before=1.868014e+01, rho_tot_after=1.890942e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=2.292868e-01, rho_tot_before=1.863280e+01, rho_tot_after=1.886209e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=2.292868e-01, rho_tot_before=1.858559e+01, rho_tot_after=1.881488e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=2.292868e-01, rho_tot_before=1.853850e+01, rho_tot_after=1.876779e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=2.292868e-01, rho_tot_before=1.849153e+01, rho_tot_after=1.872082e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=2.292868e-01, rho_tot_before=1.844468e+01, rho_tot_after=1.867397e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=2.292868e-01, rho_tot_before=1.839795e+01, rho_tot_after=1.862724e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=2.292868e-01, rho_tot_before=1.835134e+01, rho_tot_after=1.858063e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=2.292868e-01, rho_tot_before=1.830485e+01, rho_tot_after=1.853414e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=2.292868e-01, rho_tot_before=1.825848e+01, rho_tot_after=1.848776e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=2.292868e-01, rho_tot_before=1.821223e+01, rho_tot_after=1.844151e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=2.292868e-01, rho_tot_before=1.816609e+01, rho_tot_after=1.839538e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=2.292868e-01, rho_tot_before=1.812008e+01, rho_tot_after=1.834936e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=2.292868e-01, rho_tot_before=1.807418e+01, rho_tot_after=1.830347e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=2.292868e-01, rho_tot_before=1.802840e+01, rho_tot_after=1.825769e+01
+V_RIDDER_RAW: a=1.18e-02 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+BG_FUNC: a=1.18e-02 V_eV4=4.08e+54 kinetic_eV2=6.13e-02 V_Mpc2=2.29e-01 KE_Mpc2=3.45e-57 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=1.178832e-02, rho_ridder=2.292868e-01, rho_tot_before=9.814418e-03, rho_tot_after=2.391012e-01
+V_RIDDER_RAW: a=5.27e-01 phi=4.38e+27 V_eV4=4.08e+54 Lambda=3.85e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=440000 a=5.27e-01 phi=4.38e+27 ddV_eV2=2.22e+00 (positive=1)
+BG_FUNC: a=5.27e-01 V_eV4=4.08e+54 kinetic_eV2=7.22e-02 V_Mpc2=2.29e-01 KE_Mpc2=4.06e-57 rho_final=2.29e-01
+RIDDER DEBUG (adding to rho_tot): a=5.273428e-01, rho_ridder=2.292868e-01, rho_tot_before=1.080768e-07, rho_tot_after=2.292869e-01
+RIDDER_SHOOT iter= 8  log10_Lambda=13.586  f_peak=0.09109  z_peak= 500.1  target=0.10000
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=3.96e+13
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=3.96e+13
+V_RIDDER_RAW: a=2.14e-13 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+BG_FUNC: a=2.14e-13 V_eV4=4.54e+54 kinetic_eV2=2.48e+01 V_Mpc2=2.55e-01 KE_Mpc2=1.39e-54 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=2.136403e-13, rho_ridder=2.554195e-01, rho_tot_before=1.320828e+39, rho_tot_after=1.320828e+39
+V_RIDDER_RAW: a=9.44e-12 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=450000 a=9.44e-12 phi=4.38e+27 ddV_eV2=2.47e+00 (positive=1)
+BG_FUNC: a=9.44e-12 V_eV4=4.54e+54 kinetic_eV2=3.32e-09 V_Mpc2=2.55e-01 KE_Mpc2=1.87e-64 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=9.442226e-12, rho_ridder=2.554195e-01, rho_tot_before=3.461638e+32, rho_tot_after=3.461638e+32
+V_RIDDER_RAW: a=4.20e-10 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+BG_FUNC: a=4.20e-10 V_eV4=4.54e+54 kinetic_eV2=4.27e-19 V_Mpc2=2.55e-01 KE_Mpc2=2.40e-74 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=4.203247e-10, rho_ridder=2.554195e-01, rho_tot_before=8.815370e+25, rho_tot_after=8.815370e+25
+V_RIDDER_RAW: a=1.88e-08 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=460000 a=1.88e-08 phi=4.38e+27 ddV_eV2=2.47e+00 (positive=1)
+BG_FUNC: a=1.88e-08 V_eV4=4.54e+54 kinetic_eV2=1.97e-22 V_Mpc2=2.55e-01 KE_Mpc2=1.11e-77 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=1.875888e-08, rho_ridder=2.554195e-01, rho_tot_before=2.222279e+19, rho_tot_after=2.222279e+19
+V_RIDDER_RAW: a=7.23e-07 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.23e-07 V_eV4=4.54e+54 kinetic_eV2=4.33e-16 V_Mpc2=2.55e-01 KE_Mpc2=2.43e-71 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=7.227386e-07, rho_ridder=2.554195e-01, rho_tot_before=1.012646e+13, rho_tot_after=1.012646e+13
+V_RIDDER_RAW: a=2.27e-05 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=470000 a=2.27e-05 phi=4.38e+27 ddV_eV2=2.47e+00 (positive=1)
+BG_FUNC: a=2.27e-05 V_eV4=4.54e+54 kinetic_eV2=3.99e-10 V_Mpc2=2.55e-01 KE_Mpc2=2.24e-65 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=2.273966e-05, rho_ridder=2.554195e-01, rho_tot_before=1.163813e+07, rho_tot_after=1.163813e+07
+V_RIDDER_RAW: a=7.22e-04 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+BG_FUNC: a=7.22e-04 V_eV4=4.54e+54 kinetic_eV2=1.43e-04 V_Mpc2=2.55e-01 KE_Mpc2=8.02e-60 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=7.216414e-04, rho_ridder=2.554195e-01, rho_tot_before=5.230631e+01, rho_tot_after=5.256173e+01
+RIDDER DEBUG (adding to rho_tot): a=9.931518e-04, rho_ridder=2.554195e-01, rho_tot_before=1.900240e+01, rho_tot_after=1.925782e+01
+RIDDER DEBUG (adding to rho_tot): a=9.905466e-04, rho_ridder=2.554195e-01, rho_tot_before=1.916023e+01, rho_tot_after=1.941565e+01
+RIDDER DEBUG (adding to rho_tot): a=9.913452e-04, rho_ridder=2.554195e-01, rho_tot_before=1.911166e+01, rho_tot_after=1.936708e+01
+RIDDER DEBUG (adding to rho_tot): a=9.921445e-04, rho_ridder=2.554195e-01, rho_tot_before=1.906322e+01, rho_tot_after=1.931864e+01
+RIDDER DEBUG (adding to rho_tot): a=9.929444e-04, rho_ridder=2.554195e-01, rho_tot_before=1.901490e+01, rho_tot_after=1.927032e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003382e-03, rho_ridder=2.554195e-01, rho_tot_before=1.839914e+01, rho_tot_after=1.865456e+01
+RIDDER DEBUG (adding to rho_tot): a=9.937449e-04, rho_ridder=2.554195e-01, rho_tot_before=1.896671e+01, rho_tot_after=1.922213e+01
+RIDDER DEBUG (adding to rho_tot): a=9.945462e-04, rho_ridder=2.554195e-01, rho_tot_before=1.891864e+01, rho_tot_after=1.917406e+01
+RIDDER DEBUG (adding to rho_tot): a=9.953480e-04, rho_ridder=2.554195e-01, rho_tot_before=1.887069e+01, rho_tot_after=1.912611e+01
+RIDDER DEBUG (adding to rho_tot): a=9.961505e-04, rho_ridder=2.554195e-01, rho_tot_before=1.882287e+01, rho_tot_after=1.907829e+01
+RIDDER DEBUG (adding to rho_tot): a=9.969536e-04, rho_ridder=2.554195e-01, rho_tot_before=1.877517e+01, rho_tot_after=1.903059e+01
+RIDDER DEBUG (adding to rho_tot): a=9.977574e-04, rho_ridder=2.554195e-01, rho_tot_before=1.872759e+01, rho_tot_after=1.898301e+01
+RIDDER DEBUG (adding to rho_tot): a=9.985619e-04, rho_ridder=2.554195e-01, rho_tot_before=1.868014e+01, rho_tot_after=1.893556e+01
+RIDDER DEBUG (adding to rho_tot): a=9.993670e-04, rho_ridder=2.554195e-01, rho_tot_before=1.863280e+01, rho_tot_after=1.888822e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000173e-03, rho_ridder=2.554195e-01, rho_tot_before=1.858559e+01, rho_tot_after=1.884101e+01
+RIDDER DEBUG (adding to rho_tot): a=1.000979e-03, rho_ridder=2.554195e-01, rho_tot_before=1.853850e+01, rho_tot_after=1.879392e+01
+RIDDER DEBUG (adding to rho_tot): a=1.001786e-03, rho_ridder=2.554195e-01, rho_tot_before=1.849153e+01, rho_tot_after=1.874695e+01
+RIDDER DEBUG (adding to rho_tot): a=1.002594e-03, rho_ridder=2.554195e-01, rho_tot_before=1.844468e+01, rho_tot_after=1.870010e+01
+RIDDER DEBUG (adding to rho_tot): a=1.003402e-03, rho_ridder=2.554195e-01, rho_tot_before=1.839795e+01, rho_tot_after=1.865337e+01
+RIDDER DEBUG (adding to rho_tot): a=1.004211e-03, rho_ridder=2.554195e-01, rho_tot_before=1.835134e+01, rho_tot_after=1.860676e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005021e-03, rho_ridder=2.554195e-01, rho_tot_before=1.830485e+01, rho_tot_after=1.856027e+01
+RIDDER DEBUG (adding to rho_tot): a=1.005831e-03, rho_ridder=2.554195e-01, rho_tot_before=1.825848e+01, rho_tot_after=1.851390e+01
+RIDDER DEBUG (adding to rho_tot): a=1.006642e-03, rho_ridder=2.554195e-01, rho_tot_before=1.821223e+01, rho_tot_after=1.846765e+01
+RIDDER DEBUG (adding to rho_tot): a=1.007454e-03, rho_ridder=2.554195e-01, rho_tot_before=1.816609e+01, rho_tot_after=1.842151e+01
+RIDDER DEBUG (adding to rho_tot): a=1.008266e-03, rho_ridder=2.554195e-01, rho_tot_before=1.812008e+01, rho_tot_after=1.837550e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009079e-03, rho_ridder=2.554195e-01, rho_tot_before=1.807418e+01, rho_tot_after=1.832960e+01
+RIDDER DEBUG (adding to rho_tot): a=1.009892e-03, rho_ridder=2.554195e-01, rho_tot_before=1.802840e+01, rho_tot_after=1.828382e+01
+V_RIDDER_RAW: a=3.03e-02 phi=4.38e+27 V_eV4=4.54e+54 Lambda=3.96e+13 f=2.43e+27 n=3
+DDV_CHECK: call#=480000 a=3.03e-02 phi=4.38e+27 ddV_eV2=2.47e+00 (positive=1)
+BG_FUNC: a=3.03e-02 V_eV4=4.54e+54 kinetic_eV2=7.92e-02 V_Mpc2=2.55e-01 KE_Mpc2=4.45e-57 rho_final=2.55e-01
+RIDDER DEBUG (adding to rho_tot): a=3.026649e-02, rho_ridder=2.554195e-01, rho_tot_before=5.74timeout: the monitored command dumped core
+bash: line 40: 2094706 Segmentation fault      timeout 90 ./class /tmp/theta_scan_1.8.ini 2>&1

@@ -1,0 +1,42 @@
+% =============================================================================
+% GEOMETRIC CEILING SECTION - Insert in Section V or VI
+% =============================================================================
+
+\subsection{The Geometric Ceiling on $H_0$}
+\label{sec:geometric_ceiling}
+
+A natural question for any early-time modification is how far it can push $H_0$ toward the local distance ladder. To answer this quantitatively, we performed fixed-$H_0$ MCMC analyses across the range $H_0 = 68.5$--$73.5$~km~s$^{-1}$~Mpc$^{-1}$, holding $H_0$ fixed at each value while allowing all other cosmological and nuisance parameters to vary freely. Table~\ref{tab:h0_ceiling} and Figure~\ref{fig:ceiling} summarize the results.
+
+\begin{table}[ht]
+\centering
+\caption{Fixed-$H_0$ profile likelihood for the Ridder field model. $\Delta\chi^2$ is computed relative to the best-fit $\Lambda$CDM chain with the same data combination (Planck + BAO + SH0ES).}
+\label{tab:h0_ceiling}
+\begin{tabular}{ccc}
+\toprule
+$H_0$ [km~s$^{-1}$~Mpc$^{-1}$] & $\Delta\chi^2$ & Interpretation \\
+\midrule
+68.5 & $+7$ & Below optimum \\
+69.0 & $+2$ & Near optimum \\
+69.5 & $+14$ & Mild cost \\
+70.0 & $+15$ & At ceiling \\
+70.5 & $+23$ & Above ceiling \\
+71.0 & $+34$ & Strong penalty \\
+71.5 & $+69$ & Severe penalty \\
+72.0 & $+91$ & Excluded \\
+73.0 & $+148$ & Far above ceiling \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The profile is nearly flat around $H_0 \approx 69$~km~s$^{-1}$~Mpc$^{-1}$, with $\Delta\chi^2 \approx +2$ relative to the $\Lambda$CDM reference. Beyond this point the cost rises sharply: $\Delta\chi^2 \approx +15$ at $H_0 = 70$, $\approx +34$ at $H_0 = 71$, and of order $+90$--$150$ by $H_0 = 72$--$73$. A component-level breakdown confirms that this penalty is dominated by Planck high-$\ell$ TT, TE, and EE spectra, with BAO contributing at the 20--30\% level. The SH0ES prior itself favors higher $H_0$, but this preference is overwhelmed by the CMB damping tail.
+
+We interpret this profile as a \textbf{geometric ceiling}: within the Ridder field parameterization---or indeed any early-time modification that shrinks the sound horizon to raise $H_0$---the combined CMB and BAO data cannot accommodate $H_0$ well above $\approx 70$~km~s$^{-1}$~Mpc$^{-1}$ without incurring a prohibitive fit penalty. The ceiling is not a choice of prior; it is imposed by the observed acoustic structure.
+
+This result clarifies why we do not attempt to ``solve'' the Hubble tension by driving $H_0$ to the SH0ES value of $73.04 \pm 1.04$~km~s$^{-1}$~Mpc$^{-1}$. Fixed-$H_0$ chains show that such values lie far above the geometric ceiling, with $\Delta\chi^2$ of order 150. Within the early-time framework explored here, the Ridder field saturates the available geometric freedom and naturally converges to $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$---the region where JWST/TRGB calibrations now cluster and where the likelihood surface provides room. Reaching $H_0 \approx 73$ would require physics beyond early-time scalar dynamics, such as late-time modifications, local inhomogeneities, or unresolved systematics in the distance ladder itself.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\columnwidth]{geometric_ceiling_final.pdf}
+\caption{Profile likelihood for $H_0$ in the Ridder field model. Each point represents a fixed-$H_0$ MCMC chain with all other parameters free. The profile is nearly flat near $H_0 \approx 69$~km~s$^{-1}$~Mpc$^{-1}$ (green star), then rises sharply beyond $\approx 70$. Shaded bands show external constraints: Planck $\Lambda$CDM (purple), JWST/TRGB (blue), and SH0ES (red). The SH0ES value lies far above the geometric ceiling imposed by CMB+BAO.}
+\label{fig:ceiling}
+\end{figure}

@@ -1,0 +1,69 @@
+diff --git a/phase2/class/source/input.c b/phase2/class/source/input.c
+index abc..def 100644
+--- a/phase2/class/source/input.c
++++ b/phase2/class/source/input.c
+@@ -3383,6 +3383,9 @@
+   
++  printf("DEBUG_TRACE: Before Ridder param reading, has_ridder=%d\n", pba->has_ridder);
++  printf("DEBUG_TRACE: Lambda_EDE_ridder=%e\n", pba->Lambda_EDE_ridder);
++  
+   /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
+   if (pba->Lambda_EDE_ridder > 0.0) {
+     pba->has_ridder = _TRUE_;
+@@ -3396,6 +3399,11 @@
+     printf("DEBUG: Ridder field DISABLED. Lambda = %e\n", pba->Lambda_EDE_ridder);
+   }
+   
++  printf("DEBUG_TRACE: After Lambda check, has_ridder=%d\n", pba->has_ridder);
++  printf("DEBUG_TRACE: About to read unified params, has_ridder=%d\n", pba->has_ridder);
++  printf("DEBUG_TRACE: model_type before read=%d\n", pba->ridder_unified.model_type);
++  
+   /* Read unified potential parameters */
+   if (pba->has_ridder == _TRUE_) {
+     /* Model type: simple_ede or unified */
+@@ -3405,6 +3413,9 @@
+     } else {
+       pba->ridder_unified.model_type = ridder_model_simple_ede;
+     }
++    
++    printf("DEBUG_TRACE: After reading model_type: %d (0=simple_ede, 1=unified)\n", 
++           pba->ridder_unified.model_type);
+     
+     /* Global field properties */
+     class_read_double("ridder_f", pba->ridder_unified.f);
+@@ -3438,6 +3449,17 @@
+     class_read_double("ridder_sigma_inf", pba->ridder_unified.sigma_inf);
+     class_read_double("ridder_n_inf", pba->ridder_unified.n_inf);
++    
++    printf("DEBUG_TRACE: Unified params read complete:\n");
++    printf("  model_type=%d\n", pba->ridder_unified.model_type);
++    printf("  use_tail=%d, use_shelf=%d, use_plateau=%d\n",
++           pba->ridder_unified.use_tail, pba->ridder_unified.use_shelf, pba->ridder_unified.use_plateau);
++    printf("  Lambda_EDE=%e\n", pba->ridder_unified.Lambda_EDE);
++    printf("  theta_EDE_low=%e, theta_EDE_high=%e\n",
++           pba->ridder_unified.theta_EDE_low, pba->ridder_unified.theta_EDE_high);
++    printf("  f=%e\n", pba->ridder_unified.f);
++  } else {
++    printf("DEBUG_TRACE: Skipping unified param read because has_ridder=%d\n", pba->has_ridder);
+   }
+   
+diff --git a/phase2/class/source/background.c b/phase2/class/source/background.c
+index abc..def 100644
+--- a/phase2/class/source/background.c
++++ b/phase2/class/source/background.c
+@@ -3682,6 +3682,13 @@
+ double V_ridder(
+                 struct background *pba,
+                 double phi) {
++  
++  static int first_call = 1;
++  if (first_call) {
++    printf("DEBUG_V_RIDDER: First call, model_type=%d (0=simple_ede, 1=unified)\n", 
++           pba->ridder_unified.model_type);
++    first_call = 0;
++  }
++  
+   /* Branch on model type */
+   if (pba->ridder_unified.model_type == ridder_model_unified) {
+     /* Use unified potential */
+

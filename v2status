@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Quick wrapper for V2 smoke test status
+exec "$(dirname "$0")/phase3/scripts/v2_smoke_status.sh" "$@"
+

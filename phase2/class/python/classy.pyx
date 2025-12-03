@@ -347,8 +347,10 @@ cdef class Class:
         try:
           import importlib.resources
           resource_path = abspath(importlib.resources.files('classy'))
-        except ImportError as ie:
-          resource_path = dirname(abspath(__file__))
+        except (ImportError, TypeError) as ie:
+          # Fallback: use a symlink to avoid buffer overflow
+          import os
+          resource_path = os.environ.get('CLASS_DATA_PATH', dirname(abspath(__file__)))
         path_to_this_as_bytes = resource_path.encode()
         dumc = path_to_this_as_bytes
         sprintf(self.path_to_this,"%s",dumc)

@@ -1,0 +1,1401 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier5_v3_shoes_beta_free'
+[output] Found existing info files with the requested output prefix: 'chains/tier5_v3_shoes_beta_free'
+[output] Will delete previous products ('force' was requested).
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase2/class
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[sh0es_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+CDM_COUPLING: z=99999999999999.0 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+V3_CANON BRANCH HIT! model_type=2
+V3_POT: a=1.000e-14 theta=2.80 V_theta=4.579e-01 Lambda_EDE=5.000e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=4.579e-01 Lambda_EDE=5.000e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=4.579e-01 Lambda_EDE=5.000e-01
+V3_POT: a=1.000e-14 theta=2.80 V_theta=4.579e-01 Lambda_EDE=5.000e-01
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+BG_DERIVS: FIRST CALL at a = 1.000e-14
+  phi_ridder = 5.600e+26 eV, phi_prime_ridder = 0.000e+00 eV/Mpc
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+V3_CANON BRANCH HIT! model_type=2
+V3_POT: a=1.000e-14 theta=2.80 V_theta=4.579e-01 Lambda_EDE=5.000e-01
+RIDDER DERIVS: First call! has_ridder=1 Lambda=0.00e+00 fluid_mode=0
+CHECKPOINT_A: call#=1
+CHECKPOINT_B: call#=1
+CHECKPOINT_C: call#=1
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=1 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=1 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+V3_CANON BRANCH HIT! model_type=2
+CHECKPOINT_A: call#=2
+CHECKPOINT_B: call#=2
+CHECKPOINT_C: call#=2
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=2 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=2 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+CHECKPOINT_A: call#=3
+CHECKPOINT_B: call#=3
+CHECKPOINT_C: call#=3
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=3 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=3 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+CHECKPOINT_A: call#=4
+CHECKPOINT_B: call#=4
+CHECKPOINT_C: call#=4
+CHECKPOINT_E: After switching block
+CHECKPOINT_F: After debug block
+PRE_IF: call#=4 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=4 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+PRE_IF: call#=5 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=5 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+PRE_IF: call#=6 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=6 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+PRE_IF: call#=7 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=7 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=99999999999999.1 coupling=1.000000 rho_cdm_base=1.335e+34 rho_cdm_eff=1.335e+34
+PRE_IF: call#=8 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=8 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+PRE_IF: call#=9 fluid_mode=0 _FALSE_=0 condition=1
+COUPLING: call#=9 z=99999999999999.1 beta=0.150 coupling_term=7.857e-21 dV=1.336e-05 ratio=0.000%
+CDM_COUPLING: z=8433.3 coupling=1.017725 rho_cdm_base=8.011e+03 rho_cdm_eff=8.153e+03
+CDM_COUPLING: z=4046.5 coupling=1.125416 rho_cdm_base=8.853e+02 rho_cdm_eff=9.964e+02
+CDM_COUPLING: z=1998.6 coupling=1.107870 rho_cdm_base=1.067e+02 rho_cdm_eff=1.183e+02
+CDM_COUPLING: z=1003.7 coupling=1.013677 rho_cdm_base=1.354e+01 rho_cdm_eff=1.373e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+RIDDER IC: k=5.502e+00 coeff=2.274e-13 delta_g=-1.633e-03
+RIDDER IC: k=3.471e+00 coeff=1.364e-12 delta_g=-1.633e-03
+RIDDER IC: k=4.370e+00 coeff=6.821e-13 delta_g=-1.633e-03
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5699.9 coupling=1.065834 rho_cdm_base=2.474e+03 rho_cdm_eff=2.637e+03
+CDM_COUPLING: z=2776.9 coupling=1.148221 rho_cdm_base=2.862e+02 rho_cdm_eff=3.287e+02
+CDM_COUPLING: z=1376.1 coupling=1.044568 rho_cdm_base=3.487e+01 rho_cdm_eff=3.642e+01
+DERIVS_ENTRY: call#=5000 has_ridder=1 Lambda=0.00e+00 a=7.91e-04
+COUPLING: call#=5000 z=1262.4 beta=0.150 coupling_term=5.098e-32 dV=1.788e+25 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=8080.6 coupling=1.021071 rho_cdm_base=7.047e+03 rho_cdm_eff=7.196e+03
+CDM_COUPLING: z=3874.2 coupling=1.131621 rho_cdm_base=7.770e+02 rho_cdm_eff=8.792e+02
+CDM_COUPLING: z=1910.3 coupling=1.099839 rho_cdm_base=9.323e+01 rho_cdm_eff=1.025e+02
+DERIVS_ENTRY: call#=10000 has_ridder=1 Lambda=0.00e+00 a=1.95e-01
+COUPLING: call#=10000 z=4.1 beta=0.150 coupling_term=1.554e-35 dV=2.037e+21 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5457.1 coupling=1.073336 rho_cdm_base=2.171e+03 rho_cdm_eff=2.330e+03
+CDM_COUPLING: z=2678.1 coupling=1.146187 rho_cdm_base=2.567e+02 rho_cdm_eff=2.943e+02
+CDM_COUPLING: z=1322.0 coupling=1.039213 rho_cdm_base=3.092e+01 rho_cdm_eff=3.213e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=15000 has_ridder=1 Lambda=0.00e+00 a=2.45e-05
+COUPLING: call#=15000 z=40823.7 beta=0.150 coupling_term=3.082e-30 dV=1.889e+23 ratio=0.000%
+CDM_COUPLING: z=7711.5 coupling=1.025248 rho_cdm_base=6.125e+03 rho_cdm_eff=6.280e+03
+CDM_COUPLING: z=3715.1 coupling=1.136903 rho_cdm_base=6.852e+02 rho_cdm_eff=7.790e+02
+CDM_COUPLING: z=1851.2 coupling=1.094147 rho_cdm_base=8.484e+01 rho_cdm_eff=9.282e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5220.5 coupling=1.081221 rho_cdm_base=1.901e+03 rho_cdm_eff=2.055e+03
+CDM_COUPLING: z=2568.1 coupling=1.142929 rho_cdm_base=2.264e+02 rho_cdm_eff=2.588e+02
+CDM_COUPLING: z=1279.5 coupling=1.035158 rho_cdm_base=2.803e+01 rho_cdm_eff=2.902e+01
+DERIVS_ENTRY: call#=20000 has_ridder=1 Lambda=0.00e+00 a=5.61e-02
+COUPLING: call#=20000 z=16.8 beta=0.150 coupling_term=1.012e-34 dV=8.910e+22 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=7377.1 coupling=1.029730 rho_cdm_base=5.363e+03 rho_cdm_eff=5.522e+03
+CDM_COUPLING: z=3562.6 coupling=1.141399 rho_cdm_base=6.042e+02 rho_cdm_eff=6.897e+02
+CDM_COUPLING: z=1772.3 coupling=1.086234 rho_cdm_base=7.445e+01 rho_cdm_eff=8.087e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=25000 has_ridder=1 Lambda=0.00e+00 a=6.76e-09
+COUPLING: call#=25000 z=147823492.5 beta=0.150 coupling_term=1.161e-26 dV=4.137e+12 ratio=0.000%
+CDM_COUPLING: z=4990.1 coupling=1.089396 rho_cdm_base=1.660e+03 rho_cdm_eff=1.808e+03
+CDM_COUPLING: z=2458.7 coupling=1.138589 rho_cdm_base=1.987e+02 rho_cdm_eff=2.262e+02
+CDM_COUPLING: z=1230.9 coupling=1.030725 rho_cdm_base=2.496e+01 rho_cdm_eff=2.573e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=7045.9 coupling=1.034926 rho_cdm_base=4.672e+03 rho_cdm_eff=4.835e+03
+CDM_COUPLING: z=3408.1 coupling=1.145202 rho_cdm_base=5.290e+02 rho_cdm_eff=6.058e+02
+CDM_COUPLING: z=1696.8 coupling=1.078389 rho_cdm_base=6.534e+01 rho_cdm_eff=7.046e+01
+DERIVS_ENTRY: call#=30000 has_ridder=1 Lambda=0.00e+00 a=1.22e-02
+COUPLING: call#=30000 z=81.1 beta=0.150 coupling_term=9.891e-34 dV=-9.904e+23 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=4777.5 coupling=1.097305 rho_cdm_base=1.457e+03 rho_cdm_eff=1.599e+03
+CDM_COUPLING: z=2354.0 coupling=1.133366 rho_cdm_base=1.744e+02 rho_cdm_eff=1.976e+02
+CDM_COUPLING: z=1182.3 coupling=1.026531 rho_cdm_base=2.212e+01 rho_cdm_eff=2.271e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=35000 has_ridder=1 Lambda=0.00e+00 a=1.79e-12
+COUPLING: call#=35000 z=557308091547.6 beta=0.150 coupling_term=4.379e-23 dV=7.721e+01 ratio=0.000%
+CDM_COUPLING: z=6610.2 coupling=1.043078 rho_cdm_base=3.858e+03 rho_cdm_eff=4.024e+03
+CDM_COUPLING: z=3262.9 coupling=1.147899 rho_cdm_base=4.643e+02 rho_cdm_eff=5.329e+02
+CDM_COUPLING: z=1606.0 coupling=1.068751 rho_cdm_base=5.541e+01 rho_cdm_eff=5.922e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=9563.2 coupling=1.010213 rho_cdm_base=1.168e+04 rho_cdm_eff=1.180e+04
+CDM_COUPLING: z=4516.2 coupling=1.107358 rho_cdm_base=1.231e+03 rho_cdm_eff=1.363e+03
+CDM_COUPLING: z=2257.3 coupling=1.127606 rho_cdm_base=1.538e+02 rho_cdm_eff=1.734e+02
+CDM_COUPLING: z=1135.5 coupling=1.022761 rho_cdm_base=1.960e+01 rho_cdm_eff=2.005e+01
+DERIVS_ENTRY: call#=40000 has_ridder=1 Lambda=0.00e+00 a=2.88e-03
+COUPLING: call#=40000 z=346.5 beta=0.150 coupling_term=8.306e-33 dV=1.231e+23 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6442.8 coupling=1.046651 rho_cdm_base=3.573e+03 rho_cdm_eff=3.739e+03
+CDM_COUPLING: z=3128.9 coupling=1.149470 rho_cdm_base=4.094e+02 rho_cdm_eff=4.706e+02
+CDM_COUPLING: z=1555.3 coupling=1.063321 rho_cdm_base=5.032e+01 rho_cdm_eff=5.351e+01
+DERIVS_ENTRY: call#=45000 has_ridder=1 Lambda=0.00e+00 a=5.63e-01
+COUPLING: call#=45000 z=0.8 beta=0.150 coupling_term=2.640e-36 dV=2.069e+21 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=9155.9 coupling=1.012449 rho_cdm_base=1.025e+04 rho_cdm_eff=1.038e+04
+CDM_COUPLING: z=4386.2 coupling=1.112416 rho_cdm_base=1.127e+03 rho_cdm_eff=1.254e+03
+CDM_COUPLING: z=2168.1 coupling=1.121495 rho_cdm_base=1.363e+02 rho_cdm_eff=1.528e+02
+CDM_COUPLING: z=1088.0 coupling=1.019211 rho_cdm_base=1.724e+01 rho_cdm_eff=1.757e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6163.5 coupling=1.053210 rho_cdm_base=3.128e+03 rho_cdm_eff=3.294e+03
+CDM_COUPLING: z=3000.5 coupling=1.150000 rho_cdm_base=3.610e+02 rho_cdm_eff=4.152e+02
+DERIVS_ENTRY: call#=50000 has_ridder=1 Lambda=0.00e+00 a=5.23e-04
+COUPLING: call#=50000 z=1909.4 beta=0.150 coupling_term=8.734e-32 dV=-2.191e+20 ratio=-0.000%
+CDM_COUPLING: z=1478.4 coupling=1.055152 rho_cdm_base=4.323e+01 rho_cdm_eff=4.562e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=8766.0 coupling=1.015061 rho_cdm_base=8.997e+03 rho_cdm_eff=9.132e+03
+CDM_COUPLING: z=4199.4 coupling=1.119645 rho_cdm_base=9.895e+02 rho_cdm_eff=1.108e+03
+CDM_COUPLING: z=2072.4 coupling=1.114114 rho_cdm_base=1.190e+02 rho_cdm_eff=1.326e+02
+CDM_COUPLING: z=1030.3 coupling=1.015317 rho_cdm_base=1.465e+01 rho_cdm_eff=1.487e+01
+DERIVS_ENTRY: call#=55000 has_ridder=1 Lambda=0.00e+00 a=1.50e-01
+COUPLING: call#=55000 z=5.7 beta=0.150 coupling_term=2.315e-35 dV=4.354e+21 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5896.2 coupling=1.060217 rho_cdm_base=2.738e+03 rho_cdm_eff=2.903e+03
+CDM_COUPLING: z=2881.9 coupling=1.149518 rho_cdm_base=3.199e+02 rho_cdm_eff=3.678e+02
+CDM_COUPLING: z=1415.9 coupling=1.048626 rho_cdm_base=3.798e+01 rho_cdm_eff=3.983e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=60000 has_ridder=1 Lambda=0.00e+00 a=3.53e-06
+COUPLING: call#=60000 z=283410.4 beta=0.150 coupling_term=2.214e-29 dV=5.836e+20 ratio=0.000%
+CDM_COUPLING: z=8379.1 coupling=1.018202 rho_cdm_base=7.857e+03 rho_cdm_eff=8.001e+03
+CDM_COUPLING: z=4020.5 coupling=1.126377 rho_cdm_base=8.684e+02 rho_cdm_eff=9.781e+02
+CDM_COUPLING: z=1984.1 coupling=1.106595 rho_cdm_base=1.044e+02 rho_cdm_eff=1.156e+02
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5654.1 coupling=1.067201 rho_cdm_base=2.415e+03 rho_cdm_eff=2.577e+03
+CDM_COUPLING: z=2772.6 coupling=1.148148 rho_cdm_base=2.849e+02 rho_cdm_eff=3.271e+02
+CDM_COUPLING: z=1373.6 coupling=1.044319 rho_cdm_base=3.468e+01 rho_cdm_eff=3.622e+01
+DERIVS_ENTRY: call#=65000 has_ridder=1 Lambda=0.00e+00 a=3.59e-02
+COUPLING: call#=65000 z=26.8 beta=0.150 coupling_term=1.971e-34 dV=-2.388e+23 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=8015.7 coupling=1.021752 rho_cdm_base=6.879e+03 rho_cdm_eff=7.029e+03
+CDM_COUPLING: z=3849.3 coupling=1.132481 rho_cdm_base=7.621e+02 rho_cdm_eff=8.631e+02
+CDM_COUPLING: z=1898.0 coupling=1.098675 rho_cdm_base=9.144e+01 rho_cdm_eff=1.005e+02
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=70000 has_ridder=1 Lambda=0.00e+00 a=9.36e-10
+COUPLING: call#=70000 z=1068486795.8 beta=0.150 coupling_term=8.395e-26 dV=1.096e+10 ratio=0.000%
+CDM_COUPLING: z=5413.3 coupling=1.074754 rho_cdm_base=2.119e+03 rho_cdm_eff=2.278e+03
+CDM_COUPLING: z=2658.7 coupling=1.145691 rho_cdm_base=2.512e+02 rho_cdm_eff=2.878e+02
+CDM_COUPLING: z=1313.3 coupling=1.038373 rho_cdm_base=3.032e+01 rho_cdm_eff=3.148e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=7514.3 coupling=1.027805 rho_cdm_base=5.667e+03 rho_cdm_eff=5.825e+03
+CDM_COUPLING: z=3691.2 coupling=1.137648 rho_cdm_base=6.721e+02 rho_cdm_eff=7.646e+02
+CDM_COUPLING: z=1837.8 coupling=1.092828 rho_cdm_base=8.301e+01 rho_cdm_eff=9.072e+01
+DERIVS_ENTRY: call#=75000 has_ridder=1 Lambda=0.00e+00 a=9.40e-03
+COUPLING: call#=75000 z=105.4 beta=0.150 coupling_term=1.455e-33 dV=-7.264e+13 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5186.9 coupling=1.082382 rho_cdm_base=1.864e+03 rho_cdm_eff=2.018e+03
+CDM_COUPLING: z=2549.6 coupling=1.142271 rho_cdm_base=2.215e+02 rho_cdm_eff=2.531e+02
+CDM_COUPLING: z=1271.3 coupling=1.034391 rho_cdm_base=2.750e+01 rho_cdm_eff=2.844e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=80000 has_ridder=1 Lambda=0.00e+00 a=2.58e-13
+COUPLING: call#=80000 z=3868921430815.0 beta=0.150 coupling_term=3.040e-22 dV=2.308e-01 ratio=0.000%
+CDM_COUPLING: z=7317.9 coupling=1.030601 rho_cdm_base=5.235e+03 rho_cdm_eff=5.395e+03
+CDM_COUPLING: z=3534.0 coupling=1.142166 rho_cdm_base=5.898e+02 rho_cdm_eff=6.737e+02
+CDM_COUPLING: z=1737.8 coupling=1.082682 rho_cdm_base=7.020e+01 rho_cdm_eff=7.600e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=4958.0 coupling=1.090569 rho_cdm_base=1.628e+03 rho_cdm_eff=1.776e+03
+CDM_COUPLING: z=2442.9 coupling=1.137868 rho_cdm_base=1.949e+02 rho_cdm_eff=2.218e+02
+CDM_COUPLING: z=1223.0 coupling=1.030025 rho_cdm_base=2.448e+01 rho_cdm_eff=2.522e+01
+DERIVS_ENTRY: call#=85000 has_ridder=1 Lambda=0.00e+00 a=2.11e-03
+COUPLING: call#=85000 z=473.6 beta=0.150 coupling_term=1.304e-32 dV=6.583e+23 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6989.3 coupling=1.035896 rho_cdm_base=4.561e+03 rho_cdm_eff=4.724e+03
+CDM_COUPLING: z=3340.6 coupling=1.146573 rho_cdm_base=4.982e+02 rho_cdm_eff=5.712e+02
+CDM_COUPLING: z=1684.5 coupling=1.077096 rho_cdm_base=6.393e+01 rho_cdm_eff=6.886e+01
+DERIVS_ENTRY: call#=90000 has_ridder=1 Lambda=0.00e+00 a=4.45e-01
+COUPLING: call#=90000 z=1.2 beta=0.150 coupling_term=4.099e-36 dV=1.395e+21 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=9924.4 coupling=1.008577 rho_cdm_base=1.306e+04 rho_cdm_eff=1.317e+04
+CDM_COUPLING: z=4746.8 coupling=1.098471 rho_cdm_base=1.429e+03 rho_cdm_eff=1.570e+03
+CDM_COUPLING: z=2336.9 coupling=1.132418 rho_cdm_base=1.706e+02 rho_cdm_eff=1.932e+02
+CDM_COUPLING: z=1174.6 coupling=1.025899 rho_cdm_base=2.170e+01 rho_cdm_eff=2.226e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6697.0 coupling=1.041324 rho_cdm_base=4.012e+03 rho_cdm_eff=4.178e+03
+DERIVS_ENTRY: call#=95000 has_ridder=1 Lambda=0.00e+00 a=3.07e-04
+COUPLING: call#=95000 z=3253.2 beta=0.150 coupling_term=1.726e-31 dV=-7.772e+24 ratio=-0.000%
+CDM_COUPLING: z=3247.2 coupling=1.148133 rho_cdm_base=4.576e+02 rho_cdm_eff=5.253e+02
+CDM_COUPLING: z=1611.4 coupling=1.069328 rho_cdm_base=5.597e+01 rho_cdm_eff=5.985e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=9167.0 coupling=1.012382 rho_cdm_base=1.029e+04 rho_cdm_eff=1.042e+04
+CDM_COUPLING: z=4544.6 coupling=1.106254 rho_cdm_base=1.254e+03 rho_cdm_eff=1.387e+03
+CDM_COUPLING: z=2242.8 coupling=1.126664 rho_cdm_base=1.508e+02 rho_cdm_eff=1.699e+02
+CDM_COUPLING: z=1127.3 coupling=1.022126 rho_cdm_base=1.918e+01 rho_cdm_eff=1.960e+01
+DERIVS_ENTRY: call#=100000 has_ridder=1 Lambda=0.00e+00 a=1.02e-01
+COUPLING: call#=100000 z=8.9 beta=0.150 coupling_term=4.153e-35 dV=-6.920e+22 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6396.3 coupling=1.047692 rho_cdm_base=3.496e+03 rho_cdm_eff=3.662e+03
+CDM_COUPLING: z=3108.8 coupling=1.149620 rho_cdm_base=4.016e+02 rho_cdm_eff=4.616e+02
+CDM_COUPLING: z=1542.8 coupling=1.061987 rho_cdm_base=4.912e+01 rho_cdm_eff=5.217e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=105000 has_ridder=1 Lambda=0.00e+00 a=4.88e-07
+COUPLING: call#=105000 z=2048532.0 beta=0.150 coupling_term=1.608e-28 dV=1.553e+18 ratio=0.000%
+CDM_COUPLING: z=9082.4 coupling=1.012904 rho_cdm_base=1.001e+04 rho_cdm_eff=1.014e+04
+CDM_COUPLING: z=4351.0 coupling=1.113786 rho_cdm_base=1.101e+03 rho_cdm_eff=1.226e+03
+CDM_COUPLING: z=2131.4 coupling=1.118759 rho_cdm_base=1.295e+02 rho_cdm_eff=1.448e+02
+CDM_COUPLING: z=1080.1 coupling=1.018653 rho_cdm_base=1.687e+01 rho_cdm_eff=1.719e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=6123.8 coupling=1.054203 rho_cdm_base=3.068e+03 rho_cdm_eff=3.234e+03
+CDM_COUPLING: z=2981.2 coupling=1.149988 rho_cdm_base=3.541e+02 rho_cdm_eff=4.072e+02
+CDM_COUPLING: z=1467.8 coupling=1.054034 rho_cdm_base=4.231e+01 rho_cdm_eff=4.459e+01
+DERIVS_ENTRY: call#=110000 has_ridder=1 Lambda=0.00e+00 a=2.64e-02
+COUPLING: call#=110000 z=36.9 beta=0.150 coupling_term=3.126e-34 dV=5.045e+18 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=8695.6 coupling=1.015588 rho_cdm_base=8.782e+03 rho_cdm_eff=8.919e+03
+CDM_COUPLING: z=4165.7 coupling=1.120933 rho_cdm_base=9.659e+02 rho_cdm_eff=1.083e+03
+CDM_COUPLING: z=2057.4 coupling=1.112884 rho_cdm_base=1.164e+02 rho_cdm_eff=1.296e+02
+CDM_COUPLING: z=1032.4 coupling=1.015450 rho_cdm_base=1.474e+01 rho_cdm_eff=1.496e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=115000 has_ridder=1 Lambda=0.00e+00 a=1.35e-10
+COUPLING: call#=115000 z=7417605322.5 beta=0.150 coupling_term=5.828e-25 dV=3.275e+07 ratio=0.000%
+CDM_COUPLING: z=5858.3 coupling=1.061270 rho_cdm_base=2.686e+03 rho_cdm_eff=2.850e+03
+CDM_COUPLING: z=2868.0 coupling=1.149395 rho_cdm_base=3.153e+02 rho_cdm_eff=3.624e+02
+CDM_COUPLING: z=1405.7 coupling=1.047582 rho_cdm_base=3.717e+01 rho_cdm_eff=3.894e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=8311.8 coupling=1.018812 rho_cdm_base=7.670e+03 rho_cdm_eff=7.814e+03
+CDM_COUPLING: z=3988.2 coupling=1.127559 rho_cdm_base=8.476e+02 rho_cdm_eff=9.558e+02
+CDM_COUPLING: z=1949.2 coupling=1.103454 rho_cdm_base=9.904e+01 rho_cdm_eff=1.093e+02
+DERIVS_ENTRY: call#=120000 has_ridder=1 Lambda=0.00e+00 a=6.83e-03
+COUPLING: call#=120000 z=145.4 beta=0.150 coupling_term=2.335e-33 dV=1.369e+24 ratio=0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5617.8 coupling=1.068302 rho_cdm_base=2.368e+03 rho_cdm_eff=2.530e+03
+CDM_COUPLING: z=2752.5 coupling=1.147794 rho_cdm_base=2.787e+02 rho_cdm_eff=3.199e+02
+CDM_COUPLING: z=1363.7 coupling=1.043321 rho_cdm_base=3.393e+01 rho_cdm_eff=3.540e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+DERIVS_ENTRY: call#=125000 has_ridder=1 Lambda=0.00e+00 a=3.58e-14
+COUPLING: call#=125000 z=27965050543201.6 beta=0.150 coupling_term=2.197e-21 dV=6.111e-04 ratio=0.000%
+CDM_COUPLING: z=7951.4 coupling=1.022449 rho_cdm_base=6.715e+03 rho_cdm_eff=6.866e+03
+CDM_COUPLING: z=3818.4 coupling=1.133532 rho_cdm_base=7.439e+02 rho_cdm_eff=8.432e+02
+CDM_COUPLING: z=1869.3 coupling=1.095913 rho_cdm_base=8.735e+01 rho_cdm_eff=9.573e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5378.5 coupling=1.075894 rho_cdm_base=2.079e+03 rho_cdm_eff=2.236e+03
+CDM_COUPLING: z=2639.5 coupling=1.145166 rho_cdm_base=2.458e+02 rho_cdm_eff=2.815e+02
+CDM_COUPLING: z=1304.7 coupling=1.037545 rho_cdm_base=2.972e+01 rho_cdm_eff=3.084e+01
+DERIVS_ENTRY: call#=130000 has_ridder=1 Lambda=0.00e+00 a=1.34e-03
+COUPLING: call#=130000 z=742.6 beta=0.150 coupling_term=2.468e-32 dV=-1.321e+25 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=7600.5 coupling=1.026658 rho_cdm_base=5.864e+03 rho_cdm_eff=6.021e+03
+CDM_COUPLING: z=3661.6 coupling=1.138553 rho_cdm_base=6.560e+02 rho_cdm_eff=7.469e+02
+CDM_COUPLING: z=1824.5 coupling=1.091509 rho_cdm_base=8.122e+01 rho_cdm_eff=8.866e+01
+DERIVS_ENTRY: call#=135000 has_ridder=1 Lambda=0.00e+00 a=2.98e-01
+COUPLING: call#=135000 z=2.4 beta=0.150 coupling_term=8.009e-36 dV=-1.532e+22 ratio=-0.000%
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+
+DEBUG INPUT.C: Just set model_type to 2 (should be 2)
+[model] *ERROR* Could not find random point giving finite posterior after 1240 tries
+[exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/usr/local/bin/cobaya-run", line 7, in <module>
+    sys.exit(run_script())
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 265, in run_script
+    run(info, **arguments.__dict__)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 160, in run
+    sampler = sampler_class(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/sampler.py", line 320, in __init__
+    self.initialize()
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/samplers/mcmc/mcmc.py", line 219, in initialize
+    initial_point, results = self.model.get_valid_point(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/model.py", line 748, in get_valid_point
+    raise LoggedError(
+cobaya.log.LoggedError: Could not find random point giving finite posterior after 1240 tries
+-------------------------------------------------------------
+
+
+DEBUG: Reading v3 canonical parameters...
+  f_eV = 2.000000e+26 eV
+  Lambda_EDE = 5.000000e-01 eV, theta_E_center = 0.00, sigma_E = 0.40
+  Lambda_tail = 2.300000e-03 eV, alpha_tail = 1.00
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=2
+DEBUG AFTER CHECKS: model_type=2 has_ridder=1
+RIDDER DEBUG (background_init): has_ridder=1, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.800000e+00, beta_ridder=1.500000e-01
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+RIDDER FREEZE FLAG (from input): ridder_freeze_phi = 0, force_damping = 1.000e+00
+DEBUG SHOOTING CHECK: has_ridder=1, model_type=2 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=1 Lambda=0.00e+00
+RIDDER IC DEBUG: model_type=2 f_for_ic=2.000000e+26 theta_i=2.800000e+00 phi_ini=5.600000e+26
+ABOUT TO INTEGRATE: bi_size=7 has_ridder=1 Lambda=0.00e+00
+CDM_COUPLING: z=5145.3 coupling=1.083838 rho_cdm_base=1.820e+03 rho_cdm_eff=1.972e+03
+CDM_COUPLING: z=2531.1 coupling=1.141587 rho_cdm_base=2.168e+02 rho_cdm_eff=2.475e+02
+CDM_COUPLING: z=1263.1 coupling=1.033636 rho_cdm_base=2.697e+01 rho_cdm_eff=2.788e+01
+BG_INIT: background_solve OK
+
+========================================
+RIDDER FINAL STATE (a=1, z=0):
+  rho_ridder = 2.005317e-15 Mpc^-2
+  rho_tot    = 5.608869e-08 Mpc^-2
+  f_ridder   = 3.575261e-08 (fraction of total)
+  Omega_ridder = 0.000000 (if f ~ Omega_Lambda)
+========================================
+

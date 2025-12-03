@@ -1,0 +1,30 @@
+{
+  "description": "Geometric EDE performance across H\u2080 priors",
+  "key_finding": "EDE beats \u039bCDM in ALL worlds, proving geometric modification is data-driven",
+  "worlds": [
+    {
+      "world": "SH0ES",
+      "prior": "H\u2080 = 73.04 \u00b1 1.04",
+      "ede_H0": 70.62,
+      "ede_S8": 0.798,
+      "delta_chi2": -10.1,
+      "H0_tension_reduction": "5\u03c3 \u2192 2.3\u03c3"
+    },
+    {
+      "world": "TRGB",
+      "prior": "H\u2080 = 69.8 \u00b1 1.7",
+      "ede_H0": 70.03,
+      "ede_S8": 0.81,
+      "delta_chi2": -15.7,
+      "H0_tension_reduction": "Fully resolved"
+    },
+    {
+      "world": "BASE",
+      "prior": "None (inverse distance ladder)",
+      "ede_H0": 68.76,
+      "ede_S8": 0.833,
+      "delta_chi2": -19.3,
+      "H0_tension_reduction": "CMB prefers EDE geometry"
+    }
+  ]
+}

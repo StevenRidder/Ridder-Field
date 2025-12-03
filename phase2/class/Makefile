@@ -22,7 +22,7 @@ vpath .base build
 CC       = gcc
 #CC       = icc
 #CC       = pgcc
-CPP      = g++ --std=c++11 -fpermissive -Wno-write-strings -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1
+CPP      = g++ --std=c++11 -fpermissive -Wno-write-strings  
 
 # your tool for creating static libraries:
 AR        = ar rv
@@ -111,7 +111,7 @@ HEADERFILES += $(wildcard ./$(HMCODE)/*.h)
 
 TOOLS = growTable.o dei_rkck.o sparse.o evolver_rkck.o  evolver_ndf15.o arrays.opp parser.o quadrature.o hyperspherical.opp common.o trigonometric_integrals.o
 
-SOURCE = input.o background.o thermodynamics.o perturbations.opp primordial.opp fourier.o transfer.opp harmonic.opp lensing.opp distortions.o
+SOURCE = input.o background.o ridder_unified_potential.o ridder_v3_potential.o thermodynamics.o perturbations.opp primordial.opp fourier.o transfer.opp harmonic.opp lensing.opp distortions.o
 
 INPUT = input.o
 
@@ -155,7 +155,7 @@ TEST_THERMODYNAMICS = test_thermodynamics.o
 
 TEST_BACKGROUND = test_background.o
 
-TEST_HYPERSPHERICAL = test_hyperspherical.o
+TEST_HYPERSPHERICAL = test_hyperspherical.opp
 
 C_TOOLS =  $(addprefix tools/, $(addsuffix .c,$(basename $(TOOLS))))
 C_SOURCE = $(addprefix source/, $(addsuffix .c,$(basename $(SOURCE) $(OUTPUT))))

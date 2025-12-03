@@ -1,0 +1,254 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier4_lcdm_shoes_clean1'
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase2/class
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/Ridder-Field/phase3/packages/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/Ridder-Field/phase3/packages/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[sh0es_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+[mcmc] Initial point: logA:3.044, n_s:0.9649, H0:70, omega_b:0.02237, omega_cdm:0.12, tau_reio:0.0544, A_planck:0.9991293, calib_100T:0.9993407, calib_217T:0.9981749, A_cib_217:75.7219, xi_sz_cib:0.08139621, A_sz:6.447509, ksz_norm:1.563199, gal545_A_100:8.590227, gal545_A_143:6.427591, gal545_A_143_217:19.39587, gal545_A_217:81.21989, ps_A_100_100:290.0591, ps_A_143_143:53.53612, ps_A_143_217:54.41073, ps_A_217_217:117.3783, galf_TE_A_100:-0.05826334, galf_TE_A_100_143:0.1134116, galf_TE_A_100_217:0.5293186, galf_TE_A_143:0.339433, galf_TE_A_143_217:0.7064725, galf_TE_A_217:2.319902
+[model] Measuring speeds... (this may take a few seconds)
+[model] Setting measured speeds (per sec): {planck_2018_lowl.TT: 777.0, planck_2018_lowl.EE: 2980.0, planck_2018_highl_plik.TTTEEE: 0.732, planck_2018_lensing.clik: 36.1, bao.sixdf_2011_bao: 1300.0, bao.sdss_dr7_mgs: 2270.0, bao.sdss_dr12_consensus_bao: 1030.0, sh0es_h0: 38300.0, classy: 0.0602}
+[mcmc] Oversampling with factors:
+[mcmc] * 1 : ['H0']
+[mcmc] * 1 : ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio']
+[mcmc] * 2 : ['A_planck']
+[mcmc] * 2 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+[mcmc] Sampling!
+[mcmc] Progress @ 2025-11-26 22:35:37 : 1 steps taken, and 0 accepted.
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_DERIVS: FIRST CALL at a = 1.000e-14
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_s[mcmc] Progress @ 2025-11-26 22:36:42 : 31 steps taken, and 5 accepted.
+[mcmc] Progress @ 2025-11-26 22:38:01 : 55 steps taken, and 11 accepted.
+hooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+DERIVS_ENTRY: call#=5000 has_ridder=0 Lambda=0.00e+00 a=5.63e-01
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00[mcmc] Progress @ 2025-11-26 22:39:18 : 78 steps taken, and 17 accepted.
+[mcmc] Progress @ 2025-11-26 22:40:28 : 112 steps taken, and 23 accepted.
+, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+DERIVS_ENTRY: call#=10000 has_ridder=0 Lambda=0.00e+00 a=7.19e-01
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT: background_solve OK
+BACKGROUND_INIT ENTERED: Lambda=0.00e+00
+DEBUG BG_INIT ENTRY: model_type=0
+DEBUG AFTER CHECKS: model_type=0 has_ridder=0
+RIDDER DEBUG (background_init): has_ridder=0, Lambda_EDE_ridder=0.000000e+00, f_axion_ridder=1.000000e+16, theta_i_ridder=2.500000e+00, beta_ridder=0.000000e+00
+BG_INIT: entering background_checks
+BG_INIT: background_checks OK
+DEBUG SHOOTING CHECK: has_ridder=0, model_type=0 (unified=1), use_shooting_EDE=0
+BG_INIT: entering background_solve
+BACKGROUND_SOLVE ENTERED: has_ridder=0 Lambda=0.00e+00
+ABOUT TO INTEGRATE: bi_size=5 has_ridder=0 Lambda=0.00e+00
+BG_INIT

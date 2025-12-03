@@ -1,0 +1,166 @@
+# ------------------------------------------------------------------------
+# TIER 7: V4 "GEOMETRIC RESOLUTION" CHAIN (TRGB WORLD)
+# ------------------------------------------------------------------------
+#
+# PURPOSE
+#   Second control case for V4. Uses TRGB H0 prior (69.8 ± 1.1) instead
+#   of SH0ES. The TRGB world has less tension with Planck, so V4 should
+#   NOT need to distort the expansion history as much.
+#
+# EXPECTATION
+#   V4 in TRGB world should sit closer to ΛCDM than in SH0ES world.
+#   If it pays a large χ² penalty here, the model is over-tuned.
+# ------------------------------------------------------------------------
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: 'yes'
+      gauge: newtonian
+      recombination: recfast
+      use_ridder: 'yes'
+      ridder_model_type: v3_canon
+      ridder_use_shelf: 'yes'
+      ridder_theta_E_center: 0.0
+      ridder_sigma_E: 0.4
+      ridder_use_tail: 'no'
+      ridder_f_eV: 2.0e26
+      ridder_c_slow: 0.0
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  # TRGB H0 prior: 69.8 ± 1.1 (Freedman et al. 2021)
+  trgb_h0:
+    external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 69.8) / 1.1)**2'
+    requires:
+      H0:
+        latex: H_0
+
+params:
+  # --------------------------------------------------------------------
+  # 1. STANDARD COSMOLOGY
+  # --------------------------------------------------------------------
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 69.5
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0002
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.12
+    proposal: 0.002
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.006
+
+  # --------------------------------------------------------------------
+  # 2. RIDDER FIELD – V4 SETTINGS
+  # --------------------------------------------------------------------
+  ridder_Lambda_EDE_eV:
+    prior:
+      min: 0.2
+      max: 1.0
+    ref: 0.5
+    proposal: 0.05
+    latex: \Lambda_{EDE}
+
+  ridder_a_c:
+    prior:
+      min: 0.00015
+      max: 0.0005
+    ref: 0.0003
+    proposal: 2.0e-05
+    latex: a_c
+
+  ridder_sigma_lna:
+    prior:
+      min: 0.3
+      max: 1.2
+    ref: 0.6
+    proposal: 0.1
+    latex: \sigma_{\ln a}
+
+  ridder_n_EDE:
+    prior:
+      min: 2.0
+      max: 6.0
+    ref: 3.0
+    proposal: 0.2
+    latex: n_{EDE}
+
+  theta_i_ridder:
+    prior:
+      min: 0.5
+      max: 3.14
+    ref: 2.8
+    proposal: 0.2
+    latex: \theta_i
+
+  beta_ridder:
+    value: 0.0
+    latex: \beta_{Ridder}
+
+  # --------------------------------------------------------------------
+  # 3. DERIVED PARAMETERS
+  # --------------------------------------------------------------------
+  rs_drag:
+    latex: r_s
+    derived: true
+  sigma8:
+    latex: \sigma_8
+    derived: true
+  Omega_m:
+    latex: \Omega_m
+    derived: true
+  S8:
+    latex: S_8
+    derived: 'lambda sigma8, Omega_m: sigma8 * (Omega_m/0.3)**0.5'
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 0
+    drag: false
+    proposal_scale: 2.0
+
+output: chains/tier7_v4_trgb
+debug: false
+resume: false
+
