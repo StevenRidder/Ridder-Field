@@ -16,7 +16,7 @@ import json
 import subprocess
 from pathlib import Path
 
-VM_HOST = "ridderadmin@172.174.34.125"
+VM_HOST = "<VM_USER>@172.174.34.125"
 VM_RIDDER_PATH = "~/Ridder-Field"
 
 def run_remote(cmd):

@@ -6,7 +6,7 @@
 
 ### ✅ Fixed Bugs
 1. **ridder_f_eV:** Was 1e26, fixed to 1.0 in all YAMLs
-2. **CLASS path:** Changed from `/home/azureuser` to `/home/ridderadmin` in all YAMLs  
+2. **CLASS path:** Changed from `/home/azureuser` to `/home/<VM_USER>` in all YAMLs  
 3. **Baseline ref values:** Set to near-zero (0.001, 0.00001) for valid LCDM-like starting point
 4. **V3 EDE derivatives:** Added missing `S(a)` time window to `dV_EDE_dtheta_v3` and `d2V_EDE_dtheta2_v3`
 5. **Azure VM setup:** Successfully rebuilt CLASS, installed classy wrapper, downloaded all Planck/BAO/Pantheon data
@@ -77,7 +77,7 @@ Then we can:
 - `start_v3_production.sh` - Launch all 3 runs
 
 ### VM Status
-- **Location:** ridderadmin@172.174.34.125
+- **Location:** <VM_USER>@172.174.34.125
 - **CLASS:** Compiled with v3 fixes
 - **Data:** All Planck 2018, BAO, Pantheon downloaded
 - **classy:** Python wrapper installed

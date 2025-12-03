@@ -131,10 +131,10 @@ def start_chain(chain_type, chain_num, use_lcdm_start=False):
         os.remove(f"{output}.input.yaml.locked")
     
     # Build command
-    cmd = f"cd ~/Ridder-Field/phase3 && source ~/.bashrc && export PYTHONPATH=/home/ridderadmin/class_public:\$PYTHONPATH && nohup cobaya-run {config} -o {output} > {logfile} 2>&1 &"
+    cmd = f"cd ~/Ridder-Field/phase3 && source ~/.bashrc && export PYTHONPATH=/home/<VM_USER>/class_public:\$PYTHONPATH && nohup cobaya-run {config} -o {output} > {logfile} 2>&1 &"
     
     log_debug(f"  Starting: {cmd}")
-    stdout, stderr, code = run_cmd(f"ssh ridderadmin@172.191.4.60 '{cmd}'")
+    stdout, stderr, code = run_cmd(f"ssh <VM_USER>@<VM_IP> '{cmd}'")
     
     if code == 0:
         log_debug(f"  Started successfully")

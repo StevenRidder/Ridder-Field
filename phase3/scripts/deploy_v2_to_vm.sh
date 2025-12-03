@@ -4,7 +4,7 @@ set -e
 VM_HOST="$1"
 if [ -z "$VM_HOST" ]; then
     echo "Usage: $0 <vm_host>"
-    echo "Example: $0 ridderadmin@172.174.34.125"
+    echo "Example: $0 <VM_USER>@172.174.34.125"
     exit 1
 fi
 

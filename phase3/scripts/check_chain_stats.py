@@ -8,7 +8,7 @@ import os
 import glob
 from datetime import datetime
 
-BASE_PATH = "/home/ridderadmin/Ridder-Field/phase3/chains"
+BASE_PATH = "/home/<VM_USER>/Ridder-Field/phase3/chains"
 
 CHAINS = {
     "ΛCDM Baseline": "baseline_lcdm",

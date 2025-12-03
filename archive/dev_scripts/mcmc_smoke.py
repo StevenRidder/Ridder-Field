@@ -13,8 +13,8 @@ import json
 from datetime import datetime
 
 # Paths
-CLASS_DIR = "/home/ridderadmin/Ridder-Field/phase2/class"
-OUTPUT_DIR = "/home/ridderadmin/Ridder-Field/phase2/class/output/mcmc"
+CLASS_DIR = "/home/<VM_USER>/Ridder-Field/phase2/class"
+OUTPUT_DIR = "/home/<VM_USER>/Ridder-Field/phase2/class/output/mcmc"
 
 # Fixed model parameters
 FIXED = {

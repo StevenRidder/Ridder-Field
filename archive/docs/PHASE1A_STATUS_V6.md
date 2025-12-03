@@ -83,7 +83,7 @@ Configuration:
 ### Option A: Check if unified potential functions exist in compiled binary
 
 ```bash
-ssh ridderadmin@172.174.34.125 '
+ssh <VM_USER>@172.174.34.125 '
   cd ~/Ridder-Field/phase2/class && 
   nm class | grep -i "unified\|V_tail\|V_shelf"
 '

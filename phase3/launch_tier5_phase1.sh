@@ -7,11 +7,11 @@
 # Chains: 3 per model, 1500-2500 samples each
 # Target: R-1 < 0.01 for cosmology, ESS ≥ 1500 for H0/S8
 #
-# Usage: ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && bash launch_tier5_phase1.sh"
+# Usage: ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && bash launch_tier5_phase1.sh"
 # =============================================================================
 
 set -e
-cd /home/ridderadmin/Ridder-Field/phase3
+cd /home/<VM_USER>/Ridder-Field/phase3
 
 echo "======================================================================"
 echo "TIER 5 PHASE 1: DESI Y1 BAO + PANTHEON+ — DISTANCE LADDER TEST"
@@ -26,7 +26,7 @@ echo "Chain Standard: 3 chains × 1500-2500 samples, R-1 < 0.01"
 echo "======================================================================"
 
 # Activate conda
-source /home/ridderadmin/miniconda3/etc/profile.d/conda.sh
+source /home/<VM_USER>/miniconda3/etc/profile.d/conda.sh
 conda activate cobaya
 
 # Create logs directory if needed

@@ -126,7 +126,7 @@ for THETA in "${THETA_VALUES[@]}"; do
     echo "theta_i_ridder = $THETA" >> theta_scan_${THETA}.ini
     
     # Run CLASS
-    ssh ridderadmin@172.174.34.125 \
+    ssh <VM_USER>@172.174.34.125 \
         "cd ~/Ridder-Field/phase2/class && \
          timeout 120 ./class ~/Ridder-Field/theta_scan_${THETA}.ini \
          2>&1 | grep -E 'RIDDER_SHOOT|converged|warning' \

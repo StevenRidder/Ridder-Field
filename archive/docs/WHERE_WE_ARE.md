@@ -57,7 +57,7 @@
 
 **Command:**
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 python3 test_unified_cdm_metrics.py
 ```
@@ -197,7 +197,7 @@ At that point you'll have:
 
 **What you do next:**
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 python3 test_unified_cdm_metrics.py
 ```

@@ -4,7 +4,7 @@
 
 set -e
 
-VM_HOST="ridderadmin@172.174.34.125"
+VM_HOST="<VM_USER>@172.174.34.125"
 
 echo "🔄 FORCING COMPLETE REBUILD ON VM..."
 echo ""

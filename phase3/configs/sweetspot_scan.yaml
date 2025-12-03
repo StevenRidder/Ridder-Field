@@ -9,7 +9,7 @@ sampler:
     
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
     extra_args:
       # Ridder field EDE parameters - SWEET SPOT TEST
       Lambda_EDE_ridder: 0.70  # TEST: Intermediate value!

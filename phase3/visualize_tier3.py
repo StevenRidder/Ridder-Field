@@ -138,7 +138,7 @@ def print_summary(chains, param_indices, param_names, tier_name="TIER 3"):
 
 def main():
     """Main visualization routine."""
-    chain_dir = "/home/ridderadmin/Ridder-Field/phase3"
+    chain_dir = "/home/<VM_USER>/Ridder-Field/phase3"
     chain_files = [
         f"{chain_dir}/tier3_chain1_work/chains/ridder_tier3_planck_bao_sh0es.1.txt",
         f"{chain_dir}/tier3_chain2_work/chains/ridder_tier3_planck_bao_sh0es.1.txt",

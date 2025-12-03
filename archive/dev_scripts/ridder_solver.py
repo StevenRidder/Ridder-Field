@@ -162,8 +162,8 @@ def classify(output: ModelOutput, c: Constraints = CONSTRAINTS) -> ModelOutput:
 # CLASS INTERFACE
 # =============================================================================
 
-CLASS_DIR = '/home/ridderadmin/Ridder-Field/phase2/class'
-OUTPUT_DIR = '/home/ridderadmin/Ridder-Field/phase2/class/output/solver'
+CLASS_DIR = '/home/<VM_USER>/Ridder-Field/phase2/class'
+OUTPUT_DIR = '/home/<VM_USER>/Ridder-Field/phase2/class/output/solver'
 
 def create_ini(lambda_tail: float, f_axion: float, root: str) -> str:
     """Generate frozen model INI."""

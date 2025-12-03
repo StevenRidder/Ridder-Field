@@ -15,7 +15,7 @@ import subprocess
 from datetime import datetime
 
 # Remote VM settings
-VM_HOST = "ridderadmin@172.174.34.125"
+VM_HOST = "<VM_USER>@172.174.34.125"
 VM_PATH = "~/Ridder-Field"
 VM_OUTPUT = "~/Ridder-Field/phase2/class/output/mcmc"
 

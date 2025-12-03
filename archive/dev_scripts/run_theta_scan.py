@@ -37,7 +37,7 @@ for i, theta in enumerate(THETA_VALUES, 1):
     ini_content = base_ini + f"\ntheta_i_ridder = {theta}\n"
     
     # Write to VM and run CLASS
-    cmd = f"""ssh ridderadmin@172.174.34.125 'cat > /tmp/theta_scan_{theta}.ini << "EOFINI"
+    cmd = f"""ssh <VM_USER>@172.174.34.125 'cat > /tmp/theta_scan_{theta}.ini << "EOFINI"
 {ini_content}
 EOFINI
 cd ~/Ridder-Field/phase2/class && timeout 90 ./class /tmp/theta_scan_{theta}.ini 2>&1'"""

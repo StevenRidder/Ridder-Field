@@ -128,7 +128,7 @@ This allows `θ = φ/f ~ O(1)` so the field can actually roll.
 
 ### Step 1: Run Beta Ladder on VM
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3_full_analysis/scripts
 bash beta_ladder_v6_postfix.sh
 ```

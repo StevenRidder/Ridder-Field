@@ -233,7 +233,7 @@ likelihood:
     type: []
     stop_at_error: false
     version: null
-    python_path: /home/ridderadmin/Ridder-Field/phase3
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
     input_params: []
     output_params: []
   sn.pantheonplus:

@@ -85,7 +85,7 @@ def create_ridder_config(profile_config, output_prefix):
     ridder_config = {
         "theory": {
             "classy": {
-                "path": "/home/ridderadmin/Ridder-Field/phase2/class",
+                "path": "/home/<VM_USER>/Ridder-Field/phase2/class",
                 "extra_args": {
                     "use_scf": "yes",
                     "scf_tuning_index": 0,

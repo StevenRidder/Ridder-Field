@@ -240,7 +240,7 @@ Switch to fluid during fast oscillations
 **To extract H(z) comparison RIGHT NOW:**
 
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 
 # Quick check

@@ -4,7 +4,7 @@
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class/python
+    path: /home/<VM_USER>/Ridder-Field/phase2/class/python
     extra_args:
       output: tCl, mPk
       l_max_scalars: 2508
@@ -35,7 +35,7 @@ likelihood:
   
   # DESI Y1 BAO
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
 
 params:
   # Base ΛCDM (k=6)

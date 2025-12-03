@@ -109,7 +109,7 @@ else {
 
 ### Option 1: Manual VM Edit (5 minutes)
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase2/class/source
 # Manually edit background.c to add shooting functions
 # Copy-paste from local file
@@ -134,7 +134,7 @@ cd phase2/class && make clean && make
 # On laptop:
 cd /Users/steveridder/Git/Ridder-Field/phase2/class/source
 tar czf background.tar.gz background.c
-scp background.tar.gz ridderadmin@172.174.34.125:~/
+scp background.tar.gz <VM_USER>@172.174.34.125:~/
 
 # On VM:
 cd ~/Ridder-Field/phase2/class/source

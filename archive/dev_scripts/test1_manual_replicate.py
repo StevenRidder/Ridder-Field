@@ -12,7 +12,7 @@ import sys
 def run_class_ini(ini_content, label):
     """Run CLASS with given ini content, return Lambda, f_peak, z_peak"""
     # Write to VM temp file and run
-    cmd = f"""ssh ridderadmin@172.174.34.125 'cat > /tmp/test_replicate.ini << "EOFINI"
+    cmd = f"""ssh <VM_USER>@172.174.34.125 'cat > /tmp/test_replicate.ini << "EOFINI"
 {ini_content}
 EOFINI
 cd ~/Ridder-Field/phase2/class && timeout 120 ./class /tmp/test_replicate.ini 2>&1'"""

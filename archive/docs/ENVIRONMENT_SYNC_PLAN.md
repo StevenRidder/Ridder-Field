@@ -63,10 +63,10 @@ Run these **from US East** when we want to sync to whatever is now working on Au
 #### 4.1. Sync Python packages / Cobaya / CLASS
 
 ```bash
-ssh ridderadmin@172.191.4.60 "
+ssh <VM_USER>@<VM_IP> "
   rsync -avz \
-    ridderadmin@172.174.34.125:/home/ridderadmin/.local/ \
-    /home/ridderadmin/.local/
+    <VM_USER>@172.174.34.125:/home/<VM_USER>/.local/ \
+    /home/<VM_USER>/.local/
 "
 ```
 
@@ -78,10 +78,10 @@ This copies:
 #### 4.2. Sync likelihood data (Planck, BAO, SN, etc.)
 
 ```bash
-ssh ridderadmin@172.191.4.60 "
+ssh <VM_USER>@<VM_IP> "
   rsync -avz \
-    ridderadmin@172.174.34.125:/home/ridderadmin/Ridder-Field/phase3/packages/data/ \
-    /home/ridderadmin/Ridder-Field/phase3/packages/data/
+    <VM_USER>@172.174.34.125:/home/<VM_USER>/Ridder-Field/phase3/packages/data/ \
+    /home/<VM_USER>/Ridder-Field/phase3/packages/data/
 "
 ```
 

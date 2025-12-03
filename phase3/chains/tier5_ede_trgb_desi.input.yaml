@@ -20,7 +20,7 @@ likelihood:
   bao.sdss_dr7_mgs: null
   bao.sdss_dr12_consensus_bao: null
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
   sn.pantheonplus: null
   trgb_h0:
     external: 'lambda H0: -0.5*((H0 - 69.8)/1.7)**2'

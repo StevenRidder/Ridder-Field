@@ -167,7 +167,7 @@ These are VM-only patches:
 
 **Immediate (5 min):**
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase2/class
 git checkout HEAD -- include/parallel.h
 make clean && make -j4

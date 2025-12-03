@@ -23,7 +23,7 @@ CHAINS = {
     }
 }
 
-BASE_PATH = "/home/ridderadmin/Ridder-Field/phase3/chains"
+BASE_PATH = "/home/<VM_USER>/Ridder-Field/phase3/chains"
 
 def get_chain_status(path_prefix, chain_num):
     """Get status for a single chain"""

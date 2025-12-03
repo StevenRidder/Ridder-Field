@@ -2,13 +2,13 @@
 # Launch Tier 5 Phase 2: Unconstrained DESI World (No H₀ Prior)
 # This is the real scientific question: Where does DESI naturally put H₀ and r_s?
 #
-# Usage: ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && bash launch_unconstrained_desi.sh"
+# Usage: ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && bash launch_unconstrained_desi.sh"
 #
 # Updated: 2025-11-30
 
 set -e
 
-cd /home/ridderadmin/Ridder-Field/phase3
+cd /home/<VM_USER>/Ridder-Field/phase3
 
 echo "======================================"
 echo "TIER 5 PHASE 2: UNCONSTRAINED DESI WORLD"
@@ -24,7 +24,7 @@ pkill -f "tier5_.*trgb.*desi" 2>/dev/null || true
 sleep 2
 
 # Activate conda environment
-source /home/ridderadmin/miniconda3/etc/profile.d/conda.sh
+source /home/<VM_USER>/miniconda3/etc/profile.d/conda.sh
 conda activate cobaya
 
 # Launch ΛCDM baseline (k=6)

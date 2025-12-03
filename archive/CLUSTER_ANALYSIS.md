@@ -202,7 +202,7 @@ for i in {2..4}; do
     --name ridder-compute-0$i \
     --image Ubuntu2204 \
     --size Standard_D4s_v3 \
-    --admin-username ridderadmin \
+    --admin-username <VM_USER> \
     --ssh-key-values ~/.ssh/id_rsa.pub \
     --vnet-name ridder-vnet \
     --subnet internal
@@ -222,7 +222,7 @@ sudo apt install -y openmpi-bin libopenmpi-dev
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 # Copy to all worker nodes
 for i in {2..4}; do
-  ssh-copy-id ridderadmin@ridder-compute-0$i
+  ssh-copy-id <VM_USER>@ridder-compute-0$i
 done
 ```
 

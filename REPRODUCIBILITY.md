@@ -305,11 +305,11 @@ az vm create \
   --name ridder-chains \
   --image Ubuntu2204 \
   --size Standard_D8s_v3 \
-  --admin-username ridderadmin \
+  --admin-username <VM_USER> \
   --generate-ssh-keys
 
 # SSH into VM
-ssh ridderadmin@<VM_IP>
+ssh <VM_USER>@<VM_IP>
 
 # Clone and setup
 git clone https://github.com/StevenRidder/Ridder-Field.git

@@ -6,7 +6,7 @@
 likelihood:
   rs_gaussian:
     external: |
-      (lambda: __import__('sys').path.insert(0, '/home/ridderadmin/Ridder-Field/phase3') or getattr(__import__('rs_likelihood_direct'), 'rs_likelihood'))()
+      (lambda: __import__('sys').path.insert(0, '/home/<VM_USER>/Ridder-Field/phase3') or getattr(__import__('rs_likelihood_direct'), 'rs_likelihood'))()
 
 params:
   # Ridder field parameters only (rs_gaussian calls CLASS directly with fixed cosmology)

@@ -1,7 +1,7 @@
 # Azure Resource Audit
 
 **Date**: November 22, 2025  
-**Subscription**: Pay-As-You-Go (7c45aa43-0e69-489b-b19b-79e79c8b30ac)
+**Subscription**: Pay-As-You-Go (<SUBSCRIPTION_ID>)
 
 ## Current Running Resources
 
@@ -13,7 +13,7 @@
 - **Size**: Standard_NC4as_T4_v3 (4 vCPUs, 28 GB RAM, NVIDIA T4 GPU)
 - **Status**: ⚪ **DEALLOCATED** (not incurring compute charges)
 - **Private IP**: 10.0.0.4
-- **Public IP**: 52.186.169.9
+- **Public IP**: <VM_IP>
 - **Purpose**: Taikun Action Engine / ML Training
 - **Cost**: $0/day (deallocated)
 
@@ -23,7 +23,7 @@
 - **Size**: Standard_D4s_v3 (4 vCPUs, 16 GB RAM)
 - **Status**: 🟢 **RUNNING** (actively incurring charges)
 - **Private IP**: 10.0.2.4
-- **Public IP**: 172.191.4.60
+- **Public IP**: <VM_IP>
 - **Purpose**: Ridder Field MCMC computations
 - **Cost**: ~$0.192/hour = **$4.61/day** = **$138/month**
 - **Current Usage**: 4 vCPUs used out of 10 vCPU quota

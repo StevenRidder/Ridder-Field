@@ -3,7 +3,7 @@
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
     extra_args:
       # Minimal CLASS args (Ridder field handled internally)
       # Planck requires high l_max and lens calculation

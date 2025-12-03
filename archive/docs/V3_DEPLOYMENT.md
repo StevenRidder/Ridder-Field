@@ -69,7 +69,7 @@ V_tail(θ) = Λ_tail⁴ · [1 + α_tail · (1 - cos(θ - θ_T_center))^n_tail]
 - **Commit:** `771931f` ✅
 - **Files:** All v3 files present ✅
 
-### VM (ridderadmin@172.174.34.125)
+### VM (<VM_USER>@172.174.34.125)
 - **Branch:** `v3-development` ✅
 - **Commit:** `771931f` ✅
 - **CLASS Binary:** Built successfully (Nov 25, 01:45) ✅
@@ -97,7 +97,7 @@ git commit -m "V3: update potential"
 git push origin v3-development
 
 # On VM - pull and rebuild
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 git pull origin v3-development
 cd phase2/class
@@ -108,7 +108,7 @@ make clean && make -j4
 
 ```bash
 # Run v3 button on VM
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 python3 run_unified_model_v3.py --preset unified_compromise --mode full
 ```
@@ -124,19 +124,19 @@ python3 run_unified_model_v3.py --preset unified_compromise --mode full
 
 ### Test 1: V3 Button with Preset
 ```bash
-ssh ridderadmin@172.174.34.125 "cd ~/Ridder-Field && python3 run_unified_model_v3.py --preset lcdm_baseline --mode quick --skip_shooting"
+ssh <VM_USER>@172.174.34.125 "cd ~/Ridder-Field && python3 run_unified_model_v3.py --preset lcdm_baseline --mode quick --skip_shooting"
 ```
 **Expected:** LCDM background, no EDE, no tail
 
 ### Test 2: V3 Button with Parameters
 ```bash
-ssh ridderadmin@172.174.34.125 "cd ~/Ridder-Field && python3 run_unified_model_v3.py --Lambda_tail_meV 16.0 --f_axion 0.40 --mode quick"
+ssh <VM_USER>@172.174.34.125 "cd ~/Ridder-Field && python3 run_unified_model_v3.py --Lambda_tail_meV 16.0 --f_axion 0.40 --mode quick"
 ```
 **Expected:** Shooting for Lambda_EDE, background with EDE+tail
 
 ### Test 3: Check V3 Potential is Active
 ```bash
-ssh ridderadmin@172.174.34.125 "cd ~/Ridder-Field/phase2/class && ./class ~/Ridder-Field/test_v3.ini 2>&1 | grep 'V_UNIFIED_DEBUG\|ridder_V_v3'"
+ssh <VM_USER>@172.174.34.125 "cd ~/Ridder-Field/phase2/class && ./class ~/Ridder-Field/test_v3.ini 2>&1 | grep 'V_UNIFIED_DEBUG\|ridder_V_v3'"
 ```
 **Expected:** Debug prints from v3 potential functions
 

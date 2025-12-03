@@ -10,7 +10,7 @@ import re
 import sys
 
 # Configuration
-VM_HOST = "ridderadmin@172.174.34.125"
+VM_HOST = "<VM_USER>@172.174.34.125"
 CLASS_BIN = "./phase2/class/class"
 BASE_INI = "axiclass_anchor_proper.ini"
 WORK_DIR = "~/Ridder-Field"

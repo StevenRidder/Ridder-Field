@@ -27,7 +27,7 @@ likelihood:
   
   # DESI Y1 BAO
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
 
 params:
   # Base ΛCDM (k=6)

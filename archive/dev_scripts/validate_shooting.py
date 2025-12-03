@@ -50,7 +50,7 @@ def run_class_with_params(params_dict, verbose=False):
     
     try:
         # Run CLASS on VM
-        cmd = f"ssh ridderadmin@172.174.34.125 'cat > /tmp/test_shoot.ini << EOF\n{open(ini_file).read()}\nEOF\ncd ~/Ridder-Field/phase2/class && timeout 120 ./class /tmp/test_shoot.ini 2>&1'"
+        cmd = f"ssh <VM_USER>@172.174.34.125 'cat > /tmp/test_shoot.ini << EOF\n{open(ini_file).read()}\nEOF\ncd ~/Ridder-Field/phase2/class && timeout 120 ./class /tmp/test_shoot.ini 2>&1'"
         
         if verbose:
             print(f"  Running CLASS with {params_dict}...")

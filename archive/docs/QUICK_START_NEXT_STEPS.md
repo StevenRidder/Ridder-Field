@@ -12,7 +12,7 @@
 
 **Run on Azure VM:**
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 python3 run_10min_metropolis_test.py
 ```

@@ -54,7 +54,7 @@ Direct multiplication `x*x*x*x` takes ~3 cycles.
 
 **Implementation:** I've created a script that does this automatically:
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 ./V3_PERFORMANCE_FIX_NOW.sh
 ```
@@ -125,10 +125,10 @@ pba->tol_background_integration = 1.e-4;
 ### Step 1: Apply Fast Math Patch (Do Now)
 ```bash
 # On your local Mac (to transfer script to VM):
-scp V3_PERFORMANCE_FIX_NOW.sh ridderadmin@172.174.34.125:~/Ridder-Field/
+scp V3_PERFORMANCE_FIX_NOW.sh <VM_USER>@172.174.34.125:~/Ridder-Field/
 
 # On VM:
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field
 ./V3_PERFORMANCE_FIX_NOW.sh
 ```

@@ -89,8 +89,8 @@ And remove `a_cibc`, `a_dust_tt`, `a_dust_ee`, `a_radio` from the params section
 **Symptom**: Initially, CLASS worked in standalone tests but failed through cobaya.
 
 **Root Cause**:
-- Pip-installed standard classy at `/home/ridderadmin/.local/lib/python3.10/site-packages/classy`
-- Our custom Ridder CLASS at `/home/ridderadmin/Ridder-Field/phase2/class/python/`
+- Pip-installed standard classy at `/home/<VM_USER>/.local/lib/python3.10/site-packages/classy`
+- Our custom Ridder CLASS at `/home/<VM_USER>/Ridder-Field/phase2/class/python/`
 - Cobaya was loading the pip version, which doesn't have Ridder field support
 
 **Debugging Steps**:
@@ -104,8 +104,8 @@ And remove `a_cibc`, `a_dust_tt`, `a_dust_ee`, `a_radio` from the params section
 pip3 uninstall classy
 
 # Copy custom Ridder CLASS to site-packages
-cp /home/ridderadmin/Ridder-Field/phase2/class/python/classy.cpython-310-x86_64-linux-gnu.so \
-   /home/ridderadmin/.local/lib/python3.10/site-packages/
+cp /home/<VM_USER>/Ridder-Field/phase2/class/python/classy.cpython-310-x86_64-linux-gnu.so \
+   /home/<VM_USER>/.local/lib/python3.10/site-packages/
 
 # Copy CLASS data files
 cp -r ~/Ridder-Field/phase2/class/external/* ~/.local/lib/python3.10/site-packages/external/

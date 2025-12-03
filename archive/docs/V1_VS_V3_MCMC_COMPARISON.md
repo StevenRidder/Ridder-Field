@@ -344,7 +344,7 @@ Switch to fluid mode (w_eff) as soon as field starts oscillating, avoid expensiv
 **Run on VM right now:**
 
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 
 # 1. Check current progress
 python3 ~/Ridder-Field/phase3/scripts/check_v3_tier3_status.py

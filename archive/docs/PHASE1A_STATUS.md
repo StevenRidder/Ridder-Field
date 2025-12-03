@@ -108,17 +108,17 @@ Where:
 
 ### Check if runs are still running:
 ```bash
-ssh ridderadmin@172.174.34.125 'ps aux | grep "run_beta"'
+ssh <VM_USER>@172.174.34.125 'ps aux | grep "run_beta"'
 ```
 
 ### Watch live log:
 ```bash
-ssh ridderadmin@172.174.34.125 'tail -f ~/Ridder-Field/phase3_full_analysis/scripts/beta_ladder.log'
+ssh <VM_USER>@172.174.34.125 'tail -f ~/Ridder-Field/phase3_full_analysis/scripts/beta_ladder.log'
 ```
 
 ### Check raw results:
 ```bash
-ssh ridderadmin@172.174.34.125 'cat ~/Ridder-Field/phase3_full_analysis/results/beta_ladder_results.txt'
+ssh <VM_USER>@172.174.34.125 'cat ~/Ridder-Field/phase3_full_analysis/results/beta_ladder_results.txt'
 ```
 
 ---

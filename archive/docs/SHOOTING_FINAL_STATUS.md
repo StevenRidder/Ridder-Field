@@ -50,7 +50,7 @@ When you're ready to continue:
 
 ### Step 1: Clean VM State
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase2/class
 rm -rf build/ libclass.a class
 ```

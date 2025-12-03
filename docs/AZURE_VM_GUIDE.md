@@ -89,7 +89,7 @@ az vm create \
   --name ridder-mcmc \
   --image Ubuntu2204 \
   --size Standard_D4as_v5 \
-  --admin-username ridderadmin \
+  --admin-username <VM_USER> \
   --generate-ssh-keys \
   --location eastus
 ```
@@ -118,7 +118,7 @@ az vm create \
   --priority Spot \
   --eviction-policy Deallocate \
   --max-price 0.05 \
-  --admin-username ridderadmin \
+  --admin-username <VM_USER> \
   --generate-ssh-keys
 ```
 
@@ -148,29 +148,29 @@ az vm create \
 
 | Subscription | ID |
 |--------------|-----|
-| Pay-As-You-Go | 7c45aa43-0e69-489b-b19b-79e79c8b30ac |
-| Primary | 07d86cc8-edc9-4278-8f89-2f0687b1317f |
-| Microsoft Azure Sponsorship | c0ba54d9-a894-4cf4-b40a-45f5f2b8bb54 |
+| Pay-As-You-Go | <SUBSCRIPTION_ID> |
+| Primary | <SUBSCRIPTION_ID> |
+| Microsoft Azure Sponsorship | <SUBSCRIPTION_ID> |
 
 ### Deallocated VMs (Ready to Restart)
 
 | VM | Resource Group | Size | IP |
 |----|----------------|------|-----|
-| ridder-compute-01 | ridder-cosmology-rg | D4s_v3 | 172.191.4.60 |
-| ridder-australia-01 | ridder-australia-rg | F8s_v2 | 20.58.129.33 |
-| training | MaxwellTraining | NC4as_T4_v3 (GPU) | 52.186.169.9 |
-| Taikun | Taikun (Sponsorship) | — | 20.168.12.116 |
+| ridder-compute-01 | ridder-cosmology-rg | D4s_v3 | <VM_IP> |
+| ridder-australia-01 | ridder-australia-rg | F8s_v2 | <VM_IP> |
+| training | MaxwellTraining | NC4as_T4_v3 (GPU) | <VM_IP> |
+| Taikun | Taikun (Sponsorship) | — | <VM_IP> |
 
 ### To Restart Cosmology VMs
 
 ```bash
 # East US VM
 az vm start --resource-group ridder-cosmology-rg --name ridder-compute-01
-ssh ridderadmin@172.191.4.60
+ssh <VM_USER>@<VM_IP>
 
 # Australia VM
 az vm start --resource-group ridder-australia-rg --name ridder-australia-01
-ssh ridderadmin@20.58.129.33
+ssh <VM_USER>@<VM_IP>
 ```
 
 ---

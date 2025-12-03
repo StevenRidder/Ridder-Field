@@ -3,8 +3,8 @@
 # Run this on AUSTRALIA VM after successful update/test
 set -e
 
-US_EAST_IP="172.191.4.60"
-USER="ridderadmin"
+US_EAST_IP="<VM_IP>"
+USER="<VM_USER>"
 
 echo "========================================"
 echo "SYNCING AUSTRALIA -> US EAST ($US_EAST_IP)"

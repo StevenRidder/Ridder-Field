@@ -2,7 +2,7 @@
 
 **Date:** 2025-11-25  
 **Status:** ✅ READY FOR PRODUCTION MCMC  
-**VM:** ridderadmin@172.174.34.125
+**VM:** <VM_USER>@172.174.34.125
 
 ---
 
@@ -40,7 +40,7 @@
 ### Quick Test (2-4 hours, 800 samples)
 
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 cobaya-run ridder_v3_quick_test.yaml
 ```
@@ -56,7 +56,7 @@ cobaya-run ridder_v3_quick_test.yaml
 **Run all 3 in parallel:**
 
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 mkdir -p logs
 
@@ -84,12 +84,12 @@ tail -f logs/v3_baseline.log
 
 ### Check if chains are running
 ```bash
-ssh ridderadmin@172.174.34.125 "ps aux | grep cobaya"
+ssh <VM_USER>@172.174.34.125 "ps aux | grep cobaya"
 ```
 
 ### Monitor convergence
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 
 # Check R-1 statistic (should approach 1.0)
@@ -102,16 +102,16 @@ getdist chains/v3_baseline -p H0
 ### Check progress
 ```bash
 # Check log
-ssh ridderadmin@172.174.34.125 "tail -50 ~/Ridder-Field/phase3/logs/v3_baseline.log"
+ssh <VM_USER>@172.174.34.125 "tail -50 ~/Ridder-Field/phase3/logs/v3_baseline.log"
 
 # Count samples
-ssh ridderadmin@172.174.34.125 "wc -l ~/Ridder-Field/phase3/chains/v3_baseline.1.txt"
+ssh <VM_USER>@172.174.34.125 "wc -l ~/Ridder-Field/phase3/chains/v3_baseline.1.txt"
 # Target: ~10,000 lines
 ```
 
 ### Estimate time remaining
 ```bash
-ssh ridderadmin@172.174.34.125 "grep -i 'eta\\|samples' ~/Ridder-Field/phase3/logs/v3_baseline.log | tail -5"
+ssh <VM_USER>@172.174.34.125 "grep -i 'eta\\|samples' ~/Ridder-Field/phase3/logs/v3_baseline.log | tail -5"
 ```
 
 ---
@@ -119,7 +119,7 @@ ssh ridderadmin@172.174.34.125 "grep -i 'eta\\|samples' ~/Ridder-Field/phase3/lo
 ## 📁 File Locations on VM
 
 ```
-/home/ridderadmin/Ridder-Field/
+/home/<VM_USER>/Ridder-Field/
 ├── phase2/class/
 │   ├── class                    # V3 binary
 │   └── python/                  # classy wrapper
@@ -165,7 +165,7 @@ ssh ridderadmin@172.174.34.125 "grep -i 'eta\\|samples' ~/Ridder-Field/phase3/lo
 
 ### 1. Check Convergence
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 getdist chains/v3_baseline -p H0 omega_cdm ridder_Lambda_tail_eV
 ```
@@ -273,7 +273,7 @@ Update proposal widths in YAML - see `phase3/V3_MIGRATION_GUIDE.md`
 **Run production MCMC:**
 
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 nohup cobaya-run ridder_v3_baseline.yaml > logs/v3_baseline.log 2>&1 &
 nohup cobaya-run ridder_v3_trgb.yaml > logs/v3_trgb.log 2>&1 &

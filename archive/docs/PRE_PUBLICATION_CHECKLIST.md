@@ -280,8 +280,8 @@ The "DESI tax" is NOT DESI rejecting EDE. It's DESI shifting parameters so EDE l
 ```
 
 **Remote VMs:**
-- US East (Tier 5): `ridderadmin@172.191.4.60`
-- Australia (Phase 2 ACT): `ridderadmin@20.58.129.33`
+- US East (Tier 5): `<VM_USER>@<VM_IP>`
+- Australia (Phase 2 ACT): `<VM_USER>@<VM_IP>`
 
 ---
 

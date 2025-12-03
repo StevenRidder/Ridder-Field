@@ -4,8 +4,8 @@ set -euo pipefail
 # V2 Smoke Test Status Checker
 # Monitors the Ridder V2 MCMC smoke test running on Australia VM
 
-VM_HOST="ridderadmin@172.174.34.125"
-REMOTE_ROOT="/home/ridderadmin/Ridder-Field/phase3"
+VM_HOST="<VM_USER>@172.174.34.125"
+REMOTE_ROOT="/home/<VM_USER>/Ridder-Field/phase3"
 CHAIN_FILE="${REMOTE_ROOT}/chains/ridder_v2_smoke.1.txt"
 LOG_FILE="${REMOTE_ROOT}/mcmc_smoke.log"
 CONFIG_FILE="${REMOTE_ROOT}/ridder_v2_mcmc_smoke.yaml"

@@ -87,11 +87,11 @@ Aborted (core dumped)
 - CLASS has hardcoded buffer sizes for file paths (typically 256 chars)
 - Python `--user` install path is very long:
   ```
-  /home/ridderadmin/.local/lib/python3.10/site-packages/classy-3.2.0-py3.10-linux-x86_64.egg/
+  /home/<VM_USER>/.local/lib/python3.10/site-packages/classy-3.2.0-py3.10-linux-x86_64.egg/
   ```
 - When CLASS tries to read atomic data files (`external/HyRec2020/Alpha_inf.dat`), it constructs:
   ```
-  /home/ridderadmin/.local/lib/.../classy-3.2.0-.../external/HyRec2020/Alpha_inf.dat
+  /home/<VM_USER>/.local/lib/.../classy-3.2.0-.../external/HyRec2020/Alpha_inf.dat
   ```
 - This exceeds the buffer size → overflow → crash
 
@@ -100,7 +100,7 @@ Create a short symlink and use environment variable:
 
 ```bash
 # Create short path
-sudo ln -s /home/ridderadmin/.local/lib/python3.10/site-packages/classy-*.egg /classy
+sudo ln -s /home/<VM_USER>/.local/lib/python3.10/site-packages/classy-*.egg /classy
 
 # Set environment variable
 export CLASS_DATA_PATH=/classy
@@ -225,7 +225,7 @@ set -e
 VM_HOST="$1"
 if [ -z "$VM_HOST" ]; then
     echo "Usage: $0 <vm_host>"
-    echo "Example: $0 ridderadmin@172.174.34.125"
+    echo "Example: $0 <VM_USER>@172.174.34.125"
     exit 1
 fi
 

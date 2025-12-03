@@ -262,7 +262,7 @@ def main():
     # Load all chains
     print("Loading chains...")
     all_chains = {}
-    files = sorted(glob.glob("/home/ridderadmin/Ridder-Field/phase3/chains/tier*.1.txt"))
+    files = sorted(glob.glob("/home/<VM_USER>/Ridder-Field/phase3/chains/tier*.1.txt"))
     
     for f in files:
         name = f.split("/")[-1].replace(".1.txt", "")

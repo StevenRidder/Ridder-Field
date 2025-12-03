@@ -19,7 +19,7 @@ likelihood:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/ridderadmin/Ridder-Field/phase3
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
   sh0es_h0:
     external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2'
     requires:

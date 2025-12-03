@@ -28,7 +28,7 @@
 
 **Action:**
 ```bash
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase2/class/source
 
 # Find and edit background.c
@@ -400,7 +400,7 @@ Create file: `v3_notail_test.patch`
 
 ```bash
 # On VM:
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 
 # 1. Kill slow test
 pkill -f cobaya

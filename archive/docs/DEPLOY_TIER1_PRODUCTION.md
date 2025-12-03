@@ -12,7 +12,7 @@ Deploy the V1 publication-quality Tier 1 run on the Australia VM:
 ### 1. Verify Australia VM is Running
 ```bash
 # From local machine
-ssh ridderadmin@<AUSTRALIA_VM_IP> "uptime && free -h && df -h"
+ssh <VM_USER>@<AUSTRALIA_VM_IP> "uptime && free -h && df -h"
 ```
 
 ### 2. Sync Latest Code
@@ -143,16 +143,16 @@ tmux new -s tier1_monitor
 ### SSH and Check Status
 ```bash
 # From your laptop
-ssh ridderadmin@<AUSTRALIA_VM_IP> "cd ~/Ridder-Field/phase3/scripts && ./tier1_production_status.sh"
+ssh <VM_USER>@<AUSTRALIA_VM_IP> "cd ~/Ridder-Field/phase3/scripts && ./tier1_production_status.sh"
 ```
 
 ### Check Individual Chain Logs
 ```bash
 # Ridder chain 1
-ssh ridderadmin@<AUSTRALIA_VM_IP> "tail -n 50 ~/Ridder-Field/phase3/chains/ridder_prod_chain1_work/ridder_chain1.log"
+ssh <VM_USER>@<AUSTRALIA_VM_IP> "tail -n 50 ~/Ridder-Field/phase3/chains/ridder_prod_chain1_work/ridder_chain1.log"
 
 # ΛCDM chain 1
-ssh ridderadmin@<AUSTRALIA_VM_IP> "tail -n 50 ~/Ridder-Field/phase3/chains/lcdm_prod_chain1_work/lcdm_chain1.log"
+ssh <VM_USER>@<AUSTRALIA_VM_IP> "tail -n 50 ~/Ridder-Field/phase3/chains/lcdm_prod_chain1_work/lcdm_chain1.log"
 ```
 
 ## Expected Timeline
@@ -237,10 +237,10 @@ cd ~/Ridder-Field/phase3/scripts
 ### Step 2: Copy Chains to Local Machine
 ```bash
 # From local machine
-scp ridderadmin@<AUSTRALIA_VM_IP>:~/Ridder-Field/phase3/chains/ridder_tier1_production_chain*.txt \
+scp <VM_USER>@<AUSTRALIA_VM_IP>:~/Ridder-Field/phase3/chains/ridder_tier1_production_chain*.txt \
     ~/Git/Ridder-Field/phase3/chains/
 
-scp ridderadmin@<AUSTRALIA_VM_IP>:~/Ridder-Field/phase3/chains/lcdm_production_chain*.txt \
+scp <VM_USER>@<AUSTRALIA_VM_IP>:~/Ridder-Field/phase3/chains/lcdm_production_chain*.txt \
     ~/Git/Ridder-Field/phase3/chains/
 ```
 

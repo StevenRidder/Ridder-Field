@@ -34,16 +34,16 @@ This implements the complete ACT soft shoulder analysis in two tracks:
 ```bash
 # Deploy scripts
 scp /Users/steveridder/Git/Ridder-Field/phase3/*.py /Users/steveridder/Git/Ridder-Field/phase3/*.sh \
-    ridderadmin@172.191.4.60:~/Ridder-Field/phase3/
+    <VM_USER>@<VM_IP>:~/Ridder-Field/phase3/
 
 # Run Track 1 (MCMC chains)
-ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && bash run_act_analysis.sh"
+ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && bash run_act_analysis.sh"
 
 # Monitor chains
-ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 check_chains.sh"
+ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 check_chains.sh"
 
 # Once chains converge, run Track 2 (template fit)
-ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 act_template_fit.py"
+ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 act_template_fit.py"
 ```
 
 ---

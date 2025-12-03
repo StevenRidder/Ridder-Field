@@ -4,7 +4,7 @@
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class/python
+    path: /home/<VM_USER>/Ridder-Field/phase2/class/python
     extra_args:
       output: tCl, pCl, lCl, mPk
       l_max_scalars: 5000

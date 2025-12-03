@@ -7,7 +7,7 @@ Goal:
     which Planck blocks (high-l TTTEEE, low-l TT/EE, lensing, etc.) are driving it.
 
 Usage:
-    ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 tier5_planck_diagnostic.py"
+    ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 tier5_planck_diagnostic.py"
 """
 
 import numpy as np

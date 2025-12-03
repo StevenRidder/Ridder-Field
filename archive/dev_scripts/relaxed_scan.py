@@ -11,8 +11,8 @@ import numpy as np
 import os
 
 # Paths
-CLASS_DIR = "/home/ridderadmin/Ridder-Field/phase2/class"
-OUTPUT_DIR = "/home/ridderadmin/Ridder-Field/phase2/class/output/solver"
+CLASS_DIR = "/home/<VM_USER>/Ridder-Field/phase2/class"
+OUTPUT_DIR = "/home/<VM_USER>/Ridder-Field/phase2/class/output/solver"
 
 # Fixed model
 FIXED = {

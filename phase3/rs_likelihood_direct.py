@@ -36,10 +36,10 @@ root = /tmp/class_test_
         
         # Run CLASS
         result = subprocess.run(
-            ['/home/ridderadmin/Ridder-Field/phase2/class/class', ini_file],
+            ['/home/<VM_USER>/Ridder-Field/phase2/class/class', ini_file],
             capture_output=True,
             text=True,
-            cwd='/home/ridderadmin/Ridder-Field/phase2/class'
+            cwd='/home/<VM_USER>/Ridder-Field/phase2/class'
         )
         
         if result.returncode != 0:

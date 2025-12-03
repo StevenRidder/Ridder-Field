@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-CHAIN_DIR="/home/ridderadmin/Ridder-Field/phase3/chains"
+CHAIN_DIR="/home/<VM_USER>/Ridder-Field/phase3/chains"
 
 echo "======================================================================"
 echo "TIER 4 PRODUCTION: PROGRESS REPORT"

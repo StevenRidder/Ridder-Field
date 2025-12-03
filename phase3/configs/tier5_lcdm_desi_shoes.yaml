@@ -3,7 +3,7 @@
 
 theory:
   classy:
-    path: /home/ridderadmin/Ridder-Field/phase2/class/python
+    path: /home/<VM_USER>/Ridder-Field/phase2/class/python
     extra_args:
       non_linear: hmcode
 

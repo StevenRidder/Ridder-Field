@@ -217,7 +217,7 @@ skip = ["clean", "opt1", "opt2", "opt3"]
 running = get_running_chains()
 
 chains = {}
-files = sorted(glob.glob("/home/ridderadmin/Ridder-Field/phase3/chains/tier*.1.txt"))
+files = sorted(glob.glob("/home/<VM_USER>/Ridder-Field/phase3/chains/tier*.1.txt"))
 for f in files:
     name = f.split("/")[-1].replace(".1.txt", "")
     if any(s in name for s in skip):

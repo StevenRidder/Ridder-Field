@@ -100,7 +100,7 @@ EDE naturally lands at H₀ ≈ 69.8 in SH0ES world, 69.7 in TRGB world. This is
 
 All chains stored on Azure VM at:
 ```
-ridderadmin@172.191.4.60:~/Ridder-Field/phase3/chains/
+<VM_USER>@<VM_IP>:~/Ridder-Field/phase3/chains/
 ```
 
 Key files:
@@ -170,13 +170,13 @@ Current chains: Δχ² = +10.8 for SH0ES+DESI
 
 ```bash
 # Check chain status
-ssh ridderadmin@172.191.4.60 '~/Ridder-Field/phase3/check_minimizer.sh'
+ssh <VM_USER>@<VM_IP> '~/Ridder-Field/phase3/check_minimizer.sh'
 
 # Extract best-fits from chains
-ssh ridderadmin@172.191.4.60 'cd ~/Ridder-Field/phase3 && python3 tier5_status.py'
+ssh <VM_USER>@<VM_IP> 'cd ~/Ridder-Field/phase3 && python3 tier5_status.py'
 
 # Re-run Tier 5 production chains (if needed)
-ssh ridderadmin@172.191.4.60 'cd ~/Ridder-Field/phase3 && nohup cobaya-run configs/tier5_ede_shoes_desi.yaml -f &'
+ssh <VM_USER>@<VM_IP> 'cd ~/Ridder-Field/phase3 && nohup cobaya-run configs/tier5_ede_shoes_desi.yaml -f &'
 ```
 
 ---
@@ -187,7 +187,7 @@ ssh ridderadmin@172.191.4.60 'cd ~/Ridder-Field/phase3 && nohup cobaya-run confi
 
 All chains are preserved at:
 ```
-ridderadmin@172.191.4.60:~/Ridder-Field/phase3/chains/
+<VM_USER>@<VM_IP>:~/Ridder-Field/phase3/chains/
 ```
 
 Total: 35 chain files covering:
@@ -198,7 +198,7 @@ Total: 35 chain files covering:
 
 **Backup recommendation**: Before terminating Azure VM, run:
 ```bash
-scp -r ridderadmin@172.191.4.60:~/Ridder-Field/phase3/chains/ ./chains_backup/
+scp -r <VM_USER>@<VM_IP>:~/Ridder-Field/phase3/chains/ ./chains_backup/
 ```
 
 ---

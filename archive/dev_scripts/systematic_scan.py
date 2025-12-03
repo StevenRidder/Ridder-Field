@@ -71,8 +71,8 @@ LCDM = {
 # PATHS
 # =============================================================================
 
-CLASS_DIR = '/home/ridderadmin/Ridder-Field/phase2/class'
-OUTPUT_DIR = '/home/ridderadmin/Ridder-Field/phase2/class/output/systematic'
+CLASS_DIR = '/home/<VM_USER>/Ridder-Field/phase2/class'
+OUTPUT_DIR = '/home/<VM_USER>/Ridder-Field/phase2/class/output/systematic'
 
 # =============================================================================
 # INI GENERATION

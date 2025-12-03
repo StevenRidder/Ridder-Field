@@ -11,10 +11,10 @@ SSH commands through automation tools are timing out. Need manual execution.
 ping -c 3 172.174.34.125
 
 # 2. Test SSH connection
-ssh ridderadmin@172.174.34.125 'echo "Connected successfully"'
+ssh <VM_USER>@172.174.34.125 'echo "Connected successfully"'
 
 # 3. If SSH works, check VM status
-ssh ridderadmin@172.174.34.125 'uptime && df -h && free -h'
+ssh <VM_USER>@172.174.34.125 'uptime && df -h && free -h'
 ```
 
 ## If SSH Works: Start the MCMC Runs
@@ -23,7 +23,7 @@ ssh ridderadmin@172.174.34.125 'uptime && df -h && free -h'
 # Open terminal and run each command:
 
 # Start Baseline (no H0 prior)
-ssh ridderadmin@172.174.34.125 << 'EOF'
+ssh <VM_USER>@172.174.34.125 << 'EOF'
 cd ~/Ridder-Field/phase3
 mkdir -p logs chains
 nohup cobaya-run ridder_v3_baseline.yaml > logs/v3_baseline.log 2>&1 &
@@ -31,14 +31,14 @@ echo "Baseline started: PID $!"
 EOF
 
 # Start TRGB (H0 = 69.8 ± 1.7)
-ssh ridderadmin@172.174.34.125 << 'EOF'
+ssh <VM_USER>@172.174.34.125 << 'EOF'
 cd ~/Ridder-Field/phase3
 nohup cobaya-run ridder_v3_trgb.yaml > logs/v3_trgb.log 2>&1 &
 echo "TRGB started: PID $!"
 EOF
 
 # Start SH0ES (H0 = 73.0 ± 1.0)
-ssh ridderadmin@172.174.34.125 << 'EOF'
+ssh <VM_USER>@172.174.34.125 << 'EOF'
 cd ~/Ridder-Field/phase3
 nohup cobaya-run ridder_v3_shoes.yaml > logs/v3_shoes.log 2>&1 &
 echo "SH0ES started: PID $!"
@@ -48,7 +48,7 @@ EOF
 ## Wait 30 seconds, then check status:
 
 ```bash
-ssh ridderadmin@172.174.34.125 << 'EOF'
+ssh <VM_USER>@172.174.34.125 << 'EOF'
 cd ~/Ridder-Field/phase3
 echo "=== Running Processes ==="
 ps aux | grep cobaya-run | grep -v grep
@@ -78,7 +78,7 @@ EOF
 python3 check_v3_status.py
 
 # Or SSH directly
-ssh ridderadmin@172.174.34.125
+ssh <VM_USER>@172.174.34.125
 cd ~/Ridder-Field/phase3
 tail -f logs/v3_baseline.log  # Watch in real-time
 ```

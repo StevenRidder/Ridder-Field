@@ -133,12 +133,12 @@ Tier 5 answers three critical questions that complete the paper:
 
 ### Phase 1: DESI Y1 + Pantheon+
 ```bash
-ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && bash launch_tier5_phase1.sh"
+ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && bash launch_tier5_phase1.sh"
 ```
 
 ### Monitor Progress
 ```bash
-ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 tier5_phase1_status.py"
+ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 tier5_phase1_status.py"
 ```
 
 ---

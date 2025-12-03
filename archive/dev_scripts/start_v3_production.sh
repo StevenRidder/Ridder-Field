@@ -4,8 +4,8 @@
 
 set -e
 
-VM_HOST="ridderadmin@172.174.34.125"
-VM_PATH="/home/ridderadmin/Ridder-Field/phase3"
+VM_HOST="<VM_USER>@172.174.34.125"
+VM_PATH="/home/<VM_USER>/Ridder-Field/phase3"
 
 echo "════════════════════════════════════════════════════════════════════════════════"
 echo "  STARTING V3 PRODUCTION MCMC RUNS"

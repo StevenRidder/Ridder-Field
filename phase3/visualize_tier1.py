@@ -141,7 +141,7 @@ def print_summary(chains, param_indices, param_names):
 def main():
     """Main visualization routine."""
     # Default chain locations
-    chain_dir = "/home/ridderadmin/Ridder-Field/phase3"
+    chain_dir = "/home/<VM_USER>/Ridder-Field/phase3"
     chain_files = [
         f"{chain_dir}/chain1_work/chains/ridder_tier1_planck.1.txt",
         f"{chain_dir}/chain2_work/chains/ridder_tier1_planck.1.txt",

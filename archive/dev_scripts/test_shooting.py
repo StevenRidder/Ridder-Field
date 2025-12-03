@@ -10,7 +10,7 @@ This script tests the shooting mechanism by:
 
 import sys
 # Use the local build directory (updated after setup.py build)
-sys.path.insert(0, '/home/ridderadmin/Ridder-Field/phase2/class/build/lib.linux-x86_64-3.10')
+sys.path.insert(0, '/home/<VM_USER>/Ridder-Field/phase2/class/build/lib.linux-x86_64-3.10')
 
 from classy import Class
 import numpy as np

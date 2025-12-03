@@ -4,8 +4,8 @@ set -e
 # Master deployment script for V2 production MCMC
 # Deploys to both Australia and US East VMs in parallel
 
-AUSTRALIA_VM="ridderadmin@172.174.34.125"
-USEAST_VM="ridderadmin@172.191.4.60"
+AUSTRALIA_VM="<VM_USER>@172.174.34.125"
+USEAST_VM="<VM_USER>@<VM_IP>"
 
 echo "======================================================================"
 echo "V2 PRODUCTION DEPLOYMENT: DUAL VM SETUP"

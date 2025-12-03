@@ -18,7 +18,7 @@ import os
 import sys
 
 # Add CLASS to path
-sys.path.insert(0, '/home/ridderadmin/Ridder-Field/phase2/class/python')
+sys.path.insert(0, '/home/<VM_USER>/Ridder-Field/phase2/class/python')
 
 try:
     from classy import Class

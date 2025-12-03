@@ -4,7 +4,7 @@ Tier 5 Phase 2: Unconstrained DESI World Status Dashboard
 Shows sample counts, H0, S8, chi2, r_s for unconstrained DESI chains
 Tests: Where does DESI+Planck naturally land without H₀ prior?
 
-Usage: ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 tier5_unconstrained_status.py"
+Usage: ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 tier5_unconstrained_status.py"
 """
 import numpy as np
 import glob

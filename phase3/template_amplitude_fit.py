@@ -39,7 +39,7 @@ def load_act_data_and_cov():
     # Alternative paths
     possible_paths = [
         act_data_path,
-        "/home/ridderadmin/.local/share/cobaya/data/data/act_dr6",
+        "/home/<VM_USER>/.local/share/cobaya/data/data/act_dr6",
         os.path.join(os.path.dirname(__file__), "../data/act_dr6"),
     ]
     

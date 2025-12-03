@@ -3,7 +3,7 @@
 Tier 5 Phase 1: DESI Y1 + Pantheon+ Status Dashboard
 Tests: Does DESI kill the "full SH0ES" EDE regime? Does late-time CPL help?
 
-Usage: ssh ridderadmin@172.191.4.60 "cd ~/Ridder-Field/phase3 && python3 tier5_phase1_status.py"
+Usage: ssh <VM_USER>@<VM_IP> "cd ~/Ridder-Field/phase3 && python3 tier5_phase1_status.py"
 """
 import numpy as np
 import os

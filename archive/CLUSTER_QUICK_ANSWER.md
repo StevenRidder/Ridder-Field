@@ -71,12 +71,12 @@ for i in {2..4}; do
     --size Standard_D4s_v3 \
     --vnet-name ridder-vnet \
     --subnet internal \
-    --admin-username ridderadmin \
+    --admin-username <VM_USER> \
     --ssh-key-values ~/.ssh/id_rsa.pub
 done
 
 # 2. Install OpenMPI on all VMs
-ssh ridderadmin@172.174.34.125 "sudo apt install -y openmpi-bin libopenmpi-dev"
+ssh <VM_USER>@172.174.34.125 "sudo apt install -y openmpi-bin libopenmpi-dev"
 
 # 3. Create MPI hostfile
 cat > ~/mpi_hosts << EOF
