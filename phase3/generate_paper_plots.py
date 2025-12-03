@@ -24,11 +24,12 @@ plt.rcParams.update({
 # DATA
 # =============================================================================
 
-# Tier 10 SH0ES World Results
+# SH0ES World Results (pre-DESI, matching paper Table 5)
+# Values from Table 5 (Pareto front) and Table 6 (Summary grid)
 MODELS = {
-    "ΛCDM": {"H0": 68.29, "H0_err": 0.38, "S8": 0.825, "S8_err": 0.007, "chi2": 2823.0, "k": 6, "color": "#2ecc71", "marker": "o"},
-    "w₀wₐCDM": {"H0": 69.17, "H0_err": 0.32, "S8": 0.828, "S8_err": 0.014, "chi2": 2819.7, "k": 8, "color": "#7f8c8d", "marker": "D"},
-    "Geometric EDE": {"H0": 70.62, "H0_err": 0.48, "S8": 0.798, "S8_err": 0.010, "chi2": 2812.9, "k": 8, "color": "#e74c3c", "marker": "s"},
+    "ΛCDM": {"H0": 68.3, "H0_err": 0.38, "S8": 0.83, "S8_err": 0.007, "delta_chi2": 0.0, "k": 6, "color": "#2ecc71", "marker": "o"},
+    "w₀wₐCDM": {"H0": 69.2, "H0_err": 0.32, "S8": 0.83, "S8_err": 0.014, "delta_chi2": -3.3, "k": 8, "color": "#7f8c8d", "marker": "D"},
+    "Geometric EDE": {"H0": 69.7, "H0_err": 0.50, "S8": 0.82, "S8_err": 0.010, "delta_chi2": -4.5, "k": 8, "color": "#e74c3c", "marker": "s"},
 }
 
 # Reference values
@@ -39,7 +40,7 @@ TRGB_H0_ERR = 1.7
 DES_S8 = 0.776
 DES_S8_ERR = 0.017
 
-REF_CHI2 = MODELS["ΛCDM"]["chi2"]
+# No longer using absolute chi2; using delta_chi2 directly
 
 # =============================================================================
 # PLOT 1: FOREST PLOT (H0 and Δχ²)
@@ -78,18 +79,18 @@ def plot_forest():
     
     # Right panel: Δχ²
     for i, (name, data) in enumerate(MODELS.items()):
-        delta_chi2 = data["chi2"] - REF_CHI2
+        delta_chi2 = data["delta_chi2"]
         ax2.barh(i, delta_chi2, color=data["color"], alpha=0.7, height=0.5)
         ax2.plot(delta_chi2, i, data["marker"], color=data["color"], markersize=10)
         
         # Add value label
-        offset = 1 if delta_chi2 < 0 else -1
+        offset = 0.5 if delta_chi2 < 0 else -0.5
         ax2.text(delta_chi2 + offset, i, f'{delta_chi2:+.1f}', 
                 va='center', ha='left' if delta_chi2 < 0 else 'right', fontsize=10)
     
     ax2.axvline(0, color='black', linestyle='-', linewidth=1)
     ax2.set_xlabel(r'$\Delta\chi^2$ (vs ΛCDM)')
-    ax2.set_xlim(-15, 5)
+    ax2.set_xlim(-8, 3)
     ax2.set_title('Goodness of Fit')
     ax2.grid(axis='x', alpha=0.3)
     
@@ -113,11 +114,11 @@ def plot_h0_chi2_tradeoff():
     fig, ax = plt.subplots(figsize=(8, 6))
     
     for name, data in MODELS.items():
-        delta_chi2 = data["chi2"] - REF_CHI2
+        delta_chi2 = data["delta_chi2"]
         ax.errorbar(data["H0"], delta_chi2, xerr=data["H0_err"],
                    fmt=data["marker"], color=data["color"],
                    markersize=12, capsize=4, capthick=2, linewidth=2,
-                   label=f'{name}: H₀={data["H0"]:.1f}, S₈={data["S8"]:.3f}')
+                   label=f'{name}: H₀={data["H0"]:.1f}, S₈={data["S8"]:.2f}')
     
     # SH0ES band
     ax.axvspan(SHOES_H0 - SHOES_H0_ERR, SHOES_H0 + SHOES_H0_ERR,
@@ -128,19 +129,19 @@ def plot_h0_chi2_tradeoff():
     
     # Annotate the key result
     ax.annotate('Geometric EDE:\nHigher H₀ + Better χ²',
-               xy=(70.62, -10.1), xytext=(72, -7),
+               xy=(69.7, -4.5), xytext=(72, -6),
                fontsize=10, ha='left',
                arrowprops=dict(arrowstyle='->', color='red', lw=1.5))
     
     ax.annotate('CPL:\nBetter χ², but\ntensions unresolved',
-               xy=(69.17, -3.3), xytext=(66.5, -6),
+               xy=(69.2, -3.3), xytext=(66.5, -5),
                fontsize=9, ha='right',
                arrowprops=dict(arrowstyle='->', color='gray', lw=1.5))
     
     ax.set_xlabel(r'$H_0$ [km s$^{-1}$ Mpc$^{-1}$]', fontsize=12)
     ax.set_ylabel(r'$\Delta\chi^2$ (vs ΛCDM)', fontsize=12)
     ax.set_xlim(66, 76)
-    ax.set_ylim(-15, 5)
+    ax.set_ylim(-8, 3)
     ax.legend(loc='lower right', fontsize=9)
     ax.grid(alpha=0.3)
     ax.set_title('Trade-off: Hubble Tension Resolution vs Fit Quality', fontsize=13)
@@ -184,9 +185,9 @@ def plot_h0_s8_plane():
     ax.add_patch(target_rect)
     
     # Arrow showing the shift
-    ax.annotate('', xy=(70.62, 0.798), xytext=(68.29, 0.825),
+    ax.annotate('', xy=(69.7, 0.82), xytext=(68.3, 0.83),
                arrowprops=dict(arrowstyle='->', color='red', lw=2))
-    ax.text(69.5, 0.815, 'EDE\nshift', fontsize=9, ha='center', color='red')
+    ax.text(69.0, 0.825, 'EDE\nshift', fontsize=9, ha='center', color='red')
     
     ax.set_xlabel(r'$H_0$ [km s$^{-1}$ Mpc$^{-1}$]', fontsize=12)
     ax.set_ylabel(r'$S_8 = \sigma_8\sqrt{\Omega_m/0.3}$', fontsize=12)
@@ -210,10 +211,11 @@ def plot_cross_world():
     """Show EDE performance across different H0 priors."""
     fig, ax = plt.subplots(figsize=(10, 5))
     
-    worlds = ["BASE\n(no H₀ prior)", "TRGB\n(H₀=69.8±1.7)", "SH0ES\n(H₀=73.04±1.04)"]
-    ede_delta_chi2 = [-19.3, -15.7, -10.1]
-    ede_h0 = [68.76, 70.03, 70.62]
-    ede_s8 = [0.833, 0.810, 0.798]
+    # Values from paper Table 6 (Summary grid)
+    worlds = ["BASE\n(no H₀ prior)", "TRGB\n(H₀=70.4±1.2)", "SH0ES\n(H₀=73.04±1.04)"]
+    ede_delta_chi2 = [-19.3, -15.7, -4.5]
+    ede_h0 = [68.8, 70.0, 69.7]
+    ede_s8 = [0.82, 0.81, 0.82]
     
     x = np.arange(len(worlds))
     width = 0.6
@@ -262,24 +264,15 @@ def plot_aic_bic():
     x = np.arange(len(models))
     width = 0.35
     
-    # Compute AIC/BIC
-    n_data = 2600
-    ln_n = np.log(n_data)
+    # Values from paper Table 4 (AIC/BIC comparison)
+    # ΔAIC = Δχ² + 2Δk, ΔBIC = Δχ² + Δk·ln(N)
+    # For k=8 vs k=6: Δk = 2
+    # N ≈ 2600, ln(N) ≈ 7.86
+    # CPL: Δχ² = -3.3, ΔAIC = -3.3 + 4 = +0.7, ΔBIC = -3.3 + 15.7 = +12.5
+    # EDE: Δχ² = -4.5, ΔAIC = -4.5 + 4 = -0.5, ΔBIC = -4.5 + 15.7 = +11.3
     
-    ref_chi2 = 2823.0
-    ref_aic = ref_chi2 + 2 * 6
-    ref_bic = ref_chi2 + 6 * ln_n
-    
-    delta_aic = [
-        0.0,
-        (2819.7 + 2*8) - ref_aic,
-        (2812.9 + 2*8) - ref_aic
-    ]
-    delta_bic = [
-        0.0,
-        (2819.7 + 8*ln_n) - ref_bic,
-        (2812.9 + 8*ln_n) - ref_bic
-    ]
+    delta_aic = [0.0, 0.7, -0.5]
+    delta_bic = [0.0, 12.5, 11.3]
     
     bars1 = ax.bar(x - width/2, delta_aic, width, label='ΔAIC', color='#3498db', alpha=0.8)
     bars2 = ax.bar(x + width/2, delta_bic, width, label='ΔBIC', color='#e67e22', alpha=0.8)
@@ -303,7 +296,7 @@ def plot_aic_bic():
     ax.set_title('Information Criteria: AIC Prefers EDE, BIC Neutral', fontsize=13)
     
     # Interpretation box
-    textstr = 'ΔAIC = −6.1 → AIC prefers EDE\nΔBIC = +5.6 → "Positive" evidence (not strong)'
+    textstr = 'ΔAIC = −0.5 → AIC neutral (EDE very slightly preferred)\nΔBIC = +11.3 → "Positive" evidence against complexity'
     props = dict(boxstyle='round', facecolor='wheat', alpha=0.8)
     ax.text(0.02, 0.98, textstr, transform=ax.transAxes, fontsize=9,
            verticalalignment='top', bbox=props)
@@ -325,9 +318,9 @@ def plot_tension_reduction():
     models = ["ΛCDM", "w₀wₐCDM", "Geometric EDE"]
     colors = ["#2ecc71", "#7f8c8d", "#e74c3c"]
     
-    # H0 tension (vs SH0ES)
-    h0_values = [68.29, 69.17, 70.62]
-    h0_errs = [0.38, 0.32, 0.48]
+    # H0 tension (vs SH0ES) - values from paper Table 5/6
+    h0_values = [68.3, 69.2, 69.7]
+    h0_errs = [0.38, 0.32, 0.50]
     h0_tensions = []
     for h0, err in zip(h0_values, h0_errs):
         combined_err = np.sqrt(err**2 + SHOES_H0_ERR**2)
@@ -346,8 +339,8 @@ def plot_tension_reduction():
         ax1.text(bar.get_x() + bar.get_width()/2., bar.get_height() + 0.1,
                 f'{tension:.1f}σ', ha='center', fontsize=11, fontweight='bold')
     
-    # S8 tension (vs DES)
-    s8_values = [0.825, 0.828, 0.798]
+    # S8 tension (vs DES) - values from paper Table 5/6
+    s8_values = [0.83, 0.83, 0.82]
     s8_errs = [0.007, 0.014, 0.010]
     s8_tensions = []
     for s8, err in zip(s8_values, s8_errs):
