@@ -1,149 +1,139 @@
 # Phase 3: MCMC Parameter Fitting
 
-**Goal:** Fit Ridder field model to observational data and test if it resolves Hubble and S8 tensions.
-
-**Status:** ✅ COMPLETE - H₀ TENSION RESOLVED!
+**Status:** ✅ **COMPLETE** — Chains validated, paper updated
 
 ---
 
-## Objectives
+## Summary
 
-1. **Fit model to data:**
-   - Planck 2018 CMB (TT, TE, EE, low-ℓ)
-   - BAO measurements (BOSS, eBOSS)
-   - SH0ES H₀ measurement
-   - Pantheon+ SNe Ia (optional)
+This directory contains MCMC analysis of the Ridder Field (φCDM) model using Cobaya with Planck, ACT, BAO, and local H₀ priors.
 
-2. **Test if tensions are resolved:**
-   - H₀ posterior should peak at ~73 km/s/Mpc (not ~67)
-   - S₈ should decrease (if beta > 0)
-   - Model should fit CMB data well (Δχ² < 10 vs ΛCDM)
+### December 2025 Results
 
-3. **Parameter constraints:**
-   - Lambda_EDE: EDE energy scale
-   - f_axion: Decay constant
-   - theta_i: Initial misalignment angle
-   - beta_ridder: DM coupling strength
+| World | Model | Best χ² | H₀ | Δχ² |
+|-------|-------|---------|--------|-----|
+| SH0ES + DESI | ΛCDM | 4244.5 | 68.57 ± 0.09 | 0 (ref) |
+| SH0ES + DESI | φ-EDE | 4255.3 | 69.82 ± 0.21 | **+10.8** |
+| TRGB + DESI | φ-EDE | 4251.6 | 69.71 ± 0.06 | +22.6 |
+| DES Y1 | φ-EDE | 4700.7 | 70.54 ± 0.08 | +10.5 |
+
+**Key Finding**: The "geometric tax" of Δχ² ≈ +11 matches the paper's prediction of +10 to +15.
+
+See [`CHAIN_RESULTS_SUMMARY.md`](CHAIN_RESULTS_SUMMARY.md) for complete documentation.
 
 ---
 
-## Tools
+## Directory Structure
 
-### Option 1: MontePython
-- **Pros:** Well-documented, widely used, good CLASS integration
-- **Cons:** Requires manual setup
-- **Install:** `git clone https://github.com/brinckmann/montepython_public.git`
-
-### Option 2: Cobaya
-- **Pros:** Modern, actively maintained, better performance
-- **Cons:** Steeper learning curve
-- **Install:** `pip install cobaya`
-
-**Recommendation:** Start with Cobaya (more modern, better maintained)
-
----
-
-## Setup Steps
-
-1. Install MCMC sampler (Cobaya or MontePython)
-2. Configure CLASS interface
-3. Create parameter file for Ridder field model
-4. Download observational data (Planck, BAO, SH0ES)
-5. Run test chain
-6. Analyze results
+```
+phase3/
+├── README.md                    # This file
+├── CHAIN_RESULTS_SUMMARY.md     # Full results documentation
+│
+├── configs/                     # Cobaya YAML configurations
+│   ├── ridder_v3_baseline.yaml  # Quick test (no priors)
+│   ├── tier4_*.yaml             # Medium precision runs
+│   ├── tier5_*.yaml             # Production quality
+│   └── act_*.yaml               # ACT DR6 analysis
+│
+├── chains/                      # MCMC chain outputs
+│   ├── tier5_*.1.txt            # Main chain samples
+│   ├── tier5_*.covmat           # Covariance matrices
+│   └── FINAL_RESULTS.txt        # Summary of best-fits
+│
+├── figures/                     # Generated plots
+├── scripts/                     # Analysis utilities
+└── logs/                        # Run logs
+```
 
 ---
 
-## Victory Conditions
+## Quick Start
 
-✅ **Success if:**
-- H₀ posterior peaks at 72-74 km/s/Mpc
-- Δχ² < 10 vs ΛCDM
-- Bayes factor > 3 (moderate evidence)
-- All parameters well-constrained
+### Run a Test Chain (~10 min)
 
-❌ **Failure if:**
-- H₀ still peaks at ~67 km/s/Mpc
-- Model fits worse than ΛCDM
-- Parameters unconstrained or unphysical
+```bash
+cobaya-run configs/ridder_v3_baseline.yaml -f
+```
 
----
+### Run Production Chain (~24 hr)
 
-## Files
+```bash
+cobaya-run configs/tier5_ede_shoes_desi.yaml -f
+```
 
-- `setup_mcmc.sh` - Installation script
-- `ridder_field.param` - Parameter file for MCMC
-- `run_chains.sh` - Script to run MCMC chains
-- `analyze_results.py` - Analysis script
-- `chains/` - MCMC chain output directory
+### Check Running Chains
+
+```bash
+./check_chains.sh
+```
 
 ---
 
-## 🎉 RESULTS ACHIEVED
+## Key Parameters
 
-### Tier 4: Planck + BAO + SNe (Grand Slam)
-**Date:** November 22, 2025  
-**VM:** Australia East F8s_v2 (8 vCPUs, 16 GB RAM)  
-**Samples:** 1000 MCMC samples  
+The Ridder field model is controlled by:
 
-#### Key Results:
-- **H₀ = 72.30 ± 1.02 km/s/Mpc** ✅
-  - Successfully bridges Planck (67.4) and SH0ES (73.04)!
-  - Resolves the H₀ tension
-  
-- **β = 0.0116 ± 0.0081** ✅
-  - Non-zero CDM-scalar field coupling confirmed
-  - Data prefers interaction between dark matter and Ridder field
-  
-- **θᵢ = 1.788 ± 0.309**
-  - Moderate early dark energy background
-  
-- **χ² = 1459.5** (best: 1455.2)
-  - CMB: 417.8
-  - BAO: 6.7
-  - SNe: 1035.0
-  - Excellent fit to all datasets
-
-#### Standard Cosmological Parameters:
-- Ωc h² = 0.1321 ± 0.0058
-- Ωb h² = 0.02346 ± 0.00250
-- nₛ = 0.9504 ± 0.0307
-- τ = 0.0566 ± 0.0082
-
-### Visualization Files:
-- `tier4_traces.png` - MCMC trace plots showing parameter evolution
-- `tier4_corner.png` - Triangle plot with all parameter correlations
-- `tier4_correlations.png` - Detailed correlation analysis
-- `tier4_distributions.png` - 1D marginalized distributions
-
-### Scripts:
-- `scripts/tier4_status.sh` - Real-time monitoring of MCMC progress
-- `visualize_tier4.py` - Comprehensive plotting and analysis
+| Parameter | Description | Typical Range |
+|-----------|-------------|---------------|
+| `Lambda_ridder` | Potential steepness | 0.5–2.0 |
+| `n_ridder` | Potential power | 3.0 (fixed) |
+| `theta_i_ridder` | Initial displacement | 0.75 (fixed) |
+| `beta_ridder` | DM coupling | 0.0 (fixed) |
 
 ---
 
-## Victory Conditions: ✅ ALL MET
+## Configuration Tiers
 
-✅ **H₀ posterior peaks at 72.30 km/s/Mpc** (target: 72-74)  
-✅ **Excellent fit to all data** (χ² = 1459.5)  
-✅ **Non-zero coupling confirmed** (β = 0.0116 ± 0.0081)  
-✅ **All parameters well-constrained**  
-
----
-
-## Infrastructure
-
-### Azure Deployment:
-- **US East VM:** ridder-compute-01 (Standard_D4s_v3) - Initial testing
-- **Australia East VM:** ridder-australia-01 (Standard_F8s_v2) - Production Tier 4 run
-
-### Key Fixes Applied:
-1. Fixed classy Python wrapper TypeError (Python 3.10 compatibility)
-2. Patched `classy.pyx` to catch TypeError in addition to ImportError
-3. Installed BBN data files in correct locations
-4. Disabled drag sampling (insufficient speed separation)
+| Tier | Likelihoods | Samples | Purpose |
+|------|-------------|---------|---------|
+| 3 | Planck lite | ~1000 | Smoke test |
+| 4 | Planck + BAO | ~2000 | Validation |
+| 5 | Full Planck + BAO + local H₀ | ~5000 | Publication |
+| 6 | + ACT DR6 | ~5000 | Damping tail |
 
 ---
 
-**Status:** Phase 3 complete. Ridder field successfully resolves H₀ tension!
+## Analysis Scripts
 
+| Script | Purpose |
+|--------|---------|
+| `tier5_status.py` | Extract best-fits from chains |
+| `generate_paper_plots.py` | Create publication figures |
+| `plot_geometric_ceiling.py` | H₀ profile likelihood |
+| `act_template_fit.py` | Soft shoulder amplitude |
+
+---
+
+## Likelihoods Used
+
+- **CMB**: Planck 2018 (TT, TE, EE, low-ℓ, lensing)
+- **ACT**: DR6 mflike (for damping tail)
+- **BAO**: SDSS DR12, 6dF, MGS, DESI Y1
+- **H₀ Priors**: SH0ES (73.04 ± 1.04), TRGB (69.8 ± 1.7)
+- **Weak Lensing**: DES Y1 (for S₈)
+
+---
+
+## Results Archive
+
+All production chains from the December 2025 runs are preserved:
+
+```bash
+# Main results
+chains/tier5_lcdm_shoes_desi.1.txt
+chains/tier5_ede_shoes_desi.1.txt
+
+# H₀ profile scans
+chains/tier5_ede_shoes_desi_h0_fixed_69.1.txt
+chains/tier5_ede_shoes_desi_h0_fixed_70.1.txt
+# ... etc.
+```
+
+---
+
+## Contact
+
+For questions about the MCMC analysis:
+- **Email**: sridder@post.harvard.edu
+- **Issues**: [GitHub Issues](https://github.com/StevenRidder/Ridder-Field/issues)

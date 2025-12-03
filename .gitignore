@@ -1,56 +1,153 @@
+# ===========================================
+# Ridder Field Repository - .gitignore
+# ===========================================
+
+# -----------------------------------------
 # Python
+# -----------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
 
-# IDEs
+# -----------------------------------------
+# IDEs and Editors
+# -----------------------------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.spyderproject
+.spyproject
 
-# OS
+# -----------------------------------------
+# OS Files
+# -----------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# CLASS build artifacts only (keep source!)
-# NOTE: Modified CLASS source files are in patches/class/ for backup
+# -----------------------------------------
+# CLASS Build Artifacts
+# -----------------------------------------
+# Compiled binaries (keep source!)
 phase2/class/build/
 phase2/class/output/
 phase2/class/libclass.a
 phase2/class/class
 phase2/class/python/build/
 phase2/class/python/classy.c
+phase2/class/python/classy.cpp
 *.o
 *.opp
 *.a
+*.so
 
-# Keep patches directory (contains our CLASS modifications)
-!patches/
-!patches/**
+# Same for other CLASS copies
+phase2_v2/class/class/build/
+phase2_v2/class/class/output/
+phase2_v2/class/class/libclass.a
+phase2_v2/class/class/class
+AxiCLASS/build/
+AxiCLASS/libclass.a
+AxiCLASS/class
 
-# MCMC chains (Phase 3) - Keep final results for proof
-# chains/  # Commented out to preserve final Tier 4 results
-*.chain
-*.covmat
-# Exclude intermediate files but keep final .txt chains
+# -----------------------------------------
+# MCMC Chain Artifacts
+# -----------------------------------------
+# Keep final .txt chains, exclude intermediates
 chains/*.progress
 chains/*.updated.yaml
 chains/*.input.yaml
 chains/*.checkpoint
+chains/*.locked
+chains/*_work/
+phase3/chains/*.progress
+phase3/chains/*.updated.yaml
+phase3/chains/*.input.yaml
+phase3/chains/*.checkpoint
+phase3/chains/*.locked
+phase3/chains/*_work/
 
-# Temporary
+# Cobaya packages (installed separately)
+phase3/packages/
+
+# -----------------------------------------
+# Temporary Files
+# -----------------------------------------
 tmp/
 temp/
 *.tmp
+*.log
+*.bak
+*.orig
 
-phase3/packages/
+# -----------------------------------------
+# Large Data Files
+# -----------------------------------------
+*.npz
+*.npy
+*.h5
+*.hdf5
+*.fits
 
-# Terraform (contains subscription IDs and sensitive data)
+# -----------------------------------------
+# Azure/Terraform (sensitive data)
+# -----------------------------------------
 azure/.terraform/
 azure/*.tfstate
 azure/*.tfstate.*
 azure/*.tfplan
 azure/*.tf
 azure/*.sh
+*.pem
+
+# -----------------------------------------
+# LaTeX Build Artifacts
+# -----------------------------------------
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# -----------------------------------------
+# Overleaf Uploads (keep final only)
+# -----------------------------------------
+phase2/paper/*.zip
+!phase2/paper/overleaf_final/
+
+# -----------------------------------------
+# Keep These (explicit)
+# -----------------------------------------
+!patches/
+!patches/**
+!phase3/chains/FINAL_RESULTS.txt
+!phase3/chains/*.1.txt
+!phase3/chains/*.covmat
+!phase3/CHAIN_RESULTS_SUMMARY.md
+
+# -----------------------------------------
+# Output Directories (user-generated)
+# -----------------------------------------
+output/
+results/
+plots/
