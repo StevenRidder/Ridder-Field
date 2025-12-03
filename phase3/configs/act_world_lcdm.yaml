@@ -267,7 +267,7 @@ sampler:
     # Disable auto-covmat: xi_sz_cib (Planck) and xi (ACT) have duplicate aliases
     covmat: null
     burn_in: 0.4
-    max_tries: 5000
+    max_tries: 20000
     drag: true
     proposal_scale: 2.0
     learn_proposal: true

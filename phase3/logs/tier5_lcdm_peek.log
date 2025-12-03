@@ -1,0 +1,449 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier5_lcdm_shoes_predesi'
+[output] Found existing info files with the requested output prefix: 'chains/tier5_lcdm_shoes_predesi'
+[output] Let's try to resume/load.
+[output] Found an old sample. Resuming.
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/data/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/data/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[shoes_h0] Initialized external likelihood.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[mcmc] Resuming from previous sample!
+[samplecollection] Loaded 2164 sample points from 'chains/tier5_lcdm_shoes_predesi.1.txt'
+[mcmc] Initial point: logA:3.09357, n_s:0.9712309, H0:69.24832, omega_b:0.02262644, omega_cdm:0.1170168, tau_reio:0.08521657, A_planck:0.9978281, calib_100T:1.000391, calib_217T:0.9971741, A_cib_217:51.24355, xi_sz_cib:0.1741955, A_sz:5.044798, ksz_norm:0.1469312, gal545_A_100:13.40892, gal545_A_143:10.87416, gal545_A_143_217:15.16579, gal545_A_217:84.74765, ps_A_100_100:269.2542, ps_A_143_143:45.16628, ps_A_143_217:37.75024, ps_A_217_217:114.9441, galf_TE_A_100:0.07796012, galf_TE_A_100_143:0.07398324, galf_TE_A_100_217:0.5099799, galf_TE_A_143:0.1469883, galf_TE_A_143_217:0.7442708, galf_TE_A_217:2.134656
+[mcmc] *WARNING* Parameter blocking manually/previously fixed: speeds will not be measured.
+[mcmc] Oversampling with factors:
+[mcmc] * 1 : ['H0']
+[mcmc] * 1 : ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio']
+[mcmc] * 2 : ['A_planck']
+[mcmc] * 2 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+[mcmc] Covariance matrix from previous sample.
+[mcmc] Sampling!
+[mcmc] Progress @ 2025-12-01 19:41:30 : 1 steps taken, and 2164 accepted.
+[mcmc] Progress @ 2025-12-01 19:42:32 : 204 steps taken, and 2195 accepted.
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0[mcmc] Progress @ 2025-12-01 19:43:33 : 417 steps taken, and 2226 accepted.
+.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED[mcmc] Progress @ 2025-12-01 19:44:35 : 631 steps taken, and 2266 accepted.
+[mcmc] Progress @ 2025-12-01 19:45:37 : 849 steps taken, and 2295 accepted.
+. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder fi[mcmc] Progress @ 2025-12-01 19:46:38 : 1056 steps taken, and 2322 accepted.
+[mcmc] Progress @ 2025-12-01 19:47:42 : 1153 steps taken, and 2339 accepted.
+[mcmc] Progress @ 2025-12-01 19:48:46 : 1252 steps taken, and 2356 accepted.
+eld DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBU[mcmc] Progress @ 2025-12-01 19:49:46 : 1345 steps taken, and 2373 accepted.
+[mcmc] Progress @ 2025-12-01 19:50:47 : 1442 steps taken, and 2392 accepted.
+[mcmc] Progress @ 2025-12-01 19:51:48 : 1540 steps taken, and 2407 accepted.
+G: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000[mcmc] Progress @ 2025-12-01 19:52:49 : 1634 steps taken, and 2421 accepted.
+[mcmc] Progress @ 2025-12-01 19:53:59 : 1714 steps taken, and 2435 accepted.
+[mcmc] Progress @ 2025-12-01 19:55:08 : 1721 steps taken, and 2436 accepted.
+[mcmc] Progress @ 2025-12-01 19:56:30 : 1741 steps taken, and 2439 accepted.
+[mcmc] Progress @ 2025-12-01 19:57:50 : 1768 steps taken, and 2445 accepted.
+[mcmc] Progress @ 2025-12-01 19:58:50 : 1783 steps taken, and 2448 accepted.

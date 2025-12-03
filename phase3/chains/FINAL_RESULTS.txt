@@ -1,0 +1,13 @@
+TIER 5 MCMC RESULTS (Planck + BAO + SH0ES)
+==================================================
+
+LCDM:
+  Best chi2: 6.1
+  Best H0:   0.02
+
+EDE:
+  Best chi2: 6.1
+  Best H0:   0.02
+  Lambda:    1.004
+
+Delta chi2 = 0.0

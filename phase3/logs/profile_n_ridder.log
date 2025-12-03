@@ -1,0 +1,21 @@
+
+============================================================
+PROFILE SCAN: n_ridder
+Values: [2.5  2.75 3.   3.25 3.5 ]
+============================================================
+
+  Running: profile_n_ridder_2.50.yaml
+  n_ridder = 2.50: χ² = N/A ✗
+  Running: profile_n_ridder_2.75.yaml
+  n_ridder = 2.75: χ² = N/A ✗
+  Running: profile_n_ridder_3.00.yaml
+  n_ridder = 3.00: χ² = N/A ✗
+  Running: profile_n_ridder_3.25.yaml
+  n_ridder = 3.25: χ² = N/A ✗
+  Running: profile_n_ridder_3.50.yaml
+  n_ridder = 3.50: χ² = N/A ✗
+No valid results to plot!
+
+============================================================
+PROFILE SCAN SUMMARY
+============================================================

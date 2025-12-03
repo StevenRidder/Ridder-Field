@@ -1,0 +1,2398 @@
+=== MEMORY MONITOR STARTED Tue Dec  2 18:49:37 UTC 2025 ===
+18:49:38 EDE: 622.957MB (32 samples) | LCDM: 431.625
+3.25MB (65 samples)
+18:50:38 EDE: 622.957MB (32 samples) | LCDM: 8895.37
+3.25MB (65 samples)
+18:51:38 EDE: 622.957MB (32 samples) | LCDM: 431.574
+3.25MB (66 samples)
+18:52:38 EDE: 658.707MB (32 samples) | LCDM: 8696.37
+3MB (66 samples)
+18:53:39 EDE: 534.695MB (33 samples) | LCDM: 722.637
+3MB (69 samples)
+18:54:39 EDE: 535.695MB (33 samples) | LCDM: 526.453
+3MB (69 samples)
+18:55:39 EDE: 875.18MB (33 samples) | LCDM: 390.004
+3MB (72 samples)
+18:56:39 EDE: 680.219MB (36 samples) | LCDM: 526.445
+3MB (72 samples)
+18:57:39 EDE: 543.84MB (36 samples) | LCDM: 5858.57
+3MB (73 samples)
+18:58:40 EDE: 543.84MB (36 samples) | LCDM: 722.668
+3MB (73 samples)
+18:59:40 EDE: 9007.8MB (36 samples) | LCDM: 389.98
+3MB (73 samples)
+19:00:40 EDE: 543.926MB (37 samples) | LCDM: 526.609
+3MB (73 samples)
+19:01:41 EDE: 543.926MB (37 samples) | LCDM: 723.023
+3MB (73 samples)
+19:02:41 EDE: 877.121MB (37 samples) | LCDM: 390.047
+3MB (74 samples)
+19:03:41 EDE: 543.879MB (37 samples) | LCDM: 526.414
+3MB (74 samples)
+19:04:42 EDE: 543.879MB (37 samples) | LCDM: 4246.48
+3MB (74 samples)
+19:05:42 EDE: 543.879MB (37 samples) | LCDM: 390.043
+3MB (75 samples)
+19:06:42 EDE: 680.141MB (37 samples) | LCDM: 8853.88
+3MB (75 samples)
+19:07:42 EDE: 543.961MB (37 samples) | LCDM: 722.824
+3MB (75 samples)
+19:08:43 EDE: 543.961MB (37 samples) | LCDM: 389.965
+3MB (75 samples)
+19:09:43 EDE: 543.961MB (37 samples) | LCDM: 526.535
+3MB (75 samples)
+19:10:43 EDE: 680.402MB (37 samples) | LCDM: 722.746
+3MB (75 samples)
+19:11:43 EDE: 680.402MB (39 samples) | LCDM: 526.402
+3MB (76 samples)
+19:12:44 EDE: 544.004MB (39 samples) | LCDM: 526.402
+3MB (79 samples)
+19:13:44 EDE: 544.004MB (39 samples) | LCDM: 8853.64
+3MB (79 samples)
+19:14:44 EDE: 9007.88MB (39 samples) | LCDM: 722.895
+3MB (79 samples)
+19:15:44 EDE: 543.941MB (41 samples) | LCDM: 526.609
+3MB (79 samples)
+19:16:45 EDE: 543.941MB (41 samples) | LCDM: 526.395
+3MB (79 samples)
+19:17:45 EDE: 3483.98MB (41 samples) | LCDM: 390.109
+3MB (79 samples)
+19:18:45 EDE: 543.891MB (41 samples) | LCDM: 526.516
+3MB (79 samples)
+19:19:45 EDE: 543.891MB (41 samples) | LCDM: 5420.51
+3MB (80 samples)
+19:20:46 EDE: 680.324MB (41 samples) | LCDM: 8853.89
+3MB (80 samples)
+19:21:46 EDE: 543.879MB (42 samples) | LCDM: 582.906
+3MB (80 samples)
+19:22:46 EDE: 677.25MB (42 samples) | LCDM: 390.09
+3MB (82 samples)
+19:23:46 EDE: 543.996MB (42 samples) | LCDM: 390.086
+3MB (82 samples)
+19:24:46 EDE: 543.996MB (42 samples) | LCDM: 390.027
+3MB (82 samples)
+19:25:47 EDE: 634.164MB (42 samples) | LCDM: 8744.96
+2.875MB (82 samples)
+19:26:47 EDE: 497.801MB (43 samples) | LCDM: 8833.64
+2.875MB (82 samples)
+19:27:47 EDE: 821.863MB (43 samples) | LCDM: 382.258
+2.875MB (82 samples)
+19:28:47 EDE: 572.297MB (43 samples) | LCDM: 8706.75
+2.875MB (82 samples)
+19:29:48 EDE: 439.109MB (43 samples) | LCDM: 714.09
+2.875MB (84 samples)
+19:30:48 EDE: 439.109MB (43 samples) | LCDM: 517.43
+2.875MB (84 samples)
+19:31:48 EDE: 572.441MB (43 samples) | LCDM: 579.395
+2.875MB (86 samples)
+19:32:48 EDE: 496.984MB (43 samples) | LCDM: 386.168MB (86 samples)
+19:33:49 EDE: 825.012MB (43 samples) | LCDM: 718.973MB (86 samples)
+19:34:49 EDE: 8442.79MB (43 samples) | LCDM: 6800.73MB (86 samples)
+19:35:49 EDE: 412.484MB (44 samples) | LCDM: 308.559MB (86 samples)
+19:36:49 EDE: 759.312MB (44 samples) | LCDM: 342.055MB (89 samples)
+19:37:49 EDE: 429.602MB (48 samples) | LCDM: 685.395MB (90 samples)
+19:38:49 EDE: 429.602MB (48 samples) | LCDM: 489.816MB (91 samples)
+19:39:50 EDE: 429.754MB (49 samples) | LCDM: 736.02MB (91 samples)
+19:40:50 EDE: 429.754MB (49 samples) | LCDM: 489.984MB (95 samples)
+19:41:50 EDE: 429.812MB (49 samples) | LCDM: 355.078MB (96 samples)
+19:42:50 EDE: 774.625MB (49 samples) | LCDM: 687.902MB (96 samples)
+19:43:50 EDE: 441.969MB (51 samples) | LCDM: 8818.7MB (97 samples)
+19:44:50 EDE: 578.309MB (51 samples) | LCDM: 354.926MB (98 samples)
+19:45:51 EDE: 441.98MB (51 samples) | LCDM: 491.438MB (100 samples)
+19:46:51 EDE: 578.367MB (51 samples) | LCDM: 491.332MB (104 samples)
+19:47:51 EDE: 441.879MB (51 samples) | LCDM: 354.867MB (104 samples)
+19:48:51 EDE: 575.328MB (51 samples) | LCDM: 703.957MB (105 samples)
+19:49:51 EDE: 441.93MB (51 samples) | LCDM: 7803.3MB (105 samples)
+19:50:51 EDE: 569.613MB (51 samples) | LCDM: 8715.38MB (106 samples)
+19:51:52 EDE: 433.066MB (54 samples) | LCDM: 368.84MB (108 samples)
+19:52:52 EDE: 7842.23MB (54 samples) | LCDM: 7266.51MB (108 samples)
+19:53:52 EDE: 263.473MB (54 samples) | LCDM: 477.301MB (108 samples)
+19:54:52 EDE: 417.359MB (54 samples) | LCDM: 485.871MB (112 samples)
+19:55:53 EDE: 364.633MB (55 samples) | LCDM: 356.039MB (114 samples)
+19:56:53 EDE: 516.402MB (56 samples) | LCDM: 356.016MB (114 samples)
+19:57:53 EDE: 386.035MB (56 samples) | LCDM: 492.793MB (117 samples)
+19:58:53 EDE: 523.406MB (57 samples) | LCDM: 8820.06MB (117 samples)
+19:59:53 EDE: 387MB (57 samples) | LCDM: 356.223MB (118 samples)
+20:00:53 EDE: 388.996MB (57 samples) | LCDM: 356.273MB (119 samples)
+20:01:53 EDE: 388.996MB (57 samples) | LCDM: 356.211MB (121 samples)
+20:02:54 EDE: 285.137MB (57 samples) | LCDM: 8000.9MB (121 samples)
+20:03:54 EDE: 328.34MB (57 samples) | LCDM: 468.691MB (121 samples)
+20:04:54 EDE: 8817.65MB (57 samples) | LCDM: 345.062MB (121 samples)
+20:05:54 EDE: 371.895MB (59 samples) | LCDM: 678.652MB (121 samples)
+20:06:54 EDE: 508.473MB (59 samples) | LCDM: 3036.57MB (121 samples)
+20:07:54 EDE: 321.73MB (62 samples) | LCDM: 8806.46MB (122 samples)
+20:08:55 EDE: 328.605MB (62 samples) | LCDM: 484.742MB (122 samples)
+20:09:55 EDE: 356.137MB (62 samples) | LCDM: 351.609MB (122 samples)
+20:10:55 EDE: 705.227MB (62 samples) | LCDM: 675.969MB (123 samples)
+20:11:55 EDE: 237.652MB (62 samples) | LCDM: 8005.56MB (123 samples)
+20:12:55 EDE: 264.711MB (62 samples) | LCDM: 329.676MB (124 samples)
+20:13:56 EDE: 352.172MB (62 samples) | LCDM: 490.234MB (126 samples)
+20:14:56 EDE: 352.797MB (62 samples) | LCDM: 491.637MB (126 samples)
+20:15:56 EDE: 355.754MB (62 samples) | LCDM: 687.863MB (126 samples)
+20:16:56 EDE: 706.223MB (62 samples) | LCDM: 355.141MB (126 samples)
+20:17:56 EDE: 377.004MB (63 samples) | LCDM: 691.785MB (128 samples)
+20:18:56 EDE: 709.844MB (63 samples) | LCDM: 495.645MB (128 samples)
+20:19:57 EDE: 377.973MB (63 samples) | LCDM: 683.406MB (128 samples)
+20:20:57 EDE: 4230.49MB (63 samples) | LCDM: 8819.4MB (129 samples)
+20:21:57 EDE: 181.289MB (63 samples) | LCDM: 357.441MB (129 samples)
+20:22:57 EDE: 577.855MB (63 samples) | LCDM: 1850.74MB (129 samples)
+20:23:57 EDE: 305.168MB (63 samples) | LCDM: 502.734MB (130 samples)
+20:24:57 EDE: 341.898MB (63 samples) | LCDM: 2459.75MB (131 samples)
+20:25:58 EDE: 7184.71MB (63 samples) | LCDM: 368.957MB (131 samples)
+20:26:58 EDE: 346.172MB (63 samples) | LCDM: 505.555MB (131 samples)
+20:27:58 EDE: 354.023MB (63 samples) | LCDM: 702.172MB (131 samples)
+20:28:58 EDE: 7989.39MB (63 samples) | LCDM: 7354.26MB (131 samples)
+20:29:58 EDE: 261.574MB (63 samples) | LCDM: 693.02MB (132 samples)
+20:30:58 EDE: 289.016MB (63 samples) | LCDM: 693.207MB (134 samples)
+20:31:58 EDE: 484.738MB (63 samples) | LCDM: 351.406MB (134 samples)
+20:32:58 EDE: 690.035MB (63 samples) | LCDM: 489.234MB (135 samples)
+20:33:59 EDE: 361.598MB (65 samples) | LCDM: 494.883MB (137 samples)
+20:34:59 EDE: 303.039MB (65 samples) | LCDM: 461.488MB (139 samples)
+20:36:00 EDE: 7736.35MB (65 samples) | LCDM: 7581.85MB (139 samples)
+20:37:00 EDE: 144.059MB (65 samples) | LCDM: 225.527MB (141 samples)
+20:38:00 EDE: 572.801MB (66 samples) | LCDM: 355.074MB (141 samples)
+20:39:00 EDE: 355.07MB (66 samples) | LCDM: 355.598MB (142 samples)
+20:40:00 EDE: 355.492MB (70 samples) | LCDM: 495.012MB (143 samples)
+20:41:01 EDE: 498.598MB (71 samples) | LCDM: 695.559MB (143 samples)
+20:42:01 EDE: 996.461MB (71 samples) | LCDM: 695.512MB (144 samples)
+20:43:01 EDE: 694.773MB (72 samples) | LCDM: 564.172MB (145 samples)
+20:44:01 EDE: 7773.77MB (72 samples) | LCDM: 7649.15MB (145 samples)
+20:45:01 EDE: 295.754MB (72 samples) | LCDM: 8796.79MB (149 samples)
+20:46:01 EDE: 338.184MB (72 samples) | LCDM: 355.59MB (154 samples)
+20:47:01 EDE: 474.949MB (72 samples) | LCDM: 355.926MB (157 samples)
+20:48:01 EDE: 671.352MB (72 samples) | LCDM: 489.441MB (157 samples)
+20:49:02 EDE: 338.598MB (72 samples) | LCDM: 489.332MB (158 samples)
+20:50:02 EDE: 342.785MB (73 samples) | LCDM: 8816.86MB (160 samples)
+20:51:02 EDE: 483.855MB (73 samples) | LCDM: 493.133MB (163 samples)
+20:52:02 EDE: 698.211MB (73 samples) | LCDM: 690.496MB (164 samples)
+20:53:02 EDE: 241.035MB (73 samples) | LCDM: 659.043MB (164 samples)
+20:54:02 EDE: 8755.7MB (73 samples) | LCDM: 686.012MB (167 samples)
+20:55:02 EDE: 685.453MB (73 samples) | LCDM: 354.012MB (167 samples)
+20:56:02 EDE: 365.141MB (74 samples) | LCDM: 490.816MB (169 samples)
+20:57:03 EDE: 359.883MB (74 samples) | LCDM: 352.184MB (169 samples)
+20:58:03 EDE: 359.883MB (74 samples) | LCDM: 687.379MB (170 samples)
+20:59:03 EDE: 365.125MB (75 samples) | LCDM: 355.23MB (171 samples)
+21:00:03 EDE: 365.32MB (75 samples) | LCDM: 355.273MB (172 samples)
+21:01:03 EDE: 365.332MB (76 samples) | LCDM: 355.129MB (172 samples)
+21:02:03 EDE: 501.848MB (76 samples) | LCDM: 355.277MB (172 samples)
+21:03:04 EDE: 698.504MB (78 samples) | LCDM: 491.844MB (172 samples)
+21:04:04 EDE: 365.73MB (78 samples) | LCDM: 8816.09MB (174 samples)
+21:05:04 EDE: 365.676MB (79 samples) | LCDM: 695.797MB (175 samples)
+21:06:04 EDE: 365.523MB (80 samples) | LCDM: 687.184MB (176 samples)
+21:07:05 EDE: 7002.23MB (80 samples) | LCDM: 8424.39MB (176 samples)
+21:08:05 EDE: 347.016MB (80 samples) | LCDM: 353.508MB (177 samples)
+21:09:05 EDE: 351.68MB (80 samples) | LCDM: 357.957MB (177 samples)
+21:10:06 EDE: 352.688MB (81 samples) | LCDM: 417.023MB (177 samples)
+21:11:06 EDE: 489.395MB (81 samples) | LCDM: 773.738MB (180 samples)
+21:12:06 EDE: 0MB (81 samples) | LCDM: 638.121MB (180 samples)
+21:13:06 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+21:14:06 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+21:15:06 EDE: 0MB (81 samples) | LCDM: 6232.41MB (180 samples)
+21:16:06 EDE: 0MB (81 samples) | LCDM: 796.988MB (180 samples)
+21:17:06 EDE: 0MB (81 samples) | LCDM: 9124.42MB (180 samples)
+21:18:06 EDE: 0MB (81 samples) | LCDM: 799.336MB (180 samples)
+21:19:06 EDE: 0MB (81 samples) | LCDM: 3684.97MB (180 samples)
+21:20:06 EDE: 0MB (81 samples) | LCDM: 7098.97MB (180 samples)
+21:21:06 EDE: 0MB (81 samples) | LCDM: 9126.97MB (180 samples)
+21:22:06 EDE: 0MB (81 samples) | LCDM: 799.609MB (180 samples)
+21:23:06 EDE: 0MB (81 samples) | LCDM: 845.984MB (180 samples)
+21:24:06 EDE: 0MB (81 samples) | LCDM: 799.445MB (180 samples)
+21:25:06 EDE: 0MB (81 samples) | LCDM: 4652.97MB (180 samples)
+21:26:06 EDE: 0MB (81 samples) | LCDM: 8390.97MB (180 samples)
+21:27:06 EDE: 0MB (81 samples) | LCDM: 799.609MB (180 samples)
+21:28:07 EDE: 0MB (81 samples) | LCDM: 799.602MB (180 samples)
+21:29:07 EDE: 0MB (81 samples) | LCDM: 799.727MB (180 samples)
+21:30:07 EDE: 0MB (81 samples) | LCDM: 845.977MB (180 samples)
+21:31:07 EDE: 0MB (81 samples) | LCDM: 846.961MB (180 samples)
+21:32:07 EDE: 0MB (81 samples) | LCDM: 1502.07MB (180 samples)
+21:33:07 EDE: 0MB (81 samples) | LCDM: 7850.07MB (180 samples)
+21:34:07 EDE: 0MB (81 samples) | LCDM: 9129.9MB (180 samples)
+21:35:07 EDE: 0MB (81 samples) | LCDM: 802.539MB (180 samples)
+21:36:07 EDE: 0MB (81 samples) | LCDM: 802.539MB (180 samples)
+21:37:07 EDE: 0MB (81 samples) | LCDM: 847.812MB (180 samples)
+21:38:07 EDE: 0MB (81 samples) | LCDM: 802.293MB (180 samples)
+21:39:07 EDE: 0MB (81 samples) | LCDM: 5511.9MB (180 samples)
+21:40:07 EDE: 0MB (81 samples) | LCDM: 9129.9MB (180 samples)
+21:41:07 EDE: 0MB (81 samples) | LCDM: 802.523MB (180 samples)
+21:42:08 EDE: 0MB (81 samples) | LCDM: 848.914MB (180 samples)
+21:43:08 EDE: 0MB (81 samples) | LCDM: 4723.9MB (180 samples)
+21:44:08 EDE: 0MB (81 samples) | LCDM: 8851.9MB (180 samples)
+21:45:08 EDE: 0MB (81 samples) | LCDM: 9129.9MB (180 samples)
+21:46:08 EDE: 0MB (81 samples) | LCDM: 802.539MB (180 samples)
+21:47:08 EDE: 0MB (81 samples) | LCDM: 848.914MB (180 samples)
+21:48:08 EDE: 1.76562
+4867.08MB (81 samples) | LCDM: 9129.9MB (180 samples)
+21:49:13 EDE: 1.64062
+8394.07MB (81 samples) | LCDM: 7165.6MB (180 samples)
+21:50:13 EDE: 1.64062
+318.633MB (81 samples) | LCDM: 658.453MB (180 samples)
+21:51:13 EDE: 1.64062
+362.242MB (81 samples) | LCDM: 660.566MB (180 samples)
+21:52:14 EDE: 1.64062
+7594.71MB (81 samples) | LCDM: 7850.52MB (180 samples)
+21:53:14 EDE: 1.64062
+313.289MB (81 samples) | LCDM: 524.477MB (180 samples)
+21:54:14 EDE: 1.64062
+360.676MB (81 samples) | LCDM: 524.664MB (180 samples)
+21:55:14 EDE: 1.64062
+467.023MB (81 samples) | LCDM: 524.703MB (180 samples)
+21:56:16 EDE: 1.64062
+7813.43MB (81 samples) | LCDM: 7740.82MB (180 samples)
+21:57:16 EDE: 1.64062
+278.062MB (81 samples) | LCDM: 475.059MB (180 samples)
+21:58:18 EDE: 1.64062
+8157.86MB (81 samples) | LCDM: 7331.86MB (180 samples)
+21:59:18 EDE: 1.64062
+7454.59MB (81 samples) | LCDM: 522.371MB (180 samples)
+22:00:18 EDE: 1.64062
+312.457MB (81 samples) | LCDM: 497MB (180 samples)
+22:01:18 EDE: 1.64062
+428.754MB (81 samples) | LCDM: 543.652MB (180 samples)
+22:02:19 EDE: 1.64062
+484.82MB (81 samples) | LCDM: 542.695MB (180 samples)
+22:03:19 EDE: 1.64062
+7355.18MB (81 samples) | LCDM: 7941.73MB (180 samples)
+22:04:19 EDE: 1.64062
+429.332MB (81 samples) | LCDM: 8793.8MB (180 samples)
+22:05:19 EDE: 1.64062
+437.402MB (81 samples) | LCDM: 8468.14MB (180 samples)
+22:06:19 EDE: 1.64062
+441.727MB (81 samples) | LCDM: 4536.78MB (180 samples)
+22:07:19 EDE: 1.64062
+272.266MB (81 samples) | LCDM: 8291.68MB (180 samples)
+22:08:19 EDE: 1.64062
+429.527MB (81 samples) | LCDM: 539.574MB (180 samples)
+22:09:19 EDE: 1.64062
+2712.13MB (81 samples) | LCDM: 540.605MB (180 samples)
+22:10:21 EDE: 1.64062
+7739.37MB (81 samples) | LCDM: 7824.34MB (180 samples)
+22:11:21 EDE: 1.64062
+269.484MB (81 samples) | LCDM: 8779.13MB (180 samples)
+22:12:21 EDE: 1.64062
+423.672MB (81 samples) | LCDM: 493.727MB (180 samples)
+22:13:22 EDE: 1.64062
+483.137MB (81 samples) | LCDM: 493.859MB (180 samples)
+22:14:22 EDE: 1.64062
+458.848MB (81 samples) | LCDM: 8824.89MB (180 samples)
+22:15:22 EDE: 1.64062
+7420.04MB (81 samples) | LCDM: 7951.02MB (180 samples)
+22:16:22 EDE: 1.64062
+420.062MB (81 samples) | LCDM: 8802.47MB (180 samples)
+22:17:22 EDE: 1.64062
+7573.91MB (81 samples) | LCDM: 7836.07MB (180 samples)
+22:18:22 EDE: 1.64062
+377.449MB (81 samples) | LCDM: 464.582MB (180 samples)
+22:19:22 EDE: 1.64062
+1374.02MB (81 samples) | LCDM: 517.809MB (180 samples)
+22:20:22 EDE: 1.64062
+8207.99MB (81 samples) | LCDM: 7287.52MB (180 samples)
+22:21:22 EDE: 1.64062
+7960.53MB (81 samples) | LCDM: 318.172MB (180 samples)
+22:22:23 EDE: 1.64062
+422.508MB (81 samples) | LCDM: 514.445MB (180 samples)
+22:23:23 EDE: 1.64062
+433.809MB (81 samples) | LCDM: 514.645MB (180 samples)
+22:24:23 EDE: 1.64062
+498.066MB (81 samples) | LCDM: 537.156MB (180 samples)
+22:25:23 EDE: 1.64062
+278.883MB (81 samples) | LCDM: 130.668MB (180 samples)
+22:26:23 EDE: 1.64062
+431.746MB (81 samples) | LCDM: 2715.18MB (180 samples)
+22:27:23 EDE: 1.64062
+8781.49MB (81 samples) | LCDM: 486.375MB (180 samples)
+22:28:25 EDE: 1.64062
+7620.05MB (81 samples) | LCDM: 7719.16MB (180 samples)
+22:29:25 EDE: 1.64062
+3186.7MB (81 samples) | LCDM: 506.73MB (180 samples)
+22:30:28 EDE: 1.64062
+7734.77MB (81 samples) | LCDM: 7766.29MB (180 samples)
+22:31:28 EDE: 1.64062
+359.25MB (81 samples) | LCDM: 406.727MB (180 samples)
+22:32:28 EDE: 1.64062
+447.133MB (81 samples) | LCDM: 481.344MB (180 samples)
+22:33:30 EDE: 1.64062
+8017.71MB (81 samples) | LCDM: 7511.52MB (180 samples)
+22:34:30 EDE: 1.64062
+428.059MB (81 samples) | LCDM: 515.035MB (180 samples)
+22:35:30 EDE: 1.64062
+469.078MB (81 samples) | LCDM: 492.051MB (180 samples)
+22:36:30 EDE: 1.64062
+430.117MB (81 samples) | LCDM: 523.008MB (180 samples)
+22:37:30 EDE: 1.64062
+434.578MB (81 samples) | LCDM: 530.098MB (180 samples)
+22:38:30 EDE: 1.64062
+481.414MB (81 samples) | LCDM: 530.121MB (180 samples)
+22:39:30 EDE: 1.64062
+415.137MB (81 samples) | LCDM: 526.957MB (180 samples)
+22:40:30 EDE: 1.64062
+420.254MB (81 samples) | LCDM: 529.207MB (180 samples)
+22:41:30 EDE: 1.64062
+423.664MB (81 samples) | LCDM: 529.871MB (180 samples)
+22:42:31 EDE: 1.64062
+429.887MB (81 samples) | LCDM: 481.066MB (180 samples)
+22:43:31 EDE: 1.64062
+429.902MB (81 samples) | LCDM: 483.082MB (180 samples)
+22:44:31 EDE: 1.64062
+426.031MB (81 samples) | LCDM: 8720.64MB (180 samples)
+22:45:31 EDE: 1.64062
+7567.19MB (81 samples) | LCDM: 7923.94MB (180 samples)
+22:46:31 EDE: 1.64062
+8759.98MB (81 samples) | LCDM: 518.461MB (180 samples)
+22:47:32 EDE: 1.64062
+454.934MB (81 samples) | LCDM: 530.547MB (180 samples)
+22:48:32 EDE: 1.64062
+383.41MB (81 samples) | LCDM: 403.848MB (180 samples)
+22:49:32 EDE: 1.64062
+439.852MB (81 samples) | LCDM: 475.887MB (180 samples)
+22:50:32 EDE: 1.64062
+440.602MB (81 samples) | LCDM: 480.039MB (180 samples)
+22:51:32 EDE: 1.64062
+7547.03MB (81 samples) | LCDM: 7931.84MB (180 samples)
+22:52:35 EDE: 1.64062
+7711.69MB (81 samples) | LCDM: 7780.7MB (180 samples)
+22:53:35 EDE: 1.64062
+341.25MB (81 samples) | LCDM: 346.98MB (180 samples)
+22:54:35 EDE: 1.64062
+493.434MB (81 samples) | LCDM: 472.699MB (180 samples)
+22:55:36 EDE: 1.64062
+453.984MB (81 samples) | LCDM: 473.039MB (180 samples)
+22:56:36 EDE: 1.64062
+429.941MB (81 samples) | LCDM: 8799.69MB (180 samples)
+22:57:36 EDE: 1.64062
+276.797MB (81 samples) | LCDM: 353.07MB (180 samples)
+22:58:36 EDE: 1.64062
+468.738MB (81 samples) | LCDM: 483.438MB (180 samples)
+22:59:38 EDE: 1.64062
+7972.12MB (81 samples) | LCDM: 7528.69MB (180 samples)
+23:00:38 EDE: 1.64062
+273.348MB (81 samples) | LCDM: 8773.93MB (180 samples)
+23:01:38 EDE: 1.64062
+421.094MB (81 samples) | LCDM: 8814.06MB (180 samples)
+23:02:40 EDE: 1.64062
+8301.62MB (81 samples) | LCDM: 7094.21MB (180 samples)
+23:03:40 EDE: 1.64062
+332.215MB (81 samples) | LCDM: 504.668MB (180 samples)
+23:04:41 EDE: 1.64062
+8257.72MB (81 samples) | LCDM: 7166.45MB (180 samples)
+23:05:41 EDE: 1.64062
+416.5MB (81 samples) | LCDM: 463.852MB (180 samples)
+23:06:41 EDE: 1.64062
+449.328MB (81 samples) | LCDM: 7538.05MB (180 samples)
+23:07:41 EDE: 1.64062
+451.809MB (81 samples) | LCDM: 4247.09MB (180 samples)
+23:08:41 EDE: 1.64062
+7684.67MB (81 samples) | LCDM: 7687.81MB (180 samples)
+23:09:41 EDE: 1.64062
+269.914MB (81 samples) | LCDM: 456.641MB (180 samples)
+23:10:42 EDE: 1.64062
+473.148MB (81 samples) | LCDM: 475.789MB (180 samples)
+23:11:43 EDE: 1.64062
+6974.77MB (81 samples) | LCDM: 8541.05MB (180 samples)
+23:12:43 EDE: 1.64062
+138.238MB (81 samples) | LCDM: 442.141MB (180 samples)
+23:13:44 EDE: 1.64062
+420.445MB (81 samples) | LCDM: 4186.27MB (180 samples)
+23:14:44 EDE: 1.64062
+448.566MB (81 samples) | LCDM: 4268.5MB (180 samples)
+23:15:44 EDE: 1.64062
+8695MB (81 samples) | LCDM: 522.148MB (180 samples)
+23:16:45 EDE: 1.64062
+7416.54MB (81 samples) | LCDM: 8147.73MB (180 samples)
+23:17:45 EDE: 1.64062
+300.094MB (81 samples) | LCDM: 4824.53MB (180 samples)
+23:18:46 EDE: 1.64062
+315.633MB (81 samples) | LCDM: 340.113MB (180 samples)
+23:19:46 EDE: 1.64062
+462.496MB (81 samples) | LCDM: 479.559MB (180 samples)
+23:20:46 EDE: 1.64062
+427.672MB (81 samples) | LCDM: 8812.07MB (180 samples)
+23:21:46 EDE: 1.64062
+7662.66MB (81 samples) | LCDM: 7776.33MB (180 samples)
+23:22:46 EDE: 1.64062
+275.094MB (81 samples) | LCDM: 410.316MB (180 samples)
+23:23:46 EDE: 1.64062
+420.012MB (81 samples) | LCDM: 512.23MB (180 samples)
+23:24:46 EDE: 1.64062
+434.109MB (81 samples) | LCDM: 511.672MB (180 samples)
+23:25:47 EDE: 1.64062
+7379MB (81 samples) | LCDM: 8050.98MB (180 samples)
+23:26:47 EDE: 1.64062
+270.191MB (81 samples) | LCDM: 421.422MB (180 samples)
+23:27:47 EDE: 1.64062
+464.328MB (81 samples) | LCDM: 465.938MB (180 samples)
+23:28:49 EDE: 1.64062
+8489.43MB (81 samples) | LCDM: 7098.68MB (180 samples)
+23:29:49 EDE: 1.64062
+280.844MB (81 samples) | LCDM: 487.023MB (180 samples)
+23:30:49 EDE: 1.64062
+431.98MB (81 samples) | LCDM: 499.004MB (180 samples)
+23:31:50 EDE: 1.64062
+437.559MB (81 samples) | LCDM: 512.152MB (180 samples)
+23:32:50 EDE: 1.51562
+6971.76MB (81 samples) | LCDM: 8437.36MB (180 samples)
+23:33:50 EDE: 1.51562
+407.391MB (81 samples) | LCDM: 8789.24MB (180 samples)
+23:34:50 EDE: 1.51562
+433.84MB (81 samples) | LCDM: 8793.09MB (180 samples)
+23:35:50 EDE: 1.51562
+170.48MB (81 samples) | LCDM: 8326.07MB (180 samples)
+23:36:50 EDE: 1.51562
+7648.63MB (81 samples) | LCDM: 7766.59MB (180 samples)
+23:37:50 EDE: 1.51562
+274.09MB (81 samples) | LCDM: 347.543MB (180 samples)
+23:38:50 EDE: 1.51562
+418.637MB (81 samples) | LCDM: 462.262MB (180 samples)
+23:39:50 EDE: 1.51562
+478.973MB (81 samples) | LCDM: 465.77MB (180 samples)
+23:40:53 EDE: 1.51562
+7970.61MB (81 samples) | LCDM: 7578.55MB (180 samples)
+23:41:53 EDE: 1.51562
+8781.66MB (81 samples) | LCDM: 6273.86MB (180 samples)
+23:42:53 EDE: 1.51562
+414.281MB (81 samples) | LCDM: 475.973MB (180 samples)
+23:43:54 EDE: 1.51562
+467.57MB (81 samples) | LCDM: 499.012MB (180 samples)
+23:44:54 EDE: 1.51562
+346.293MB (81 samples) | LCDM: 8746.76MB (180 samples)
+23:45:59 EDE: 1.51562
+8581.64MB (81 samples) | LCDM: 6773.32MB (180 samples)
+23:47:00 EDE: 1.51562
+454.555MB (81 samples) | LCDM: 8789.06MB (180 samples)
+23:48:00 EDE: 1.51562
+454.934MB (81 samples) | LCDM: 3698.62MB (180 samples)
+23:49:00 EDE: 1.51562
+8782.34MB (81 samples) | LCDM: 1006.98MB (180 samples)
+23:50:00 EDE: 1.51562
+7952.61MB (81 samples) | LCDM: 7417.76MB (180 samples)
+23:51:00 EDE: 1.51562
+420.777MB (81 samples) | LCDM: 8783.34MB (180 samples)
+23:52:00 EDE: 1.51562
+426.902MB (81 samples) | LCDM: 8788.35MB (180 samples)
+23:53:00 EDE: 1.51562
+309.293MB (81 samples) | LCDM: 383.625MB (180 samples)
+23:54:00 EDE: 1.51562
+426.852MB (81 samples) | LCDM: 441.781MB (180 samples)
+23:55:00 EDE: 1.51562
+432.789MB (81 samples) | LCDM: 462.418MB (180 samples)
+23:56:01 EDE: 1.51562
+7635.3MB (81 samples) | LCDM: 7724.09MB (180 samples)
+23:57:01 EDE: 1.51562
+444.633MB (81 samples) | LCDM: 476.059MB (180 samples)
+23:58:01 EDE: 1.51562
+446.867MB (81 samples) | LCDM: 442.668MB (180 samples)
+23:59:01 EDE: 1.51562
+450.492MB (81 samples) | LCDM: 443.328MB (180 samples)
+00:00:01 EDE: 1.51562
+450.625MB (81 samples) | LCDM: 443.352MB (180 samples)
+00:01:01 EDE: 1.51562
+243.539MB (81 samples) | LCDM: 7958.36MB (180 samples)
+00:02:01 EDE: 1.51562
+428.41MB (81 samples) | LCDM: 455.5MB (180 samples)
+00:03:01 EDE: 1.51562
+1055.38MB (81 samples) | LCDM: 463.605MB (180 samples)
+00:04:01 EDE: 1.51562
+439.859MB (81 samples) | LCDM: 463.594MB (180 samples)
+00:05:02 EDE: 1.51562
+443.77MB (81 samples) | LCDM: 463.602MB (180 samples)
+00:06:02 EDE: 1.51562
+7044.38MB (81 samples) | LCDM: 1032.51MB (180 samples)
+00:07:02 EDE: 1.51562
+8772.23MB (81 samples) | LCDM: 450.797MB (180 samples)
+00:08:02 EDE: 1.51562
+451.324MB (81 samples) | LCDM: 8702.51MB (180 samples)
+00:09:02 EDE: 1.51562
+454.508MB (81 samples) | LCDM: 8789.69MB (180 samples)
+00:10:03 EDE: 1.51562
+8669.65MB (81 samples) | LCDM: 6885.61MB (180 samples)
+00:11:03 EDE: 1.51562
+445.492MB (81 samples) | LCDM: 498.543MB (180 samples)
+00:12:03 EDE: 1.51562
+449.352MB (81 samples) | LCDM: 498.344MB (180 samples)
+00:13:04 EDE: 1.51562
+2891.77MB (81 samples) | LCDM: 508.91MB (180 samples)
+00:14:04 EDE: 1.51562
+7609.95MB (81 samples) | LCDM: 7928.66MB (180 samples)
+00:15:04 EDE: 1.51562
+375.652MB (81 samples) | LCDM: 3478.26MB (180 samples)
+00:16:04 EDE: 1.51562
+8760.09MB (81 samples) | LCDM: 5165.53MB (180 samples)
+00:17:04 EDE: 1.51562
+289MB (81 samples) | LCDM: 437.285MB (180 samples)
+00:18:05 EDE: 1.51562
+8775.03MB (81 samples) | LCDM: 3070.69MB (180 samples)
+00:19:05 EDE: 1.51562
+493.98MB (81 samples) | LCDM: 8785.27MB (180 samples)
+00:20:05 EDE: 1.51562
+454.812MB (81 samples) | LCDM: 8789.51MB (180 samples)
+00:21:05 EDE: 1.51562
+455.27MB (81 samples) | LCDM: 6013.56MB (180 samples)
+00:22:05 EDE: 1.51562
+8783.08MB (81 samples) | LCDM: 1349.55MB (180 samples)
+00:23:05 EDE: 1.51562
+7479.13MB (81 samples) | LCDM: 7929.18MB (180 samples)
+00:24:05 EDE: 1.51562
+6756.45MB (81 samples) | LCDM: 8673.73MB (180 samples)
+00:25:05 EDE: 1.51562
+8133.42MB (81 samples) | LCDM: 7273.23MB (180 samples)
+00:26:06 EDE: 1.51562
+7819.31MB (81 samples) | LCDM: 7707.41MB (180 samples)
+00:27:06 EDE: 1.51562
+7414.69MB (81 samples) | LCDM: 126.52MB (180 samples)
+00:28:06 EDE: 1.51562
+430.5MB (81 samples) | LCDM: 8783.39MB (180 samples)
+00:29:06 EDE: 1.51562
+435.855MB (81 samples) | LCDM: 7001.09MB (180 samples)
+00:30:06 EDE: 1.51562
+8777.09MB (81 samples) | LCDM: 4927.26MB (180 samples)
+00:31:09 EDE: 1.51562
+7953.32MB (81 samples) | LCDM: 7465.45MB (180 samples)
+00:32:09 EDE: 1.51562
+293.051MB (81 samples) | LCDM: 8757.21MB (180 samples)
+00:33:09 EDE: 1.51562
+7418.4MB (81 samples) | LCDM: 8077.13MB (180 samples)
+00:34:10 EDE: 1.51562
+281.168MB (81 samples) | LCDM: 8776.37MB (180 samples)
+00:35:10 EDE: 1.51562
+298.293MB (81 samples) | LCDM: 307.25MB (180 samples)
+00:36:10 EDE: 1.51562
+475.82MB (81 samples) | LCDM: 445.391MB (180 samples)
+00:37:10 EDE: 1.51562
+369.188MB (81 samples) | LCDM: 8441.23MB (180 samples)
+00:38:10 EDE: 1.51562
+435.723MB (81 samples) | LCDM: 490.477MB (180 samples)
+00:39:10 EDE: 1.51562
+6377.79MB (81 samples) | LCDM: 505.609MB (180 samples)
+00:40:12 EDE: 1.51562
+7557.84MB (81 samples) | LCDM: 7868.01MB (180 samples)
+00:41:12 EDE: 1.51562
+426.086MB (81 samples) | LCDM: 431.832MB (180 samples)
+00:42:13 EDE: 1.51562
+450.934MB (81 samples) | LCDM: 8786.26MB (180 samples)
+00:43:14 EDE: 1.51562
+8503.08MB (81 samples) | LCDM: 6960.76MB (180 samples)
+00:44:14 EDE: 1.51562
+7742.26MB (81 samples) | LCDM: 7618.11MB (180 samples)
+00:45:14 EDE: 1.51562
+420.871MB (81 samples) | LCDM: 7997.53MB (180 samples)
+00:46:14 EDE: 1.51562
+429.129MB (81 samples) | LCDM: 4608.86MB (180 samples)
+00:47:15 EDE: 1.51562
+452.145MB (81 samples) | LCDM: 450.477MB (180 samples)
+00:48:15 EDE: 1.51562
+455.52MB (81 samples) | LCDM: 460.43MB (180 samples)
+00:49:15 EDE: 1.51562
+455.875MB (81 samples) | LCDM: 507.113MB (180 samples)
+00:50:15 EDE: 1.51562
+1229.25MB (81 samples) | LCDM: 507.133MB (180 samples)
+00:51:15 EDE: 1.51562
+424.402MB (81 samples) | LCDM: 448.734MB (180 samples)
+00:52:15 EDE: 1.51562
+439.285MB (81 samples) | LCDM: 504.914MB (180 samples)
+00:53:15 EDE: 1.51562
+439.566MB (81 samples) | LCDM: 505.914MB (180 samples)
+00:54:15 EDE: 1.51562
+1746.99MB (81 samples) | LCDM: 505.137MB (180 samples)
+00:55:15 EDE: 1.51562
+3793.22MB (81 samples) | LCDM: 417.824MB (180 samples)
+00:56:16 EDE: 1.51562
+434.82MB (81 samples) | LCDM: 446.848MB (180 samples)
+00:57:16 EDE: 1.51562
+435.039MB (81 samples) | LCDM: 8774.54MB (180 samples)
+00:58:16 EDE: 1.51562
+430.773MB (81 samples) | LCDM: 311.391MB (180 samples)
+00:59:16 EDE: 1.51562
+453.539MB (81 samples) | LCDM: 8782.7MB (180 samples)
+01:00:16 EDE: 1.51562
+8659.43MB (81 samples) | LCDM: 6802.97MB (180 samples)
+01:01:17 EDE: 1.51562
+436.199MB (81 samples) | LCDM: 457.465MB (180 samples)
+01:02:17 EDE: 1.51562
+452.195MB (81 samples) | LCDM: 460.504MB (180 samples)
+01:03:17 EDE: 1.51562
+4702.61MB (81 samples) | LCDM: 460.453MB (180 samples)
+01:04:17 EDE: 1.51562
+385.957MB (81 samples) | LCDM: 6196.32MB (180 samples)
+01:05:17 EDE: 1.51562
+445.141MB (81 samples) | LCDM: 7093.24MB (180 samples)
+01:06:19 EDE: 1.51562
+7312.52MB (81 samples) | LCDM: 8031.77MB (180 samples)
+01:07:19 EDE: 1.51562
+273.703MB (81 samples) | LCDM: 8742.82MB (180 samples)
+01:08:19 EDE: 1.51562
+429.668MB (81 samples) | LCDM: 8787.38MB (180 samples)
+01:09:20 EDE: 1.51562
+8587.25MB (81 samples) | LCDM: 6994.79MB (180 samples)
+01:10:20 EDE: 1.51562
+8739.46MB (81 samples) | LCDM: 484.77MB (180 samples)
+01:11:20 EDE: 1.51562
+431.445MB (81 samples) | LCDM: 503.973MB (180 samples)
+01:12:22 EDE: 1.51562
+8032.21MB (81 samples) | LCDM: 7189.39MB (180 samples)
+01:13:22 EDE: 1.51562
+426.77MB (81 samples) | LCDM: 430.016MB (180 samples)
+01:14:22 EDE: 1.51562
+479.727MB (81 samples) | LCDM: 442.672MB (180 samples)
+01:15:22 EDE: 1.51562
+433.602MB (81 samples) | LCDM: 460.465MB (180 samples)
+01:16:22 EDE: 1.51562
+7544.78MB (81 samples) | LCDM: 7859.32MB (180 samples)
+01:17:23 EDE: 1.51562
+450.348MB (81 samples) | LCDM: 8785.82MB (180 samples)
+01:18:23 EDE: 1.51562
+7461.32MB (81 samples) | LCDM: 7941.01MB (180 samples)
+01:19:23 EDE: 1.51562
+435.48MB (81 samples) | LCDM: 504.078MB (180 samples)
+01:20:23 EDE: 1.51562
+354.496MB (81 samples) | LCDM: 311.656MB (180 samples)
+01:21:23 EDE: 1.51562
+468.84MB (81 samples) | LCDM: 8781.24MB (180 samples)
+01:22:23 EDE: 1.51562
+450.48MB (81 samples) | LCDM: 8785.84MB (180 samples)
+01:23:24 EDE: 1.51562
+7583.8MB (81 samples) | LCDM: 7806.89MB (180 samples)
+01:24:24 EDE: 1.51562
+424.168MB (81 samples) | LCDM: 454.949MB (180 samples)
+01:25:24 EDE: 1.51562
+54.9219MB (81 samples) | LCDM: 7979.12MB (180 samples)
+01:26:24 EDE: 1.51562
+428.188MB (81 samples) | LCDM: 492.781MB (180 samples)
+01:27:24 EDE: 1.51562
+482.07MB (81 samples) | LCDM: 505.188MB (180 samples)
+01:28:25 EDE: 1.51562
+264.074MB (81 samples) | LCDM: 286.961MB (180 samples)
+01:29:25 EDE: 1.51562
+415.414MB (81 samples) | LCDM: 437.309MB (180 samples)
+01:30:25 EDE: 1.51562
+7328.2MB (81 samples) | LCDM: 8135.78MB (180 samples)
+01:31:25 EDE: 1.51562
+427.523MB (81 samples) | LCDM: 469.547MB (180 samples)
+01:32:25 EDE: 1.51562
+429.574MB (81 samples) | LCDM: 458.336MB (180 samples)
+01:33:25 EDE: 1.51562
+433.25MB (81 samples) | LCDM: 504.203MB (180 samples)
+01:34:25 EDE: 1.51562
+269.285MB (81 samples) | LCDM: 402.102MB (180 samples)
+01:35:25 EDE: 1.51562
+418.328MB (81 samples) | LCDM: 458.609MB (180 samples)
+01:36:25 EDE: 1.51562
+495.133MB (81 samples) | LCDM: 8787.21MB (180 samples)
+01:37:25 EDE: 1.51562
+454.684MB (81 samples) | LCDM: 459.961MB (180 samples)
+01:38:26 EDE: 1.51562
+7770MB (81 samples) | LCDM: 7705.98MB (180 samples)
+01:39:26 EDE: 1.51562
+8758.24MB (81 samples) | LCDM: 5700.88MB (180 samples)
+01:40:26 EDE: 1.51562
+7486.05MB (81 samples) | LCDM: 7981.95MB (180 samples)
+01:41:27 EDE: 1.51562
+278.875MB (81 samples) | LCDM: 468.762MB (180 samples)
+01:42:27 EDE: 1.51562
+428.434MB (81 samples) | LCDM: 487.859MB (180 samples)
+01:43:27 EDE: 1.51562
+6874.47MB (81 samples) | LCDM: 487.023MB (180 samples)
+01:44:27 EDE: 1.51562
+437.48MB (81 samples) | LCDM: 487.047MB (180 samples)
+01:45:28 EDE: 1.51562
+7612.81MB (81 samples) | LCDM: 7708.2MB (180 samples)
+01:46:28 EDE: 1.51562
+279.207MB (81 samples) | LCDM: 5935.59MB (180 samples)
+01:47:28 EDE: 1.51562
+429.238MB (81 samples) | LCDM: 4332.17MB (180 samples)
+01:48:28 EDE: 1.51562
+450.371MB (81 samples) | LCDM: 5484.71MB (180 samples)
+01:49:28 EDE: 1.51562
+7463.29MB (81 samples) | LCDM: 7954.66MB (180 samples)
+01:50:28 EDE: 1.51562
+419.898MB (81 samples) | LCDM: 413.227MB (180 samples)
+01:51:28 EDE: 1.51562
+426.523MB (81 samples) | LCDM: 8786.34MB (180 samples)
+01:52:28 EDE: 1.51562
+348.832MB (81 samples) | LCDM: 402.391MB (180 samples)
+01:53:28 EDE: 1.51562
+4967MB (81 samples) | LCDM: 489.262MB (180 samples)
+01:54:30 EDE: 1.51562
+7836.79MB (81 samples) | LCDM: 7564.69MB (180 samples)
+01:55:30 EDE: 1.51562
+8781.37MB (81 samples) | LCDM: 490.496MB (180 samples)
+01:56:30 EDE: 1.51562
+454.25MB (81 samples) | LCDM: 498.191MB (180 samples)
+01:57:30 EDE: 1.51562
+500.781MB (81 samples) | LCDM: 458.957MB (180 samples)
+01:58:30 EDE: 1.51562
+426.141MB (81 samples) | LCDM: 422.055MB (180 samples)
+01:59:30 EDE: 1.51562
+390.875MB (81 samples) | LCDM: 427.02MB (180 samples)
+02:00:30 EDE: 1.51562
+465.688MB (81 samples) | LCDM: 440.957MB (180 samples)
+02:01:32 EDE: 1.51562
+8221.08MB (81 samples) | LCDM: 7329.92MB (180 samples)
+02:02:32 EDE: 1.51562
+420.555MB (81 samples) | LCDM: 7975.55MB (180 samples)
+02:03:32 EDE: 1.51562
+449.344MB (81 samples) | LCDM: 4712.43MB (180 samples)
+02:04:32 EDE: 1.51562
+8781.6MB (81 samples) | LCDM: 459.441MB (180 samples)
+02:05:32 EDE: 1.51562
+7843.68MB (81 samples) | LCDM: 7484.73MB (180 samples)
+02:06:32 EDE: 1.51562
+451.75MB (81 samples) | LCDM: 8787MB (180 samples)
+02:07:33 EDE: 1.51562
+451.855MB (81 samples) | LCDM: 8769.02MB (180 samples)
+02:08:33 EDE: 1.51562
+7140.17MB (81 samples) | LCDM: 8175.78MB (180 samples)
+02:09:33 EDE: 1.51562
+441.742MB (81 samples) | LCDM: 450.164MB (180 samples)
+02:10:33 EDE: 1.51562
+415.426MB (81 samples) | LCDM: 8775.07MB (180 samples)
+02:11:34 EDE: 1.51562
+8541.65MB (81 samples) | LCDM: 7022.5MB (180 samples)
+02:12:34 EDE: 1.51562
+7934.66MB (81 samples) | LCDM: 7564.36MB (180 samples)
+02:13:34 EDE: 1.51562
+8740MB (81 samples) | LCDM: 439.91MB (180 samples)
+02:14:35 EDE: 1.51562
+422.609MB (81 samples) | LCDM: 459.668MB (180 samples)
+02:15:35 EDE: 1.51562
+371.125MB (81 samples) | LCDM: 367.035MB (180 samples)
+02:16:35 EDE: 1.51562
+490.129MB (81 samples) | LCDM: 453.129MB (180 samples)
+02:17:36 EDE: 1.51562
+8234.87MB (81 samples) | LCDM: 7311.21MB (180 samples)
+02:18:36 EDE: 1.51562
+326.426MB (81 samples) | LCDM: 300.27MB (180 samples)
+02:19:36 EDE: 1.51562
+420.207MB (81 samples) | LCDM: 8759.59MB (180 samples)
+02:20:36 EDE: 1.51562
+434.16MB (81 samples) | LCDM: 8787.08MB (180 samples)
+02:21:37 EDE: 1.51562
+7400.64MB (81 samples) | LCDM: 7899.15MB (180 samples)
+02:22:37 EDE: 1.51562
+271.832MB (81 samples) | LCDM: 419.672MB (180 samples)
+02:23:37 EDE: 1.51562
+293.359MB (81 samples) | LCDM: 8072.93MB (180 samples)
+02:24:37 EDE: 1.51562
+413.496MB (81 samples) | LCDM: 487.574MB (180 samples)
+02:25:37 EDE: 1.51562
+3116.88MB (81 samples) | LCDM: 489.645MB (180 samples)
+02:26:38 EDE: 1.51562
+449.223MB (81 samples) | LCDM: 459.281MB (180 samples)
+02:27:38 EDE: 1.51562
+453.941MB (81 samples) | LCDM: 2927.04MB (180 samples)
+02:28:38 EDE: 1.51562
+6005.75MB (81 samples) | LCDM: 5035.41MB (180 samples)
+02:29:38 EDE: 1.51562
+241.398MB (81 samples) | LCDM: 8247.16MB (180 samples)
+02:30:38 EDE: 1.51562
+421.109MB (81 samples) | LCDM: 485.164MB (180 samples)
+02:31:38 EDE: 1.51562
+453.949MB (81 samples) | LCDM: 502.875MB (180 samples)
+02:32:38 EDE: 1.51562
+435.277MB (81 samples) | LCDM: 8325.66MB (180 samples)
+02:33:38 EDE: 1.51562
+446.34MB (81 samples) | LCDM: 8786.8MB (180 samples)
+02:34:38 EDE: 1.51562
+451.176MB (81 samples) | LCDM: 7631.03MB (180 samples)
+02:35:38 EDE: 1.51562
+445.926MB (81 samples) | LCDM: 491.402MB (180 samples)
+02:36:39 EDE: 1.51562
+446.363MB (81 samples) | LCDM: 504.473MB (180 samples)
+02:37:39 EDE: 1.51562
+446.293MB (81 samples) | LCDM: 504.531MB (180 samples)
+02:38:39 EDE: 1.51562
+466.758MB (81 samples) | LCDM: 863.465MB (180 samples)
+02:39:39 EDE: 1.51562
+429.059MB (81 samples) | LCDM: 8715.23MB (180 samples)
+02:40:39 EDE: 1.51562
+453.637MB (81 samples) | LCDM: 8170.22MB (180 samples)
+02:41:40 EDE: 1.51562
+7906.28MB (81 samples) | LCDM: 7429.58MB (180 samples)
+02:42:40 EDE: 1.51562
+436.84MB (81 samples) | LCDM: 8755.75MB (180 samples)
+02:43:40 EDE: 1.51562
+499.898MB (81 samples) | LCDM: 8785.58MB (180 samples)
+02:44:40 EDE: 1.51562
+454.543MB (81 samples) | LCDM: 8787.28MB (180 samples)
+02:45:40 EDE: 1.51562
+454.559MB (81 samples) | LCDM: 4161.28MB (180 samples)
+02:46:40 EDE: 1.51562
+8782.03MB (81 samples) | LCDM: 3857.28MB (180 samples)
+02:47:41 EDE: 1.51562
+454.906MB (81 samples) | LCDM: 503.191MB (180 samples)
+02:48:41 EDE: 1.51562
+454.98MB (81 samples) | LCDM: 504.859MB (180 samples)
+02:49:44 EDE: 1.51562
+8284.16MB (81 samples) | LCDM: 7286.05MB (180 samples)
+02:50:44 EDE: 1.51562
+8742.37MB (81 samples) | LCDM: 480.359MB (180 samples)
+02:51:44 EDE: 1.51562
+435.09MB (81 samples) | LCDM: 493.527MB (180 samples)
+02:52:44 EDE: 1.51562
+490.574MB (81 samples) | LCDM: 496.387MB (180 samples)
+02:53:44 EDE: 1.51562
+491.336MB (81 samples) | LCDM: 8775.8MB (180 samples)
+02:54:45 EDE: 1.51562
+446.199MB (81 samples) | LCDM: 8786.93MB (180 samples)
+02:55:45 EDE: 1.51562
+446.238MB (81 samples) | LCDM: 8786.94MB (180 samples)
+02:56:45 EDE: 1.51562
+18.9453MB (81 samples) | LCDM: 7417.38MB (180 samples)
+02:57:45 EDE: 1.51562
+418.391MB (81 samples) | LCDM: 433.727MB (180 samples)
+02:58:45 EDE: 1.51562
+424.691MB (81 samples) | LCDM: 438.055MB (180 samples)
+02:59:45 EDE: 1.51562
+436.516MB (81 samples) | LCDM: 8770.1MB (180 samples)
+03:00:45 EDE: 1.51562
+434.91MB (81 samples) | LCDM: 7470.98MB (180 samples)
+03:01:45 EDE: 1.51562
+261.391MB (81 samples) | LCDM: 226.43MB (180 samples)
+03:02:45 EDE: 1.51562
+8166.58MB (81 samples) | LCDM: 7330.79MB (180 samples)
+03:03:46 EDE: 1.51562
+8738.5MB (81 samples) | LCDM: 469.379MB (180 samples)
+03:04:46 EDE: 1.51562
+432.016MB (81 samples) | LCDM: 495.059MB (180 samples)
+03:05:46 EDE: 1.51562
+488.203MB (81 samples) | LCDM: 495.25MB (180 samples)
+03:06:46 EDE: 1.51562
+7298.94MB (81 samples) | LCDM: 33.918MB (180 samples)
+03:07:46 EDE: 1.51562
+8743.91MB (81 samples) | LCDM: 5532.05MB (180 samples)
+03:08:46 EDE: 1.51562
+430.777MB (81 samples) | LCDM: 8784.58MB (180 samples)
+03:09:46 EDE: 1.51562
+435.117MB (81 samples) | LCDM: 7624.64MB (180 samples)
+03:10:46 EDE: 1.51562
+775.547MB (81 samples) | LCDM: 454.492MB (180 samples)
+03:11:46 EDE: 1.51562
+448.387MB (81 samples) | LCDM: 454.859MB (180 samples)
+03:12:47 EDE: 1.51562
+7854.23MB (81 samples) | LCDM: 7433.36MB (180 samples)
+03:13:47 EDE: 1.51562
+423.801MB (81 samples) | LCDM: 438.602MB (180 samples)
+03:14:47 EDE: 1.51562
+438.324MB (81 samples) | LCDM: 459.262MB (180 samples)
+03:15:47 EDE: 1.51562
+280.684MB (81 samples) | LCDM: 295.203MB (180 samples)
+03:16:47 EDE: 1.51562
+457.148MB (81 samples) | LCDM: 458.547MB (180 samples)
+03:17:48 EDE: 1.51562
+8362.84MB (81 samples) | LCDM: 7155.5MB (180 samples)
+03:18:48 EDE: 1.51562
+8748.58MB (81 samples) | LCDM: 442.355MB (180 samples)
+03:19:48 EDE: 1.51562
+7876.3MB (81 samples) | LCDM: 7567.97MB (180 samples)
+03:20:48 EDE: 1.51562
+434.762MB (81 samples) | LCDM: 8758.39MB (180 samples)
+03:21:48 EDE: 1.51562
+448.648MB (81 samples) | LCDM: 8782.71MB (180 samples)
+03:22:49 EDE: 1.51562
+8581.23MB (81 samples) | LCDM: 6922.23MB (180 samples)
+03:23:49 EDE: 1.51562
+306.035MB (81 samples) | LCDM: 2855.47MB (180 samples)
+03:24:49 EDE: 1.51562
+5945.77MB (81 samples) | LCDM: 435.668MB (180 samples)
+03:25:49 EDE: 1.51562
+424.551MB (81 samples) | LCDM: 475.277MB (180 samples)
+03:26:49 EDE: 1.51562
+343.379MB (81 samples) | LCDM: 475.246MB (180 samples)
+03:27:49 EDE: 1.51562
+7685.26MB (81 samples) | LCDM: 499.484MB (180 samples)
+03:28:49 EDE: 1.51562
+7662.2MB (81 samples) | LCDM: 7716.94MB (180 samples)
+03:29:49 EDE: 1.51562
+432.801MB (81 samples) | LCDM: 454.418MB (180 samples)
+03:30:49 EDE: 1.51562
+333.523MB (81 samples) | LCDM: 8101.96MB (180 samples)
+03:31:50 EDE: 1.51562
+421.734MB (81 samples) | LCDM: 490.215MB (180 samples)
+03:32:50 EDE: 1.51562
+8781.74MB (81 samples) | LCDM: 499.602MB (180 samples)
+03:33:50 EDE: 1.51562
+454.379MB (81 samples) | LCDM: 505.605MB (180 samples)
+03:34:50 EDE: 1.51562
+499.848MB (81 samples) | LCDM: 505.398MB (180 samples)
+03:35:50 EDE: 1.51562
+273.43MB (81 samples) | LCDM: 462.93MB (180 samples)
+03:36:50 EDE: 1.51562
+8750.12MB (81 samples) | LCDM: 458.191MB (180 samples)
+03:37:51 EDE: 1.51562
+7789.64MB (81 samples) | LCDM: 7684.7MB (180 samples)
+03:38:51 EDE: 1.51562
+413.992MB (81 samples) | LCDM: 8669.54MB (180 samples)
+03:39:51 EDE: 1.51562
+446.863MB (81 samples) | LCDM: 7088.21MB (180 samples)
+03:40:51 EDE: 1.51562
+420.137MB (81 samples) | LCDM: 8657.84MB (180 samples)
+03:41:51 EDE: 1.51562
+441.68MB (81 samples) | LCDM: 8776.34MB (180 samples)
+03:42:51 EDE: 1.51562
+8776.93MB (81 samples) | LCDM: 4983.91MB (180 samples)
+03:43:52 EDE: 1.51562
+439.227MB (81 samples) | LCDM: 8752.33MB (180 samples)
+03:44:52 EDE: 1.51562
+444.871MB (81 samples) | LCDM: 6343.52MB (180 samples)
+03:45:52 EDE: 1.51562
+7570.06MB (81 samples) | LCDM: 7852.52MB (180 samples)
+03:46:52 EDE: 1.51562
+455.617MB (81 samples) | LCDM: 8764.61MB (180 samples)
+03:47:52 EDE: 1.51562
+428.738MB (81 samples) | LCDM: 444.227MB (180 samples)
+03:48:52 EDE: 1.51562
+432.098MB (81 samples) | LCDM: 8784.21MB (180 samples)
+03:49:52 EDE: 1.51562
+426.426MB (81 samples) | LCDM: 488.988MB (180 samples)
+03:50:52 EDE: 1.51562
+8762.66MB (81 samples) | LCDM: 504.555MB (180 samples)
+03:51:52 EDE: 1.51562
+7437.16MB (81 samples) | LCDM: 8013.36MB (180 samples)
+03:52:53 EDE: 1.51562
+430.148MB (81 samples) | LCDM: 8754.55MB (180 samples)
+03:53:53 EDE: 1.51562
+430.211MB (81 samples) | LCDM: 8778.96MB (180 samples)
+03:54:53 EDE: 1.51562
+430.234MB (81 samples) | LCDM: 8087.62MB (180 samples)
+03:55:53 EDE: 1.51562
+7545.02MB (81 samples) | LCDM: 7798.8MB (180 samples)
+03:56:53 EDE: 1.51562
+271.082MB (81 samples) | LCDM: 485.941MB (180 samples)
+03:57:53 EDE: 1.51562
+7388.98MB (81 samples) | LCDM: 7912.68MB (180 samples)
+03:58:53 EDE: 1.51562
+275.199MB (81 samples) | LCDM: 422.32MB (180 samples)
+03:59:53 EDE: 1.51562
+420.41MB (81 samples) | LCDM: 8784.42MB (180 samples)
+04:00:53 EDE: 1.51562
+430.469MB (81 samples) | LCDM: 441.75MB (180 samples)
+04:01:53 EDE: 1.51562
+432.312MB (81 samples) | LCDM: 497.781MB (180 samples)
+04:02:54 EDE: 1.51562
+1866.12MB (81 samples) | LCDM: 3524.75MB (180 samples)
+04:03:54 EDE: 1.51562
+8317.2MB (81 samples) | LCDM: 307.156MB (180 samples)
+04:04:54 EDE: 1.51562
+8277.25MB (81 samples) | LCDM: 7032.71MB (180 samples)
+04:05:54 EDE: 1.51562
+449.59MB (81 samples) | LCDM: 432.516MB (180 samples)
+04:06:54 EDE: 1.51562
+424.074MB (81 samples) | LCDM: 455.887MB (180 samples)
+04:07:54 EDE: 1.51562
+424.848MB (81 samples) | LCDM: 8784.95MB (180 samples)
+04:08:54 EDE: 1.51562
+477.203MB (81 samples) | LCDM: 414.184MB (180 samples)
+04:09:54 EDE: 1.51562
+416.633MB (81 samples) | LCDM: 365.305MB (180 samples)
+04:10:54 EDE: 1.51562
+419.004MB (81 samples) | LCDM: 8756.74MB (180 samples)
+04:11:54 EDE: 1.51562
+449.723MB (81 samples) | LCDM: 6694.72MB (180 samples)
+04:12:54 EDE: 1.51562
+7288.54MB (81 samples) | LCDM: 8146.31MB (180 samples)
+04:13:55 EDE: 1.51562
+8305.42MB (81 samples) | LCDM: 6985.87MB (180 samples)
+04:14:55 EDE: 1.51562
+240.836MB (81 samples) | LCDM: 7873.71MB (180 samples)
+04:15:55 EDE: 1.51562
+421.051MB (81 samples) | LCDM: 483.504MB (180 samples)
+04:16:55 EDE: 1.51562
+427.363MB (81 samples) | LCDM: 488.859MB (180 samples)
+04:17:55 EDE: 1.51562
+428.426MB (81 samples) | LCDM: 7751.97MB (180 samples)
+04:18:55 EDE: 1.51562
+429.188MB (81 samples) | LCDM: 8768.37MB (180 samples)
+04:19:55 EDE: 1.51562
+438.062MB (81 samples) | LCDM: 5417.5MB (180 samples)
+04:20:55 EDE: 1.51562
+438.059MB (81 samples) | LCDM: 1063.62MB (180 samples)
+04:21:55 EDE: 1.51562
+8765.45MB (81 samples) | LCDM: 488.891MB (180 samples)
+04:22:56 EDE: 1.51562
+7732.49MB (81 samples) | LCDM: 7591.46MB (180 samples)
+04:23:56 EDE: 1.51562
+435.805MB (81 samples) | LCDM: 467.887MB (180 samples)
+04:24:56 EDE: 1.51562
+437.348MB (81 samples) | LCDM: 504.777MB (180 samples)
+04:25:56 EDE: 1.51562
+7773.11MB (81 samples) | LCDM: 505.164MB (180 samples)
+04:26:56 EDE: 1.51562
+437.836MB (81 samples) | LCDM: 505.281MB (180 samples)
+04:27:56 EDE: 1.51562
+484.23MB (81 samples) | LCDM: 458.863MB (180 samples)
+04:28:56 EDE: 1.51562
+7787.45MB (81 samples) | LCDM: 7623.96MB (180 samples)
+04:29:56 EDE: 1.51562
+417.223MB (81 samples) | LCDM: 448.141MB (180 samples)
+04:30:57 EDE: 1.51562
+427.91MB (81 samples) | LCDM: 456.586MB (180 samples)
+04:31:57 EDE: 1.51562
+7049MB (81 samples) | LCDM: 8335.39MB (180 samples)
+04:32:57 EDE: 1.51562
+429.223MB (81 samples) | LCDM: 4543.21MB (180 samples)
+04:33:57 EDE: 1.51562
+431.855MB (81 samples) | LCDM: 459.391MB (180 samples)
+04:34:57 EDE: 1.51562
+8783.32MB (81 samples) | LCDM: 3278.91MB (180 samples)
+04:35:57 EDE: 1.51562
+430.887MB (81 samples) | LCDM: 421.703MB (180 samples)
+04:36:57 EDE: 1.51562
+428.605MB (81 samples) | LCDM: 458.289MB (180 samples)
+04:37:57 EDE: 1.51562
+7590.7MB (81 samples) | LCDM: 7796.5MB (180 samples)
+04:38:57 EDE: 1.51562
+427.586MB (81 samples) | LCDM: 8762.49MB (180 samples)
+04:39:58 EDE: 1.51562
+430.926MB (81 samples) | LCDM: 8772.47MB (180 samples)
+04:40:58 EDE: 1.51562
+7492.62MB (81 samples) | LCDM: 7879.39MB (180 samples)
+04:41:58 EDE: 1.51562
+1475.71MB (81 samples) | LCDM: 431.332MB (180 samples)
+04:42:58 EDE: 1.51562
+430.938MB (81 samples) | LCDM: 459.562MB (180 samples)
+04:43:58 EDE: 1.51562
+434.219MB (81 samples) | LCDM: 8787.09MB (180 samples)
+04:45:00 EDE: 1.51562
+8363.89MB (81 samples) | LCDM: 7196.26MB (180 samples)
+04:46:00 EDE: 1.51562
+7710.64MB (81 samples) | LCDM: 7685.02MB (180 samples)
+04:47:01 EDE: 1.51562
+7266.03MB (81 samples) | LCDM: 429.582MB (180 samples)
+04:48:01 EDE: 1.51562
+427.461MB (81 samples) | LCDM: 439.484MB (180 samples)
+04:49:01 EDE: 1.51562
+432.426MB (81 samples) | LCDM: 440.574MB (180 samples)
+04:50:01 EDE: 1.51562
+479.359MB (81 samples) | LCDM: 8764.74MB (180 samples)
+04:51:01 EDE: 1.51562
+446.84MB (81 samples) | LCDM: 8764.78MB (180 samples)
+04:52:01 EDE: 1.51562
+251.152MB (81 samples) | LCDM: 8223.74MB (180 samples)
+04:53:01 EDE: 1.51562
+429.375MB (81 samples) | LCDM: 4223.11MB (180 samples)
+04:54:01 EDE: 1.51562
+7545.08MB (81 samples) | LCDM: 7861.93MB (180 samples)
+04:55:01 EDE: 1.51562
+274.941MB (81 samples) | LCDM: 432.906MB (180 samples)
+04:56:02 EDE: 1.51562
+468.02MB (81 samples) | LCDM: 441.844MB (180 samples)
+04:57:02 EDE: 1.51562
+333.777MB (81 samples) | LCDM: 447.918MB (180 samples)
+04:58:02 EDE: 1.51562
+6756.06MB (81 samples) | LCDM: 457.824MB (180 samples)
+04:59:02 EDE: 1.51562
+7721.59MB (81 samples) | LCDM: 7827.32MB (180 samples)
+05:00:02 EDE: 1.51562
+306.973MB (81 samples) | LCDM: 8739.63MB (180 samples)
+05:01:02 EDE: 1.51562
+8256.93MB (81 samples) | LCDM: 7184.77MB (180 samples)
+05:02:02 EDE: 1.51562
+7379.76MB (81 samples) | LCDM: 8038.59MB (180 samples)
+05:03:02 EDE: 1.51562
+285.395MB (81 samples) | LCDM: 472.086MB (180 samples)
+05:04:03 EDE: 1.51562
+4388.45MB (81 samples) | LCDM: 482.09MB (180 samples)
+05:05:03 EDE: 1.51562
+7493.93MB (81 samples) | LCDM: 7949.33MB (180 samples)
+05:06:03 EDE: 1.51562
+284.676MB (81 samples) | LCDM: 3988.71MB (180 samples)
+05:07:03 EDE: 1.51562
+399.527MB (81 samples) | LCDM: 8784.5MB (180 samples)
+05:08:03 EDE: 1.51562
+431.133MB (81 samples) | LCDM: 8785.27MB (180 samples)
+05:09:03 EDE: 1.51562
+7847.79MB (81 samples) | LCDM: 7596.48MB (180 samples)
+05:10:04 EDE: 1.51562
+281.957MB (81 samples) | LCDM: 489.922MB (180 samples)
+05:11:04 EDE: 1.51562
+8749.61MB (81 samples) | LCDM: 504.594MB (180 samples)
+05:12:04 EDE: 1.51562
+434.414MB (81 samples) | LCDM: 505.652MB (180 samples)
+05:13:04 EDE: 1.51562
+348.871MB (81 samples) | LCDM: 365.559MB (180 samples)
+05:14:04 EDE: 1.51562
+470.625MB (81 samples) | LCDM: 454.543MB (180 samples)
+05:15:04 EDE: 1.51562
+8386.04MB (81 samples) | LCDM: 7085.09MB (180 samples)
+05:16:04 EDE: 1.51562
+292.703MB (81 samples) | LCDM: 8752.78MB (180 samples)
+05:17:04 EDE: 1.51562
+291.047MB (81 samples) | LCDM: 7975.62MB (180 samples)
+05:18:04 EDE: 1.51562
+410.93MB (81 samples) | LCDM: 481.961MB (180 samples)
+05:19:05 EDE: 1.51562
+874.742MB (81 samples) | LCDM: 486.27MB (180 samples)
+05:20:05 EDE: 1.51562
+420.031MB (81 samples) | LCDM: 422.98MB (180 samples)
+05:21:05 EDE: 1.51562
+408.289MB (81 samples) | LCDM: 8639.77MB (180 samples)
+05:22:05 EDE: 1.51562
+447.508MB (81 samples) | LCDM: 8764.22MB (180 samples)
+05:23:07 EDE: 1.51562
+8642MB (81 samples) | LCDM: 6940.38MB (180 samples)
+05:24:07 EDE: 1.51562
+333.254MB (81 samples) | LCDM: 8736.25MB (180 samples)
+05:25:08 EDE: 1.51562
+435.383MB (81 samples) | LCDM: 2618.28MB (180 samples)
+05:26:08 EDE: 1.51562
+6179.48MB (81 samples) | LCDM: 456.832MB (180 samples)
+05:27:08 EDE: 1.51562
+432.672MB (81 samples) | LCDM: 441.66MB (180 samples)
+05:28:08 EDE: 1.51562
+491.617MB (81 samples) | LCDM: 454.047MB (180 samples)
+05:29:08 EDE: 1.51562
+428.215MB (81 samples) | LCDM: 5158.16MB (180 samples)
+05:30:08 EDE: 1.51562
+442.141MB (81 samples) | LCDM: 6301.3MB (180 samples)
+05:31:08 EDE: 1.51562
+447.262MB (81 samples) | LCDM: 5427.5MB (180 samples)
+05:32:08 EDE: 1.51562
+7607.66MB (81 samples) | LCDM: 7775.22MB (180 samples)
+05:33:09 EDE: 1.51562
+269.289MB (81 samples) | LCDM: 3240.48MB (180 samples)
+05:34:09 EDE: 1.51562
+104.434MB (81 samples) | LCDM: 7513.91MB (180 samples)
+05:35:09 EDE: 1.51562
+414.527MB (81 samples) | LCDM: 438.477MB (180 samples)
+05:36:09 EDE: 1.51562
+485.254MB (81 samples) | LCDM: 444.004MB (180 samples)
+05:37:09 EDE: 1.51562
+8237.93MB (81 samples) | LCDM: 7201.96MB (180 samples)
+05:38:09 EDE: 1.51562
+415.715MB (81 samples) | LCDM: 429.055MB (180 samples)
+05:39:09 EDE: 1.51562
+421.793MB (81 samples) | LCDM: 8772.04MB (180 samples)
+05:40:13 EDE: 1.51562
+8592.4MB (81 samples) | LCDM: 6934.52MB (180 samples)
+05:41:13 EDE: 1.51562
+429.516MB (81 samples) | LCDM: 474.988MB (180 samples)
+05:42:13 EDE: 1.51562
+436.953MB (81 samples) | LCDM: 504.301MB (180 samples)
+05:43:13 EDE: 1.51562
+3531.27MB (81 samples) | LCDM: 504.445MB (180 samples)
+05:44:14 EDE: 1.51562
+7830.66MB (81 samples) | LCDM: 7727.41MB (180 samples)
+05:45:14 EDE: 1.51562
+180.473MB (81 samples) | LCDM: 241.348MB (180 samples)
+05:46:14 EDE: 1.51562
+426.672MB (81 samples) | LCDM: 448.941MB (180 samples)
+05:47:14 EDE: 1.51562
+491.758MB (81 samples) | LCDM: 8786MB (180 samples)
+05:48:17 EDE: 1.51562
+8339.03MB (81 samples) | LCDM: 7221.97MB (180 samples)
+05:49:17 EDE: 1.51562
+8779.35MB (81 samples) | LCDM: 795.898MB (180 samples)
+05:50:17 EDE: 1.51562
+395.332MB (81 samples) | LCDM: 8294.39MB (180 samples)
+05:51:17 EDE: 1.51562
+429.297MB (81 samples) | LCDM: 499.945MB (180 samples)
+05:52:17 EDE: 1.51562
+8767.08MB (81 samples) | LCDM: 455.309MB (180 samples)
+05:53:17 EDE: 1.51562
+441.949MB (81 samples) | LCDM: 458.609MB (180 samples)
+05:54:17 EDE: 1.51562
+148.027MB (81 samples) | LCDM: 8015.77MB (180 samples)
+05:55:17 EDE: 1.51562
+415.359MB (81 samples) | LCDM: 500.895MB (180 samples)
+05:56:18 EDE: 1.51562
+298.012MB (81 samples) | LCDM: 276.082MB (180 samples)
+05:57:18 EDE: 1.51562
+417.418MB (81 samples) | LCDM: 8784.79MB (180 samples)
+05:58:19 EDE: 1.51562
+8512.97MB (81 samples) | LCDM: 6906.48MB (180 samples)
+05:59:19 EDE: 1.51562
+7858.72MB (81 samples) | LCDM: 7499.62MB (180 samples)
+06:00:19 EDE: 1.51562
+8302.91MB (81 samples) | LCDM: 7148.79MB (180 samples)
+06:01:19 EDE: 1.51562
+7457.16MB (81 samples) | LCDM: 7954.23MB (180 samples)
+06:02:19 EDE: 1.51562
+368.691MB (81 samples) | LCDM: 497.773MB (180 samples)
+06:03:19 EDE: 1.51562
+450.848MB (81 samples) | LCDM: 504.762MB (180 samples)
+06:04:19 EDE: 1.51562
+499.777MB (81 samples) | LCDM: 506.074MB (180 samples)
+06:05:19 EDE: 1.51562
+7764.71MB (81 samples) | LCDM: 7613.74MB (180 samples)
+06:06:20 EDE: 1.51562
+276.91MB (81 samples) | LCDM: 8754.07MB (180 samples)
+06:07:20 EDE: 1.51562
+8332.63MB (81 samples) | LCDM: 7097.71MB (180 samples)
+06:08:20 EDE: 1.51562
+427.336MB (81 samples) | LCDM: 8759.56MB (180 samples)
+06:09:20 EDE: 1.51562
+450.246MB (81 samples) | LCDM: 8772.79MB (180 samples)
+06:10:20 EDE: 1.51562
+454.469MB (81 samples) | LCDM: 8606.51MB (180 samples)
+06:11:20 EDE: 1.51562
+454.625MB (81 samples) | LCDM: 503.324MB (180 samples)
+06:12:20 EDE: 1.51562
+1280MB (81 samples) | LCDM: 504.211MB (180 samples)
+06:13:21 EDE: 1.51562
+397.16MB (81 samples) | LCDM: 427.516MB (180 samples)
+06:14:21 EDE: 1.51562
+7276.84MB (81 samples) | LCDM: 8147.48MB (180 samples)
+06:15:21 EDE: 1.51562
+3214.31MB (81 samples) | LCDM: 501.953MB (180 samples)
+06:16:21 EDE: 1.51562
+282.984MB (81 samples) | LCDM: 393.816MB (180 samples)
+06:17:21 EDE: 1.51562
+8008MB (81 samples) | LCDM: 7258.5MB (180 samples)
+06:18:21 EDE: 1.51562
+8742.84MB (81 samples) | LCDM: 498.398MB (180 samples)
+06:19:22 EDE: 1.51562
+425.664MB (81 samples) | LCDM: 498.688MB (180 samples)
+06:20:22 EDE: 1.51562
+8102.75MB (81 samples) | LCDM: 7328.11MB (180 samples)
+06:21:22 EDE: 1.51562
+419.25MB (81 samples) | LCDM: 8754.34MB (180 samples)
+06:22:22 EDE: 1.51562
+446.277MB (81 samples) | LCDM: 7677.55MB (180 samples)
+06:23:22 EDE: 1.51562
+7356.11MB (81 samples) | LCDM: 8156.43MB (180 samples)
+06:24:22 EDE: 1.51562
+451.254MB (81 samples) | LCDM: 8768.27MB (180 samples)
+06:25:22 EDE: 1.51562
+441.977MB (81 samples) | LCDM: 8784.58MB (180 samples)
+06:26:22 EDE: 1.51562
+7661.58MB (81 samples) | LCDM: 7736.88MB (180 samples)
+06:27:22 EDE: 1.51562
+7135.18MB (81 samples) | LCDM: 489.723MB (180 samples)
+06:28:24 EDE: 1.51562
+7676.43MB (81 samples) | LCDM: 7646.74MB (180 samples)
+06:29:24 EDE: 1.51562
+430.523MB (81 samples) | LCDM: 8773.92MB (180 samples)
+06:30:24 EDE: 1.51562
+432.09MB (81 samples) | LCDM: 8779.58MB (180 samples)
+06:31:24 EDE: 1.51562
+448.504MB (81 samples) | LCDM: 8787.2MB (180 samples)
+06:32:24 EDE: 1.51562
+7653.14MB (81 samples) | LCDM: 7646.5MB (180 samples)
+06:33:24 EDE: 1.51562
+275.137MB (81 samples) | LCDM: 413.895MB (180 samples)
+06:34:24 EDE: 1.51562
+411.773MB (81 samples) | LCDM: 457.418MB (180 samples)
+06:35:24 EDE: 1.51562
+404.914MB (81 samples) | LCDM: 428.129MB (180 samples)
+06:36:25 EDE: 1.51562
+8769.34MB (81 samples) | LCDM: 444.328MB (180 samples)
+06:37:25 EDE: 1.51562
+453.457MB (81 samples) | LCDM: 459.113MB (180 samples)
+06:38:25 EDE: 1.51562
+500.727MB (81 samples) | LCDM: 459.344MB (180 samples)
+06:39:25 EDE: 1.51562
+8307.82MB (81 samples) | LCDM: 7231.08MB (180 samples)
+06:40:26 EDE: 1.51562
+337.52MB (81 samples) | LCDM: 4364.84MB (180 samples)
+06:41:26 EDE: 1.51562
+8761.09MB (81 samples) | LCDM: 1022.79MB (180 samples)
+06:42:26 EDE: 1.51562
+7620.48MB (81 samples) | LCDM: 7727.87MB (180 samples)
+06:43:26 EDE: 1.51562
+445.266MB (81 samples) | LCDM: 8756.32MB (180 samples)
+06:44:26 EDE: 1.51562
+438.688MB (81 samples) | LCDM: 5068.85MB (180 samples)
+06:45:26 EDE: 1.51562
+331.32MB (81 samples) | LCDM: 283.906MB (180 samples)
+06:46:27 EDE: 1.51562
+443.586MB (81 samples) | LCDM: 8766.09MB (180 samples)
+06:47:28 EDE: 1.51562
+8577.27MB (81 samples) | LCDM: 6951.12MB (180 samples)
+06:48:29 EDE: 1.51562
+667.246MB (81 samples) | LCDM: 457.691MB (180 samples)
+06:49:29 EDE: 1.51562
+454.598MB (81 samples) | LCDM: 459.586MB (180 samples)
+06:50:29 EDE: 1.51562
+454.762MB (81 samples) | LCDM: 459.684MB (180 samples)
+06:51:29 EDE: 1.51562
+330.688MB (81 samples) | LCDM: 4589.71MB (180 samples)
+06:52:29 EDE: 1.51562
+420.504MB (81 samples) | LCDM: 3594.4MB (180 samples)
+06:53:29 EDE: 1.51562
+8020.91MB (81 samples) | LCDM: 7403.14MB (180 samples)
+06:54:29 EDE: 1.51562
+419.781MB (81 samples) | LCDM: 469.496MB (180 samples)
+06:55:29 EDE: 1.51562
+430.934MB (81 samples) | LCDM: 503.707MB (180 samples)
+06:56:30 EDE: 1.51562
+483.062MB (81 samples) | LCDM: 502.16MB (180 samples)
+06:57:30 EDE: 1.51562
+7107.68MB (81 samples) | LCDM: 8355.8MB (180 samples)
+06:58:30 EDE: 1.51562
+417.094MB (81 samples) | LCDM: 1479.45MB (180 samples)
+06:59:30 EDE: 1.51562
+445.844MB (81 samples) | LCDM: 805.055MB (180 samples)
+07:00:30 EDE: 1.51562
+472.102MB (81 samples) | LCDM: 502.262MB (180 samples)
+07:01:30 EDE: 1.51562
+383.574MB (81 samples) | LCDM: 476.594MB (180 samples)
+07:02:30 EDE: 1.51562
+486.27MB (81 samples) | LCDM: 497.434MB (180 samples)
+07:03:30 EDE: 1.51562
+285.531MB (81 samples) | LCDM: 354.352MB (180 samples)
+07:04:31 EDE: 1.51562
+489.078MB (81 samples) | LCDM: 494.699MB (180 samples)
+07:05:31 EDE: 1.51562
+7721.89MB (81 samples) | LCDM: 7763.99MB (180 samples)
+07:06:31 EDE: 1.51562
+273.926MB (81 samples) | LCDM: 428.488MB (180 samples)
+07:07:31 EDE: 1.51562
+2642.16MB (81 samples) | LCDM: 487.254MB (180 samples)
+07:08:36 EDE: 1.51562
+8189.57MB (81 samples) | LCDM: 7405.49MB (180 samples)
+07:09:37 EDE: 1.51562
+425.949MB (81 samples) | LCDM: 449.453MB (180 samples)
+07:10:37 EDE: 1.51562
+433.469MB (81 samples) | LCDM: 8783.69MB (180 samples)
+07:11:37 EDE: 1.51562
+428.691MB (81 samples) | LCDM: 4615.57MB (180 samples)
+07:12:37 EDE: 1.51562
+7622.25MB (81 samples) | LCDM: 7826.23MB (180 samples)
+07:13:37 EDE: 1.51562
+435.328MB (81 samples) | LCDM: 451.742MB (180 samples)
+07:14:37 EDE: 1.51562
+487.289MB (81 samples) | LCDM: 454.105MB (180 samples)
+07:15:40 EDE: 1.51562
+7863.47MB (81 samples) | LCDM: 7689.66MB (180 samples)
+07:16:41 EDE: 1.51562
+8048.48MB (81 samples) | LCDM: 7334.25MB (180 samples)
+07:17:41 EDE: 1.51562
+1982.23MB (81 samples) | LCDM: 473.586MB (180 samples)
+07:18:41 EDE: 1.51562
+417.785MB (81 samples) | LCDM: 445.07MB (180 samples)
+07:19:41 EDE: 1.51562
+3713.25MB (81 samples) | LCDM: 457.32MB (180 samples)
+07:20:43 EDE: 1.51562
+7932.48MB (81 samples) | LCDM: 7604.54MB (180 samples)
+07:21:43 EDE: 1.51562
+411.426MB (81 samples) | LCDM: 8761.07MB (180 samples)
+07:22:43 EDE: 1.51562
+423.801MB (81 samples) | LCDM: 8771.29MB (180 samples)
+07:23:43 EDE: 1.51562
+437.965MB (81 samples) | LCDM: 653.727MB (180 samples)
+07:24:43 EDE: 1.51562
+439.082MB (81 samples) | LCDM: 458.938MB (180 samples)
+07:25:43 EDE: 1.51562
+234.102MB (81 samples) | LCDM: 8145.84MB (180 samples)
+07:26:44 EDE: 1.51562
+410.516MB (81 samples) | LCDM: 498.551MB (180 samples)
+07:27:44 EDE: 1.51562
+436.23MB (81 samples) | LCDM: 500.438MB (180 samples)
+07:28:44 EDE: 1.51562
+7588.55MB (81 samples) | LCDM: 7849.12MB (180 samples)
+07:29:44 EDE: 1.51562
+8736.22MB (81 samples) | LCDM: 437.719MB (180 samples)
+07:30:44 EDE: 1.51562
+429.25MB (81 samples) | LCDM: 442.594MB (180 samples)
+07:31:44 EDE: 1.51562
+450.148MB (81 samples) | LCDM: 459.277MB (180 samples)
+07:32:44 EDE: 1.51562
+7314.73MB (81 samples) | LCDM: 83.7031MB (180 samples)
+07:33:44 EDE: 1.51562
+434.281MB (81 samples) | LCDM: 3120.9MB (180 samples)
+07:34:44 EDE: 1.51562
+441.875MB (81 samples) | LCDM: 458.934MB (180 samples)
+07:35:44 EDE: 1.51562
+8778.9MB (81 samples) | LCDM: 460.004MB (180 samples)
+07:36:44 EDE: 1.51562
+7793.2MB (81 samples) | LCDM: 7495.99MB (180 samples)
+07:37:45 EDE: 1.51562
+427.902MB (81 samples) | LCDM: 456.105MB (180 samples)
+07:38:45 EDE: 1.51562
+482.199MB (81 samples) | LCDM: 459.949MB (180 samples)
+07:39:47 EDE: 1.51562
+8232.13MB (81 samples) | LCDM: 7246.45MB (180 samples)
+07:40:48 EDE: 1.51562
+8770.56MB (81 samples) | LCDM: 422.34MB (180 samples)
+07:41:48 EDE: 1.51562
+449.668MB (81 samples) | LCDM: 458.652MB (180 samples)
+07:42:49 EDE: 1.51562
+495.602MB (81 samples) | LCDM: 458.73MB (180 samples)
+07:43:50 EDE: 1.51562
+8343.2MB (81 samples) | LCDM: 7217.34MB (180 samples)
+07:44:50 EDE: 1.51562
+459.758MB (81 samples) | LCDM: 420.297MB (180 samples)
+07:45:50 EDE: 1.51562
+430.645MB (81 samples) | LCDM: 437.953MB (180 samples)
+07:46:50 EDE: 1.51562
+439.293MB (81 samples) | LCDM: 5737.79MB (180 samples)
+07:47:51 EDE: 1.51562
+8729.04MB (81 samples) | LCDM: 6838.84MB (180 samples)
+07:48:51 EDE: 1.51562
+409.703MB (81 samples) | LCDM: 422.883MB (180 samples)
+07:49:51 EDE: 1.51562
+426.082MB (81 samples) | LCDM: 457.422MB (180 samples)
+07:50:51 EDE: 1.51562
+441.867MB (81 samples) | LCDM: 8786.96MB (180 samples)
+07:51:51 EDE: 1.51562
+251.621MB (81 samples) | LCDM: 8076.43MB (180 samples)
+07:52:51 EDE: 1.51562
+434.43MB (81 samples) | LCDM: 501.262MB (180 samples)
+07:53:51 EDE: 1.51562
+412.254MB (81 samples) | LCDM: 134.863MB (180 samples)
+07:54:51 EDE: 1.51562
+8109.09MB (81 samples) | LCDM: 7302.65MB (180 samples)
+07:55:51 EDE: 1.51562
+422.164MB (81 samples) | LCDM: 8750.11MB (180 samples)
+07:56:51 EDE: 1.51562
+423.992MB (81 samples) | LCDM: 8784.89MB (180 samples)
+07:57:52 EDE: 1.51562
+7559.17MB (81 samples) | LCDM: 7824.95MB (180 samples)
+07:58:52 EDE: 1.51562
+428.512MB (81 samples) | LCDM: 432.754MB (180 samples)
+07:59:52 EDE: 1.51562
+431.574MB (81 samples) | LCDM: 457.617MB (180 samples)
+08:00:52 EDE: 1.51562
+332.977MB (81 samples) | LCDM: 168.363MB (180 samples)
+08:01:52 EDE: 1.51562
+428.418MB (81 samples) | LCDM: 2817.68MB (180 samples)
+08:02:52 EDE: 1.51562
+8759.95MB (81 samples) | LCDM: 580.637MB (180 samples)
+08:03:52 EDE: 1.51562
+7510.24MB (81 samples) | LCDM: 7921.36MB (180 samples)
+08:04:53 EDE: 1.51562
+419.438MB (81 samples) | LCDM: 403.629MB (180 samples)
+08:05:53 EDE: 1.51562
+446.359MB (81 samples) | LCDM: 442.973MB (180 samples)
+08:06:54 EDE: 1.51562
+8513.01MB (81 samples) | LCDM: 7003.74MB (180 samples)
+08:07:54 EDE: 1.51562
+428.125MB (81 samples) | LCDM: 8748.81MB (180 samples)
+08:08:54 EDE: 1.51562
+449.398MB (81 samples) | LCDM: 8784.34MB (180 samples)
+08:09:55 EDE: 1.51562
+453.047MB (81 samples) | LCDM: 8787.04MB (180 samples)
+08:10:55 EDE: 1.51562
+451.656MB (81 samples) | LCDM: 491.668MB (180 samples)
+08:11:55 EDE: 1.51562
+8780.22MB (81 samples) | LCDM: 503.707MB (180 samples)
+08:12:55 EDE: 1.51562
+453.285MB (81 samples) | LCDM: 505.105MB (180 samples)
+08:13:55 EDE: 1.51562
+447.562MB (81 samples) | LCDM: 415.367MB (180 samples)
+08:14:55 EDE: 1.51562
+493.941MB (81 samples) | LCDM: 451.016MB (180 samples)
+08:15:55 EDE: 1.51562
+448.621MB (81 samples) | LCDM: 452.98MB (180 samples)
+08:16:55 EDE: 1.51562
+7585.63MB (81 samples) | LCDM: 7768.99MB (180 samples)
+08:17:56 EDE: 1.51562
+448.109MB (81 samples) | LCDM: 452.477MB (180 samples)
+08:18:56 EDE: 1.51562
+448.277MB (81 samples) | LCDM: 452.629MB (180 samples)
+08:19:56 EDE: 1.51562
+7772.68MB (81 samples) | LCDM: 261.207MB (180 samples)
+08:20:56 EDE: 1.51562
+445.094MB (81 samples) | LCDM: 8762.34MB (180 samples)
+08:21:56 EDE: 1.51562
+450.527MB (81 samples) | LCDM: 8768MB (180 samples)
+08:22:56 EDE: 1.51562
+2448.86MB (81 samples) | LCDM: 499.297MB (180 samples)
+08:23:58 EDE: 1.51562
+7815MB (81 samples) | LCDM: 7719.79MB (180 samples)
+08:24:58 EDE: 1.51562
+370.133MB (81 samples) | LCDM: 8748.84MB (180 samples)
+08:25:59 EDE: 1.51562
+492.785MB (81 samples) | LCDM: 8779.01MB (180 samples)
+08:26:59 EDE: 1.51562
+454.426MB (81 samples) | LCDM: 8195.71MB (180 samples)
+08:27:59 EDE: 1.51562
+454.562MB (81 samples) | LCDM: 5330.11MB (180 samples)
+08:28:59 EDE: 1.51562
+4476.79MB (81 samples) | LCDM: 3428.38MB (180 samples)
+08:30:00 EDE: 1.51562
+7978.05MB (81 samples) | LCDM: 7413.55MB (180 samples)
+08:31:00 EDE: 1.51562
+418.195MB (81 samples) | LCDM: 432.73MB (180 samples)
+08:32:00 EDE: 1.51562
+448.395MB (81 samples) | LCDM: 8782.05MB (180 samples)
+08:33:00 EDE: 1.51562
+455.117MB (81 samples) | LCDM: 8615.62MB (180 samples)
+08:34:00 EDE: 1.51562
+7431.25MB (81 samples) | LCDM: 8041.6MB (180 samples)
+08:35:00 EDE: 1.51562
+6668.76MB (81 samples) | LCDM: 7702.93MB (180 samples)
+08:36:00 EDE: 1.51562
+8428.34MB (81 samples) | LCDM: 7022.49MB (180 samples)
+08:37:01 EDE: 1.51562
+415.617MB (81 samples) | LCDM: 481.98MB (180 samples)
+08:38:01 EDE: 1.51562
+395.098MB (81 samples) | LCDM: 455.32MB (180 samples)
+08:39:01 EDE: 1.51562
+7795.87MB (81 samples) | LCDM: 7596.1MB (180 samples)
+08:40:01 EDE: 1.51562
+443.832MB (81 samples) | LCDM: 482.117MB (180 samples)
+08:41:01 EDE: 1.51562
+454.805MB (81 samples) | LCDM: 440.902MB (180 samples)
+08:42:02 EDE: 1.51562
+8116.66MB (81 samples) | LCDM: 7270.07MB (180 samples)
+08:43:02 EDE: 1.51562
+8747.93MB (81 samples) | LCDM: 421.992MB (180 samples)
+08:44:02 EDE: 1.51562
+7622.17MB (81 samples) | LCDM: 7781.85MB (180 samples)
+08:45:02 EDE: 1.51562
+444.559MB (81 samples) | LCDM: 448.801MB (180 samples)
+08:46:02 EDE: 1.51562
+494.223MB (81 samples) | LCDM: 453.207MB (180 samples)
+08:47:02 EDE: 1.51562
+422.223MB (81 samples) | LCDM: 8740.73MB (180 samples)
+08:48:02 EDE: 1.51562
+422.062MB (81 samples) | LCDM: 5512.88MB (180 samples)
+08:49:02 EDE: 1.51562
+7427.45MB (81 samples) | LCDM: 5850.57MB (180 samples)
+08:50:02 EDE: 1.51562
+7286.95MB (81 samples) | LCDM: 8161.91MB (180 samples)
+08:51:03 EDE: 1.51562
+435.133MB (81 samples) | LCDM: 474.387MB (180 samples)
+08:52:03 EDE: 1.51562
+7901.27MB (81 samples) | LCDM: 7517.84MB (180 samples)
+08:53:03 EDE: 1.51562
+8658.59MB (81 samples) | LCDM: 478.93MB (180 samples)
+08:54:03 EDE: 1.51562
+448.031MB (81 samples) | LCDM: 502.793MB (180 samples)
+08:55:03 EDE: 1.51562
+450.102MB (81 samples) | LCDM: 8785.65MB (180 samples)
+08:56:04 EDE: 1.51562
+6787.86MB (81 samples) | LCDM: 8737.34MB (180 samples)
+08:57:05 EDE: 1.51562
+7201.23MB (81 samples) | LCDM: 8271.34MB (180 samples)
+08:58:05 EDE: 1.51562
+420.176MB (81 samples) | LCDM: 500.309MB (180 samples)
+08:59:05 EDE: 1.51562
+429.086MB (81 samples) | LCDM: 451.289MB (180 samples)
+09:00:05 EDE: 1.51562
+438.152MB (81 samples) | LCDM: 458.062MB (180 samples)
+09:01:05 EDE: 1.51562
+438.301MB (81 samples) | LCDM: 505.523MB (180 samples)
+09:02:05 EDE: 1.51562
+321.512MB (81 samples) | LCDM: 92.7852MB (180 samples)
+09:03:05 EDE: 1.51562
+421.992MB (81 samples) | LCDM: 565.074MB (180 samples)
+09:04:05 EDE: 1.51562
+8780.32MB (81 samples) | LCDM: 441.488MB (180 samples)
+09:05:05 EDE: 1.51562
+454.492MB (81 samples) | LCDM: 501.254MB (180 samples)
+09:06:06 EDE: 1.51562
+7494.93MB (81 samples) | LCDM: 7886.5MB (180 samples)
+09:07:06 EDE: 1.51562
+413.262MB (81 samples) | LCDM: 439.625MB (180 samples)
+09:08:06 EDE: 1.51562
+424.043MB (81 samples) | LCDM: 8786.28MB (180 samples)
+09:09:06 EDE: 1.51562
+8761.13MB (81 samples) | LCDM: 6115.75MB (180 samples)
+09:10:06 EDE: 1.51562
+7693.12MB (81 samples) | LCDM: 7785.04MB (180 samples)
+09:11:06 EDE: 1.51562
+276.793MB (81 samples) | LCDM: 418.855MB (180 samples)
+09:12:07 EDE: 1.51562
+432.254MB (81 samples) | LCDM: 485.988MB (180 samples)
+09:13:07 EDE: 1.51562
+7795.19MB (81 samples) | LCDM: 7652.68MB (180 samples)
+09:14:07 EDE: 1.51562
+278.652MB (81 samples) | LCDM: 421.934MB (180 samples)
+09:15:07 EDE: 1.51562
+424.055MB (81 samples) | LCDM: 435.641MB (180 samples)
+09:16:07 EDE: 1.51562
+7571.75MB (81 samples) | LCDM: 7875.68MB (180 samples)
+09:17:07 EDE: 1.51562
+419.832MB (81 samples) | LCDM: 8752.46MB (180 samples)
+09:18:07 EDE: 1.51562
+425.172MB (81 samples) | LCDM: 8764.29MB (180 samples)
+09:19:07 EDE: 1.51562
+289.172MB (81 samples) | LCDM: 231.199MB (180 samples)
+09:20:08 EDE: 1.51562
+428.91MB (81 samples) | LCDM: 8782.82MB (180 samples)
+09:21:09 EDE: 1.51562
+8652.02MB (81 samples) | LCDM: 6856.73MB (180 samples)
+09:22:11 EDE: 1.51562
+8660.17MB (81 samples) | LCDM: 6836.34MB (180 samples)
+09:23:12 EDE: 1.51562
+8752.35MB (81 samples) | LCDM: 481.734MB (180 samples)
+09:24:12 EDE: 1.51562
+433.039MB (81 samples) | LCDM: 499.457MB (180 samples)
+09:25:12 EDE: 1.51562
+479.57MB (81 samples) | LCDM: 497.266MB (180 samples)
+09:26:12 EDE: 1.51562
+7421.54MB (81 samples) | LCDM: 142.566MB (180 samples)
+09:27:12 EDE: 1.51562
+424.16MB (81 samples) | LCDM: 8768.07MB (180 samples)
+09:28:12 EDE: 1.51562
+436.371MB (81 samples) | LCDM: 8773.93MB (180 samples)
+09:29:12 EDE: 1.51562
+334.426MB (81 samples) | LCDM: 7967.83MB (180 samples)
+09:30:12 EDE: 1.51562
+432.809MB (81 samples) | LCDM: 435.539MB (180 samples)
+09:31:12 EDE: 1.51562
+5133.18MB (81 samples) | LCDM: 489.328MB (180 samples)
+09:32:15 EDE: 1.51562
+8045.74MB (81 samples) | LCDM: 7287.51MB (180 samples)
+09:33:15 EDE: 1.51562
+280.707MB (81 samples) | LCDM: 6727.41MB (180 samples)
+09:34:15 EDE: 1.51562
+8754.06MB (81 samples) | LCDM: 3704.42MB (180 samples)
+09:35:15 EDE: 1.51562
+5474.36MB (81 samples) | LCDM: 428.02MB (180 samples)
+09:36:16 EDE: 1.51562
+436.566MB (81 samples) | LCDM: 431.84MB (180 samples)
+09:37:16 EDE: 1.51562
+420.031MB (81 samples) | LCDM: 8769.49MB (180 samples)
+09:38:18 EDE: 1.51562
+8396.31MB (81 samples) | LCDM: 7014.31MB (180 samples)
+09:39:18 EDE: 1.51562
+370.922MB (81 samples) | LCDM: 438.902MB (180 samples)
+09:40:18 EDE: 1.51562
+7253.33MB (81 samples) | LCDM: 8075.25MB (180 samples)
+09:41:18 EDE: 1.51562
+424.66MB (81 samples) | LCDM: 440.637MB (180 samples)
+09:42:18 EDE: 1.51562
+7655.38MB (81 samples) | LCDM: 7799.89MB (180 samples)
+09:43:18 EDE: 1.51562
+339.773MB (81 samples) | LCDM: 419.926MB (180 samples)
+09:44:18 EDE: 1.51562
+466.906MB (81 samples) | LCDM: 455.82MB (180 samples)
+09:45:19 EDE: 1.51562
+339.012MB (81 samples) | LCDM: 8779.2MB (180 samples)
+09:46:19 EDE: 1.51562
+8753.78MB (81 samples) | LCDM: 6658.76MB (180 samples)
+09:47:19 EDE: 1.51562
+7618.47MB (81 samples) | LCDM: 7866.96MB (180 samples)
+09:48:19 EDE: 1.51562
+22.625MB (81 samples) | LCDM: 7563.46MB (180 samples)
+09:49:20 EDE: 1.51562
+7962.48MB (81 samples) | LCDM: 7517.8MB (180 samples)
+09:50:20 EDE: 1.51562
+423.164MB (81 samples) | LCDM: 8079.66MB (180 samples)
+09:51:20 EDE: 1.51562
+430.227MB (81 samples) | LCDM: 6780.45MB (180 samples)
+09:52:20 EDE: 1.51562
+8764.16MB (81 samples) | LCDM: 486.039MB (180 samples)
+09:53:20 EDE: 1.51562
+437.375MB (81 samples) | LCDM: 502.742MB (180 samples)
+09:54:20 EDE: 1.51562
+483.863MB (81 samples) | LCDM: 458.379MB (180 samples)
+09:55:21 EDE: 1.51562
+6969MB (81 samples) | LCDM: 8550.61MB (180 samples)
+09:56:21 EDE: 1.51562
+271.98MB (81 samples) | LCDM: 8767.96MB (180 samples)
+09:57:21 EDE: 1.51562
+423.414MB (81 samples) | LCDM: 455.539MB (180 samples)
+09:58:21 EDE: 1.51562
+479.254MB (81 samples) | LCDM: 458.484MB (180 samples)
+09:59:23 EDE: 1.51562
+8078.8MB (81 samples) | LCDM: 7471.93MB (180 samples)
+10:00:24 EDE: 1.51562
+315.285MB (81 samples) | LCDM: 425.055MB (180 samples)
+10:01:24 EDE: 1.51562
+469.105MB (81 samples) | LCDM: 437.348MB (180 samples)
+10:02:24 EDE: 1.51562
+433.121MB (81 samples) | LCDM: 8647.21MB (180 samples)
+10:03:24 EDE: 1.51562
+434.852MB (81 samples) | LCDM: 457.23MB (180 samples)
+10:04:24 EDE: 1.51562
+6507.04MB (81 samples) | LCDM: 504.195MB (180 samples)
+10:05:24 EDE: 1.51562
+426.152MB (81 samples) | LCDM: 366.879MB (180 samples)
+10:06:24 EDE: 1.51562
+495.652MB (81 samples) | LCDM: 436.773MB (180 samples)
+10:07:24 EDE: 1.51562
+8384.32MB (81 samples) | LCDM: 7138.59MB (180 samples)
+10:08:24 EDE: 1.51562
+450.289MB (81 samples) | LCDM: 8756.41MB (180 samples)
+10:09:25 EDE: 1.51562
+452.215MB (81 samples) | LCDM: 8780.06MB (180 samples)
+10:10:25 EDE: 1.51562
+451.871MB (81 samples) | LCDM: 458.344MB (180 samples)
+10:11:25 EDE: 1.51562
+453.934MB (81 samples) | LCDM: 505MB (180 samples)
+10:12:25 EDE: 1.51562
+297.195MB (81 samples) | LCDM: 439.785MB (180 samples)
+10:13:25 EDE: 1.51562
+340.469MB (81 samples) | LCDM: 358.449MB (180 samples)
+10:14:25 EDE: 1.51562
+437.098MB (81 samples) | LCDM: 442.672MB (180 samples)
+10:15:25 EDE: 1.51562
+298.238MB (81 samples) | LCDM: 430.016MB (180 samples)
+10:16:25 EDE: 1.51562
+419.773MB (81 samples) | LCDM: 439.539MB (180 samples)
+10:17:29 EDE: 1.51562
+8237.76MB (81 samples) | LCDM: 7333.34MB (180 samples)
+10:18:29 EDE: 1.51562
+410.148MB (81 samples) | LCDM: 422.051MB (180 samples)
+10:19:31 EDE: 1.51562
+8518.08MB (81 samples) | LCDM: 7058.63MB (180 samples)
+10:20:31 EDE: 1.51562
+429.242MB (81 samples) | LCDM: 2881.11MB (180 samples)
+10:21:31 EDE: 1.51562
+449.641MB (81 samples) | LCDM: 1816.32MB (180 samples)
+10:22:31 EDE: 1.51562
+8782.56MB (81 samples) | LCDM: 856.469MB (180 samples)
+10:23:32 EDE: 1.51562
+7887.41MB (81 samples) | LCDM: 7525.36MB (180 samples)
+10:24:32 EDE: 1.51562
+401.473MB (81 samples) | LCDM: 7466.64MB (180 samples)
+10:25:32 EDE: 1.51562
+428.762MB (81 samples) | LCDM: 5146.75MB (180 samples)
+10:26:32 EDE: 1.51562
+7356.61MB (81 samples) | LCDM: 8068.64MB (180 samples)
+10:27:32 EDE: 1.51562
+428.801MB (81 samples) | LCDM: 432.062MB (180 samples)
+10:28:33 EDE: 1.51562
+276.051MB (81 samples) | LCDM: 8271.67MB (180 samples)
+10:29:33 EDE: 1.51562
+420.055MB (81 samples) | LCDM: 4380.98MB (180 samples)
+10:30:33 EDE: 1.51562
+7270.66MB (81 samples) | LCDM: 8207.53MB (180 samples)
+10:31:33 EDE: 1.51562
+2494.83MB (81 samples) | LCDM: 425.832MB (180 samples)
+10:32:34 EDE: 1.51562
+8174.11MB (81 samples) | LCDM: 7297.45MB (180 samples)
+10:33:34 EDE: 1.51562
+8773.88MB (81 samples) | LCDM: 476.781MB (180 samples)
+10:34:34 EDE: 1.51562
+7699.51MB (81 samples) | LCDM: 7830.21MB (180 samples)
+10:35:34 EDE: 1.51562
+271.25MB (81 samples) | LCDM: 439.262MB (180 samples)
+10:36:35 EDE: 1.51562
+407.094MB (81 samples) | LCDM: 3773.36MB (180 samples)
+10:37:35 EDE: 1.51562
+8761.51MB (81 samples) | LCDM: 3421.44MB (180 samples)
+10:38:35 EDE: 1.51562
+7820.52MB (81 samples) | LCDM: 7677.64MB (180 samples)
+10:39:35 EDE: 1.51562
+422.246MB (81 samples) | LCDM: 428.504MB (180 samples)
+10:40:35 EDE: 1.51562
+434.391MB (81 samples) | LCDM: 8785.45MB (180 samples)
+10:41:35 EDE: 1.51562
+454.727MB (81 samples) | LCDM: 8617.64MB (180 samples)
+10:42:35 EDE: 1.51562
+7915.59MB (81 samples) | LCDM: 7492.04MB (180 samples)
+10:43:35 EDE: 1.51562
+8747.79MB (81 samples) | LCDM: 422.895MB (180 samples)
+10:44:35 EDE: 1.51562
+441.395MB (81 samples) | LCDM: 458.715MB (180 samples)
+10:45:36 EDE: 1.51562
+490.832MB (81 samples) | LCDM: 458.914MB (180 samples)
+10:46:39 EDE: 1.51562
+8400.69MB (81 samples) | LCDM: 7146.86MB (180 samples)
+10:47:39 EDE: 1.51562
+426.836MB (81 samples) | LCDM: 428.598MB (180 samples)
+10:48:39 EDE: 1.51562
+434.883MB (81 samples) | LCDM: 459.105MB (180 samples)
+10:49:39 EDE: 1.51562
+7709MB (81 samples) | LCDM: 7761.91MB (180 samples)
+10:50:39 EDE: 1.51562
+449.676MB (81 samples) | LCDM: 479.316MB (180 samples)
+10:51:42 EDE: 1.51562
+7544.54MB (81 samples) | LCDM: 7910.91MB (180 samples)
+10:52:42 EDE: 1.51562
+458.617MB (81 samples) | LCDM: 8769.39MB (180 samples)
+10:53:42 EDE: 1.51562
+422.598MB (81 samples) | LCDM: 8778.92MB (180 samples)
+10:54:42 EDE: 1.51562
+8104.45MB (81 samples) | LCDM: 7323.12MB (180 samples)
+10:55:43 EDE: 1.51562
+270.059MB (81 samples) | LCDM: 299.016MB (180 samples)
+10:56:43 EDE: 1.51562
+7908.7MB (81 samples) | LCDM: 181.895MB (180 samples)
+10:57:43 EDE: 1.51562
+430.918MB (81 samples) | LCDM: 8781.82MB (180 samples)
+10:58:43 EDE: 1.51562
+7973.92MB (81 samples) | LCDM: 7331.52MB (180 samples)
+10:59:44 EDE: 1.51562
+342.148MB (81 samples) | LCDM: 450.121MB (180 samples)
+11:00:44 EDE: 1.51562
+428.562MB (81 samples) | LCDM: 440.551MB (180 samples)
+11:01:44 EDE: 1.51562
+7459.2MB (81 samples) | LCDM: 7949.41MB (180 samples)
+11:02:44 EDE: 1.51562
+431.504MB (81 samples) | LCDM: 446.77MB (180 samples)
+11:03:44 EDE: 1.51562
+7924.62MB (81 samples) | LCDM: 7483.38MB (180 samples)
+11:04:44 EDE: 1.51562
+156.379MB (81 samples) | LCDM: 270.934MB (180 samples)
+11:05:44 EDE: 1.51562
+417.559MB (81 samples) | LCDM: 454.254MB (180 samples)
+11:06:44 EDE: 1.51562
+426.098MB (81 samples) | LCDM: 8785.46MB (180 samples)
+11:07:46 EDE: 1.51562
+8684.07MB (81 samples) | LCDM: 6795.79MB (180 samples)
+11:08:46 EDE: 1.51562
+8541.91MB (81 samples) | LCDM: 482.152MB (180 samples)
+11:09:46 EDE: 1.51562
+434MB (81 samples) | LCDM: 457.203MB (180 samples)
+11:10:46 EDE: 1.51562
+500.137MB (81 samples) | LCDM: 8767.92MB (180 samples)
+11:11:46 EDE: 1.51562
+455.203MB (81 samples) | LCDM: 8774.49MB (180 samples)
+11:12:46 EDE: 1.51562
+455.332MB (81 samples) | LCDM: 7412.42MB (180 samples)
+11:13:46 EDE: 1.51562
+272.156MB (81 samples) | LCDM: 339.637MB (180 samples)
+11:14:47 EDE: 1.51562
+420.531MB (81 samples) | LCDM: 8771.02MB (180 samples)
+11:15:47 EDE: 1.51562
+274.945MB (81 samples) | LCDM: 456.66MB (180 samples)
+11:16:47 EDE: 1.51562
+961.633MB (81 samples) | LCDM: 490.426MB (180 samples)
+11:17:47 EDE: 1.51562
+8777.26MB (81 samples) | LCDM: 433.707MB (180 samples)
+11:18:47 EDE: 1.51562
+453.504MB (81 samples) | LCDM: 458.262MB (180 samples)
+11:19:47 EDE: 1.51562
+500.91MB (81 samples) | LCDM: 458.277MB (180 samples)
+11:20:47 EDE: 1.51562
+441.52MB (81 samples) | LCDM: 8678.49MB (180 samples)
+11:21:47 EDE: 1.51562
+420.34MB (81 samples) | LCDM: 6046.32MB (180 samples)
+11:22:48 EDE: 1.51562
+297.281MB (81 samples) | LCDM: 286.5MB (180 samples)
+11:23:48 EDE: 1.51562
+298.188MB (81 samples) | LCDM: 231.766MB (180 samples)
+11:24:48 EDE: 1.51562
+423.402MB (81 samples) | LCDM: 8760.71MB (180 samples)
+11:25:48 EDE: 1.51562
+8760.93MB (81 samples) | LCDM: 6436.65MB (180 samples)
+11:26:48 EDE: 1.51562
+7618.55MB (81 samples) | LCDM: 7803.27MB (180 samples)
+11:27:48 EDE: 1.51562
+424.207MB (81 samples) | LCDM: 422.109MB (180 samples)
+11:28:48 EDE: 1.51562
+430.664MB (81 samples) | LCDM: 8771.6MB (180 samples)
+11:29:49 EDE: 1.51562
+354.156MB (81 samples) | LCDM: 451.316MB (180 samples)
+11:30:49 EDE: 1.51562
+2311.11MB (81 samples) | LCDM: 493.879MB (180 samples)
+11:31:53 EDE: 1.51562
+7965.79MB (81 samples) | LCDM: 7583.01MB (180 samples)
+11:32:53 EDE: 1.51562
+415.574MB (81 samples) | LCDM: 4185.3MB (180 samples)
+11:33:54 EDE: 1.51562
+440.305MB (81 samples) | LCDM: 441.453MB (180 samples)
+11:34:54 EDE: 1.51562
+315.152MB (81 samples) | LCDM: 286.098MB (180 samples)
+11:35:54 EDE: 1.51562
+429.586MB (81 samples) | LCDM: 8763.11MB (180 samples)
+11:36:54 EDE: 1.51562
+436.871MB (81 samples) | LCDM: 7198.75MB (180 samples)
+11:37:54 EDE: 1.51562
+437.312MB (81 samples) | LCDM: 6464.9MB (180 samples)
+11:38:54 EDE: 1.51562
+7082.3MB (81 samples) | LCDM: 8368.43MB (180 samples)
+11:39:54 EDE: 1.51562
+410.98MB (81 samples) | LCDM: 1138.86MB (180 samples)
+11:40:54 EDE: 1.51562
+424.762MB (81 samples) | LCDM: 447.922MB (180 samples)
+11:41:55 EDE: 1.51562
+7792.89MB (81 samples) | LCDM: 7658.28MB (180 samples)
+11:42:55 EDE: 1.51562
+422.242MB (81 samples) | LCDM: 8779.29MB (180 samples)
+11:43:55 EDE: 1.51562
+428.176MB (81 samples) | LCDM: 8786.23MB (180 samples)
+11:44:58 EDE: 1.51562
+8299.35MB (81 samples) | LCDM: 7253.7MB (180 samples)
+11:45:58 EDE: 1.51562
+280.254MB (81 samples) | LCDM: 8745.68MB (180 samples)
+11:46:58 EDE: 1.51562
+7296.84MB (81 samples) | LCDM: 8080.55MB (180 samples)
+11:47:58 EDE: 1.51562
+7832.96MB (81 samples) | LCDM: 284.184MB (180 samples)
+11:48:58 EDE: 1.51562
+415.891MB (81 samples) | LCDM: 479.906MB (180 samples)
+11:49:58 EDE: 1.51562
+431.363MB (81 samples) | LCDM: 480.672MB (180 samples)
+11:50:59 EDE: 1.51562
+479.734MB (81 samples) | LCDM: 478.609MB (180 samples)
+11:52:00 EDE: 1.51562
+8011.57MB (81 samples) | LCDM: 7498.7MB (180 samples)
+11:53:00 EDE: 1.51562
+6219.72MB (81 samples) | LCDM: 484.527MB (180 samples)
+11:54:00 EDE: 1.51562
+454.203MB (81 samples) | LCDM: 484.699MB (180 samples)
+11:55:00 EDE: 1.51562
+148.477MB (81 samples) | LCDM: 8447.84MB (180 samples)
+11:56:00 EDE: 1.51562
+7552.91MB (81 samples) | LCDM: 7931.97MB (180 samples)
+11:57:00 EDE: 1.51562
+433.504MB (81 samples) | LCDM: 433.785MB (180 samples)
+11:58:00 EDE: 1.51562
+438.977MB (81 samples) | LCDM: 435.875MB (180 samples)
+11:59:01 EDE: 1.51562
+439.375MB (81 samples) | LCDM: 8777.99MB (180 samples)
+12:00:01 EDE: 1.51562
+7792.63MB (81 samples) | LCDM: 7554.7MB (180 samples)
+12:01:01 EDE: 1.51562
+8757.02MB (81 samples) | LCDM: 433.41MB (180 samples)
+12:02:01 EDE: 1.51562
+453.684MB (81 samples) | LCDM: 455.848MB (180 samples)
+12:03:02 EDE: 1.51562
+501.016MB (81 samples) | LCDM: 458.867MB (180 samples)
+12:04:02 EDE: 1.51562
+306.52MB (81 samples) | LCDM: 436.133MB (180 samples)
+12:05:02 EDE: 1.51562
+8754.5MB (81 samples) | LCDM: 457.574MB (180 samples)
+12:06:02 EDE: 1.51562
+427.988MB (81 samples) | LCDM: 410.77MB (180 samples)
+12:07:02 EDE: 1.51562
+430.688MB (81 samples) | LCDM: 455.008MB (180 samples)
+12:08:07 EDE: 1.51562
+7921.14MB (81 samples) | LCDM: 7623.59MB (180 samples)
+12:09:07 EDE: 1.51562
+427.223MB (81 samples) | LCDM: 8773.34MB (180 samples)
+12:10:07 EDE: 1.51562
+449.613MB (81 samples) | LCDM: 7940.87MB (180 samples)
+12:11:08 EDE: 1.51562
+450.547MB (81 samples) | LCDM: 5610.33MB (180 samples)
+12:12:08 EDE: 1.51562
+450.652MB (81 samples) | LCDM: 2884.45MB (180 samples)
+12:13:08 EDE: 1.51562
+262.133MB (81 samples) | LCDM: 8283.68MB (180 samples)
+12:14:08 EDE: 1.51562
+421.262MB (81 samples) | LCDM: 455.793MB (180 samples)
+12:15:08 EDE: 1.51562
+7775.98MB (81 samples) | LCDM: 7644.79MB (180 samples)
+12:16:08 EDE: 1.51562
+7692.92MB (81 samples) | LCDM: 7668.35MB (180 samples)
+12:17:09 EDE: 1.51562
+433.168MB (81 samples) | LCDM: 4071.57MB (180 samples)
+12:18:09 EDE: 1.51562
+439.398MB (81 samples) | LCDM: 451.281MB (180 samples)
+12:19:09 EDE: 1.51562
+410.418MB (81 samples) | LCDM: 8764.94MB (180 samples)
+12:20:11 EDE: 1.51562
+8696.98MB (81 samples) | LCDM: 6764.12MB (180 samples)
+12:21:11 EDE: 1.51562
+415.891MB (81 samples) | LCDM: 8742.6MB (180 samples)
+12:22:11 EDE: 1.51562
+427.367MB (81 samples) | LCDM: 8772.93MB (180 samples)
+12:23:12 EDE: 1.51562
+431.793MB (81 samples) | LCDM: 453.301MB (180 samples)
+12:24:12 EDE: 1.51562
+3564.24MB (81 samples) | LCDM: 1081.5MB (180 samples)
+12:25:12 EDE: 1.51562
+285.953MB (81 samples) | LCDM: 292.016MB (180 samples)
+12:26:12 EDE: 1.51562
+5431.46MB (81 samples) | LCDM: 438.703MB (180 samples)
+12:27:12 EDE: 1.51562
+437.723MB (81 samples) | LCDM: 441.324MB (180 samples)
+12:28:12 EDE: 1.51562
+349.074MB (81 samples) | LCDM: 8117.13MB (180 samples)
+12:29:12 EDE: 1.51562
+429.527MB (81 samples) | LCDM: 478.691MB (180 samples)
+12:30:12 EDE: 1.51562
+5535.99MB (81 samples) | LCDM: 484.961MB (180 samples)
+12:31:12 EDE: 1.51562
+417.566MB (81 samples) | LCDM: 441.945MB (180 samples)
+12:32:13 EDE: 1.51562
+427MB (81 samples) | LCDM: 456.906MB (180 samples)
+12:33:13 EDE: 1.51562
+7224.92MB (81 samples) | LCDM: 8195.61MB (180 samples)
+12:34:13 EDE: 1.51562
+360.434MB (81 samples) | LCDM: 435.711MB (180 samples)
+12:35:13 EDE: 1.51562
+425.445MB (81 samples) | LCDM: 862.418MB (180 samples)
+12:36:13 EDE: 1.51562
+7403.3MB (81 samples) | LCDM: 8011.35MB (180 samples)
+12:37:13 EDE: 1.51562
+7567.88MB (81 samples) | LCDM: 7957.79MB (180 samples)
+12:38:15 EDE: 1.51562
+8244.99MB (81 samples) | LCDM: 7188.75MB (180 samples)
+12:39:15 EDE: 1.51562
+7667.43MB (81 samples) | LCDM: 7785.93MB (180 samples)
+12:40:15 EDE: 1.51562
+418.168MB (81 samples) | LCDM: 425.438MB (180 samples)
+12:41:16 EDE: 1.51562
+433.82MB (81 samples) | LCDM: 8763.19MB (180 samples)
+12:42:16 EDE: 1.51562
+435.66MB (81 samples) | LCDM: 8763.97MB (180 samples)
+12:43:16 EDE: 1.51562
+435.027MB (81 samples) | LCDM: 497.195MB (180 samples)
+12:44:16 EDE: 1.51562
+8769.99MB (81 samples) | LCDM: 504.699MB (180 samples)
+12:45:16 EDE: 1.51562
+442.66MB (81 samples) | LCDM: 505.066MB (180 samples)
+12:46:16 EDE: 1.51562
+272.988MB (81 samples) | LCDM: 193.902MB (180 samples)
+12:47:16 EDE: 1.51562
+415.676MB (81 samples) | LCDM: 8780.23MB (180 samples)
+12:48:16 EDE: 1.51562
+433.711MB (81 samples) | LCDM: 8782.43MB (180 samples)
+12:49:17 EDE: 1.51562
+7570.6MB (81 samples) | LCDM: 7794.4MB (180 samples)
+12:50:17 EDE: 1.51562
+274.07MB (81 samples) | LCDM: 274.664MB (180 samples)
+12:51:17 EDE: 1.51562
+420.652MB (81 samples) | LCDM: 8768.77MB (180 samples)
+12:52:17 EDE: 1.51562
+430.457MB (81 samples) | LCDM: 8769.37MB (180 samples)
+12:53:18 EDE: 1.51562
+430.484MB (81 samples) | LCDM: 1939.64MB (180 samples)
+12:54:18 EDE: 1.51562
+8053.36MB (81 samples) | LCDM: 7370.05MB (180 samples)
+12:55:18 EDE: 1.51562
+424.129MB (81 samples) | LCDM: 8757.37MB (180 samples)
+12:56:18 EDE: 1.51562
+426.031MB (81 samples) | LCDM: 8768.3MB (180 samples)
+12:57:18 EDE: 1.51562
+375.84MB (81 samples) | LCDM: 327.312MB (180 samples)
+12:58:18 EDE: 1.51562
+4073.92MB (81 samples) | LCDM: 438.496MB (180 samples)
+12:59:18 EDE: 1.51562
+434.266MB (81 samples) | LCDM: 456.156MB (180 samples)
+13:00:19 EDE: 1.51562
+434.438MB (81 samples) | LCDM: 8785.17MB (180 samples)
+13:01:19 EDE: 1.51562
+168.73MB (81 samples) | LCDM: 7867.35MB (180 samples)
+13:02:19 EDE: 1.51562
+413.969MB (81 samples) | LCDM: 6531.9MB (180 samples)
+13:03:19 EDE: 1.51562
+424.805MB (81 samples) | LCDM: 3765.84MB (180 samples)
+13:04:20 EDE: 1.51562
+425.09MB (81 samples) | LCDM: 448.336MB (180 samples)
+13:05:20 EDE: 1.51562
+427.316MB (81 samples) | LCDM: 495.105MB (180 samples)
+13:06:20 EDE: 1.51562
+478.012MB (81 samples) | LCDM: 497.086MB (180 samples)
+13:07:20 EDE: 1.51562
+7706.9MB (81 samples) | LCDM: 162.711MB (180 samples)
+13:08:20 EDE: 1.51562
+417.73MB (81 samples) | LCDM: 6500.64MB (180 samples)
+13:09:20 EDE: 1.51562
+429.184MB (81 samples) | LCDM: 5816.93MB (180 samples)
+13:10:20 EDE: 1.51562
+7139.34MB (81 samples) | LCDM: 8232.37MB (180 samples)
+13:11:21 EDE: 1.51562
+307.004MB (81 samples) | LCDM: 454.09MB (180 samples)
+13:12:21 EDE: 1.51562
+8755.52MB (81 samples) | LCDM: 502.773MB (180 samples)
+13:13:21 EDE: 1.51562
+434.57MB (81 samples) | LCDM: 458.855MB (180 samples)
+13:14:21 EDE: 1.51562
+480.914MB (81 samples) | LCDM: 459.234MB (180 samples)
+13:15:21 EDE: 1.51562
+434.703MB (81 samples) | LCDM: 459.234MB (180 samples)
+13:16:22 EDE: 1.51562
+7837.82MB (81 samples) | LCDM: 7455.24MB (180 samples)
+13:17:22 EDE: 1.51562
+432.207MB (81 samples) | LCDM: 8756.24MB (180 samples)
+13:18:22 EDE: 1.51562
+433.816MB (81 samples) | LCDM: 8786.18MB (180 samples)
+13:19:22 EDE: 1.51562
+435.059MB (81 samples) | LCDM: 8786.29MB (180 samples)
+13:20:23 EDE: 1.51562
+7237.08MB (81 samples) | LCDM: 8180.56MB (180 samples)
+13:21:23 EDE: 1.51562
+424.051MB (81 samples) | LCDM: 450.871MB (180 samples)
+13:22:24 EDE: 1.51562
+475.676MB (81 samples) | LCDM: 458.91MB (180 samples)
+13:23:25 EDE: 1.51562
+7799.59MB (81 samples) | LCDM: 7777.04MB (180 samples)
+13:24:26 EDE: 1.51562
+467.352MB (81 samples) | LCDM: 438.723MB (180 samples)
+13:25:26 EDE: 1.51562
+8283.27MB (81 samples) | LCDM: 7105.84MB (180 samples)
+13:26:26 EDE: 1.51562
+8766.81MB (81 samples) | LCDM: 502.57MB (180 samples)
+13:27:27 EDE: 1.51562
+438.605MB (81 samples) | LCDM: 503.762MB (180 samples)
+13:28:27 EDE: 1.51562
+418.684MB (81 samples) | LCDM: 444.195MB (180 samples)
+13:29:27 EDE: 1.51562
+362.984MB (81 samples) | LCDM: 367.137MB (180 samples)
+13:30:27 EDE: 1.51562
+341.562MB (81 samples) | LCDM: 276.855MB (180 samples)
+13:31:27 EDE: 1.51562
+421.539MB (81 samples) | LCDM: 8692.49MB (180 samples)
+13:32:29 EDE: 1.51562
+8742.21MB (81 samples) | LCDM: 6852.66MB (180 samples)
+13:33:29 EDE: 1.51562
+441.312MB (81 samples) | LCDM: 8769.59MB (180 samples)
+13:34:29 EDE: 1.51562
+445.832MB (81 samples) | LCDM: 5615.34MB (180 samples)
+13:35:29 EDE: 1.51562
+8780.81MB (81 samples) | LCDM: 2369.71MB (180 samples)
+13:36:30 EDE: 1.51562
+7707.48MB (81 samples) | LCDM: 7727.67MB (180 samples)
+13:37:30 EDE: 1.51562
+287.254MB (81 samples) | LCDM: 8737.8MB (180 samples)
+13:38:30 EDE: 1.51562
+489.062MB (81 samples) | LCDM: 8765.56MB (180 samples)
+13:39:30 EDE: 1.51562
+455.156MB (81 samples) | LCDM: 6995.78MB (180 samples)
+13:40:30 EDE: 1.51562
+455.234MB (81 samples) | LCDM: 442.379MB (180 samples)
+13:41:30 EDE: 1.51562
+8782.64MB (81 samples) | LCDM: 488.703MB (180 samples)
+13:42:34 EDE: 1.51562
+7502.39MB (81 samples) | LCDM: 7848.79MB (180 samples)
+13:43:34 EDE: 1.51562
+8033.87MB (81 samples) | LCDM: 7461.44MB (180 samples)
+13:44:34 EDE: 1.51562
+431.129MB (81 samples) | LCDM: 8765.92MB (180 samples)
+13:45:34 EDE: 1.51562
+454.664MB (81 samples) | LCDM: 8767.59MB (180 samples)
+13:46:34 EDE: 1.51562
+282.398MB (81 samples) | LCDM: 293.953MB (180 samples)
+13:47:35 EDE: 1.51562
+471.086MB (81 samples) | LCDM: 441.023MB (180 samples)
+13:48:36 EDE: 1.51562
+8238.41MB (81 samples) | LCDM: 7186.51MB (180 samples)
+13:49:36 EDE: 1.51562
+5923.72MB (81 samples) | LCDM: 435.023MB (180 samples)
+13:50:36 EDE: 1.51562
+433.184MB (81 samples) | LCDM: 439.5MB (180 samples)
+13:51:36 EDE: 1.51562
+433.711MB (81 samples) | LCDM: 448.113MB (180 samples)
+13:52:36 EDE: 1.51562
+289.34MB (81 samples) | LCDM: 438.617MB (180 samples)
+13:53:36 EDE: 1.51562
+8754.11MB (81 samples) | LCDM: 1303.44MB (180 samples)
+13:54:36 EDE: 1.51562
+7667.24MB (81 samples) | LCDM: 7664.01MB (180 samples)
+13:55:37 EDE: 1.51562
+434.602MB (81 samples) | LCDM: 8130.01MB (180 samples)
+13:56:37 EDE: 1.51562
+438.926MB (81 samples) | LCDM: 3034.27MB (180 samples)
+13:57:37 EDE: 1.51562
+345.395MB (81 samples) | LCDM: 473.801MB (180 samples)
+13:58:37 EDE: 1.51562
+8655.7MB (81 samples) | LCDM: 492.527MB (180 samples)
+13:59:38 EDE: 1.51562
+7968.14MB (81 samples) | LCDM: 7371.72MB (180 samples)
+14:00:38 EDE: 1.51562
+427.918MB (81 samples) | LCDM: 422.086MB (180 samples)
+14:01:38 EDE: 1.51562
+479.184MB (81 samples) | LCDM: 8762.85MB (180 samples)
+14:02:39 EDE: 1.51562
+433.348MB (81 samples) | LCDM: 8762.96MB (180 samples)
+14:03:39 EDE: 1.51562
+433.34MB (81 samples) | LCDM: 5299.93MB (180 samples)
+14:04:39 EDE: 1.51562
+8378.72MB (81 samples) | LCDM: 440.438MB (180 samples)
+14:05:39 EDE: 1.51562
+459.324MB (81 samples) | LCDM: 431.781MB (180 samples)
+14:06:39 EDE: 1.51562
+438.488MB (81 samples) | LCDM: 458.254MB (180 samples)
+14:07:39 EDE: 1.51562
+7611.55MB (81 samples) | LCDM: 7770.11MB (180 samples)
+14:08:39 EDE: 1.51562
+8757.15MB (81 samples) | LCDM: 493.133MB (180 samples)
+14:09:39 EDE: 1.51562
+431.422MB (81 samples) | LCDM: 498.246MB (180 samples)
+14:10:40 EDE: 1.51562
+353.691MB (81 samples) | LCDM: 493.633MB (180 samples)
+14:11:40 EDE: 1.51562
+8752.61MB (81 samples) | LCDM: 494.004MB (180 samples)
+14:12:40 EDE: 1.51562
+430.715MB (81 samples) | LCDM: 494.895MB (180 samples)
+14:13:40 EDE: 1.51562
+7938.41MB (81 samples) | LCDM: 7548.64MB (180 samples)
+14:14:40 EDE: 1.51562
+422.055MB (81 samples) | LCDM: 433.406MB (180 samples)
+14:15:40 EDE: 1.51562
+451.922MB (81 samples) | LCDM: 482.043MB (180 samples)
+14:16:40 EDE: 1.51562
+448.645MB (81 samples) | LCDM: 8249.92MB (180 samples)
+14:17:40 EDE: 1.51562
+449.797MB (81 samples) | LCDM: 499.992MB (180 samples)
+14:18:40 EDE: 1.51562
+8778.39MB (81 samples) | LCDM: 503.875MB (180 samples)
+14:19:41 EDE: 1.51562
+451.117MB (81 samples) | LCDM: 501.855MB (180 samples)
+14:20:41 EDE: 1.51562
+500.375MB (81 samples) | LCDM: 458.738MB (180 samples)
+14:21:41 EDE: 1.51562
+339.512MB (81 samples) | LCDM: 498.609MB (180 samples)
+14:22:41 EDE: 1.51562
+7410.31MB (81 samples) | LCDM: 7959.25MB (180 samples)
+14:23:42 EDE: 1.51562
+8482.47MB (81 samples) | LCDM: 6975.05MB (180 samples)
+14:24:42 EDE: 1.51562
+321.602MB (81 samples) | LCDM: 4751.4MB (180 samples)
+14:25:42 EDE: 1.51562
+7621.4MB (81 samples) | LCDM: 443.383MB (180 samples)
+14:26:42 EDE: 1.51562
+317.469MB (81 samples) | LCDM: 2192.64MB (180 samples)
+14:27:42 EDE: 1.51562
+6291.83MB (81 samples) | LCDM: 3928.33MB (180 samples)
+14:28:42 EDE: 1.51562
+268.031MB (81 samples) | LCDM: 420.727MB (180 samples)
+14:29:42 EDE: 1.51562
+7914.82MB (81 samples) | LCDM: 7457.7MB (180 samples)
+14:30:42 EDE: 1.51562
+419.777MB (81 samples) | LCDM: 8760.75MB (180 samples)
+14:31:42 EDE: 1.51562
+423.848MB (81 samples) | LCDM: 499.125MB (180 samples)
+14:32:43 EDE: 1.51562
+428.676MB (81 samples) | LCDM: 504.668MB (180 samples)
+14:33:43 EDE: 1.51562
+284.867MB (81 samples) | LCDM: 8747.88MB (180 samples)
+14:34:43 EDE: 1.51562
+276.023MB (81 samples) | LCDM: 361.727MB (180 samples)
+14:35:43 EDE: 1.51562
+399.258MB (81 samples) | LCDM: 8136.29MB (180 samples)
+14:36:43 EDE: 1.51562
+413.578MB (81 samples) | LCDM: 8773.88MB (180 samples)
+14:37:43 EDE: 1.51562
+428.141MB (81 samples) | LCDM: 7360.82MB (180 samples)
+14:38:43 EDE: 1.51562
+7085.86MB (81 samples) | LCDM: 8320.02MB (180 samples)
+14:39:43 EDE: 1.51562
+4181.99MB (81 samples) | LCDM: 4538.81MB (180 samples)
+14:40:43 EDE: 1.51562
+7280.36MB (81 samples) | LCDM: 63.9297MB (180 samples)
+14:41:44 EDE: 1.51562
+8738.66MB (81 samples) | LCDM: 5114.69MB (180 samples)
+14:42:44 EDE: 1.51562
+388.469MB (81 samples) | LCDM: 8764.88MB (180 samples)
+14:43:47 EDE: 1.51562
+8304.22MB (81 samples) | LCDM: 7113.29MB (180 samples)
+14:44:47 EDE: 1.51562
+411.312MB (81 samples) | LCDM: 7383.61MB (180 samples)
+14:45:47 EDE: 1.51562
+422.039MB (81 samples) | LCDM: 8762.55MB (180 samples)
+14:46:47 EDE: 1.51562
+409.898MB (81 samples) | LCDM: 8196.68MB (180 samples)
+14:47:47 EDE: 1.51562
+422.863MB (81 samples) | LCDM: 2448.31MB (180 samples)
+14:48:47 EDE: 1.51562
+8752.77MB (81 samples) | LCDM: 2646.32MB (180 samples)
+14:49:47 EDE: 1.51562
+287.922MB (81 samples) | LCDM: 8747.52MB (180 samples)
+14:50:47 EDE: 1.51562
+8605.97MB (81 samples) | LCDM: 6947.61MB (180 samples)
+14:51:48 EDE: 1.51562
+281.125MB (81 samples) | LCDM: 5917.46MB (180 samples)
+14:52:48 EDE: 1.51562
+8748.83MB (81 samples) | LCDM: 5253.73MB (180 samples)
+14:53:48 EDE: 1.51562
+387.387MB (81 samples) | LCDM: 409.316MB (180 samples)
+14:54:48 EDE: 1.51562
+8111.25MB (81 samples) | LCDM: 7382.31MB (180 samples)
+14:55:48 EDE: 1.51562
+8746.45MB (81 samples) | LCDM: 428.426MB (180 samples)
+14:56:48 EDE: 1.51562
+429.094MB (81 samples) | LCDM: 451.336MB (180 samples)
+14:57:48 EDE: 1.51562
+487.23MB (81 samples) | LCDM: 8779.53MB (180 samples)
+14:58:48 EDE: 1.51562
+440.797MB (81 samples) | LCDM: 8785.55MB (180 samples)
+14:59:48 EDE: 1.51562
+440.93MB (81 samples) | LCDM: 8785.85MB (180 samples)
+15:00:49 EDE: 1.51562
+8768.43MB (81 samples) | LCDM: 498.445MB (180 samples)
+15:01:49 EDE: 1.51562
+441.059MB (81 samples) | LCDM: 455.492MB (180 samples)
+15:02:49 EDE: 1.51562
+487.891MB (81 samples) | LCDM: 456.785MB (180 samples)
+15:03:51 EDE: 1.51562
+8031.87MB (81 samples) | LCDM: 7497.61MB (180 samples)
+15:04:54 EDE: 1.51562
+8074.48MB (81 samples) | LCDM: 7336.91MB (180 samples)
+15:05:54 EDE: 1.51562
+7676MB (81 samples) | LCDM: 7787.86MB (180 samples)
+15:06:54 EDE: 1.51562
+274.117MB (81 samples) | LCDM: 7648.55MB (180 samples)
+15:07:54 EDE: 1.51562
+7878.45MB (81 samples) | LCDM: 7493.76MB (180 samples)
+15:08:54 EDE: 1.51562
+287.844MB (81 samples) | LCDM: 2986.91MB (180 samples)
+15:09:54 EDE: 1.51562
+418.941MB (81 samples) | LCDM: 817.34MB (180 samples)
+15:10:54 EDE: 1.51562
+423.629MB (81 samples) | LCDM: 502.891MB (180 samples)
+15:11:54 EDE: 1.51562
+478.824MB (81 samples) | LCDM: 503.012MB (180 samples)
+15:12:54 EDE: 1.51562
+161.824MB (81 samples) | LCDM: 281.289MB (180 samples)
+15:13:55 EDE: 1.51562
+417.453MB (81 samples) | LCDM: 433.902MB (180 samples)
+15:14:55 EDE: 1.51562
+426.016MB (81 samples) | LCDM: 8769.19MB (180 samples)
+15:15:55 EDE: 1.51562
+367.48MB (81 samples) | LCDM: 283.055MB (180 samples)
+15:16:55 EDE: 1.51562
+909.586MB (81 samples) | LCDM: 440.059MB (180 samples)
+15:17:55 EDE: 1.51562
+434.738MB (81 samples) | LCDM: 441.516MB (180 samples)
+15:18:55 EDE: 1.51562
+8277.43MB (81 samples) | LCDM: 7124.55MB (180 samples)
+15:19:55 EDE: 1.51562
+421.203MB (81 samples) | LCDM: 7286.38MB (180 samples)
+15:20:55 EDE: 1.51562
+334.41MB (81 samples) | LCDM: 284.711MB (180 samples)
+15:21:56 EDE: 1.51562
+421.676MB (81 samples) | LCDM: 435.902MB (180 samples)
+15:22:56 EDE: 1.51562
+6688.3MB (81 samples) | LCDM: 485.586MB (180 samples)
+15:23:56 EDE: 1.51562
+7502.45MB (81 samples) | LCDM: 7916.79MB (180 samples)
+15:24:56 EDE: 1.51562
+437.461MB (81 samples) | LCDM: 484.145MB (180 samples)
+15:25:56 EDE: 1.51562
+438.195MB (81 samples) | LCDM: 486.574MB (180 samples)
+15:26:57 EDE: 1.51562
+8138.05MB (81 samples) | LCDM: 7405.62MB (180 samples)
+15:27:57 EDE: 1.51562
+427.156MB (81 samples) | LCDM: 441.062MB (180 samples)
+15:28:57 EDE: 1.51562
+429.035MB (81 samples) | LCDM: 445.383MB (180 samples)
+15:29:57 EDE: 1.51562
+7421.17MB (81 samples) | LCDM: 63.6016MB (180 samples)
+15:30:57 EDE: 1.51562
+8733.11MB (81 samples) | LCDM: 6050.79MB (180 samples)
+15:31:58 EDE: 1.51562
+421.895MB (81 samples) | LCDM: 435.379MB (180 samples)
+15:32:58 EDE: 1.51562
+7796.35MB (81 samples) | LCDM: 7625.67MB (180 samples)
+15:33:58 EDE: 1.51562
+152.641MB (81 samples) | LCDM: 235.133MB (180 samples)
+15:34:58 EDE: 1.51562
+418.723MB (81 samples) | LCDM: 8759.28MB (180 samples)
+15:35:58 EDE: 1.51562
+434.164MB (81 samples) | LCDM: 4142.73MB (180 samples)
+15:36:58 EDE: 1.51562
+436.125MB (81 samples) | LCDM: 2697.7MB (180 samples)
+15:37:59 EDE: 1.51562
+7553.34MB (81 samples) | LCDM: 7887.64MB (180 samples)
+15:38:59 EDE: 1.51562
+417.5MB (81 samples) | LCDM: 7176.03MB (180 samples)
+15:39:59 EDE: 1.51562
+420.805MB (81 samples) | LCDM: 4053.5MB (180 samples)
+15:40:59 EDE: 1.51562
+7578.7MB (81 samples) | LCDM: 7819.11MB (180 samples)
+15:41:59 EDE: 1.51562
+390.082MB (81 samples) | LCDM: 413.621MB (180 samples)
+15:42:59 EDE: 1.51562
+8759.53MB (81 samples) | LCDM: 484.918MB (180 samples)
+15:43:59 EDE: 1.51562
+7630.41MB (81 samples) | LCDM: 7742.98MB (180 samples)
+15:44:59 EDE: 3.25MB (81 samples) | LCDM: 3.25MB (180 samples)
+15:45:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:46:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:47:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:48:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:49:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:50:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:51:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:52:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:53:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:54:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:55:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:56:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:57:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:58:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+15:59:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:00:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:01:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:02:59 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:04:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:05:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:06:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:07:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:08:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:09:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:10:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:11:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:12:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:13:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:14:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:15:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)
+16:16:00 EDE: 0MB (81 samples) | LCDM: 0MB (180 samples)

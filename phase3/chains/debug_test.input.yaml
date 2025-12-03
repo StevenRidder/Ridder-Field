@@ -1,0 +1,55 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 3000
+      lensing: true
+      gauge: newtonian
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.0
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 68.0
+    proposal: 0.5
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02237
+    proposal: 0.0002
+  omega_cdm:
+    prior:
+      min: 0.09
+      max: 0.14
+    ref: 0.12
+    proposal: 0.003
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.0544
+    proposal: 0.006
+sampler:
+  mcmc:
+    max_samples: 5
+    max_tries: 100
+output: debug_test

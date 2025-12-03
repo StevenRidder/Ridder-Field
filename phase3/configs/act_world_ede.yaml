@@ -68,7 +68,7 @@ params:
   # Base ΛCDM (k=6)
   logA:
     prior: {min: 2.5, max: 3.7}
-    ref: {dist: norm, loc: 3.033, scale: 0.02}  # From LCDM best-fit
+    ref: {dist: norm, loc: 3.05, scale: 0.02}
     proposal: 0.01
     drop: true
   A_s:
@@ -76,34 +76,34 @@ params:
     latex: A_s
   n_s:
     prior: {min: 0.92, max: 1.02}
-    ref: {dist: norm, loc: 0.970, scale: 0.01}  # From LCDM best-fit
+    ref: {dist: norm, loc: 0.97, scale: 0.01}
     proposal: 0.002
     latex: n_s
   H0:
     prior: {min: 60.0, max: 80.0}
-    ref: {dist: norm, loc: 66.1, scale: 2.0}  # From LCDM best-fit
+    ref: {dist: norm, loc: 69.0, scale: 2.0}
     proposal: 0.2
     latex: H_0
   omega_b:
     prior: {min: 0.020, max: 0.025}
-    ref: {dist: norm, loc: 0.02254, scale: 0.0005}  # From LCDM best-fit
+    ref: {dist: norm, loc: 0.0224, scale: 0.0005}
     proposal: 5e-5
     latex: \Omega_b h^2
   omega_cdm:
     prior: {min: 0.10, max: 0.14}
-    ref: {dist: norm, loc: 0.1256, scale: 0.005}  # From LCDM best-fit
+    ref: {dist: norm, loc: 0.120, scale: 0.005}
     proposal: 5e-4
     latex: \Omega_c h^2
   tau_reio:
     prior: {min: 0.03, max: 0.10}
-    ref: {dist: norm, loc: 0.037, scale: 0.01}  # From LCDM best-fit
+    ref: {dist: norm, loc: 0.055, scale: 0.01}
     proposal: 0.005
     latex: \tau_{reio}
 
-  # EDE amplitude - TIGHT prior for soft shoulder regime (Issue #5, #7)
+  # EDE amplitude - physics prior can be wide or tight
   Lambda_EDE_ridder:
-    prior: {min: 0.8, max: 1.2}  # Optimal for z_osc ~ 4500 (soft shoulder)
-    ref: {dist: norm, loc: 1.0, scale: 0.1}
+    prior: {min: 0.8, max: 1.2}  # Tight prior for soft shoulder
+    ref: {dist: norm, loc: 1.0, scale: 0.5}
     proposal: 0.05
     latex: \Lambda_{EDE}
 
@@ -220,10 +220,6 @@ params:
     prior: {min: 0.8, max: 1.2}
     ref: {dist: norm, loc: 1.0, scale: 0.02}
     proposal: 0.01
-  calE_dr6_pa4_f220:
-    prior: {min: 0.8, max: 1.2}
-    ref: {dist: norm, loc: 1.0, scale: 0.02}
-    proposal: 0.01
   calE_dr6_pa5_f090:
     prior: {min: 0.8, max: 1.2}
     ref: {dist: norm, loc: 1.0, scale: 0.02}
@@ -282,7 +278,7 @@ sampler:
     # Disable auto-covmat: xi_sz_cib (Planck) and xi (ACT) have duplicate aliases
     covmat: null
     burn_in: 0.4
-    max_tries: 5000
+    max_tries: 20000
     drag: true
     proposal_scale: 2.0
     learn_proposal: true

@@ -1,0 +1,9 @@
+# LCDM best-fit for EDE starting point
+# Add Lambda_EDE_ridder = 1.0
+logA: 3.0333209
+n_s: 0.96996188
+H0: 66.102346
+omega_b: 0.022538017
+omega_cdm: 0.12559438
+tau_reio: 0.036993071
+Lambda_EDE_ridder: 1.0

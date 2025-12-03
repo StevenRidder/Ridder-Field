@@ -1,0 +1,150 @@
+# ACT EDE Minimizer Config - Lambda FIXED at 0.79 (Tier 5 best-fit)
+# Purpose: Find best-fit χ² for hypothesis test
+
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 8500
+      lensing: yes
+      gauge: newtonian
+      N_ncdm: 0
+      non_linear: none
+      accurate_lensing: 1
+      tol_background_integration: 1e-5
+      tol_thermo_integration: 1e-5
+      # Ridder field FIXED at Tier 5 best-fit
+      Lambda_EDE_ridder: 0.79
+      f_axion_ridder: 1.0e27
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      n_ridder: 3
+    input_params: [A_s, n_s, H0, omega_b, omega_cdm, tau_reio]
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: false
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
+
+params:
+  # Cosmology - start near Tier 5 EDE best-fit
+  logA:
+    prior: {min: 2.9, max: 3.2}
+    ref: 3.06
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.94, max: 0.99}
+    ref: 0.962
+    proposal: 0.002
+  H0:
+    prior: {min: 66.0, max: 73.0}
+    ref: 69.5
+    proposal: 0.3
+  omega_b:
+    prior: {min: 0.021, max: 0.024}
+    ref: 0.0229
+    proposal: 0.0002
+  omega_cdm:
+    prior: {min: 0.11, max: 0.14}
+    ref: 0.121
+    proposal: 0.001
+  tau_reio:
+    prior: {min: 0.03, max: 0.08}
+    ref: 0.059
+    proposal: 0.005
+
+  # Planck nuisance
+  A_planck:
+    prior: {dist: norm, loc: 1.0, scale: 0.0025}
+    ref: 1.0
+    proposal: 0.001
+
+  # ACT Calibrations
+  calG_all:
+    prior: {min: 0.95, max: 1.05}
+    ref: 1.0
+    proposal: 0.005
+  cal_dr6_pa4_f220:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa5_f090:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa5_f150:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa6_f090:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  cal_dr6_pa6_f150:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa5_f090:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa5_f150:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa6_f090:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+  calE_dr6_pa6_f150:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.01
+
+  # ACT Bandpass
+  bandint_shift_dr6_pa4_f220:
+    prior: {dist: norm, loc: 0.0, scale: 2.0}
+    ref: 0.0
+    proposal: 1.0
+  bandint_shift_dr6_pa5_f090:
+    prior: {dist: norm, loc: 0.0, scale: 0.8}
+    ref: 0.0
+    proposal: 0.4
+  bandint_shift_dr6_pa5_f150:
+    prior: {dist: norm, loc: 0.0, scale: 1.0}
+    ref: 0.0
+    proposal: 0.5
+  bandint_shift_dr6_pa6_f090:
+    prior: {dist: norm, loc: 0.0, scale: 0.9}
+    ref: 0.0
+    proposal: 0.45
+  bandint_shift_dr6_pa6_f150:
+    prior: {dist: norm, loc: 0.0, scale: 0.9}
+    ref: 0.0
+    proposal: 0.45
+
+sampler:
+  minimize:
+    method: bobyqa
+    ignore_prior: false
+    max_evals: 2000
+    confidence_for_unbounded: 0.9999
+
+output: chains/act_ede_minimize

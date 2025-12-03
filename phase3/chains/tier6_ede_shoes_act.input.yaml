@@ -1,0 +1,405 @@
+theory:
+  classy:
+    input_params:
+    - A_s
+    - n_s
+    - H0
+    - omega_b
+    - omega_cdm
+    - tau_reio
+    - Lambda_EDE_ridder
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 8500
+      lensing: true
+      gauge: newtonian
+      N_ncdm: 0
+      non_linear: none
+      accurate_lensing: 1
+      l_logstep: 1.035
+      l_linstep: 25
+      k_max_tau0_over_l_max: 2.5
+      tol_background_integration: 1.0e-06
+      tol_thermo_integration: 1.0e-06
+      f_axion_ridder: 1.0e+27
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      n_ridder: 3
+  mflike.BandpowerForeground:
+    experiments:
+    - dr6_pa4_f220
+    - dr6_pa5_f090
+    - dr6_pa5_f150
+    - dr6_pa6_f090
+    - dr6_pa6_f150
+    bandint_freqs:
+    - 220
+    - 90
+    - 150
+    - 90
+    - 150
+    beam_profile:
+      beam_from_file: null
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: false
+  shoes_h0:
+    external: 'lambda H0: -0.5*((H0 - 73.04)/1.04)**2'
+    output_params:
+    - chi2__shoes_h0
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.7
+    ref:
+      dist: norm
+      loc: 3.05
+      scale: 0.02
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  n_s:
+    prior:
+      min: 0.92
+      max: 1.02
+    ref:
+      dist: norm
+      loc: 0.97
+      scale: 0.01
+    proposal: 0.002
+    latex: n_s
+  H0:
+    prior:
+      min: 60.0
+      max: 80.0
+    ref:
+      dist: norm
+      loc: 70.0
+      scale: 2.0
+    proposal: 0.2
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.02
+      max: 0.025
+    ref:
+      dist: norm
+      loc: 0.0224
+      scale: 0.0005
+    proposal: 5.0e-05
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref:
+      dist: norm
+      loc: 0.12
+      scale: 0.005
+    proposal: 0.0005
+    latex: \Omega_c h^2
+  tau_reio:
+    prior:
+      min: 0.03
+      max: 0.1
+    ref:
+      dist: norm
+      loc: 0.055
+      scale: 0.01
+    proposal: 0.005
+    latex: \tau_{reio}
+  Lambda_EDE_ridder:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.1
+    proposal: 0.05
+    latex: \Lambda_\mathrm{EDE}
+  A_planck:
+    prior:
+      dist: norm
+      loc: 1.0
+      scale: 0.0025
+    ref: 1.0
+    proposal: 0.001
+    latex: A_\mathrm{planck}
+  calib_100T:
+    prior:
+      dist: norm
+      loc: 1.0002
+      scale: 0.0007
+    ref: 1.0002
+    proposal: 0.0003
+  calib_217T:
+    prior:
+      dist: norm
+      loc: 0.99805
+      scale: 0.00065
+    ref: 0.99805
+    proposal: 0.0003
+  A_cib_217:
+    prior:
+      min: 0
+      max: 200
+    ref: 47
+    proposal: 5
+  xi_sz_cib:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.5
+    proposal: 0.1
+  A_sz:
+    prior:
+      min: 0
+      max: 10
+    ref: 5
+    proposal: 1
+  ksz_norm:
+    prior:
+      min: 0
+      max: 10
+    ref: 3
+    proposal: 1
+  gal545_A_100:
+    prior:
+      min: 0
+      max: 50
+    ref: 8
+    proposal: 2
+  gal545_A_143:
+    prior:
+      min: 0
+      max: 50
+    ref: 10
+    proposal: 2
+  gal545_A_143_217:
+    prior:
+      min: 0
+      max: 100
+    ref: 20
+    proposal: 4
+  gal545_A_217:
+    prior:
+      min: 0
+      max: 400
+    ref: 100
+    proposal: 10
+  ps_A_100_100:
+    prior:
+      min: 0
+      max: 400
+    ref: 250
+    proposal: 20
+  ps_A_143_143:
+    prior:
+      min: 0
+      max: 400
+    ref: 50
+    proposal: 10
+  ps_A_143_217:
+    prior:
+      min: 0
+      max: 400
+    ref: 50
+    proposal: 10
+  ps_A_217_217:
+    prior:
+      min: 0
+      max: 400
+    ref: 120
+    proposal: 10
+  galf_TE_A_100:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.1
+    proposal: 0.05
+  galf_TE_A_100_143:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.1
+    proposal: 0.05
+  galf_TE_A_100_217:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.4
+    proposal: 0.1
+  galf_TE_A_143:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.2
+    proposal: 0.05
+  galf_TE_A_143_217:
+    prior:
+      min: 0
+      max: 1
+    ref: 0.6
+    proposal: 0.1
+  galf_TE_A_217:
+    prior:
+      min: 0
+      max: 10
+    ref: 2
+    proposal: 0.5
+  calG_all:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.01
+    proposal: 0.005
+  cal_dr6_pa4_f220:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  cal_dr6_pa5_f090:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  cal_dr6_pa5_f150:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  cal_dr6_pa6_f090:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  cal_dr6_pa6_f150:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  calE_dr6_pa5_f090:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  calE_dr6_pa5_f150:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  calE_dr6_pa6_f090:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  calE_dr6_pa6_f150:
+    prior:
+      min: 0.8
+      max: 1.2
+    ref:
+      dist: norm
+      loc: 1.0
+      scale: 0.02
+    proposal: 0.01
+  bandint_shift_dr6_pa4_f220:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 3.6
+    ref: 0.0
+    proposal: 1.8
+  bandint_shift_dr6_pa5_f090:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 1.0
+    ref: 0.0
+    proposal: 0.5
+  bandint_shift_dr6_pa5_f150:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 1.3
+    ref: 0.0
+    proposal: 0.65
+  bandint_shift_dr6_pa6_f090:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 1.2
+    ref: 0.0
+    proposal: 0.6
+  bandint_shift_dr6_pa6_f150:
+    prior:
+      dist: norm
+      loc: 0.0
+      scale: 1.1
+    ref: 0.0
+    proposal: 0.55
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: 'lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)'
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+sampler:
+  mcmc:
+    Rminus1_stop: 0.05
+    Rminus1_cl_stop: 0.1
+    covmat: auto
+    burn_in: 50
+    max_tries: 1000
+    drag: true
+    proposal_scale: 2.0
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 5.0
+    learn_proposal_Rminus1_min: 0.3
+output: tier6_ede_shoes_act
+test: true

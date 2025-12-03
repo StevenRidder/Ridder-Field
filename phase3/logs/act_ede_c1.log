@@ -1,0 +1,859 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'act_ede_c1'
+[output] Found existing info files with the requested output prefix: 'chains/act_ede_c1'
+[output] Let's try to resume/load.
+[output] Found an old sample. Resuming.
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/data/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+Warning: The FITS format without the 'sacc_ordering' column is deprecated
+Assuming data rows are in the correct order as it was before version 1.0.
+[act_dr6_mflike.actdr6mflike] Number of bins used: 1651
+[act_dr6_mflike.actdr6mflike] Initialized!
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[shoes_h0] Initialized external likelihood.
+[mcmc] Resuming from previous sample!
+[samplecollection] Loaded 17 sample points from 'chains/act_ede_c1.1.txt'
+[mcmc] Initial point: logA:3.031481, n_s:0.9656329, H0:69, omega_b:0.02248209, omega_cdm:0.1252005, tau_reio:0.04949804, Lambda_EDE_ridder:1.019362, A_planck:0.9992725, calib_100T:0.9994393, calib_217T:0.9989261, A_cib_217:64.58542, xi_sz_cib:0.6904519, A_sz:6.951922, ksz_norm:3.923948, gal545_A_100:8.636875, gal545_A_143:14.94471, gal545_A_143_217:18.0239, gal545_A_217:80.68826, ps_A_100_100:253.148, ps_A_143_143:62.81751, ps_A_143_217:61.23573, ps_A_217_217:105.4441, galf_TE_A_100:0.1449869, galf_TE_A_100_143:0.175794, galf_TE_A_100_217:0.4296674, galf_TE_A_143:0.2580768, galf_TE_A_143_217:0.4679073, galf_TE_A_217:1.536341, calG_all:0.9999894, cal_dr6_pa4_f220:0.995362, cal_dr6_pa5_f090:1.004295, cal_dr6_pa5_f150:1.000436, cal_dr6_pa6_f090:1.004713, cal_dr6_pa6_f150:0.9986851, calE_dr6_pa5_f090:1.015041, calE_dr6_pa5_f150:1.00683, calE_dr6_pa6_f090:0.9856237, calE_dr6_pa6_f150:1.023236, bandint_shift_dr6_pa4_f220:-5.371408, bandint_shift_dr6_pa5_f090:0.3392751, bandint_shift_dr6_pa5_f150:0.5825198, bandint_shift_dr6_pa6_f090:-0.5222731, bandint_shift_dr6_pa6_f150:1.354296, beta_s:-2.28433, a_tSZ:3.861387, a_kSZ:9.24033, a_p:3.786885, beta_p:3.39922, a_c:1.585579, beta_c:2.834463, a_s:3.436542, a_gtt:7.953218, xi:0.05722483, alpha_tSZ:-1.249962, a_gte:6.746087, a_pste:0.5325621, a_gee:2.943986, a_psee:0.02195602
+[mcmc] *WARNING* Parameter blocking manually/previously fixed: speeds will not be measured.
+[mcmc] Dragging with number of interpolating steps:
+[mcmc] *  1 : (['H0'], ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio', 'Lambda_EDE_ridder'], ['bandint_shift_dr6_pa4_f220', 'bandint_shift_dr6_pa5_f090', 'bandint_shift_dr6_pa5_f150', 'bandint_shift_dr6_pa6_f090', 'bandint_shift_dr6_pa6_f150', 'beta_s', 'a_tSZ', 'a_kSZ', 'a_p', 'beta_p', 'a_c', 'beta_c', 'a_s', 'a_gtt', 'xi', 'alpha_tSZ', 'a_gte', 'a_pste', 'a_gee', 'a_psee'])
+[mcmc] * 16 : (['A_planck'], ['calG_all', 'cal_dr6_pa4_f220', 'cal_dr6_pa5_f090', 'cal_dr6_pa5_f150', 'cal_dr6_pa6_f090', 'cal_dr6_pa6_f150', 'calE_dr6_pa5_f090', 'calE_dr6_pa5_f150', 'calE_dr6_pa6_f090', 'calE_dr6_pa6_f150'], ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217'])
+[mcmc] Covariance matrix from previous sample.
+[mcmc] Sampling! (NB: no accepted step will be saved until 1 burn-in samples have been obtained)
+[mcmc] Progress @ 2025-12-02 18:33:02 : 1 steps taken -- still burning in, 1 accepted steps left.
+[mcmc] Finished burn-in phase: discarded 1 accepted steps.
+[mcmc] Progress @ 2025-12-02 18:34:25 : 10 steps taken, and 20 accepted.
+DEBUG: Ridder field ENABLED. Lambda = 1.019362e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.019362e+00
+BG_FUNC: a=4.90e-13 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=2.50e-11 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=1.27e-09 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=6.47e-08 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=3.29e-06 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=1.67e-04 V=6.83e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.97e+57 rho_final=1.11e+02
+RIDDER SWITCHING: z_osc = 4408.17, a_osc = 2.268001e-04
+RIDDER IC: k=5.409e+00 coeff=2.842e-14 delta_g=-1.633e-03
+RIDDER IC: k=1.079e+01 coeff=0.000e+00 delta_g=-1.633e-03
+RIDDER IC: k=8.572e+00 coeff=0.000e+00 delta_g=-1.633e-03
+RIDDER IC: k=6.809e+00 coeff=2.842e-14 delta_g=-1.633e-03
+DEBUG: Ridder field ENABLED. Lambda = 1.019362e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.019362e+00
+BG_FUNC: a=3.79e-13 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=1.93e-11 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=9.82e-10 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=5.01e-08 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=2.55e-06 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+BG_FUNC: a=1.29e-04 V=8.84e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.31e+57 rho_final=1.30e+02
+RIDDER SWITCHING: z_osc = 4408.17, a_osc = 2.268001e-04
+DEBUG: Ridder field ENABLED. Lambda = 9.701938e-01
+DEBUG: Ridder field ENABLED. Lambda = 9.701938e-01
+BG_FUNC: a=2.95e-13 V=8.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.10e+57 rho_final=1.18e+02
+BG_FUNC: a=1.51e-11 V=8.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.10e+57 rho_final=1.18e+02
+BG_FUNC: a=7.76e-10 V=8.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.10e+57 rho_final=1.18e+02
+BG_FUNC: a=3.97e-08 V=8.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.10e+57 rho_final=1.18e+02
+BG_FUNC: a=2.04e-06 V=8.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.10e+57 rho_final=1.18e+02
+BG_FUNC: a=1.05e-04 V=8.07e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.02e+57 rho_final=1.14e+02
+RIDDER SWITCHING: z_osc = 4243.81, a_osc = 2.355818e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.044088e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.044088e+00
+BG_FUNC: a=2.27e-13 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.82e+57 rho_final=1.59e+02
+BG_FUNC: a=1.15e-11 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.82e+57 rho_final=1.59e+02
+BG_FUNC: a=5.86e-10 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.82e+57 rho_final=1.59e+02
+BG_FUNC: a=2.97e-08 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.82e+57 rho_final=1.59e+02
+BG_FUNC: a=1.51e-06 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.82e+57 rho_final=1.59e+02
+BG_FUNC: a=7.69e-05 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+RIDDER SWITCHING: z_osc = 4660.39, a_osc = 2.145282e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.004174e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.004174e+00
+BG_FUNC: a=1.97e-13 V=9.88e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.42e+57 rho_final=1.36e+02
+BG_FUNC: a=9.40e-12 V=9.88e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.42e+57 rho_final=1.36e+02
+BG_FUNC: a=4.80e-10 V=9.88e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.42e+57 rho_final=1.36e+02
+BG_FUNC: a=2.45e-08 V=9.88e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.42e+57 rho_final=1.36e+02
+BG_FUNC: a=1.25e-06 V=9.88e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.42e+57 rho_final=1.36e+02
+BG_FUNC: a=6.38e-05 V=9.77e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.40e+57[mcmc] Progress @ 2025-12-02 18:35:45 : 18 steps taken, and 21 accepted.
+[mcmc] Progress @ 2025-12-02 18:37:00 : 20 steps taken, and 23 accepted.
+[mcmc] Progress @ 2025-12-02 18:38:22 : 29 steps taken, and 25 accepted.
+[mcmc] Progress @ 2025-12-02 18:39:51 : 34 steps taken, and 27 accepted.
+ rho_final=1.35e+02
+RIDDER SWITCHING: z_osc = 4470.13, a_osc = 2.236571e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.057556e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.057556e+00
+BG_FUNC: a=1.46e-13 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=7.40e-12 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=3.75e-10 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=1.89e-08 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=9.59e-07 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=4.87e-05 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.67e+02
+RIDDER SWITCHING: z_osc = 4768.21, a_osc = 2.096781e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.057321e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.057321e+00
+BG_FUNC: a=1.19e-13 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=6.03e-12 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=3.06e-10 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=1.55e-08 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=7.84e-07 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.97e+57 rho_final=1.67e+02
+BG_FUNC: a=3.97e-05 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.67e+02
+RIDDER SWITCHING: z_osc = 4626.24, a_osc = 2.161116e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.010678e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.010678e+00
+BG_FUNC: a=9.44e-14 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+BG_FUNC: a=4.82e-12 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+BG_FUNC: a=2.46e-10 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+BG_FUNC: a=1.25e-08 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+BG_FUNC: a=6.39e-07 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+BG_FUNC: a=3.25e-05 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.48e+57 rho_final=1.39e+02
+RIDDER SWITCHING: z_osc = 4476.47, a_osc = 2.233405e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.053764e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.053764e+00
+BG_FUNC: a=7.43e-14 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+BG_FUNC: a=3.77e-12 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+BG_FUNC: a=1.91e-10 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+BG_FUNC: a=9.68e-09 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+BG_FUNC: a=4.91e-07 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+BG_FUNC: a=2.49e-05 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+RIDDER SWITCHING: z_osc = 4656.98, a_osc = 2.146854e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.062980e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.062980e+00
+BG_FUNC: a=5.91e-14 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+BG_FUNC: a=2.99e-12 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+BG_FUNC: a=1.51e-10 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+BG_FUNC: a=7.67e-09 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+BG_FUNC: a=3.88e-07 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+BG_FUNC: a=1.96e-05 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+RIDDER SWITCHING: z_osc = 4579.64, a_osc = 2.183099e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.050423e+00
+DEBUG: Ridder field ENABLED. [mcmc] Progress @ 2025-12-02 18:41:05 : 37 steps taken, and 29 accepted.
+[mcmc] Progress @ 2025-12-02 18:42:54 : 42 steps taken, and 31 accepted.
+[mcmc] Progress @ 2025-12-02 18:45:12 : 43 steps taken, and 31 accepted.
+[mcmc] Progress @ 2025-12-02 18:48:52 : 47 steps taken, and 31 accepted.
+[mcmc] Progress @ 2025-12-02 18:52:48 : 50 steps taken, and 32 accepted.
+Lambda = 1.050423e+00
+BG_FUNC: a=4.60e-14 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=2.33e-12 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=1.18e-10 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=6.00e-09 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=3.05e-07 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=1.55e-05 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+RIDDER SWITCHING: z_osc = 4686.30, a_osc = 2.133423e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.050423e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.050423e+00
+BG_FUNC: a=3.71e-14 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=1.88e-12 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=9.56e-11 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=4.85e-09 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=2.46e-07 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+BG_FUNC: a=1.25e-05 V=1.18e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.89e+57 rho_final=1.63e+02
+RIDDER SWITCHING: z_osc = 4584.76, a_osc = 2.180666e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.111221e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.111221e+00
+BG_FUNC: a=3.08e-14 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.47e-12 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=7.44e-11 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=3.76e-09 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.90e-07 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=9.65e-06 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+RIDDER SWITCHING: z_osc = 4971.59, a_osc = 2.011024e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.056186e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.056186e+00
+BG_FUNC: a=2.46e-14 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+BG_FUNC: a=1.25e-12 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+BG_FUNC: a=6.32e-11 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+BG_FUNC: a=3.20e-09 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+BG_FUNC: a=1.62e-07 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+BG_FUNC: a=8.20e-06 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.96e+57 rho_final=1.66e+02
+RIDDER SWITCHING: z_osc = 4644.18, a_osc = 2.152771e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.019515e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.019515e+00
+BG_FUNC: a=1.94e-14 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+BG_FUNC: a=9.89e-13 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+BG_FUNC: a=5.04e-11 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+BG_FUNC: a=2.56e-09 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+BG_FUNC: a=1.31e-07 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+BG_FUNC: a=6.65e-06 V=1.05e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.57e+57 rho_final=1.44e+02
+RIDDER SWITCHING: z_osc = 4411.54, a_osc = 2.266270e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+BG_FUNC: a=1.49e-14 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=7.57e-13 V=1.20e-0[mcmc] Progress @ 2025-12-02 18:56:26 : 56 steps taken, and 35 accepted.
+[mcmc] Progress @ 2025-12-02 19:00:07 : 60 steps taken, and 36 accepted.
+[mcmc] Progress @ 2025-12-02 19:03:23 : 62 steps taken, and 36 accepted.
+[mcmc] Progress @ 2025-12-02 19:07:18 : 64 steps taken, and 36 accepted.
+[mcmc] Progress @ 2025-12-02 19:10:58 : 68 steps taken, and 38 accepted.
+1 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=4.07e-11 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.94e-09 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=9.84e-08 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=4.99e-06 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+RIDDER SWITCHING: z_osc = 4576.56, a_osc = 2.184570e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.069615e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.069615e+00
+BG_FUNC: a=1.16e-14 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=5.86e-13 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=2.97e-11 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=1.60e-09 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=7.61e-08 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=3.85e-06 V=1.27e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+BG_FUNC: a=1.95e-04 V=5.34e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.83e+57 rho_final=1.03e+02
+RIDDER SWITCHING: z_osc = 4777.87, a_osc = 2.092545e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.040029e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.040029e+00
+BG_FUNC: a=4.79e-13 V=1.14e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+BG_FUNC: a=2.43e-11 V=1.14e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+BG_FUNC: a=1.24e-09 V=1.14e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+BG_FUNC: a=6.28e-08 V=1.14e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+BG_FUNC: a=3.19e-06 V=1.14e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.78e+57 rho_final=1.56e+02
+BG_FUNC: a=1.62e-04 V=7.48e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.15e+57 rho_final=1.21e+02
+RIDDER SWITCHING: z_osc = 4589.06, a_osc = 2.178622e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+BG_FUNC: a=3.81e-13 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.93e-11 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=9.80e-10 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=5.28e-08 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=2.52e-06 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.34e-04 V=9.61e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.56e+57 rho_final=1.44e+02
+RIDDER SWITCHING: z_osc = 4710.96, a_osc = 2.122261e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.055874e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.055874e+00
+BG_FUNC: a=3.07e-13 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=1.56e-11 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=7.88e-10 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=3.99e-08 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=2.15e-06 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=1.03e-04 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.81e+57 rho_final=1.58e+02
+RIDDER SWITCHING: z_osc = 4702.02, a_osc = 2.126294e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.039610e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.039610e+00
+BG_FUNC: a=2.46e-13 V=1.13e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.77e+57 rho_final=1.56e+02
+BG_FUNC: a=1.25e-11 V=1.13e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.7[mcmc] Progress @ 2025-12-02 19:15:01 : 78 steps taken, and 40 accepted.
+[mcmc] Progress @ 2025-12-02 19:18:13 : 81 steps taken, and 40 accepted.
+[mcmc] Progress @ 2025-12-02 19:20:48 : 82 steps taken, and 41 accepted.
+[mcmc] Progress @ 2025-12-02 19:23:11 : 83 steps taken, and 41 accepted.
+[mcmc] Progress @ 2025-12-02 19:25:50 : 87 steps taken, and 42 accepted.
+7e+57 rho_final=1.56e+02
+BG_FUNC: a=6.36e-10 V=1.13e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.77e+57 rho_final=1.56e+02
+BG_FUNC: a=3.23e-08 V=1.13e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.77e+57 rho_final=1.56e+02
+BG_FUNC: a=1.64e-06 V=1.13e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.77e+57 rho_final=1.56e+02
+BG_FUNC: a=8.36e-05 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+RIDDER SWITCHING: z_osc = 4552.63, a_osc = 2.196049e-04
+DEBUG: Ridder field ENABLED. Lambda = 9.177417e-01
+DEBUG: Ridder field ENABLED. Lambda = 9.177417e-01
+BG_FUNC: a=1.95e-13 V=6.89e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.69e+57 rho_final=9.47e+01
+BG_FUNC: a=9.93e-12 V=6.89e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.69e+57 rho_final=9.47e+01
+BG_FUNC: a=5.05e-10 V=6.89e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.69e+57 rho_final=9.47e+01
+BG_FUNC: a=2.57e-08 V=6.89e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.69e+57 rho_final=9.47e+01
+BG_FUNC: a=1.31e-06 V=6.89e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.69e+57 rho_final=9.47e+01
+BG_FUNC: a=6.64e-05 V=6.83e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.68e+57 rho_final=9.42e+01
+RIDDER SWITCHING: z_osc = 3958.50, a_osc = 2.525573e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+BG_FUNC: a=1.35e-13 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=6.84e-12 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=3.46e-10 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.76e-08 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=8.90e-07 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=4.51e-05 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.93e+57 rho_final=1.65e+02
+RIDDER SWITCHING: z_osc = 4576.57, a_osc = 2.184567e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.035351e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.035351e+00
+BG_FUNC: a=1.05e-13 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+BG_FUNC: a=5.34e-12 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+BG_FUNC: a=2.71e-10 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+BG_FUNC: a=1.38e-08 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+BG_FUNC: a=7.01e-07 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+BG_FUNC: a=3.57e-05 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.73e+57 rho_final=1.53e+02
+RIDDER SWITCHING: z_osc = 4569.33, a_osc = 2.188024e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.056097e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.056097e+00
+BG_FUNC: a=8.33e-14 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=4.22e-12 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=2.14e-10 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=1.08e-08 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=5.49e-07 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+BG_FUNC: a=2.78e-05 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.95e+57 rho_final=1.66e+02
+RIDDER SWITCHING: z_osc = 4683.85, a_osc = 2.134542e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.033775e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.033775e+00
+BG_FUNC: a=6.65e-14 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+BG_FUNC: a=3.38e-12 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+BG_FUNC: a=1.72e-10 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+BG_FUNC: a=8.74e-09 V=1.11[mcmc] Progress @ 2025-12-02 19:28:57 : 88 steps taken, and 42 accepted.
+[mcmc] Progress @ 2025-12-02 19:32:04 : 91 steps taken, and 42 accepted.
+[mcmc] Progress @ 2025-12-02 19:35:01 : 103 steps taken, and 43 accepted.
+[mcmc] Progress @ 2025-12-02 19:37:19 : 110 steps taken, and 47 accepted.
+[mcmc] Progress @ 2025-12-02 19:39:34 : 117 steps taken, and 48 accepted.
+e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+BG_FUNC: a=4.45e-07 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.53e+02
+BG_FUNC: a=2.26e-05 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.71e+57 rho_final=1.52e+02
+RIDDER SWITCHING: z_osc = 4472.32, a_osc = 2.235478e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.009641e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.009641e+00
+BG_FUNC: a=5.18e-14 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=2.64e-12 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=1.35e-10 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=6.87e-09 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=3.51e-07 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=1.79e-05 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+RIDDER SWITCHING: z_osc = 4501.80, a_osc = 2.220841e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.054514e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.054514e+00
+BG_FUNC: a=4.14e-14 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=2.10e-12 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.06e-10 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=5.38e-09 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=2.73e-07 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.38e-05 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+RIDDER SWITCHING: z_osc = 4709.56, a_osc = 2.122892e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.032875e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.032875e+00
+BG_FUNC: a=3.35e-14 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+BG_FUNC: a=1.70e-12 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+BG_FUNC: a=8.65e-11 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+BG_FUNC: a=4.40e-09 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+BG_FUNC: a=2.24e-07 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+BG_FUNC: a=1.14e-05 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.70e+57 rho_final=1.52e+02
+RIDDER SWITCHING: z_osc = 4556.47, a_osc = 2.194199e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.054852e+00
+BG_FUNC: a=2.66e-14 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.35e-12 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=6.83e-11 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=3.46e-09 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=1.75e-07 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+BG_FUNC: a=8.89e-06 V=1.20e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.94e+57 rho_final=1.65e+02
+RIDDER SWITCHING: z_osc = 4576.56, a_osc = 2.184568e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.070840e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.070840e+00
+BG_FUNC: a=2.07e-14 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=1.05e-12 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=5.29e-11 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=2.68e-09 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=1.36e-07 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=[mcmc] Progress @ 2025-12-02 19:41:24 : 119 steps taken, and 48 accepted.
+[mcmc] Progress @ 2025-12-02 19:43:20 : 123 steps taken, and 50 accepted.
+[mcmc] Progress @ 2025-12-02 19:45:10 : 126 steps taken, and 50 accepted.
+[mcmc] Progress @ 2025-12-02 19:46:57 : 127 steps taken, and 50 accepted.
+[mcmc] Progress @ 2025-12-02 19:48:44 : 128 steps taken, and 50 accepted.
+3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=6.86e-06 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+RIDDER SWITCHING: z_osc = 4784.29, a_osc = 2.089738e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.072619e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.072619e+00
+BG_FUNC: a=1.68e-14 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+BG_FUNC: a=8.52e-13 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+BG_FUNC: a=4.31e-11 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+BG_FUNC: a=2.18e-09 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+BG_FUNC: a=1.10e-07 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+BG_FUNC: a=5.59e-06 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.14e+57 rho_final=1.77e+02
+RIDDER SWITCHING: z_osc = 4767.88, a_osc = 2.096927e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.093888e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.093888e+00
+BG_FUNC: a=1.37e-14 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+BG_FUNC: a=6.92e-13 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+BG_FUNC: a=3.50e-11 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+BG_FUNC: a=1.77e-09 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+BG_FUNC: a=8.97e-08 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+BG_FUNC: a=4.54e-06 V=1.39e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.40e+57 rho_final=1.91e+02
+RIDDER SWITCHING: z_osc = 4776.91, a_osc = 2.092965e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.070797e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.070797e+00
+BG_FUNC: a=1.11e-14 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=5.60e-13 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=2.84e-11 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=1.43e-09 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=7.26e-08 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=3.68e-06 V=1.28e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.12e+57 rho_final=1.76e+02
+BG_FUNC: a=1.86e-04 V=6.06e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=1.98e+57 rho_final=1.11e+02
+RIDDER SWITCHING: z_osc = 4785.17, a_osc = 2.089354e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.030145e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.030145e+00
+BG_FUNC: a=4.59e-13 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.67e+57 rho_final=1.50e+02
+BG_FUNC: a=2.33e-11 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.67e+57 rho_final=1.50e+02
+BG_FUNC: a=1.19e-09 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.67e+57 rho_final=1.50e+02
+BG_FUNC: a=6.04e-08 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.67e+57 rho_final=1.50e+02
+BG_FUNC: a=3.07e-06 V=1.09e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.67e+57 rho_final=1.50e+02
+BG_FUNC: a=1.56e-04 V=7.69e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.16e+57 rho_final=1.21e+02
+RIDDER SWITCHING: z_osc = 4530.78, a_osc = 2.206636e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.114482e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.114482e+00
+BG_FUNC: a=3.61e-13 V=1.50e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.66e+57 rho_final=2.06e+02
+BG_FUNC: a=1.83e-11 V=1.50e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.66e+57 rho_final=2.06e+02
+BG_FUNC: a=9.27e-10 V=1.50e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.66e+57 rho_final=2.06e+02
+BG_FUNC: a=4.69e-08 V=1.50e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.66e+57 rho_final=2.06e+02
+BG_FUNC: a=2.37e-06 V=1.50e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.66e+57 rho_final=2.06e+02
+BG_FUNC: a=1.20e-04 V=1[mcmc] Progress @ 2025-12-02 19:50:53 : 138 steps taken, and 53 accepted.
+[mcmc] Progress @ 2025-12-02 19:53:10 : 139 steps taken, and 53 accepted.
+[mcmc] Progress @ 2025-12-02 19:54:57 : 140 steps taken, and 54 accepted.
+[mcmc] Progress @ 2025-12-02 19:56:48 : 144 steps taken, and 55 accepted.
+[mcmc] Progress @ 2025-12-02 19:58:48 : 151 steps taken, and 56 accepted.
+[mcmc] Progress @ 2025-12-02 20:00:41 : 156 steps taken, and 56 accepted.
+.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.27e+57 rho_final=1.84e+02
+RIDDER SWITCHING: z_osc = 4984.73, a_osc = 2.005723e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.058915e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.058915e+00
+BG_FUNC: a=3.07e-13 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.99e+57 rho_final=1.68e+02
+BG_FUNC: a=1.55e-11 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.99e+57 rho_final=1.68e+02
+BG_FUNC: a=7.88e-10 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.99e+57 rho_final=1.68e+02
+BG_FUNC: a=3.98e-08 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.99e+57 rho_final=1.68e+02
+BG_FUNC: a=2.02e-06 V=1.22e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.99e+57 rho_final=1.68e+02
+BG_FUNC: a=1.02e-04 V=1.12e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.84e+57 rho_final=1.60e+02
+RIDDER SWITCHING: z_osc = 4775.78, a_osc = 2.093459e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.067452e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.067452e+00
+BG_FUNC: a=2.49e-13 V=1.26e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.08e+57 rho_final=1.73e+02
+BG_FUNC: a=1.26e-11 V=1.26e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.08e+57 rho_final=1.73e+02
+BG_FUNC: a=6.39e-10 V=1.26e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.08e+57 rho_final=1.73e+02
+BG_FUNC: a=3.23e-08 V=1.26e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.08e+57 rho_final=1.73e+02
+BG_FUNC: a=1.64e-06 V=1.26e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.08e+57 rho_final=1.73e+02
+BG_FUNC: a=8.30e-05 V=1.21e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.01e+57 rho_final=1.69e+02
+RIDDER SWITCHING: z_osc = 4740.91, a_osc = 2.108853e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.110253e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.110253e+00
+BG_FUNC: a=2.01e-13 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.61e+57 rho_final=2.03e+02
+BG_FUNC: a=1.02e-11 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.61e+57 rho_final=2.03e+02
+BG_FUNC: a=5.16e-10 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.61e+57 rho_final=2.03e+02
+BG_FUNC: a=2.61e-08 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.61e+57 rho_final=2.03e+02
+BG_FUNC: a=1.32e-06 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.61e+57 rho_final=2.03e+02
+BG_FUNC: a=6.70e-05 V=1.45e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.00e+02
+RIDDER SWITCHING: z_osc = 4968.25, a_osc = 2.012378e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+BG_FUNC: a=1.70e-13 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=8.62e-12 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=4.36e-10 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=2.21e-08 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.12e-06 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=5.66e-05 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.63e+57 rho_final=2.04e+02
+RIDDER SWITCHING: z_osc = 4984.05, a_osc = 2.005999e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+BG_FUNC: a=1.45e-13 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=7.31e-12 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=3.70e-10 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.87e-08 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=9.48e-07 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=4.81e-05 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.64e+57 rho_final=2.05e+02
+RIDDER SWITCHING: z_osc = 4984.05, a_osc = 2.005999e-04
+DEBUG: Ridder fiel[mcmc] Progress @ 2025-12-02 20:02:56 : 157 steps taken, and 56 accepted.
+[mcmc] Progress @ 2025-12-02 20:04:59 : 163 steps taken, and 58 accepted.
+[mcmc] Progress @ 2025-12-02 20:07:37 : 175 steps taken, and 61 accepted.
+[mcmc] Progress @ 2025-12-02 20:09:31 : 177 steps taken, and 61 accepted.
+[mcmc] Progress @ 2025-12-02 20:11:57 : 180 steps taken, and 61 accepted.
+d ENABLED. Lambda = 1.130735e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.130735e+00
+BG_FUNC: a=1.23e-13 V=1.59e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+BG_FUNC: a=6.23e-12 V=1.59e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+BG_FUNC: a=3.16e-10 V=1.59e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+BG_FUNC: a=1.60e-08 V=1.59e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+BG_FUNC: a=8.09e-07 V=1.59e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+BG_FUNC: a=4.10e-05 V=1.58e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.88e+57 rho_final=2.18e+02
+RIDDER SWITCHING: z_osc = 5064.53, a_osc = 1.974126e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.089685e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.089685e+00
+BG_FUNC: a=1.06e-13 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+BG_FUNC: a=5.38e-12 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+BG_FUNC: a=2.73e-10 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+BG_FUNC: a=1.38e-08 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+BG_FUNC: a=6.98e-07 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+BG_FUNC: a=3.54e-05 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.35e+57 rho_final=1.88e+02
+RIDDER SWITCHING: z_osc = 4882.32, a_osc = 2.047788e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.073812e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.073812e+00
+BG_FUNC: a=8.83e-14 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=4.46e-12 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=2.26e-10 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=1.14e-08 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=5.79e-07 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=2.93e-05 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.77e+02
+RIDDER SWITCHING: z_osc = 4764.11, a_osc = 2.098587e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.126145e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.126145e+00
+BG_FUNC: a=7.18e-14 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=3.64e-12 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=1.84e-10 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=9.33e-09 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=4.72e-07 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=2.39e-05 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+RIDDER SWITCHING: z_osc = 5064.57, a_osc = 1.974112e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.100410e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.100410e+00
+BG_FUNC: a=6.23e-14 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+BG_FUNC: a=3.16e-12 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+BG_FUNC: a=1.60e-10 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+BG_FUNC: a=8.08e-09 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+BG_FUNC: a=4.09e-07 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+BG_FUNC: a=2.20e-05 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.48e+57 rho_final=1.96e+02
+RIDDER SWITCHING: z_osc = 4831.85, a_osc = 2.069174e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.113528e+00
+BG_FUNC: a=5.12e-14 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho[mcmc] Progress @ 2025-12-02 20:13:41 : 181 steps taken, and 61 accepted.
+[mcmc] Progress @ 2025-12-02 20:15:35 : 184 steps taken, and 61 accepted.
+[mcmc] Progress @ 2025-12-02 20:17:26 : 187 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:19:22 : 196 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:21:55 : 200 steps taken, and 62 accepted.
+_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=2.59e-12 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.31e-10 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=6.64e-09 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=3.36e-07 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.70e-05 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+RIDDER SWITCHING: z_osc = 4984.05, a_osc = 2.005999e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.113269e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.113269e+00
+BG_FUNC: a=4.35e-14 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=2.20e-12 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.11e-10 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=5.64e-09 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=2.85e-07 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+BG_FUNC: a=1.44e-05 V=1.49e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.65e+57 rho_final=2.05e+02
+RIDDER SWITCHING: z_osc = 4983.57, a_osc = 2.006190e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+BG_FUNC: a=3.69e-14 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=1.87e-12 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=9.46e-11 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=4.79e-09 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=2.42e-07 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=1.23e-05 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+RIDDER SWITCHING: z_osc = 4963.93, a_osc = 2.014128e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.096450e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.096450e+00
+BG_FUNC: a=3.12e-14 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+BG_FUNC: a=1.58e-12 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+BG_FUNC: a=8.00e-11 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+BG_FUNC: a=4.30e-09 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+BG_FUNC: a=2.05e-07 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+BG_FUNC: a=1.04e-05 V=1.40e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.43e+57 rho_final=1.93e+02
+RIDDER SWITCHING: z_osc = 4795.35, a_osc = 2.084918e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.120637e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.120637e+00
+BG_FUNC: a=2.54e-14 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+BG_FUNC: a=1.28e-12 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+BG_FUNC: a=6.50e-11 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+BG_FUNC: a=3.29e-09 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+BG_FUNC: a=1.66e-07 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+BG_FUNC: a=8.43e-06 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.75e+57 rho_final=2.11e+02
+RIDDER SWITCHING: z_osc = 5050.03, a_osc = 1.979795e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.088925e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.088925e+00
+BG_FUNC: a=2.19e-14 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+BG_FUNC: a=1.11e-12 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+BG_FUNC: a=5.60e-1[mcmc] Progress @ 2025-12-02 20:23:35 : 201 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:24:56 : 205 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:26:05 : 207 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:27:24 : 216 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:29:20 : 222 steps taken, and 62 accepted.
+1 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+BG_FUNC: a=2.84e-09 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+BG_FUNC: a=1.43e-07 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+BG_FUNC: a=7.26e-06 V=1.37e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.34e+57 rho_final=1.88e+02
+RIDDER SWITCHING: z_osc = 4879.41, a_osc = 2.049006e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.084376e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.084376e+00
+BG_FUNC: a=1.81e-14 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+BG_FUNC: a=9.16e-13 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+BG_FUNC: a=4.64e-11 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+BG_FUNC: a=2.35e-09 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+BG_FUNC: a=1.19e-07 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+BG_FUNC: a=6.02e-06 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.85e+02
+RIDDER SWITCHING: z_osc = 4829.43, a_osc = 2.070208e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+BG_FUNC: a=1.49e-14 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=7.54e-13 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=3.82e-11 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=1.93e-09 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=9.77e-08 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=4.95e-06 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+RIDDER SWITCHING: z_osc = 4963.93, a_osc = 2.014128e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.015549e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.015549e+00
+BG_FUNC: a=1.26e-14 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+BG_FUNC: a=6.42e-13 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+BG_FUNC: a=3.27e-11 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+BG_FUNC: a=1.67e-09 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+BG_FUNC: a=8.50e-08 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+BG_FUNC: a=4.33e-06 V=1.03e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.53e+57 rho_final=1.42e+02
+RIDDER SWITCHING: z_osc = 4504.79, a_osc = 2.219367e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.099011e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.099011e+00
+BG_FUNC: a=1.01e-14 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=5.04e-13 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=2.55e-11 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=1.29e-09 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=6.54e-08 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=3.31e-06 V=1.42e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.47e+57 rho_final=1.95e+02
+BG_FUNC: a=1.67e-04 V=8.01e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.45e+57 rho_final=1.38e+02
+RIDDER SWITCHING: z_osc = 4806.93, a_osc = 2.079897e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.111160e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.111160e+00
+BG_FUNC: a=4.10e-13 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=2.08e-11 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.05e-09 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 [mcmc] Progress @ 2025-12-02 20:30:31 : 223 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:31:44 : 224 steps taken, and 62 accepted.
+[mcmc] Progress @ 2025-12-02 20:33:13 : 235 steps taken, and 64 accepted.
+[mcmc] Progress @ 2025-12-02 20:34:49 : 237 steps taken, and 64 accepted.
+[mcmc] Progress @ 2025-12-02 20:37:03 : 240 steps taken, and 65 accepted.
+rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=5.31e-08 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=2.69e-06 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.36e-04 V=1.11e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.03e+57 rho_final=1.70e+02
+RIDDER SWITCHING: z_osc = 4972.49, a_osc = 2.010662e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.106295e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.106295e+00
+BG_FUNC: a=3.47e-13 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+BG_FUNC: a=1.76e-11 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+BG_FUNC: a=8.90e-10 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+BG_FUNC: a=4.50e-08 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+BG_FUNC: a=2.28e-06 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+BG_FUNC: a=1.15e-04 V=1.25e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+RIDDER SWITCHING: z_osc = 4950.62, a_osc = 2.019539e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.126478e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.126478e+00
+BG_FUNC: a=2.91e-13 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=1.48e-11 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=7.49e-10 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=3.79e-08 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=1.92e-06 V=1.56e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.82e+57 rho_final=2.15e+02
+BG_FUNC: a=9.73e-05 V=1.43e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+RIDDER SWITCHING: z_osc = 5076.43, a_osc = 1.969501e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.091311e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.091311e+00
+BG_FUNC: a=2.54e-13 V=1.38e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.37e+57 rho_final=1.89e+02
+BG_FUNC: a=1.28e-11 V=1.38e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.37e+57 rho_final=1.89e+02
+BG_FUNC: a=6.50e-10 V=1.38e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.37e+57 rho_final=1.89e+02
+BG_FUNC: a=3.29e-08 V=1.38e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.37e+57 rho_final=1.89e+02
+BG_FUNC: a=1.66e-06 V=1.38e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.37e+57 rho_final=1.89e+02
+BG_FUNC: a=8.47e-05 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+RIDDER SWITCHING: z_osc = 4877.60, a_osc = 2.049770e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.109165e+00
+BG_FUNC: a=2.09e-13 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=1.06e-11 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=5.36e-10 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=2.72e-08 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=1.37e-06 V=1.47e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.60e+57 rho_final=2.02e+02
+BG_FUNC: a=6.97e-05 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.54e+57 rho_final=1.99e+02
+RIDDER SWITCHING: z_osc = 4963.93, a_osc = 2.014128e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.123852e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.123852e+00
+BG_FUNC: a=1.77e-13 V=1.55e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.79e+57 rho_final=2.13e+02
+BG_FUNC: a=8.99e-12 V=1.55e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.79e+57 rho_final=2.13e+02
+BG_FUNC: a=4.55e-10 V=1.55e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.79e+57 rho_final=2.13e+02
+BG_FUNC: a=2.31e-08 V=1.55e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.79e+57 rho_final=2.13e+02
+BG_FUNC: a=1.17[mcmc] Progress @ 2025-12-02 20:38:13 : 241 steps taken, and 65 accepted.
+[mcmc] Progress @ 2025-12-02 20:39:42 : 254 steps taken, and 69 accepted.
+[mcmc] Progress @ 2025-12-02 20:40:55 : 261 steps taken, and 70 accepted.
+[mcmc] Progress @ 2025-12-02 20:42:11 : 265 steps taken, and 71 accepted.
+[mcmc] Progress @ 2025-12-02 20:44:35 : 266 steps taken, and 71 accepted.
+e-06 V=1.55e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.79e+57 rho_final=2.13e+02
+BG_FUNC: a=5.92e-05 V=1.53e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.76e+57 rho_final=2.11e+02
+RIDDER SWITCHING: z_osc = 5120.21, a_osc = 1.952663e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.107822e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.107822e+00
+BG_FUNC: a=1.55e-13 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=7.84e-12 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=3.97e-10 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=2.01e-08 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=1.02e-06 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=5.16e-05 V=1.45e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.56e+57 rho_final=2.00e+02
+RIDDER SWITCHING: z_osc = 4869.51, a_osc = 2.053172e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.107822e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.107822e+00
+BG_FUNC: a=1.28e-13 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=6.50e-12 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=3.29e-10 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=1.67e-08 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=8.43e-07 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=4.27e-05 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+RIDDER SWITCHING: z_osc = 4869.71, a_osc = 2.053088e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.073960e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.073960e+00
+BG_FUNC: a=1.06e-13 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=5.39e-12 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=2.73e-10 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=1.38e-08 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=6.99e-07 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.78e+02
+BG_FUNC: a=3.54e-05 V=1.29e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.16e+57 rho_final=1.77e+02
+RIDDER SWITCHING: z_osc = 4764.53, a_osc = 2.098404e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.108143e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.108143e+00
+BG_FUNC: a=8.64e-14 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=4.38e-12 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=2.22e-10 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=1.12e-08 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=5.68e-07 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+BG_FUNC: a=2.87e-05 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.58e+57 rho_final=2.01e+02
+RIDDER SWITCHING: z_osc = 4986.41, a_osc = 2.005050e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.122821e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.122821e+00
+BG_FUNC: a=7.36e-14 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.78e+57 rho_final=2.12e+02
+BG_FUNC: a=3.72e-12 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.78e+57 rho_final=2.12e+02
+BG_FUNC: a=1.89e-10 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.78e+57 rho_final=2.12e+02
+BG_FUNC: a=9.55e-09 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.78e+57 rho_final=2.12e+02
+BG_FUNC: a=4.83e-07 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.78e+57 rho_final=2.12e+02
+BG_FUNC: a=2.45e-05 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-[mcmc] Progress @ 2025-12-02 20:45:50 : 269 steps taken, and 71 accepted.
+[mcmc] Progress @ 2025-12-02 20:47:01 : 270 steps taken, and 71 accepted.
+[mcmc] Progress @ 2025-12-02 20:48:32 : 271 steps taken, and 71 accepted.
+[mcmc] Progress @ 2025-12-02 20:49:49 : 272 steps taken, and 72 accepted.
+[mcmc] Progress @ 2025-12-02 20:50:59 : 273 steps taken, and 72 accepted.
+[mcmc] Progress @ 2025-12-02 20:52:54 : 280 steps taken, and 72 accepted.
+56 rho_eV2=3.77e+57 rho_final=2.12e+02
+RIDDER SWITCHING: z_osc = 5059.28, a_osc = 1.976175e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.088386e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.088386e+00
+BG_FUNC: a=6.35e-14 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+BG_FUNC: a=3.21e-12 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+BG_FUNC: a=1.63e-10 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+BG_FUNC: a=8.24e-09 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+BG_FUNC: a=4.17e-07 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+BG_FUNC: a=2.11e-05 V=1.36e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.33e+57 rho_final=1.87e+02
+RIDDER SWITCHING: z_osc = 4875.49, a_osc = 2.050655e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.122588e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.122588e+00
+BG_FUNC: a=5.26e-14 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+BG_FUNC: a=2.66e-12 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+BG_FUNC: a=1.35e-10 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+BG_FUNC: a=6.82e-09 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+BG_FUNC: a=3.45e-07 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+BG_FUNC: a=1.75e-05 V=1.54e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.77e+57 rho_final=2.12e+02
+RIDDER SWITCHING: z_osc = 5058.38, a_osc = 1.976528e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.107491e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.107491e+00
+BG_FUNC: a=4.54e-14 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=2.30e-12 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=1.16e-10 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=5.88e-09 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=2.98e-07 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=1.51e-05 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+RIDDER SWITCHING: z_osc = 4956.38, a_osc = 2.017193e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.146800e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.146800e+00
+BG_FUNC: a=3.81e-14 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+BG_FUNC: a=1.93e-12 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+BG_FUNC: a=9.76e-11 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+BG_FUNC: a=4.94e-09 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+BG_FUNC: a=2.50e-07 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+BG_FUNC: a=1.27e-05 V=1.68e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=4.11e+57 rho_final=2.31e+02
+RIDDER SWITCHING: z_osc = 5062.24, a_osc = 1.975022e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.111337e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.111337e+00
+BG_FUNC: a=3.29e-14 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.67e-12 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=8.43e-11 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=4.26e-09 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=2.16e-07 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+BG_FUNC: a=1.09e-05 V=1.48e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.62e+57 rho_final=2.04e+02
+RIDDER SWITCHING: z_osc = 4974.10, a_osc = 2.010010e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.107491e+00
+DEBUG: Rid[mcmc] Progress @ 2025-12-02 20:54:05 : 281 steps taken, and 72 accepted.
+[mcmc] Progress @ 2025-12-02 20:55:18 : 283 steps taken, and 73 accepted.
+[mcmc] Progress @ 2025-12-02 20:56:49 : 294 steps taken, and 73 accepted.
+[mcmc] Progress @ 2025-12-02 20:58:26 : 299 steps taken, and 74 accepted.
+[mcmc] Progress @ 2025-12-02 20:59:42 : 305 steps taken, and 74 accepted.
+der field ENABLED. Lambda = 1.107491e+00
+BG_FUNC: a=2.79e-14 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=1.41e-12 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=7.14e-11 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=3.61e-09 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=1.83e-07 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+BG_FUNC: a=9.27e-06 V=1.46e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.57e+57 rho_final=2.01e+02
+RIDDER SWITCHING: z_osc = 4956.38, a_osc = 2.017193e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.138488e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.138488e+00
+BG_FUNC: a=2.34e-14 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+BG_FUNC: a=1.19e-12 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+BG_FUNC: a=6.37e-11 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+BG_FUNC: a=3.04e-09 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+BG_FUNC: a=1.54e-07 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+BG_FUNC: a=7.79e-06 V=1.63e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.99e+57 rho_final=2.24e+02
+RIDDER SWITCHING: z_osc = 5015.24, a_osc = 1.993523e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.103639e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.103639e+00
+BG_FUNC: a=2.00e-14 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+BG_FUNC: a=1.01e-12 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+BG_FUNC: a=5.12e-11 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+BG_FUNC: a=2.59e-09 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+BG_FUNC: a=1.31e-07 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+BG_FUNC: a=6.64e-06 V=1.44e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.52e+57 rho_final=1.98e+02
+RIDDER SWITCHING: z_osc = 4940.01, a_osc = 2.023877e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.080443e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.080443e+00
+BG_FUNC: a=1.67e-14 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+BG_FUNC: a=8.46e-13 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+BG_FUNC: a=4.29e-11 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+BG_FUNC: a=2.17e-09 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+BG_FUNC: a=1.10e-07 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+BG_FUNC: a=5.56e-06 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.24e+57 rho_final=1.82e+02
+RIDDER SWITCHING: z_osc = 4729.41, a_osc = 2.113984e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.097509e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.097509e+00
+BG_FUNC: a=1.35e-14 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+BG_FUNC: a=6.81e-13 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+BG_FUNC: a=3.45e-11 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+BG_FUNC: a=1.74e-09 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+BG_FUNC: a=8.84e-08 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+BG_FUNC: a=4.48e-06 V=1.41e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.45e+57 rho_final=1.94e+02
+RIDDER SWITCHING: z_osc = 4818.29, a_osc = 2.074997e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.079625e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.079625e+00
+BG_FUNC: a=1.11e-14 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a[mcmc] Progress @ 2025-12-02 21:00:52 : 307 steps taken, and 75 accepted.
+[mcmc] Progress @ 2025-12-02 21:02:07 : 310 steps taken, and 77 accepted.
+[mcmc] Progress @ 2025-12-02 21:03:18 : 312 steps taken, and 77 accepted.
+[mcmc] Progress @ 2025-12-02 21:04:37 : 316 steps taken, and 78 accepted.
+[mcmc] Progress @ 2025-12-02 21:05:57 : 325 steps taken, and 79 accepted.
+=5.59e-13 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=2.83e-11 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=1.43e-09 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=7.25e-08 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=3.67e-06 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=1.86e-04 V=6.09e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.02e+57 rho_final=1.13e+02
+RIDDER SWITCHING: z_osc = 4725.82, a_osc = 2.115587e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.009792e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.009792e+00
+BG_FUNC: a=4.53e-13 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=2.31e-11 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=1.18e-09 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=6.01e-08 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=3.06e-06 V=1.01e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.47e+57 rho_final=1.39e+02
+BG_FUNC: a=1.55e-04 V=7.33e-02 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.03e+57 rho_final=1.14e+02
+RIDDER SWITCHING: z_osc = 4316.93, a_osc = 2.315922e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.083976e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.083976e+00
+BG_FUNC: a=3.44e-13 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+BG_FUNC: a=1.74e-11 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+BG_FUNC: a=8.80e-10 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+BG_FUNC: a=4.46e-08 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+BG_FUNC: a=2.25e-06 V=1.34e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.28e+57 rho_final=1.84e+02
+BG_FUNC: a=1.14e-04 V=1.17e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.01e+57 rho_final=1.69e+02
+RIDDER SWITCHING: z_osc = 4728.92, a_osc = 2.114199e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.079625e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.079625e+00
+BG_FUNC: a=2.75e-13 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=1.39e-11 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=7.05e-10 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=3.57e-08 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=1.81e-06 V=1.32e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.23e+57 rho_final=1.81e+02
+BG_FUNC: a=9.18e-05 V=1.24e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=3.11e+57 rho_final=1.75e+02
+RIDDER SWITCHING: z_osc = 4725.82, a_osc = 2.115587e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.052673e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.052673e+00
+BG_FUNC: a=2.22e-13 V=1.19e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.92e+57 rho_final=1.64e+02
+BG_FUNC: a=1.12e-11 V=1.19e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.92e+57 rho_final=1.64e+02
+BG_FUNC: a=5.71e-10 V=1.19e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.92e+57 rho_final=1.64e+02
+BG_FUNC: a=2.89e-08 V=1.19e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.92e+57 rho_final=1.64e+02
+BG_FUNC: a=1.47e-06 V=1.19e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.92e+57 rho_final=1.64e+02
+BG_FUNC: a=7.45e-05 V=1.16e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.87e+57 rho_final=1.62e+02
+RIDDER SWITCHING: z_osc = 4520.23, a_osc = 2.211787e-04
+DEBUG: Ridder field ENABLED. Lambda = 1.042260e+00
+DEBUG: Ridder field ENABLED. Lambda = 1.042260e+00
+BG_FUNC: a=1.73e-13 V=1.15e-01 factor_V=2.45e+58 factor_rho=5.62e-56 rho_eV2=2.80e+57 rho_final=1.58e+02
+BG_FUNC: a=8.76e-12 V=1.15e-01 factor_V=2.45e+58 factor_rho=5[mcmc] Progress @ 2025-12-02 21:07:37 : 326 steps taken, and 79 accepted.
+[mcmc] Progress @ 2025-12-02 21:08:50 : 333 steps taken, and 79 accepted.
+[mcmc] Progress @ 2025-12-02 21:09:59 : 334 steps taken, and 80 accepted.
+[mcmc] Progress @ 2025-12-02 21:11:08 : 335 steps taken, and 80 accepted.

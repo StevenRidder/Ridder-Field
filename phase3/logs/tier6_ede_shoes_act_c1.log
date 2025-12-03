@@ -1,0 +1,17 @@
+[output] Output to be read-from/written-into folder '/home/ridderadmin/Ridder-Field/phase3/chains', with prefix 'tier6_ede_shoes_act_c1'
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/data/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+Warning: The FITS format without the 'sacc_ordering' column is deprecated
+Assuming data rows are in the correct order as it was before version 1.0.
+[act_dr6_mflike.actdr6mflike] Number of bins used: 1651
+[act_dr6_mflike.actdr6mflike] Initialized!
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[shoes_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+[prior] Reference values or pdfs for some parameters were not provided. Sampling from the prior instead for those parameters.

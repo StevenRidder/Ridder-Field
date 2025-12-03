@@ -1,0 +1,89 @@
+# Tier 5 Phase 3: ΛCDM with SH0ES (NO DESI) - Baseline to re-anchor Tier 9/10
+# Tests: Does EDE still beat ΛCDM by Δχ² ≈ -10 in the paper's original world?
+# k = 6 parameters
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+
+likelihood:
+  # CMB
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  
+  # Pre-DESI BAO ONLY (no DESI)
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # Pantheon+ Supernovae
+  sn.pantheonplus:
+  
+  # SH0ES H0 prior: 73.04 ± 1.04 km/s/Mpc
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
+
+params:
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 70.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: 0.120
+    proposal: 0.002
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 50
+    learn_proposal: true
+
+output: chains/tier5_lcdm_shoes_predesi
+resume: true

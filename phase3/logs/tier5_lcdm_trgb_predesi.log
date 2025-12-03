@@ -1,0 +1,319 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier5_lcdm_trgb_predesi'
+[output] Found existing info files with the requested output prefix: 'chains/tier5_lcdm_trgb_predesi'
+[output] Let's try to resume/load.
+[output] Found an old sample. Resuming.
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages/classy
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[trgb_h0] Initialized external likelihood.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[classy] *WARNING* Requesting BB for ell>50 or lensing Cl's: using a non-linear code is recommended (and you are not using any). To activate it, set 'non_linear: halofit|hmcode|...' in classy's 'extra_args'.
+[mcmc] Resuming from previous sample!
+[samplecollection] Loaded 753 sample points from 'chains/tier5_lcdm_trgb_predesi.1.txt'
+[mcmc] Initial point: logA:3.052027, n_s:0.9751367, H0:69.44008, omega_b:0.02256285, omega_cdm:0.116376, tau_reio:0.06307841, A_planck:1.000654, calib_100T:0.9999525, calib_217T:0.9993562, A_cib_217:51.14321, xi_sz_cib:0.5403218, A_sz:7.247277, ksz_norm:2.736067, gal545_A_100:10.0042, gal545_A_143:10.7631, gal545_A_143_217:21.27166, gal545_A_217:95.98421, ps_A_100_100:277.9712, ps_A_143_143:44.7405, ps_A_143_217:39.38009, ps_A_217_217:106.025, galf_TE_A_100:0.1044072, galf_TE_A_100_143:0.1630105, galf_TE_A_100_217:0.5086889, galf_TE_A_143:0.2773136, galf_TE_A_143_217:0.4967531, galf_TE_A_217:2.113765
+[mcmc] *WARNING* Parameter blocking manually/previously fixed: speeds will not be measured.
+[mcmc] Oversampling with factors:
+[mcmc] * 1 : ['H0']
+[mcmc] * 1 : ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio']
+[mcmc] * 3 : ['A_planck']
+[mcmc] * 3 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+[mcmc] Covariance matrix from previous sample.
+[mcmc] Sampling!
+[mcmc] Progress @ 2025-11-30 16:43:13 : 1 steps taken, and 753 accepted.
+[mcmc] Progress @ 2025-11-30 16:44:21 : 40 steps taken, and 755 accepted.
+[mcmc] Progress @ 2025-11-30 16:45:22 : 91 steps taken, and 762 accepted.
+[mcmc] Progress @ 2025-11-30 16:46:26 : 108 steps taken, and 764 accepted.
+[mcmc] Progress @ 2025-11-30 16:47:38 : 148 steps taken, and 768 accepted.
+[mcmc] Progress @ 2025-11-30 16:48:43 : 196 steps taken, and 780 accepted.
+[mcmc] Progress @ 2025-11-30 16:49:43 : 235 steps taken, and 782 accepted.
+[mcmc] Progress @ 2025-11-30 16:50:50 : 272 steps taken, and 787 accepted.
+[mcmc] Progress @ 2025-11-30 16:51:52 : 309 steps taken, and 793 accepted.
+[mcmc] Progress @ 2025-11-30 16:53:03 : 349 steps taken, and 799 accepted.
+[mcmc] Progress @ 2025-11-30 16:54:14 : 383 steps taken, and 804 accepted.
+[mcmc] Progress @ 2025-11-30 16:55:25 : 426 steps taken, and 808 accepted.
+[mcmc] Progress @ 2025-11-30 16:56:38 : 460 steps taken, and 812 accepted.
+[mcmc] Progress @ 2025-11-30 16:57:49 : 494 steps taken, and 817 accepted.
+[mcmc] Progress @ 2025-11-30 16:58:49 : 527 steps taken, and 821 accepted.
+[mcmc] Progress @ 2025-11-30 17:00:04 : 536 steps taken, and 822 accepted.
+[mcmc] Progress @ 2025-11-30 17:01:04 : 553 steps taken, and 826 accepted.
+[mcmc] Progress @ 2025-11-30 17:02:05 : 572 steps taken, and 828 accepted.
+[mcmc] Progress @ 2025-11-30 17:03:11 : 599 steps taken, and 830 accepted.
+[mcmc] Progress @ 2025-11-30 17:04:12 : 631 steps taken, and 837 accepted.
+[mcmc] Progress @ 2025-11-30 17:05:13 : 656 steps taken, and 841 accepted.
+[mcmc] Progress @ 2025-11-30 17:06:33 : 679 steps taken, and 843 accepted.
+[mcmc] Progress @ 2025-11-30 17:07:41 : 689 steps taken, and 844 accepted.
+[mcmc] Progress @ 2025-11-30 20:19:06 : 696 steps taken, and 846 accepted.
+[mcmc] Progress @ 2025-11-30 20:20:07 : 730 steps taken, and 848 accepted.
+[mcmc] Progress @ 2025-11-30 20:21:28 : 757 steps taken, and 851 accepted.
+[mcmc] Progress @ 2025-11-30 20:22:28 : 774 steps taken, and 854 accepted.
+[mcmc] Progress @ 2025-11-30 20:23:29 : 797 steps taken, and 857 accepted.
+[mcmc] Progress @ 2025-11-30 20:24:30 : 803 steps taken, and 857 accepted.
+[mcmc] Progress @ 2025-11-30 20:25:47 : 851 steps taken, and 864 accepted.
+[mcmc] Progress @ 2025-11-30 20:27:03 : 881 steps taken, and 866 accepted.
+[mcmc] Progress @ 2025-11-30 20:28:03 : 912 steps taken, and 871 accepted.
+[mcmc] Progress @ 2025-11-30 20:29:05 : 929 steps taken, and 875 accepted.
+[mcmc] Progress @ 2025-11-30 20:30:06 : 946 steps taken, and 878 accepted.
+[mcmc] Progress @ 2025-11-30 20:31:06 : 984 steps taken, and 885 accepted.
+[mcmc] Progress @ 2025-11-30 20:32:12 : 997 steps taken, and 888 accepted.
+[mcmc] Progress @ 2025-11-30 20:33:26 : 1020 steps taken, and 889 accepted.
+[mcmc] Progress @ 2025-11-30 20:34:31 : 1052 steps taken, and 893 accepted.
+[mcmc] Progress @ 2025-11-30 20:35:43 : 1078 steps taken, and 894 accepted.
+[mcmc] Progress @ 2025-11-30 20:36:59 : 1114 steps taken, and 898 accepted.
+[mcmc] Progress @ 2025-11-30 20:38:05 : 1138 steps taken, and 898 accepted.
+[mcmc] Progress @ 2025-11-30 20:39:05 : 1195 steps taken, and 907 accepted.
+[mcmc] Progress @ 2025-11-30 20:40:07 : 1202 steps taken, and 907 accepted.
+[mcmc] Progress @ 2025-11-30 20:41:20 : 1228 steps taken, and 907 accepted.
+[mcmc] Progress @ 2025-11-30 20:42:39 : 1280 steps taken, and 910 accepted.
+[mcmc] Progress @ 2025-11-30 20:43:50 : 1303 steps taken, and 914 accepted.
+[mcmc] Progress @ 2025-11-30 20:45:07 : 1324 steps taken, and 918 accepted.
+[mcmc] Learn + convergence test @ 920 samples accepted.
+[mcmc]  - Acceptance rate: 0.407
+[mcmc]  - Convergence of means: R-1 = 61.654527 after 736 accepted steps
+[mcmc] Convergence less than requested for updates: waiting until the next convergence check.
+[mcmc] Progress @ 2025-11-30 20:46:09 : 1360 steps taken, and 924 accepted.
+[mcmc] Progress @ 2025-11-30 20:47:10 : 1392 steps taken, and 927 accepted.
+[mcmc] Progress @ 2025-11-30 20:48:11 : 1427 steps taken, and 933 accepted.
+[mcmc] Progress @ 2025-11-30 20:49:23 : 1446 steps taken, and 937 accepted.
+[mcmc] Progress @ 2025-11-30 20:50:33 : 1463 steps taken, and 939 accepted.
+[mcmc] Progress @ 2025-11-30 20:51:46 : 1504 steps taken, and 944 accepted.
+[mcmc] Progress @ 2025-11-30 20:53:04 : 1540 steps taken, and 952 accepted.
+[mcmc] Progress @ 2025-11-30 20:54:07 : 1567 steps taken, and 955 accepted.
+[mcmc] Progress @ 2025-11-30 20:55:12 : 1578 steps taken, and 957 accepted.
+[mcmc] Progress @ 2025-11-30 20:56:12 : 1608 steps taken, and 959 accepted.
+[mcmc] Progress @ 2025-11-30 20:57:32 : 1630 steps taken, and 962 accepted.
+[mcmc] Progress @ 2025-11-30 20:58:46 : 1663 steps taken, and 964 accepted.
+[mcmc] Progress @ 2025-11-30 20:59:49 : 1668 steps taken, and 965 accepted.
+[mcmc] Progress @ 2025-11-30 21:00:52 : 1686 steps taken, and 967 accepted.
+[mcmc] Progress @ 2025-11-30 21:02:10 : 1737 steps taken, and 974 accepted.
+[mcmc] Progress @ 2025-11-30 21:03:11 : 1764 steps taken, and 980 accepted.
+[mcmc] Progress @ 2025-11-30 21:04:12 : 1786 steps taken, and 983 accepted.
+[mcmc] Progress @ 2025-11-30 21:05:29 : 1812 steps taken, and 986 accepted.
+[mcmc] Progress @ 2025-11-30 21:06:35 : 1829 steps taken, and 988 accepted.
+[mcmc] Progress @ 2025-11-30 21:07:35 : 1881 steps taken, and 997 accepted.
+[mcmc] Progress @ 2025-11-30 21:08:37 : 1907 steps taken, and 999 accepted.
+[mcmc] Progress @ 2025-11-30 21:09:47 : 1931 steps taken, and 1003 accepted.
+[mcmc] Progress @ 2025-11-30 21:10:48 : 1954 steps taken, and 1005 accepted.
+[mcmc] Progress @ 2025-11-30 21:12:04 : 1978 steps taken, and 1008 accepted.
+[mcmc] Progress @ 2025-11-30 21:13:05 : 2009 steps taken, and 1014 accepted.
+[mcmc] Progress @ 2025-11-30 21:14:21 : 2034 steps taken, and 1021 accepted.
+[mcmc] Progress @ 2025-11-30 21:15:21 : 2065 steps taken, and 1025 accepted.
+[mcmc] Progress @ 2025-11-30 21:16:38 : 2095 steps taken, and 1031 accepted.
+[mcmc] Progress @ 2025-11-30 21:17:45 : 2114 steps taken, and 1035 accepted.
+[mcmc] Progress @ 2025-11-30 21:18:58 : 2153 steps taken, and 1040 accepted.
+[mcmc] Progress @ 2025-11-30 21:20:03 : 2180 steps taken, and 1045 accepted.
+[mcmc] Progress @ 2025-11-30 21:21:04 : 2195 steps taken, and 1045 accepted.
+[mcmc] Progress @ 2025-11-30 21:22:11 : 2210 steps taken, and 1049 accepted.
+[mcmc] Progress @ 2025-11-30 21:23:23 : 2240 steps taken, and 1054 accepted.
+[mcmc] Progress @ 2025-11-30 21:24:23 : 2256 steps taken, and 1056 accepted.
+[mcmc] Progress @ 2025-11-30 21:25:29 : 2285 steps taken, and 1062 accepted.
+[mcmc] Progress @ 2025-11-30 21:26:29 : 2300 steps taken, and 1063 accepted.
+[mcmc] Progress @ 2025-11-30 21:27:29 : 2319 steps taken, and 1067 accepted.
+[mcmc] Progress @ 2025-11-30 21:28:40 : 2353 steps taken, and 1073 accepted.
+[mcmc] Progress @ 2025-11-30 21:29:41 : 2379 steps taken, and 1078 accepted.
+[mcmc] Progress @ 2025-11-30 21:30:43 : 2396 steps taken, and 1080 accepted.
+[mcmc] Progress @ 2025-11-30 21:31:44 : 2429 steps taken, and 1083 accepted.
+[mcmc] Progress @ 2025-11-30 21:32:46 : 2446 steps taken, and 1086 accepted.
+[mcmc] Progress @ 2025-11-30 21:33:54 : 2454 steps taken, and 1088 accepted.
+[mcmc] Progress @ 2025-11-30 21:35:02 : 2490 steps taken, and 1092 accepted.
+[mcmc] Progress @ 2025-11-30 21:36:02 : 2508 steps taken, and 1095 accepted.
+[mcmc] Progress @ 2025-11-30 21:37:16 : 2517 steps taken, and 1097 accepted.
+[mcmc] Progress @ 2025-11-30 21:38:20 : 2555 steps taken, and 1105 accepted.
+[mcmc] Progress @ 2025-11-30 21:39:40 : 2597 steps taken, and 1112 accepted.
+[mcmc] Progress @ 2025-11-30 21:40:58 : 2621 steps taken, and 1115 accepted.
+[mcmc] Progress @ 2025-11-30 21:42:03 : 2645 steps taken, and 1118 accepted.
+[mcmc] Progress @ 2025-11-30 21:43:03 : 2665 steps taken, and 1122 accepted.
+[mcmc] Progress @ 2025-11-30 21:44:12 : 2690 steps taken, and 1125 accepted.
+[mcmc] Progress @ 2025-11-30 21:45:13 : 2715 steps taken, and 1129 accepted.
+[mcmc] Progress @ 2025-11-30 21:46:13 : 2735 steps taken, and 1134 accepted.
+[mcmc] Progress @ 2025-11-30 21:47:15 : 2761 steps taken, and 1137 accepted.
+[mcmc] Progress @ 2025-11-30 21:48:31 : 2784 steps taken, and 1142 accepted.
+[mcmc] Progress @ 2025-11-30 21:49:32 : 2805 steps taken, and 1143 accepted.
+[mcmc] Progress @ 2025-11-30 21:50:33 : 2831 steps taken, and 1147 accepted.
+[mcmc] Progress @ 2025-11-30 21:51:48 : 2849 steps taken, and 1151 accepted.
+[mcmc] Progress @ 2025-11-30 21:53:02 : 2890 steps taken, and 1155 accepted.
+[mcmc] Progress @ 2025-11-30 21:54:11 : 2925 steps taken, and 1159 accepted.
+[mcmc] Progress @ 2025-11-30 21:55:12 : 2950 steps taken, and 1165 accepted.
+[mcmc] Progress @ 2025-11-30 21:56:26 : 2971 steps taken, and 1165 accepted.
+[mcmc] Progress @ 2025-11-30 21:57:26 : 2993 steps taken, and 1169 accepted.
+[mcmc] Progress @ 2025-11-30 21:58:44 : 3026 steps taken, and 1178 accepted.
+[mcmc] Progress @ 2025-11-30 21:59:57 : 3049 steps taken, and 1181 accepted.
+[mcmc] Progress @ 2025-11-30 22:00:59 : 3068 steps taken, and 1184 accepted.
+[mcmc] Progress @ 2025-11-30 22:02:00 : 3087 steps taken, and 1188 accepted.
+[mcmc] Progress @ 2025-11-30 22:03:00 : 3129 steps taken, and 1196 accepted.
+[mcmc] Progress @ 2025-11-30 22:04:15 : 3145 steps taken, and 1199 accepted.
+[mcmc] Progress @ 2025-11-30 22:05:16 : 3173 steps taken, and 1203 accepted.
+[mcmc] Progress @ 2025-11-30 22:06:17 : 3192 steps taken, and 1206 accepted.
+[mcmc] Progress @ 2025-11-30 22:07:30 : 3206 steps taken, and 1207 accepted.
+[mcmc] Progress @ 2025-11-30 22:08:31 : 3240 steps taken, and 1209 accepted.
+[mcmc] Progress @ 2025-11-30 22:09:31 : 3265 steps taken, and 1214 accepted.
+[mcmc] Progress @ 2025-11-30 22:10:31 : 3289 steps taken, and 1217 accepted.
+[mcmc] Progress @ 2025-11-30 22:11:47 : 3317 steps taken, and 1220 accepted.
+[mcmc] Progress @ 2025-11-30 22:12:54 : 3355 steps taken, and 1222 accepted.
+[mcmc] Progress @ 2025-11-30 22:13:54 : 3376 steps taken, and 1226 accepted.
+[mcmc] Progress @ 2025-11-30 22:15:01 : 3397 steps taken, and 1228 accepted.
+[mcmc] Progress @ 2025-11-30 22:16:02 : 3422 steps taken, and 1233 accepted.
+[mcmc] Progress @ 2025-11-30 22:17:02 : 3443 steps taken, and 1235 accepted.
+[mcmc] Progress @ 2025-11-30 22:18:15 : 3463 steps taken, and 1238 accepted.
+[mcmc] Progress @ 2025-11-30 22:19:16 : 3488 steps taken, and 1242 accepted.
+[mcmc] Progress @ 2025-11-30 22:20:17 : 3518 steps taken, and 1248 accepted.
+[mcmc] Progress @ 2025-11-30 22:21:28 : 3532 steps taken, and 1251 accepted.
+[mcmc] Progress @ 2025-11-30 22:22:28 : 3570 steps taken, and 1259 accepted.
+[mcmc] Progress @ 2025-11-30 22:23:28 : 3589 steps taken, and 1260 accepted.
+[mcmc] Progress @ 2025-11-30 22:24:29 : 3617 steps taken, and 1264 accepted.
+[mcmc] Progress @ 2025-11-30 22:25:43 : 3644 steps taken, and 1266 accepted.
+[mcmc] Progress @ 2025-11-30 22:26:43 : 3671 steps taken, and 1270 accepted.
+[mcmc] Progress @ 2025-11-30 22:27:48 : 3692 steps taken, and 1273 accepted.
+[mcmc] Progress @ 2025-11-30 22:29:06 : 3716 steps taken, and 1274 accepted.
+[mcmc] Progress @ 2025-11-30 22:30:07 : 3736 steps taken, and 1279 accepted.
+[mcmc] Progress @ 2025-11-30 22:31:24 : 3764 steps taken, and 1281 accepted.
+[mcmc] Progress @ 2025-11-30 22:32:39 : 3796 steps taken, and 1287 accepted.
+[mcmc] Progress @ 2025-11-30 22:33:39 : 3833 steps taken, and 1292 accepted.
+[mcmc] Progress @ 2025-11-30 22:34:49 : 3848 steps taken, and 1294 accepted.
+[mcmc] Progress @ 2025-11-30 22:35:50 : 3876 steps taken, and 1297 accepted.
+[mcmc] Progress @ 2025-11-30 22:36:53 : 3899 steps taken, and 1300 accepted.
+[mcmc] Progress @ 2025-11-30 22:37:53 : 3926 steps taken, and 1303 accepted.
+[mcmc] Progress @ 2025-11-30 22:38:54 : 3944 steps taken, and 1307 accepted.
+[mcmc] Progress @ 2025-11-30 22:39:54 : 3966 steps taken, and 1311 accepted.
+[mcmc] Progress @ 2025-11-30 22:41:05 : 3988 steps taken, and 1314 accepted.
+[mcmc] Progress @ 2025-11-30 22:42:14 : 4021 steps taken, and 1319 accepted.
+[mcmc] Progress @ 2025-11-30 22:43:28 : 4051 steps taken, and 1320 accepted.
+[mcmc] Progress @ 2025-11-30 22:44:47 : 4072 steps taken, and 1323 accepted.
+[mcmc] Progress @ 2025-11-30 22:46:06 : 4098 steps taken, and 1328 accepted.
+[mcmc] Progress @ 2025-11-30 22:47:06 : 4120 steps taken, and 1334 accepted.
+[mcmc] Progress @ 2025-11-30 22:48:07 : 4147 steps taken, and 1337 accepted.
+[mcmc] Progress @ 2025-11-30 22:49:07 : 4166 steps taken, and 1339 accepted.
+[mcmc] Progress @ 2025-11-30 22:50:21 : 4206 steps taken, and 1347 accepted.
+[mcmc] Progress @ 2025-11-30 22:51:32 : 4225 steps taken, and 1350 accepted.
+[mcmc] Progress @ 2025-11-30 22:52:32 : 4247 steps taken, and 1351 accepted.
+[mcmc] Progress @ 2025-11-30 22:53:46 : 4281 steps taken, and 1355 accepted.
+[mcmc] Progress @ 2025-11-30 22:55:00 : 4304 steps taken, and 1359 accepted.
+[mcmc] Progress @ 2025-11-30 22:56:07 : 4328 steps taken, and 1364 accepted.
+[mcmc] Progress @ 2025-11-30 22:57:07 : 4353 steps taken, and 1369 accepted.
+[mcmc] Progress @ 2025-11-30 22:58:23 : 4396 steps taken, and 1374 accepted.
+[mcmc] Progress @ 2025-11-30 22:59:27 : 4416 steps taken, and 1378 accepted.
+[mcmc] Progress @ 2025-11-30 23:00:45 : 4447 steps taken, and 1384 accepted.
+[mcmc] Progress @ 2025-11-30 23:01:49 : 4464 steps taken, and 1386 accepted.
+[mcmc] Progress @ 2025-11-30 23:03:07 : 4513 steps taken, and 1394 accepted.
+[mcmc] Progress @ 2025-11-30 23:04:08 : 4536 steps taken, and 1399 accepted.
+[mcmc] Progress @ 2025-11-30 23:05:08 : 4559 steps taken, and 1403 accepted.
+[mcmc] Progress @ 2025-11-30 23:06:09 : 4577 steps taken, and 1407 accepted.
+[mcmc] Progress @ 2025-11-30 23:07:25 : 4597 steps taken, and 1408 accepted.
+[mcmc] Progress @ 2025-11-30 23:08:30 : 4625 steps taken, and 1414 accepted.
+[mcmc] Progress @ 2025-11-30 23:09:33 : 4634 steps taken, and 1416 accepted.
+[mcmc] Progress @ 2025-11-30 23:10:34 : 4678 steps taken, and 1420 accepted.
+[mcmc] Progress @ 2025-11-30 23:11:52 : 4709 steps taken, and 1424 accepted.
+[mcmc] Progress @ 2025-11-30 23:13:08 : 4726 steps taken, and 1425 accepted.
+[mcmc] Progress @ 2025-11-30 23:14:09 : 4752 steps taken, and 1430 accepted.
+[mcmc] Progress @ 2025-11-30 23:15:10 : 4788 steps taken, and 1437 accepted.
+[mcmc] Progress @ 2025-11-30 23:16:28 : 4803 steps taken, and 1441 accepted.
+[mcmc] Progress @ 2025-11-30 23:17:29 : 4827 steps taken, and 1444 accepted.
+[mcmc] Progress @ 2025-11-30 23:18:47 : 4854 steps taken, and 1449 accepted.
+[mcmc] Progress @ 2025-11-30 23:19:57 : 4870 steps taken, and 1451 accepted.
+[mcmc] Progress @ 2025-11-30 23:20:58 : 4916 steps taken, and 1459 accepted.
+[mcmc] Progress @ 2025-11-30 23:22:16 : 4931 steps taken, and 1461 accepted.
+[mcmc] Progress @ 2025-11-30 23:23:25 : 4958 steps taken, and 1466 accepted.
+[mcmc] Progress @ 2025-11-30 23:24:29 : 4985 steps taken, and 1470 accepted.
+[mcmc] Progress @ 2025-11-30 23:25:30 : 5019 steps taken, and 1476 accepted.
+[mcmc] Progress @ 2025-11-30 23:26:44 : 5044 steps taken, and 1480 accepted.
+[mcmc] Progress @ 2025-11-30 23:27:46 : 5051 steps taken, and 1480 accepted.
+[mcmc] Progress @ 2025-11-30 23:28:46 : 5096 steps taken, and 1489 accepted.
+[mcmc] Progress @ 2025-11-30 23:30:00 : 5132 steps taken, and 1494 accepted.
+[mcmc] Progress @ 2025-11-30 23:31:11 : 5150 steps taken, and 1496 accepted.
+[mcmc] Progress @ 2025-11-30 23:32:11 : 5187 steps taken, and 1501 accepted.
+[mcmc] Progress @ 2025-11-30 23:33:12 : 5216 steps taken, and 1502 accepted.
+[mcmc] Progress @ 2025-11-30 23:34:22 : 5241 steps taken, and 1506 accepted.
+[mcmc] Progress @ 2025-11-30 23:35:32 : 5255 steps taken, and 1508 accepted.
+[mcmc] Progress @ 2025-11-30 23:36:33 : 5296 steps taken, and 1513 accepted.
+[mcmc] Progress @ 2025-11-30 23:37:51 : 5322 steps taken, and 1516 accepted.
+[mcmc] Progress @ 2025-11-30 23:38:51 : 5348 steps taken, and 1522 accepted.
+[mcmc] Progress @ 2025-11-30 23:39:52 : 5376 steps taken, and 1528 accepted.
+[mcmc] Progress @ 2025-11-30 23:40:52 : 5396 steps taken, and 1533 accepted.
+[mcmc] Progress @ 2025-11-30 23:41:53 : 5423 steps taken, and 1537 accepted.
+[mcmc] Progress @ 2025-11-30 23:43:05 : 5441 steps taken, and 1539 accepted.
+[mcmc] Progress @ 2025-11-30 23:44:05 : 5463 steps taken, and 1542 accepted.
+[mcmc] Progress @ 2025-11-30 23:45:06 : 5492 steps taken, and 1550 accepted.
+[mcmc] Progress @ 2025-11-30 23:46:07 : 5525 steps taken, and 1554 accepted.
+[mcmc] Progress @ 2025-11-30 23:47:08 : 5552 steps taken, and 1555 accepted.
+[mcmc] Progress @ 2025-11-30 23:48:22 : 5574 steps taken, and 1560 accepted.
+[mcmc] Progress @ 2025-11-30 23:49:31 : 5597 steps taken, and 1564 accepted.
+[mcmc] Progress @ 2025-11-30 23:50:49 : 5616 steps taken, and 1567 accepted.
+[mcmc] Progress @ 2025-11-30 23:51:50 : 5639 steps taken, and 1571 accepted.
+[mcmc] Progress @ 2025-11-30 23:52:50 : 5679 steps taken, and 1576 accepted.
+[mcmc] Progress @ 2025-11-30 23:53:55 : 5689 steps taken, and 1578 accepted.
+[mcmc] Progress @ 2025-11-30 23:55:01 : 5720 steps taken, and 1581 accepted.
+[mcmc] Progress @ 2025-11-30 23:56:01 : 5750 steps taken, and 1585 accepted.
+[mcmc] Progress @ 2025-11-30 23:57:19 : 5771 steps taken, and 1590 accepted.
+[mcmc] Progress @ 2025-11-30 23:58:24 : 5801 steps taken, and 1595 accepted.
+[mcmc] Progress @ 2025-11-30 23:59:25 : 5825 steps taken, and 1599 accepted.
+[mcmc] Progress @ 2025-12-01 00:00:25 : 5848 steps taken, and 1602 accepted.
+[mcmc] Progress @ 2025-12-01 00:01:39 : 5883 steps taken, and 1609 accepted.
+[mcmc] Progress @ 2025-12-01 00:02:43 : 5898 steps taken, and 1610 accepted.
+[mcmc] Progress @ 2025-12-01 00:03:49 : 5923 steps taken, and 1615 accepted.
+[mcmc] Progress @ 2025-12-01 00:04:50 : 5948 steps taken, and 1620 accepted.
+[mcmc] Progress @ 2025-12-01 00:05:57 : 5972 steps taken, and 1624 accepted.
+[mcmc] Progress @ 2025-12-01 00:06:58 : 5997 steps taken, and 1630 accepted.
+[mcmc] Progress @ 2025-12-01 00:08:05 : 6014 steps taken, and 1631 accepted.
+[mcmc] Progress @ 2025-12-01 00:09:08 : 6029 steps taken, and 1635 accepted.
+[mcmc] Progress @ 2025-12-01 00:10:09 : 6072 steps taken, and 1642 accepted.
+[mcmc] Progress @ 2025-12-01 00:11:12 : 6079 steps taken, and 1643 accepted.
+[mcmc] Progress @ 2025-12-01 00:12:23 : 6127 steps taken, and 1655 accepted.
+[mcmc] Progress @ 2025-12-01 00:13:42 : 6147 steps taken, and 1659 accepted.
+[mcmc] Progress @ 2025-12-01 00:14:51 : 6181 steps taken, and 1664 accepted.
+[mcmc] Progress @ 2025-12-01 00:16:00 : 6198 steps taken, and 1665 accepted.
+[mcmc] Progress @ 2025-12-01 00:17:00 : 6228 steps taken, and 1671 accepted.
+[mcmc] Progress @ 2025-12-01 00:18:01 : 6257 steps taken, and 1676 accepted.
+[mcmc] Progress @ 2025-12-01 00:19:18 : 6283 steps taken, and 1684 accepted.
+[mcmc] Progress @ 2025-12-01 00:20:34 : 6311 steps taken, and 1689 accepted.
+[mcmc] Progress @ 2025-12-01 00:21:34 : 6350 steps taken, and 1695 accepted.
+[mcmc] Progress @ 2025-12-01 00:22:35 : 6375 steps taken, and 1700 accepted.
+[mcmc] Progress @ 2025-12-01 00:23:40 : 6395 steps taken, and 1702 accepted.
+[mcmc] Progress @ 2025-12-01 00:24:49 : 6448 steps taken, and 1707 accepted.
+[mcmc] Progress @ 2025-12-01 00:26:06 : 6477 steps taken, and 1709 accepted.
+[mcmc] Progress @ 2025-12-01 00:27:14 : 6498 steps taken, and 1711 accepted.
+[mcmc] Progress @ 2025-12-01 00:28:15 : 6512 steps taken, and 1713 accepted.
+[mcmc] Progress @ 2025-12-01 00:29:16 : 6549 steps taken, and 1721 accepted.
+[mcmc] Progress @ 2025-12-01 00:30:32 : 6584 steps taken, and 1727 accepted.
+[mcmc] Progress @ 2025-12-01 00:31:48 : 6610 steps taken, and 1733 accepted.
+[mcmc] Progress @ 2025-12-01 00:32:49 : 6664 steps taken, and 1740 accepted.
+[mcmc] Progress @ 2025-12-01 00:33:49 : 6678 steps taken, and 1742 accepted.
+[mcmc] Progress @ 2025-12-01 00:34:57 : 6694 steps taken, and 1746 accepted.
+[mcmc] Progress @ 2025-12-01 00:35:58 : 6726 steps taken, and 1751 accepted.
+[mcmc] Progress @ 2025-12-01 00:36:59 : 6756 steps taken, and 1757 accepted.
+[mcmc] Progress @ 2025-12-01 00:38:07 : 6786 steps taken, and 1761 accepted.
+[mcmc] Progress @ 2025-12-01 00:39:16 : 6807 steps taken, and 1762 accepted.
+[mcmc] Progress @ 2025-12-01 00:40:22 : 6844 steps taken, and 1767 accepted.
+[mcmc] Progress @ 2025-12-01 00:41:22 : 6866 steps taken, and 1768 accepted.
+[mcmc] Progress @ 2025-12-01 00:42:25 : 6908 steps taken, and 1774 accepted.
+[mcmc] Progress @ 2025-12-01 00:43:39 : 6947 steps taken, and 1782 accepted.
+[mcmc] Progress @ 2025-12-01 00:44:45 : 6987 steps taken, and 1786 accepted.
+[mcmc] Progress @ 2025-12-01 00:45:46 : 7014 steps taken, and 1792 accepted.
+[mcmc] Progress @ 2025-12-01 00:46:46 : 7049 steps taken, and 1796 accepted.
+[mcmc] Progress @ 2025-12-01 00:47:48 : 7080 steps taken, and 1802 accepted.
+[mcmc] Progress @ 2025-12-01 00:49:03 : 7109 steps taken, and 1809 accepted.
+[mcmc] Progress @ 2025-12-01 00:50:04 : 7132 steps taken, and 1814 accepted.
+[mcmc] Progress @ 2025-12-01 00:51:17 : 7178 steps taken, and 1821 accepted.
+[mcmc] Progress @ 2025-12-01 00:52:18 : 7210 steps taken, and 1824 accepted.
+[mcmc] Progress @ 2025-12-01 00:53:18 : 7252 steps taken, and 1832 accepted.
+[mcmc] Learn + convergence test @ 1840 samples accepted.
+[mcmc]  - Acceptance rate: 0.442
+[mcmc]  - Convergence of means: R-1 = 34.042781 after 1472 accepted steps
+[mcmc] Convergence less than requested for updates: waiting until the next convergence check.
+[mcmc] Progress @ 2025-12-01 00:54:31 : 7290 steps taken, and 1840 accepted.

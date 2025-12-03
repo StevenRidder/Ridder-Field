@@ -1,0 +1,83 @@
+[output] Output to be read-from/written-into folder 'chains', with prefix 'tier5_lcdm_des_y1'
+[output] Found existing info files with the requested output prefix: 'chains/tier5_lcdm_des_y1'
+[output] Let's try to resume/load.
+[output] Found an old sample. Resuming.
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages/classy
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+[planck_2018_lensing.clik] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/planck_2018/baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing' on test data. got -4.42102
+----
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[shoes_h0] Initialized external likelihood.
+[mcmc] Resuming from previous sample!
+[samplecollection] Loaded 1624 sample points from 'chains/tier5_lcdm_des_y1.1.txt'
+[mcmc] Initial point: logA:3.041793, n_s:0.9767912, H0:69.60762, omega_b:0.02263095, omega_cdm:0.1158483, tau_reio:0.05682194, A_planck:1.00165, calib_100T:1.000477, calib_217T:0.9987211, A_cib_217:58.73249, xi_sz_cib:0.4094747, A_sz:5.557869, ksz_norm:1.682655, gal545_A_100:9.103016, gal545_A_143:10.9397, gal545_A_143_217:20.23555, gal545_A_217:92.81815, ps_A_100_100:285.1782, ps_A_143_143:44.85358, ps_A_143_217:38.34383, ps_A_217_217:93.03848, galf_TE_A_100:0.1258624, galf_TE_A_100_143:0.1726645, galf_TE_A_100_217:0.3145331, galf_TE_A_143:0.2925314, galf_TE_A_143_217:0.5071307, galf_TE_A_217:1.623026, DES_DzL1:-0.009102287, DES_DzL2:0.003287663, DES_DzL3:-0.0007269641, DES_DzL4:0.01844294, DES_DzL5:0.006236102, DES_b1:1.457042, DES_b2:1.683324, DES_b3:1.665067, DES_b4:2.048154, DES_b5:2.164535, DES_DzS1:0.008035801, DES_DzS2:-0.03027084, DES_DzS3:-0.002574351, DES_DzS4:-0.02557181, DES_m1:-0.01802395, DES_m2:-0.01572767, DES_m3:-0.009638253, DES_m4:0.007814967, DES_AIA:0.6133458, DES_alphaIA:-0.0567896
+[mcmc] *WARNING* Parameter blocking manually/previously fixed: speeds will not be measured.
+[mcmc] Oversampling with factors:
+[mcmc] * 1 : ['H0']
+[mcmc] * 1 : ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio']
+[mcmc] * 3 : ['DES_DzL1', 'DES_DzL2', 'DES_DzL3', 'DES_DzL4', 'DES_DzL5', 'DES_b1', 'DES_b2', 'DES_b3', 'DES_b4', 'DES_b5', 'DES_DzS1', 'DES_DzS2', 'DES_DzS3', 'DES_DzS4', 'DES_m1', 'DES_m2', 'DES_m3', 'DES_m4', 'DES_AIA', 'DES_alphaIA']
+[mcmc] * 4 : ['A_planck']
+[mcmc] * 4 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
+[mcmc] Covariance matrix from previous sample.
+[mcmc] Sampling!
+[mcmc] Progress @ 2025-11-30 16:43:47 : 1 steps taken, and 1624 accepted.
+[mcmc] Progress @ 2025-11-30 16:44:47 : 56 steps taken, and 1637 accepted.
+[mcmc] Progress @ 2025-11-30 16:45:58 : 106 steps taken, and 1647 accepted.
+[mcmc] Progress @ 2025-11-30 16:47:13 : 153 steps taken, and 1657 accepted.
+[mcmc] Progress @ 2025-11-30 16:48:13 : 210 steps taken, and 1668 accepted.
+[mcmc] Progress @ 2025-11-30 16:49:14 : 280 steps taken, and 1683 accepted.
+[mcmc] Progress @ 2025-11-30 16:50:21 : 324 steps taken, and 1694 accepted.
+[mcmc] Progress @ 2025-11-30 16:51:21 : 391 steps taken, and 1707 accepted.
+[mcmc] Progress @ 2025-11-30 16:52:21 : 449 steps taken, and 1718 accepted.
+[mcmc] Progress @ 2025-11-30 16:53:39 : 475 steps taken, and 1724 accepted.
+[mcmc] Progress @ 2025-11-30 16:54:39 : 558 steps taken, and 1742 accepted.
+[mcmc] Progress @ 2025-11-30 16:55:52 : 609 steps taken, and 1751 accepted.
+[mcmc] Progress @ 2025-11-30 16:56:53 : 618 steps taken, and 1753 accepted.
+[mcmc] Progress @ 2025-11-30 16:57:54 : 658 steps taken, and 1762 accepted.
+[mcmc] Progress @ 2025-11-30 16:58:55 : 695 steps taken, and 1766 accepted.
+[mcmc] Progress @ 2025-11-30 16:59:57 : 735 steps taken, and 1772 accepted.
+[mcmc] Progress @ 2025-11-30 17:00:58 : 767 steps taken, and 1780 accepted.
+[mcmc] Progress @ 2025-11-30 17:01:58 : 809 steps taken, and 1789 accepted.
+[mcmc] Progress @ 2025-11-30 17:02:58 : 853 steps taken, and 1797 accepted.
+[mcmc] Progress @ 2025-11-30 17:04:13 : 886 steps taken, and 1804 accepted.
+[mcmc] Progress @ 2025-11-30 17:05:16 : 902 steps taken, and 1805 accepted.
+[mcmc] Progress @ 2025-11-30 17:06:43 : 944 steps taken, and 1814 accepted.
+[mcmc] Progress @ 2025-11-30 17:07:43 : 989 steps taken, and 1823 accepted.
+[mcmc] Progress @ 2025-11-30 23:49:07 : 1021 steps taken, and 1829 accepted.
+[mcmc] Progress @ 2025-11-30 23:50:07 : 1076 steps taken, and 1843 accepted.
+[mcmc] Progress @ 2025-11-30 23:51:18 : 1132 steps taken, and 1853 accepted.
+[mcmc] Progress @ 2025-11-30 23:52:19 : 1149 steps taken, and 1857 accepted.
+[mcmc] Progress @ 2025-11-30 23:53:31 : 1188 steps taken, and 1862 accepted.
+[mcmc] Progress @ 2025-11-30 23:54:32 : 1270 steps taken, and 1883 accepted.
+[mcmc] Progress @ 2025-11-30 23:55:32 : 1297 steps taken, and 1888 accepted.
+[mcmc] Progress @ 2025-11-30 23:56:45 : 1330 steps taken, and 1895 accepted.
+[mcmc] Progress @ 2025-11-30 23:57:46 : 1350 steps taken, and 1899 accepted.
+[mcmc] Progress @ 2025-11-30 23:58:46 : 1412 steps taken, and 1915 accepted.
+[mcmc] Progress @ 2025-11-30 23:59:46 : 1436 steps taken, and 1919 accepted.
+[mcmc] Progress @ 2025-12-01 00:01:04 : 1482 steps taken, and 1930 accepted.
+[mcmc] Progress @ 2025-12-01 00:02:05 : 1519 steps taken, and 1935 accepted.
+[mcmc] Progress @ 2025-12-01 00:03:06 : 1570 steps taken, and 1945 accepted.
+[mcmc] Progress @ 2025-12-01 00:04:06 : 1591 steps taken, and 1950 accepted.
+[mcmc] Progress @ 2025-12-01 00:05:06 : 1631 steps taken, and 1959 accepted.
+[mcmc] Progress @ 2025-12-01 00:06:07 : 1651 steps taken, and 1964 accepted.
+[mcmc] Progress @ 2025-12-01 00:07:13 : 1676 steps taken, and 1970 accepted.
+[mcmc] Progress @ 2025-12-01 00:08:17 : 1727 steps taken, and 1981 accepted.
+[mcmc] Progress @ 2025-12-01 00:09:18 : 1769 steps taken, and 1991 accepted.
+[mcmc] Progress @ 2025-12-01 00:10:22 : 1786 steps taken, and 1994 accepted.
+[mcmc] Learn + convergence test @ 2000 samples accepted.
+[mcmc]  - Acceptance rate: 0.592
+[mcmc]  - Convergence of means: R-1 = 49.165684 after 1600 accepted steps
+[mcmc] Convergence less than requested for updates: waiting until the next convergence check.
+[mcmc] Progress @ 2025-12-01 00:11:23 : 1824 steps taken, and 2001 accepted.
+[mcmc] Progress @ 2025-12-01 00:12:38 : 1862 steps taken, and 2006 accepted.
+[mcmc] Progress @ 2025-12-01 00:13:39 : 1904 steps taken, and 2012 accepted.
+[mcmc] Progress @ 2025-12-01 00:14:57 : 1948 steps taken, and 2022 accepted.

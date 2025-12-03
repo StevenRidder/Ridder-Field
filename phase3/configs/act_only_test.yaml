@@ -1,0 +1,72 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl mPk
+      l_max_scalars: 9000
+      lensing: true
+      gauge: newtonian
+      non_linear: halofit
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+
+likelihood:
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: false
+
+params:
+  A_s: 2.1e-9
+  n_s: 0.965
+  H0: 68.0
+  omega_b: 0.02237
+  omega_cdm: 0.12
+  tau_reio: 0.0544
+  bandint_shift_dr6_pa4_f220: 0.0
+  bandint_shift_dr6_pa5_f090: 0.0
+  bandint_shift_dr6_pa5_f150: 0.0
+  bandint_shift_dr6_pa6_f090: 0.0
+  bandint_shift_dr6_pa6_f150: 0.0
+  cal_dr6_pa4_f220: 1.0
+  cal_dr6_pa5_f090: 1.0
+  cal_dr6_pa5_f150: 1.0
+  cal_dr6_pa6_f090: 1.0
+  cal_dr6_pa6_f150: 1.0
+  calE_dr6_pa4_f220: 1.0
+  calE_dr6_pa5_f090: 1.0
+  calE_dr6_pa5_f150: 1.0
+  calE_dr6_pa6_f090: 1.0
+  calE_dr6_pa6_f150: 1.0
+  calG_all: 1.0
+  a_tSZ: 3.3
+  a_kSZ: 1.0
+  a_p: 6.9
+  beta_p: 2.08
+  a_c: 4.9
+  beta_c: 2.20
+  a_s: 3.1
+  a_gtt: 1.5
+  a_gte: 0.0
+  a_gee: 0.1
+  a_psee: 0.1
+  a_pste: 0.0
+  xi: 0.2
+  alpha_s: -0.6
+  beta_s: -2.5
+  alpha_p: 1.0
+  T_d: 9.7
+  alpha_dT: 0.0
+  alpha_dE: -0.4
+  T_effd: 19.6
+  beta_d: 1.5
+  a_cibc: 4.9
+  a_dust_tt: 5.0
+  a_dust_ee: 0.4
+  a_radio: 3.0
+  alpha_tSZ: 0.0
+
+sampler:
+  mcmc:
+    max_samples: 10
+    burn_in: 0
+output: chains/act_only_test
+

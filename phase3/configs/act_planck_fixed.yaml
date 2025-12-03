@@ -1,0 +1,103 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 9000
+      lensing: true
+      gauge: newtonian
+      non_linear: halofit
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: false
+
+params:
+  # Cosmological params - go to classy
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.12
+    proposal: 0.003
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+
+  # ACT calibration params - fixed, NOT passed to classy
+  bandint_shift_dr6_pa4_f220: {value: 0.0, drop: false}
+  bandint_shift_dr6_pa5_f090: {value: 0.0, drop: false}
+  bandint_shift_dr6_pa5_f150: {value: 0.0, drop: false}
+  bandint_shift_dr6_pa6_f090: {value: 0.0, drop: false}
+  bandint_shift_dr6_pa6_f150: {value: 0.0, drop: false}
+  cal_dr6_pa4_f220: {value: 1.0, drop: false}
+  cal_dr6_pa5_f090: {value: 1.0, drop: false}
+  cal_dr6_pa5_f150: {value: 1.0, drop: false}
+  cal_dr6_pa6_f090: {value: 1.0, drop: false}
+  cal_dr6_pa6_f150: {value: 1.0, drop: false}
+  calE_dr6_pa4_f220: {value: 1.0, drop: false}
+  calE_dr6_pa5_f090: {value: 1.0, drop: false}
+  calE_dr6_pa5_f150: {value: 1.0, drop: false}
+  calE_dr6_pa6_f090: {value: 1.0, drop: false}
+  calE_dr6_pa6_f150: {value: 1.0, drop: false}
+  calG_all: {value: 1.0, drop: false}
+  
+  # Foreground params for mflike - NOT passed to classy
+  a_tSZ: {value: 3.3, drop: false}
+  a_kSZ: {value: 1.0, drop: false}
+  a_p: {value: 6.9, drop: false}
+  beta_p: {value: 2.08, drop: false}
+  a_c: {value: 4.9, drop: false}
+  beta_c: {value: 2.20, drop: false}
+  a_s: {value: 3.1, drop: false}
+  a_gtt: {value: 1.5, drop: false}
+  a_gte: {value: 0.0, drop: false}
+  a_gee: {value: 0.1, drop: false}
+  a_psee: {value: 0.1, drop: false}
+  a_pste: {value: 0.0, drop: false}
+  xi: {value: 0.2, drop: false}
+  alpha_s: {value: -0.6, drop: false}
+  beta_s: {value: -2.5, drop: false}
+  alpha_p: {value: 1.0, drop: false}
+  T_d: {value: 9.7, drop: false}
+  alpha_dT: {value: 0.0, drop: false}
+  alpha_dE: {value: -0.4, drop: false}
+  T_effd: {value: 19.6, drop: false}
+  beta_d: {value: 1.5, drop: false}
+  alpha_tSZ: {value: 0.0, drop: false}
+
+  # These were erroneously being passed to classy - mark them for mflike only
+  a_cibc: {value: 4.9, drop: false}
+  a_dust_tt: {value: 5.0, drop: false}
+  a_dust_ee: {value: 0.4, drop: false}
+  a_radio: {value: 3.0, drop: false}
+
+sampler:
+  mcmc:
+    max_samples: 10
+    max_tries: 1000
+
+output: chains/act_planck_fixed

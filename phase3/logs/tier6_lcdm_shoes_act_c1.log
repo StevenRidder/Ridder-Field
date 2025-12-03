@@ -1,0 +1,58 @@
+[output] Output to be read-from/written-into folder '/home/ridderadmin/Ridder-Field/phase3/chains', with prefix 'tier6_lcdm_shoes_act_c1'
+[prior] *WARNING* External prior 'SZ' loaded. Mind that it might not be normalized!
+[classy] `classy` module loaded successfully from /home/ridderadmin/.local/lib/python3.10/site-packages
+[planck_2018_highl_plik.ttteee] `clipy` module loaded successfully from /home/ridderadmin/.local/share/cobaya/data/code/planck/clipy/clipy
+----
+clipy_0.15
+Checking likelihood '/home/ridderadmin/.local/share/cobaya/data/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
+----
+Warning: The FITS format without the 'sacc_ordering' column is deprecated
+Assuming data rows are in the correct order as it was before version 1.0.
+[act_dr6_mflike.actdr6mflike] Number of bins used: 1651
+[act_dr6_mflike.actdr6mflike] Initialized!
+[bao.sixdf_2011_bao] Initialized.
+[bao.sdss_dr12_consensus_bao] Initialized.
+[shoes_h0] Initialized external likelihood.
+[mcmc] Getting initial point... (this may take a few seconds)
+[prior] Reference values or pdfs for some parameters were not provided. Sampling from the prior instead for those parameters.
+[mcmc] Initial point: logA:3.048072, n_s:0.9721297, H0:74.55431, omega_b:0.02199083, omega_cdm:0.1231593, tau_reio:0.0515255, A_planck:1, calib_100T:1.0002, calib_217T:0.99805, A_cib_217:47, xi_sz_cib:0.5, A_sz:5, ksz_norm:3, gal545_A_100:8, gal545_A_143:10, gal545_A_143_217:20, gal545_A_217:100, ps_A_100_100:250, ps_A_143_143:50, ps_A_143_217:50, ps_A_217_217:120, galf_TE_A_100:0.1, galf_TE_A_100_143:0.1, galf_TE_A_100_217:0.4, galf_TE_A_143:0.2, galf_TE_A_143_217:0.6, galf_TE_A_217:2, calG_all:1.017228, cal_dr6_pa4_f220:1.025484, cal_dr6_pa5_f090:1.00673, cal_dr6_pa5_f150:0.9953539, cal_dr6_pa6_f090:1.020182, cal_dr6_pa6_f150:0.9771336, calE_dr6_pa5_f090:1.011032, calE_dr6_pa5_f150:1.000913, calE_dr6_pa6_f090:0.9884866, calE_dr6_pa6_f150:1.005896, bandint_shift_dr6_pa4_f220:0, bandint_shift_dr6_pa5_f090:0, bandint_shift_dr6_pa5_f150:0, bandint_shift_dr6_pa6_f090:0, bandint_shift_dr6_pa6_f150:0, beta_s:-3.484053, a_tSZ:2.939126, a_kSZ:3.374671, a_p:2.886025, beta_p:1.240152, a_c:6.191557, beta_c:2.112315, a_s:6.471836, a_gtt:6.059568, xi:0.006117242, alpha_tSZ:2.007737, a_gte:8.363946, a_pste:0.5809895, a_gee:1.591767, a_psee:0.9736672
+[model] Measuring speeds... (this may take a few seconds)
+[model] Setting measured speeds (per sec): {planck_2018_lowl.TT: 81.1, planck_2018_lowl.EE: 2060.0, planck_2018_highl_plik.TTTEEE: 1.41, act_dr6_mflike.ACTDR6MFLike: 8.76, bao.sixdf_2011_bao: 1540.0, bao.sdss_dr7_mgs: 2920.0, bao.sdss_dr12_consensus_bao: 1340.0, sn.pantheonplus: 4.17, shoes_h0: 54800.0, classy: 0.0142, mflike.BandpowerForeground: 0.568}
+[mcmc] Dragging with number of interpolating steps:
+[mcmc] * 1 : [['H0'], ['logA', 'n_s', 'omega_b', 'omega_cdm', 'tau_reio'], ['bandint_shift_dr6_pa4_f220', 'bandint_shift_dr6_pa5_f090', 'bandint_shift_dr6_pa5_f150', 'bandint_shift_dr6_pa6_f090', 'bandint_shift_dr6_pa6_f150', 'beta_s', 'a_tSZ', 'a_kSZ', 'a_p', 'beta_p', 'a_c', 'beta_c', 'a_s', 'a_gtt', 'xi', 'alpha_tSZ', 'a_gte', 'a_pste', 'a_gee', 'a_psee']]
+[mcmc] * 6 : [['A_planck'], ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217'], ['calG_all', 'cal_dr6_pa4_f220', 'cal_dr6_pa5_f090', 'cal_dr6_pa5_f150', 'cal_dr6_pa6_f090', 'cal_dr6_pa6_f150', 'calE_dr6_pa5_f090', 'calE_dr6_pa5_f150', 'calE_dr6_pa6_f090', 'calE_dr6_pa6_f150']]
+[autoselect_covmat] No cached covmat database present, not usable or not up-to-date. Will be re-created and cached.
+[mcmc] Covariance matrix selected automatically: /home/ridderadmin/.local/share/cobaya/data/data/planck_supp_data_and_covmats/covmats/base_nrun_nrunrun_plikHM_TTTEEE_lowl_lowE_post_BAO.covmat
+[mcmc] *ERROR* The parameters xi_sz_cib, xi have duplicated aliases. Can't assign them an element of the covariance matrix unambiguously.
+[exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/usr/local/bin/cobaya-run", line 7, in <module>
+    sys.exit(run_script())
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 265, in run_script
+    run(info, **arguments.__dict__)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/run.py", line 160, in run
+    sampler = sampler_class(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/sampler.py", line 320, in __init__
+    self.initialize()
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/samplers/mcmc/mcmc.py", line 243, in initialize
+    self.set_proposer_initial_covmat(load=True)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/samplers/mcmc/mcmc.py", line 416, in set_proposer_initial_covmat
+    self._initial_covmat, where_nan = self._load_covmat(
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/mpi.py", line 254, in wrapper
+    result = func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/sampler.py", line 486, in _load_covmat
+    return self.initial_proposal_covmat(auto_params=auto_params)
+  File "/usr/local/lib/python3.10/dist-packages/cobaya/sampler.py", line 641, in initial_proposal_covmat
+    raise LoggedError(
+cobaya.log.LoggedError: The parameters xi_sz_cib, xi have duplicated aliases. Can't assign them an element of the covariance matrix unambiguously.
+-------------------------------------------------------------
+
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00
+DEBUG: Ridder field DISABLED. Lambda = 0.000000e+00

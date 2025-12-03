@@ -4,14 +4,13 @@ theory:
     speed: 0.2
     stop_at_error: false
     extra_args:
-      output: tCl, pCl, lCl, mPk
+      output: tCl, mPk
       l_max_scalars: 2508
-      lensing: 'yes'
+      lensing: true
       gauge: newtonian
       recombination: recfast
-      use_ridder: 'no'
+      non_linear: none
     ignore_obsolete: false
-    use_renames: false
     renames:
       As: A_s
       ns: n_s
@@ -37,7 +36,18 @@ theory:
       helium_delta_redshift: helium_fullreio_width
       yhe: YHe
       yheused: YHe
-    version: null
+    version: v3.3.4
+    input_params:
+    - A_s
+    - n_s
+    - H0
+    - omega_b
+    - omega_cdm
+    - tau_reio
+    output_params:
+    - Omega_m
+    - sigma8
+    - rs_drag
 likelihood:
   planck_2018_lowl.TT:
     lmin: 2
@@ -48,6 +58,9 @@ likelihood:
     speed: -1
     stop_at_error: false
     version: null
+    input_params:
+    - A_planck
+    output_params: []
   planck_2018_lowl.EE:
     type: CMB
     aliases:
@@ -55,10 +68,14 @@ likelihood:
     speed: -1
     stop_at_error: false
     version: null
+    input_params:
+    - A_planck
+    output_params: []
   planck_2018_highl_plik.TTTEEE:
     path: null
     clik_file: baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik
     product_id: '151902'
+    commands: null
     aliases:
     - plikHM_TTTEEE
     speed: 30
@@ -67,31 +84,175 @@ likelihood:
     type: CMB
     stop_at_error: false
     version: null
+    input_params:
+    - A_planck
+    - calib_100T
+    - calib_217T
+    - A_pol
+    - calib_100P
+    - calib_143P
+    - calib_217P
+    - cib_index
+    - A_cib_217
+    - xi_sz_cib
+    - A_sz
+    - ksz_norm
+    - gal545_A_100
+    - gal545_A_143
+    - gal545_A_143_217
+    - gal545_A_217
+    - A_sbpx_100_100_TT
+    - A_sbpx_143_143_TT
+    - A_sbpx_143_217_TT
+    - A_sbpx_217_217_TT
+    - ps_A_100_100
+    - ps_A_143_143
+    - ps_A_143_217
+    - ps_A_217_217
+    - galf_TE_index
+    - galf_TE_A_100
+    - galf_TE_A_100_143
+    - galf_TE_A_100_217
+    - galf_TE_A_143
+    - galf_TE_A_143_217
+    - galf_TE_A_217
+    - galf_EE_index
+    - galf_EE_A_100
+    - galf_EE_A_100_143
+    - galf_EE_A_100_217
+    - galf_EE_A_143
+    - galf_EE_A_143_217
+    - galf_EE_A_217
+    - A_cnoise_e2e_100_100_EE
+    - A_cnoise_e2e_143_143_EE
+    - A_cnoise_e2e_217_217_EE
+    - A_sbpx_100_100_EE
+    - A_sbpx_100_143_EE
+    - A_sbpx_100_217_EE
+    - A_sbpx_143_143_EE
+    - A_sbpx_143_217_EE
+    - A_sbpx_217_217_EE
+    output_params: []
   planck_2018_lensing.clik:
     path: null
     clik_file: baseline/plc_3.0/lensing/smicadx12_Dec5_ftl_mv2_ndclpp_p_teb_consext8.clik_lensing
     product_id: '151902'
+    commands: null
     aliases:
     - lensing
     speed: 600
     type: CMB
     stop_at_error: false
     version: null
+    input_params:
+    - A_planck
+    output_params: []
+  bao.sixdf_2011_bao:
+    path: null
+    rs_rescale: 1.027369826
+    data:
+    - 0.106
+    - 0.336
+    - 0.015
+    - rs_over_DV
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    prob_dist: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr7_mgs:
+    path: null
+    prob_dist: bao_data/sdss_MGS_prob.txt
+    prob_dist_bounds:
+    - 0.8005
+    - 1.1985
+    rs_rescale: 4.29720761315
+    data:
+    - 0.15
+    - 4.465666824
+    - 0.1681350461
+    - DV_over_rs
+    aliases:
+    - BAO
+    speed: 5000
+    type: BAO
+    measurements_file: null
+    rs_fid: null
+    cov_file: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  bao.sdss_dr12_consensus_bao:
+    path: null
+    measurements_file: bao_data/sdss_DR12Consensus_bao.dat
+    cov_file: bao_data/BAO_consensus_covtot_dM_Hz.txt
+    rs_fid: 147.78
+    aliases:
+    - BAO
+    speed: 2000
+    type: BAO
+    rs_rescale: null
+    prob_dist: null
+    invcov_file: null
+    redshift: null
+    observable_1: null
+    observable_2: null
+    observable_3: null
+    grid_file: null
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
     speed: 10
     type: []
     stop_at_error: false
     version: null
-    python_path: /Users/steveridder/Git/Ridder-Field/phase3
-  sh0es_h0:
+    python_path: /home/ridderadmin/Ridder-Field/phase3
+    input_params: []
+    output_params: []
+  sn.pantheonplus:
+    path: null
+    dataset_file: PantheonPlus/config.dataset
+    dataset_params: null
+    aliases:
+    - PantheonPlus
+    use_abs_mag: false
+    speed: 100
+    type: SN
+    stop_at_error: false
+    version: null
+    input_params: []
+    output_params: []
+  shoes_h0:
     type: []
     speed: -1
     stop_at_error: false
     version: null
-    external: 'lambda _self=None, H0=None, **p: -0.5 * ((H0 - 73.04) / 1.04)**2'
-    requires:
-      H0:
-        latex: H_0
+    external: 'lambda H0: -0.5*((H0 - 73.04)/1.04)**2'
+    output_params: []
+    input_params:
+    - H0
 prior:
   SZ: 'lambda ksz_norm, A_sz: stats.norm.logpdf(ksz_norm+1.6*A_sz, loc=9.5, scale=3.0)'
 params:
@@ -104,6 +265,7 @@ params:
     drop: true
   A_s:
     value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
     derived: true
     renames:
     - As
@@ -113,13 +275,14 @@ params:
       max: 1.0
     ref: 0.9649
     proposal: 0.004
+    latex: n_s
     renames:
     - ns
   H0:
     prior:
       min: 60
       max: 80
-    ref: 68.0
+    ref: 70.0
     proposal: 0.5
     latex: H_0
   omega_b:
@@ -128,6 +291,7 @@ params:
       max: 0.025
     ref: 0.02237
     proposal: 0.0002
+    latex: \Omega_b h^2
     renames:
     - omegabh2
   omega_cdm:
@@ -136,6 +300,7 @@ params:
       max: 0.14
     ref: 0.12
     proposal: 0.002
+    latex: \Omega_c h^2
     renames:
     - omegach2
   tau_reio:
@@ -144,24 +309,25 @@ params:
       max: 0.1
     ref: 0.0544
     proposal: 0.006
+    latex: \tau_{reio}
     renames:
     - tau
-  rs_drag:
-    latex: r_s
-    derived: true
-    renames:
-    - rdrag
-  sigma8:
-    latex: \sigma_8
-    derived: true
   Omega_m:
     latex: \Omega_m
     derived: true
     renames:
     - omegam
+  sigma8:
+    latex: \sigma_8
+    derived: true
   S8:
+    derived: 'lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)'
     latex: S_8
-    derived: 'lambda sigma8, Omega_m: sigma8 * (Omega_m/0.3)**0.5'
+  rs_drag:
+    derived: true
+    latex: r_s
+    renames:
+    - rdrag
   A_planck:
     prior:
       dist: norm
@@ -478,12 +644,20 @@ params:
     value: 1
   A_sbpx_217_217_EE:
     value: 1
+  chi2__BAO:
+    latex: \chi^2_\mathrm{BAO}
+    derived: true
   chi2__CMB:
     latex: \chi^2_\mathrm{CMB}
     derived: true
+  chi2__SN:
+    latex: \chi^2_\mathrm{SN}
+    derived: true
 sampler:
   mcmc:
-    burn_in: 0
+    sampler_type: mcmc
+    supports_periodic_params: true
+    burn_in: 50
     max_tries: 40d
     covmat: null
     covmat_params: null
@@ -495,8 +669,8 @@ sampler:
     learn_proposal_Rminus1_max: 2.0
     learn_proposal_Rminus1_max_early: 30.0
     learn_proposal_Rminus1_min: 0.0
-    max_samples: 2000
-    Rminus1_stop: 0.03
+    max_samples: 5000
+    Rminus1_stop: 0.02
     Rminus1_cl_stop: 0.2
     Rminus1_cl_level: 0.95
     Rminus1_single_split: 4
@@ -504,7 +678,38 @@ sampler:
     oversample_power: 0.4
     oversample_thin: true
     drag: false
-    blocking: null
+    blocking:
+    - - 1
+      - - H0
+    - - 1
+      - - logA
+        - n_s
+        - omega_b
+        - omega_cdm
+        - tau_reio
+    - - 3
+      - - A_planck
+    - - 3
+      - - calib_100T
+        - calib_217T
+        - A_cib_217
+        - xi_sz_cib
+        - A_sz
+        - ksz_norm
+        - gal545_A_100
+        - gal545_A_143
+        - gal545_A_143_217
+        - gal545_A_217
+        - ps_A_100_100
+        - ps_A_143_143
+        - ps_A_143_217
+        - ps_A_217_217
+        - galf_TE_A_100
+        - galf_TE_A_100_143
+        - galf_TE_A_100_217
+        - galf_TE_A_143
+        - galf_TE_A_143_217
+        - galf_TE_A_217
     callback_function: null
     callback_every: null
     seed: null
@@ -512,6 +717,6 @@ sampler:
     oversample: null
     drag_limits: null
     fallback_covmat_scale: 4
-    version: null
+    version: '3.6'
 output: tier5_lcdm_shoes_desi
-version: 3.3.2
+version: '3.6'

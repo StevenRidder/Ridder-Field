@@ -1,0 +1,80 @@
+# FAST EDE - minimal burn-in
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl
+      l_max_scalars: 9000
+      lensing: true
+      gauge: newtonian
+      non_linear: halofit
+      f_axion_ridder: 1.0e+27
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      n_ridder: 3
+    input_params: [A_s, n_s, H0, omega_b, omega_cdm, tau_reio, Lambda_EDE_ridder]
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  act_dr6_mflike.ACTDR6MFLike:
+    stop_at_error: false
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr12_consensus_bao: null
+  shoes_h0:
+    external: 'lambda H0: -0.5*((H0 - 73.04)/1.04)**2'
+
+params:
+  logA: {prior: {min: 2.5, max: 3.5}, ref: 3.044, proposal: 0.01, drop: true}
+  A_s: {value: 'lambda logA: 1e-10*np.exp(logA)', latex: A_s}
+  n_s: {prior: {min: 0.92, max: 1.0}, ref: 0.9649, proposal: 0.004}
+  H0: {prior: {min: 60, max: 80}, ref: 70, proposal: 0.5}
+  omega_b: {prior: {min: 0.019, max: 0.025}, ref: 0.02237, proposal: 0.0002}
+  omega_cdm: {prior: {min: 0.09, max: 0.14}, ref: 0.117, proposal: 0.001}
+  tau_reio: {prior: {min: 0.01, max: 0.12}, ref: 0.0544, proposal: 0.006}
+  Lambda_EDE_ridder: {prior: {min: 0, max: 3}, ref: 0.8, proposal: 0.1}
+  # ACT calibration - fixed
+  bandint_shift_dr6_pa4_f220: {value: 0}
+  bandint_shift_dr6_pa5_f090: {value: 0}
+  bandint_shift_dr6_pa5_f150: {value: 0}
+  bandint_shift_dr6_pa6_f090: {value: 0}
+  bandint_shift_dr6_pa6_f150: {value: 0}
+  cal_dr6_pa4_f220: {value: 1}
+  cal_dr6_pa5_f090: {value: 1}
+  cal_dr6_pa5_f150: {value: 1}
+  cal_dr6_pa6_f090: {value: 1}
+  cal_dr6_pa6_f150: {value: 1}
+  calE_dr6_pa4_f220: {value: 1}
+  calE_dr6_pa5_f090: {value: 1}
+  calE_dr6_pa5_f150: {value: 1}
+  calE_dr6_pa6_f090: {value: 1}
+  calE_dr6_pa6_f150: {value: 1}
+  calG_all: {value: 1}
+  a_tSZ: {value: 3.3}
+  a_kSZ: {value: 1}
+  a_p: {value: 6.9}
+  a_c: {value: 4.9}
+  a_s: {value: 3.1}
+  a_gtt: {value: 1.5}
+  a_gte: {value: 0}
+  a_gee: {value: 0.1}
+  a_psee: {value: 0.1}
+  a_pste: {value: 0}
+  xi: {value: 0.2}
+
+sampler:
+  mcmc:
+    max_samples: 3000
+    Rminus1_stop: 0.03
+    burn_in: 10
+    learn_proposal: false
+    learn_proposal_Rminus1_max: 0
+    covmat: chains/act_world_ede_c1.covmat
+    max_tries: 50000
+
+output: chains/act_fast_ede
+resume: false
