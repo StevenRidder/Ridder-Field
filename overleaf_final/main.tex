@@ -20,7 +20,7 @@ The standard cosmological model $\Lambda$CDM continues to fit most data sets ext
 
 In pre-DESI combinations of Planck, BAO, and local $H_0$ data, this model reduces the $H_0$ tension from about $4.3\sigma$ to $2.3\sigma$ and the $S_8$ tension from about $2.7\sigma$ to $1.1\sigma$, with an overall improvement $\Delta\chi^2 \simeq -4.5$ relative to $\Lambda$CDM for two additional parameters. Once DESI Y1 BAO are included, fixed-$H_0$ profile likelihoods reveal a \emph{geometric ceiling}: $\Delta\chi^2$ rises from $\simeq +2$ at $H_0 = 69$ to $\simeq +15$ at $H_0 = 70$ and $\gtrsim 90$ by $H_0 = 72$, so early-time physics alone cannot reach the original SH0ES target near $73$~km~s$^{-1}$~Mpc$^{-1}$. We trace this ceiling to a \emph{correlation flip} in the Planck+DESI posterior: DESI reverses the sign of the correlation between EDE amplitude and reionization optical depth, which closes a degeneracy where low-$\ell$ polarization could previously compensate the damping-tail cost. Stress-test runs show that forcing $\Lambda$CDM into the same $H_0 \simeq 70$ convergence window would incur a penalty $\Delta\chi^2 \gtrsim 30$--$40$ while worsening $S_8$.
 
-The same physics predicts a characteristic ``soft shoulder'' in the CMB damping tail at the one-percent level. We construct a fixed template for this ripple pattern and fit its amplitude to ACT DR6 TT+EE data at fixed background cosmology, finding a $6.4\sigma$ preference for a nonzero shoulder aligned with the Geometric EDE template. Taken together, the geometric ceiling, the $H_0$--$S_8$ convergence window, and the soft-shoulder detection make early-time geometry a concrete and falsifiable alternative to purely late-time or systematic explanations of the current anomalies and provide a sharp target for upcoming CMB-S4 observations.
+The same physics predicts a characteristic ``soft shoulder'' in the CMB damping tail at the one-percent level. We construct a fixed template for this ripple pattern and fit its amplitude to ACT DR6 TT+EE data in a \emph{conditional} analysis with fixed background cosmology, finding a $6.4\sigma$ preference for a nonzero shoulder aligned with the Geometric EDE template; a fully marginalized analysis may reduce this significance. Taken together, the geometric ceiling, the $H_0$--$S_8$ convergence window, and the soft-shoulder correlation make early-time geometry a concrete and falsifiable alternative to purely late-time or systematic explanations of the current anomalies and provide a sharp target for upcoming CMB-S4 observations.
 \end{abstract}
 
 % =============================================================================
@@ -85,21 +85,27 @@ Karwal \& Kamionkowski~\cite{Karwal_Kamionkowski} introduced the basic mechanism
 Niedermann \& Sloth~\cite{Niedermann_NewEDE} proposed a triggered phase transition rather than slow-roll dynamics, achieving $H_0 \approx 71$~km~s$^{-1}$~Mpc$^{-1}$ with $\Delta\chi^2 \approx -8$ in some data combinations. Subsequent NEDE analyses incorporated DESI Y1, finding that the $\chi^2$ advantage diminishes when BAO precision tightens. These models typically require $f_{\rm EDE} \sim 0.1$--$0.15$ to reach $H_0 > 71$.
 
 \paragraph{What this work adds.}
-We contribute several elements not present in prior analyses.
+We contribute the following elements not present in prior analyses:
+\begin{enumerate}
+\item \textbf{Reframing the Hubble tension.} Prior EDE analyses sought $H_0 \approx 73$~km~s$^{-1}$~Mpc$^{-1}$ to match SH0ES, and concluded that EDE ``fails'' when that target proves unreachable without catastrophic $\chi^2$ penalties. We show that $H_0 \gtrsim 72$ is \emph{geometrically prohibited} by CMB constraints on any sound-horizon--reducing model ($\Delta\chi^2 \gtrsim 90$). This is not a failure of EDE; it is a fundamental limit. Meanwhile, JWST/TRGB, strong-lensing time delays, and other late-time probes increasingly favor $H_0 \approx 69$--$71$~km~s$^{-1}$~Mpc$^{-1}$---precisely the region EDE can access. The ``tension'' may be smaller than the original SH0ES--Planck comparison suggested.
 
-First, we \emph{reframe the Hubble tension}. Prior EDE analyses sought $H_0 \approx 73$~km~s$^{-1}$~Mpc$^{-1}$ to match SH0ES, and concluded that EDE ``fails'' when that target proves unreachable without catastrophic $\chi^2$ penalties. We show that $H_0 \gtrsim 72$ is geometrically prohibited by CMB constraints on any sound-horizon--reducing model ($\Delta\chi^2 \gtrsim 90$). This is not a failure of EDE; it is a fundamental limit. Meanwhile, JWST/TRGB, strong-lensing time delays, and other late-time probes increasingly favor $H_0 \approx 69$--$71$~km~s$^{-1}$~Mpc$^{-1}$---precisely the region EDE can access. The ``tension'' may be smaller than the original SH0ES--Planck comparison suggested.
+\item \textbf{Equal-$k$ model comparison.} We compare CPL ($w_0 w_a$CDM) and EDE at identical parameter count ($k = 8$), using both $\chi^2$ and information criteria (AIC, BIC, DIC). This isolates whether late-time or early-time modifications better address the tensions.
 
-Second, we provide an \emph{equal-$k$ model comparison}, comparing CPL ($w_0 w_a$CDM) and EDE at identical parameter count ($k = 8$), using both $\chi^2$ and information criteria (AIC, BIC, DIC). This isolates whether late-time or early-time modifications better address the tensions.
+\item \textbf{Fixed-$H_0$ profile likelihood.} We quantify the $\chi^2$ cost as a function of $H_0$ for both EDE and $\Lambda$CDM, establishing the ``geometric ceiling'': $\Delta\chi^2 \approx +2$ at $H_0 = 69$, $+11$ at $H_0 = 70$, and $\gtrsim 90$ at $H_0 = 72$. This provides context for interpreting the DESI-era penalty.
 
-Third, we construct \emph{fixed-$H_0$ profile likelihoods}, quantifying the $\chi^2$ cost as a function of $H_0$ for both EDE and $\Lambda$CDM and establishing the ``geometric ceiling'': $\Delta\chi^2 \approx +2$ at $H_0 = 69$, $+11$ at $H_0 = 70$, and $\gtrsim 90$ at $H_0 = 72$. This provides context for interpreting the DESI-era penalty.
+\item \textbf{Correlation flip mechanism.} We identify a sign change in the $\Lambda_{\rm EDE}$--$\tau$ degeneracy when DESI enters (from $+0.73$ to $-0.24$), explaining why pre-DESI and post-DESI conclusions differ.
 
-Fourth, we identify a \emph{correlation flip mechanism}: a sign change in the $\Lambda_{\rm EDE}$--$\tau$ degeneracy when DESI enters (from $+0.73$ to $-0.24$), explaining why pre-DESI and post-DESI conclusions differ.
-
-Fifth, we perform a \emph{damping-tail template test}, constructing a fixed template from the Planck+BAO best-fit EDE solution and measuring its correlation with ACT DR6 residuals. We obtain $A_{\rm sh} = 1.16 \pm 0.18$ under conditional analysis, representing a specific, falsifiable prediction for CMB-S4.
-
+\item \textbf{Damping-tail template test.} We construct a fixed template from the Planck+BAO best-fit EDE solution and measure its correlation with ACT DR6 residuals, obtaining $A_{\rm sh} = 1.16 \pm 0.18$ under conditional analysis. This represents a specific, falsifiable prediction for CMB-S4.
+\end{enumerate}
 We target $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$ rather than $72$--$73$, requiring smaller $f_{\rm EDE} \sim 0.05$ and avoiding the $S_8$ degradation that plagued earlier models pushing toward higher $H_0$.
 
-Fitting this model to Planck+BAO+SH0ES data (pre-DESI), we obtain $H_0 = 69.7 \pm 0.5$~km~s$^{-1}$~Mpc$^{-1}$ (compared to $68.3 \pm 0.4$ for $\Lambda$CDM), $S_8 = 0.82 \pm 0.01$ (compared to $0.83 \pm 0.01$ for $\Lambda$CDM), and $\Delta\chi^2 \approx -4.5$ relative to $\Lambda$CDM. A component-level $\chi^2$ breakdown shows that Planck high-$\ell$ TTTEEE disfavors the EDE model by $\Delta\chi^2 \approx +19$, but this is offset by improvements in Planck low-$\ell$ data ($\Delta\chi^2 \approx -18$) and the SH0ES prior ($\Delta\chi^2 \approx -3.5$).
+Fitting this model to Planck+BAO+SH0ES data (pre-DESI), we obtain:
+\begin{itemize}
+    \item $H_0 = 69.7 \pm 0.5$~km~s$^{-1}$~Mpc$^{-1}$ (compared to $68.3 \pm 0.4$ for $\Lambda$CDM)
+    \item $S_8 = 0.82 \pm 0.01$ (compared to $0.83 \pm 0.01$ for $\Lambda$CDM)
+    \item $\Delta\chi^2 \approx -4.5$ relative to $\Lambda$CDM
+\end{itemize}
+A component-level $\chi^2$ breakdown shows that Planck high-$\ell$ TTTEEE disfavors the EDE model by $\Delta\chi^2 \approx +19$, but this is offset by improvements in Planck low-$\ell$ data ($\Delta\chi^2 \approx -18$) and the SH0ES prior ($\Delta\chi^2 \approx -3.5$).
 
 When DESI Y1 BAO is included, the best-fit shifts to a parameter region where the low-$\ell$ improvements are reduced (from $-18$ to $-2$), while the high-$\ell$ cost remains at approximately $+17$. The net result is $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM. The model still yields $H_0 \approx 69.8$~km~s$^{-1}$~Mpc$^{-1}$ and $S_8 \approx 0.81$, but with a $\chi^2$ penalty rather than an improvement.
 
@@ -837,7 +843,13 @@ Data & Model & $N$ & $H_0$ & $S_8$ & $r_s$ & $\chi^2$ & $\Delta\chi^2$ \\
 \end{tabular}
 \end{table}
 
-Several key observations emerge from these results. Adding DESI Y1 BAO increases the EDE $\chi^2$ penalty by approximately $+11$ relative to $\Lambda$CDM, reflecting tension between DESI's preferred $r_s \approx 147$--$148$~Mpc and EDE's reduced $r_s \approx 146$~Mpc. EDE consistently yields higher $H_0$ (by $\sim 1$~km~s$^{-1}$~Mpc$^{-1}$) and lower $S_8$ (by $\sim 0.01$--$0.02$) relative to $\Lambda$CDM across all data combinations. With DES Y1 weak lensing, EDE achieves $S_8 = 0.779$ compared to $\Lambda$CDM's $0.788$, with $\Delta\chi^2 = +10.5$. In the pre-DESI +SH0ES combination, EDE achieves $\Delta\chi^2 = -3.0$.
+Key observations:
+\begin{enumerate}
+    \item Adding DESI Y1 BAO increases the EDE $\chi^2$ penalty by approximately $+11$ relative to $\Lambda$CDM, reflecting tension between DESI's preferred $r_s \approx 147$--$148$~Mpc and EDE's reduced $r_s \approx 146$~Mpc.
+    \item EDE consistently yields higher $H_0$ (by $\sim 1$~km~s$^{-1}$~Mpc$^{-1}$) and lower $S_8$ (by $\sim 0.01$--$0.02$) relative to $\Lambda$CDM across all data combinations.
+    \item With DES Y1 weak lensing, EDE achieves $S_8 = 0.779$ compared to $\Lambda$CDM's $0.788$, with $\Delta\chi^2 = +10.5$.
+    \item In the pre-DESI +SH0ES combination, EDE achieves $\Delta\chi^2 = -3.0$.
+\end{enumerate}
 
 \subsubsection{Impact of DESI Y1 BAO}
 \label{sec:desi_impact}
@@ -1228,7 +1240,12 @@ This agreement is not forced by construction. It emerges from the same monodromy
 \subsection{Summary: The Geometric Strategy}
 \label{sec:geometric_summary}
 
-Taken together, these trade-offs and signatures show that EDE occupies a physically meaningful region of model space. It does not simply produce a better fit by adding arbitrary knobs. Instead it realizes a specific geometric strategy: reduce the sound horizon at early times with a narrow shelf; allow the field to settle into a modestly evolving tail that matches DESI's preferred $w(z)$; and keep all couplings purely gravitational ($\beta = 0$).
+Taken together, these trade-offs and signatures show that EDE occupies a physically meaningful region of model space. It does not simply produce a better fit by adding arbitrary knobs. Instead it realizes a specific geometric strategy:
+\begin{enumerate}
+    \item Reduce the sound horizon at early times with a narrow shelf.
+    \item Allow the field to settle into a modestly evolving tail that matches DESI's preferred $w(z)$.
+    \item Keep all couplings purely gravitational ($\beta = 0$).
+\end{enumerate}
 
 The reward for this strategy is a movement of $H_0$ and $S_8$ toward the values preferred by local and lensing probes, with a $\chi^2$ that is actually \emph{improved} relative to $\Lambda$CDM.
 
@@ -1808,11 +1825,25 @@ The decision to fix $n_\phi$, $\sigma_{\ln a}$, $\theta_i$, and $\beta$ follows 
 
 \subsection{Nuisance Parameters}
 
-We adopt the standard Planck 2018 nuisance parameter treatment, including the Planck absolute calibration ($y_{\rm cal}$), foreground amplitudes for dust, CIB, and point sources, and beam leakage parameters. All nuisance parameters are marginalized over with the same priors for all three models, ensuring that differences in $\chi^2$ reflect cosmological parameter choices rather than foreground modeling.
+We adopt the standard Planck 2018 nuisance parameter treatment, including:
+\begin{itemize}
+    \item Planck absolute calibration ($y_{\rm cal}$)
+    \item Foreground amplitudes for dust, CIB, and point sources
+    \item Beam leakage parameters
+\end{itemize}
+
+All nuisance parameters are marginalized over with the same priors for all three models, ensuring that differences in $\chi^2$ reflect cosmological parameter choices rather than foreground modeling.
 
 \subsection{Derived Parameters}
 
-The following quantities are computed from the sampled parameters: the Hubble constant $H_0$ (from $\theta_{\rm MC}$ and the expansion history); the RMS matter fluctuation $\sigma_8$ in $8\,h^{-1}$Mpc spheres; the lensing amplitude $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3}$; the sound horizon at drag epoch $r_s$; and, for EDE only, the maximum EDE fraction $f_{\rm EDE}(z_c)$.
+The following quantities are computed from the sampled parameters:
+\begin{itemize}
+    \item $H_0$: Hubble constant today (from $\theta_{\rm MC}$ and expansion history)
+    \item $\sigma_8$: RMS matter fluctuation in $8\,h^{-1}$Mpc spheres
+    \item $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3}$: Lensing amplitude
+    \item $r_s$: Sound horizon at drag epoch
+    \item $f_{\rm EDE}(z_c)$: Maximum EDE fraction (for EDE only)
+\end{itemize}
 
 % =============================================================================
 % APPENDIX B: ROBUSTNESS TO FROZEN SHAPE PARAMETERS
