@@ -452,13 +452,32 @@ EDE (Extended) & 9 & $\log_{10}a_c$, $\Lambda_{\rm EDE}$, $\sigma_{\ln a}$ & $n_
 \end{table}
 
 \paragraph{Base Parameters ($k = 6$).}
-All models share the standard $\Lambda$CDM parameter basis, consisting of: the Hubble constant $H_0$ (or equivalently $100\theta_s$); the physical baryon density $\omega_b \equiv \Omega_b h^2$; the physical cold dark matter density $\omega_{\rm cdm} \equiv \Omega_c h^2$; the scalar amplitude at the pivot scale $\ln(10^{10}A_s)$; the scalar spectral index $n_s$; and the optical depth to reionization $\tau_{\rm reio}$.
+All models share the standard $\Lambda$CDM parameter basis:
+\begin{itemize}
+    \item $H_0$: Hubble constant (or equivalently $100\theta_s$)
+    \item $\omega_b \equiv \Omega_b h^2$: Physical baryon density
+    \item $\omega_{\rm cdm} \equiv \Omega_c h^2$: Physical cold dark matter density
+    \item $\ln(10^{10}A_s)$: Scalar amplitude at pivot scale
+    \item $n_s$: Scalar spectral index
+    \item $\tau_{\rm reio}$: Optical depth to reionization
+\end{itemize}
 
 \paragraph{Late--Time Dynamical Model: $w_0 w_a$CDM ($k = 8$).}
-The CPL parametrization adds two phenomenological degrees of freedom: the dark energy equation of state at $z = 0$, denoted $w_0$, and its redshift evolution $w_a$, with $w(a) = w_0 + w_a(1 - a)$. These parameters have no theoretical prior; they are purely diagnostic.
+The CPL parametrization adds two phenomenological degrees of freedom:
+\begin{itemize}
+    \item $w_0$: Dark energy equation of state at $z = 0$
+    \item $w_a$: Redshift evolution, with $w(a) = w_0 + w_a(1 - a)$
+\end{itemize}
+These parameters have no theoretical prior; they are purely diagnostic.
 
 \paragraph{EDE Model ($k = 8$).}
-The minimal EDE model adds two free parameters beyond $\Lambda$CDM: the scale factor at which the EDE contribution peaks, $\log_{10}(a_c)$, and the energy scale of the EDE component, $\Lambda_{\rm EDE}$ (in eV). The remaining potential shape parameters are fixed (Table~\ref{tab:fixed_params}):
+The minimal EDE model adds two free parameters beyond $\Lambda$CDM:
+\begin{itemize}
+    \item $\log_{10}(a_c)$: Scale factor at which the EDE contribution peaks
+    \item $\Lambda_{\rm EDE}$: Energy scale of the EDE component (in eV)
+\end{itemize}
+
+The remaining potential shape parameters are fixed (Table~\ref{tab:fixed_params}):
 
 \begin{table}[h]
 \centering
@@ -1143,7 +1162,13 @@ This defines a concrete falsifiability criterion. If the true universe is descri
 \begin{equation}
 A_{\rm sh} = 1.0 \pm 0.1
 \end{equation}
-with coherent oscillatory residuals in the damping tail that match the phase implied by the $\Delta r_s \simeq -0.9$ Mpc shift. We interpret the possible outcomes as follows. In a \emph{confirmation scenario}, $A_{\rm sh} = 1.0 \pm 0.2$ with the predicted phase pattern would provide strong support for EDE as the mechanism for achieving $H_0 \simeq 70$ km s$^{-1}$ Mpc$^{-1}$. An \emph{alternative mechanism} scenario with $A_{\rm sh} \simeq 0.5 \pm 0.1$ and a different phase or $\ell$-dependence would indicate some early-time modification, but not the specific geometry of our model. An \emph{exclusion} scenario with $A_{\rm sh} = 0.0 \pm 0.1$ and no coherent oscillation would rule out the EDE shoulder mechanism at $>5\sigma$. Intermediate cases with $0.3 \lesssim A_{\rm sh} \lesssim 0.7$ and ambiguous phase would be \emph{inconclusive} and would require next-generation surveys beyond S4.
+with coherent oscillatory residuals in the damping tail that match the phase implied by the $\Delta r_s \simeq -0.9$ Mpc shift. We interpret the possible outcomes as follows:
+\begin{itemize}
+    \item \textbf{Confirmation scenario}: $A_{\rm sh} = 1.0 \pm 0.2$ with the predicted phase pattern would provide strong support for EDE as the mechanism for achieving $H_0 \simeq 70$ km s$^{-1}$ Mpc$^{-1}$.
+    \item \textbf{Alternative mechanism}: $A_{\rm sh} \simeq 0.5 \pm 0.1$ with a different phase or $\ell$-dependence would indicate some early-time modification, but not the specific geometry of our model.
+    \item \textbf{Exclusion}: $A_{\rm sh} = 0.0 \pm 0.1$ with no coherent oscillation would rule out the EDE shoulder mechanism at $>5\sigma$.
+    \item \textbf{Inconclusive}: Intermediate cases with $0.3 \lesssim A_{\rm sh} \lesssim 0.7$ and ambiguous phase would require next-generation surveys beyond S4.
+\end{itemize}
 
 CMB-S4 will measure a single amplitude parameter with a well-defined target value ($A_{\rm sh} = 1$) and a clear exclusion region ($A_{\rm sh} = 0$). The current ACT result, $A_{\rm sh} = 1.16 \pm 0.18$, is consistent with the predicted value and sets a concrete benchmark for S4 to test.
 
@@ -1506,15 +1531,19 @@ A key criticism of EDE is that it degrades the fit to the CMB damping tail~\cite
 
 \subsection*{Summary and Context}
 
-In this work we have presented a minimal early dark energy (EDE) model---a scalar field extension to $\Lambda$CDM that addresses the $H_0$ and $S_8$ tensions through modifications to the pre-recombination expansion history. Our analysis yields the following conclusions.
+In this work we have presented a minimal early dark energy (EDE) model---a scalar field extension to $\Lambda$CDM that addresses the $H_0$ and $S_8$ tensions through modifications to the pre-recombination expansion history. Our analysis yields the following conclusions:
 
-The model converges to $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$ and $S_8 \approx 0.82$, consistent with recent JWST/TRGB calibrations~\cite{Freedman2024} and weak-lensing constraints~\cite{DES_Y3}. With pre-DESI data combinations, EDE achieves $\Delta\chi^2 \approx -5$ relative to $\Lambda$CDM at equal parameter count (Table~\ref{tab:chi2_breakdown}), driven by Planck low-$\ell$ polarization improvements ($\Delta\chi^2 \approx -18$) offsetting high-$\ell$ damping-tail costs ($\Delta\chi^2 \approx +19$).
-
-With DESI Y1 BAO, the model pays $\Delta\chi^2 \approx +11$ (Table~\ref{tab:tier5_running}), reflecting the tension between the reduced sound horizon ($r_s \approx 146$~Mpc) required to raise $H_0$ and DESI's geometric constraints (preferring $r_s \approx 147$--$148$~Mpc). This penalty arises not from DESI directly ($\Delta\chi^2_{\rm DESI} \approx 0$), but from DESI's effect on parameter-space geometry: tightening constraints rotate the $\Lambda_{\rm EDE}$--$\tau_{\rm reio}$ correlation from $+0.73$ to $-0.24$ (Table~\ref{tab:correlation_flip}), closing the corridor that previously allowed low-$\ell$ polarization to compensate the damping-tail cost.
-
-To contextualize this penalty, we performed fixed-$H_0$ analyses quantifying the statistical cost for $\Lambda$CDM to reach the same $H_0 \approx 70$ region. Profile likelihood estimates suggest $\Lambda$CDM would incur $\Delta\chi^2 \gtrsim +30$--$40$ to achieve $H_0 = 70$ (Table~\ref{tab:price_of_admission}), approximately $3\times$ the EDE penalty, while degrading rather than improving the $S_8$ fit. This suggests that early-time geometric modifications provide a more economical path to the $H_0 \approx 70$ regime than parameter adjustments within $\Lambda$CDM.
-
-EDE predicts a percent-level oscillatory residual in the CMB damping tail with fixed phase determined by $\Delta r_s \approx -0.9$~Mpc. A conditional template fit to ACT DR6 data---holding cosmology fixed and assuming correct ACT calibrations---yields $A_{\rm sh} = 1.16 \pm 0.18$ (Section~\ref{sec:cmb_residuals}), consistent with the EDE prediction $A_{\rm sh} = 1$. This $\approx 6\sigma$ null-test correlation requires independent validation; a fully marginalized analysis may reduce the significance to $3$--$5\sigma$. CMB-S4 will provide a definitive test.
+\begin{enumerate}
+    \item \textbf{Parameter convergence:} The model converges to $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$ and $S_8 \approx 0.82$, consistent with recent JWST/TRGB calibrations~\cite{Freedman2024} and weak-lensing constraints~\cite{DES_Y3}.
+    
+    \item \textbf{Pre-DESI performance:} With pre-DESI data combinations, EDE achieves $\Delta\chi^2 \approx -5$ relative to $\Lambda$CDM at equal parameter count (Table~\ref{tab:chi2_breakdown}), driven by Planck low-$\ell$ polarization improvements ($\Delta\chi^2 \approx -18$) offsetting high-$\ell$ damping-tail costs ($\Delta\chi^2 \approx +19$).
+    
+    \item \textbf{DESI-era trade-offs:} With DESI Y1 BAO, the model pays $\Delta\chi^2 \approx +11$ (Table~\ref{tab:tier5_running}), reflecting the tension between the reduced sound horizon ($r_s \approx 146$~Mpc) required to raise $H_0$ and DESI's geometric constraints (preferring $r_s \approx 147$--$148$~Mpc). This penalty arises not from DESI directly ($\Delta\chi^2_{\rm DESI} \approx 0$), but from DESI's effect on parameter-space geometry: tightening constraints rotate the $\Lambda_{\rm EDE}$--$\tau_{\rm reio}$ correlation from $+0.73$ to $-0.24$ (Table~\ref{tab:correlation_flip}), closing the corridor that previously allowed low-$\ell$ polarization to compensate the damping-tail cost.
+    
+    \item \textbf{Comparative context:} To contextualize the $\Delta\chi^2 \approx +11$ penalty, we performed fixed-$H_0$ analyses quantifying the statistical cost for $\Lambda$CDM to reach the same $H_0 \approx 70$ region. Profile likelihood estimates suggest $\Lambda$CDM would incur $\Delta\chi^2 \gtrsim +30$--$40$ to achieve $H_0 = 70$ (Table~\ref{tab:price_of_admission}), approximately $3\times$ the EDE penalty, while degrading rather than improving the $S_8$ fit. This suggests that early-time geometric modifications provide a more economical path to the $H_0 \approx 70$ regime than parameter adjustments within $\Lambda$CDM.
+    
+    \item \textbf{Observational prediction:} EDE predicts a percent-level oscillatory residual in the CMB damping tail with fixed phase determined by $\Delta r_s \approx -0.9$~Mpc. A \emph{conditional} template fit to ACT DR6 data---holding cosmology fixed and assuming correct ACT calibrations---yields $A_{\rm sh} = 1.16 \pm 0.18$ (Section~\ref{sec:cmb_residuals}), consistent with the EDE prediction $A_{\rm sh} = 1$. This $\approx 6\sigma$ null-test correlation requires independent validation; a fully marginalized analysis may reduce the significance to $3$--$5\sigma$. CMB-S4 will provide a definitive test.
+\end{enumerate}
 
 \subsection*{Interpretation}
 
@@ -1676,14 +1705,31 @@ The preference for $\beta \approx 0$ indicates a sequestered dark sector acting 
 \subsection*{CMB-S4 Decision Criteria}
 \label{sec:s4_decision}
 
-The damping-tail signature provides a falsifiable test. A detection scenario with $A_{\rm sh} = 1.0 \pm 0.2$ and the predicted phase structure (positive near $\ell \sim 800$, negative at $\ell > 2000$) would provide strong support for EDE; CMB-S4's $\sim 0.1\%$ precision would yield $>10\sigma$ detection. An exclusion scenario with a damping tail consistent with $\Lambda$CDM at $< 0.3\%$ and no oscillatory structure would rule out EDE models with $\Delta r_s \gtrsim 0.5$~Mpc. Intermediate outcomes with residuals at $0.3$--$0.7\%$ or different phase structure would indicate either weaker geometric modifications or alternative physics.
+The damping-tail signature provides a falsifiable test:
+\begin{enumerate}
+    \item \textbf{Detection:} $A_{\rm sh} = 1.0 \pm 0.2$ with the predicted phase structure (positive near $\ell \sim 800$, negative at $\ell > 2000$) would provide strong support for EDE. CMB-S4's $\sim 0.1\%$ precision would yield $>10\sigma$ detection.
+    
+    \item \textbf{Exclusion:} Damping tail consistent with $\Lambda$CDM at $< 0.3\%$ with no oscillatory structure would rule out EDE models with $\Delta r_s \gtrsim 0.5$~Mpc.
+    
+    \item \textbf{Intermediate:} Residuals at $0.3$--$0.7\%$ or different phase structure would indicate either weaker geometric modifications or alternative physics.
+\end{enumerate}
 
 Current ACT DR6 data show residuals consistent with the prediction (Table~\ref{tab:template_robustness}), but CMB-S4 will provide a definitive test.
 
 \subsection*{Limitations}
 \label{sec:limitations}
 
-Several limitations should be noted. First, the $\chi^2$ cost is real: EDE pays $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM's global minimum, though $\Lambda$CDM would pay $\gtrsim +30$--$40$ to reach the same $H_0 \approx 70$ region (Table~\ref{tab:price_of_admission}). Second, the ACT detection is conditional, since the template fit holds cosmology fixed; a fully marginalized analysis may yield lower significance. Third, the UV completion is incomplete, as the monodromy motivation is effective rather than derived from a complete string compactification. Fourth, the $S_8$ shift is modest: the $\sim 1.5\%$ growth suppression yields $\Delta S_8 \sim 0.01$--$0.02$, insufficient to fully resolve the $S_8$ tension. Finally, alternative explanations exist, as foregrounds, calibration, or alternative physics could produce similar residual patterns.
+\begin{enumerate}
+    \item \textbf{The $\chi^2$ cost is real.} EDE pays $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM's global minimum. However, $\Lambda$CDM would pay $\gtrsim +30$--$40$ to reach the same $H_0 \approx 70$ region (Table~\ref{tab:price_of_admission}).
+    
+    \item \textbf{The ACT detection is conditional.} The template fit holds cosmology fixed; fully marginalized analysis may yield lower significance.
+    
+    \item \textbf{UV completion is incomplete.} The monodromy motivation is effective, not derived from a complete string compactification.
+    
+    \item \textbf{$S_8$ shift is modest.} The $\sim 1.5\%$ growth suppression yields $\Delta S_8 \sim 0.01$--$0.02$, insufficient to fully resolve the $S_8$ tension.
+    
+    \item \textbf{Alternative explanations exist.} Foregrounds, calibration, or alternative physics could produce similar residual patterns.
+\end{enumerate}
 
 These limitations define the scope: EDE provides a concrete, falsifiable hypothesis supported at a suggestive level of significance.
 
