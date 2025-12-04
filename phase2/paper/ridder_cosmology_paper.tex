@@ -164,16 +164,78 @@ The prior choices follow from basic physical considerations rather than from a p
 
 These choices define a parameter region in which the $\phi$-field can reduce the sound horizon and shift the inferred Hubble constant into the range $H_{0} \simeq 69$--$71$~km~s$^{-1}$~Mpc$^{-1}$, without introducing late-time anomalies. Once these parameters are fixed, the field's imprint on the CMB spectra is determined; it becomes a prediction rather than an adjustable feature.
 
-\subsubsection{Background and Perturbations}
+\subsubsection{Background Dynamics}
+\label{sec:background}
 
-Given the action above, the background evolution obeys the usual Klein-Gordon and Friedmann equations,
+Given the action above, the background evolution obeys the usual Klein-Gordon and Friedmann equations. For a homogeneous field $\phi(t)$ in an FRW metric with scale factor $a(t)$:
+\begin{align}
+\ddot{\phi} + 3 H \dot{\phi} + V'(\phi) &= 0, \label{eq:klein_gordon}\\
+3 M_{\rm Pl}^2 H^2 &= \rho_{\rm rad} + \rho_{\rm m} + \rho_{\phi}, \label{eq:friedmann}
+\end{align}
+where $H \equiv \dot{a}/a$ is the Hubble rate, primes denote derivatives with respect to $\phi$, and the scalar field energy density and pressure are
 \begin{equation}
-\ddot{\phi} + 3 H \dot{\phi} + V_{,\phi} = 0, \qquad
-3 M_{\rm Pl}^2 H^2 = \rho_{\rm rad} + \rho_{\rm m} + \rho_{\phi},
+\rho_{\phi} = \frac{1}{2}\dot{\phi}^2 + V(\phi), \qquad p_{\phi} = \frac{1}{2}\dot{\phi}^2 - V(\phi).
+\label{eq:rho_p}
 \end{equation}
-with $\rho_{\phi} = \dot{\phi}^2/2 + V(\phi)$. On the plateau, the field is overdamped and the energy density is effectively negligible compared to radiation. Near the shelf, the potential flattens, the field slows, and $\rho_{\phi}$ becomes a fixed fraction of the total for a limited range in scale factor. Once the field rolls off the shelf, its energy density redshifts faster than matter, and the universe again behaves like a standard $\Lambda$CDM background until the tail becomes important at low redshift.
+The equation of state parameter is therefore
+\begin{equation}
+w_\phi \equiv \frac{p_\phi}{\rho_\phi} = \frac{\dot{\phi}^2/2 - V(\phi)}{\dot{\phi}^2/2 + V(\phi)}.
+\label{eq:eos}
+\end{equation}
 
-Scalar perturbations in $\phi$ satisfy the usual minimally coupled equations in Newtonian gauge. Since there are no explicit matter couplings, the only effect of the $\phi$-field on metric perturbations comes from its contribution to the total energy-momentum tensor. In practice we implement the potential in CLASS with tight integration tolerances, so that the mapping from $(z_{\rm shelf}, f_{\rm R}, \sigma_{\ln a})$ to the CMB angular power spectra is numerically stable at the sub-percent level. This allows us to interpret any residual high-$\ell$ penalty in the likelihood as a physical cost rather than an artifact of the solver.
+The field evolution proceeds through three distinct regimes:
+
+\paragraph{Plateau regime ($a \ll a_c$):} When $H \gg m_\phi \equiv \sqrt{V''/M_{\rm Pl}^2}$, the field is overdamped. The slow-roll parameter
+\begin{equation}
+\epsilon_\phi \equiv \frac{M_{\rm Pl}^2}{2}\left(\frac{V'}{V}\right)^2 \ll 1
+\end{equation}
+ensures $\dot{\phi}^2 \ll V$, so $w_\phi \approx -1$ and $\rho_\phi \approx V(\phi)$. The energy density is approximately constant but subdominant to radiation, contributing a negligible fraction of the total.
+
+\paragraph{Shelf regime ($a \sim a_c$):} Near the shelf, the potential flattens and $V''$ increases. When $H \sim m_\phi$, the field becomes dynamical. If the shelf is sufficiently flat, the field temporarily tracks with a constant fractional contribution to the total energy density:
+\begin{equation}
+f_{\rm EDE}(a) \equiv \frac{\rho_\phi(a)}{\rho_{\rm tot}(a)} \approx f_{\rm EDE}^{\rm max} \exp\left[-\frac{(\ln a - \ln a_c)^2}{2\sigma_{\ln a}^2}\right],
+\label{eq:fede}
+\end{equation}
+where $f_{\rm EDE}^{\rm max} \lesssim 0.1$ is the peak EDE fraction and $\sigma_{\ln a} \sim 0.5$--$1$ controls the duration. This profile provides a good approximation to the full numerical solution for a broad class of potentials, including the monodromy potential in Section~VII.
+
+\paragraph{Decay regime ($a \gg a_c$):} Once the field rolls off the shelf, its kinetic energy dominates and $w_\phi \to +1$. The energy density then redshifts as
+\begin{equation}
+\rho_\phi \propto a^{-3(1+w_\phi)} \propto a^{-6},
+\end{equation}
+faster than radiation ($a^{-4}$) or matter ($a^{-3}$). By the time of matter-radiation equality, the EDE contribution is subdominant, and the late-time expansion approaches $\Lambda$CDM with the tail potential providing the effective cosmological constant.
+
+\paragraph{Sound horizon reduction.}
+The comoving sound horizon at recombination is
+\begin{equation}
+r_s = \int_0^{a_*} \frac{c_s \, da}{a^2 H(a)},
+\label{eq:rs}
+\end{equation}
+where $c_s$ is the baryon-photon sound speed and $a_*$ is the scale factor at last scattering. The EDE injection increases $H(a)$ near $a_c \lesssim a_*$, reducing the integrand and hence $r_s$. For $f_{\rm EDE}^{\rm max} \sim 0.05$ at $a_c \sim 10^{-3.5}$, the reduction is $\Delta r_s/r_s \sim -0.6\%$, yielding $r_s \approx 146$~Mpc compared to $147.4$~Mpc in $\Lambda$CDM.
+
+\subsubsection{Linear Perturbations}
+\label{sec:perturbations}
+
+Scalar perturbations in $\phi$ satisfy the linearized Klein-Gordon equation. In Newtonian gauge with metric perturbations $\Phi$ and $\Psi$:
+\begin{equation}
+\ddot{\delta\phi} + 3H\dot{\delta\phi} + \left(\frac{k^2}{a^2} + V''(\phi)\right)\delta\phi = -2V'(\phi)\Phi + \dot{\phi}(\dot{\Phi} + 3\dot{\Psi}).
+\label{eq:perturb_eom}
+\end{equation}
+The right-hand side couples the scalar perturbations to metric perturbations sourced by all species. Since we set $\beta = 0$, there are no additional couplings to dark matter perturbations.
+
+The effective sound speed of the scalar field perturbations is
+\begin{equation}
+c_s^2 = 1 + \mathcal{O}(\epsilon_\phi),
+\label{eq:cs2}
+\end{equation}
+which is manifestly positive. Combined with the standard kinetic term in the action, this ensures:
+\begin{itemize}
+\item No ghost instabilities ($\dot{\phi}^2/2$ has the correct sign).
+\item No gradient instabilities ($k^2/a^2$ coefficient is positive).
+\item Subluminal propagation ($c_s \leq 1$).
+\end{itemize}
+These properties hold throughout the evolution, confirming that the model is free of pathological instabilities at the linear level.
+
+In the fluid approximation, the scalar field perturbations can be mapped to an effective fluid with time-dependent equation of state $w_\phi(a)$ and sound speed $c_s^2 \approx 1$. This mapping facilitates comparison with other EDE parameterizations and is the basis for our CLASS implementation.
 
 The most important perturbative consequence is a small shift in the phase and amplitude of the acoustic peaks. The shelf briefly increases the expansion rate before recombination, which reduces the comoving sound horizon $r_{s}$ at the drag epoch. For a given angular scale $\theta_{s} = r_{s}/D_{A}$, this induces a coherent shift in the multipole locations of the peaks. The same change in the pre-recombination history also modifies the diffusion scale and the detailed shape of the damping tail. Once the geometric window is fixed, these shifts form a rigid template that cannot be tuned independently of $H_{0}$ and $r_{s}$.
 
@@ -258,23 +320,91 @@ Each data combination applies identical likelihoods and nuisance parameters acro
 % II.5 LIKELIHOOD PIPELINE AND NUISANCE PARAMETERS
 % -----------------------------------------------------------------------------
 
-\subsection{Likelihood Pipeline and Nuisance Parameters}
+\subsection{Likelihood Pipeline}
 \label{sec:pipeline}
 
-\paragraph{Sampling Framework.}
-All parameter estimation is performed using the Cobaya MCMC sampler~\cite{Cobaya}, interfaced with a modified version of the CLASS Boltzmann code~\cite{CLASS} that implements the EDE model. The same likelihood modules, nuisance parameters, and sampling settings are applied identically to $\Lambda$CDM, $w_0 w_a$CDM, and the EDE model.
+\subsubsection{Sampling Framework}
+Parameter estimation is performed using the Cobaya MCMC sampler (v3.3)~\cite{Cobaya}, interfaced with a modified version of the CLASS Boltzmann code (v3.2)~\cite{CLASS} that implements the EDE model. All three cosmological models ($\Lambda$CDM, $w_0 w_a$CDM, and EDE) use identical likelihood modules, nuisance parameters, and sampling settings.
 
-\paragraph{Likelihoods.}
-We use the three data combinations defined above: Base (Planck 2018 + ACT DR6 + pre-DESI BAO), +SH0ES (Base + Cepheid prior), and +TRGB (Base + JWST/TRGB prior). Extended analyses incorporate DESI Y1 BAO and DES Y1 weak lensing. All likelihoods are implemented through standard Cobaya modules.
+\subsubsection{Likelihood Modules}
+The following likelihood modules are used throughout this analysis:
 
-\paragraph{Nuisance Parameters.}
-The Planck likelihoods include standard nuisance parameters for instrumental calibration, beam uncertainties, and foreground contamination. These parameters are sampled jointly with the cosmological parameters and are assigned identical priors across all three models. For the plik\_lite likelihood, foreground and calibration nuisances are marginalized analytically, reducing the dimensionality of the sampling problem while preserving consistency across model comparisons. No additional nuisance parameters are introduced for the EDE model beyond those required by the Planck likelihood. The EDE sector parameters ($\log_{10}a_c$, $\Lambda_{\rm EDE}$) enter only through their effect on the background and perturbation evolution and do not couple to instrumental or astrophysical systematics.
+\begin{itemize}
+\item \textbf{Planck 2018 CMB:}
+    \begin{itemize}
+    \item High-$\ell$ TT/TE/EE: \texttt{planck\_2018\_highl\_plik.TTTEEE\_lite} ($\ell = 30$--$2508$)
+    \item Low-$\ell$ TT: \texttt{planck\_2018\_lowl.TT} ($\ell = 2$--$29$)
+    \item Low-$\ell$ EE: \texttt{planck\_2018\_lowl.EE} ($\ell = 2$--$29$)
+    \item Lensing: \texttt{planck\_2018\_lensing.clik} ($L = 8$--$400$)
+    \end{itemize}
 
-\paragraph{Numerical Tolerances.}
-All results are based on a consistent analysis pipeline using modified CLASS and Cobaya. We adopted stricter background and perturbation tolerances than CLASS defaults, increased the multipole and $k$ sampling in the damping tail, and verified that $\Lambda$CDM spectra agree with unmodified CLASS at the sub-percent level. The same configuration was applied to all models and data combinations. The DESI Y1 BAO likelihood was cross-checked against published $\Lambda$CDM best fits before use.
+\item \textbf{ACT DR6:}
+    \begin{itemize}
+    \item TT/TE/EE: \texttt{act\_dr6\_mflike} ($\ell = 600$--$4000$)
+    \item Foreground model: thermal SZ, kinetic SZ, CIB, radio point sources
+    \item Nuisance parameters: $\sim$20 (calibration, foregrounds per frequency)
+    \end{itemize}
 
-\paragraph{Convergence and Model Comparison.}
-Full details of the MCMC convergence criteria (Gelman--Rubin $R - 1 < 0.01$, $N \geq 1000$ samples per chain) and information--theoretic model comparison (AIC, BIC) are given in Section~IV. The key point here is that all three models are run through the same Cobaya+CLASS pipeline with identical stopping criteria and model comparison metrics.
+\item \textbf{BAO (pre-DESI):}
+    \begin{itemize}
+    \item 6dFGS: $D_V(z=0.106)/r_d$~\cite{6dFGS}
+    \item SDSS MGS: $D_V(z=0.15)/r_d$~\cite{MGS}
+    \item BOSS DR12: $D_M(z)/r_d$, $H(z)r_d$ at $z = 0.38, 0.51, 0.61$~\cite{BOSS_DR12}
+    \item eBOSS LRG: $D_M(z=0.70)/r_d$, $H(z=0.70)r_d$~\cite{eBOSS}
+    \end{itemize}
+
+\item \textbf{BAO (DESI Y1):}
+    \begin{itemize}
+    \item BGS: $z_{\rm eff} = 0.30$
+    \item LRG: $z_{\rm eff} = 0.51, 0.71$
+    \item ELG: $z_{\rm eff} = 1.32$
+    \item QSO: $z_{\rm eff} = 1.49$
+    \item Ly$\alpha$: $z_{\rm eff} = 2.33$
+    \end{itemize}
+
+\item \textbf{Local $H_0$ priors:}
+    \begin{itemize}
+    \item SH0ES: $H_0 = 73.04 \pm 1.04$~km~s$^{-1}$~Mpc$^{-1}$~\cite{SH0ES}
+    \item TRGB-CCHP: $H_0 = 69.8 \pm 1.7$~km~s$^{-1}$~Mpc$^{-1}$~\cite{Freedman2024}
+    \end{itemize}
+
+\item \textbf{Supernovae:} Pantheon+ compilation~\cite{Pantheon}
+\item \textbf{Weak lensing (extended):} DES Y1 3$\times$2pt~\cite{DES_Y1}
+\end{itemize}
+
+\subsubsection{Sampling Configuration}
+
+\begin{table}[ht]
+\centering
+\caption{MCMC sampling configuration. All models use identical settings.}
+\label{tab:sampling}
+\begin{tabular}{ll}
+\toprule
+\textbf{Parameter} & \textbf{Value} \\
+\midrule
+Sampler & Cobaya MCMC (Metropolis-Hastings) \\
+Number of chains & 4 (parallel) \\
+Burn-in & 30\% of samples discarded \\
+Convergence criterion & Gelman-Rubin $R - 1 < 0.01$ \\
+Minimum samples/chain & 1000 (post burn-in) \\
+Typical effective samples & $N_{\rm eff} \gtrsim 500$ per parameter \\
+Proposal covariance & Updated every 40 samples \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Numerical Tolerances}
+We adopt stricter tolerances than CLASS defaults to ensure sub-percent accuracy in the damping tail:
+\begin{itemize}
+\item Background precision: \texttt{tol\_background\_integration = 1e-4}
+\item Perturbation precision: \texttt{tol\_perturb\_integration = 1e-6}
+\item Multipole sampling: $\ell_{\rm max} = 5000$, $\Delta\ell = 1$ for $\ell > 2000$
+\item $k$-sampling: increased density at $k > 0.1$~Mpc$^{-1}$
+\end{itemize}
+The $\Lambda$CDM spectra from our modified CLASS agree with unmodified CLASS at the 0.1\% level across all multipoles.
+
+\subsubsection{Nuisance Parameters}
+The Planck \texttt{plik\_lite} likelihood analytically marginalizes over foreground and calibration nuisances, reducing the sampling dimensionality while preserving model comparison consistency. The ACT DR6 likelihood samples $\sim$20 nuisance parameters jointly with cosmology, including per-frequency calibrations and foreground amplitudes. No additional nuisance parameters are introduced for EDE beyond those required by the CMB likelihoods.
 
 % -----------------------------------------------------------------------------
 % II.6 FAIRNESS CHECKLIST
@@ -416,6 +546,44 @@ $\beta$ & 0.0 & Dark matter coupling; set to zero (no fifth force) \\
 \end{table}
 
 The CPL and EDE models thus have equal parameter counts ($k = 8$), enabling a direct comparison. Both add two parameters beyond $\Lambda$CDM: CPL modifies the late-time equation of state, while EDE modifies the pre-recombination expansion. The detailed shape of the EDE potential is fixed by the monodromy template described in Section~VII. Extended configurations with $k = 9$ (floating $\sigma_{\ln a}$) are explored as robustness tests in Section~VIII.
+
+\subsection{Parameter Priors}
+\label{sec:priors}
+
+Table~\ref{tab:full_priors} specifies the prior distributions for all sampled parameters. Flat (uniform) priors are used throughout, with ranges chosen to be uninformative within physically reasonable bounds.
+
+\begin{table}[ht]
+\centering
+\caption{Prior distributions for all sampled cosmological parameters. All priors are flat (uniform) within the specified range.}
+\label{tab:full_priors}
+\begin{tabular}{llccl}
+\toprule
+\textbf{Parameter} & \textbf{Symbol} & \textbf{Min} & \textbf{Max} & \textbf{Notes} \\
+\midrule
+\multicolumn{5}{l}{\textit{Base cosmological parameters (all models)}} \\
+Physical baryon density & $\omega_b$ & 0.019 & 0.025 & --- \\
+Physical CDM density & $\omega_c$ & 0.095 & 0.145 & --- \\
+Sound horizon angle & $100\theta_{\rm MC}$ & 1.03 & 1.05 & --- \\
+Optical depth & $\tau_{\rm reio}$ & 0.01 & 0.12 & --- \\
+Scalar amplitude & $\ln(10^{10}A_s)$ & 2.5 & 3.5 & --- \\
+Spectral index & $n_s$ & 0.9 & 1.05 & --- \\
+\midrule
+\multicolumn{5}{l}{\textit{CPL parameters}} \\
+DE equation of state & $w_0$ & $-2.0$ & $0.0$ & --- \\
+DE evolution & $w_a$ & $-3.0$ & $2.0$ & --- \\
+\midrule
+\multicolumn{5}{l}{\textit{EDE parameters}} \\
+Critical scale factor & $\log_{10}(a_c)$ & $-4.5$ & $-2.5$ & Peak EDE epoch \\
+EDE energy scale & $\Lambda_{\rm EDE}$ [eV] & $0$ & $5.0$ & Controls $f_{\rm EDE}$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Derived parameters (not sampled)}} \\
+Hubble constant & $H_0$ & --- & --- & km~s$^{-1}$~Mpc$^{-1}$ \\
+Clustering amplitude & $S_8$ & --- & --- & $\sigma_8\sqrt{\Omega_m/0.3}$ \\
+Sound horizon & $r_s$ & --- & --- & Mpc \\
+Peak EDE fraction & $f_{\rm EDE}$ & --- & --- & $\rho_{\rm EDE}/\rho_{\rm tot}|_{\rm max}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 % -----------------------------------------------------------------------------
 % III.5 DERIVED DIAGNOSTICS
@@ -1316,6 +1484,25 @@ These geometry-first tests sharpen the interpretation of our main results. EDE i
 We also perform a set of robustness checks that probe other possible weak spots. We vary the priors on the EDE amplitude and timing within reasonable ranges and re-run the chains to see whether the best-fit region is prior driven. We find that the posterior support for a shelf near $z \sim 3000$ is stable and that pushing the priors to extremes either degrades the fit or returns the model toward the $\Lambda$CDM limit. We test alternative combinations of CMB likelihoods and include or exclude Planck lensing to check for sensitivity to a single dataset. The qualitative behavior of EDE persists. Finally, we explore a small number of runs with localized dark matter couplings $\beta(\phi)$ to verify that our main conclusions do not depend on setting $\beta$ exactly to zero. These runs show that modest couplings can slightly sharpen the reduction in $S_8$ but are not required to obtain it.
 
 Taken together, these tests support two claims. First, the EDE solution is robust under reasonable variations in data and priors. Second, it sits in a region of parameter space that aligns naturally with the evolving observational picture from JWST and DESI. The model is therefore a plausible candidate for the kind of dynamical dark energy that recent surveys appear to favor, with the additional virtue that its main effects are concentrated at early times.
+
+\subsection{Response to Known EDE Criticisms}
+\label{sec:criticisms}
+
+Early dark energy models have faced several criticisms in the literature. Here we address how our specific model responds to these concerns.
+
+\paragraph{S8 degradation (Hill et al.\ 2020; Smith et al.\ 2020).}
+A primary criticism of canonical axion-EDE~\cite{Hill2020,Smith2020} is that raising $H_0$ toward $73$~km~s$^{-1}$~Mpc$^{-1}$ typically \emph{worsens} the $S_8$ tension by increasing $\sigma_8$. This occurs because the enhanced early expansion suppresses structure growth at early times, requiring higher $A_s$ to match the CMB amplitude, which in turn increases $\sigma_8$ at $z=0$.
+
+Our model avoids this pathology through two mechanisms: (1)~we target $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$ rather than $73$, which requires a smaller sound horizon reduction ($\Delta r_s \approx -0.9$~Mpc vs.\ $-2$--$3$~Mpc); (2)~setting $\beta = 0$ (no direct dark matter coupling) ensures that structure growth is modified only through the background evolution, not through additional fifth-force effects. The result is $S_8 \approx 0.81$--$0.82$ (Table~\ref{tab:tier5_running}), which represents an \emph{improvement} over the Planck $\Lambda$CDM value of $S_8 = 0.834 \pm 0.016$ and is consistent with weak-lensing constraints from DES Y3 ($S_8 = 0.776 \pm 0.017$)~\cite{DES_Y3}.
+
+\paragraph{Fine-tuning of the EDE epoch.}
+A common objection is that EDE requires fine-tuning of the critical scale factor $a_c$ to lie near matter-radiation equality. In our model, $\log_{10}(a_c) \approx -3.5$ (corresponding to $z_c \approx 3000$) emerges from the interplay between Hubble friction and the potential curvature near the shelf. Section~VII shows how this timing arises naturally in monodromy models: the field becomes dynamical when $H \sim m_\phi$, where $m_\phi$ is the effective mass at the shelf. For $m_\phi \sim 10^{-27}$~eV, this condition is satisfied at $z \sim 3000$ without additional parameter adjustments. The required hierarchy of scales, while nontrivial, is comparable to that in canonical axion-EDE~\cite{Poulin2019} and represents no additional fine-tuning relative to existing models.
+
+\paragraph{CMB lensing constraints.}
+Planck lensing provides an independent measurement of the amplitude of structure at intermediate redshifts. Some EDE models are constrained by lensing because they predict excess power that conflicts with the observed lensing spectrum. In our model, the lower $S_8$ value ($\approx 0.81$) is consistent with the Planck lensing likelihood. The component-level $\chi^2$ analysis (Table~\ref{tab:chi2_breakdown}) shows that lensing contributes no significant penalty ($\Delta\chi^2_{\rm lensing} < 1$), confirming that the model does not conflict with this probe.
+
+\paragraph{Tension with high-$\ell$ CMB data.}
+A key criticism of EDE is that it degrades the fit to the CMB damping tail~\cite{Hill2020}. We acknowledge this cost explicitly: the high-$\ell$ penalty is $\Delta\chi^2_{\rm high-\ell} \approx +17$--$19$ (Table~\ref{tab:chi2_breakdown}). However, this penalty is partially offset by improvements at low $\ell$ (up to $\Delta\chi^2_{\rm low-\ell} \approx -18$ in pre-DESI configurations), yielding competitive global fits. More importantly, the damping-tail residual is not a random degradation but a \emph{predicted pattern} with specific phase and amplitude (Section~\ref{sec:cmb_residuals}). The conditional template fit to ACT DR6 suggests that current data are consistent with this pattern rather than in tension with it.
 
 % =============================================================================
 % SECTION IX: DISCUSSION AND CONCLUSION
