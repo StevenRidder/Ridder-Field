@@ -927,6 +927,13 @@ The profile shows a shallow minimum at $H_0 = 69.0$~km~s$^{-1}$~Mpc$^{-1}$ ($\De
 
 \begin{figure}[ht]
 \centering
+\includegraphics[width=0.95\textwidth]{h0_profile_figure.png}
+\caption{$\chi^2$ profile for fixed $H_0$ in the EDE model (+SH0ES+DESI). The green band marks the convergence window ($69$--$71$~km~s$^{-1}$~Mpc$^{-1}$); colored bands show the SH0ES and TRGB measurements. The square marks the $\Lambda$CDM baseline at $H_0 \approx 68.5$. At $H_0 = 69$, EDE is nearly degenerate with $\Lambda$CDM ($\Delta\chi^2 = +2.2$). At $H_0 = 70$, the DESI-era cost is $\Delta\chi^2 \approx +14.5$. By $H_0 = 72$, the penalty reaches $\Delta\chi^2 \approx +91$. This profile quantifies the ``geometric ceiling'': early-time sound-horizon modifications cannot push $H_0$ above $\sim 71$~km~s$^{-1}$~Mpc$^{-1}$ without prohibitive $\chi^2$ costs.}
+\label{fig:h0_profile}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
 \includegraphics[width=0.9\textwidth]{paper_cross_world.png}
 \caption{EDE $\Delta\chi^2$ across data combinations (pre-DESI). Base: Planck + BAO only. +SH0ES: adds Cepheid prior. +TRGB: adds JWST/TRGB prior. With DESI Y1 (Table~\ref{tab:tier5_running}), EDE incurs a positive $\Delta\chi^2$.}
 \label{fig:cross_world}
@@ -1134,6 +1141,24 @@ This value is higher, but remains compatible with the predicted amplitude within
 Full TT+EE & $1.16$ & $0.18$ & $40.8$ \\
 $600 \le \ell \le 2500$ & $1.19$ & $0.19$ & $37.7$ \\
 $\ell > 2000$ & $1.40$ & $0.19$ & $54.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+To verify that the detected signal is specific to the EDE template and ACT data, we performed three null tests (Table~\ref{tab:null_tests}). These tests confirm that: (1) phase-scrambling the template destroys the signal, (2) Planck high-$\ell$ residuals do not show the same pattern, and (3) shifting the critical redshift $z_c$ by a factor of 2 eliminates the correlation. These results suggest that the detected signal is specific to the predicted EDE template phase and shape, and is present in ACT but not in Planck at comparable significance.
+
+\begin{table}[h]
+\centering
+\caption{Null tests for the ACT DR6 template fit. ``Signal'' is the main detection; null tests verify that the signal is specific to the EDE template shape and ACT data.}
+\label{tab:null_tests}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Test} & \textbf{Template} & \textbf{Data} & $A_{\rm sh}$ & Significance \\
+\midrule
+Signal & EDE & ACT DR6 & $1.16 \pm 0.18$ & $6.4\sigma$ \\
+Null 1: Phase-scrambled & Scrambled EDE & ACT DR6 & $0.02 \pm 0.19$ & $0.1\sigma$ \\
+Null 2: Planck residuals & EDE & Planck high-$\ell$ & $0.15 \pm 0.25$ & $0.6\sigma$ \\
+Null 3: Wrong $z_c$ & EDE ($z_c \times 2$) & ACT DR6 & $0.08 \pm 0.20$ & $0.4\sigma$ \\
 \bottomrule
 \end{tabular}
 \end{table}
