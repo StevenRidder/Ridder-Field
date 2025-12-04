@@ -1,0 +1,79 @@
+# Sweet spot scan: Test if Lambda_EDE = 0.67-0.72 preserves low-ell EE with DESI
+# This is a QUICK diagnostic run, not a full chain
+
+sampler:
+  mcmc:
+    max_samples: 500
+    burn_in: 50
+    Rminus1_stop: 0.1
+    
+theory:
+  classy:
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
+    extra_args:
+      # Ridder field EDE parameters - SWEET SPOT TEST
+      Lambda_EDE_ridder: 0.70  # TEST: Intermediate value!
+      n_ridder: 3.0
+      theta_i_ridder: 1.0
+      sigma_ln_a: 0.5
+      beta_ridder: 0.0
+      
+      # Standard precision
+      output: tCl pCl lCl
+      lensing: yes
+      l_max_scalars: 2600
+
+params:
+  logA:
+    prior: {min: 2.6, max: 3.5}
+    ref: {dist: norm, loc: 3.05, scale: 0.02}
+    latex: \log(10^{10} A_s)
+  ns:
+    prior: {min: 0.9, max: 1.05}
+    ref: {dist: norm, loc: 0.97, scale: 0.01}
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: {dist: norm, loc: 70, scale: 0.5}
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: {dist: norm, loc: 0.0224, scale: 0.0005}
+    latex: \omega_b
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: {dist: norm, loc: 0.12, scale: 0.005}
+    latex: \omega_{cdm}
+  tau_reio:
+    prior: {min: 0.02, max: 0.12}
+    ref: {dist: norm, loc: 0.06, scale: 0.01}
+    latex: \tau_{reio}
+  # Ridder field parameters
+  log10_ac:
+    prior: {min: -4.5, max: -3.0}
+    ref: {dist: norm, loc: -3.5, scale: 0.1}
+    latex: \log_{10}(a_c)
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  # DESI Y1 BAO
+  desi_y1.bao.lrg_z0pt4_z0pt6:
+  desi_y1.bao.lrg_z0pt6_z0pt8:
+  desi_y1.bao.lrg_z0pt8_z1pt1:
+  desi_y1.bao.lrgpluselg_z0pt8_z1pt1:
+  desi_y1.bao.elg_z1pt1_z1pt6:
+  desi_y1.bao.qso_z0pt8_z2pt1:
+  desi_y1.bao.lyalpha_z1pt77_z4pt16:
+  # SH0ES prior
+  shoes_h0:
+    H0_mean: 73.04
+    H0_sigma: 1.04
+
+output: chains/sweetspot_070
+

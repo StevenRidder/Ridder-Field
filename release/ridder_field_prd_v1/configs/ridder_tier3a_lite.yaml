@@ -1,0 +1,97 @@
+# Tier 3A: Planck Lite + BAO + SH0ES (Exploratory)
+# Tests model capability when late-time measurements are prioritized
+# Following Poulin et al. (2019) approach
+
+theory:
+  classy:
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
+    extra_args:
+      output: tCl, mPk, lCl
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27
+      n_ridder: 3
+
+likelihood:
+  # Planck 2018 Low-ℓ Only (no high-ℓ or lensing)
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  
+  # BAO
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+  
+  # SH0ES H0 Constraint (External Likelihood)
+  sh0es_h0:
+    external: |
+      lambda H0=None, **params_values: (
+        -0.5 * ((H0 - 73.04) / 1.04)**2
+      )
+    requires:
+      H0:
+        latex: H_0
+
+params:
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}  # Wide uniform prior
+    ref: 73.0  # Start closer to SH0ES for this exploratory run
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+  omega_cdm:
+    prior: {min: 0.06, max: 0.2}
+    ref: 0.120
+    proposal: 0.001
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.054
+    proposal: 0.003
+  theta_i_ridder:
+    prior: {min: 1.0, max: 2.3}  # Wider range for exploratory
+    ref: 2.0
+    proposal: 0.05
+    latex: \theta_i
+  beta_ridder:
+    prior: {min: 0.0, max: 0.05}  # Allow stronger coupling
+    ref: 0.015
+    proposal: 0.003
+    latex: \beta
+  A_planck:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.0025
+  calib_100T:
+    prior: {min: 0.997, max: 1.003}
+    ref: 1.0002
+    proposal: 0.0004
+  calib_217T:
+    prior: {min: 0.995, max: 1.005}
+    ref: 0.99805
+    proposal: 0.0006
+
+sampler:
+  mcmc:
+    max_samples: 3000  # Shorter for exploratory
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+
+output: ridder_tier3a_lite
+

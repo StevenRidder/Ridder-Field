@@ -1,0 +1,105 @@
+# Tier 5: Geometric EDE with SH0ES + DESI Y1 BAO
+# FIXED: Using CORRECT CLASS parameters
+# k = 7 parameters (6 base + 1 EDE amplitude)
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      # FIXED Ridder shape parameters
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+likelihood:
+  # CMB
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  
+  # Pre-DESI BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # DESI Y1 BAO
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
+  
+  # Pantheon+ Supernovae
+  sn.pantheonplus:
+  
+  # SH0ES H0 prior
+  shoes_h0:
+    external: "lambda H0: -0.5*((H0 - 73.04)/1.04)**2"
+    output_params: [chi2__shoes_h0]
+
+params:
+  # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 70.5
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # EDE amplitude - SAMPLED DIRECTLY
+  Lambda_EDE_ridder: 0.70  # FIXED FOR SWEET SPOT TEST
+
+  # Derived
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 500
+    Rminus1_stop: 0.02
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+    proposal_scale: 2.0
+
+output: chains/sweetspot_070
+resume: true

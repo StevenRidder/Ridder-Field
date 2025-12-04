@@ -1,0 +1,88 @@
+# Tier 1: Planck 2018 Only - Full Production Test
+# This is the real data test with actual Planck likelihoods
+
+theory:
+  classy:
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
+    extra_args:
+      # Minimal CLASS args (Ridder field handled internally)
+      # Planck requires high l_max and lens calculation
+      output: tCl, mPk, lCl
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      # Use recfast to avoid HYREC buffer overflow in classy build
+      recombination: recfast
+      # No non-linear corrections for this 200-sample smoke test
+      non_linear: none
+      # Ridder field parameters (auto-activates when Lambda > 0)
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27  # eV (converted to Mpl internally)
+      n_ridder: 3
+
+likelihood:
+  # THE REAL DATA
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+
+params:
+  # --- COSMOLOGY (Standard Priors) ---
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 67.4  # Start at Planck baseline
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+  omega_cdm:
+    prior: {min: 0.1, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: 0.054
+    proposal: 0.004
+
+  # --- RIDDER PARAMETERS ---
+  # For this Tier 1 test, keep Lambda_EDE_ridder fixed and sample theta_i, beta only
+  # The Critical Parameter (theta_i_ridder in CLASS)
+  # FORCE START AT 2.1 (Ridder valley) - don't let it drift to ΛCDM valley (0.5)
+  theta_i_ridder:
+    prior: {min: 0.1, max: 2.3}
+    ref: 2.1  # FORCE START IN RIDDER PHYSICS ZONE
+    proposal: 0.05
+    latex: \theta_i
+  # Coupling (Let's see if Planck tolerates it)
+  beta_ridder:
+    prior: {min: 0.0, max: 0.03}
+    ref: 0.0
+    proposal: 0.005
+    latex: \beta
+
+sampler:
+  mcmc:
+    drag: true
+    proposal_scale: 1.9
+    covmat: auto
+    Rminus1_stop: 0.05
+    burn_in: 0
+    max_samples: 5000 # V1 Production run
+
+output: chains/ridder_tier1_production
+resume: false  # Use --force flag in launch script instead
+debug: true
+

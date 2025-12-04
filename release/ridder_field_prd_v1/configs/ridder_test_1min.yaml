@@ -1,0 +1,35 @@
+# 1-minute smoke test: BAO only, tiny chain
+# Purpose: Verify CLASS + Cobaya integration works
+
+# No theory block needed - rs_gaussian calls CLASS directly
+
+likelihood:
+  rs_gaussian:
+    external: |
+      (lambda: __import__('sys').path.insert(0, '/home/<VM_USER>/Ridder-Field/phase3') or getattr(__import__('rs_likelihood_direct'), 'rs_likelihood'))()
+
+params:
+  # Ridder field parameters only (rs_gaussian calls CLASS directly with fixed cosmology)
+  theta_i_ridder:
+    prior: {min: 2.0, max: 2.2}
+    ref: {dist: norm, loc: 2.1, scale: 0.02}
+    proposal: 0.01
+    latex: \theta_i
+  beta_ridder:
+    prior: {min: 0.005, max: 0.015}
+    ref: {dist: norm, loc: 0.01, scale: 0.002}
+    proposal: 0.001
+    latex: \beta
+
+sampler:
+  mcmc:
+    max_samples: 50      # 1 minute
+    burn_in: 0
+    Rminus1_stop: 100    # disabled
+    learn_proposal: False
+    proposal_scale: 1.9
+
+output: chains/local_test_1min
+resume: false
+debug: true
+

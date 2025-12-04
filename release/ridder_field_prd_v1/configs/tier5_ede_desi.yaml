@@ -1,0 +1,112 @@
+# Tier 5 Phase 1a: Geometric EDE with DESI Y1 BAO
+# Tests: Is DESI consistent with ~1% r_s reduction from EDE?
+# k = 8 parameters (minimal EDE shelf)
+
+theory:
+  classy:
+    path: /home/<VM_USER>/Ridder-Field/phase2/class/python
+    extra_args:
+      output: tCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      use_ridder: "yes"
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 2.0e26
+      theta_i_ridder: 2.8
+      beta_ridder: 0.0
+      ridder_sigma_lna: 0.656
+
+likelihood:
+  # CMB
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  
+  # Pre-DESI BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # DESI Y1 BAO
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/<VM_USER>/Ridder-Field/phase3
+
+params:
+  # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # EDE parameters (k=8) - WIDE priors for DESI world (no H0 prior)
+  # Start with very small EDE to find viable region
+  ridder_Lambda_EDE_eV:
+    prior: {min: 0.05, max: 1.5}
+    ref: 0.2
+    proposal: 0.1
+    latex: \Lambda_{EDE}
+  ridder_a_c:
+    prior: {min: 0.0001, max: 0.002}
+    ref: 0.0005
+    proposal: 0.0002
+    latex: a_c
+
+  # Derived
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+    proposal_scale: 2.0
+    covmat: chains/tier10_ede_minimal_base.covmat
+
+output: chains/tier5_ede_desi
+resume: true

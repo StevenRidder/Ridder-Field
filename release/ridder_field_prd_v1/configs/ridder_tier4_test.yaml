@@ -1,0 +1,97 @@
+# Tier 4 TEST: Simplified for Australia VM
+# Using only what we have: Planck low-l + BAO + SH0ES + high P_k_max
+# This tests the S8 resolution capability without full LSS data
+
+theory:
+  classy:
+    path: /home/<VM_USER>/Ridder-Field/phase2/class
+    extra_args:
+      output: tCl, mPk
+      l_max_scalars: 2508
+      lensing: yes
+      gauge: newtonian
+      recombination: recfast
+      non_linear: halofit  # For S8 constraints
+      
+      # High-resolution structure formation
+      P_k_max_h/Mpc: 5.0  # High k-max for S8 constraints
+      
+      # Ridder field parameters (fixed)
+      Lambda_EDE_ridder: 1.0
+      f_axion_ridder: 1.0e27  # eV
+      n_ridder: 3
+
+likelihood:
+  # Planck 2018 Low-l (what we have)
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+
+  # BAO (Baryon Acoustic Oscillations)
+  bao.sixdf_2011_bao: null
+  bao.sdss_dr7_mgs: null
+  bao.sdss_dr12_consensus_bao: null
+
+  # Supernovae (Pantheon+)
+  sn.pantheon: null
+
+params:
+  # --- COSMOLOGY ---
+  logA:
+    prior: {min: 2.0, max: 4.0}
+    ref: 3.044
+    proposal: 0.001
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10*__import__("numpy").exp(logA)'
+
+  n_s:
+    prior: {min: 0.9, max: 1.02}
+    ref: 0.965
+    proposal: 0.004
+
+  H0:
+    prior: {dist: norm, loc: 73.04, scale: 1.04}  # SH0ES 2021 Prior
+    ref: 73.0
+    proposal: 0.5
+
+  omega_b:
+    prior: {min: 0.01, max: 0.03}
+    ref: 0.0224
+    proposal: 0.0001
+
+  omega_cdm:
+    prior: {min: 0.1, max: 0.14}
+    ref: 0.120
+    proposal: 0.001
+
+  tau_reio:
+    prior: {min: 0.04, max: 0.08}
+    ref: 0.054
+    proposal: 0.004
+
+  # --- RIDDER PARAMETERS ---
+  theta_i_ridder:
+    prior: {min: 1.0, max: 2.3}
+    ref: 1.8  # Start in Ridder valley
+    proposal: 0.05
+    latex: \theta_i
+
+  beta_ridder:
+    prior: {min: 0.0, max: 0.03}
+    ref: 0.01  # Start with coupling
+    proposal: 0.002
+    latex: \beta
+
+sampler:
+  mcmc:
+    drag: false  # Disable drag - not enough speed separation
+    proposal_scale: 1.9
+    covmat: auto
+    Rminus1_stop: 0.03
+    burn_in: 0
+    max_samples: 1000  # Quick test first
+
+output: chains/ridder_tier4_test
+resume: false
+debug: true
+
