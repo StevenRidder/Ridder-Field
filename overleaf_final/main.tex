@@ -20,7 +20,7 @@ The standard cosmological model $\Lambda$CDM continues to fit most data sets ext
 
 In pre-DESI combinations of Planck, BAO, and local $H_0$ data, this model reduces the $H_0$ tension from about $4.3\sigma$ to $2.3\sigma$ and the $S_8$ tension from about $2.7\sigma$ to $1.1\sigma$, with an overall improvement $\Delta\chi^2 \simeq -4.5$ relative to $\Lambda$CDM for two additional parameters. Once DESI Y1 BAO are included, fixed-$H_0$ profile likelihoods reveal a \emph{geometric ceiling}: $\Delta\chi^2$ rises from $\simeq +2$ at $H_0 = 69$ to $\simeq +15$ at $H_0 = 70$ and $\gtrsim 90$ by $H_0 = 72$, so early-time physics alone cannot reach the original SH0ES target near $73$~km~s$^{-1}$~Mpc$^{-1}$. We trace this ceiling to a \emph{correlation flip} in the Planck+DESI posterior: DESI reverses the sign of the correlation between EDE amplitude and reionization optical depth, which closes a degeneracy where low-$\ell$ polarization could previously compensate the damping-tail cost. Stress-test runs show that forcing $\Lambda$CDM into the same $H_0 \simeq 70$ convergence window would incur a penalty $\Delta\chi^2 \gtrsim 30$--$40$ while worsening $S_8$.
 
-The same physics predicts a characteristic ``soft shoulder'' in the CMB damping tail at the one-percent level. We construct a fixed template for this ripple pattern and fit its amplitude to ACT DR6 TT+EE data in a \emph{conditional} analysis with fixed background cosmology, finding a $6.4\sigma$ preference for a nonzero shoulder aligned with the Geometric EDE template; a fully marginalized analysis may reduce this significance. Taken together, the geometric ceiling, the $H_0$--$S_8$ convergence window, and the soft-shoulder correlation make early-time geometry a concrete and falsifiable alternative to purely late-time or systematic explanations of the current anomalies and provide a sharp target for upcoming CMB-S4 observations.
+The same physics predicts a characteristic ``soft shoulder'' in the CMB damping tail at the one-percent level. We construct a fixed template for this ripple pattern and fit its amplitude to ACT DR6 TT+EE data, finding a $6.4\sigma$ conditional preference for a nonzero shoulder aligned with the Geometric EDE template, under fixed-cosmology assumptions; a fully marginalized analysis may reduce this significance to $3$--$5\sigma$. Taken together, the geometric ceiling, the $H_0$--$S_8$ convergence window, and the soft-shoulder correlation make early-time geometry a concrete and falsifiable alternative to purely late-time or systematic explanations of the current anomalies and provide a sharp target for upcoming CMB-S4 observations.
 \end{abstract}
 
 % =============================================================================
@@ -68,7 +68,7 @@ The sound horizon at the drag epoch, $r_s$, sets the physical scale for both CMB
 
 \subsection{The Model: Early Dark Energy from a Scalar Field}
 
-We consider a single scalar field $\phi$ minimally coupled to gravity, evolving in a potential with three characteristic regimes: a plateau at early times, a narrow shelf near recombination, and a slowly varying tail at late times. This structure is motivated by axion monodromy scenarios~\cite{Silverstein_Westphal,McAllister_monodromy}, though we treat the potential phenomenologically in the main analysis (see Section~VII for the theoretical motivation).
+We consider a single scalar field $\phi$ minimally coupled to gravity, evolving in a potential with three characteristic regimes: a plateau at early times, a narrow shelf near recombination, and a slowly varying tail at late times. We refer to this scalar-field extension as ``Geometric EDE'' (or $\phi$-EDE for short). This structure is motivated by axion monodromy scenarios~\cite{Silverstein_Westphal,McAllister_monodromy}, though we treat the potential phenomenologically in the main analysis (see Section~VII for the theoretical motivation).
 
 The idea that a pre-recombination energy injection can raise the inferred $H_0$ was introduced by Karwal \& Kamionkowski~\cite{Karwal_Kamionkowski} and developed into concrete models by Poulin et al.~\cite{Poulin_EDE}, Agrawal et al.~\cite{Agrawal_RnR}, and Niedermann \& Sloth~\cite{Niedermann_NewEDE}. In these scenarios, a scalar field contributes a few percent of the total energy density near $z \sim 3000$, briefly accelerating expansion and reducing the sound horizon $r_s$. For fixed observed acoustic angles, this shifts the inferred $H_0$ upward.
 
@@ -120,7 +120,7 @@ Our analysis reveals that modifications to $r_s$ that raise $H_0$ above approxim
 
 We also identify a parameter degeneracy that explains why different data combinations yield different conclusions about EDE models. The correlation between EDE amplitude and reionization optical depth $\tau$ changes sign when DESI BAO is included: from $+0.73$ (pre-DESI) to $-0.24$ (with DESI). This shift in degeneracy structure reduces the region of parameter space where low-$\ell$ polarization can compensate the high-$\ell$ cost.
 
-For context, we compare the $\chi^2$ penalty that our EDE model incurs at $H_0 \approx 70$ to what $\Lambda$CDM would incur at the same $H_0$. With Planck+DESI data, the $\Lambda$CDM posterior is tightly constrained near $H_0 \simeq 68$~km~s$^{-1}$~Mpc$^{-1}$; shifting to $H_0 = 70$ within $\Lambda$CDM would require $\Delta\chi^2 \gtrsim 30$--$40$ while increasing $S_8$. Our EDE model thus provides a more economical path to the $H_0 \approx 70$ region in terms of $\chi^2$ cost.
+For context, we compare the $\chi^2$ penalty that our EDE model incurs at $H_0 \approx 70$ to what $\Lambda$CDM would incur at the same $H_0$. With Planck+DESI data, the $\Lambda$CDM posterior is tightly constrained near $H_0 \simeq 68$~km~s$^{-1}$~Mpc$^{-1}$; we estimate that forcing $\Lambda$CDM to $H_0 = 70$ would require $\Delta\chi^2 \gtrsim 30$--$40$ while increasing $S_8$. Our EDE model thus provides a more economical path to the $H_0 \approx 70$ region in terms of $\chi^2$ cost.
 
 \subsection{Outline}
 
@@ -1557,7 +1557,7 @@ In this work we have presented a minimal early dark energy (EDE) model---a scala
     
     \item \textbf{DESI-era trade-offs:} With DESI Y1 BAO, the model pays $\Delta\chi^2 \approx +11$ (Table~\ref{tab:tier5_running}), reflecting the tension between the reduced sound horizon ($r_s \approx 146$~Mpc) required to raise $H_0$ and DESI's geometric constraints (preferring $r_s \approx 147$--$148$~Mpc). This penalty arises not from DESI directly ($\Delta\chi^2_{\rm DESI} \approx 0$), but from DESI's effect on parameter-space geometry: tightening constraints rotate the $\Lambda_{\rm EDE}$--$\tau_{\rm reio}$ correlation from $+0.73$ to $-0.24$ (Table~\ref{tab:correlation_flip}), closing the corridor that previously allowed low-$\ell$ polarization to compensate the damping-tail cost.
     
-    \item \textbf{Comparative context:} To contextualize the $\Delta\chi^2 \approx +11$ penalty, we performed fixed-$H_0$ analyses quantifying the statistical cost for $\Lambda$CDM to reach the same $H_0 \approx 70$ region. Profile likelihood estimates suggest $\Lambda$CDM would incur $\Delta\chi^2 \gtrsim +30$--$40$ to achieve $H_0 = 70$ (Table~\ref{tab:price_of_admission}), approximately $3\times$ the EDE penalty, while degrading rather than improving the $S_8$ fit. This suggests that early-time geometric modifications provide a more economical path to the $H_0 \approx 70$ regime than parameter adjustments within $\Lambda$CDM.
+    \item \textbf{Comparative context:} To contextualize the $\Delta\chi^2 \approx +11$ penalty, we performed fixed-$H_0$ analyses quantifying the statistical cost for $\Lambda$CDM to reach the same $H_0 \approx 70$ region. We estimate that forcing $\Lambda$CDM to $H_0 = 70$ would incur $\Delta\chi^2 \gtrsim +30$--$40$ (Table~\ref{tab:price_of_admission}), approximately $3\times$ the EDE penalty, while degrading rather than improving the $S_8$ fit. This suggests that early-time geometric modifications provide a more economical path to the $H_0 \approx 70$ regime than parameter adjustments within $\Lambda$CDM.
     
     \item \textbf{Observational prediction:} EDE predicts a percent-level oscillatory residual in the CMB damping tail with fixed phase determined by $\Delta r_s \approx -0.9$~Mpc. A \emph{conditional} template fit to ACT DR6 data---holding cosmology fixed and assuming correct ACT calibrations---yields $A_{\rm sh} = 1.16 \pm 0.18$ (Section~\ref{sec:cmb_residuals}), consistent with the EDE prediction $A_{\rm sh} = 1$. This $\approx 6\sigma$ null-test correlation requires independent validation; a fully marginalized analysis may reduce the significance to $3$--$5\sigma$. CMB-S4 will provide a definitive test.
 \end{enumerate}
@@ -1686,7 +1686,7 @@ This correlation flip explains why DESI does not directly penalize EDE ($\Delta\
 
 \paragraph{Comparative Context.}
 \label{sec:price_of_admission}
-Table~\ref{tab:price_of_admission} compares the $\chi^2$ cost for EDE and $\Lambda$CDM to reach $H_0 \approx 70$. When $\Lambda$CDM is subjected to the SH0ES prior with DESI, it stalls at $H_0 \approx 68.5$ rather than tracking the prior, indicating the $\Lambda$CDM likelihood surface becomes prohibitively steep beyond $H_0 \approx 69$. EDE pays $\Delta\chi^2 \approx +11$ to reach $H_0 \approx 70$; $\Lambda$CDM would pay $\gtrsim +30$--$40$ while worsening $S_8$.
+Table~\ref{tab:price_of_admission} compares the $\chi^2$ cost for EDE and $\Lambda$CDM to reach $H_0 \approx 70$. When $\Lambda$CDM is subjected to the SH0ES prior with DESI, it stalls at $H_0 \approx 68.5$ rather than tracking the prior, indicating the $\Lambda$CDM likelihood surface becomes prohibitively steep beyond $H_0 \approx 69$. EDE pays $\Delta\chi^2 \approx +11$ to reach $H_0 \approx 70$; we estimate $\Lambda$CDM would pay $\gtrsim +30$--$40$ while worsening $S_8$.
 
 \subsection*{The $\chi^2$ Ceiling}
 
@@ -1737,7 +1737,7 @@ Current ACT DR6 data show residuals consistent with the prediction (Table~\ref{t
 \label{sec:limitations}
 
 \begin{enumerate}
-    \item \textbf{The $\chi^2$ cost is real.} EDE pays $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM's global minimum. However, $\Lambda$CDM would pay $\gtrsim +30$--$40$ to reach the same $H_0 \approx 70$ region (Table~\ref{tab:price_of_admission}).
+    \item \textbf{The $\chi^2$ cost is real.} EDE pays $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM's global minimum. However, we estimate $\Lambda$CDM would pay $\gtrsim +30$--$40$ to reach the same $H_0 \approx 70$ region (Table~\ref{tab:price_of_admission}).
     
     \item \textbf{The ACT detection is conditional.} The template fit holds cosmology fixed; fully marginalized analysis may yield lower significance.
     
