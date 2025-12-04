@@ -2,7 +2,6 @@
 
 [![Paper Status](https://img.shields.io/badge/PRD-Submitted-blue.svg)](phase2/paper/ridder_cosmology_paper.tex)
 [![Data](https://img.shields.io/badge/Zenodo-10.5281%2Fzenodo.17822063-blue.svg)](https://doi.org/10.5281/zenodo.17822063)
-[![arXiv](https://img.shields.io/badge/arXiv-pending-orange.svg)]()
 
 **Author**: Steven Ridder  
 **Contact**: sridder@post.harvard.edu  
