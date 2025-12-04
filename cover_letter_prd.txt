@@ -1,0 +1,42 @@
+Dear Editors,
+
+I am pleased to submit the manuscript entitled "Early Dark Energy and the Geometric Ceiling: Constraints from Planck, ACT DR6, and DESI Y1" for consideration as a Regular Article in Physical Review D.
+
+SUMMARY
+
+This work presents a comprehensive analysis of early dark energy (EDE) as a resolution to the Hubble tension, using the latest cosmological datasets including Planck 2018, ACT DR6, and DESI Year 1 BAO measurements. The paper introduces several novel contributions to the EDE literature:
+
+1. The Geometric Ceiling. We quantify for the first time the maximum H₀ achievable by any sound-horizon-reducing model, showing that H₀ ≳ 72 km/s/Mpc incurs Δχ² > 90 regardless of model details. This reframes the Hubble tension: the original SH0ES target of H₀ ≈ 73 is geometrically prohibited, while the JWST/TRGB convergence region (H₀ ≈ 69–70) remains accessible.
+
+2. Correlation Flip Mechanism. We identify a sign change in the Λ_EDE–τ degeneracy when DESI BAO is included, explaining why pre-DESI and post-DESI conclusions about EDE differ.
+
+3. Damping-Tail Template Test. We construct a fixed template for the predicted CMB damping-tail signature and report a 6.4σ conditional correlation with ACT DR6 data, providing a specific target for CMB-S4 validation.
+
+4. Equal-Parameter Comparison. We compare EDE and CPL dark energy at identical parameter count (k=8), demonstrating that early-time modifications outperform late-time equation-of-state freedom in addressing both the H₀ and S₈ tensions simultaneously.
+
+RELEVANCE TO PRD
+
+This manuscript addresses active questions in observational cosmology and provides quantitative constraints that will be tested by upcoming CMB-S4 and DESI Y5 observations. The analysis uses standard tools (CLASS, Cobaya) and publicly available data, ensuring reproducibility.
+
+DATA AVAILABILITY
+
+All MCMC chains, configuration files, and analysis code are publicly available at:
+- GitHub: https://github.com/StevenRidder/Ridder-Field
+- Zenodo: https://doi.org/10.5281/zenodo.17822063
+
+AI DISCLOSURE
+
+This work was developed with AI assistance for literature review, code development, and manuscript drafting, as detailed in the Acknowledgments section. All scientific direction and final editorial decisions were made by the author.
+
+DECLARATIONS
+
+I confirm that this manuscript has not been published elsewhere and is not under consideration by another journal. I have no conflicts of interest to declare.
+
+Thank you for your consideration.
+
+Sincerely,
+
+Steven Ridder
+Independent Researcher
+sridder@post.harvard.edu
+
