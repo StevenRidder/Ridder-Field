@@ -20,7 +20,7 @@ The standard $\Lambda$CDM model yields $H_0 \simeq 67$--$68$~km~s$^{-1}$~Mpc$^{-
 
 With Planck+BAO+SH0ES data (pre-DESI), the EDE model yields $H_0 = 69.7 \pm 0.5$~km~s$^{-1}$~Mpc$^{-1}$, $S_8 = 0.82 \pm 0.01$, and $\Delta\chi^2 \approx -4.5$ relative to $\Lambda$CDM. When DESI Y1 BAO is included, the model incurs $\Delta\chi^2 \approx +11$ while maintaining $H_0 \approx 69.8$~km~s$^{-1}$~Mpc$^{-1}$ and $S_8 \approx 0.81$. Fixed-$H_0$ profile likelihood scans show that values $H_0 \gtrsim 72$~km~s$^{-1}$~Mpc$^{-1}$ are strongly disfavored ($\Delta\chi^2 \gtrsim 90$) within this framework.
 
-The model predicts a characteristic oscillatory residual pattern in the CMB damping tail. A conditional template amplitude fit to ACT DR6 TT+EE data yields $A_{\rm sh} = 1.16 \pm 0.18$, where $A_{\rm sh} = 0$ corresponds to $\Lambda$CDM and $A_{\rm sh} = 1$ to the predicted EDE pattern. This $6\sigma$ result assumes the Planck+BAO best-fit background cosmology and fixed ACT calibration; a fully marginalized analysis varying cosmology and instrumental systematics may yield $3$--$5\sigma$ significance. We emphasize that this represents preliminary evidence requiring independent validation. CMB-S4 will measure this signature at sub-percent precision, providing a definitive test.
+The model predicts a characteristic oscillatory residual pattern in the CMB damping tail. We perform a \emph{conditional} template amplitude fit to ACT DR6 TT+EE data, obtaining $A_{\rm sh} = 1.16 \pm 0.18$, where $A_{\rm sh} = 0$ corresponds to $\Lambda$CDM and $A_{\rm sh} = 1$ to the predicted EDE pattern. This $\approx 6\sigma$ preference for nonzero amplitude is obtained at \emph{fixed} Planck+BAO background cosmology and assumes ACT calibrations and foreground parameters are correct. A fully marginalized analysis jointly varying cosmology and systematics may reduce this to $3$--$5\sigma$. We present this as a null-test correlation rather than a claimed detection; independent validation and CMB-S4 observations are required for confirmation.
 \end{abstract}
 
 % =============================================================================
@@ -74,6 +74,29 @@ The idea that a pre-recombination energy injection can raise the inferred $H_0$ 
 
 In our implementation, the field couples only through gravity, with no direct interaction with dark matter. This avoids late-time fifth-force constraints without additional screening mechanisms. The model is parameterized by the timing and amplitude of the early energy injection, with the potential shape fixed to reduce the effective parameter count (Section~III).
 
+\subsubsection{Relation to Previous EDE Work}
+
+Our analysis builds on a substantial body of prior work on early dark energy. Here we clarify what previous studies established, what we adopt from them, and what new elements we contribute.
+
+\paragraph{Classic EDE / Axion-EDE (2018--2021).}
+Karwal \& Kamionkowski~\cite{Karwal_Kamionkowski} introduced the basic mechanism: a scalar field contributing $f_{\rm EDE} \sim 5$--$10\%$ of the energy density near $z_c \sim 3000$--$5000$ reduces $r_s$ and raises $H_0$. Poulin et al.~\cite{Poulin_EDE} implemented this in a concrete axion-like potential, achieving $H_0 \approx 71$--$72$~km~s$^{-1}$~Mpc$^{-1}$ with $\Delta\chi^2 \approx -6$ relative to $\Lambda$CDM using pre-2020 Planck data. Hill et al.~\cite{Hill2020} and Smith et al.~\cite{Smith2020} raised concerns that including ACT or SPT data eliminated the $\chi^2$ improvement and worsened $S_8$. These studies established that EDE faces a tension between raising $H_0$ and maintaining acceptable fits to high-$\ell$ CMB data.
+
+\paragraph{New Early Dark Energy (NEDE, 2020--present).}
+Niedermann \& Sloth~\cite{Niedermann_NewEDE} proposed a triggered phase transition rather than slow-roll dynamics, achieving $H_0 \approx 71$~km~s$^{-1}$~Mpc$^{-1}$ with $\Delta\chi^2 \approx -8$ in some data combinations. Subsequent NEDE analyses incorporated DESI Y1, finding that the $\chi^2$ advantage diminishes when BAO precision tightens. These models typically require $f_{\rm EDE} \sim 0.1$--$0.15$ to reach $H_0 > 71$.
+
+\paragraph{What this work adds.}
+We contribute the following elements not present in prior analyses:
+\begin{enumerate}
+\item \textbf{Equal-$k$ model comparison.} We compare CPL ($w_0 w_a$CDM) and EDE at identical parameter count ($k = 8$), using both $\chi^2$ and information criteria (AIC, BIC, DIC). This isolates whether late-time or early-time modifications better address the tensions.
+
+\item \textbf{Fixed-$H_0$ profile likelihood.} We quantify the $\chi^2$ cost as a function of $H_0$ for both EDE and $\Lambda$CDM, establishing the ``geometric ceiling'': $\Delta\chi^2 \approx +2$ at $H_0 = 69$, $+11$ at $H_0 = 70$, and $\gtrsim 90$ at $H_0 = 72$. This provides context for interpreting the DESI-era penalty.
+
+\item \textbf{Correlation flip mechanism.} We identify a sign change in the $\Lambda_{\rm EDE}$--$\tau$ degeneracy when DESI enters (from $+0.73$ to $-0.24$), explaining why pre-DESI and post-DESI conclusions differ.
+
+\item \textbf{Damping-tail template test.} We construct a fixed template from the Planck+BAO best-fit EDE solution and measure its correlation with ACT DR6 residuals, obtaining $A_{\rm sh} = 1.16 \pm 0.18$ under conditional analysis. This represents a specific, falsifiable prediction for CMB-S4.
+\end{enumerate}
+We target $H_0 \approx 69$--$70$~km~s$^{-1}$~Mpc$^{-1}$ rather than $72$--$73$, requiring smaller $f_{\rm EDE} \sim 0.05$ and avoiding the $S_8$ degradation that plagued earlier models pushing toward higher $H_0$.
+
 Fitting this model to Planck+BAO+SH0ES data (pre-DESI), we obtain:
 \begin{itemize}
     \item $H_0 = 69.7 \pm 0.5$~km~s$^{-1}$~Mpc$^{-1}$ (compared to $68.3 \pm 0.4$ for $\Lambda$CDM)
@@ -84,7 +107,7 @@ A component-level $\chi^2$ breakdown shows that Planck high-$\ell$ TTTEEE disfav
 
 When DESI Y1 BAO is included, the best-fit shifts to a parameter region where the low-$\ell$ improvements are reduced (from $-18$ to $-2$), while the high-$\ell$ cost remains at approximately $+17$. The net result is $\Delta\chi^2 \approx +11$ relative to $\Lambda$CDM. The model still yields $H_0 \approx 69.8$~km~s$^{-1}$~Mpc$^{-1}$ and $S_8 \approx 0.81$, but with a $\chi^2$ penalty rather than an improvement.
 
-Additionally, the model predicts a characteristic oscillatory residual pattern in the CMB damping tail at the percent level. In a template amplitude analysis of ACT DR6 TT+EE data at fixed background cosmology, we find a correlation with this predicted pattern at approximately $6\sigma$ significance. This suggestive result, which requires validation through joint parameter fits, provides a specific observational target for future CMB experiments.
+Additionally, the model predicts a characteristic oscillatory residual pattern in the CMB damping tail at the percent level. In a \emph{conditional} template amplitude analysis of ACT DR6 TT+EE data---holding background cosmology fixed at the Planck+BAO best-fit and assuming correct ACT calibrations---we find a correlation with this predicted pattern at approximately $6\sigma$ significance. This result represents a null-test correlation rather than a detection claim; a fully marginalized analysis varying cosmology and ACT systematics may reduce the significance to $3$--$5\sigma$. The result provides a specific target for validation by CMB-S4 and independent datasets (SPT, Simons Observatory).
 
 \subsection{Constraints on $H_0$ from the CMB Damping Tail}
 \label{sec:h0_constraints}
@@ -908,7 +931,7 @@ Table~\ref{tab:desi_impact} compares pre-DESI and DESI-inclusive results.
 \toprule
 Quantity & Pre-DESI & +DESI Y1 \\
 \midrule
-$\Delta\chi^2$ (EDE vs $\Lambda$CDM) & $-3.0$ & $+10.8$ \\
+$\Delta\chi^2$ (EDE vs $\Lambda$CDM) & $-3.0$ & $+11$ \\
 $H_0$ (EDE) [km/s/Mpc] & $69.8$ & $69.8$ \\
 $S_8$ (EDE) & $0.815$ & $0.810$ \\
 $r_s$ (EDE) [Mpc] & $146.4$ & $146.2$ \\
@@ -1136,7 +1159,9 @@ On the full TT+EE data vector we find
 \begin{equation}
 A_{\rm sh} = 1.16 \pm 0.18,
 \end{equation}
-Conditioned on the background cosmology, this amplitude represents a $>6\sigma$ preference for the EDE template over the null hypothesis ($A_{\rm sh} = 0$). The best-fit value lies within $0.9\sigma$ of the EDE prediction $A_{\rm sh}=1$. Interpreted as a one-parameter likelihood ratio, this corresponds to $\Delta\chi^2 \simeq 41$. While a fully marginalized analysis is required to quantify the global significance, this result demonstrates that current high-resolution CMB data are consistent with the specific phase and amplitude signatures predicted by the model.
+\textbf{Important:} This result is \emph{conditional}---we hold background cosmology fixed at the Planck+BAO best-fit and assume ACT calibrations and foregrounds are correct. Under these assumptions, the amplitude represents a $\approx 6\sigma$ preference for nonzero template correlation over the null hypothesis ($A_{\rm sh} = 0$). The best-fit value lies within $0.9\sigma$ of the EDE prediction $A_{\rm sh}=1$. Interpreted as a one-parameter likelihood ratio, this corresponds to $\Delta\chi^2 \simeq 41$.
+
+We emphasize that this is a null-test correlation, not a detection claim. A fully marginalized analysis jointly varying cosmology, EDE parameters, and ACT systematics may reduce the significance to $3$--$5\sigma$. The result demonstrates that current ACT data are \emph{consistent with} the predicted pattern, but confirmation requires independent validation and CMB-S4 observations.
 
 Several important caveats apply: (1)~The analysis assumes fixed background cosmology (Planck+BAO best-fit); (2)~ACT nuisance parameters (calibration, foregrounds) are held at their Planck-conditioned values; (3)~The template shape is fixed from Planck+BAO, with only the amplitude fit to ACT. A fully marginalized analysis jointly varying cosmology, EDE parameters, and ACT systematics---beyond the scope of this work---is required to assess the robustness of this preliminary finding. Independent validation using alternative CMB datasets (e.g., SPT) would provide crucial confirmation. CMB-S4 will reduce $\sigma(A_{\rm sh})$ by an order of magnitude, enabling a definitive test of the predicted damping-tail structure.\footnote{``Conditional'' means we hold background cosmology and ACT nuisance parameters fixed at their Planck+BAO best-fit values. ``Marginalized'' would mean varying all parameters simultaneously and integrating over their posteriors. The conditional analysis tests whether ACT sees the predicted pattern \emph{given} the Planck-preferred cosmology; a marginalized analysis would test whether ACT+Planck jointly prefer EDE over $\Lambda$CDM. The latter is more conservative and may yield lower significance.}
 
@@ -1610,7 +1635,7 @@ In this work we have presented a minimal early dark energy (EDE) model---a scala
     
     \item \textbf{Comparative context:} To contextualize the $\Delta\chi^2 \approx +11$ penalty, we performed fixed-$H_0$ analyses quantifying the statistical cost for $\Lambda$CDM to reach the same $H_0 \approx 70$ region. Profile likelihood estimates suggest $\Lambda$CDM would incur $\Delta\chi^2 \gtrsim +30$--$40$ to achieve $H_0 = 70$ (Table~\ref{tab:price_of_admission}), approximately $3\times$ the EDE penalty, while degrading rather than improving the $S_8$ fit. This suggests that early-time geometric modifications provide a more economical path to the $H_0 \approx 70$ regime than parameter adjustments within $\Lambda$CDM.
     
-    \item \textbf{Observational prediction:} EDE predicts a percent-level oscillatory residual in the CMB damping tail with fixed phase determined by $\Delta r_s \approx -0.9$~Mpc. A conditional template fit to ACT DR6 data yields $A_{\rm sh} = 1.16 \pm 0.18$ (Section~\ref{sec:cmb_residuals}), where $A_{\rm sh} = 0$ corresponds to $\Lambda$CDM and $A_{\rm sh} = 1$ to the EDE prediction. This represents a $6\sigma$ preference for a nonzero amplitude, though fully marginalized analysis and independent validation are required for confirmation. CMB-S4 will provide a definitive test.
+    \item \textbf{Observational prediction:} EDE predicts a percent-level oscillatory residual in the CMB damping tail with fixed phase determined by $\Delta r_s \approx -0.9$~Mpc. A \emph{conditional} template fit to ACT DR6 data---holding cosmology fixed and assuming correct ACT calibrations---yields $A_{\rm sh} = 1.16 \pm 0.18$ (Section~\ref{sec:cmb_residuals}), consistent with the EDE prediction $A_{\rm sh} = 1$. This $\approx 6\sigma$ null-test correlation requires independent validation; a fully marginalized analysis may reduce the significance to $3$--$5\sigma$. CMB-S4 will provide a definitive test.
 \end{enumerate}
 
 \subsection*{Interpretation}
