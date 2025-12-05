@@ -42,11 +42,16 @@ for chain in run_control_planck_only run_a_ede_marginalized run_b_lcdm_template;
         echo "Status: ⏹️  STOPPED"
     fi
     
-    # Check log for stage
-    log="chains/${chain}.log"
-    if [ ! -f "$log" ]; then
-        log="chains/run_${chain##*_}.log"
-    fi
+    # Check log for stage - try multiple naming patterns
+    log=""
+    # Extract short name (e.g., "control" from "run_control_planck_only")
+    short_name=$(echo "$chain" | sed 's/run_//' | cut -d'_' -f1)
+    for pattern in "chains/${chain}.log" "chains/run_${short_name}.log" "chains/${short_name}.log"; do
+        if [ -f "$pattern" ]; then
+            log="$pattern"
+            break
+        fi
+    done
     
     if [ -f "$log" ]; then
         # Get stage from log - check in order of progress
