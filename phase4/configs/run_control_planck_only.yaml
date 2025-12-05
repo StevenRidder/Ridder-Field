@@ -1,43 +1,30 @@
-# Paper 2 Control Run: Planck-only EDE baseline (no ACT)
-# Goal: Establish baseline A_sh without ACT to compare
-# k = 8 parameters (6 base + 2 EDE)
+# Paper 2 Run C: Control - EDE without ACT
+# Based on working tier5 config
+# k = 7 parameters (6 base + 1 EDE amplitude)
 
 packages_path: /home/azureuser/packages
 
 theory:
   classy:
     extra_args:
-      output: tCl pCl lCl
-      # MEMORY-SAFE: reduced from 5000 for 16GB VM
-      l_max_scalars: 3500
-      lensing: "yes"
+      output: tCl, pCl, lCl
+      l_max_scalars: 2508
+      lensing: true
       gauge: newtonian
-      # Memory reduction settings
-      N_ncdm: 0
+      recombination: recfast
       non_linear: none
-      accurate_lensing: 0
-      l_logstep: 1.04
-      l_linstep: 40
-      # Ridder field configuration
-      use_ridder: "yes"
-      ridder_model_type: v3_canon
-      ridder_use_shelf: "yes"
-      ridder_use_tail: "no"
-      ridder_f_eV: 2.0e26
-      theta_i_ridder: 2.8
+      # Ridder field - WORKING parameters from tier5
+      n_ridder: 3
+      theta_i_ridder: 1.0
       beta_ridder: 0.0
-      ridder_sigma_lna: 0.656
+      f_axion_ridder: 1.0e+27
 
 likelihood:
-  # Planck 2018 low-ℓ
+  # Planck 2018
   planck_2018_lowl.TT:
   planck_2018_lowl.EE:
-  
-  # Planck 2018 high-ℓ
   planck_2018_highl_plik.TTTEEE:
   planck_2018_lensing.clik:
-  
-  # NO ACT - this is the control
   
   # Pre-DESI BAO
   bao.sixdf_2011_bao:
@@ -50,6 +37,9 @@ likelihood:
   
   # Pantheon+ Supernovae
   sn.pantheonplus:
+  
+  # NO ACT - this is the control
+  # NO local H0 prior - geometry only
 
 params:
   # Base ΛCDM (k=6)
@@ -62,7 +52,7 @@ params:
     value: "lambda logA: 1e-10*np.exp(logA)"
     latex: A_s
   n_s:
-    prior: {min: 0.88, max: 1.02}
+    prior: {min: 0.92, max: 1.0}
     ref: 0.9649
     proposal: 0.004
     latex: n_s
@@ -82,24 +72,19 @@ params:
     proposal: 0.002
     latex: \Omega_c h^2
   tau_reio:
-    prior: {min: 0.01, max: 0.12}
+    prior: {min: 0.01, max: 0.1}
     ref: 0.0544
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE parameters (k=8)
-  ridder_Lambda_EDE_eV:
-    prior: {min: 0.1, max: 1.5}
-    ref: 0.5
-    proposal: 0.05
+  # EDE amplitude
+  Lambda_EDE_ridder:
+    prior: {min: 0.1, max: 3.0}
+    ref: 1.0
+    proposal: 0.2
     latex: \Lambda_{EDE}
-  ridder_a_c:
-    prior: {min: 0.0001, max: 0.0005}
-    ref: 0.00031
-    proposal: 2.0e-05
-    latex: a_c
 
-  # Derived parameters
+  # Derived
   Omega_m:
     latex: \Omega_m
   sigma8:
@@ -113,17 +98,14 @@ params:
 
 sampler:
   mcmc:
-    # Start with 100k for testing, increase to 1M for production
-    max_samples: 100000
+    max_samples: 50000
     Rminus1_stop: 0.02
     Rminus1_cl_stop: 0.1
-    burn_in: 300
+    burn_in: 100
     learn_proposal: true
-    covmat: auto
     max_tries: 20000
+    proposal_scale: 2.0
     drag: true
-    proposal_scale: 1.8
 
 output: chains/run_control_planck_only
 resume: false
-
