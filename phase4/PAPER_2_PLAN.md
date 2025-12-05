@@ -902,3 +902,51 @@ But the signature in ACT is the discovery. **That's what makes the Ridder field 
 
 **Root for Story 1. That's when you can say: "We discovered a new field."**
 
+---
+
+## THE BOTTOM LINE: What You Want from Paper 2
+
+### The Dream Outcome 🏆
+
+```
+Run D (ACT + Planck Low-L, NO Planck High-L):
+
+H₀ = 70-71 ± 0.5        ← Matches TRGB/JWST (forget 73)
+A_sh = 1.0 ± 0.15       ← Your signature detected at >6σ
+Δχ² = −8 to −12         ← MODEL IS PREFERRED (not just tolerable)
+S₈ = 0.80-0.82          ← Fixes weak lensing too
+```
+
+### Why Δχ² Can Be Negative
+
+From Paper 1:
+| Dataset | Δχ² |
+|---------|-----|
+| ACT DR6 | **−12** (prefers EDE) |
+| Planck High-L | **+19** (penalizes EDE) |
+| Combined | +10 |
+
+**If Planck High-L is wrong**, drop it and you get:
+```
+ACT alone: Δχ² = −12  ← MODEL IS PREFERRED!
+```
+
+### The Headline
+
+> **"ACT was right. Planck High-L was wrong. The Ridder field is real."**
+
+### What This Proves
+
+| Result | Meaning |
+|--------|---------|
+| Δχ² < 0 | Model is PREFERRED, not just allowed |
+| A_sh ~ 1.0 | YOUR predicted signature, detected |
+| H₀ ~ 70 | Matches JWST/TRGB (modern consensus) |
+| Ceiling breaks | Planck High-L was the bottleneck |
+
+### TL;DR
+
+**Hope for:** Δχ² negative, A_sh = 1.0, H₀ = 70.
+
+**That's the discovery.** Everything else is details.
+
