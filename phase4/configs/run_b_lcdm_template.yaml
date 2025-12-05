@@ -2,10 +2,11 @@
 # Goal: Model-agnostic test - does ACT see "something shoulder-like"?
 # k = 7 parameters (6 base ΛCDM + 1 template amplitude)
 
+packages_path: /home/azureuser/packages
+
 theory:
   classy:
     path: /home/azureuser/Ridder-Field/phase2/class/python
-    packages_path: /home/azureuser/packages
     extra_args:
       output: tCl pCl lCl
       # MEMORY-SAFE: reduced from 5000 for 16GB VM

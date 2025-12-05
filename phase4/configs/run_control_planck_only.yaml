@@ -2,10 +2,11 @@
 # Goal: Establish baseline A_sh without ACT to compare
 # k = 8 parameters (6 base + 2 EDE)
 
+packages_path: /home/azureuser/packages
+
 theory:
   classy:
     path: /home/azureuser/Ridder-Field/phase2/class/python
-    packages_path: /home/azureuser/packages
     extra_args:
       output: tCl pCl lCl
       # MEMORY-SAFE: reduced from 5000 for 16GB VM
