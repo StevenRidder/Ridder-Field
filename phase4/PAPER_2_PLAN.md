@@ -1,5 +1,79 @@
 # Paper 2: Full Marginalized ACT Analysis
 
+## Current Status
+
+| Run | Config | Status | Purpose |
+|-----|--------|--------|---------|
+| C | `run_control_planck_only.yaml` | 🟢 Running | Baseline EDE without ACT |
+| A | `run_a_ede_marginalized.yaml` | ⏳ Pending | Full EDE with ACT (main result) |
+| B | `run_b_lcdm_template.yaml` | ⏳ Pending | ΛCDM + A_sh template (model-agnostic) |
+
+### Monitoring Commands
+```bash
+# Quick status
+./quick_status.sh
+
+# Detailed analysis
+python check_chain_status.py
+
+# Watch logs
+tail -f chains/*.log
+```
+
+---
+
+## How These Runs Support Paper 2
+
+### Run C (Control) → Table 1, Baseline
+- **Purpose**: Establish EDE parameter values **without** ACT data
+- **Key outputs**: H₀, S₈, Λ_EDE, r_s from Planck+BAO+DESI only
+- **Paper use**: Shows where EDE parameters land before ACT enters
+
+### Run A (Main Result) → Core Claim
+- **Purpose**: Full marginalized A_sh significance **with** ACT
+- **Key outputs**: 
+  - A_sh (derived from EDE model)
+  - σ(A_sh) after marginalizing over cosmology + EDE
+  - Shift in H₀, S₈ when ACT is included
+- **Paper use**: The central result: "A_sh = X ± Y (Zσ) after full marginalization"
+
+### Run B (Model-Agnostic) → Robustness Check
+- **Purpose**: Does ACT see "something shoulder-like" even without EDE?
+- **Key outputs**: A_sh as free parameter in ΛCDM
+- **Paper use**: If A_sh > 0 even in ΛCDM, the feature is real (not EDE-dependent)
+
+---
+
+## What We're Testing
+
+| Hypothesis | How Run A Tests It | How Run B Tests It |
+|------------|-------------------|-------------------|
+| "The 6.4σ survives marginalization" | Measure σ(A_sh) with all params free | N/A |
+| "ACT prefers a shoulder" | Compare χ² with/without A_sh | A_sh > 0 in ΛCDM? |
+| "EDE parameters shift with ACT" | Compare Run A to Run C | N/A |
+| "The feature is model-independent" | N/A | A_sh value in ΛCDM |
+
+---
+
+## Expected Outcomes
+
+### Optimistic (Strong Paper)
+- Run A: A_sh = 1.0 ± 0.25 (4σ)
+- Run B: A_sh = 0.8 ± 0.3 (confirming feature exists)
+- Claim: "Marginalized significance remains >3σ; feature is robust"
+
+### Neutral (Still Publishable)
+- Run A: A_sh = 0.8 ± 0.4 (2σ)
+- Run B: A_sh = 0.5 ± 0.4
+- Claim: "Significance reduces as expected; CMB-S4 needed for confirmation"
+
+### Negative (Important Result)
+- Run A: A_sh = 0.3 ± 0.4 (<1σ)
+- Run B: A_sh = 0.0 ± 0.3
+- Claim: "Conditional 6.4σ was a look-elsewhere artifact; updating Paper 1"
+
+---
+
 ## Kill-Shot Purpose
 
 > **Goal of Paper 2**  
