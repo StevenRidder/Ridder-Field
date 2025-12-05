@@ -49,29 +49,32 @@ for chain in run_control_planck_only run_a_ede_marginalized run_b_lcdm_template;
     fi
     
     if [ -f "$log" ]; then
-        # Get stage from log - more detailed
-        if grep -q "Sampling\|sample\|Accepted\|accepted" "$log" 2>/dev/null | tail -1 | grep -q "Accepted"; then
+        # Get stage from log - check in order of progress
+        if grep -q "Accepted" "$log" 2>/dev/null; then
             echo "Stage:  SAMPLING"
-            # Get acceptance stats
-            acc_line=$(grep -E "Accepted|accepted" "$log" 2>/dev/null | tail -1)
-            [ -n "$acc_line" ] && echo "        $acc_line"
-        elif grep -q "Getting initial point" "$log" 2>/dev/null; then
-            echo "Stage:  COMPUTING FIRST POINT (can take 15-20 min)"
-        elif grep -q "burn" "$log" 2>/dev/null; then
+            acc_line=$(grep "Accepted" "$log" 2>/dev/null | tail -1)
+            echo "        $acc_line"
+        elif grep -q "burn-in\|Burn-in" "$log" 2>/dev/null; then
             echo "Stage:  BURN-IN"
-        elif grep -q "covmat" "$log" 2>/dev/null; then
+        elif grep -q "Getting initial point" "$log" 2>/dev/null; then
+            echo "Stage:  ⏳ COMPUTING FIRST POINT (takes 15-20 min for EDE)"
+        elif grep -q "covmat\|proposal" "$log" 2>/dev/null; then
             echo "Stage:  LEARNING PROPOSAL"
         else
             echo "Stage:  INITIALIZING"
         fi
         
         # Get R-1 convergence
-        r1=$(grep -E "R-1|Rminus1|convergence" "$log" 2>/dev/null | tail -1)
-        [ -n "$r1" ] && echo "R-1:    $(echo $r1 | grep -o '[0-9.]*' | head -1)"
+        r1_line=$(grep -E "R-1|Rminus1" "$log" 2>/dev/null | tail -1)
+        if [ -n "$r1_line" ]; then
+            echo "R-1:    $r1_line"
+        fi
         
-        # Get try count
-        tries=$(grep -c "try\|Try" "$log" 2>/dev/null)
-        [ "$tries" -gt 0 ] && echo "Tries:  $tries"
+        # Get log file size as progress indicator
+        log_size=$(du -h "$log" 2>/dev/null | awk '{print $1}')
+        echo "Log:    $log_size"
+    else
+        echo "Stage:  NOT STARTED (no log file)"
     fi
     
     # Check chain file for samples
