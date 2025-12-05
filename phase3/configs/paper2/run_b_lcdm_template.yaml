@@ -1,0 +1,114 @@
+# Paper 2 Run B: ΛCDM + phenomenological A_sh template
+# Goal: Model-agnostic test - does ACT see "something shoulder-like"?
+# k = 7 parameters (6 base ΛCDM + 1 template amplitude)
+
+theory:
+  classy:
+    path: /home/azureuser/Ridder-Field/phase2/class/python
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 5000
+      lensing: "yes"
+      gauge: newtonian
+      # Standard ΛCDM - no EDE
+      use_ridder: "no"
+
+# TODO: Add custom theory module to apply A_sh template
+# This requires implementing damping_tail_template.py that:
+#   1. Computes ΛCDM Cl's from CLASS
+#   2. Loads precomputed ΔC_ℓ template (from Paper 1)
+#   3. Adds A_sh * ΔC_ℓ to TT/EE in ℓ = 600-4000 range
+#   4. Returns modified Cl's to likelihood
+
+likelihood:
+  # Planck 2018 low-ℓ
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  
+  # Planck 2018 high-ℓ
+  planck_2018_highl_plik.TTTEEE:
+  planck_2018_lensing.clik:
+  
+  # ACT DR6 (UPDATE: replace with actual DR6 likelihood when available)
+  pyactlike.ACTPol_lite_DR4:
+  
+  # Pre-DESI BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # DESI Y1 BAO
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/azureuser/Ridder-Field/phase3
+  
+  # Pantheon+ Supernovae
+  sn.pantheonplus:
+
+params:
+  # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.88, max: 1.02}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.12
+    proposal: 0.002
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.12}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # Phenomenological template amplitude (k=7)
+  A_sh:
+    prior: {min: -3.0, max: 5.0}
+    ref: 0.0
+    proposal: 0.2
+    latex: A_{sh}
+
+  # Derived parameters
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 1500000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.01
+    burn_in: 500
+    learn_proposal: true
+    covmat: auto
+    max_tries: 50000
+
+output: chains/paper2/run_b_lcdm_template
+resume: true
+
