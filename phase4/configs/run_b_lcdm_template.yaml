@@ -120,6 +120,6 @@ sampler:
     drag: true
     proposal_scale: 1.8
 
-output: chains/paper2/run_b_lcdm_template
-resume: true
+output: chains/run_b_lcdm_template
+resume: false
 
