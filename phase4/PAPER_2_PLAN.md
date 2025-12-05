@@ -11,7 +11,92 @@
 
 **Both measure ℓ > 1000. They can't both be right.**
 
-Paper 2 must answer: **When we marginalize over everything, does ACT's preference survive?**
+Paper 2 has **one job**: resolve the Planck High-ℓ vs. ACT conflict that Paper 1 exposed but couldn't explain.
+
+---
+
+## The Three Possible Stories
+
+### Story 1: "ACT is Right, Planck High-ℓ Has Issues"
+
+**What Run D would show:**
+- Without Planck High-ℓ: H₀ → 72-73, A_sh stays ~1.0, Δχ² improves significantly
+- The "ceiling" disappears or shifts to H₀ ~ 73
+
+**Paper 2 claim:**
+> "The geometric ceiling was an artifact of Planck High-ℓ systematics. ACT independently confirms the EDE damping-tail signature, allowing H₀ to reach the SH0ES value. The Planck vs ACT discrepancy in the damping tail is the real bottleneck."
+
+**Importance:** This would be **MAJOR** — it means EDE can actually solve the Hubble tension to H₀ ~ 73, and identifies a specific data conflict that CMB-S4 must resolve.
+
+---
+
+### Story 2: "Planck is Right, ACT Saw Noise"
+
+**What Run D would show:**
+- Without Planck High-ℓ: H₀ stays ~70-71 (ceiling persists)
+- A_sh drops significantly when marginalized
+- The ACT "preference" was just parameter degeneracies
+
+**Paper 2 claim:**
+> "The geometric ceiling is robust. ACT's apparent preference for EDE was a conditional artifact. When properly marginalized, both datasets agree: early-time modifications can't push H₀ above ~71."
+
+**Importance:** This **strengthens Paper 1** — the ceiling is real physics, not a dataset choice.
+
+---
+
+### Story 3: "They're Both Right — Different ℓ Sensitivity"
+
+**What Run D would show:**
+- Moderate changes: H₀ → 71-72 (ceiling softens but doesn't break)
+- A_sh stays significant but lower (~0.6-0.8)
+- The signal is narrower in ℓ-space than expected
+
+**Paper 2 claim:**
+> "Planck and ACT are sensitive to slightly different features. The EDE signature has ℓ-dependent structure that ACT captures better. The ceiling softens to H₀ ~ 72, and the resolution requires CMB-S4's continuous ℓ coverage."
+
+**Importance:** Middle ground — updates Paper 1's ceiling, frames CMB-S4 as critical.
+
+---
+
+## The Decision Table
+
+| If H₀ goes to... | And A_sh... | Then... |
+|------------------|-------------|---------|
+| **~73** | Stays ~1.0 | **Story 1**: ACT is right, Planck High-ℓ wrong |
+| **~70-71** | Drops to <0.5 | **Story 2**: Planck is right, ACT noise |
+| **~71-72** | Stays ~0.7-0.9 | **Story 3**: Both partially right |
+
+---
+
+## Why This Doesn't "Blow Up" Paper 1
+
+Paper 1's central claims are **conditional**:
+- "**With Planck + BAO + DESI**, there's a ceiling at H₀ ~ 71"
+- "ACT shows preliminary conditional evidence for the damping-tail signature"
+
+These are **true statements** regardless of Run D's outcome.
+
+Paper 2 answers: **"Where does that ceiling come from — the EDE physics or the Planck data?"**
+
+| If the ceiling... | Paper 1 is... | Because... |
+|-------------------|---------------|------------|
+| Persists (Story 2) | **Validated** | It's fundamental physics |
+| Breaks (Story 1) | **Deepened** | You've identified the dataset creating the constraint |
+
+Story 1 is arguably **more important** because it:
+1. Shows EDE can reach H₀ ~ 73 (solves the tension fully)
+2. Identifies Planck High-ℓ as having potential issues
+3. Makes CMB-S4 a decisive test
+
+---
+
+## Draft Abstracts (Depending on Outcome)
+
+### If Story 1 (Ceiling Breaks):
+> "We show that the H₀ ~ 71 'geometric ceiling' reported in Paper 1 arises from tension between Planck High-ℓ and ACT DR6 in the damping tail, not from intrinsic EDE constraints. When analyzed with ACT + Planck Low-ℓ alone, EDE naturally reaches H₀ = 72.8 ± 0.6 km/s/Mpc with Δχ² = −8, consistent with SH0ES. The damping-tail signature persists at A_sh = 1.02 ± 0.15 when properly marginalized. This identifies the Planck vs ACT discrepancy as the limiting factor for early-time H₀ solutions and establishes CMB-S4 as the definitive arbiter."
+
+### If Story 2 (Ceiling Holds):
+> "We confirm that the H₀ ~ 71 geometric ceiling is robust to dataset choice. Removing Planck High-ℓ and analyzing ACT + Planck Low-ℓ alone yields H₀ = 70.4 ± 0.8 km/s/Mpc, confirming that early-time sound-horizon modifications cannot reach the SH0ES value of H₀ ~ 73. The ACT damping-tail correlation weakens under full marginalization (A_sh = 0.42 ± 0.22), indicating the conditional evidence in Paper 1 was parameter-dependent. This establishes fundamental limits on early-time solutions to the Hubble tension."
 
 ---
 
