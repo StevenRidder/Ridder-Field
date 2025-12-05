@@ -4,8 +4,8 @@
 
 set -e
 
-CONFIGS_DIR="configs/paper2"
-CHAINS_DIR="chains/paper2"
+CONFIGS_DIR="$HOME/Ridder-Field/phase4/configs"
+CHAINS_DIR="$HOME/Ridder-Field/phase4/chains"
 
 # Create output directory
 mkdir -p $CHAINS_DIR
