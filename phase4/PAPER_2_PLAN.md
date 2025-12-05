@@ -1,5 +1,54 @@
 # Paper 2: Full Marginalized ACT Analysis
 
+## The Core Question
+
+**Paper 1 showed a "civil war" in the data:**
+
+| Dataset | χ² change with EDE | Interpretation |
+|---------|-------------------|----------------|
+| ACT DR6 | **−12** (prefers EDE) | Sees the damping-tail shoulder |
+| Planck High-L | **+19** (penalizes EDE) | Doesn't see it |
+
+**Both measure ℓ > 1000. They can't both be right.**
+
+Paper 2 must answer: **When we marginalize over everything, does ACT's preference survive?**
+
+---
+
+## Roadmap (Your Routing Guide)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PAPER 2 DECISION TREE                        │
+└─────────────────────────────────────────────────────────────────┘
+
+Step 1: Run C (Planck-only control) ← CURRENTLY RUNNING
+        ↓
+        Get: H₀, ωcdm, A_sh baseline WITHOUT ACT
+        ↓
+Step 2: Run A (Add ACT to EDE model)
+        ↓
+        Compare: Does H₀ shift? Does A_sh increase?
+        ↓
+        ┌──────────────────┬──────────────────┐
+        │                  │                  │
+        ▼                  ▼                  ▼
+   A_sh > 3σ          A_sh ~ 2σ          A_sh < 1σ
+   (ACT wins)         (Uncertain)        (Planck wins)
+        │                  │                  │
+        ▼                  ▼                  ▼
+   "Shoulder is      "Need CMB-S4"      "Paper 1 ACT
+    real, Planck                         claim was
+    has systematics"                     overstated"
+
+Step 3: Run B (Template-only, model-agnostic check)
+        ↓
+        If A_sh > 0 in pure ΛCDM: Feature is real
+        If A_sh ~ 0 in pure ΛCDM: Feature is EDE-specific
+```
+
+---
+
 ## Current Status
 
 | Run | Config | Status | Purpose |
@@ -13,12 +62,36 @@
 # Quick status
 ./quick_status.sh
 
-# Detailed analysis
-python check_chain_status.py
+# Detailed analysis (once samples exist)
+python3 show_chain_stats.py
 
 # Watch logs
 tail -f chains/*.log
 ```
+
+---
+
+## The Planck vs ACT Tension
+
+### Why This Matters
+
+The geometric ceiling at H₀ ~ 71 exists **because we trust Planck High-L**.
+
+If Paper 2 shows:
+- ACT strongly prefers the shoulder (A_sh > 3σ)
+- AND Planck High-L continues to penalize it
+
+Then we face a choice:
+1. **Trust Planck**: The ACT signal is a noise fluctuation
+2. **Trust ACT**: Planck High-L has calibration/beam systematics at ℓ > 1500
+
+### What Each Run Tests
+
+| Run | Question Answered |
+|-----|-------------------|
+| C (Planck-only) | Where does EDE land without ACT's input? |
+| A (Planck+ACT) | Does ACT pull the posterior toward the shoulder? |
+| B (Template-only) | Is the feature real even without committing to EDE physics? |
 
 ---
 
