@@ -7,10 +7,17 @@ theory:
     path: /home/azureuser/Ridder-Field/phase2/class/python
     packages_path: /home/azureuser/packages
     extra_args:
-      output: tCl, pCl, lCl, mPk
-      l_max_scalars: 5000
+      output: tCl pCl lCl
+      # MEMORY-SAFE: reduced from 5000 for 16GB VM
+      l_max_scalars: 3500
       lensing: "yes"
       gauge: newtonian
+      # Memory reduction settings
+      N_ncdm: 0
+      non_linear: none
+      accurate_lensing: 0
+      l_logstep: 1.04
+      l_linstep: 40
       # Ridder field configuration
       use_ridder: "yes"
       ridder_model_type: v3_canon
@@ -106,13 +113,16 @@ params:
 
 sampler:
   mcmc:
-    max_samples: 1000000
-    Rminus1_stop: 0.01
-    Rminus1_cl_stop: 0.01
-    burn_in: 500
+    # Start with 100k for testing, increase to 1M for production
+    max_samples: 100000
+    Rminus1_stop: 0.02
+    Rminus1_cl_stop: 0.1
+    burn_in: 300
     learn_proposal: true
     covmat: auto
-    max_tries: 50000
+    max_tries: 20000
+    drag: true
+    proposal_scale: 1.8
 
 output: chains/paper2/run_control_planck_only
 resume: true
