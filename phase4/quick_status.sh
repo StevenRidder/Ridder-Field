@@ -13,7 +13,19 @@ source ~/cosmo_env/bin/activate 2>/dev/null
 echo ""
 echo "=== SYSTEM ==="
 echo "Memory: $(free -h | grep Mem | awk '{print $3 "/" $2 " used"}')"
-echo "Process: $(pgrep -c -f cobaya 2>/dev/null || echo 0) cobaya running"
+
+# Show running processes with runtime
+echo ""
+echo "=== RUNNING CHAINS ==="
+ps -o pid,etime,pcpu,pmem,cmd --no-headers -C python3 2>/dev/null | grep cobaya | while read line; do
+    pid=$(echo $line | awk '{print $1}')
+    time=$(echo $line | awk '{print $2}')
+    cpu=$(echo $line | awk '{print $3}')
+    mem=$(echo $line | awk '{print $4}')
+    config=$(echo $line | grep -o 'run_[a-z_]*' | head -1)
+    echo "  $config: running $time, CPU $cpu%, MEM $mem%"
+done
+[ $(pgrep -c -f cobaya 2>/dev/null || echo 0) -eq 0 ] && echo "  None running"
 
 for chain in run_control_planck_only run_a_ede_marginalized run_b_lcdm_template; do
     echo ""
@@ -24,6 +36,8 @@ for chain in run_control_planck_only run_a_ede_marginalized run_b_lcdm_template;
     # Check if running
     if pgrep -f "$chain" > /dev/null 2>&1; then
         echo "Status: 🟢 RUNNING"
+        runtime=$(ps -o etime= -p $(pgrep -f "$chain" | head -1) 2>/dev/null | xargs)
+        echo "Runtime: $runtime"
     else
         echo "Status: ⏹️  STOPPED"
     fi
@@ -35,28 +49,29 @@ for chain in run_control_planck_only run_a_ede_marginalized run_b_lcdm_template;
     fi
     
     if [ -f "$log" ]; then
-        # Get stage from log
-        if grep -q "Starting to sample" "$log" 2>/dev/null; then
+        # Get stage from log - more detailed
+        if grep -q "Sampling\|sample\|Accepted\|accepted" "$log" 2>/dev/null | tail -1 | grep -q "Accepted"; then
             echo "Stage:  SAMPLING"
+            # Get acceptance stats
+            acc_line=$(grep -E "Accepted|accepted" "$log" 2>/dev/null | tail -1)
+            [ -n "$acc_line" ] && echo "        $acc_line"
+        elif grep -q "Getting initial point" "$log" 2>/dev/null; then
+            echo "Stage:  COMPUTING FIRST POINT (can take 15-20 min)"
         elif grep -q "burn" "$log" 2>/dev/null; then
             echo "Stage:  BURN-IN"
-        elif grep -q "initial" "$log" 2>/dev/null; then
-            echo "Stage:  INITIALIZING"
+        elif grep -q "covmat" "$log" 2>/dev/null; then
+            echo "Stage:  LEARNING PROPOSAL"
         else
-            echo "Stage:  COMPUTING"
+            echo "Stage:  INITIALIZING"
         fi
         
-        # Get acceptance rate
-        acc=$(grep -o "accepted.*%" "$log" 2>/dev/null | tail -1)
-        [ -n "$acc" ] && echo "Accept: $acc"
-        
         # Get R-1 convergence
-        r1=$(grep "R-1\|Rminus1" "$log" 2>/dev/null | tail -1 | grep -o "[0-9]\.[0-9]*" | head -1)
-        [ -n "$r1" ] && echo "R-1:    $r1"
+        r1=$(grep -E "R-1|Rminus1|convergence" "$log" 2>/dev/null | tail -1)
+        [ -n "$r1" ] && echo "R-1:    $(echo $r1 | grep -o '[0-9.]*' | head -1)"
         
-        # Get chi2
-        chi2=$(grep -i "chi2\|logp\|best" "$log" 2>/dev/null | grep -o "[-0-9.]*" | tail -1)
-        [ -n "$chi2" ] && echo "χ²:     $chi2"
+        # Get try count
+        tries=$(grep -c "try\|Try" "$log" 2>/dev/null)
+        [ "$tries" -gt 0 ] && echo "Tries:  $tries"
     fi
     
     # Check chain file for samples
