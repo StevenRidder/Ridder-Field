@@ -6,7 +6,6 @@ packages_path: /home/azureuser/packages
 
 theory:
   classy:
-    path: /home/azureuser/Ridder-Field/phase2/class/python
     extra_args:
       output: tCl pCl lCl
       # MEMORY-SAFE: reduced from 5000 for 16GB VM
