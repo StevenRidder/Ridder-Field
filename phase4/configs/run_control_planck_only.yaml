@@ -1,6 +1,6 @@
 # Paper 2 Run C: Control - EDE without ACT
-# Based on working tier5 config
-# k = 7 parameters (6 base + 1 EDE amplitude)
+# Uses V3_CANON model with WORKING parameters
+# k = 8 parameters (6 base + 2 EDE: Lambda, a_c)
 
 packages_path: /home/azureuser/packages
 
@@ -9,15 +9,19 @@ theory:
     extra_args:
       output: tCl, pCl, lCl
       l_max_scalars: 2508
-      lensing: true
+      lensing: "yes"
       gauge: newtonian
       recombination: recfast
       non_linear: none
-      # Ridder field - WORKING parameters from tier5
-      n_ridder: 3
-      theta_i_ridder: 1.0
-      beta_ridder: 0.0
-      f_axion_ridder: 1.0e+27
+      # V3_CANON model - FIXED WORKING PARAMS
+      use_ridder: "yes"
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 3.0e26        # Fixed: controls field range
+      theta_i_ridder: 2.8         # Fixed: initial angle
+      beta_ridder: 0.0            # Fixed: no running
+      ridder_sigma_lna: 0.656     # Fixed: transition width
 
 likelihood:
   # Planck 2018
@@ -77,12 +81,17 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE amplitude
-  Lambda_EDE_ridder:
-    prior: {min: 0.1, max: 3.0}
-    ref: 1.0
-    proposal: 0.2
+  # EDE parameters (k=8)
+  ridder_Lambda_EDE_eV:
+    prior: {min: 0.2, max: 0.6}
+    ref: 0.4
+    proposal: 0.05
     latex: \Lambda_{EDE}
+  ridder_a_c:
+    prior: {min: 0.0002, max: 0.0004}
+    ref: 0.000309
+    proposal: 0.00002
+    latex: a_c
 
   # Derived
   Omega_m:
@@ -108,4 +117,5 @@ sampler:
     drag: true
 
 output: chains/run_control_planck_only
+force: true
 resume: false
