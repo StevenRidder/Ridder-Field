@@ -1,0 +1,118 @@
+# Paper 2 Run D: THE KILL SWITCH TEST
+# ACT + Planck Low-L + BAO (NO PLANCK HIGH-L!)
+# Tests: Does the ceiling break when Planck High-L is removed?
+
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl
+      l_max_scalars: 2508
+      lensing: "yes"
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      # V3_CANON model - FIXED WORKING PARAMS
+      use_ridder: "yes"
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 3.0e26
+      theta_i_ridder: 2.8
+      beta_ridder: 0.0
+      ridder_sigma_lna: 0.656
+
+likelihood:
+  # Planck LOW-L ONLY (no High-L!)
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  # NO planck_2018_highl_plik.TTTEEE!  <-- THIS IS THE TEST
+  planck_2018_lensing.clik:
+  
+  # ACT DR4 (placeholder for DR6)
+  pyactlike.ACTPol_lite_DR4:
+  
+  # Pre-DESI BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # DESI Y1 BAO
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/azureuser/Ridder-Field/phase4
+  
+  # Pantheon+ Supernovae
+  sn.pantheonplus:
+
+params:
+  # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 70.0  # Start higher - we expect H0 to go up!
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.12
+    proposal: 0.002
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # EDE parameters
+  ridder_Lambda_EDE_eV: 0.1  # FIXED - stable value
+  ridder_a_c:
+    prior: {min: 0.0002, max: 0.0005}
+    ref: 0.000309
+    proposal: 0.00003
+    latex: a_c
+
+  # Derived
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 50000
+    Rminus1_stop: 0.02
+    Rminus1_cl_stop: 0.1
+    burn_in: 100
+    learn_proposal: true
+    max_tries: 20000
+    proposal_scale: 2.0
+    drag: true
+
+output: chains/run_d_kill_switch
+force: true
+resume: false
+
