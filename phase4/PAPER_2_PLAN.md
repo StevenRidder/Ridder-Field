@@ -1105,3 +1105,57 @@ Schöneberg et al. (2022) - "The H0 Olympics" / Hubble Hunter's Guide
 
 **You're not making this up.** The Planck High-ℓ anomalies are reported by Planck themselves, discussed in dozens of papers, and are the reason CMB-S4 is being built.
 
+---
+
+## Early Results: The Trade Triangle (Dec 5, 2025)
+
+### What Run C vs Run D Showed
+
+| Parameter | With Planck High-L | Without Planck High-L | Interpretation |
+|-----------|-------------------|----------------------|----------------|
+| H₀ | 68.1 ± 0.4 | **70.8 ± 0.5** | Field can push H₀ up |
+| r_s | 147.0 ± 0.2 | **142.1 ± 0.9** | Field shrinks sound horizon |
+| S₈ | 0.82 ± 0.01 | **0.85 ± 0.02** | ⚠️ Growth increases |
+
+### The Geometry Works
+
+A 5 Mpc drop in r_s and a 2.8 km/s/Mpc rise in H₀ is exactly what the Ridder field was built to do. The mechanism works: inject ~5% energy at recombination, shrink the sound horizon, trade that for higher H₀.
+
+**On "does the field change the geometry as advertised" — solid yes.**
+
+### The Trade-Off
+
+But the same run pushes ω_cdm up, σ₈ up, and S₈ from 0.82 to 0.85. That's bad for weak lensing.
+
+**Interpretation:** Without Planck High-L to anchor things, φ-EDE acts like a pure H₀ fixer, not a joint H₀+S₈ solution. The field will happily push H₀ up, but it overgrows structure in the process.
+
+### The Trade Triangle
+
+For any early-time fix, you can ask: where do H₀, S₈, and the high-ℓ CMB fit all land at once?
+
+| Configuration | H₀ | S₈ | CMB fit | Verdict |
+|---------------|-----|-----|---------|---------|
+| With Planck High-L | ~69-70 | ~0.82 | Good | Compromise point |
+| Without Planck High-L | ~71 | ~0.85 | N/A | H₀ fixed, S₈ broken |
+
+### What This Means for the Ridder Field
+
+1. **The ceiling is partly geometric and partly Planck-anchored.** Paper 2 should frame "geometric ceiling" as "geometry + specific high-ℓ dataset," not a law of nature.
+
+2. **Growth becomes the bottleneck.** The field can shoulder the geometric load, but S₈ is now the constraint, not H₀.
+
+3. **ACT is the decider.** To be physically convincing, the field needs both a geometric story AND independent evidence in the damping tail. That's exactly what the ACT test provides.
+
+### The Honest Path
+
+This doesn't mean "throw out Planck High-L because it's garbage."
+
+It means: **Planck High-L is doing huge work in extended models, and results are experiment-dependent at ℓ > 1000.**
+
+The path forward:
+1. Show how φ-EDE behaves with and without Planck High-L
+2. Quantify the shifts in H₀, r_s, and S₈
+3. Let ACT (and later SPT, CMB-S4) decide whether the damping-tail signature is real enough to justify trusting the field
+
+**The table isn't saying "your field is fake." It's saying "your field can shoulder the geometric load, but growth becomes the bottleneck" — and Paper 2 is about whether the sky gives you independent reason to believe the field is there.**
+
