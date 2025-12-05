@@ -81,16 +81,14 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # EDE parameters (k=8)
-  ridder_Lambda_EDE_eV:
-    prior: {min: 0.2, max: 0.6}
-    ref: 0.4
-    proposal: 0.05
-    latex: \Lambda_{EDE}
+  # EDE parameters - FIXED to avoid perturbation instabilities
+  # Lambda=0.4 causes "step size too small" errors
+  # Using fixed Lambda=0.1 (stable) and sampling a_c
+  ridder_Lambda_EDE_eV: 0.1  # FIXED - stable value
   ridder_a_c:
-    prior: {min: 0.0002, max: 0.0004}
+    prior: {min: 0.0002, max: 0.0005}
     ref: 0.000309
-    proposal: 0.00002
+    proposal: 0.00003
     latex: a_c
 
   # Derived
