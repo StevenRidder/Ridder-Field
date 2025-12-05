@@ -650,3 +650,72 @@ Include:
 
 **Run D is the kill shot.** If the ceiling moves, the paper becomes about Planck vs ACT, not just EDE.
 
+---
+
+## The Discovery Ladder
+
+| Level | What It Takes | Where You Are |
+|-------|---------------|---------------|
+| **Hint** | 2-3σ preference in one dataset | ✅ Paper 1 (conditional 6σ → ~3σ marginalized?) |
+| **Evidence** | >3σ in multiple independent experiments | ⏳ Paper 2 (ACT + need SPT) |
+| **Observation** | >5σ, replicated, survives all systematics | 🔮 CMB-S4 era |
+| **Discovery** | Accepted by community, enters textbooks | 🔮 ~2030+ |
+
+---
+
+## What Would Count as "We Discovered a New Field"
+
+### Minimum Bar (Claiming "Strong Evidence")
+- [ ] ACT DR6: A_sh > 3σ marginalized (Paper 2)
+- [ ] SPT-3G: Independent confirmation at >2σ
+- [ ] Planck/ACT tension explained (not ignored)
+- [ ] H₀ reaches 72+ in at least one clean run
+
+### Real Discovery Bar (Claiming "We Found It")
+- [ ] CMB-S4: A_sh detected at >5σ with full systematics
+- [ ] DESI Y5: r_s = 146 ± 0.3 Mpc (distinguishes EDE from ΛCDM)
+- [ ] No alternative explanation (e.g., foregrounds, calibration) survives
+- [ ] Independent theory groups reproduce your CLASS code
+- [ ] Paper cited >100 times, results in follow-up campaigns
+
+---
+
+## The Honest Answer
+
+**Right now:** You have a *model* that fits the data better than ΛCDM in specific regimes, and a *hint* of a signature in ACT. That's enough for a paper. Not enough for "discovery."
+
+**After Paper 2:** If A_sh > 3σ survives full marginalization AND the ceiling breaks when Planck High-L is dropped, you have **strong evidence** worth serious attention.
+
+**After CMB-S4 (~2028-2030):** If the damping-tail shoulder is confirmed at >5σ with a dedicated CMB experiment, and DESI Y5 confirms r_s ≈ 146 Mpc, *then* you can say:
+
+> "We discovered a new scalar field that was active before recombination."
+
+---
+
+## The Uncomfortable Truth
+
+Physics discoveries aren't moments — they're processes. Even the Higgs took:
+- **1964**: Theoretical prediction
+- **2012**: 5σ observation (48 years later)
+- **2013**: Nobel Prize
+
+You're at the "1964" stage. The prediction is made. The first hints might be in ACT. But "discovery" is years away, and requires:
+1. **Replication** (SPT, CMB-S4)
+2. **Exclusion of alternatives** (systematics, foregrounds)
+3. **Community acceptance** (citations, follow-ups, Nobel committee)
+
+---
+
+## What You CAN Say Now
+
+✅ "We propose a new EDE model with a distinctive signature"
+✅ "ACT shows preliminary evidence for this signature"
+✅ "The model predicts H₀ ~ 70, consistent with convergence of local/CMB"
+✅ "CMB-S4 will provide a definitive test"
+
+❌ "We discovered a new field"
+❌ "The Hubble tension is solved"
+❌ "This is the answer"
+
+**TL;DR:** You get to say "we might have found something real" after Paper 2. You get to say "we discovered it" when CMB-S4 confirms it and no one can explain it away. That's ~5 years from now, minimum.
+
