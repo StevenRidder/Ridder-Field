@@ -56,6 +56,83 @@ Step 3: Run B (Template-only, model-agnostic check)
 | C | `run_control_planck_only.yaml` | 🟢 Running | Baseline EDE without ACT |
 | A | `run_a_ede_marginalized.yaml` | ⏳ Pending | Full EDE with ACT (main result) |
 | B | `run_b_lcdm_template.yaml` | ⏳ Pending | ΛCDM + A_sh template (model-agnostic) |
+| **D** | `run_d_kill_switch.yaml` | ⏳ **CRITICAL** | **ACT + Planck Low-L + BAO (NO Planck High-L)** |
+
+---
+
+## The "Kill Switch" Run (Run D)
+
+> **Referee's Key Test**: Drop Planck High-L entirely and see if the ceiling shatters.
+
+### The Hypothesis
+
+The geometric ceiling at H₀ ~ 71 exists because Planck High-L's χ² penalty (+19) blocks higher values. If we remove Planck High-L:
+
+```
+Before (with Planck High-L):    H₀ ceiling ~ 71
+After (without Planck High-L):  H₀ could reach 72-73 ???
+```
+
+### Run D Configuration
+
+```yaml
+# run_d_kill_switch.yaml
+# THE CRITICAL TEST: What happens without Planck High-L?
+
+likelihood:
+  # Planck LOW-L ONLY (no High-L!)
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  # NO planck_2018_highl_plik.TTTEEE!
+  
+  # ACT DR6 (this becomes the damping-tail anchor)
+  act_dr6_mflike:
+  
+  # BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+  
+  # Supernovae
+  sn.pantheonplus:
+```
+
+### What We're Testing
+
+| If Run D shows... | Interpretation |
+|-------------------|----------------|
+| H₀ ~ 71 (same as Run A) | Ceiling is model-dependent, not dataset-dependent |
+| H₀ ~ 72-73 | **Ceiling SHATTERS** - Planck High-L was the constraint! |
+| H₀ ~ 69-70 | ACT alone doesn't push H₀ up much |
+
+### Why This Matters
+
+**If the ceiling moves when Planck High-L is dropped:**
+- The "geometric ceiling" is actually a "Planck High-L ceiling"
+- ACT and Planck are fighting over the damping tail
+- This is a **major result** about dataset tensions, not just EDE
+
+### Visualization: The Ceiling as Curve Intersection
+
+```
+χ²
+ │
+ │    Planck High-L          ACT + SH0ES
+ │        curve                curve
+ │          │                    │
+ │          │\                  /│
+ │          │ \                / │
+ │          │  \    ____      /  │
+ │          │   \__/    \____/   │
+ │          │      "Ceiling"     │
+ │          │        ↓           │
+ └──────────┼────────┼───────────┼──────── H₀
+           67       71          73
+
+The "ceiling" at 71 is where Planck High-L becomes too expensive.
+Remove Planck High-L → ceiling vanishes → minimum shifts right.
+```
 
 ### Monitoring Commands
 ```bash
@@ -431,4 +508,60 @@ When you're suffering through week-long ACT chains, remember the paper ends with
 | A_sh = 0.0 ± 0.3 | Paper 1 ACT claim was wrong |
 
 Any of these is a publishable result. Science is finding out.
+
+---
+
+## Referee's Three Requirements for Bulletproof Paper 2
+
+Based on self-review, Paper 2 must satisfy these three conditions:
+
+### 1. Marginalized A_sh Must Stay Non-Zero
+
+> **Test**: Does A_sh > 2σ when cosmology floats?
+
+- If A_sh drops to <2σ after marginalization → the "wiggle" was just parameter degeneracy
+- Run A directly tests this
+
+### 2. The Dataset Swap Must Show Ceiling Movement
+
+> **Test**: Does H₀ increase when Planck High-L is dropped?
+
+- Run D (Kill Switch) tests this
+- If H₀ jumps from ~71 to ~72-73 → proves ceiling is dataset-dependent, not model-dependent
+- This would be a major result about Planck vs ACT tension
+
+### 3. Code Audit Must Kill the "AI Bug" Criticism
+
+> **Test**: Line-by-line verification of derivatives
+
+**Appendix material:**
+```c
+// V(θ) = Λ⁴ (1 - cos(θ))^n
+// 
+// dV/dθ = Λ⁴ · n · (1 - cos(θ))^(n-1) · sin(θ)
+//
+// d²V/dθ² = Λ⁴ · n · [
+//     (n-1)(1 - cos(θ))^(n-2) · sin²(θ)
+//   + (1 - cos(θ))^(n-1) · cos(θ)
+// ]
+```
+
+Include:
+- Explicit formulas in paper
+- Link to CLASS source with line numbers
+- Wolfram Alpha / SymPy verification
+- Comparison to standard axion-EDE papers (Poulin et al.)
+
+---
+
+## The Complete Run Matrix
+
+| Run | Planck High-L | ACT | Key Question |
+|-----|---------------|-----|--------------|
+| C | ✅ | ❌ | Baseline without ACT |
+| A | ✅ | ✅ | Does A_sh survive marginalization? |
+| B | ✅ | ✅ | Is feature real even without EDE? |
+| **D** | ❌ | ✅ | **Does ceiling shatter without Planck High-L?** |
+
+**Run D is the kill shot.** If the ceiling moves, the paper becomes about Planck vs ACT, not just EDE.
 
