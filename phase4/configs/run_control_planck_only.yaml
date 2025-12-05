@@ -39,7 +39,7 @@ likelihood:
   
   # DESI Y1 BAO
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
-    python_path: /home/azureuser/Ridder-Field/phase3
+    python_path: /home/azureuser/Ridder-Field/phase4
   
   # Pantheon+ Supernovae
   sn.pantheonplus:
