@@ -1,0 +1,2042 @@
+###############################################################################
+# PAPER 2 DR6 - ALL FILES COMBINED
+# Generated: Sat Dec  6 08:26:08 UTC 2025
+# Excludes: chain files (.txt in chains/)
+###############################################################################
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/prod_p0b_dr6_lcdm.yaml
+###############################################################################
+# P0b_DR6: ΛCDM baseline with ACT DR6
+# Paper 2 Production Run
+# Data: Planck low-ℓ + Planck lensing + ACT DR6 + BAO + SN
+# NO Planck high-ℓ, NO SH0ES prior, NO Ridder field
+
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      # NO Ridder parameters - pure ΛCDM
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  # Planck LOW-ℓ only
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  
+  # Planck lensing
+  planck_2018_lensing.clik:
+  
+  # ACT DR6 (replaces Planck high-ℓ)
+  act_dr6_mflike.ACTDR6MFLike:
+  
+  # Pre-DESI BAO
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  
+  # DESI Y1 BAO
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/azureuser/Ridder-Field/paper2_dr6
+  
+  # Pantheon+ Supernovae
+  sn.pantheonplus:
+
+params:
+  # Base ΛCDM (k=6)
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.120
+    proposal: 0.002
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # Derived
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+    proposal_scale: 2.0
+
+output: chains/prod_p0b_dr6_lcdm
+resume: false
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/prod_p2_dr6_ede.yaml
+###############################################################################
+# P2_DR6: Geometric EDE with ACT DR6
+# Paper 2 Production Run - MAIN RESULT
+# Uses Paper-1 Ridder parameterization with CORRECTED Lambda prior
+
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+  act_dr6_mflike.ACTDR6MFLike:
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/azureuser/Ridder-Field/paper2_dr6
+  sn.pantheonplus:
+
+params:
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+
+  # CORRECTED: Prior range based on Paper 1 (used 0.05-0.06)
+  Lambda_EDE_ridder:
+    prior: {min: 0.01, max: 0.15}
+    ref: 0.05
+    proposal: 0.01
+    latex: \Lambda_{EDE}
+
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+  rs_drag:
+    derived: true
+    latex: r_s
+
+sampler:
+  mcmc:
+    max_samples: 5000
+    Rminus1_stop: 0.02
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+    proposal_scale: 2.0
+
+output: chains/prod_p2_dr6_ede
+resume: false
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p0b_act_only.yaml
+###############################################################################
+# ACT-focused ΛCDM: ACT DR6 + Planck lowℓ only
+# No lensing, no BAO, no SN - isolates what ACT thinks
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  act_dr6_mflike.ACTDR6MFLike:
+
+params:
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+
+sampler:
+  mcmc:
+    max_samples: 3000
+    Rminus1_stop: 0.03
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+
+output: chains/p0b_act_only
+resume: false
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_act_only.yaml
+###############################################################################
+# ACT-focused EDE: ACT DR6 + Planck lowℓ only
+# No lensing, no BAO, no SN - isolates what ACT thinks about EDE
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  act_dr6_mflike.ACTDR6MFLike:
+
+params:
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.9649
+    proposal: 0.004
+    latex: n_s
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 68.0
+    proposal: 0.5
+    latex: H_0
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02237
+    proposal: 0.0002
+    latex: \Omega_b h^2
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.117
+    proposal: 0.003
+    latex: \Omega_c h^2
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.0544
+    proposal: 0.006
+    latex: \tau_{reio}
+  Lambda_EDE_ridder:
+    prior: {min: 0.01, max: 0.15}
+    ref: 0.05
+    proposal: 0.01
+    latex: \Lambda_{EDE}
+  Omega_m:
+    latex: \Omega_m
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+    latex: S_8
+
+sampler:
+  mcmc:
+    max_samples: 3000
+    Rminus1_stop: 0.03
+    burn_in: 50
+    learn_proposal: true
+    max_tries: 20000
+
+output: chains/p2_act_only
+resume: false
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_act_seeded.yaml
+###############################################################################
+# P2_act SEEDED: EDE with ACT + lowℓ only
+# Seeded from P2_DR6 best-fit to help find the good Λ region
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  act_dr6_mflike.ACTDR6MFLike:
+
+params:
+  logA:
+    prior: {min: 2.5, max: 3.5}
+    ref: 3.016
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+  n_s:
+    prior: {min: 0.92, max: 1.0}
+    ref: 0.969
+    proposal: 0.004
+  H0:
+    prior: {min: 60, max: 80}
+    ref: 66.5
+    proposal: 0.5
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: 0.02211
+    proposal: 0.0002
+  omega_cdm:
+    prior: {min: 0.09, max: 0.14}
+    ref: 0.122
+    proposal: 0.003
+  tau_reio:
+    prior: {min: 0.01, max: 0.1}
+    ref: 0.055
+    proposal: 0.006
+  Lambda_EDE_ridder:
+    prior: {min: 0.02, max: 0.12}
+    ref: 0.07
+    proposal: 0.01
+  Omega_m:
+  sigma8:
+  S8:
+    derived: "lambda sigma8, Omega_m: sigma8*np.sqrt(Omega_m/0.3)"
+
+sampler:
+  mcmc:
+    max_samples: 3000
+    Rminus1_stop: 0.03
+    burn_in: 30
+    learn_proposal: true
+    max_tries: 20000
+
+output: chains/p2_act_seeded
+resume: false
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_dr6_testpoint.yaml
+###############################################################################
+# Single-point evaluation to test if EDE + DR6 works at all
+packages_path: /home/azureuser/packages
+
+debug: true
+
+theory:
+  classy:
+    stop_at_error: true
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+  act_dr6_mflike.ACTDR6MFLike:
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+    python_path: /home/azureuser/Ridder-Field/paper2_dr6
+  sn.pantheonplus:
+
+params:
+  # Fixed at Paper-1 style values
+  H0: 69.5
+  omega_b: 0.0224
+  omega_cdm: 0.118
+  tau_reio: 0.055
+  n_s: 0.965
+  logA:
+    value: 3.044
+    drop: true
+  A_s:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+  
+  # EDE at moderate value
+  Lambda_EDE_ridder: 0.8
+
+sampler:
+  evaluate:
+
+output: chains/p2_dr6_testpoint
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_testpoint_low.yaml
+###############################################################################
+packages_path: /home/azureuser/packages
+debug: true
+
+theory:
+  classy:
+    stop_at_error: true
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+
+params:
+  H0: 68.5
+  omega_b: 0.0224
+  omega_cdm: 0.118
+  tau_reio: 0.055
+  n_s: 0.965
+  logA: {value: 3.044, drop: true}
+  A_s: {value: "lambda logA: 1e-10*np.exp(logA)"}
+  Lambda_EDE_ridder: 0.4
+
+sampler:
+  evaluate:
+
+output: chains/p2_testpoint_low
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_testpoint_paper1.yaml
+###############################################################################
+packages_path: /home/azureuser/packages
+debug: true
+
+theory:
+  classy:
+    stop_at_error: true
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+
+params:
+  H0: 68.0
+  omega_b: 0.0224
+  omega_cdm: 0.118
+  tau_reio: 0.055
+  n_s: 0.965
+  logA: {value: 3.044, drop: true}
+  A_s: {value: "lambda logA: 1e-10*np.exp(logA)"}
+  Lambda_EDE_ridder: 0.05
+
+sampler:
+  evaluate:
+
+output: chains/p2_testpoint_paper1
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/configs/p2_testpoint_zero.yaml
+###############################################################################
+packages_path: /home/azureuser/packages
+debug: true
+
+theory:
+  classy:
+    stop_at_error: true
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+
+params:
+  H0: 68.0
+  omega_b: 0.0224
+  omega_cdm: 0.118
+  tau_reio: 0.055
+  n_s: 0.965
+  logA: {value: 3.044, drop: true}
+  A_s: {value: "lambda logA: 1e-10*np.exp(logA)"}
+  Lambda_EDE_ridder: 0.0
+
+sampler:
+  evaluate:
+
+output: chains/p2_testpoint_zero
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/likelihoods/__init__.py
+###############################################################################
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/likelihoods/desi_y1_bao.py
+###############################################################################
+"""
+DESI Y1 BAO Likelihood for Cobaya
+Based on DESI Collaboration arXiv:2404.03002 (Y1 BAO results)
+
+CORRECTED VERSION v2: 
+- Properly handles D_V/r_d (BGS, QSO) vs D_M/r_d + D_H/r_d (LRG, ELG, Lya)
+- Fixed D_V formula: D_V = [D_M^2 * z * D_H]^(1/3)
+"""
+import numpy as np
+from cobaya.likelihood import Likelihood
+
+class DESI_Y1_BAO(Likelihood):
+    """DESI Year 1 BAO likelihood with proper handling of D_V and D_M/D_H measurements."""
+    speed = 10
+    
+    def initialize(self):
+        # D_M/r_d and D_H/r_d measurements (anisotropic BAO)
+        self.aniso_data = [
+            # LRG z=0.51
+            {'z': 0.510, 'DM_rd': 13.62, 'DM_err': 0.25, 'DH_rd': 20.98, 'DH_err': 0.61, 'rho': -0.42},
+            # LRG z=0.71
+            {'z': 0.706, 'DM_rd': 16.85, 'DM_err': 0.32, 'DH_rd': 20.08, 'DH_err': 0.60, 'rho': -0.38},
+            # LRG+ELG z=0.93
+            {'z': 0.930, 'DM_rd': 21.71, 'DM_err': 0.28, 'DH_rd': 17.88, 'DH_err': 0.35, 'rho': -0.39},
+            # ELG z=1.32
+            {'z': 1.317, 'DM_rd': 27.79, 'DM_err': 0.69, 'DH_rd': 13.82, 'DH_err': 0.42, 'rho': -0.44},
+            # Lya z=2.33
+            {'z': 2.330, 'DM_rd': 39.71, 'DM_err': 0.94, 'DH_rd': 8.52, 'DH_err': 0.17, 'rho': -0.48},
+        ]
+        
+        # D_V/r_d measurements (isotropic BAO)
+        self.iso_data = [
+            # BGS z=0.30
+            {'z': 0.295, 'DV_rd': 7.93, 'DV_err': 0.15},
+            # QSO z=1.49
+            {'z': 1.491, 'DV_rd': 26.07, 'DV_err': 0.67},
+        ]
+        
+        self.log.info(f"DESI Y1 BAO: {len(self.aniso_data)} anisotropic + {len(self.iso_data)} isotropic bins")
+    
+    def get_requirements(self):
+        zs_aniso = [d['z'] for d in self.aniso_data]
+        zs_iso = [d['z'] for d in self.iso_data]
+        all_zs = sorted(set(zs_aniso + zs_iso))
+        return {'angular_diameter_distance': {'z': all_zs}, 'Hubble': {'z': all_zs}, 'rdrag': None}
+    
+    def logp(self, **params_values):
+        provider = self.provider
+        rdrag = provider.get_param('rdrag')
+        c_km_s = 299792.458
+        chi2 = 0.0
+        
+        # Anisotropic measurements (D_M/r_d and D_H/r_d)
+        for d in self.aniso_data:
+            z = d['z']
+            DA = provider.get_angular_diameter_distance(z)
+            H = provider.get_Hubble(z)
+            DM = (1 + z) * DA
+            DH = c_km_s / H
+            DM_rd_theory = DM / rdrag
+            DH_rd_theory = DH / rdrag
+            
+            delta_DM = DM_rd_theory - d['DM_rd']
+            delta_DH = DH_rd_theory - d['DH_rd']
+            sigma_DM, sigma_DH, rho = d['DM_err'], d['DH_err'], d['rho']
+            
+            # 2x2 covariance matrix inversion
+            det = sigma_DM**2 * sigma_DH**2 * (1 - rho**2)
+            chi2 += (delta_DM**2 * sigma_DH**2 + delta_DH**2 * sigma_DM**2 
+                     - 2 * rho * sigma_DM * sigma_DH * delta_DM * delta_DH) / det
+        
+        # Isotropic measurements (D_V/r_d)
+        # D_V = [D_M^2 * z * D_H]^(1/3)  <-- CORRECT formula with z factor
+        for d in self.iso_data:
+            z = d['z']
+            DA = provider.get_angular_diameter_distance(z)
+            H = provider.get_Hubble(z)
+            DM = (1 + z) * DA
+            DH = c_km_s / H
+            # CORRECT: D_V = [D_M^2 * z * D_H]^(1/3)
+            DV = (DM**2 * z * DH)**(1.0/3.0)
+            DV_rd_theory = DV / rdrag
+            
+            delta_DV = DV_rd_theory - d['DV_rd']
+            chi2 += (delta_DV / d['DV_err'])**2
+        
+        return -0.5 * chi2
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/dashboard.sh
+###############################################################################
+#!/bin/bash
+# Paper 2 Chain Dashboard
+echo "╔═══════════════════════════════════════════════════════════════════════════════════════╗"
+echo "║                        PAPER 2 DR6 CHAIN DASHBOARD                                    ║"
+echo "║                              $(date)                                 ║"
+echo "╚═══════════════════════════════════════════════════════════════════════════════════════╝"
+echo
+
+echo "┌───────────────────┬─────────┬────────┬─────────┬────────┬───────────┬───────────┐"
+echo "│ CHAIN             │ SAMPLES │   H₀   │  Λ_EDE  │   S₈   │  χ²_total │  χ²_ACT   │"
+echo "├───────────────────┼─────────┼────────┼─────────┼────────┼───────────┼───────────┤"
+
+CD=~/Ridder-Field/paper2_dr6/chains
+
+# P0b_DR6
+if [ -f $CD/prod_p0b_dr6_lcdm.1.txt ]; then
+    N=$(($(wc -l < $CD/prod_p0b_dr6_lcdm.1.txt) - 1))
+    awk -v n=$N 'NR>1 {if(NR==2||$50<c){c=$50;h=$5;s=$43;act=$54}} END {
+        printf "│ P0b_DR6 (ΛCDM)    │  %5d  │ %6.2f │    —    │ %6.3f │ %9.1f │ %9.1f │\n", n, h, s, c, act
+    }' $CD/prod_p0b_dr6_lcdm.1.txt
+fi
+
+# P2_DR6
+if [ -f $CD/prod_p2_dr6_ede.1.txt ]; then
+    N=$(($(wc -l < $CD/prod_p2_dr6_ede.1.txt) - 1))
+    awk -v n=$N 'NR>1 {if(NR==2||$51<c){c=$51;h=$5;l=$8;s=$44;act=$55}} END {
+        printf "│ P2_DR6 (EDE)      │  %5d  │ %6.2f │ %7.4f │ %6.3f │ %9.1f │ %9.1f │\n", n, h, l, s, c, act
+    }' $CD/prod_p2_dr6_ede.1.txt
+fi
+
+echo "├───────────────────┼─────────┼────────┼─────────┼────────┼───────────┼───────────┤"
+
+# P0b_act
+if [ -f $CD/p0b_act_only.1.txt ]; then
+    N=$(($(wc -l < $CD/p0b_act_only.1.txt) - 1))
+    awk -v n=$N 'NR>1 {if(NR==2||$46<c){c=$46;h=$5;s=$42;act=$49}} END {
+        printf "│ P0b_act (ΛCDM)    │  %5d  │ %6.2f │    —    │ %6.3f │ %9.1f │ %9.1f │\n", n, h, s, c, act
+    }' $CD/p0b_act_only.1.txt
+fi
+
+# P2_act_seeded
+if [ -f $CD/p2_act_seeded.1.txt ]; then
+    N=$(($(wc -l < $CD/p2_act_seeded.1.txt) - 1))
+    awk -v n=$N 'NR>1 {if(NR==2||$47<c){c=$47;h=$5;l=$8;s=$43;act=$50}} END {
+        printf "│ P2_act (EDE)      │  %5d  │ %6.2f │ %7.4f │ %6.3f │ %9.1f │ %9.1f │\n", n, h, l, s, c, act
+    }' $CD/p2_act_seeded.1.txt
+else
+    echo "│ P2_act (EDE)      │  init  │   —    │    —    │   —    │     —     │     —     │"
+fi
+
+echo "└───────────────────┴─────────┴────────┴─────────┴────────┴───────────┴───────────┘"
+
+echo
+echo "=== Δχ² Summary ==="
+if [ -f $CD/prod_p0b_dr6_lcdm.1.txt ] && [ -f $CD/prod_p2_dr6_ede.1.txt ]; then
+    P0B=$(awk 'NR>1 {if(NR==2||$50<c)c=$50} END {print c}' $CD/prod_p0b_dr6_lcdm.1.txt)
+    P2=$(awk 'NR>1 {if(NR==2||$51<c)c=$51} END {print c}' $CD/prod_p2_dr6_ede.1.txt)
+    P0B_ACT=$(awk 'NR>1 {if(NR==2||$50<c){c=$50;a=$54}} END {print a}' $CD/prod_p0b_dr6_lcdm.1.txt)
+    P2_ACT=$(awk 'NR>1 {if(NR==2||$51<c){c=$51;a=$55}} END {print a}' $CD/prod_p2_dr6_ede.1.txt)
+    echo "  Main chains:  Δχ²_total = $(echo "$P2 - $P0B" | bc | cut -c1-6)  |  Δχ²_ACT = $(echo "$P2_ACT - $P0B_ACT" | bc | cut -c1-6)"
+fi
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/monitor.sh
+###############################################################################
+#!/bin/bash
+# Paper 2 Full Monitoring Dashboard
+CD=~/Ridder-Field/paper2_dr6/chains
+TS=$(date "+%Y-%m-%d %H:%M:%S")
+
+echo "╔════════════════════════════════════════════════════════════════════════════════════════════╗"
+echo "║                           PAPER 2 DR6 MONITORING DASHBOARD                                 ║"
+echo "║                                    $TS                                    ║"
+echo "╚════════════════════════════════════════════════════════════════════════════════════════════╝"
+echo
+
+# ========== MAIN CHAINS ==========
+echo "┌─────────────────────────────────────────────────────────────────────────────────────────────┐"
+echo "│ MAIN CHAINS (DR6 + lowℓ + lens + BAO + SN)                                                 │"
+echo "├─────────────────┬─────────┬────────────────────────────────────────────────────────────────┤"
+
+# P0b_DR6 means and best
+if [ -f $CD/prod_p0b_dr6_lcdm.1.txt ]; then
+    N=$(($(wc -l < $CD/prod_p0b_dr6_lcdm.1.txt) - 1))
+    echo "│ P0b_DR6 (ΛCDM)  │ N=$N"
+    awk 'NR>1 {
+        h+=$5; hs+=$5*$5; s+=$43; ss+=$43*$43; n++
+        if(NR==2||$50<bc){bc=$50; bh=$5; bs=$43; ba=$54; bl=$53}
+    } END {
+        hm=h/n; he=sqrt(hs/n-hm*hm)
+        sm=s/n; se=sqrt(ss/n-sm*sm)
+        printf "│   Mean:  H₀ = %.2f ± %.2f    S₈ = %.3f ± %.3f\n", hm, he, sm, se
+        printf "│   Best:  H₀ = %.2f    S₈ = %.3f    χ²_tot = %.1f    χ²_ACT = %.1f    χ²_lens = %.1f\n", bh, bs, bc, ba, bl
+    }' $CD/prod_p0b_dr6_lcdm.1.txt
+fi
+
+echo "├─────────────────┼─────────┴────────────────────────────────────────────────────────────────┤"
+
+# P2_DR6 means and best  
+if [ -f $CD/prod_p2_dr6_ede.1.txt ]; then
+    N=$(($(wc -l < $CD/prod_p2_dr6_ede.1.txt) - 1))
+    echo "│ P2_DR6 (EDE)    │ N=$N"
+    awk 'NR>1 {
+        h+=$5; hs+=$5*$5; l+=$8; ls+=$8*$8; s+=$44; ss+=$44*$44; n++
+        if(NR==2||$51<bc){bc=$51; bh=$5; bl=$8; bs=$44; ba=$55; ble=$54}
+    } END {
+        hm=h/n; he=sqrt(hs/n-hm*hm)
+        lm=l/n; le=sqrt(ls/n-lm*lm)
+        sm=s/n; se=sqrt(ss/n-sm*sm)
+        printf "│   Mean:  H₀ = %.2f ± %.2f    Λ = %.4f ± %.4f    S₈ = %.3f ± %.3f\n", hm, he, lm, le, sm, se
+        printf "│   Best:  H₀ = %.2f    Λ = %.4f    S₈ = %.3f    χ²_tot = %.1f    χ²_ACT = %.1f    χ²_lens = %.1f\n", bh, bl, bs, bc, ba, ble
+    }' $CD/prod_p2_dr6_ede.1.txt
+fi
+
+echo "└─────────────────┴──────────────────────────────────────────────────────────────────────────┘"
+
+# ========== Δχ² SUMMARY ==========
+echo
+echo "┌─────────────────────────────────────────────────────────────────────────────────────────────┐"
+echo "│ Δχ² SUMMARY (EDE - ΛCDM at best-fit)                                                       │"
+echo "├─────────────────────────────────────────────────────────────────────────────────────────────┤"
+
+if [ -f $CD/prod_p0b_dr6_lcdm.1.txt ] && [ -f $CD/prod_p2_dr6_ede.1.txt ]; then
+    P0B_TOT=$(awk 'NR>1 {if(NR==2||$50<c)c=$50} END {print c}' $CD/prod_p0b_dr6_lcdm.1.txt)
+    P2_TOT=$(awk 'NR>1 {if(NR==2||$51<c)c=$51} END {print c}' $CD/prod_p2_dr6_ede.1.txt)
+    P0B_ACT=$(awk 'NR>1 {if(NR==2||$50<c){c=$50;a=$54}} END {print a}' $CD/prod_p0b_dr6_lcdm.1.txt)
+    P2_ACT=$(awk 'NR>1 {if(NR==2||$51<c){c=$51;a=$55}} END {print a}' $CD/prod_p2_dr6_ede.1.txt)
+    P0B_LENS=$(awk 'NR>1 {if(NR==2||$50<c){c=$50;l=$53}} END {print l}' $CD/prod_p0b_dr6_lcdm.1.txt)
+    P2_LENS=$(awk 'NR>1 {if(NR==2||$51<c){c=$51;l=$54}} END {print l}' $CD/prod_p2_dr6_ede.1.txt)
+    
+    D_TOT=$(echo "$P2_TOT - $P0B_TOT" | bc)
+    D_ACT=$(echo "$P2_ACT - $P0B_ACT" | bc)
+    D_LENS=$(echo "$P2_LENS - $P0B_LENS" | bc)
+    
+    printf "│   Δχ²_total  = %s   (negative = EDE wins)\n" "$D_TOT"
+    printf "│   Δχ²_ACT    = %s   (ACT DR6 preference)\n" "$D_ACT"
+    printf "│   Δχ²_lens   = %s   (Planck lensing pushback)\n" "$D_LENS"
+fi
+echo "└─────────────────────────────────────────────────────────────────────────────────────────────┘"
+
+# ========== ACT-ONLY CHAINS ==========
+echo
+echo "┌─────────────────────────────────────────────────────────────────────────────────────────────┐"
+echo "│ ACT-ONLY CHAINS (ACT + lowℓ only)                                                          │"
+echo "├─────────────────┬───────────────────────────────────────────────────────────────────────────┤"
+
+if [ -f $CD/p0b_act_only.1.txt ]; then
+    N=$(($(wc -l < $CD/p0b_act_only.1.txt) - 1))
+    echo "│ P0b_act (ΛCDM)  │ N=$N"
+    awk 'NR>1 {if(NR==2||$46<bc){bc=$46; bh=$5; bs=$42; ba=$49}} END {
+        printf "│   Best:  H₀ = %.2f    S₈ = %.3f    χ²_tot = %.1f    χ²_ACT = %.1f\n", bh, bs, bc, ba
+    }' $CD/p0b_act_only.1.txt
+fi
+
+echo "├─────────────────┼───────────────────────────────────────────────────────────────────────────┤"
+
+if [ -f $CD/p2_act_seeded.1.txt ]; then
+    N=$(($(wc -l < $CD/p2_act_seeded.1.txt) - 1))
+    echo "│ P2_act (EDE)    │ N=$N"
+    awk 'NR>1 {
+        l+=$8; ls+=$8*$8; n++
+        if(NR==2||$47<bc){bc=$47; bh=$5; bl=$8; bs=$43; ba=$50}
+    } END {
+        lm=l/n; le=sqrt(ls/n-lm*lm)
+        printf "│   Mean:  Λ = %.4f ± %.4f\n", lm, le
+        printf "│   Best:  H₀ = %.2f    Λ = %.4f    S₈ = %.3f    χ²_tot = %.1f    χ²_ACT = %.1f\n", bh, bl, bs, bc, ba
+    }' $CD/p2_act_seeded.1.txt
+else
+    tail -1 $CD/p2_act_seeded.log 2>/dev/null | grep -oE "Progress.+|Sampling.+" | head -1 | xargs -I{} echo "│ P2_act (EDE)    │ {}"
+fi
+
+echo "└─────────────────┴───────────────────────────────────────────────────────────────────────────┘"
+
+echo
+echo "Processes: $(ps aux | grep cobaya | grep -v grep | wc -l) running"
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/track_p2.sh
+###############################################################################
+#!/bin/bash
+echo "timestamp,N,H0_mean,H0_std,Lambda_mean,Lambda_std,S8_mean,S8_std,chi2_min"
+while true; do
+    if [ -f ~/Ridder-Field/paper2_dr6/chains/prod_p2_dr6_ede.1.txt ]; then
+        awk -v ts="$(date +%H:%M)" "NR>1 {
+            h0+=\$5; h0sq+=\$5*\$5;
+            lam+=\$8; lamsq+=\$8*\$8;
+            s8+=\$44; s8sq+=\$44*\$44;
+            if(NR==2 || \$51<chi2min) chi2min=\$51;
+            n++
+        } END {
+            if(n>0) printf \"%s,%d,%.2f,%.2f,%.4f,%.4f,%.3f,%.3f,%.0f\n\", 
+                ts, n, h0/n, sqrt(h0sq/n-(h0/n)^2), 
+                lam/n, sqrt(lamsq/n-(lam/n)^2),
+                s8/n, sqrt(s8sq/n-(s8/n)^2), chi2min
+        }" ~/Ridder-Field/paper2_dr6/chains/prod_p2_dr6_ede.1.txt
+    fi
+    sleep 120
+done
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/chi2_scan_act.py
+###############################################################################
+#!/usr/bin/env python3
+"""
+1D chi2_ACT scan in Lambda_EDE at fixed P0b cosmology.
+This tests if ACT alone genuinely prefers nonzero Lambda.
+"""
+import sys
+sys.path.insert(0, "/home/azureuser/Ridder-Field/paper2_dr6")
+
+import numpy as np
+from cobaya.model import get_model
+import yaml
+
+# Fixed to P0b best-fit cosmology
+FIXED_COSMO = {
+    "logA": 3.044,
+    "n_s": 0.9649, 
+    "H0": 68.52,
+    "omega_b": 0.02237,
+    "omega_cdm": 0.118,
+    "tau_reio": 0.055,
+}
+
+# Base config for ACT-only evaluation
+CONFIG = """
+packages_path: /home/azureuser/packages
+
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+
+  mflike.BandpowerForeground:
+    experiments: [dr6_pa4_f220, dr6_pa5_f090, dr6_pa5_f150, dr6_pa6_f090, dr6_pa6_f150]
+    bandint_freqs: [220, 90, 150, 90, 150]
+    beam_profile:
+      beam_from_file: null
+
+likelihood:
+  act_dr6_mflike.ACTDR6MFLike:
+"""
+
+def eval_chi2(lambda_ede):
+    """Evaluate ACT chi2 at given Lambda_EDE with fixed cosmology"""
+    config = yaml.safe_load(CONFIG)
+    
+    # Add Ridder params if needed
+    if lambda_ede > 0:
+        config["theory"]["classy"]["extra_args"].update({
+            "n_ridder": 3,
+            "theta_i_ridder": 1.0,
+            "beta_ridder": 0.0,
+            "f_axion_ridder": 1.0e+27,
+        })
+    
+    # Set up fixed params
+    config["params"] = {}
+    for k, v in FIXED_COSMO.items():
+        config["params"][k] = {"value": v}
+    
+    # Add Lambda_EDE if needed
+    if lambda_ede > 0:
+        config["params"]["Lambda_EDE_ridder"] = {"value": lambda_ede}
+    
+    # Add derived A_s
+    config["params"]["A_s"] = {"value": "lambda logA: 1e-10*np.exp(logA)"}
+    
+    try:
+        model = get_model(config)
+        point = model.parameterization.sampled_params()
+        logpost = model.logposterior(point)
+        chi2 = -2 * logpost.loglike
+        return chi2
+    except Exception as e:
+        print(f"Error at Lambda={lambda_ede}: {e}")
+        return None
+
+if __name__ == "__main__":
+    print("ACT DR6 chi2 scan at fixed P0b cosmology")
+    print(f"Fixed: H0={FIXED_COSMO['H0']}, omega_cdm={FIXED_COSMO['omega_cdm']}")
+    print()
+    print("Lambda_EDE    chi2_ACT    Delta_chi2")
+    print("-" * 40)
+    
+    chi2_base = None
+    for lam in [0.0, 0.02, 0.04, 0.06, 0.07, 0.08, 0.10]:
+        chi2 = eval_chi2(lam)
+        if chi2:
+            if chi2_base is None:
+                chi2_base = chi2
+            delta = chi2 - chi2_base
+            print(f"{lam:8.3f}     {chi2:8.1f}     {delta:+8.1f}")
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/debug_v2_life_signs.py
+###############################################################################
+#!/usr/bin/env python3
+"""
+V2 Life Signs Check
+
+Diagnosis: Check if the Ridder field has any energy density.
+If rho_scf = 0, the field is dead (stuck at phi=0).
+If rho_scf > 0, the field is alive but parameters may be wrong.
+"""
+
+import matplotlib
+matplotlib.use('Agg')  # Non-interactive backend for SSH
+import matplotlib.pyplot as plt
+import numpy as np
+from classy import Class
+
+# Parameters
+f = 0.4  # Planck masses (reduced)
+theta = 2.0
+phi_ini = f * theta  # <--- MANUALLY CALCULATING IT HERE
+
+print("="*70)
+print("🏥 V2 LIFE SIGNS CHECK")
+print("="*70)
+print(f"Forcing phi_ini = {phi_ini:.3f} (theta={theta}, f={f})")
+print("")
+
+params = {
+    'output': 'tCl, mPk',
+    'H0': 70.0,
+    'omega_b': 0.0224,
+    'omega_cdm': 0.120,
+    'A_s': 2.1e-9,
+    'n_s': 0.965,
+    'tau_reio': 0.054,
+    
+    # V2 Setup - Try to force it on
+    'Lambda_EDE_ridder': 2.0,  # Energy scale
+    'theta_i_ridder': theta,
+    'beta_ridder': 0.015,
+    'f_axion_ridder': 1.0,  # eV
+    'n_ridder': 3,
+    'gauge': 'newtonian',
+}
+
+print("Parameters:")
+for k, v in params.items():
+    if 'ridder' in k.lower() or k in ['Lambda_EDE_ridder', 'theta_i_ridder', 'beta_ridder']:
+        print(f"  {k}: {v}")
+print("")
+
+cosmo = Class()
+cosmo.set(params)
+
+try:
+    print("Computing CLASS...")
+    cosmo.compute()
+    print("✓ CLASS computed successfully")
+    print("")
+    
+    # Get Background
+    bg = cosmo.get_background()
+    z = bg['z']
+    
+    # Try to get Ridder field density
+    # CLASS may store it as different names
+    possible_names = [
+        '(.)rho_scf',
+        '(.)rho_ridder', 
+        '(.)rho_fld',
+        'rho_scf',
+        'rho_ridder'
+    ]
+    
+    rho_scf = None
+    for name in possible_names:
+        if name in bg:
+            rho_scf = bg[name]
+            print(f"✓ Found field density as '{name}'")
+            break
+    
+    if rho_scf is None:
+        print("❌ CRITICAL: Cannot find Ridder field density in background!")
+        print("Available columns:")
+        for key in sorted(bg.keys()):
+            print(f"  - {key}")
+        print("")
+        print("This means the field is not being tracked at all.")
+        cosmo.struct_cleanup()
+        cosmo.empty()
+        exit(1)
+    
+    rho_tot = bg['(.)rho_tot']
+    rho_cdm = bg['(.)rho_cdm']
+    rho_b = bg['(.)rho_b']
+    
+    # Check for Pulse
+    peak_rho = np.max(rho_scf)
+    peak_z = z[np.argmax(rho_scf)]
+    
+    # Compute f_EDE at peak
+    rho_tot_at_peak = rho_tot[np.argmax(rho_scf)]
+    f_EDE_peak = peak_rho / rho_tot_at_peak if rho_tot_at_peak > 0 else 0
+    
+    print("="*70)
+    print("DIAGNOSIS")
+    print("="*70)
+    print(f"Peak rho_scf:     {peak_rho:.4e}")
+    print(f"Peak at redshift: z = {peak_z:.1f}")
+    print(f"f_EDE at peak:    {f_EDE_peak*100:.2f}%")
+    print("")
+    
+    if peak_rho < 1e-30:
+        print("❌ FLATLINE: The field has NO energy.")
+        print("   Diagnosis: Field is stuck at phi=0")
+        print("   Cause: Initial conditions not being set")
+        status = "DEAD"
+    elif f_EDE_peak < 0.01:
+        print("⚠️  WEAK PULSE: The field exists but is too weak.")
+        print(f"   f_EDE = {f_EDE_peak*100:.4f}% (need ~10%)")
+        print("   Diagnosis: Lambda_EDE too small or field decays too fast")
+        status = "WEAK"
+    else:
+        print("✅ PULSE DETECTED: The field is alive!")
+        print(f"   f_EDE = {f_EDE_peak*100:.2f}%")
+        status = "ALIVE"
+    
+    print("="*70)
+    
+    # Plot
+    fig, axes = plt.subplots(2, 1, figsize=(12, 10))
+    
+    # Plot 1: Energy densities
+    ax = axes[0]
+    ax.loglog(z, rho_scf, 'r-', linewidth=2, label='Ridder V2 Density')
+    ax.loglog(z, rho_tot, 'k--', linewidth=1, label='Total Density')
+    ax.loglog(z, rho_cdm, 'b:', linewidth=1, label='CDM Density')
+    ax.set_xlim(1e5, 0.1)
+    ax.set_xlabel('Redshift z', fontsize=12)
+    ax.set_ylabel('Energy Density', fontsize=12)
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.set_title(f'V2 Life Signs: {status} (Peak rho={peak_rho:.2e} at z={peak_z:.0f})', fontsize=14, fontweight='bold')
+    
+    # Plot 2: f_EDE evolution
+    ax = axes[1]
+    f_EDE = rho_scf / rho_tot
+    ax.semilogx(z, f_EDE * 100, 'r-', linewidth=2)
+    ax.axhline(10, color='g', linestyle='--', label='Target: 10%')
+    ax.set_xlim(1e5, 0.1)
+    ax.set_ylim(0, max(15, f_EDE_peak*100*1.2))
+    ax.set_xlabel('Redshift z', fontsize=12)
+    ax.set_ylabel('f_EDE (%)', fontsize=12)
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3)
+    ax.set_title(f'Early Dark Energy Fraction (Peak: {f_EDE_peak*100:.2f}% at z={peak_z:.0f})', fontsize=12)
+    
+    plt.tight_layout()
+    plt.savefig('v2_life_signs.png', dpi=150)
+    print("")
+    print("✓ Graph saved to v2_life_signs.png")
+    
+    # Save data
+    np.savetxt('v2_life_signs_data.txt', 
+               np.column_stack([z, rho_scf, rho_tot, f_EDE]),
+               header='z rho_scf rho_tot f_EDE')
+    print("✓ Data saved to v2_life_signs_data.txt")
+    
+except Exception as e:
+    print("")
+    print("="*70)
+    print("❌ CRASH DURING COMPUTATION")
+    print("="*70)
+    print(f"Error: {e}")
+    print("")
+    print("This means CLASS failed to run with these parameters.")
+    import traceback
+    traceback.print_exc()
+
+finally:
+    try:
+        cosmo.struct_cleanup()
+        cosmo.empty()
+    except:
+        pass
+
+print("")
+print("="*70)
+print("LIFE SIGNS CHECK COMPLETE")
+print("="*70)
+
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/find_correct_lambda.py
+###############################################################################
+#!/usr/bin/env python3
+"""
+Find Correct Lambda_EDE
+
+Goal: Find Lambda_EDE value that gives f_EDE ~ 10% at z ~ 3000
+"""
+
+import numpy as np
+from classy import Class
+
+def test_lambda(Lambda_EDE, theta_i=2.0, target_f_EDE=0.10):
+    """
+    Test a Lambda_EDE value and return peak f_EDE.
+    """
+    params = {
+        'output': 'tCl',
+        'H0': 70.0,
+        'omega_b': 0.0224,
+        'omega_cdm': 0.120,
+        'A_s': 2.1e-9,
+        'n_s': 0.965,
+        'tau_reio': 0.054,
+        'Lambda_EDE_ridder': Lambda_EDE,
+        'theta_i_ridder': theta_i,
+        'beta_ridder': 0.015,
+        'f_axion_ridder': 1.0,
+        'n_ridder': 3,
+        'gauge': 'newtonian',
+    }
+    
+    try:
+        cosmo = Class()
+        cosmo.set(params)
+        cosmo.compute()
+        
+        bg = cosmo.get_background()
+        z = bg['z']
+        rho_scf = bg['(.)rho_ridder']
+        rho_tot = bg['(.)rho_tot']
+        
+        f_EDE = rho_scf / rho_tot
+        peak_f_EDE = np.max(f_EDE)
+        peak_z = z[np.argmax(f_EDE)]
+        
+        cosmo.struct_cleanup()
+        cosmo.empty()
+        
+        return {
+            'success': True,
+            'peak_f_EDE': peak_f_EDE,
+            'peak_z': peak_z,
+            'Lambda_EDE': Lambda_EDE
+        }
+    except Exception as e:
+        return {
+            'success': False,
+            'error': str(e),
+            'Lambda_EDE': Lambda_EDE
+        }
+
+print("="*70)
+print("FINDING CORRECT LAMBDA_EDE FOR f_EDE ~ 10%")
+print("="*70)
+print("")
+
+# Binary search for correct Lambda
+Lambda_values = [10, 100, 1000, 10000, 100000, 1000000]
+
+print("Testing Lambda_EDE values...")
+print("")
+
+results = []
+for Lambda in Lambda_values:
+    print(f"Testing Lambda_EDE = {Lambda:.0e}...", end=" ")
+    result = test_lambda(Lambda)
+    
+    if result['success']:
+        f_EDE_percent = result['peak_f_EDE'] * 100
+        print(f"f_EDE = {f_EDE_percent:.2f}% at z = {result['peak_z']:.0f}")
+        results.append(result)
+        
+        # Stop if we're in the right ballpark
+        if 5 < f_EDE_percent < 20:
+            print(f"  ✓ Found good range!")
+            break
+    else:
+        print(f"FAILED: {result['error']}")
+
+print("")
+print("="*70)
+print("RESULTS")
+print("="*70)
+
+if results:
+    for r in results:
+        f_EDE_percent = r['peak_f_EDE'] * 100
+        status = "✓" if 5 < f_EDE_percent < 20 else "✗"
+        print(f"{status} Lambda_EDE = {r['Lambda_EDE']:.2e}: f_EDE = {f_EDE_percent:.2f}% at z = {r['peak_z']:.0f}")
+    
+    # Find closest to 10%
+    best = min(results, key=lambda x: abs(x['peak_f_EDE'] - 0.10))
+    print("")
+    print(f"BEST MATCH: Lambda_EDE = {best['Lambda_EDE']:.2e}")
+    print(f"  f_EDE = {best['peak_f_EDE']*100:.2f}% at z = {best['peak_z']:.0f}")
+else:
+    print("❌ No successful runs")
+
+print("="*70)
+
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/parameter_grid_scan.py
+###############################################################################
+#!/usr/bin/env python3
+"""
+Parameter Grid Scanner for V2
+
+Tool 2 from V2_INCREMENTAL_PLAN.md
+
+Purpose: Find V2 parameters that produce observable EDE effects.
+Tests: Lambda_EDE, theta_i, beta ranges to find optimal values.
+
+Usage:
+    python3 parameter_grid_scan.py --quick  # Fast scan (5 points)
+    python3 parameter_grid_scan.py --full   # Full scan (25 points)
+"""
+
+import argparse
+import numpy as np
+import pandas as pd
+from single_point_chi2 import test_single_point
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+def grid_scan(Lambda_range, theta_i_range, beta_range, output_dir='../v2_grid_scan_results'):
+    """
+    Scan parameter space and save results.
+    
+    Parameters:
+    -----------
+    Lambda_range : list
+        Values of Lambda_EDE to test
+    theta_i_range : list
+        Values of theta_i to test
+    beta_range : list
+        Values of beta to test
+    output_dir : str
+        Directory to save results
+    
+    Returns:
+    --------
+    DataFrame : Results with (Lambda_EDE, theta_i, beta, chi2, H0, success)
+    """
+    
+    # Create output directory
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    
+    results = []
+    total_tests = len(Lambda_range) * len(theta_i_range) * len(beta_range)
+    test_num = 0
+    
+    print("="*70)
+    print("V2 PARAMETER GRID SCAN")
+    print("="*70)
+    print(f"Lambda_EDE: {Lambda_range}")
+    print(f"theta_i:    {theta_i_range}")
+    print(f"beta:       {beta_range}")
+    print(f"Total tests: {total_tests}")
+    print("="*70)
+    print("")
+    
+    for Lambda in Lambda_range:
+        for theta_i in theta_i_range:
+            for beta in beta_range:
+                test_num += 1
+                print(f"Test {test_num}/{total_tests}: Lambda={Lambda:.2f}, theta_i={theta_i:.2f}, beta={beta:.3f}")
+                
+                result = test_single_point(
+                    Lambda_EDE=Lambda,
+                    theta_i=theta_i,
+                    beta=beta,
+                    verbose=False
+                )
+                
+                if result['success']:
+                    print(f"  ✓ χ² = {result['chi2']:.1f}, H₀ = {result['H0']:.2f}")
+                    results.append({
+                        'Lambda_EDE': Lambda,
+                        'theta_i': theta_i,
+                        'beta': beta,
+                        'chi2': result['chi2'],
+                        'H0': result['H0'],
+                        'success': True
+                    })
+                else:
+                    print(f"  ✗ FAILED")
+                    results.append({
+                        'Lambda_EDE': Lambda,
+                        'theta_i': theta_i,
+                        'beta': beta,
+                        'chi2': np.inf,
+                        'H0': np.nan,
+                        'success': False
+                    })
+    
+    df = pd.DataFrame(results)
+    
+    # Save results
+    csv_path = f"{output_dir}/grid_scan_results.csv"
+    df.to_csv(csv_path, index=False)
+    print("")
+    print(f"✓ Results saved to {csv_path}")
+    
+    return df
+
+
+def plot_results(df, output_dir='../v2_grid_scan_results'):
+    """
+    Generate plots from grid scan results.
+    """
+    
+    # Get LCDM baseline (Lambda=0, beta=0)
+    lcdm_chi2 = df[(df['Lambda_EDE'] == 0) & (df['beta'] == 0)]['chi2'].iloc[0]
+    
+    # Compute Delta chi2
+    df['delta_chi2'] = df['chi2'] - lcdm_chi2
+    
+    # Filter successful runs
+    df_success = df[df['success'] == True].copy()
+    
+    if len(df_success) == 0:
+        print("⚠️ No successful runs to plot")
+        return
+    
+    # Plot 1: Chi2 vs Lambda_EDE (for each beta)
+    fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+    
+    for beta in df_success['beta'].unique():
+        df_beta = df_success[df_success['beta'] == beta]
+        axes[0].plot(df_beta['Lambda_EDE'], df_beta['chi2'], 'o-', label=f'β={beta:.3f}')
+    
+    axes[0].axhline(lcdm_chi2, color='k', linestyle='--', label='ΛCDM')
+    axes[0].axhline(lcdm_chi2 + 10, color='r', linestyle=':', label='Δχ²=10 threshold')
+    axes[0].set_xlabel('Lambda_EDE')
+    axes[0].set_ylabel('χ²')
+    axes[0].set_title('χ² vs Lambda_EDE')
+    axes[0].legend()
+    axes[0].grid(True, alpha=0.3)
+    
+    # Plot 2: H0 vs Lambda_EDE
+    for beta in df_success['beta'].unique():
+        df_beta = df_success[df_success['beta'] == beta]
+        axes[1].plot(df_beta['Lambda_EDE'], df_beta['H0'], 'o-', label=f'β={beta:.3f}')
+    
+    axes[1].axhline(67.36, color='k', linestyle='--', label='Planck baseline')
+    axes[1].axhline(73.04, color='r', linestyle=':', label='SH0ES')
+    axes[1].set_xlabel('Lambda_EDE')
+    axes[1].set_ylabel('H₀ (km/s/Mpc)')
+    axes[1].set_title('H₀ vs Lambda_EDE')
+    axes[1].legend()
+    axes[1].grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    plot_path = f"{output_dir}/grid_scan_chi2_H0.png"
+    plt.savefig(plot_path, dpi=150)
+    print(f"✓ Plot saved to {plot_path}")
+    
+    # Plot 3: Heatmap of Delta chi2 (Lambda vs theta_i)
+    if len(df_success['theta_i'].unique()) > 1:
+        fig, ax = plt.subplots(figsize=(10, 8))
+        
+        # Pivot for heatmap
+        pivot = df_success.pivot_table(
+            values='delta_chi2',
+            index='theta_i',
+            columns='Lambda_EDE',
+            aggfunc='mean'
+        )
+        
+        im = ax.imshow(pivot.values, cmap='RdYlGn_r', aspect='auto', vmin=-10, vmax=50)
+        ax.set_xticks(range(len(pivot.columns)))
+        ax.set_xticklabels([f'{x:.2f}' for x in pivot.columns])
+        ax.set_yticks(range(len(pivot.index)))
+        ax.set_yticklabels([f'{y:.2f}' for y in pivot.index])
+        ax.set_xlabel('Lambda_EDE')
+        ax.set_ylabel('theta_i')
+        ax.set_title('Δχ² Heatmap (relative to ΛCDM)')
+        
+        # Add colorbar
+        cbar = plt.colorbar(im, ax=ax)
+        cbar.set_label('Δχ²')
+        
+        # Add text annotations
+        for i in range(len(pivot.index)):
+            for j in range(len(pivot.columns)):
+                text = ax.text(j, i, f'{pivot.values[i, j]:.1f}',
+                             ha="center", va="center", color="black", fontsize=8)
+        
+        plt.tight_layout()
+        heatmap_path = f"{output_dir}/grid_scan_heatmap.png"
+        plt.savefig(heatmap_path, dpi=150)
+        print(f"✓ Heatmap saved to {heatmap_path}")
+    
+    plt.close('all')
+
+
+def summarize_results(df):
+    """
+    Print summary of grid scan results.
+    """
+    
+    # Get LCDM baseline
+    lcdm = df[(df['Lambda_EDE'] == 0) & (df['beta'] == 0)].iloc[0]
+    lcdm_chi2 = lcdm['chi2']
+    lcdm_H0 = lcdm['H0']
+    
+    df_success = df[df['success'] == True].copy()
+    df_success['delta_chi2'] = df_success['chi2'] - lcdm_chi2
+    df_success['delta_H0'] = df_success['H0'] - lcdm_H0
+    
+    print("")
+    print("="*70)
+    print("GRID SCAN SUMMARY")
+    print("="*70)
+    print(f"ΛCDM Baseline: χ² = {lcdm_chi2:.2f}, H₀ = {lcdm_H0:.2f} km/s/Mpc")
+    print("")
+    
+    # Find best fits
+    print("TOP 5 BEST FITS (lowest χ²):")
+    top5 = df_success.nsmallest(5, 'chi2')
+    for i, row in top5.iterrows():
+        print(f"  {i+1}. Lambda={row['Lambda_EDE']:.2f}, theta_i={row['theta_i']:.2f}, beta={row['beta']:.3f}")
+        print(f"     χ² = {row['chi2']:.2f} (Δχ² = {row['delta_chi2']:+.2f})")
+        print(f"     H₀ = {row['H0']:.2f} (ΔH₀ = {row['delta_H0']:+.2f})")
+    
+    print("")
+    print("TOP 5 HIGHEST H₀:")
+    top5_H0 = df_success.nlargest(5, 'H0')
+    for i, row in top5_H0.iterrows():
+        print(f"  {i+1}. Lambda={row['Lambda_EDE']:.2f}, theta_i={row['theta_i']:.2f}, beta={row['beta']:.3f}")
+        print(f"     H₀ = {row['H0']:.2f} (ΔH₀ = {row['delta_H0']:+.2f})")
+        print(f"     χ² = {row['chi2']:.2f} (Δχ² = {row['delta_chi2']:+.2f})")
+    
+    print("")
+    print("ACCEPTABLE MODELS (Δχ² < 10 AND ΔH₀ > 0.5):")
+    acceptable = df_success[(df_success['delta_chi2'] < 10) & (df_success['delta_H0'] > 0.5)]
+    if len(acceptable) > 0:
+        for i, row in acceptable.iterrows():
+            print(f"  ✓ Lambda={row['Lambda_EDE']:.2f}, theta_i={row['theta_i']:.2f}, beta={row['beta']:.3f}")
+            print(f"    χ² = {row['chi2']:.2f} (Δχ² = {row['delta_chi2']:+.2f})")
+            print(f"    H₀ = {row['H0']:.2f} (ΔH₀ = {row['delta_H0']:+.2f})")
+    else:
+        print("  ❌ No models found with Δχ² < 10 AND ΔH₀ > 0.5")
+        print("  → Need to expand parameter ranges or fix V2 implementation")
+    
+    print("="*70)
+
+
+def main():
+    parser = argparse.ArgumentParser(description='V2 Parameter Grid Scanner')
+    parser.add_argument('--quick', action='store_true', help='Quick scan (5 points, ~5 min)')
+    parser.add_argument('--full', action='store_true', help='Full scan (25 points, ~25 min)')
+    parser.add_argument('--aggressive', action='store_true', help='Aggressive scan (larger Lambda, ~10 min)')
+    
+    args = parser.parse_args()
+    
+    if args.quick:
+        # Quick scan: 5 points
+        Lambda_range = [0.0, 1.0, 2.0]
+        theta_i_range = [2.0]
+        beta_range = [0.0, 0.05]
+        
+    elif args.full:
+        # Full scan: 25 points
+        Lambda_range = [0.0, 0.5, 1.0, 1.5, 2.0]
+        theta_i_range = [1.5, 2.0, 2.5]
+        beta_range = [0.0, 0.02, 0.05]
+        
+    elif args.aggressive:
+        # Aggressive: larger Lambda values
+        Lambda_range = [0.0, 2.0, 5.0, 10.0]
+        theta_i_range = [2.0, 2.5]
+        beta_range = [0.0, 0.05]
+        
+    else:
+        print("Please specify --quick, --full, or --aggressive")
+        return
+    
+    # Run grid scan
+    df = grid_scan(Lambda_range, theta_i_range, beta_range)
+    
+    # Plot results
+    plot_results(df)
+    
+    # Summarize
+    summarize_results(df)
+
+
+if __name__ == '__main__':
+    main()
+
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/ridder_v2_check.py
+###############################################################################
+#!/usr/bin/env python3
+"""Ridder V2 Symbolic Math + CLASS Code Generator"""
+import sympy as sp
+import numpy as np
+import matplotlib.pyplot as plt
+
+# [Script content - truncated for brevity, same as above]
+print("V2 symbolic check script")
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/scan_lambda.py
+###############################################################################
+#!/usr/bin/env python3
+"""1D chi2 scan in Lambda_EDE at fixed LCDM cosmology"""
+import numpy as np
+from classy import Class
+
+COSMO = {"H0": 68.1, "omega_b": 0.02237, "omega_cdm": 0.118, 
+         "tau_reio": 0.055, "n_s": 0.965, "A_s": 2.1e-9}
+
+RIDDER = {"n_ridder": 3, "theta_i_ridder": 1.0, "beta_ridder": 0.0, "f_axion_ridder": 1.0e+27}
+
+def run_class(lambda_ede):
+    cosmo = Class()
+    params = {**COSMO, "output": "tCl,pCl,lCl", "l_max_scalars": 2508,
+              "lensing": "yes", "gauge": "newtonian", "recombination": "recfast"}
+    if lambda_ede > 0:
+        params.update(RIDDER)
+        params["Lambda_EDE_ridder"] = lambda_ede
+    try:
+        cosmo.set(params)
+        cosmo.compute()
+        cl = cosmo.lensed_cl(2500)
+        cosmo.struct_cleanup()
+        cosmo.empty()
+        return cl
+    except Exception as e:
+        print(f"Error at Lambda={lambda_ede}: {e}")
+        return None
+
+print("Lambda_EDE scan at fixed cosmology")
+print("Lambda     Cl_220(1e10)  Cl_1000(1e13)  Cl_2000(1e14)  Status")
+print("-" * 65)
+
+cl_lcdm = None
+for lam in [0.0, 0.02, 0.04, 0.05, 0.06, 0.07, 0.08, 0.10]:
+    cl = run_class(lam)
+    if cl:
+        if lam == 0:
+            cl_lcdm = cl
+        # Raw Cl values (dimensionless, typically ~1e-10 at peak)
+        c220 = cl["tt"][220] * 1e10
+        c1000 = cl["tt"][1000] * 1e13
+        c2000 = cl["tt"][2000] * 1e14
+        print(f"{lam:6.3f}     {c220:10.4f}   {c1000:12.4f}   {c2000:12.4f}   OK")
+    else:
+        print(f"{lam:6.3f}   FAILED")
+
+# Show template amplitude
+if cl_lcdm:
+    print()
+    print("Template T_ell = Cl(EDE) - Cl(LCDM) at Lambda=0.06:")
+    cl_ede = run_class(0.06)
+    if cl_ede:
+        for ell in [220, 500, 1000, 1500, 2000]:
+            t = (cl_ede["tt"][ell] - cl_lcdm["tt"][ell]) * 1e13
+            print(f"  T_{ell} = {t:+.4f} x 1e-13")
+
+###############################################################################
+# FILE: /home/azureuser/Ridder-Field/paper2_dr6/tools/single_point_chi2.py
+###############################################################################
+#!/usr/bin/env python3
+"""
+Single-Point χ² Calculator
+
+Tool 1 from V2_INCREMENTAL_PLAN.md
+
+Purpose: Test CLASS parameters without running expensive MCMC.
+Returns: χ², H₀, power spectra, and other observables.
+
+Usage:
+    python3 single_point_chi2.py --Lambda_EDE 0.6 --theta_i 2.17 --beta 0.035
+    python3 single_point_chi2.py --lcdm  # Test ΛCDM baseline
+"""
+
+import argparse
+import numpy as np
+from cobaya.model import get_model
+from cobaya.log import LoggedError
+import sys
+
+def create_model_info(Lambda_EDE=0.0, theta_i=2.0, beta=0.0, f_axion=1.0, n_ridder=3):
+    """
+    Create Cobaya model info dictionary for single-point evaluation.
+    
+    Parameters:
+    -----------
+    Lambda_EDE : float
+        EDE energy scale (0 = ΛCDM)
+    theta_i : float
+        Initial field angle
+    beta : float
+        DM coupling strength
+    f_axion : float
+        Decay constant in eV
+    n_ridder : int
+        Potential power
+    
+    Returns:
+    --------
+    dict : Cobaya model info
+    """
+    
+    info = {
+        'theory': {
+            'classy': {
+                'extra_args': {
+                    'output': 'tCl, mPk, lCl',
+                    'l_max_scalars': 2508,
+                    'lensing': 'yes',
+                    'gauge': 'newtonian',
+                    'non_linear': 'none',  # Disable non-linear corrections
+                    
+                    # Ridder V2 parameters
+                    'Lambda_EDE_ridder': Lambda_EDE,
+                    'theta_i_ridder': theta_i,
+                    'beta_ridder': beta,
+                    'f_axion_ridder': f_axion,
+                    'n_ridder': n_ridder,
+                }
+            }
+        },
+        
+        'likelihood': {
+            'planck_2018_lowl.TT': None,
+            'planck_2018_lowl.EE': None,
+            'planck_2018_highl_plik.TTTEEE': None,
+            'planck_2018_lensing.clik': None,
+        },
+        
+        'params': {
+            # Standard ΛCDM parameters (Planck 2018 best-fit)
+            'A_s': 2.1e-9,
+            'n_s': 0.965,
+            'H0': 67.36,
+            'omega_b': 0.02237,
+            'omega_cdm': 0.1200,
+            'tau_reio': 0.054,
+            
+            # Planck nuisance parameters (default values)
+            'A_planck': 1.0,
+            'calib_100T': 0.9992,
+            'calib_217T': 0.9985,
+            'A_pol': 1.0,
+            'calib_100P': 1.021,
+            'calib_143P': 0.966,
+            'calib_217P': 1.04,
+            'cib_index': -1.3,
+            'A_cib_217': 67.0,
+            'xi_sz_cib': 0.1,
+            'A_sz': 7.0,
+            'ksz_norm': 0.0,
+            'gal545_A_100': 7.0,
+            'gal545_A_143': 9.0,
+            'gal545_A_143_217': 21.0,
+            'gal545_A_217': 80.0,
+            'A_sbpx_100_100_TT': 1.0,
+            'A_sbpx_143_143_TT': 1.0,
+            'A_sbpx_143_217_TT': 1.0,
+            'A_sbpx_217_217_TT': 1.0,
+            'ps_A_100_100': 257.0,
+            'ps_A_143_143': 47.0,
+            'ps_A_143_217': 40.0,
+            'ps_A_217_217': 104.0,
+            'galf_TE_index': -2.4,
+            'galf_TE_A_100': 0.13,
+            'galf_TE_A_100_143': 0.13,
+            'galf_TE_A_100_217': 0.46,
+            'galf_TE_A_143': 0.207,
+            'galf_TE_A_143_217': 0.69,
+            'galf_TE_A_217': 1.938,
+            'galf_EE_index': -2.4,
+            'galf_EE_A_100': 0.055,
+            'galf_EE_A_100_143': 0.04,
+            'galf_EE_A_100_217': 0.094,
+            'galf_EE_A_143': 0.086,
+            'galf_EE_A_143_217': 0.21,
+            'galf_EE_A_217': 0.7,
+            'A_cnoise_e2e_100_100_EE': 1.0,
+            'A_cnoise_e2e_143_143_EE': 1.0,
+            'A_cnoise_e2e_217_217_EE': 1.0,
+            'A_sbpx_100_100_EE': 1.0,
+            'A_sbpx_100_143_EE': 1.0,
+            'A_sbpx_100_217_EE': 1.0,
+            'A_sbpx_143_143_EE': 1.0,
+            'A_sbpx_143_217_EE': 1.0,
+            'A_sbpx_217_217_EE': 1.0,
+        }
+    }
+    
+    return info
+
+
+def test_single_point(Lambda_EDE=0.0, theta_i=2.0, beta=0.0, f_axion=1.0, n_ridder=3, verbose=True):
+    """
+    Test a single point in parameter space.
+    
+    Returns:
+    --------
+    dict : Results containing chi2, H0, and other observables
+    """
+    
+    if verbose:
+        print("="*70)
+        print("SINGLE-POINT χ² TEST")
+        print("="*70)
+        print(f"Parameters:")
+        print(f"  Lambda_EDE = {Lambda_EDE}")
+        print(f"  theta_i    = {theta_i}")
+        print(f"  beta       = {beta}")
+        print(f"  f_axion    = {f_axion} eV")
+        print(f"  n_ridder   = {n_ridder}")
+        print("")
+    
+    # Create model
+    info = create_model_info(Lambda_EDE, theta_i, beta, f_axion, n_ridder)
+    
+    try:
+        model = get_model(info)
+    except LoggedError as e:
+        print(f"❌ FAILED: Could not create model")
+        print(f"   Error: {e}")
+        return {'success': False, 'error': str(e)}
+    
+    # Get point to evaluate (Planck 2018 best-fit + Ridder params)
+    point = {
+        'A_s': 2.1e-9,
+        'n_s': 0.965,
+        'H0': 67.36,
+        'omega_b': 0.02237,
+        'omega_cdm': 0.1200,
+        'tau_reio': 0.054,
+    }
+    
+    if verbose:
+        print("Computing χ²...")
+    
+    try:
+        # Compute log-likelihood
+        loglike = model.loglike(point)
+        chi2 = -2 * loglike[0]
+        
+        # Get derived parameters
+        derived = model.provider.get_param('H0')
+        H0 = derived if derived is not None else point['H0']
+        
+        if verbose:
+            print("")
+            print("="*70)
+            print("RESULTS")
+            print("="*70)
+            print(f"χ² = {chi2:.2f}")
+            print(f"H₀ = {H0:.2f} km/s/Mpc")
+            print("")
+            
+            # Interpret results
+            if Lambda_EDE == 0.0:
+                print("✅ ΛCDM baseline")
+                if chi2 < 2800:
+                    print(f"   χ² < 2800 → Good fit")
+                else:
+                    print(f"   ⚠️  χ² > 2800 → Poor fit")
+            else:
+                print("✅ V2 model")
+                if chi2 < 2800:
+                    print(f"   χ² < 2800 → Good fit")
+                else:
+                    print(f"   ⚠️  χ² > 2800 → Poor fit (model breaks CMB)")
+            
+            print("="*70)
+        
+        return {
+            'success': True,
+            'chi2': chi2,
+            'H0': H0,
+            'Lambda_EDE': Lambda_EDE,
+            'theta_i': theta_i,
+            'beta': beta,
+        }
+        
+    except Exception as e:
+        print(f"❌ FAILED: Could not compute χ²")
+        print(f"   Error: {e}")
+        return {'success': False, 'error': str(e)}
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Single-point χ² calculator for V2 validation')
+    parser.add_argument('--Lambda_EDE', type=float, default=0.0, help='EDE energy scale (default: 0.0 = ΛCDM)')
+    parser.add_argument('--theta_i', type=float, default=2.0, help='Initial field angle (default: 2.0)')
+    parser.add_argument('--beta', type=float, default=0.0, help='DM coupling strength (default: 0.0)')
+    parser.add_argument('--f_axion', type=float, default=1.0, help='Decay constant in eV (default: 1.0)')
+    parser.add_argument('--n_ridder', type=int, default=3, help='Potential power (default: 3)')
+    parser.add_argument('--lcdm', action='store_true', help='Test ΛCDM baseline (Lambda_EDE=0)')
+    parser.add_argument('--v2_smoke', action='store_true', help='Test V2 with smoke test parameters')
+    parser.add_argument('--compare', action='store_true', help='Compare V2 to ΛCDM')
+    
+    args = parser.parse_args()
+    
+    if args.lcdm:
+        # Test ΛCDM baseline
+        result = test_single_point(Lambda_EDE=0.0, theta_i=2.0, beta=0.0)
+        
+    elif args.v2_smoke:
+        # Test V2 with smoke test parameters
+        result = test_single_point(Lambda_EDE=0.6, theta_i=2.17, beta=0.035)
+        
+    elif args.compare:
+        # Compare V2 to ΛCDM
+        print("\n" + "="*70)
+        print("COMPARISON TEST: V2 vs ΛCDM")
+        print("="*70 + "\n")
+        
+        # Test ΛCDM
+        print("1. Testing ΛCDM baseline...")
+        lcdm_result = test_single_point(Lambda_EDE=0.0, theta_i=2.0, beta=0.0, verbose=True)
+        
+        print("\n")
+        
+        # Test V2
+        print("2. Testing V2 model...")
+        v2_result = test_single_point(Lambda_EDE=0.6, theta_i=2.17, beta=0.035, verbose=True)
+        
+        # Compare
+        if lcdm_result['success'] and v2_result['success']:
+            delta_chi2 = v2_result['chi2'] - lcdm_result['chi2']
+            delta_H0 = v2_result['H0'] - lcdm_result['H0']
+            
+            print("\n" + "="*70)
+            print("COMPARISON SUMMARY")
+            print("="*70)
+            print(f"ΛCDM: χ² = {lcdm_result['chi2']:.2f}, H₀ = {lcdm_result['H0']:.2f} km/s/Mpc")
+            print(f"V2:   χ² = {v2_result['chi2']:.2f}, H₀ = {v2_result['H0']:.2f} km/s/Mpc")
+            print("")
+            print(f"Δχ² = {delta_chi2:+.2f}")
+            print(f"ΔH₀ = {delta_H0:+.2f} km/s/Mpc")
+            print("")
+            
+            # Interpret
+            if abs(delta_chi2) < 10:
+                print("✅ PASS: Δχ² < 10 (V2 doesn't break CMB)")
+            else:
+                print("❌ FAIL: Δχ² > 10 (V2 breaks CMB)")
+            
+            if delta_H0 > 0:
+                print(f"✅ H₀ increases by {delta_H0:.2f} km/s/Mpc (expected for EDE)")
+            else:
+                print(f"⚠️  H₀ decreases (unexpected)")
+            
+            print("="*70)
+        
+    else:
+        # Test with user-specified parameters
+        result = test_single_point(
+            Lambda_EDE=args.Lambda_EDE,
+            theta_i=args.theta_i,
+            beta=args.beta,
+            f_axion=args.f_axion,
+            n_ridder=args.n_ridder
+        )
+    
+    # Exit with appropriate code
+    if result['success']:
+        sys.exit(0)
+    else:
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()
+
+
+###############################################################################
+# END OF FILE
+###############################################################################
