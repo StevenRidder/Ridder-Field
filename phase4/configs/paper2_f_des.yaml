@@ -1,7 +1,5 @@
-# Paper 2 Run D: EDE with TIER5 params, NO Planck High-L
-# Geometry test - does H0 jump without High-L?
-
-packages_path: /home/azureuser/packages
+# Paper 2 Run F: v3_canon EDE WITHOUT High-L, WITH DES S8 prior
+# Using STABLE Lambda region {0.7, 2.0}
 
 theory:
   classy:
@@ -11,13 +9,16 @@ theory:
       lensing: "yes"
       gauge: newtonian
       recombination: recfast
-      non_linear: none
-      # TIER5 EDE PARAMETERS
+      non_linear: halofit
+      # v3_canon Ridder params (WORKING)
       use_ridder: "yes"
-      n_ridder: 3
-      theta_i_ridder: 1.0
+      ridder_model_type: v3_canon
+      ridder_use_shelf: "yes"
+      ridder_use_tail: "no"
+      ridder_f_eV: 3.0e26
+      theta_i_ridder: 2.8
       beta_ridder: 0.0
-      f_axion_ridder: 1.0e+27
+      ridder_sigma_lna: 0.656
 
 likelihood:
   planck_2018_lowl.TT:
@@ -28,10 +29,15 @@ likelihood:
   bao.sixdf_2011_bao:
   bao.sdss_dr7_mgs:
   bao.sdss_dr12_consensus_bao:
+  
   likelihoods.desi_y1_bao.DESI_Y1_BAO:
     python_path: /home/azureuser/Ridder-Field/phase4
   
   sn.pantheonplus:
+  
+  # DES Y3 S8 prior
+  likelihoods.des_s8_prior.DES_S8_Prior:
+    python_path: /home/azureuser/Ridder-Field/phase4
 
 params:
   logA:
@@ -68,12 +74,18 @@ params:
     proposal: 0.006
     latex: \tau_{reio}
 
-  # TIER5 EDE AMPLITUDE - SAMPLED
-  Lambda_EDE_ridder:
-    prior: {min: 0.1, max: 3.0}
+  # EDE amplitude - SAMPLED in STABLE HIGH region
+  ridder_Lambda_EDE_eV:
+    prior: {min: 0.7, max: 2.0}
     ref: 1.0
-    proposal: 0.2
+    proposal: 0.15
     latex: \Lambda_{EDE}
+  
+  ridder_a_c:
+    prior: {min: 0.0002, max: 0.0005}
+    ref: 0.000309
+    proposal: 0.00003
+    latex: a_c
 
   Omega_m:
     latex: \Omega_m
@@ -90,13 +102,11 @@ sampler:
   mcmc:
     max_samples: 50000
     Rminus1_stop: 0.02
-    Rminus1_cl_stop: 0.1
     burn_in: 100
     learn_proposal: true
     max_tries: 20000
     proposal_scale: 2.0
-    drag: true
 
-output: chains/run_d_no_highl
+output: chains/paper2_f_des
 force: true
 resume: false

@@ -1159,3 +1159,405 @@ The path forward:
 
 **The table isn't saying "your field is fake." It's saying "your field can shoulder the geometric load, but growth becomes the bottleneck" — and Paper 2 is about whether the sky gives you independent reason to believe the field is there.**
 
+---
+
+## THE ACTUAL PAPER 2 TEST
+
+### What We're Really Measuring
+
+Paper 2's primary observable is **A_sh**, the shoulder amplitude.
+
+Measure it in two ways:
+
+1. **As a derived parameter in your full Geometric EDE model**
+   "If the field is real, how large is the shoulder it induces?"
+
+2. **As a free template amplitude in ΛCDM**
+   "Does ACT want a shoulder even if I do not commit to EDE?"
+
+The "actual test" is:
+- Does ACT+Planck give **A_sh > 0 at > 2–3σ** after full marginalization?
+- Is that result **stable** across reasonable data combinations?
+- Does it avoid insane shifts in the background parameters?
+
+---
+
+## PRODUCTION RUN MATRIX
+
+### Run P0: ΛCDM baseline (for comparison)
+**Data:** Planck 2018 TTTEEE + low-ℓ TT/EE (+ BAO)
+**Model:** Pure ΛCDM, no EDE, no template
+**Purpose:** Reference χ², H₀, S₈, r_s
+
+---
+
+### Run P1: Geometric EDE, no ACT (control)
+**Data:** Planck 2018 TTTEEE + low-ℓ TT/EE (+ BAO / DESI Y1)
+**Model:** Full Geometric EDE
+**Output:**
+- H₀, S₈, r_s, EDE parameters
+- Implied **A_sh,derived** from the field (compute from C_ℓ residuals in post-processing)
+
+This tells you "what does the field do *before* ACT gets a say."
+
+---
+
+### Run P2: Geometric EDE + ACT (MAIN RESULT)
+**Data:** Planck 2018 TTTEEE + low-ℓ TT/EE + ACT DR6 TT/TE/EE (+ DESI Y1 BAO optional)
+**Model:** Full Geometric EDE
+**Outputs:**
+- Posterior of **A_sh,derived**
+- H₀, S₈, r_s shifts relative to P1
+- Δχ²(EDE vs ΛCDM) for same data
+
+This is Figure 1 and the main sentence of the abstract:
+> "With Planck+ACT we find A_sh,derived = X ± Y (Zσ)."
+
+---
+
+### Run P3: ΛCDM + A_sh template (model-agnostic test)
+**Data:** Same as P2 (Planck TTTEEE + low-ℓ + ACT)
+**Model:** ΛCDM plus one extra parameter, A_sh, that multiplies fixed C_ℓ template
+**Outputs:**
+- A_sh,template as direct MCMC parameter
+- Δχ² between A_sh = 0 and A_sh free
+
+This is Figure 3 and Table 2:
+> "In a model-agnostic template analysis, ACT+Planck prefers A_sh > 0 at Zσ."
+
+---
+
+### Run P4: Kill-switch check (no Planck High-ℓ)
+**Data:** Planck low-ℓ TT/EE + ACT DR6 (+ BAO, SN), *no* Planck high-ℓ
+**Model:** ΛCDM+template (simpler)
+**Purpose:** Show how H₀, A_sh, and χ² move when you drop Planck high-ℓ
+
+> "Removing Planck high-ℓ relaxes the H₀ constraint but does not eliminate the need for the shoulder."
+
+---
+
+### Optional P5: Growth-informed run
+Pick **one** growth dataset (DES *or* KiDS, not both):
+**Data:** EDE + ACT + Planck + one growth set
+**Purpose:** One paragraph showing S₈ shifts toward 0.79–0.81 while A_sh unchanged
+
+> "Adding external S₈ information from DES shifts S₈ toward 0.79–0.81 while leaving the preferred A_sh essentially unchanged."
+
+---
+
+## CURRENT DIAGNOSTIC RUNS → PRODUCTION
+
+Current C/D/F/G runs are **diagnostic experiments** building intuition:
+- How far ACT pushes things on its own
+- How much DES/KiDS repair S₈
+- How sensitive structure is to Planck high-ℓ
+
+**Flow:**
+1. Use C/D/F/G to understand trade space ← WE ARE HERE
+2. Freeze small, explicit run matrix P0–P4
+3. Run long, careful, converged chains with final parameterization
+4. Build paper around P1–P3, with P4 as "kill-switch" section
+
+---
+
+## BOTTOM LINE
+
+The referee will care that you did **these tests well**, with clean convergence and clear tables, more than they care about a big menagerie of dataset combinations.
+
+Main test: **Planck+ACT, full Geometric EDE, measure A_sh,derived and its marginalized significance.**
+
+---
+
+# PAPER 2 EXECUTION PLAN (December 6, 2025)
+
+## What Went Wrong Before
+
+Previous attempts failed because **two different Ridder models were mixed**:
+
+| Paper 1 (Tier 5) — CORRECT | Paper 2 Attempts — WRONG |
+|----------------------------|--------------------------|
+| `Lambda_EDE_ridder: 0.79` | `ridder_Lambda_EDE_eV: 1.17` |
+| `n_ridder: 3` | `ridder_model_type: v3_canon` |
+| `theta_i_ridder: 1.0` | `ridder_a_c: 0.00048` |
+| `beta_ridder: 0.0` | `use_ridder: "yes"` |
+| `f_axion_ridder: 1.0e+27` | — |
+
+**Result:** The `v3_canon` parameterization produces almost **no EDE signature** compared to ΛCDM. The template was numerically zero. Chains found "EDE" that looked like ΛCDM.
+
+---
+
+## The Correct Paper 1 Ridder Model
+
+From `~/Ridder-Field/phase3/configs/tier5_ede_shoes_desi.yaml`:
+
+```yaml
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl, mPk
+      l_max_scalars: 2508
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      # FIXED Ridder shape parameters
+      n_ridder: 3
+      theta_i_ridder: 1.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+
+params:
+  # EDE amplitude - SAMPLED DIRECTLY
+  Lambda_EDE_ridder:
+    prior: {min: 0.1, max: 3.0}
+    ref: 1.0
+    proposal: 0.2
+    latex: \Lambda_{EDE}
+```
+
+**This is the ONLY Ridder parameterization to use in Paper 2.**
+
+---
+
+## Phase 0: Freeze a Known-Good Baseline
+
+**Goal:** Backup Paper 1 configs so they can never be corrupted.
+
+```bash
+# SSH to VM
+ssh azureuser@172.174.34.125
+
+# Create read-only backup
+cp -r ~/Ridder-Field/phase3 ~/Ridder-Field/phase3_paper1_backup
+chmod -R a-w ~/Ridder-Field/phase3_paper1_backup
+
+# Create fresh working folder for Paper 2
+cp -r ~/Ridder-Field/phase3 ~/Ridder-Field/paper2_dr6
+cd ~/Ridder-Field/paper2_dr6
+```
+
+From here on, everything happens in `~/Ridder-Field/paper2_dr6`.
+
+---
+
+## Phase 1: Restore the Paper 1 Ridder Model
+
+**Goal:** Ensure every EDE run in Paper 2 uses the same Ridder parameterization as Tier 5.
+
+1. Open the EDE Tier 5 config from backup:
+   ```bash
+   less ~/Ridder-Field/phase3_paper1_backup/configs/tier5_ede_shoes_desi.yaml
+   ```
+
+2. In Paper 2 configs, **DELETE** any:
+   - `ridder_Lambda_EDE_eV`
+   - `ridder_a_c`
+   - `ridder_model_type: v3_canon`
+   - `use_ridder: "yes"`
+
+3. **PASTE IN** the exact Ridder block from Paper 1:
+   ```yaml
+   n_ridder: 3
+   theta_i_ridder: 1.0
+   beta_ridder: 0.0
+   f_axion_ridder: 1.0e+27
+   
+   Lambda_EDE_ridder:
+     prior: {min: 0.1, max: 3.0}
+   ```
+
+---
+
+## Phase 2: Build Two Clean DR6 Base Chains
+
+### P0b_DR6: ΛCDM + DR6
+
+**Data:** Planck low-ℓ + Planck lensing + ACT DR6 + BAO + SN (NO Planck High-ℓ)
+
+```bash
+cp configs/tier5_lcdm_shoes_desi.yaml configs/prod_p0b_dr6_lcdm.yaml
+```
+
+Edit `likelihood:` section to:
+```yaml
+likelihood:
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_2018_lensing.clik:
+  
+  act_dr6_mflike.ACTDR6MFLike:
+  
+  bao.sixdf_2011_bao:
+  bao.sdss_dr7_mgs:
+  bao.sdss_dr12_consensus_bao:
+  likelihoods.desi_y1_bao.DESI_Y1_BAO:
+  
+  sn.pantheonplus:
+```
+
+**Critical:** NO Planck high-ℓ. NO A_sh parameter.
+
+Run:
+```bash
+cobaya-run configs/prod_p0b_dr6_lcdm.yaml
+```
+
+Expected: H₀ ~ 68, S₈ ~ 0.81–0.83
+
+### P2_DR6: Ridder EDE + DR6
+
+```bash
+cp configs/tier5_ede_shoes_desi.yaml configs/prod_p2_dr6_ede.yaml
+```
+
+- Make `likelihood:` block **identical** to P0b_DR6
+- Ensure Ridder params are Paper-1 style (not v3_canon)
+
+Run:
+```bash
+cobaya-run configs/prod_p2_dr6_ede.yaml
+```
+
+---
+
+## Phase 3: Generate the Real DR6 Template
+
+**Goal:** Build `T_ℓ = C_ℓ(EDE) − C_ℓ(ΛCDM)` using Paper 1 Ridder model.
+
+1. Extract best-fit parameters from each chain:
+   - `bestfit_p0b_dr6_lcdm.yaml`
+   - `bestfit_p2_dr6_ede.yaml`
+
+2. Create `tools/generate_template_dr6.py`:
+   ```python
+   import numpy as np
+   from classy import Class
+   
+   # Load best-fits
+   # Run CLASS twice with same settings as Cobaya
+   # Compute template:
+   T_tt = Cl_ede["tt"] - Cl_lcdm["tt"]
+   T_te = Cl_ede["te"] - Cl_lcdm["te"]
+   T_ee = Cl_ede["ee"] - Cl_lcdm["ee"]
+   
+   np.savez("likelihoods/ridder_template_dr6.npz",
+            ell=ells, T_tt=T_tt, T_te=T_te, T_ee=T_ee)
+   ```
+
+3. **Verify scale:**
+   - In Cl units, C_tt at ℓ ~ 1000 should be ~1e−10
+   - T_tt should be a **few percent** of that, not 1e−12 smaller
+   - In Dℓ units, T_Dℓ should be 10–100 at peak
+
+---
+
+## Phase 4: Implement ACT DR6 + A_sh Template
+
+**Goal:** A_sh affects only the ACT likelihood, never goes to CLASS.
+
+Create `likelihoods/act_dr6_with_template.py`:
+
+```python
+from act_dr6_mflike import ACTDR6MFLike
+import numpy as np
+
+class ACTDR6_with_template(ACTDR6MFLike):
+    def initialize(self):
+        super().initialize()
+        data = np.load(self.template_file)
+        self.ell = data["ell"]
+        self.T_tt = data["T_tt"]
+        self.T_te = data["T_te"]
+        self.T_ee = data["T_ee"]
+
+    def get_can_support_params(self):
+        can, wants = super().get_can_support_params()
+        can["A_sh"] = True
+        return can, wants
+
+    def logp(self, **params_values):
+        A_sh = params_values.get("A_sh", 0.0)
+        cl_theory = self.provider.get_Cl(ell_factor=False)
+        
+        # Inject template
+        # Call parent loglike with modified spectra
+        ...
+```
+
+In P3 configs, use:
+```yaml
+likelihood:
+  act_dr6_with_template.ACTDR6_with_template:
+    python_path: /home/azureuser/Ridder-Field/paper2_dr6
+    template_file: /path/to/ridder_template_dr6.npz
+
+params:
+  A_sh:
+    prior: {min: -2.0, max: 4.0}
+    ref: 0.5
+    proposal: 0.1
+    latex: A_{sh}
+```
+
+**Critical:** A_sh is NOT in `theory: classy: extra_args` or any renames.
+
+---
+
+## Phase 5: Two P3_DR6 Runs
+
+### 5.1 Fixed Cosmology Sanity Check
+
+`prod_p3_dr6_fixed.yaml`:
+- Freeze all ΛCDM parameters to P0b_DR6 best-fit
+- Only A_sh is free
+
+Run short chain or minimizer. Check:
+- Best-fit A_sh
+- Δχ²_ACT between A_sh best-fit and A_sh = 0
+
+### 5.2 Full Marginalized P3_DR6
+
+`prod_p3_dr6_full.yaml`:
+- Free ΛCDM parameters + A_sh
+- Same likelihood as P0b_DR6 but with ACTDR6_with_template
+
+Run to convergence (R−1 < 0.01, ~2000+ effective samples).
+
+Read off:
+- A_sh mean ± σ
+- Δχ²_total and Δχ²_ACT relative to P0b_DR6
+
+**These are the Paper 2 numbers.**
+
+---
+
+## Execution Checklist
+
+| Phase | Step | Status |
+|-------|------|--------|
+| 0 | Backup phase3 to phase3_paper1_backup | ⏳ |
+| 0 | Create paper2_dr6 working folder | ⏳ |
+| 1 | Verify Ridder params are Paper-1 style | ⏳ |
+| 2 | Create prod_p0b_dr6_lcdm.yaml | ⏳ |
+| 2 | Run P0b_DR6, verify H₀~68, S₈~0.82 | ⏳ |
+| 2 | Create prod_p2_dr6_ede.yaml | ⏳ |
+| 2 | Run P2_DR6, compare to P0b | ⏳ |
+| 3 | Extract best-fits from P0b and P2 | ⏳ |
+| 3 | Generate ridder_template_dr6.npz | ⏳ |
+| 3 | Verify template scale (T_Dℓ ~ 10-100) | ⏳ |
+| 4 | Create act_dr6_with_template.py | ⏳ |
+| 4 | Test template injection | ⏳ |
+| 5 | Run P3_DR6 fixed cosmology | ⏳ |
+| 5 | Run P3_DR6 full marginalized | ⏳ |
+| 5 | Extract A_sh ± σ, Δχ² | ⏳ |
+
+---
+
+## Key Principles
+
+1. **One change at a time.** Never edit multiple configs simultaneously.
+2. **Show before edit.** Display file contents before modifying.
+3. **Use Paper 1 Ridder model ONLY.** No v3_canon.
+4. **A_sh stays out of CLASS.** It's a likelihood-only parameter.
+5. **Verify at each step.** Check that chains produce sensible numbers before proceeding.
+

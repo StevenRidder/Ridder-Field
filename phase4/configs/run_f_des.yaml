@@ -1,5 +1,5 @@
-# Paper 2 Run D: EDE with TIER5 params, NO Planck High-L
-# Geometry test - does H0 jump without High-L?
+# Paper 2 Run F: EDE with TIER5 params, NO High-L, WITH DES S8 prior
+# Same as G but keeping F name for continuity
 
 packages_path: /home/azureuser/packages
 
@@ -32,6 +32,10 @@ likelihood:
     python_path: /home/azureuser/Ridder-Field/phase4
   
   sn.pantheonplus:
+  
+  # DES Y3 S8 prior
+  likelihoods.des_s8_prior.DES_S8_Prior:
+    python_path: /home/azureuser/Ridder-Field/phase4
 
 params:
   logA:
@@ -97,6 +101,6 @@ sampler:
     proposal_scale: 2.0
     drag: true
 
-output: chains/run_d_no_highl
+output: chains/run_f_des
 force: true
 resume: false
