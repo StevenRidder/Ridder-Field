@@ -231,6 +231,18 @@ struct background
   double ridder_force_damping;     /**< Damping factor for dV term: 1.0=physical, 0.0=frozen, 1e-8=soft (default 1.0) */
   short ridder_freeze_phi;         /**< If TRUE, keep phi and phi' constant (for structure tests) */
   
+  /** Ridder → Dark Radiation α-branching (effective fluid model) */
+  double alpha_ridder_to_dr;       /**< Branching fraction α: fraction of shelf energy → DR (0 to 1) */
+  double z_ridder_decay;           /**< Redshift where decay/branching happens (default: 3500) */
+  double a_ridder_decay;           /**< Scale factor where decay happens (computed from z_ridder_decay) */
+  short has_ridder_dr;             /**< Flag: we have dark radiation from Ridder field */
+  double rho_ridder_max;           /**< Maximum ρ_φ on the shelf (tracked during evolution) */
+  double a_ridder_max;             /**< Scale factor at ρ_ridder_max */
+  double f_ridder_peak;            /**< Peak fraction f_EDE = ρ_ridder/ρ_tot at maximum (diagnostic) */
+  
+  /** Ridder → Dark Radiation Γ-decay (kinetic friction model) */
+  double Gamma_decay_ridder;       /**< Decay rate in units of H: adds -Γφ' friction to KG equation */
+  
   double varconst_alpha; /**< finestructure constant for varying fundamental constants */
   double varconst_me; /**< electron mass for varying fundamental constants */
   enum varconst_dependence varconst_dep; /**< dependence of the varying fundamental constants as a function of time */
@@ -299,6 +311,8 @@ struct background
   int index_bg_phi_prime_ridder; /**< Ridder field derivative wrt conformal time */
   int index_bg_rho_ridder;       /**< Ridder field energy density */
   int index_bg_p_ridder;         /**< Ridder field pressure */
+  int index_bg_rho_dr_ridder;    /**< Dark radiation density from Ridder decay */
+  int index_bg_f_ridder;         /**< f_EDE = rho_ridder / rho_tot (diagnostic) */
 
   int index_bg_rho_ncdm1;     /**< density of first ncdm species (others contiguous) */
   int index_bg_p_ncdm1;       /**< pressure of first ncdm species (others contiguous) */

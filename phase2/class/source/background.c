@@ -625,21 +625,103 @@ int background_functions(
         "Negative Ridder field energy density detected at a=%e. Unphysical evolution.", a);
     }
     
-    /* DEBUG: Check if rho_ridder is being added */
-    static int rho_add_counter = 0;
-    rho_add_counter++;
-    if (rho_add_counter % 5000 == 0 || (a > 9.9e-4 && a < 1.01e-3)) {
-      printf("RIDDER DEBUG (adding to rho_tot): a=%e, rho_ridder=%e, rho_tot_before=%e, rho_tot_after=%e\n",
-             a, pvecback[pba->index_bg_rho_ridder], rho_tot, rho_tot + pvecback[pba->index_bg_rho_ridder]);
+    /* ================================================================
+     * α-BRANCHING: Track shelf maximum and source dark radiation
+     * ================================================================ */
+    
+    double rho_dr_ridder = 0.0;  /* Dark radiation from Ridder decay */
+    double rho_ridder_effective = pvecback[pba->index_bg_rho_ridder];
+    
+    if (pba->has_ridder_dr == _TRUE_) {
+      
+      /* PHASE 1: Track maximum FRACTION f_EDE = ρ_ridder/ρ_tot
+       * 
+       * BUG FIX: We track the fraction, not absolute ρ, because:
+       * - At very early times, ρ_ridder is large but f_EDE is tiny
+       * - The "shelf" where EDE matters is where f_EDE peaks (z ~ 3000-5000)
+       * - Only track for z < 20000 (after field has started rolling)
+       */
+      double z_current = 1.0/a - 1.0;
+      if (a < pba->a_ridder_decay && z_current < 20000.0) {
+        double rho_phi = pvecback[pba->index_bg_rho_ridder];
+        /* Compute f_EDE = rho_ridder / rho_tot (before adding ridder to rho_tot) */
+        double rho_tot_temp = rho_tot + rho_phi;
+        double f_ede_current = rho_phi / rho_tot_temp;
+        
+        /* Track the maximum FRACTION, not absolute density */
+        if (f_ede_current > pba->f_ridder_peak) {
+          pba->f_ridder_peak = f_ede_current;
+          pba->rho_ridder_max = rho_phi;
+          pba->a_ridder_max = a;
+          
+          /* Debug: print when we find a new maximum */
+          static int peak_updates = 0;
+          peak_updates++;
+          if (peak_updates < 20 || peak_updates % 100 == 0) {
+            printf("α-BRANCH PEAK UPDATE #%d: z=%.1f a=%.2e f_peak=%.4f rho_max=%.2e\n",
+                   peak_updates, z_current, a, f_ede_current, rho_phi);
+          }
+        }
+      }
+      
+      /* PHASE 2: After decay, source DR from the shelf maximum
+       *
+       * PHENOMENOLOGICAL MODEL: 
+       * - DR = α × ρ_max × (a_max/a)^4 is ADDED to the background
+       * - Scalar continues its normal KG evolution UNCHANGED
+       * - This is NOT strict energy conservation, but tests 
+       *   "what if the field released energy to radiation?"
+       * 
+       * For strict energy conservation, use Γ-decay instead.
+       */
+      if (a >= pba->a_ridder_decay && pba->rho_ridder_max > 0.0 && pba->a_ridder_max > 0.0) {
+        /* DR density = α × ρ_max × (a_max/a)^4 */
+        double a_ratio = pba->a_ridder_max / a;
+        rho_dr_ridder = pba->alpha_ridder_to_dr * pba->rho_ridder_max * pow(a_ratio, 4.0);
+        
+        /* DO NOT subtract from scalar - this is phenomenological injection
+         * The scalar follows KG, DR is added on top to test geometry */
+        /* rho_ridder_effective remains unchanged */
+      }
+      
+      /* Debug: print α-branching status */
+      static int alpha_debug_counter = 0;
+      alpha_debug_counter++;
+      if (alpha_debug_counter % 5000 == 0) {
+        double z = 1.0/a - 1.0;
+        printf("α-BRANCH: z=%.1f a=%.2e rho_max=%.2e a_max=%.2e rho_DR=%.2e rho_eff=%.2e f_peak=%.4f\n",
+               z, a, pba->rho_ridder_max, pba->a_ridder_max, rho_dr_ridder, 
+               rho_ridder_effective, pba->f_ridder_peak);
+      }
     }
     
-    rho_tot += pvecback[pba->index_bg_rho_ridder];
-    p_tot += pvecback[pba->index_bg_p_ridder];
-    dp_dloga += 0.0; /* Will be computed separately if needed */
+    /* Store DR from Ridder for output */
+    pvecback[pba->index_bg_rho_dr_ridder] = rho_dr_ridder;
+    
+    /* Store f_EDE = rho_ridder / rho_tot (diagnostic) */
+    double rho_tot_for_f = rho_tot + rho_ridder_effective + rho_dr_ridder;
+    pvecback[pba->index_bg_f_ridder] = (rho_tot_for_f > 0.0) ? 
+        rho_ridder_effective / rho_tot_for_f : 0.0;
+    
+    /* Add effective scalar + DR to totals (energy conserved!) */
+    rho_tot += rho_ridder_effective;
+    rho_tot += rho_dr_ridder;
+    
+    /* Pressure: scalar effective + DR (w=1/3) */
+    double p_ridder_effective = (rho_ridder_effective > 0.0) ? 
+        pvecback[pba->index_bg_p_ridder] * (rho_ridder_effective / pvecback[pba->index_bg_rho_ridder]) : 0.0;
+    double p_dr_ridder = rho_dr_ridder / 3.0;  /* w = 1/3 for radiation */
+    
+    p_tot += p_ridder_effective;
+    p_tot += p_dr_ridder;
+    dp_dloga += -(4.0/3.0) * rho_dr_ridder;  /* DR contributes to dp/dloga */
     
     /* Divide into relativistic and non-relativistic components */
-    rho_r += 3.*pvecback[pba->index_bg_p_ridder];
-    rho_m += pvecback[pba->index_bg_rho_ridder] - 3.*pvecback[pba->index_bg_p_ridder];
+    /* Effective scalar: split by 3p */
+    rho_r += 3.0 * p_ridder_effective;
+    rho_m += rho_ridder_effective - 3.0 * p_ridder_effective;
+    /* DR is fully relativistic */
+    rho_r += rho_dr_ridder;
   }
 
   /* ncdm */
@@ -1349,6 +1431,8 @@ int background_indices(
   class_define_index(pba->index_bg_phi_prime_ridder,pba->has_ridder,index_bg,1);
   class_define_index(pba->index_bg_rho_ridder,pba->has_ridder,index_bg,1);
   class_define_index(pba->index_bg_p_ridder,pba->has_ridder,index_bg,1);
+  class_define_index(pba->index_bg_rho_dr_ridder,pba->has_ridder,index_bg,1);  /* DR from α-branching */
+  class_define_index(pba->index_bg_f_ridder,pba->has_ridder,index_bg,1);        /* f_EDE diagnostic */
 
   /* - index for Lambda */
   class_define_index(pba->index_bg_rho_lambda,pba->has_lambda,index_bg,1);
@@ -2816,6 +2900,16 @@ int background_initial_conditions(
     /* 2. Temporarily set phi' = 0 so we can call background_functions to get H */
     pvecback_integration[pba->index_bi_phi_prime_ridder] = 0.0;
 
+    /* 3. Initialize α-branching tracking variables */
+    pba->rho_ridder_max = 0.0;
+    pba->a_ridder_max = 0.0;
+    pba->f_ridder_peak = 0.0;
+    
+    if (pba->has_ridder_dr == _TRUE_) {
+      printf("RIDDER α-BRANCHING: Initialized. alpha=%.3f, z_decay=%.1f, a_decay=%.2e\n",
+             pba->alpha_ridder_to_dr, pba->z_ridder_decay, pba->a_ridder_decay);
+    }
+
     class_test(!isfinite(pvecback_integration[pba->index_bi_phi_ridder]),
                pba->error_message,
                "initial phi_ridder = %e -> check initial conditions",
@@ -3097,6 +3191,8 @@ int background_output_titles(
   class_store_columntitle(titles,"phi_ridder",pba->has_ridder);
   class_store_columntitle(titles,"phi'_ridder",pba->has_ridder);
   class_store_columntitle(titles,"V_ridder",pba->has_ridder);
+  class_store_columntitle(titles,"(.)rho_dr_ridder",pba->has_ridder);
+  class_store_columntitle(titles,"f_ridder",pba->has_ridder);
 
   class_store_columntitle(titles,"(.)rho_tot",_TRUE_);
   class_store_columntitle(titles,"(.)p_tot",_TRUE_);
@@ -3180,6 +3276,19 @@ int background_output_data(
     class_store_double(dataptr,pvecback[pba->index_bg_phi_ridder],_TRUE_,storeidx);
     class_store_double(dataptr,pvecback[pba->index_bg_phi_prime_ridder],_TRUE_,storeidx);
     class_store_double(dataptr,V_ridder_val,_TRUE_,storeidx);
+    class_store_double(dataptr,pvecback[pba->index_bg_rho_dr_ridder],_TRUE_,storeidx);
+    class_store_double(dataptr,pvecback[pba->index_bg_f_ridder],_TRUE_,storeidx);
+    
+    /* Debug storage */
+    static int storage_debug = 0;
+    double a_here = pvecback[pba->index_bg_a];
+    double z_here = 1.0/a_here - 1.0;
+    if (z_here > 1099 && z_here < 1101 && storage_debug < 3) {
+      storage_debug++;
+      printf("STORAGE_DEBUG z=%.0f: V=%.4e rho_dr=%.4e f=%.4e (idx %d)\n",
+             z_here, V_ridder_val, pvecback[pba->index_bg_rho_dr_ridder],
+             pvecback[pba->index_bg_f_ridder], pba->index_bg_rho_dr_ridder);
+    }
   }
 
     class_store_double(dataptr,pvecback[pba->index_bg_rho_tot],_TRUE_,storeidx);
@@ -3536,13 +3645,31 @@ int background_derivs(
         if (damp < 0.0) damp = 0.0;
         if (damp > 1.0) damp = 1.0;
         
+        /* Γ-decay friction: adds -(Γ/H)φ' to KG equation
+         * This drains kinetic energy from the scalar field.
+         * Gamma_decay_ridder is in units of H, so Gamma/H = Gamma_decay_ridder */
+        double Gamma_over_H = pba->Gamma_decay_ridder;  /* dimensionless, in H units */
+        
         /* Klein-Gordon equations in conformal time (d/dlna):
          * dphi/dlna = phi' / (aH)
-         * dphi'/dlna = -2*phi' - damp*(a/H)*dV/dphi - damp*(a/H)*coupling */
+         * dphi'/dlna = -(2 + Γ/H)*phi' - damp*(a/H)*dV/dphi - damp*(a/H)*coupling
+         * 
+         * With Γ > 0, kinetic energy is drained faster → field decays quicker */
         dy[pba->index_bi_phi_ridder] = phi_prime_ridder / (a * H);
-        dy[pba->index_bi_phi_prime_ridder] = - 2.0 * phi_prime_ridder
+        dy[pba->index_bi_phi_prime_ridder] = - (2.0 + Gamma_over_H) * phi_prime_ridder
                                               - damp * a * dV_val_units / H
                                               - damp * a * coupling_term / H;
+        
+        /* Debug Γ-decay when active */
+        if (Gamma_over_H > 0.0) {
+          static int gamma_debug = 0;
+          gamma_debug++;
+          if (gamma_debug < 10 || gamma_debug % 5000 == 0) {
+            double z = 1.0/a - 1.0;
+            printf("Γ-DECAY: z=%.1f Gamma/H=%.2f phi'=%.2e extra_friction=%.2e\n",
+                   z, Gamma_over_H, phi_prime_ridder, -Gamma_over_H * phi_prime_ridder);
+          }
+        }
         
         /* DEBUG: Print coupling term magnitude */
         static int coupling_counter = 0;

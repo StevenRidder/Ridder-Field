@@ -2433,9 +2433,39 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("ridder_force_damping",pba->ridder_force_damping);
   class_read_flag("ridder_freeze_phi",pba->ridder_freeze_phi);
   
+  /* Ridder → Dark Radiation α-branching parameters */
+  class_read_double("alpha_ridder_to_dr",pba->alpha_ridder_to_dr);
+  class_read_double("z_ridder_decay",pba->z_ridder_decay);
+  
+  /* Ridder → Dark Radiation Γ-decay (kinetic friction) */
+  class_read_double("Gamma_decay_ridder",pba->Gamma_decay_ridder);
+  
+  /* Validate and compute derived parameters */
+  if (pba->alpha_ridder_to_dr < 0.0 || pba->alpha_ridder_to_dr > 1.0) {
+    class_stop(errmsg, "alpha_ridder_to_dr must be between 0 and 1, got %e", 
+               pba->alpha_ridder_to_dr);
+  }
+  if (pba->Gamma_decay_ridder < 0.0) {
+    class_stop(errmsg, "Gamma_decay_ridder must be >= 0, got %e", 
+               pba->Gamma_decay_ridder);
+  }
+  pba->a_ridder_decay = 1.0 / (1.0 + pba->z_ridder_decay);
+  /* Enable DR flag if EITHER α-branching OR Γ-decay is active */
+  pba->has_ridder_dr = (pba->alpha_ridder_to_dr > 0.0 || pba->Gamma_decay_ridder > 0.0) ? _TRUE_ : _FALSE_;
+  printf("INPUT_READ: has_ridder_dr = %d (alpha=%.3f, Gamma=%.3f)\n",
+         pba->has_ridder_dr, pba->alpha_ridder_to_dr, pba->Gamma_decay_ridder);
+  
   /* Debug: print freeze_phi value after reading (unconditional for now) */
   printf("INPUT_READ: ridder_freeze_phi = %d _TRUE_=%d (after class_read_flag)\n", 
          pba->ridder_freeze_phi, _TRUE_);
+  if (pba->alpha_ridder_to_dr > 0.0) {
+    printf("INPUT_READ: α-branching ENABLED. alpha = %.3f, z_decay = %.1f\n",
+           pba->alpha_ridder_to_dr, pba->z_ridder_decay);
+  }
+  if (pba->Gamma_decay_ridder > 0.0) {
+    printf("INPUT_READ: Γ-decay ENABLED. Gamma = %.3f (in H units)\n",
+           pba->Gamma_decay_ridder);
+  }
   
   /* Set has_ridder flag if Lambda_EDE_ridder > 0 */
   if (pba->Lambda_EDE_ridder > 0.0) {
@@ -3429,9 +3459,36 @@ int input_read_parameters_species(struct file_content * pfc,
   class_read_double("ridder_force_damping",pba->ridder_force_damping);
   class_read_flag("ridder_freeze_phi",pba->ridder_freeze_phi);
   
+  /* Ridder → Dark Radiation α-branching parameters */
+  class_read_double("alpha_ridder_to_dr",pba->alpha_ridder_to_dr);
+  class_read_double("z_ridder_decay",pba->z_ridder_decay);
+  
+  /* Ridder → Dark Radiation Γ-decay (kinetic friction) */
+  class_read_double("Gamma_decay_ridder",pba->Gamma_decay_ridder);
+  
+  /* Validate and compute derived parameters for α-branching */
+  if (pba->alpha_ridder_to_dr < 0.0 || pba->alpha_ridder_to_dr > 1.0) {
+    class_stop(errmsg, "alpha_ridder_to_dr must be between 0 and 1, got %e", 
+               pba->alpha_ridder_to_dr);
+  }
+  if (pba->Gamma_decay_ridder < 0.0) {
+    class_stop(errmsg, "Gamma_decay_ridder must be >= 0, got %e", 
+               pba->Gamma_decay_ridder);
+  }
+  pba->a_ridder_decay = 1.0 / (1.0 + pba->z_ridder_decay);
+  pba->has_ridder_dr = (pba->alpha_ridder_to_dr > 0.0 || pba->Gamma_decay_ridder > 0.0) ? _TRUE_ : _FALSE_;
+  
   /* Debug: print freeze_phi value after reading (unconditional for now) */
   printf("INPUT_READ: ridder_freeze_phi = %d _TRUE_=%d (after class_read_flag)\n", 
          pba->ridder_freeze_phi, _TRUE_);
+  if (pba->alpha_ridder_to_dr > 0.0) {
+    printf("INPUT_READ: α-branching ENABLED. alpha = %.3f, z_decay = %.1f\n",
+           pba->alpha_ridder_to_dr, pba->z_ridder_decay);
+  }
+  if (pba->Gamma_decay_ridder > 0.0) {
+    printf("INPUT_READ: Γ-decay ENABLED. Gamma = %.3f (in H units)\n",
+           pba->Gamma_decay_ridder);
+  }
   
   /* STEP 3: Legacy v2 trigger - if Lambda_EDE_ridder > 0, enable Ridder */
   if (pba->Lambda_EDE_ridder > 0.0) {
@@ -6276,6 +6333,18 @@ int input_default_params(struct background *pba,
   pba->ridder_c_slow = 1.0;                         /**< Full slow-roll ICs by default */
   pba->ridder_force_damping = 1.0;                  /**< Physical force by default (1.0=physical, 0.0=frozen, 1e-8=soft) */
   pba->ridder_freeze_phi = _FALSE_;                 /**< Field evolves by default (FALSE=evolve, TRUE=freeze) */
+  
+  /** 9.c.3) Ridder → Dark Radiation α-branching (effective fluid model) */
+  pba->alpha_ridder_to_dr = 0.0;                    /**< Branching fraction α: 0 = no decay, 1 = full conversion to DR */
+  pba->z_ridder_decay = 3500.0;                     /**< Redshift where branching happens (shelf crossing) */
+  pba->a_ridder_decay = 1.0/(1.0 + 3500.0);         /**< Computed from z_ridder_decay */
+  pba->has_ridder_dr = _FALSE_;                     /**< Set TRUE if alpha > 0 OR Gamma > 0 */
+  pba->rho_ridder_max = 0.0;                        /**< Will track max ρ during evolution */
+  pba->a_ridder_max = 0.0;                          /**< Scale factor at maximum */
+  pba->f_ridder_peak = 0.0;                         /**< Peak f_EDE (diagnostic) */
+  
+  /** 9.c.4) Ridder → Dark Radiation Γ-decay (kinetic friction model) */
+  pba->Gamma_decay_ridder = 0.0;                    /**< Decay rate in H units: adds -Γφ' to KG equation */
 
   /**
    * Deafult to input_read_parameters_heating
