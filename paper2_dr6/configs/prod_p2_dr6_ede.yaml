@@ -14,7 +14,7 @@ theory:
       recombination: recfast
       non_linear: none
       n_ridder: 3
-      theta_i_ridder: 1.0
+      theta_i_ridder: 2.0
       beta_ridder: 0.0
       f_axion_ridder: 1.0e+27
 
