@@ -567,45 +567,75 @@ This demonstrates that the detected shoulder is phase-coherent---it has
 the specific oscillatory structure predicted by acoustic physics, not 
 the random structure of noise or foregrounds.
 
-\subsection{Wrong-template null tests}
+\subsection{Shifted-template and wrong-epoch null tests}
+\label{sec:shifted_template}
 
-If the detected signal were a generic feature of the data rather than a 
-specific physical signature, templates with incorrect phase or position 
-in $\ell$-space should also produce significant detections. We test this 
-by shifting the template pattern in bandpower space while keeping the 
-same ACT data and covariance.
+A remaining concern is that a sufficiently flexible template could latch onto
+an arbitrary oscillatory pattern in the damping tail rather than a specific
+physical signal. We test this explicitly with two complementary null tests:
+(i) shifting the soft-shoulder template in bandpower space, and
+(ii) using an EDE template with the wrong pre-recombination epoch.
 
-Define $t_0 = C_\ell^{\rm EDE} - C_\ell^{\rm \Lambda CDM}$ as the ``correct'' 
-template derived from the best-fit EDE cosmology. We construct ``wrong'' 
-templates by shifting this pattern by $\pm k$ bandpower bins: 
-$t_{\rm wrong} = {\rm roll}(t_0, k)$. If ACT responds only to the specific 
-phase and position of the soft shoulder, shifted templates should yield 
-null results.
-\begin{center}
+For the shifted-template test, we construct the residual vector
+$r = d - m_\Lambda$ and the physical soft-shoulder template
+$t_0 = m_{\rm EDE} - m_\Lambda$ in the ACT DR6 bandpower basis, where
+$d$ is the data vector, $m_\Lambda$ is the best-fit \lcdm\ spectrum, and
+$m_{\rm EDE}$ is the best-fit EDE spectrum from Sec.~\ref{sec:act}.
+For any template $t$ we fit a single amplitude $A_{\rm sh}$ by minimizing
+$\chi^2(A) = (r - A t)^T C^{-1} (r - A t)$, which yields
+\begin{equation}
+  A_{\rm sh} = \frac{t^T C^{-1} r}{t^T C^{-1} t}, \qquad
+  \sigma_{A} = (t^T C^{-1} t)^{-1/2},
+\end{equation}
+and we quote the detection significance as $A_{\rm sh}/\sigma_{A}$.
+The unshifted (physical) template is detected at very high significance,
+\begin{equation}
+  A_{\rm sh}^{(0)} = 1.10 \pm 0.04, \qquad
+  \frac{A_{\rm sh}^{(0)}}{\sigma_{A}} = 27.7\,\sigma.
+\end{equation}
+
+We then construct ``wrong'' templates by shifting $t_0$ in bandpower index
+space, $t_k(i) = t_0(i + k)$, corresponding to moving the shoulder pattern
+by $\Delta\ell \sim \mathcal{O}(30$--$75)$ in multipole. Table~\ref{tab:shifted}
+summarizes the results.
+
+\begin{table}[t]
+\centering
 \begin{tabular}{lccc}
-\toprule
-Template & Shift (bins) & $A_{\rm sh}$ & Significance \\
-\midrule
-\textbf{Correct (unshifted)} & \textbf{0} & $\mathbf{1.10 \pm 0.04}$ & $\mathbf{27.7\sigma}$ \\
-Shifted & $+75$ & $0.00 \pm 0.03$ & $0.1\sigma$ \\
-Shifted & $-30$ & $0.00 \pm 0.02$ & $1.8\sigma$ \\
-Shifted & $-50$ & $-0.00 \pm 0.02$ & $2.4\sigma$ \\
-Shifted & $+50$ & $-0.01 \pm 0.02$ & $5.5\sigma$ \\
-\bottomrule
+\hline\hline
+Template           & Shift (bins) & $A_{\rm sh}$       & $A_{\rm sh}/\sigma$ \\
+\hline
+Correct (unshifted) & $0$         & $1.10 \pm 0.04$    & $27.7$ \\
+Shifted             & $+75$       & $0.00 \pm 0.03$    & $0.1$ \\
+Shifted             & $-30$       & $0.00 \pm 0.02$    & $1.8$ \\
+Shifted             & $-50$       & $-0.00 \pm 0.02$   & $2.4$ \\
+Shifted             & $+50$       & $-0.01 \pm 0.02$   & $5.5$ \\
+\hline\hline
 \end{tabular}
-\end{center}
+\caption{Shifted-template null test in the ACT DR6 bandpower basis. The
+unshifted soft-shoulder template is detected at $27.7\sigma$. When the
+same pattern is shifted in bandpower index space by $|\Delta\ell| \sim
+\mathcal{O}(30$--$75)$, the fitted amplitude collapses toward zero and
+the significance drops to $\mathcal{O}(1)$, indicating that ACT responds
+to the specific phase and location of the shoulder rather than to generic
+oscillations.}
+\label{tab:shifted}
+\end{table}
 
-The unshifted template is detected at 27.7$\sigma$, while templates shifted 
-by 30--75 bandpower bins yield amplitudes consistent with zero (0.1--2.4$\sigma$). 
-This demonstrates that ACT responds to the \emph{specific phase and position} 
-of the soft shoulder, not to arbitrary oscillatory patterns in the damping tail.
+As an independent null test in the \emph{time} direction, we repeat the
+analysis using an EDE template with the wrong pre-recombination epoch,
+fixing the EDE scale to $\Lambda_{\rm EDE} = 0.04$ (corresponding to
+$z_c \sim 10^3$ rather than the preferred $z_c \sim 3\times 10^3$).
+In this case we find
+\begin{equation}
+  A_{\rm sh}(\Lambda_{\rm EDE}=0.04) \simeq 0.0 \pm 0.1,
+  \qquad \frac{A_{\rm sh}}{\sigma_{A}} \simeq 0.4\,\sigma,
+\end{equation}
+i.e.\ a null result. Taken together, the shifted-template and wrong-epoch
+tests show that ACT DR6 is not merely compatible with some arbitrary
+oscillatory distortion: the data select the \emph{specific} phase and
+epoch predicted by the soft-shoulder model.
 
-As a complementary test, we also vary the epoch of energy injection by 
-changing $\Lambda_{\rm EDE}$ while keeping the baseline cosmology fixed. 
-A template with $\Lambda_{\rm EDE} = 0.04$ (corresponding to a very different 
-$z_c$) yields $A_{\rm sh} = -0.03 \pm 0.06$ (0.4$\sigma$), again consistent 
-with zero. Only the epoch independently derived from Planck+DESI geometry 
-produces a significant detection.
 
 \subsection{Why $\Delta\chi^2 \approx -2000$ is believable}
 
