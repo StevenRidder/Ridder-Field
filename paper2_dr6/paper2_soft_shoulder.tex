@@ -31,37 +31,30 @@ A 7.8$\sigma$ Spectral Feature Predicting $H_0 \approx 70$~km\,s$^{-1}$\,Mpc$^{-
 \date{\today}
 
 \begin{abstract}
-We report a 7.8$\sigma$ detection of a phase-coherent oscillatory feature in the 
-Atacama Cosmology Telescope Data Release 6 damping tail ($\ell > 1000$), indicating 
-that the sound horizon at recombination is $r_s \approx 146.0$~Mpc---approximately 
-1\% smaller than the \lcdm\ prediction of 147.4~Mpc. This recalibration naturally 
-predicts $H_0 = 69.8 \pm 0.5$~\kms, in precise agreement with recent JWST TRGB 
-measurements ($69.9 \pm 1.2$) and strong-lensing time delays ($70.2 \pm 0.9$), 
-without requiring modifications to late-time physics or systematic adjustments 
-to distance ladders.
+Analysis of Atacama Cosmology Telescope Data Release 6 reveals a 7.8$\sigma$ detection 
+of a phase-coherent oscillatory residual in the cosmic microwave background damping tail 
+($\ell > 1000$), with a characteristic ``soft shoulder'' shape predicted by pre-recombination 
+energy injection models. Using a one-parameter template fit fully marginalized over 
+cosmological and nuisance parameters, we find a shoulder amplitude $A_{\rm sh} = 1.72 \pm 0.22$, 
+improving $\chi^2$ by approximately 1,900 relative to \lcdm. A physical early dark energy 
+model based on a scalar field that briefly contributes at the percent level before 
+recombination achieves $\Delta\chi^2 \approx -800$, with nearly all improvement 
+localized to the ACT high-$\ell$ likelihood while BAO and supernova distances remain 
+statistically unchanged. Our analysis differs from the primary ACT DR6 cosmological 
+analysis in that we apply a fixed, EDE-motivated matched filter in the damping tail, 
+rather than restricting to the standard \lcdm\ parameter space, which increases 
+sensitivity to this specific phase-coherent pattern.
 
-Using a one-parameter template fit fully marginalized over cosmological and nuisance 
-parameters, we find a ``soft shoulder'' amplitude $A_{\rm sh} = 1.72 \pm 0.22$, 
-improving $\chi^2$ by 1,940 relative to \lcdm. A physical early dark energy model 
-achieves $\Delta\chi^2 \approx -800$, with 99\% of the improvement localized to the 
-ACT high-$\ell$ likelihood while BAO and supernova distances remain unchanged 
-($|\Delta\chi^2| < 5$). Combined analysis with Planck and DESI shows that the same 
-mechanism shifts the preferred cosmology to $H_0 \approx 71$~\kms\ (Planck) or 
-$\sigma_8 \approx 0.75$ (ACT), depending on dataset---revealing that ACT and Planck 
-use the same physical signature to repair different aspects of \lcdm.
-
-Probability-to-exceed tests on 100,000 \lcdm\ simulations yield $P < 10^{-5}$, 
-ruling out statistical fluctuations. Phase-scrambling analysis confirms the signal 
-is 13.4$\sigma$ above random noise, establishing phase coherence. The detected 
-feature matches the spectral signature predicted by pre-recombination energy 
-injection: a brief contribution of $\sim$5--10\% to the total energy density 
-near $z \sim 3000$ that reduces the sound horizon while leaving late-time 
-observables unchanged.
-
-This represents the first direct observational evidence for additional energy 
-density in the pre-recombination universe beyond standard radiation and matter 
-content. CMB-S4 will provide a definitive test, with projected sensitivity to 
-detect or exclude the predicted amplitude at $>50\sigma$ significance.
+Combined with Planck and DESI baryon acoustic oscillation data, the preferred cosmology 
+shifts to $H_0 \approx 70$--71~\kms\ with $\sigma_8 \approx 0.75$--0.83, depending on 
+dataset combination. The implied sound horizon $r_s \approx 146$~Mpc is approximately 
+1\% smaller than the \lcdm\ prediction, naturally resolving much of the apparent tension 
+between CMB-inferred and locally-measured values of $H_0$. Probability-to-exceed tests 
+on \lcdm\ simulations ($P < 10^{-5}$) and phase-scrambling analyses (13.4$\sigma$ 
+significance) confirm that the detected feature is neither a statistical fluctuation 
+nor random noise. This represents the first direct observational evidence for additional 
+energy density in the pre-recombination universe beyond the standard radiation and 
+matter content.
 \end{abstract}
 
 \maketitle
@@ -101,9 +94,15 @@ JWST measurements are landing. The question is whether such a modification is
 
 This paper provides direct observational evidence that it is. Using ACT DR6 damping 
 tail observations ($\ell > 1000$), we detect a ``soft shoulder'' spectral feature 
-at 7.8$\sigma$ significance. The feature has the specific oscillatory shape predicted 
-by pre-recombination energy injection, and its detection is robust to foreground 
-modeling, phase scrambling, and Monte Carlo simulations of \lcdm.
+at 7.8$\sigma$ significance. By a ``soft shoulder'' we mean a specific, phase-coherent 
+distortion of the high-$\ell$ power spectrum: a smooth, low-amplitude enhancement and 
+re-phasing of the acoustic oscillations localized to the damping tail, with a shape 
+fixed by the modified pre-recombination expansion history. In the models we consider, 
+this shoulder arises from a brief period in which an additional field contributes a 
+few percent of the total energy density around matter-radiation equality, shifts the 
+sound horizon, and slightly alters the diffusion scale. The feature has the specific 
+oscillatory shape predicted by pre-recombination energy injection, and its detection 
+is robust to foreground modeling, phase scrambling, and Monte Carlo simulations of \lcdm.
 
 Our main results are:
 \begin{enumerate}
@@ -420,6 +419,19 @@ greater flexibility, fits the damping tail even better. The gap of approximately
 like a somewhat larger or differently shaped shoulder than the simple Ridder 
 model can provide while staying self-consistent.
 
+The fact that the template achieves a larger improvement than the physical EDE model 
+does not mean that the field description is incorrect. The template is a deliberately 
+flexible matched filter for the residual pattern in the damping tail: it modifies 
+the spectrum only where ACT is most sensitive and is not required to maintain a 
+self-consistent background expansion or growth history. The Ridder EDE model, by 
+contrast, must respect the Friedmann equations, preserve the observed low-$\ell$ CMB 
+structure, and keep BAO and supernova distances within their measured uncertainties. 
+These consistency conditions restrict how sharply the shoulder can be realized. 
+In this sense, the template measures the maximum signal that the high-$\ell$ data 
+are willing to attribute to a shoulder-like shape, while the physical EDE model 
+shows how much of that signal can be reproduced by a concrete pre-recombination 
+mechanism that also fits the rest of the data.
+
 Importantly, both models show the same key feature: nearly all the \chisq\ 
 improvement is localized to ACT DR6, while BAO and supernovae remain neutral. 
 This is the signature we expect from a real pre-recombination modification 
@@ -510,10 +522,16 @@ values. Planck + DESI does the opposite: it keeps $\sigma_8$ near 0.83
 but pushes $H_0$ up to 71.
 
 Both datasets prefer EDE over \lcdm\ by large amounts ($\Delta\chi^2 < -700$). 
-They use the same underlying mechanism---pre-recombination energy injection 
-that modifies the sound horizon---but they deploy it differently. This is 
-not a failure of the model; it is a reflection of the fact that ACT and 
-Planck themselves are in tension about what is wrong with \lcdm.
+This divergence is not a failure of the model. It reflects the fact that ACT and 
+Planck are already in tension within \lcdm\ about which aspect of the cosmology 
+should move: Planck prefers to raise $H_0$ at almost fixed $\sigma_8$, while ACT 
+prefers to suppress $\sigma_8$ at almost fixed $H_0$. Allowing pre-recombination 
+energy injection gives each dataset a single physical knob to turn. Planck uses 
+it primarily to recalibrate the sound horizon and raise $H_0$, whereas ACT uses 
+the same knob to re-phase the damping tail and reduce the inferred clustering 
+amplitude. The important point is that both datasets call on the same 
+pre-recombination mechanism, rather than unrelated late-time extensions, when 
+they are allowed to move away from pure \lcdm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Robustness Tests}
@@ -631,6 +649,12 @@ and 220~GHz, and the residual signal persists.
 (Section~\ref{sec:robust}) shows the signal matches a specific acoustic 
 pattern. Foregrounds do not produce phase-coherent acoustic oscillations---they 
 produce smooth power-law or modified blackbody spectra.
+
+The shoulder amplitude is stable under reasonable variations of the foreground model 
+and masking in the ACT DR6 likelihood, which reduces the room for a tuned foreground 
+configuration to mimic the phase-coherent acoustic structure of the template. A more 
+extensive set of frequency-split and mask-split tests will be important for future 
+work, but the tests we have performed so far favor a cosmological origin for the signal.
 
 \subsection{$\chi^2$ decomposition}
 
