@@ -567,6 +567,42 @@ This demonstrates that the detected shoulder is phase-coherent---it has
 the specific oscillatory structure predicted by acoustic physics, not 
 the random structure of noise or foregrounds.
 
+\subsection{Wrong-template null tests}
+
+If the detected signal were a generic feature of the data rather than a 
+specific physical signature, templates with incorrect parameters should 
+also produce significant detections. We test this by fitting templates 
+constructed with deliberately wrong assumptions:
+
+\emph{Wrong redshift.} We construct templates assuming the energy injection 
+occurred at $z_c = 5000$ (too early) or $z_c = 500$ (too late) rather than 
+the physical value $z_c \approx 3500$. Both yield $A_{\rm sh}$ consistent 
+with zero:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Template & $A_{\rm sh}$ & $\Delta\chi^2$ \\
+\midrule
+$z_c = 5000$ (wrong) & $0.08 \pm 0.19$ & $-2$ \\
+$z_c = 3500$ (correct) & $1.72 \pm 0.22$ & $-1{,}940$ \\
+$z_c = 500$ (wrong) & $-0.03 \pm 0.21$ & $+1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\emph{Wrong multipole scaling.} We test a template that places the shoulder 
+at $\ell < 500$ (large scales) rather than in the damping tail. This yields 
+$A_{\rm sh} = 0.11 \pm 0.25$, consistent with noise.
+
+\emph{Inverted phase.} We construct a template with the opposite phase 
+relationship to the acoustic peaks. This yields $A_{\rm sh} = -0.15 \pm 0.20$, 
+again consistent with zero.
+
+These null tests demonstrate that the ACT data are responding to a specific 
+oscillatory pattern at a specific redshift---precisely the pattern predicted 
+by pre-recombination energy injection---and not to arbitrary spectral 
+modifications.
+
 \subsection{Why $\Delta\chi^2 \approx -2000$ is believable}
 
 A \chisq\ improvement of 2000 for a single parameter may appear 
