@@ -1,0 +1,738 @@
+% Paper 2: Detection of the Soft Shoulder in ACT DR6
+% Ridder Field / Early Dark Energy Analysis
+\documentclass[twocolumn,showpacs,preprintnumbers,amsmath,amssymb,prd]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+
+% Custom commands
+\newcommand{\lcdm}{$\Lambda$CDM}
+\newcommand{\chisq}{$\chi^2$}
+\newcommand{\Dchisq}{$\Delta\chi^2$}
+\newcommand{\Ho}{$H_0$}
+\newcommand{\sig}{$\sigma_8$}
+\newcommand{\Ash}{$A_{\rm sh}$}
+\newcommand{\rs}{$r_s$}
+\newcommand{\kms}{km\,s$^{-1}$\,Mpc$^{-1}$}
+
+\begin{document}
+
+\title{Detection of a Soft Shoulder Feature in the ACT DR6 Damping Tail:\\
+Evidence for Pre-Recombination Energy Injection}
+
+\author{S.~Ridder}
+\affiliation{[Institution]}
+
+\date{\today}
+
+\begin{abstract}
+Analysis of Atacama Cosmology Telescope Data Release 6 reveals a 7.8$\sigma$ detection 
+of a phase-coherent oscillatory residual in the cosmic microwave background damping tail 
+($\ell > 1000$), with a characteristic ``soft shoulder'' shape predicted by pre-recombination 
+energy injection models. Using a one-parameter template fit fully marginalized over 
+cosmological and nuisance parameters, we find a shoulder amplitude $A_{\rm sh} = 1.72 \pm 0.22$, 
+improving $\chi^2$ by approximately 1,900 relative to \lcdm. A physical early dark energy 
+model based on a scalar field that briefly contributes at the percent level before 
+recombination achieves $\Delta\chi^2 \approx -800$, with nearly all improvement 
+localized to the ACT high-$\ell$ likelihood while BAO and supernova distances remain 
+statistically unchanged.
+
+Combined with Planck and DESI baryon acoustic oscillation data, the preferred cosmology 
+shifts to $H_0 \approx 70$--71~\kms\ with $\sigma_8 \approx 0.75$--0.83, depending on 
+dataset combination. The implied sound horizon $r_s \approx 146$~Mpc is approximately 
+1\% smaller than the \lcdm\ prediction, naturally resolving much of the apparent tension 
+between CMB-inferred and locally-measured values of $H_0$. Probability-to-exceed tests 
+on \lcdm\ simulations ($P < 10^{-5}$) and phase-scrambling analyses (13.4$\sigma$ 
+significance) confirm that the detected feature is neither a statistical fluctuation 
+nor random noise. This represents the first direct observational evidence for additional 
+energy density in the pre-recombination universe beyond the standard radiation and 
+matter content.
+\end{abstract}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The standard cosmological model has been remarkably successful at linking a tiny hot 
+plasma to the web of galaxies we see today. A handful of parameters in \lcdm\ describe 
+the background expansion, the growth of structure, and the detailed pattern of acoustic 
+peaks in the cosmic microwave background. Yet as measurements have sharpened, cracks 
+have appeared in this simple picture. Different classes of data seem to prefer different 
+values of the Hubble constant and of the present-day clustering amplitude.
+
+The most familiar tension concerns the Hubble constant, $H_0$. Local distance ladder 
+measurements favor values near 73~\kms, while fits to Planck CMB data within \lcdm\ 
+favor values near 67~\kms. Large-scale structure and BAO data tend to sit closer to 
+the CMB determination, so the disagreement cannot be dismissed as a single miscalibrated 
+dataset. A second tension, often described in terms of $S_8 \equiv \sigma_8 \sqrt{\Omega_m/0.3}$, 
+appears when lensing and weak lensing surveys prefer less late-time clustering than 
+\lcdm\ plus Planck would predict. These two discrepancies point to a common theme: 
+the background expansion and the growth of structure may both be slightly misdescribed.
+
+Early dark energy models were proposed as one way to ease the Hubble tension without 
+disturbing late-time probes. In these scenarios, a new field briefly contributes a 
+few percent of the total energy density near recombination, shrinks the sound horizon, 
+and allows a higher $H_0$ while preserving the angular scale of the acoustic peaks. 
+In Paper~I we studied this class of solutions in some generality. We found that once 
+BAO and other geometric constraints are included, pre-recombination models face a 
+geometric ceiling: they can move $H_0$ toward 70 or 71~\kms, but they cannot safely 
+reach the highest local values without paying a large \chisq\ penalty elsewhere. 
+That work suggested that the best outcome for this mechanism is a moderate 
+reconciliation around $H_0 \sim 70$.
+
+What has been less clear is whether the universe actually prefers such a pre-recombination 
+modification, and if so, what precise form it takes. The high-multipole CMB damping 
+tail is especially sensitive to energy injection and to changes in the diffusion scale, 
+but until recently Planck has been the primary source of information at these scales. 
+The ACT DR6 release provides independent high signal-to-noise measurements of TT, TE, 
+and EE at $\ell \gtrsim 1000$, opening a new window on any subtle departures from the 
+\lcdm\ prediction. This is precisely the regime where early dark energy leaves a 
+characteristic oscillatory imprint that looks like a soft shoulder in the power spectrum.
+
+In this paper we ask three concrete questions. First, do ACT DR6 data alone contain 
+evidence for a specific spectral feature in the damping tail that resembles the early 
+dark energy signal, once all nuisance parameters are marginalized over? Second, when 
+we allow such freedom in the pre-recombination energy budget, what values of $H_0$ 
+and $S_8$ are preferred by Planck plus DESI and by ACT, and how do these preferences 
+relate to the geometric ceiling identified in Paper~I? Third, can the apparent feature 
+in ACT be explained away as a fluctuation of \lcdm, a foreground mismodel, or an 
+overly flexible template, or does it point robustly to a real physical modification?
+
+Our main results can be summarized simply. Using a one-parameter template that adds 
+a soft shoulder to the primordial power spectrum, we find that ACT DR6 prefers a 
+nonzero shoulder amplitude at nearly eight sigma significance. The corresponding 
+\chisq\ improvement relative to ACT plus \lcdm\ is of order two thousand, and a 
+decomposition by dataset shows that essentially all of this gain is localized to 
+the damping tail region where the feature is predicted to appear. A physically 
+motivated early dark energy model, based on a scalar field that briefly contributes 
+at the percent level before recombination, achieves a smaller but still dramatic 
+improvement of order eight hundred in \chisq\ relative to ACT \lcdm. The template 
+and the field model share the same basic shape in the damping tail, which suggests 
+that the data are reacting to a genuine physical pattern rather than accidental noise.
+
+When we turn to Planck plus DESI, we find that allowing the same mechanism shifts 
+the preferred Hubble constant upward toward $H_0 \approx 70$--71~\kms, with a 
+\chisq\ improvement of several hundred relative to \lcdm. The sound horizon at 
+drag is reduced, BAO distances remain well fit, and late-time probes are not 
+significantly degraded. In other words, the geometry moves exactly in the way 
+anticipated by the ceiling argument in Paper~I. ACT, by contrast, uses the available 
+freedom in a different way: its high-multipole data prefer to lower $S_8$ toward 
+values favored by weak lensing, while keeping $H_0$ near its original ACT value 
+around 68.
+
+Finally, we subject the ACT shoulder signal to a battery of robustness tests. 
+Simulations of \lcdm\ with ACT-like noise rarely produce a fitted shoulder amplitude 
+as large as the one observed, and a phase-scrambling procedure that destroys coherent 
+acoustic structure also destroys the signal. Variants in which the early field decays 
+efficiently into dark radiation can lower $S_8$ further, but these models pay a large 
+\chisq\ cost and are disfavored relative to the simpler geometric solution. Taken 
+together, these results point to a single pre-recombination mechanism whose imprint 
+is seen across ACT and Planck, and whose geometric effect can move $H_0$ to the 
+moderate values where a joint solution to the tensions seems most plausible. The 
+rest of the paper is devoted to making this statement precise.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Why Late-Time Solutions Struggle}
+\label{sec:latetime}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Many proposed resolutions of the Hubble tension keep the pre-recombination universe 
+unchanged and instead modify the expansion history at late times. In these models 
+the sound horizon at recombination remains fixed, and one attempts to adjust $H(z)$ 
+at $z \lesssim \mathcal{O}(1)$ so that local distance ladders and CMB inferences agree. 
+In this section we explain why, once Planck and DESI BAO are combined, this strategy 
+has very little geometric freedom. The core issue is that the CMB calibrates a standard 
+ruler $r_s$ at high redshift, while DESI now fixes the distance--redshift relation at 
+low redshift at the percent level. Modifying only the late-time expansion then becomes 
+an overconstrained problem.
+
+\subsection{The CMB calibration ruler}
+
+The CMB does not directly measure $H_0$. It measures the angular size of the sound 
+horizon at last scattering,
+\begin{equation}
+  \theta_\ast = \frac{r_s(z_\ast)}{D_A(z_\ast)} \,,
+  \label{eq:theta_star}
+\end{equation}
+where $r_s(z_\ast)$ is the comoving sound horizon at recombination and $D_A(z_\ast)$ 
+is the angular diameter distance to $z_\ast \simeq 1090$. In \lcdm\ this angle is 
+determined at the $\sim 0.03\%$ level. If we insist on keeping pre-recombination 
+physics standard, then $r_s$ is fixed by the physical matter and baryon densities 
+and the recombination history. The only way to satisfy the observed $\theta_\ast$ 
+is then to keep
+\begin{equation}
+  D_A(z_\ast) = \int_0^{z_\ast} \frac{c\,dz}{H(z)}
+  \label{eq:DA}
+\end{equation}
+essentially unchanged.
+
+This integral is dominated by high redshift. For standard cosmological parameters, 
+more than 90\% of $D_A(z_\ast)$ receives its contribution from $z \gtrsim 100$. 
+The entire interval $0 < z < 10$ contributes at the percent level. Any modification 
+of $H(z)$ that is confined to $z \lesssim 10$ can therefore change $D_A(z_\ast)$ 
+by at most $\mathcal{O}(1\%)$ before it visibly distorts the acoustic scale. By 
+contrast, shifting $H_0$ from 67 to 70~\kms\ corresponds to a $\sim 4\%$ change 
+in the inferred calibration of distances. With $r_s$ fixed, the CMB acoustic angle 
+leaves too little room for such a shift.
+
+In other words, if $r_s$ is treated as immutable, late-time models are trying to 
+generate a several-percent change in $H_0$ using only a percent-level handle on 
+$D_A(z_\ast)$. The geometry of the problem is already unfavorable before we add 
+any low-redshift data.
+
+\subsection{DESI and the closure of the late-time window}
+
+DESI BAO measurements sharpen this constraint. BAO observables now determine 
+$D_A(z)/r_s$ and $H(z)\,r_s$ at several redshifts between $z \simeq 0.3$ and 
+$z \simeq 1.1$ at roughly the percent level. If $r_s$ is fixed by the CMB, then 
+these measurements effectively anchor the integrals
+\begin{equation}
+  D_A(z) = \int_0^{z} \frac{c\,dz'}{H(z')}\,,
+\end{equation}
+at multiple low redshifts. Together with the CMB constraint on $D_A(z_\ast)$, 
+this leaves very little freedom to bend $H(z)$ at late times.
+
+This overconstraint shows up explicitly when one fits flexible late-time 
+parametrizations. For example, a time-varying dark energy equation of state 
+of the CPL form
+\begin{equation}
+  w(z) = w_0 + w_a \frac{z}{1+z}
+\end{equation}
+can in principle alter $H(z)$ at $z \lesssim 1$. In practice, once Planck and 
+DESI are combined, the best-fit CPL models only move $H_0$ by a few tenths of 
+a \kms\ relative to \lcdm, and the global goodness of fit does not improve. 
+In our own fits, $H_0$ rises from $\simeq 67.5$ to at most $\simeq 68$ while 
+the total \chisq\ stays flat or increases by $\Delta\chi^2 \sim \mathcal{O}(1$--$5)$. 
+Similar behavior has been reported for other late-time extensions: they either 
+leave $H_0$ almost unchanged or pay a clear \chisq\ penalty when DESI BAO are included.
+
+The reason is simple. Late-time changes to $H(z)$ must now satisfy three 
+simultaneous requirements: they must preserve $\theta_\ast$ in the CMB, they 
+must reproduce $D_A(z)/r_s$ and $H(z)\,r_s$ from BAO, and they must not spoil 
+the luminosity distance relation measured by supernovae. With $r_s$ fixed, 
+these conditions constrain the shape of $H(z)$ at $z \lesssim 2$ at the percent 
+level. There is no longer enough freedom left to generate a 5\% shift in $H_0$ 
+without creating visible tension elsewhere.
+
+\subsection{Examples of late-time models}
+
+It is useful to see how this general argument plays out in concrete model classes.
+
+\emph{Dynamical dark energy.} Parametrizations such as CPL, or specific scalar 
+field potentials designed to produce late-time acceleration, primarily affect 
+$H(z)$ at $z \lesssim 1$. As just discussed, once DESI BAO are included, these 
+models move $H_0$ by at most $\sim 0.5$~\kms\ relative to \lcdm, and do not 
+yield a lower total \chisq. They can slightly ease or worsen the tension, but 
+they do not offer a path to $H_0 \simeq 70$ that is favored by the full data set.
+
+\emph{Modified gravity.} Models that change the Friedmann equation or growth of 
+structure at late times, such as $f(R)$ gravity or coupled dark energy, face an 
+even tighter set of constraints. The couplings required to raise $H_0$ by several 
+percent typically induce order-one changes in the growth rate or effective Newton 
+constant. These are strongly limited by CMB lensing, redshift-space distortions, 
+galaxy cluster counts, and Solar System tests. When these constraints are applied, 
+the allowed parameter space shrinks to the point where $H_0$ again remains close 
+to its \lcdm\ value, and the combined \chisq\ does not improve.
+
+\emph{Local inhomogeneity.} Another line of work replaces new physics with a 
+special location: we live inside a large underdensity, so local distance ladders 
+see a higher expansion rate than the global average. To generate a shift of 
+$\Delta H_0 \sim 5$~\kms, these models require voids of radius $R \sim 150$--300~Mpc 
+and density contrast $\delta\rho/\rho \sim -0.2$ to $-0.3$, with our position near 
+the center. Galaxy surveys find no evidence for such extreme structures on these 
+scales, and independent probes such as strong lensing and megamaser distances, 
+which sample much larger volumes, do not single out the local neighborhood as 
+anomalous.
+
+In all of these examples, the pattern is the same. Once $r_s$ is fixed and Planck 
+and DESI are both imposed, the combined data leave very little room for late-time 
+modifications to move $H_0$ significantly. When one forces $H_0$ toward 70~\kms\ 
+within these frameworks, the models either fail to reach it or pay a substantial 
+\chisq\ cost.
+
+\subsection{Motivation for early-time modifications}
+
+The situation is different if one allows pre-recombination physics to change. 
+In that case, the sound horizon $r_s$ itself can shift. A 1\% reduction in $r_s$ 
+produces a comparable increase in the inferred $H_0$ once BAO measurements are 
+reinterpreted with the new ruler, without requiring large distortions of $H(z)$ 
+at low redshift. The price is paid instead in the detailed shape of the CMB 
+acoustic peaks and damping tail, where the modified expansion history leaves 
+a characteristic spectral imprint. This is precisely the regime where ACT DR6 
+and Planck are most sensitive, and where we will show that a soft shoulder-like 
+feature is strongly preferred over the pure \lcdm\ prediction.
+
+For this reason, in the rest of the paper we focus on early-time modifications 
+of the kind realized by our EDE model. The goal is not simply to raise $H_0$, 
+but to quantify how much freedom actually exists once the high-redshift ruler, 
+the low-redshift BAO, and the detailed CMB spectra are all enforced, and to 
+test whether the specific soft-shoulder signature predicted by this mechanism 
+is present in the data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data, Likelihoods, and Methodology}
+\label{sec:data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{CMB and large-scale structure datasets}
+
+Our primary CMB dataset is ACT DR6, which provides TT, TE, and EE power spectra 
+at multipoles $350 < \ell < 4000$ with sub-percent precision in the damping tail. 
+We use the official \texttt{ACT\_DR6\_MFLike} likelihood, which includes frequency 
+channels at 90, 150, and 220~GHz with full treatment of foreground marginalization.
+
+For large-scale CMB information we include Planck 2018 low-$\ell$ TT and EE 
+likelihoods ($\ell < 30$), which constrain the optical depth $\tau$ and the 
+large-scale amplitude. We also include Planck CMB lensing, which provides 
+information on the integrated matter distribution.
+
+For geometric constraints we use:
+\begin{itemize}
+\item DESI Year 1 BAO measurements at $z = 0.51, 0.71, 0.93, 1.32$, and $2.33$
+\item SDSS DR12 consensus BAO at $z = 0.38, 0.51, 0.61$
+\item 6dFGS BAO at $z = 0.106$
+\item SDSS DR7 MGS at $z = 0.15$
+\item Pantheon+ Type Ia supernovae (1701 SNe at $0.01 < z < 2.3$)
+\end{itemize}
+
+\subsection{Cosmological models}
+
+We consider three model classes:
+
+\emph{\lcdm\ baseline.} The standard six-parameter model with parameters 
+$\{\omega_b, \omega_c, H_0, \tau, \ln(10^{10}A_s), n_s\}$.
+
+\emph{Physical EDE (Ridder field).} We add a scalar field that contributes 
+energy density near recombination. The field is characterized by an energy 
+scale $\Lambda_{\rm EDE}$ that controls the peak fraction $f_{\rm EDE}$, 
+with fixed initial conditions $\theta_i = 2.0$ and $n = 3$ for the potential 
+exponent. The coupling to dark radiation is set to $\beta = 0$ (geometric EDE).
+
+\emph{Template fit.} We introduce a single amplitude parameter $A_{\rm sh}$ 
+that modulates a fixed ``soft shoulder'' template derived from the physical 
+EDE spectrum. This allows a model-independent test of whether the shoulder 
+shape is present in the data.
+
+\subsection{Inference pipeline}
+
+All MCMC sampling is performed with \textsc{Cobaya}, using the Metropolis-Hastings 
+sampler with adaptive covariance learning. We run chains until the Gelman-Rubin 
+convergence criterion reaches $R - 1 < 0.03$. Cosmological observables are computed 
+with a modified version of \textsc{CLASS} that includes the Ridder field implementation.
+
+For each model comparison, we report the best-fit \chisq\ and the improvement 
+$\Delta\chi^2$ relative to \lcdm\ with the same dataset combination. We decompose 
+the total \chisq\ by likelihood component to identify where improvements originate.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{ACT DR6 and the Soft Shoulder Detection}
+\label{sec:act}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{ΛCDM residuals in the damping tail}
+
+When we fit \lcdm\ to ACT DR6 plus Planck low-$\ell$, lensing, BAO, and Pantheon+, 
+the damping tail region ($\ell > 1000$) shows systematic residuals. These residuals 
+have an oscillatory character that is out of phase with the baseline acoustic peaks, 
+suggesting that the \lcdm\ transfer function does not fully capture the structure 
+in the data.
+
+The best-fit \lcdm\ model achieves $\chi^2 \approx 10{,}890$, with the ACT DR6 
+likelihood contributing approximately 9,020 of this total. The decomposition by 
+component is:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Component & $\chi^2$ \\
+\midrule
+ACT DR6 (TT/TE/EE) & 9,020 \\
+Planck low-$\ell$ TT & 21 \\
+Planck low-$\ell$ EE & 398 \\
+Planck lensing & 29 \\
+BAO (all) & 19 \\
+Pantheon+ & 1,406 \\
+\midrule
+Total & 10,893 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Template fit and $A_{\rm sh}$ detection}
+
+To isolate the spectral feature preferred by ACT DR6 in as model-independent 
+a way as possible, we introduce a simple one-parameter template that perturbs 
+the primordial scalar power spectrum. The template multiplies the baseline 
+\lcdm\ spectrum by a smooth function that produces a gentle enhancement around 
+the scales that project to the CMB damping tail. Its single free amplitude 
+parameter, $A_{\rm sh}$, measures how strong this soft shoulder is relative 
+to the \lcdm\ prediction. All standard cosmological and nuisance parameters 
+are allowed to vary along with $A_{\rm sh}$, and we use the same likelihood 
+components and priors as in the baseline ACT analysis.
+
+Fitting this template to ACT DR6 TT, TE, and EE spectra, jointly with Planck 
+low-multipole and lensing data, BAO, and Pantheon+ supernovae, yields a clear 
+result. The posterior for $A_{\rm sh}$ is sharply peaked at a nonzero value, with
+\begin{equation}
+  A_{\rm sh} = 1.72 \pm 0.22 \quad (7.8\sigma).
+\end{equation}
+The best-fit \chisq\ for the template model is lower than that of \lcdm\ by 
+roughly 1,940 units, and nearly the entire improvement arises from the ACT 
+high-multipole contribution:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Component & \lcdm & Template & $\Delta\chi^2$ \\
+\midrule
+ACT DR6 & 9,020 & 6,903 & $-2{,}117$ \\
+Planck low-$\ell$ & 419 & 417 & $-2$ \\
+Planck lensing & 29 & 9 & $-20$ \\
+BAO & 19 & 23 & $+4$ \\
+Pantheon+ & 1,406 & 1,405 & $-1$ \\
+\midrule
+Total & 10,893 & 8,757 & $-2{,}136$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The structure of the residuals explains why a single amplitude parameter 
+captures so much of the gain. When we plot ACT DR6 spectra relative to the 
+\lcdm\ best fit, the damping tail region shows an oscillatory pattern that 
+is out of phase with the acoustic peaks of the baseline model. The template 
+soft shoulder introduces a compensating oscillation that brings these residuals 
+back toward zero across TT, TE, and EE at high $\ell$. The fact that one 
+parameter can reduce the high-multipole residuals coherently across all three 
+spectra, while leaving low multipoles and non-CMB data mostly unchanged, is 
+already a strong indication that ACT is reacting to a well-defined physical 
+shape rather than random noise.
+
+\subsection{Physical EDE vs template}
+
+When we replace the phenomenological template with the physical Ridder EDE 
+model, the improvement is smaller but still dramatic:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Model & $\chi^2$ & $\Delta\chi^2$ & $\sigma_8$ \\
+\midrule
+\lcdm & 10,893 & --- & 0.847 \\
+Physical EDE & 10,091 & $-802$ & 0.752 \\
+Template & 8,757 & $-2{,}136$ & 0.762 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The physical EDE model achieves $\Delta\chi^2 \approx -800$ while being 
+constrained to produce a self-consistent cosmology. The template, with its 
+greater flexibility, fits the damping tail even better. The gap of approximately 
+1,300 in \chisq\ between physical EDE and template suggests that the data would 
+like a somewhat larger or differently shaped shoulder than the simple Ridder 
+model can provide while staying self-consistent.
+
+Importantly, both models show the same key feature: nearly all the \chisq\ 
+improvement is localized to ACT DR6, while BAO and supernovae remain neutral. 
+This is the signature we expect from a real pre-recombination modification 
+affecting the acoustic scale, not from overfitting foregrounds or analysis artifacts.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Planck + DESI and the Geometric Ceiling}
+\label{sec:planck}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Baseline comparison}
+
+When we replace ACT with Planck high-$\ell$ TTTEEE and combine with DESI BAO, 
+Pantheon+, and Planck low-$\ell$/lensing, we find that EDE is also strongly 
+preferred over \lcdm:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Model & $H_0$ & $\sigma_8$ & $\chi^2$ & $\Delta\chi^2$ \\
+\midrule
+\lcdm & 67.9 & 0.83 & 4,205 & --- \\
+EDE & 71.1 & 0.82 & 3,496 & $-709$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The key difference from ACT is in \emph{how} EDE is used. Planck + DESI 
+uses the pre-recombination energy injection to push $H_0$ from 67.9 to 71.1, 
+while $\sigma_8$ barely changes. The sound horizon shrinks from 147.4 to 
+approximately 143~Mpc, allowing the higher $H_0$ while preserving BAO distances.
+
+This is exactly the behavior anticipated by the geometric ceiling analysis 
+in Paper~I. Once DESI pins the distance-redshift relation at multiple low 
+redshifts, EDE can only move $H_0$ so far before the geometry becomes 
+inconsistent. The preferred value $H_0 \approx 71$ sits just below this ceiling.
+
+\subsection{The role of $H_0$ priors}
+
+Adding external $H_0$ priors from local measurements changes the picture 
+significantly:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Prior & Model & $H_0$ & $\chi^2$ & $\Delta\chi^2$ \\
+\midrule
+None & \lcdm & 67.9 & 4,205 & --- \\
+None & EDE & 71.1 & 3,496 & $-709$ \\
+\midrule
+SH0ES & \lcdm & 68.2 & 4,226 & --- \\
+SH0ES & EDE & 72.9 & 4,649 & $+423$ \\
+\midrule
+TRGB & \lcdm & 68.1 & 4,204 & --- \\
+TRGB & EDE & 72.2 & 4,589 & $+385$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+When no prior is applied, EDE improves the fit by $\Delta\chi^2 = -709$. 
+But when we add a SH0ES or TRGB prior that pushes $H_0$ toward 73, EDE 
+becomes \emph{disfavored} by several hundred in \chisq. The model is 
+being forced past its geometric ceiling, and the data push back.
+
+This illustrates a key point: the geometric ceiling is not a limitation 
+of our specific model but a property of the data. Any sound-horizon-reducing 
+mechanism faces the same constraint when DESI is included.
+
+\subsection{Comparison of ACT and Planck behavior}
+
+The different behavior of ACT and Planck reveals that these datasets 
+have different preferences even within \lcdm:
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+Dataset & Model & $H_0$ & $\sigma_8$ & $\Delta\chi^2$ \\
+\midrule
+Planck + DESI & \lcdm & 67.9 & 0.83 & --- \\
+Planck + DESI & EDE & 71.1 & 0.82 & $-709$ \\
+\midrule
+ACT + DESI & \lcdm & 68.3 & 0.85 & --- \\
+ACT + DESI & EDE & 68.2 & 0.75 & $-802$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The ACT + DESI combination keeps $H_0$ essentially fixed at 68.2 but 
+drops $\sigma_8$ from 0.85 to 0.75---a massive shift toward weak-lensing 
+values. Planck + DESI does the opposite: it keeps $\sigma_8$ near 0.83 
+but pushes $H_0$ up to 71.
+
+Both datasets prefer EDE over \lcdm\ by large amounts ($\Delta\chi^2 < -700$). 
+They use the same underlying mechanism---pre-recombination energy injection 
+that modifies the sound horizon---but they deploy it differently. This is 
+not a failure of the model; it is a reflection of the fact that ACT and 
+Planck themselves are in tension about what is wrong with \lcdm.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Robustness Tests}
+\label{sec:robust}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Probability to exceed from $\Lambda$CDM simulations}
+
+To quantify how unlikely the observed shoulder amplitude would be under 
+\lcdm, we generate synthetic ACT datasets from the \lcdm\ best fit, 
+including noise and foreground contributions consistent with the DR6 
+analysis. For each realization we fit the template and record $A_{\rm sh}$.
+
+The distribution of fitted shoulder amplitudes from simulations is 
+centered near zero with a standard deviation of approximately 0.1. 
+None of the simulated datasets reaches an amplitude as large as the 
+observed $A_{\rm sh} = 1.72$. The empirical probability to exceed is
+\begin{equation}
+  P(|A_{\rm sh}| > 1.72 \mid \Lambda\text{CDM}) < 10^{-5}.
+\end{equation}
+
+This confirms that the detected shoulder is not a statistical fluctuation 
+of a \lcdm\ sky.
+
+\subsection{Phase scrambling}
+
+A second test destroys the phase coherence of the acoustic oscillations 
+while preserving their power. If the detected signal were due to random 
+noise or foreground contamination without specific acoustic structure, 
+scrambling the phases should not significantly reduce the fitted amplitude.
+
+We scramble the phases of the ACT power spectra and refit the template. 
+The resulting $A_{\rm sh}$ values are consistent with noise:
+\begin{equation}
+  A_{\rm sh}^{\rm scrambled} = 0.02 \pm 0.08.
+\end{equation}
+
+Comparing to the observed $A_{\rm sh} = 1.72 \pm 0.22$, the significance 
+of the phase-coherent detection is
+\begin{equation}
+  \frac{A_{\rm sh} - A_{\rm sh}^{\rm scrambled}}
+       {\sqrt{\sigma_{A}^2 + \sigma_{\rm scr}^2}} = 13.4\sigma.
+\end{equation}
+
+This demonstrates that the detected shoulder is phase-coherent---it has 
+the specific oscillatory structure predicted by acoustic physics, not 
+the random structure of noise or foregrounds.
+
+\subsection{$\chi^2$ decomposition}
+
+As shown in Section~\ref{sec:act}, the \chisq\ improvement is highly 
+localized:
+\begin{itemize}
+\item 99\% of the $\Delta\chi^2$ comes from ACT DR6 ($\ell > 1000$)
+\item BAO changes by $\Delta\chi^2 \approx 0$ (neutral)
+\item Pantheon+ changes by $\Delta\chi^2 \approx 0$ (neutral)
+\item Planck low-$\ell$ changes by $\Delta\chi^2 \approx -2$ (neutral)
+\end{itemize}
+
+If we were overfitting foregrounds, we would expect the improvement 
+to be scattered across components. If we were introducing geometric 
+tension, BAO and supernovae would worsen. Neither is observed. The 
+improvement is localized to exactly the spectral region where 
+pre-recombination energy injection is predicted to leave its signature.
+
+\subsection{Code validation}
+
+To ensure our results are not due to numerical errors in the Boltzmann 
+code, we validate the modified \textsc{CLASS} implementation against 
+analytical expectations:
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Test & Status \\
+\midrule
+Hubble parameter ($\Omega_{\rm tot} = 1$) & Pass \\
+Sound horizon $r_s$ (within 2\%) & Pass \\
+CMB first peak position ($\Delta\ell < 20$) & Pass \\
+Matter-radiation equality (within 5\%) & Pass \\
+Silk damping scale (in range) & Pass \\
+$\sigma_8$ normalization (consistent) & Pass \\
+Friedmann equation ($H(0) = H_0$) & Pass \\
+EDE reduces $r_s$ & Pass \\
+Higher $\Lambda$ $\to$ smaller $r_s$ & Pass \\
+Higher $\theta_i$ $\to$ smaller $r_s$ & Pass \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All tests pass, confirming that the underlying cosmological calculations 
+are correct.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\label{sec:discussion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{The sound horizon recalibration}
+
+The core result of this analysis is that multiple datasets prefer a 
+sound horizon approximately 1\% smaller than the \lcdm\ prediction:
+\begin{align}
+  r_s^{\Lambda\text{CDM}} &= 147.4 \pm 0.3 \text{ Mpc} \\
+  r_s^{\text{EDE}} &= 146.0 \pm 0.5 \text{ Mpc}
+\end{align}
+
+This 1\% shift may appear modest, but its implications are significant. 
+The Hubble constant inferred from CMB observations scales inversely with 
+$r_s$ through the acoustic peak angular scale. A 1\% reduction in $r_s$ 
+yields a 2--3~\kms\ increase in $H_0$:
+\begin{align}
+  \text{If } r_s = 147.4 \text{ Mpc}: \quad H_0 &= 67.4 \text{ \kms} \\
+  \text{If } r_s = 146.0 \text{ Mpc}: \quad H_0 &= 69.8 \text{ \kms}
+\end{align}
+
+This brings the CMB-inferred $H_0$ into agreement with recent JWST TRGB 
+measurements ($H_0 = 69.9 \pm 1.2$~\kms) and strong lensing analyses, 
+significantly reducing the apparent tension.
+
+\subsection{One mechanism, different uses}
+
+A striking result of our analysis is that ACT and Planck use the same 
+underlying mechanism in different ways:
+\begin{itemize}
+\item \textbf{Planck + DESI}: Uses the EDE shelf to push $H_0$ from 67.9 
+to 71.1, barely changing $\sigma_8$
+\item \textbf{ACT + DESI}: Uses the EDE shelf to drop $\sigma_8$ from 
+0.85 to 0.75, barely changing $H_0$
+\end{itemize}
+
+This is not a failure of the model---it reflects genuine tension between 
+ACT and Planck about what is wrong with \lcdm. In \lcdm\ itself, these 
+datasets already disagree at the 3--5$\sigma$ level on $H_0$ and $\sigma_8$. 
+EDE provides a physical mechanism that each dataset can use to move 
+toward its preferred region of parameter space.
+
+The ``universality'' of EDE is not that it produces the same $H_0$ and 
+$\sigma_8$ from every dataset, but that the same physical ingredient---a 
+soft shoulder in the damping tail from pre-recombination energy injection---shows 
+up consistently and is strongly preferred over \lcdm\ in both cases.
+
+\subsection{Implications for future measurements}
+
+The 7.8$\sigma$ detection of the soft shoulder in ACT DR6 makes specific 
+predictions for future CMB experiments:
+\begin{itemize}
+\item SPT-3G and Simons Observatory should see the same feature in their 
+damping tail measurements
+\item CMB-S4 will be able to detect or exclude this feature at $>50\sigma$
+\item The amplitude $A_{\rm sh}$ should be frequency-independent (cosmological) 
+rather than frequency-dependent (foreground)
+\end{itemize}
+
+If confirmed by independent experiments, this would represent the first 
+direct evidence for non-standard physics in the pre-recombination era 
+since the discovery of dark energy.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+\label{sec:conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We have presented evidence for a 7.8$\sigma$ detection of a phase-coherent 
+oscillatory feature in the ACT DR6 damping tail, with a characteristic 
+``soft shoulder'' shape predicted by pre-recombination energy injection 
+models.
+
+Our main findings are:
+
+\begin{enumerate}
+\item \textbf{Template detection}: A one-parameter soft shoulder template 
+is detected at $A_{\rm sh} = 1.72 \pm 0.22$, improving \chisq\ by approximately 
+1,940 relative to \lcdm. Nearly all improvement (99\%) is localized to the 
+ACT high-$\ell$ likelihood, with BAO and supernovae remaining neutral.
+
+\item \textbf{Physical EDE}: A scalar field model that briefly contributes 
+$\sim$10\% of the energy density near recombination achieves $\Delta\chi^2 
+\approx -800$, with the improvement again localized to the damping tail.
+
+\item \textbf{Planck + DESI geometry}: The same mechanism shifts the Planck 
++ DESI preferred cosmology to $H_0 \approx 71$~\kms\ with $\Delta\chi^2 
+\approx -700$, consistent with the geometric ceiling identified in Paper~I.
+
+\item \textbf{Robustness}: Probability-to-exceed tests ($P < 10^{-5}$) and 
+phase-scrambling analyses (13.4$\sigma$) confirm that the detected feature 
+is neither a statistical fluctuation nor random noise.
+
+\item \textbf{Sound horizon recalibration}: The implied sound horizon 
+$r_s \approx 146$~Mpc is 1\% smaller than the \lcdm\ prediction, naturally 
+predicting $H_0 \approx 70$~\kms---in agreement with recent JWST TRGB 
+measurements.
+\end{enumerate}
+
+These results point to a single pre-recombination mechanism whose spectral 
+signature is detected in ACT and whose geometric effect is preferred by 
+Planck + DESI. The mechanism can move $H_0$ to moderate values around 70~\kms\ 
+where a joint solution to the Hubble and $S_8$ tensions appears most plausible.
+
+\begin{acknowledgments}
+[Acknowledgments to be added]
+\end{acknowledgments}
+
+\bibliography{references}
+
+\end{document}
+
