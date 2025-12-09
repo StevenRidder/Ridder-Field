@@ -721,6 +721,87 @@ of ~XX bins for n=2 EDE oscillations in the damping tail."
 
 ---
 
+## Issue 16: MODEL COMPARISON METRICS (AIC/BIC)
+
+**The Problem**: A referee may say: "They only did χ². Have they checked an information criterion or evidence?"
+
+**The Attack**: "Without AIC/BIC or Bayes factor, how do we know the extra parameter isn't just absorbing noise?"
+
+### Task 16.1: Compute AIC/BIC [COMPUTE - LOW EFFORT]
+```
+Purpose: Close down "they only did χ²" attack with one paragraph
+
+Method:
+ΔAIC = Δχ² + 2Δk = -766 + 2(1) = -764
+ΔBIC = Δχ² + Δk × ln(N) = -766 + 1 × ln(~3000) = -766 + 8 = -758
+
+Where:
+- Δχ² = -766 (EDE vs ΛCDM)
+- Δk = 1 (one extra parameter: Λ_EDE)
+- N ≈ 3000 (effective number of data points)
+
+Deliverable: Add to Section 4.3 or 6:
+
+"We verify the statistical significance using information criteria. 
+With Δχ² = −766 and one additional parameter (Λ_EDE), we find 
+ΔAIC ≈ −764 and ΔBIC ≈ −758, both strongly favoring EDE over ΛCDM. 
+The Occam penalty for the extra parameter (~2 for AIC, ~8 for BIC) 
+is negligible compared to the χ² improvement."
+```
+
+---
+
+## Issue 17: ℓ-BY-ℓ χ² DECOMPOSITION FOR ACT
+
+**The Problem**: The killer question asks where the ACT-only penalty comes from. A breakdown by ℓ-range answers this directly.
+
+**The Value**: Reinforces that high-ℓ ACT always prefers the shoulder, and the ACT-only penalty lives in background parameters, not damping tail.
+
+### Task 17.1: ACT ℓ-Range χ² Table [COMPUTE]
+```
+Purpose: Show exactly where the Δχ² lives in ℓ-space
+
+Table format:
+| ℓ range    | ACT-only Δχ² | ACT+DESI Δχ² | Comment           |
+|------------|--------------|--------------|-------------------|
+| 350-1000   | +XX          | +YY          | Acoustic peaks    |
+| 1000-1500  | +XX          | +YY          | Transition        |
+| 1500-2000  | -XX          | -YY          | Damping tail      |
+| 2000-3000  | -XX          | -YY          | Deep damping      |
+| 3000+      | -XX          | -YY          | Very high ℓ       |
+| Low-ℓ/lens | +XX          | +YY          | Background        |
+| BAO/SN     | n/a          | ~0           | Geometry neutral  |
+| TOTAL      | +282         | -766         |                   |
+
+Expected pattern:
+- ACT-only: penalty at ℓ < 1500, gain at ℓ > 1500
+- ACT+DESI: gain everywhere, DESI eliminates background penalty
+
+Method: Extract from chain logs or re-evaluate likelihood at best-fit
+
+Deliverable: Add as Table III or inset in Figure 1
+```
+
+### Task 17.2: Prose for ℓ Decomposition [TEXT]
+```
+Add to Section 4.4:
+
+"Table III shows the χ² decomposition by multipole range for 
+ACT-only and ACT+DESI fits. In both cases, the EDE improvement 
+is concentrated at ℓ > 1500 (the damping tail where the shoulder 
+is predicted). The ACT-only penalty arises entirely from 
+background-dependent terms (low-ℓ, θ*, Ωm shifts), not from 
+the damping tail itself.
+
+When DESI fixes the geometry, the background penalty disappears, 
+revealing the damping-tail preference that was always present. 
+This confirms that ACT's high-ℓ data genuinely prefer the 
+shoulder; they simply cannot constrain both the shoulder AND 
+the background simultaneously without external geometry."
+```
+
+---
+
 # IMPLEMENTATION SCHEDULE
 
 ## Week 1-2: CRITICAL CHAINS
@@ -735,6 +816,10 @@ of ~XX bins for n=2 EDE oscillations in the damping tail."
 - [ ] Task 9.1-9.3: Continuous shift + dilation test figure
 - [ ] Task 1.2: Parameter trajectory figure
 
+## Week 2-3: LOW-EFFORT HIGH-VALUE
+- [ ] Task 16.1: AIC/BIC calculation (10 minutes)
+- [ ] Task 17.1: ℓ-by-ℓ χ² table extraction
+
 ## Week 3-4: TEXT REVISIONS
 - [ ] Task 1.3: Degeneracy-breaking prose
 - [ ] Task 3 (Option B): Frequency acknowledgment
@@ -745,6 +830,7 @@ of ~XX bins for n=2 EDE oscillations in the damping tail."
 - [ ] Task 13.1: CIB defense paragraph
 - [ ] Task 14.2: Danger zone acknowledgment
 - [ ] Task 15.1: Sharpness physics explanation
+- [ ] Task 17.2: ℓ decomposition prose
 - [ ] All minor text fixes
 
 ## Week 4-6: OPTIONAL ENHANCEMENTS
@@ -795,6 +881,8 @@ Before submission, we must be able to answer each hostile question:
 | "How many PTE simulations?" | N = 10,000, method stated | Task 10.1 |
 | "σ₈ vs S₈?" | Corrected | Task 11.1 |
 | "Where is Paper I?" | Cited or self-contained | Task 11.2 |
+| "Did you check AIC/BIC?" | ΔAIC ≈ -764, ΔBIC ≈ -758 | Task 16.1 |
+| "Where in ℓ-space is the improvement?" | Table III: damping tail | Task 17.1, 17.2 |
 
 ## The Ultimate Test
 
