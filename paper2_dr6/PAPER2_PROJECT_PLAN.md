@@ -29,15 +29,21 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ---
 
-## CURRENT STATUS (Updated: 2025-12-09 06:30 UTC)
+## CURRENT STATUS (Updated: 2025-12-09 15:15 UTC)
+
+### CRITICAL ISSUE FIXED
+- **Disk was 100% full** (83GB + 79GB of CLASS debug logs)
+- Deleted giant logs, freed 86GB
+- Fixed CLASS path in configs (removed explicit path, use pip-installed classy)
+- All 4 chains restarted
 
 ### Chains Running
-| Chain | Status | Progress | Notes |
-|-------|--------|----------|-------|
-| Task 1.1: Fixed-geometry ACT | 🔄 Running | Initializing | CRITICAL for killer question |
-| Task 5.1: Planck EDE | 🔄 Running | Initializing | Testing Planck+DESI EDE |
-| Task 5.1: Planck ΛCDM | 🔄 Running | 345/450 burn-in | ~20 min to sampling |
-| Task 7.2: ACT ℓmax=1500 | 🔄 Running | Initializing | FIXED: uses defaults.scales to limit ℓ |
+| Chain | Status | PID | Notes |
+|-------|--------|-----|-------|
+| Task 1.1: Fixed-geometry ACT | 🔄 Running | 253032 | CRITICAL for killer question |
+| Task 5.1: Planck EDE | 🔄 Running | 253046 | Testing Planck+DESI EDE |
+| Task 5.1: Planck ΛCDM | 🔄 Running | 253015 | Baseline (ΛCDM is faster) |
+| Task 7.2: ACT ℓmax=1500 | 🔄 Running | 253066 | Testing low-ℓ only EDE |
 
 ### Compute Tasks Done
 | Task | Result | In Paper |
@@ -54,6 +60,11 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Task 10.1: PTE/Phase Details | ✅ N=10,000 sims, Gaussian fit | ✅ Section 6.2-6.3 |
 | Task 3 (Option B): Frequency Limitation | ✅ Explicit acknowledgment | ✅ Section 6.4 |
 | Task 1.3: Degeneracy-breaking prose | ✅ Enhanced ACT-only explanation | ✅ Section 4.4 |
+| Task 11.1: σ₈ vs S₈ | ✅ Proper conversion σ₈→S₈≈0.73 | ✅ Throughout |
+| Task 11.3: χ²/dof framing | ✅ ACT χ²/dof = 1.6 → 1.48 | ✅ Section 4 |
+| Task 12.1: Code URL | ✅ github.com/StevenRidder/Ridder-Field | ✅ Section 8 |
+| Task 12.2: Consistent 8.1σ | ✅ All instances now 8.1σ | ✅ Throughout |
+| Task 15.1: Template sharpness | ✅ Physics of phase sensitivity | ✅ Section 6.5 |
 
 ---
 
