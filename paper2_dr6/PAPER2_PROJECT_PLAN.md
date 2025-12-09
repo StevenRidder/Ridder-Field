@@ -29,22 +29,46 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ---
 
-## Executive Summary: 12 Core Issues to Resolve
+## CURRENT STATUS (Updated: 2025-12-09 06:23 UTC)
+
+### Chains Running
+| Chain | Status | Progress | Notes |
+|-------|--------|----------|-------|
+| Task 1.1: Fixed-geometry ACT | 🔄 Running | Initializing | CRITICAL for killer question |
+| Task 5.1: Planck EDE | 🔄 Running | Initializing | Testing Planck+DESI EDE |
+| Task 5.1: Planck ΛCDM | 🔄 Running | 200/300 burn-in | ~45 min to sampling |
+| Task 7.2: ACT ℓmax=1500 | ❌ Failed | Config error | Requires likelihood modification |
+
+### Compute Tasks Done
+| Task | Result |
+|------|--------|
+| Task 6.1: Pipeline Validation | ✅ H₀, χ² match published values |
+| Task 16.1: AIC/BIC | ✅ ΔAIC = -762, ΔBIC = -750 |
+| Task 17.1: χ² Decomposition | ✅ 90% from ACT high-ℓ, BAO/SN neutral |
+
+---
+
+## Executive Summary: 17 Core Issues to Resolve
 
 | # | Issue | Type | Status |
 |---|-------|------|--------|
-| 1 | THE KILLER QUESTION (ACT-only penalizes EDE) | Compute + Figure + Text | [ ] |
+| 1 | THE KILLER QUESTION (ACT-only penalizes EDE) | Compute + Figure + Text | 🔄 Chain running |
 | 2 | NO DATA FIGURE (residuals not shown) | Figure | [ ] |
 | 3 | FREQUENCY INDEPENDENCE (not tested) | Compute + Text | [ ] |
 | 4 | TEMPLATE PRE-SPECIFICATION (was it fitted?) | Text | [ ] |
-| 5 | PLANCK PENALTY INTERPRETATION (ℓ < 1500?) | Compute + Text | [ ] |
-| 6 | PIPELINE VALIDATION (ΛCDM comparison) | Compute + Text | [ ] |
+| 5 | PLANCK PENALTY INTERPRETATION (ℓ < 1500?) | Compute + Text | 🔄 Chain running |
+| 6 | PIPELINE VALIDATION (ΛCDM comparison) | Compute + Text | ✅ DONE |
 | 7 | 95% RECOVERY TOO GOOD (suspicious) | Text + Analysis | [ ] |
 | 8 | FREE-Λ POSTERIOR NOT SHOWN | Figure | [ ] |
 | 9 | SHIFTED TEMPLATE SPARSE (discrete bins only) | Compute + Figure | [ ] |
 | 10 | PTE/PHASE DETAILS MISSING | Text | [ ] |
 | 11 | σ₈/S₈, PAPER I, χ²/dof (minor issues) | Text | [ ] |
 | 12 | WORDING/COSMETIC | Text | [ ] |
+| 13 | CIB CONTAMINATION | Text | [ ] |
+| 14 | PLANCK ℓ=1500-2000 DANGER ZONE | Compute + Text | [ ] |
+| 15 | TEMPLATE SHARPNESS | Text | [ ] |
+| 16 | AIC/BIC MODEL COMPARISON | Compute | ✅ DONE |
+| 17 | ℓ-BY-ℓ χ² DECOMPOSITION | Compute | ✅ DONE |
 
 ---
 
