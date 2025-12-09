@@ -939,3 +939,321 @@ A referee should not be able to say any of:
 
 When ALL these are addressed, the paper is bulletproof.
 
+---
+
+# PHASE 6: STRATEGIC HARDENING (Post-Core Fixes)
+
+These are higher-leverage items that transform the paper from "defensible" to "bulletproof" and control the post-publication narrative.
+
+---
+
+## Issue 18: FULL FREQUENCY TEST ("It's just dust/CIB")
+
+**The Problem**: CIB/dust are strongest at high ℓ where we claim the shoulder. A full frequency test is the gold standard defense.
+
+### Task 18.1: Per-Frequency Shoulder Fits [COMPUTE]
+```
+Run separate template fits for:
+- 90 GHz only
+- 150 GHz only  
+- 220 GHz only
+- 90×150 cross
+- 150×220 cross
+
+For each:
+- Fix cosmology to ACT+DESI EDE best-fit
+- Free foreground nuisance parameters
+- Fit A_sh with errors
+
+Deliverable: Table of A_sh(90), A_sh(150), A_sh(220) in thermodynamic CMB units
+Expected: All consistent → CMB-like; frequency-dependent → foreground problem
+```
+
+### Task 18.2: Dust SED Anti-Test [COMPUTE]
+```
+Force the shoulder to scale like dust (ν^3.5) instead of CMB blackbody.
+Show that likelihood gets worse.
+
+This is the "smoking gun" against CIB.
+```
+
+### Task 18.3: Frequency Dependence Subsection [TEXT]
+```
+Add after phase scrambling section:
+
+"We test whether the shoulder follows CMB or foreground frequency scaling.
+Table X shows A_sh fitted independently at 90, 150, and 220 GHz...
+[results]. The amplitude is consistent across frequencies within 1σ,
+as expected for a cosmological signal. Forcing the shoulder to follow
+a dust SED (ν^3.5) worsens χ² by +XX, ruling out CIB contamination."
+```
+
+---
+
+## Issue 19: SYSTEMATICS ROBUSTNESS BATTERY ("It's an ACT glitch")
+
+**The Problem**: We need more than just the geometry argument. Show we tried to break it.
+
+### Task 19.1: Mask Variation Test [COMPUTE]
+```
+Run shoulder fit on 2-3 ACT masks:
+- Conservative (small sky fraction)
+- Aggressive (large sky fraction)
+- Default
+
+Report how A_sh moves. Should be stable.
+```
+
+### Task 19.2: Auto vs Cross Spectra [COMPUTE]
+```
+Repeat fit using cross-spectra only (less sensitive to detector systematics).
+Compare A_sh(auto) vs A_sh(cross).
+```
+
+### Task 19.3: Foreground Nuisance Wiggle Test [COMPUTE]
+```
+Deliberately push tSZ and CIB amplitudes by ±2σ.
+Refit A_sh each time.
+Show it's stable → shoulder is not a foreground reparameterization.
+```
+
+### Task 19.4: Systematics Table [TEXT]
+```
+Add small table to robustness section:
+
+| Test | A_sh | Δχ² | Conclusion |
+|------|------|-----|------------|
+| Default mask | 1.54±0.19 | -766 | Baseline |
+| Conservative mask | X.XX±Y.YY | -ZZZ | Stable |
+| Cross-spectra only | X.XX±Y.YY | -ZZZ | Stable |
+| tSZ +2σ | X.XX±Y.YY | -ZZZ | Stable |
+| CIB +2σ | X.XX±Y.YY | -ZZZ | Stable |
+
+"Standard systematics levers do not absorb the shoulder."
+```
+
+---
+
+## Issue 20: SPT PREDICTION ("It's a statistical fluke")
+
+**The Problem**: Need a falsifiable prediction for independent experiment.
+
+### Task 20.1: SPT-3G Forecast [COMPUTE]
+```
+At ACT+DESI best-fit:
+- Compute expected A_sh for SPT-3G TT at ℓ > 2500
+- Estimate error bars given SPT noise levels
+- State prediction: "SPT-3G should see A_sh = X.X ± Y.Y"
+
+This is cheap once you have the template and noise curves.
+```
+
+### Task 20.2: Prediction Statement [TEXT]
+```
+Add to Discussion:
+
+"The most direct test is SPT-3G. At our best-fit cosmology, 
+we predict SPT-3G TT should show A_sh = 1.0–1.5 at ℓ > 2500 
+with σ(A_sh) ≈ 0.3. A combined ACT+SPT damping tail analysis 
+would provide the definitive confirmation or refutation."
+```
+
+---
+
+## Issue 21: REPLICATION RECIPE
+
+**The Problem**: If we don't control the replication narrative, someone else will.
+
+### Task 21.1: Pre-Commit Targets [TEXT]
+```
+Add subsection:
+
+"The most direct tests of our claim are:
+1. SPT-3G TT at ℓ > 2500
+2. ACT TE/EE high-ℓ (currently noise-limited)
+3. Planck PR4 TT reprocessing
+4. Combined ACT+SPT damping tail analysis
+
+We expect any experiment with resolution and noise comparable 
+to ACT to recover A_sh ≈ 1.0–1.5 at ℓ > 2500."
+```
+
+### Task 21.2: Public Data Invitation [TEXT]
+```
+Add to Conclusions:
+
+"We encourage independent reanalysis of the ACT and SPT 
+damping tails with this and related templates. The template 
+shape and fitting procedure are described in Appendix A."
+```
+
+### Task 21.3: Minimal Reproduction Recipe [APPENDIX]
+```
+Add Appendix A: "How to Reproduce the Template Fit"
+
+One page that tells a hostile but competent group exactly 
+how to redo the template fit on their own spectra:
+- Template shape definition
+- Cosmology fixing procedure
+- χ² calculation
+- Covariance handling
+```
+
+---
+
+## Issue 22: FAILURE MODES APPENDIX
+
+**The Problem**: Robustness work lives in our heads. Surface it.
+
+### Task 22.1: Dead Ends Appendix [TEXT]
+```
+Add Appendix B: "Null Tests and Dead Ends"
+
+Table of things we tried that didn't kill the signal:
+| Test | Result | Conclusion |
+|------|--------|------------|
+| Free polynomial template | EDE shape still preferred | Not generic shape |
+| Wild foreground priors | A_sh stable | Not foreground refit |
+| High-Λ EDE | Rejected by DESI | Geometric ceiling |
+| Radiation decay | +1000s χ² penalty | Wrong physics |
+```
+
+### Task 22.2: Known Systematics Acknowledgment [TEXT]
+```
+Add to Discussion:
+
+"We acknowledge that ACT DR6 has known calibration uncertainties 
+at the 0.5% level. A systematic beam error at ℓ ≈ 2500 that 
+correlates with mask choice could in principle mimic the shoulder. 
+We have not found such an error, but future analyses should 
+explicitly test this possibility."
+```
+
+### Task 22.3: Kill Conditions [TEXT]
+```
+State what would actually kill the result:
+
+"A re-analysis that finds χ² improvement < 200 when adding 
+our template, after accounting for foregrounds and beams, 
+would indicate the current ACT preference is either a 
+fluctuation or a DR6-specific artifact."
+```
+
+---
+
+## Issue 23: MODEL AGNOSTICISM
+
+**The Problem**: Other theorists will claim "it's evidence for MY model."
+
+### Task 23.1: Model Agnosticism Paragraph [TEXT]
+```
+Add to Discussion:
+
+"We have focused on EDE as a concrete realization. However, 
+any mechanism producing a similarly phased percent-level 
+enhancement in the damping tail would fit equally well. Examples:
+- Transient change in early sound speed
+- Step in effective N_eff
+- Brief modified gravity phase
+
+The χ² improvement at high-ℓ is generic to any such model. 
+The specific H₀ and σ₈ values are EDE-implementation-specific."
+```
+
+### Task 23.2: Alternative Template Comparison [FIGURE - OPTIONAL]
+```
+Overlay EDE shoulder with:
+- Simple N_eff step
+- Toy modified recombination
+
+Show EDE matches phase and scale best.
+```
+
+---
+
+## Issue 24: PREDICTIONS OUTSIDE TT
+
+**The Problem**: Most attacks focus on TT. Pre-empt with TE/EE and lensing.
+
+### Task 24.1: Polarization Forecast [TEXT]
+```
+Add:
+
+"At ACT DR6 precision, EE is expected to show at most a 0.3% 
+effect, below current noise. A future dataset with X μK-arcmin 
+noise should detect or refute this at Yσ."
+```
+
+### Task 24.2: Lensing/LSS Prediction [TEXT]
+```
+Add:
+
+"If the EDE interpretation is correct, Stage IV weak lensing 
+should see S₈ ≈ 0.77 in flat ΛCDM fits, intermediate between 
+Planck (0.83) and current weak lensing (0.76)."
+```
+
+---
+
+## Issue 25: FRAMING THE STAKES
+
+**The Problem**: Binary "discovery or wrong" framing is dangerous.
+
+### Task 25.1: Two-Branch Outcome [TEXT]
+```
+Add to Conclusions:
+
+"Either ACT has found a real pre-recombination feature that 
+Planck cannot fully resolve, or ACT has revealed a subtle 
+percent-level high-ℓ systematic crucial for all future 
+ground-based CMB work. Both outcomes are scientifically important."
+```
+
+### Task 25.2: What Survives if EDE Dies [TEXT]
+```
+Add:
+
+"Even if the shoulder proves non-cosmological, the geometric 
+ceiling on H₀, the interplay between damping tail and BAO, 
+and the template methodology remain valuable contributions."
+```
+
+### Task 25.3: What a Negative Result Teaches [TEXT]
+```
+Add:
+
+"If future SPT and ACT releases fail to confirm this feature, 
+that will place the strongest constraints yet on percent-level 
+pre-recombination physics. In that case, the main legacy would 
+be methodological, not a detection claim."
+```
+
+---
+
+# PRIORITY ORDERING FOR PHASE 6
+
+## Must Do (Hours, High Leverage):
+1. **Issue 20**: SPT prediction (1 paragraph)
+2. **Issue 21**: Replication targets (1 paragraph)
+3. **Issue 23**: Model agnosticism (1 paragraph)
+4. **Issue 25**: Framing stakes (3 sentences)
+
+## Should Do (If Time):
+5. **Issue 22**: Failure modes appendix
+6. **Issue 24**: Polarization/lensing predictions
+7. **Issue 19**: Systematics table (if we have data)
+
+## Gold Standard (If Resources):
+8. **Issue 18**: Full frequency test (needs new chains)
+9. **Issue 21.3**: Full reproduction appendix
+
+---
+
+# STRATEGIC SUMMARY
+
+After Phase 6, a post-publication critic:
+- Cannot "discover" weaknesses (we already acknowledged them)
+- Cannot define the stakes (we already framed the two-branch outcome)
+- Cannot claim we hid fragile tricks (we published the recipe)
+- Must walk down the path we already drew
+
