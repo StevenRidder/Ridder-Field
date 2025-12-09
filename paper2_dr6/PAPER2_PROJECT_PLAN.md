@@ -29,15 +29,15 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ---
 
-## CURRENT STATUS (Updated: 2025-12-09 06:23 UTC)
+## CURRENT STATUS (Updated: 2025-12-09 06:30 UTC)
 
 ### Chains Running
 | Chain | Status | Progress | Notes |
 |-------|--------|----------|-------|
 | Task 1.1: Fixed-geometry ACT | 🔄 Running | Initializing | CRITICAL for killer question |
 | Task 5.1: Planck EDE | 🔄 Running | Initializing | Testing Planck+DESI EDE |
-| Task 5.1: Planck ΛCDM | 🔄 Running | 200/300 burn-in | ~45 min to sampling |
-| Task 7.2: ACT ℓmax=1500 | ❌ Failed | Config error | Requires likelihood modification |
+| Task 5.1: Planck ΛCDM | 🔄 Running | 345/450 burn-in | ~20 min to sampling |
+| Task 7.2: ACT ℓmax=1500 | 🔄 Running | Initializing | FIXED: uses defaults.scales to limit ℓ |
 
 ### Compute Tasks Done
 | Task | Result |
@@ -58,7 +58,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 | 4 | TEMPLATE PRE-SPECIFICATION (was it fitted?) | Text | [ ] |
 | 5 | PLANCK PENALTY INTERPRETATION (ℓ < 1500?) | Compute + Text | 🔄 Chain running |
 | 6 | PIPELINE VALIDATION (ΛCDM comparison) | Compute + Text | ✅ DONE |
-| 7 | 95% RECOVERY TOO GOOD (suspicious) | Text + Analysis | [ ] |
+| 7 | 95% RECOVERY TOO GOOD (suspicious) | Text + Analysis | 🔄 Task 7.2 running |
 | 8 | FREE-Λ POSTERIOR NOT SHOWN | Figure | [ ] |
 | 9 | SHIFTED TEMPLATE SPARSE (discrete bins only) | Compute + Figure | [ ] |
 | 10 | PTE/PHASE DETAILS MISSING | Text | [ ] |
