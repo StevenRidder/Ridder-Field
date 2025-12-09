@@ -40,11 +40,20 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Task 7.2: ACT ℓmax=1500 | 🔄 Running | Initializing | FIXED: uses defaults.scales to limit ℓ |
 
 ### Compute Tasks Done
-| Task | Result |
-|------|--------|
-| Task 6.1: Pipeline Validation | ✅ H₀, χ² match published values |
-| Task 16.1: AIC/BIC | ✅ ΔAIC = -762, ΔBIC = -750 |
-| Task 17.1: χ² Decomposition | ✅ 90% from ACT high-ℓ, BAO/SN neutral |
+| Task | Result | In Paper |
+|------|--------|----------|
+| Task 6.1: Pipeline Validation | ✅ H₀, χ² match published values | ✅ Section 3.3 |
+| Task 16.1: AIC/BIC | ✅ ΔAIC = -762, ΔBIC = -750 | ✅ Section 4.6 |
+| Task 17.1: χ² Decomposition | ✅ 90% from ACT high-ℓ, BAO/SN neutral | ✅ Section 4.3 |
+
+### Text Additions Done
+| Task | Content | In Paper |
+|------|---------|----------|
+| Task 4.1: Template Provenance | ✅ Fixed before ACT analysis | ✅ Section 3.2 |
+| Task 7.1: 95% Recovery Explanation | ✅ Expected, not suspicious | ✅ Section 4.3 |
+| Task 10.1: PTE/Phase Details | ✅ N=10,000 sims, Gaussian fit | ✅ Section 6.2-6.3 |
+| Task 3 (Option B): Frequency Limitation | ✅ Explicit acknowledgment | ✅ Section 6.4 |
+| Task 1.3: Degeneracy-breaking prose | ✅ Enhanced ACT-only explanation | ✅ Section 4.4 |
 
 ---
 
@@ -54,14 +63,14 @@ If you want a package that survives hostile review, the highest-leverage items a
 |---|-------|------|--------|
 | 1 | THE KILLER QUESTION (ACT-only penalizes EDE) | Compute + Figure + Text | 🔄 Chain running |
 | 2 | NO DATA FIGURE (residuals not shown) | Figure | [ ] |
-| 3 | FREQUENCY INDEPENDENCE (not tested) | Compute + Text | [ ] |
-| 4 | TEMPLATE PRE-SPECIFICATION (was it fitted?) | Text | [ ] |
+| 3 | FREQUENCY INDEPENDENCE (not tested) | Compute + Text | ✅ Limitation noted |
+| 4 | TEMPLATE PRE-SPECIFICATION (was it fitted?) | Text | ✅ DONE |
 | 5 | PLANCK PENALTY INTERPRETATION (ℓ < 1500?) | Compute + Text | 🔄 Chain running |
 | 6 | PIPELINE VALIDATION (ΛCDM comparison) | Compute + Text | ✅ DONE |
-| 7 | 95% RECOVERY TOO GOOD (suspicious) | Text + Analysis | 🔄 Task 7.2 running |
+| 7 | 95% RECOVERY TOO GOOD (suspicious) | Text + Analysis | ✅ DONE + 🔄 Task 7.2 |
 | 8 | FREE-Λ POSTERIOR NOT SHOWN | Figure | [ ] |
 | 9 | SHIFTED TEMPLATE SPARSE (discrete bins only) | Compute + Figure | [ ] |
-| 10 | PTE/PHASE DETAILS MISSING | Text | [ ] |
+| 10 | PTE/PHASE DETAILS MISSING | Text | ✅ DONE |
 | 11 | σ₈/S₈, PAPER I, χ²/dof (minor issues) | Text | [ ] |
 | 12 | WORDING/COSMETIC | Text | [ ] |
 | 13 | CIB CONTAMINATION | Text | [ ] |
