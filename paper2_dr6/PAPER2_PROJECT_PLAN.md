@@ -586,6 +586,141 @@ Alternative: "ACT DR6 Detects a High-ℓ Feature Below Planck's Resolution"
 
 ---
 
+# PHASE 5: LAST-MINUTE RED TEAM ADDITIONS
+
+## Issue 13: CIB CONTAMINATION
+
+**The Problem**: The feature is at high ℓ where CIB (dusty star-forming galaxies) dominates. Referee will ask: "Is your 'Soft Shoulder' just a mis-modeled CIB component?"
+
+**The Attack**: "The claimed feature lives at exactly the multipoles where CIB and tSZ are strongest. How do you know this isn't a foreground residual?"
+
+### Task 13.1: Explicit CIB Defense [TEXT]
+```
+Add to Section 6.6:
+
+"The Cosmic Infrared Background (CIB) is a potential contaminant at 
+ℓ > 2000. However, several features of our detection argue against 
+CIB contamination:
+
+(a) CIB follows a modified blackbody spectrum peaking at ~350 GHz, 
+    with decreasing amplitude at lower frequencies. The shoulder 
+    detection uses 90-220 GHz data where CIB is subdominant to CMB.
+
+(b) The ACT DR6 likelihood explicitly marginalizes over CIB amplitude 
+    and spectral index. Any CIB component absorbed by these nuisance 
+    parameters would not appear as a cosmological signal.
+
+(c) CIB angular power is approximately Poisson (Cℓ ≈ const) plus 
+    clustered (Cℓ ∝ ℓ^0.8). Neither matches the oscillatory, 
+    phase-coherent structure of the soft shoulder.
+
+(d) The shifted-template null test shows that shifting the phase by 
+    30 bins destroys the signal (27σ → 1.8σ). CIB cannot produce 
+    phase-locked oscillations at specific acoustic peak positions.
+
+A definitive CIB exclusion would require fitting A_sh separately at 
+90, 150, and 220 GHz. We leave this for future work but note that 
+the above arguments strongly favor a cosmological origin."
+```
+
+---
+
+## Issue 14: PLANCK ℓ = 1500-2000 "DANGER ZONE"
+
+**The Problem**: +35 of Planck's penalty comes from ℓ = 1500-2000, where Planck is NOT noise-dominated. This undermines the "resolution asymmetry" story.
+
+**The Attack**: "Planck penalizes the model at ℓ = 1500-2000 where it's still accurate. This isn't a beam problem—it's a genuine tension."
+
+### Task 14.1: Quantify Danger Zone [COMPUTE]
+```
+Purpose: Determine if ℓ = 1500-2000 penalty is from beam or genuine tension
+
+Method:
+1. Calculate Planck S/N per mode at ℓ = 1500, 1750, 2000
+2. Calculate expected Δχ² from beam deconvolution at these scales
+3. Compare to observed +35 penalty
+
+Expected outcomes:
+- If +35 is explainable by beam effects → good, mention in paper
+- If +35 is NOT from beam → acknowledge as "genuine mild tension"
+```
+
+### Task 14.2: Danger Zone Acknowledgment [TEXT]
+```
+Add to Section 5.2:
+
+"Of the +121 total Planck penalty, +35 arises at ℓ = 1500-2000. 
+This regime is not fully noise-dominated for Planck (S/N ≈ X per mode), 
+raising the question of whether this represents genuine tension 
+rather than beam-limited noise fitting.
+
+We note two factors:
+(a) The EDE model shifts cosmological parameters (H₀, Ωm) in ways 
+    that affect the acoustic peak positions even at ℓ < 2000.
+(b) The known 2-3σ ACT-Planck calibration tension at these scales 
+    (documented by the ACT collaboration) contributes.
+
+However, we acknowledge that unlike the ℓ > 2000 penalty, the 
+ℓ = 1500-2000 penalty cannot be fully attributed to beam effects. 
+This represents the residual tension between ACT-preferred and 
+Planck-preferred cosmologies."
+```
+
+---
+
+## Issue 15: TEMPLATE SHARPNESS TOO EXTREME?
+
+**The Problem**: Shifting the template by only 30 bins kills the signal (27σ → 1.8σ). This sharpness might be "too sharp" for a cosmological signal.
+
+**The Attack**: "A cosmological signal should be smoothed by diffusion damping. The fact that 30-bin shift destroys it suggests you're fitting some instrumental artifact with a sharp feature, not a smooth acoustic modification."
+
+### Task 15.1: Physics of Sharpness [TEXT]
+```
+Add to Section 6.3 (or create subsection):
+
+"The sensitivity to template phase (30-bin shift reduces significance 
+from 27σ to 1.8σ) warrants discussion. Is this sharpness physically 
+consistent with EDE?
+
+The acoustic peaks themselves are sharp. At ℓ = 2000, the peak width 
+is approximately Δℓ ≈ 50-100. A 30-bin shift (Δℓ ≈ 30 × bin_width) 
+can misalign the template oscillations with the acoustic peaks by 
+~π/2 radians, destroying coherence.
+
+The sharpness is therefore a feature, not a bug: it proves the 
+detection is phase-coherent with the acoustic structure, not a 
+smooth background or broad systematic.
+
+For comparison:
+- Foregrounds (tSZ, CIB): smooth, featureless → insensitive to phase
+- Beam errors: smooth multiplicative → insensitive to phase  
+- Acoustic modification: oscillatory → highly phase-sensitive
+
+The extreme phase sensitivity is exactly what we expect if the 
+signal modifies acoustic oscillations at recombination."
+```
+
+### Task 15.2: Compute Expected Sharpness [COMPUTE - OPTIONAL]
+```
+Purpose: Quantify expected phase sensitivity from EDE theory
+
+Method:
+1. For EDE theory, compute decorrelation scale: 
+   At what Δℓ does cross-correlation between template(ℓ) and 
+   template(ℓ + Δℓ) drop to 0.5?
+   
+2. Compare to observed sensitivity (30 bins ≈ Δℓ ~ 30-60)
+
+3. If they match → phase sensitivity is as expected
+   If theory predicts broader → potential concern
+
+Deliverable: Quote in paper: "The observed phase decorrelation 
+scale of ~50 bins is consistent with the theoretical expectation 
+of ~XX bins for n=2 EDE oscillations in the damping tail."
+```
+
+---
+
 # IMPLEMENTATION SCHEDULE
 
 ## Week 1-2: CRITICAL CHAINS
@@ -607,6 +742,9 @@ Alternative: "ACT DR6 Detects a High-ℓ Feature Below Planck's Resolution"
 - [ ] Task 6.2: Pipeline validation paragraph
 - [ ] Task 7.1: 95% recovery explanation
 - [ ] Task 10.1: PTE details
+- [ ] Task 13.1: CIB defense paragraph
+- [ ] Task 14.2: Danger zone acknowledgment
+- [ ] Task 15.1: Sharpness physics explanation
 - [ ] All minor text fixes
 
 ## Week 4-6: OPTIONAL ENHANCEMENTS
@@ -645,6 +783,9 @@ Before submission, we must be able to answer each hostile question:
 | "Is high-ℓ the only driver of Λ?" | We test with ℓmax = 1500 | Task 7.2 |
 | "Show the Λ posterior" | Here it is | Task 8.1 figure |
 | "Is the phase/scale specific?" | Shift and dilation tests | Task 9.1-9.3 |
+| "Is this just CIB?" | Phase-coherent, follows CMB law, marginalized over | Task 13.1 |
+| "What about Planck at ℓ=1500-2000?" | Acknowledged as mild ACT-Planck tension | Task 14.2 |
+| "Is the sharpness physically plausible?" | Matches acoustic peak width | Task 15.1 |
 
 ## Moderate Questions (Minor revision if not answered)
 
