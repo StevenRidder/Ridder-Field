@@ -6,6 +6,29 @@
 
 ---
 
+## Minimum Viable Package (What Must Be Done)
+
+If you want a package that survives hostile review, the highest-leverage items are:
+
+1. **Prove the shoulder is visible in ACT at the DESI-preferred geometry**
+   - Residual plot (THE MONEY PLOT)
+   - Explanation of why ACT-only penalizes EDE but ACT+DESI does not
+
+2. **Show your pipeline reproduces ACT and Planck ΛCDM**
+   - χ² comparison table
+   - Posterior overlays on published results
+
+3. **Either run or explicitly bracket the key systematics tests**
+   - Frequency splits
+   - Mask and nuisance-parameter robustness summary
+
+4. **Clarify template origin, Λ posterior, and significance language**
+   - Lock in pre-specified template parameters
+   - Show Λ posteriors
+   - Say "8.1σ conditional on this template" rather than naked "8σ detection"
+
+---
+
 ## Executive Summary: 12 Core Issues to Resolve
 
 | # | Issue | Type | Status |
@@ -195,6 +218,32 @@ These requirements significantly constrain viable foreground models."
 
 **Recommendation**: Start with Option B, pursue Option A if time permits.
 
+### Option C: Full Systematics Battery [CHAIN - HIGHEST EFFORT]
+```
+Beyond frequency splits, the "standard bar" for a high-ℓ detection includes:
+
+1. Mask variations
+   - Fit A_sh with different sky masks (40%, 50%, 60% of sky)
+   - If A_sh varies significantly with mask → systematic concern
+   
+2. Cross-spectra vs auto-spectra
+   - 90×150 cross-spectrum only → A_sh = ?
+   - 150×220 cross-spectrum only → A_sh = ?
+   - Cross-spectra are less contaminated by certain systematics
+   
+3. Point source mask variations
+   - Conservative vs aggressive point source cuts
+   - Cluster masking variations
+   
+4. Foreground nuisance parameter variations
+   - Fit with tSZ amplitude fixed at ±2σ from best-fit
+   - Fit with CIB amplitude fixed at ±2σ from best-fit
+   - If A_sh is stable → not degenerate with foregrounds
+
+Effort: VERY HIGH (many chains, likelihood modifications)
+Priority: Only if time permits after critical issues resolved
+```
+
 ---
 
 ## Issue 4: TEMPLATE PRE-SPECIFICATION
@@ -260,6 +309,29 @@ indicating genuine tension with the EDE cosmology beyond beam effects.
 This may reflect the known ACT-Planck calibration difference."
 ```
 
+### Task 5.3: Planck Injection Simulation [COMPUTE - OPTIONAL]
+```
+Purpose: Quantitatively prove Planck's penalty is expected from noise
+
+Method:
+1. Generate simulated Planck skies WITH the ACT-preferred shoulder
+   - Use ACT+DESI EDE best-fit cosmology
+   - Add Planck beam convolution
+   - Add Planck noise levels
+   
+2. Fit the shoulder template to these simulations
+3. Measure the expected Δχ² when fitting signal to noise
+
+Expected result: Simulated Planck shows Δχ² ≈ +70 to +120
+This matches the observed +108, confirming the penalty is from noise-fitting.
+
+Deliverable: Add to Section 5.3:
+"We simulated Planck observations of an ACT-like shoulder (A_sh = 1.5) 
+convolved with Planck's beam and noise model. The expected Δχ² penalty 
+from fitting this signal in Planck's noise-dominated regime is +XX ± YY, 
+consistent with the observed +108."
+```
+
 ---
 
 ## Issue 6: PIPELINE VALIDATION
@@ -304,7 +376,7 @@ pipeline artifact."
 
 **The Problem**: EDE captures 766/800 = 95% of template improvement. Referee will say: "This is implausibly good for a constrained model."
 
-**The Solution**: Explain why this is expected, not suspicious.
+**The Solution**: Explain why this is expected, not suspicious. Also test whether high-ℓ is the only driver.
 
 ### Task 7.1: Explanation Paragraph [TEXT]
 ```
@@ -324,6 +396,27 @@ These constraints prevent EDE from perfectly matching the template's
 'ideal' shape, explaining the small difference. The high recovery rate 
 is evidence that EDE correctly predicts the shoulder's physical origin, 
 not that EDE is overfitting."
+```
+
+### Task 7.2: Low-ℓ Only EDE Test [CHAIN]
+```
+Purpose: Test whether Λ is constrained by low-ℓ or only by high-ℓ
+
+Method:
+1. Fit EDE to ACT with ℓmax = 1500 (cut damping tail)
+2. Add DESI + Pantheon + Planck low-ℓ
+3. See what Λ the low-ℓ data prefer
+
+Expected outcomes:
+- If Λ posterior is flat/broad: Low-ℓ doesn't constrain Λ
+  → The Λ = 0.16 preference comes from high-ℓ (as claimed)
+  
+- If Λ posterior peaks at 0.16: Low-ℓ independently prefers same Λ
+  → Even stronger! The preference is not just high-ℓ noise
+
+Either outcome is defensible, but we need to know which is true.
+
+Config: act_lmax_1500_ede.yaml
 ```
 
 ---
@@ -391,6 +484,25 @@ Plot:
 
 Expected: Sharp peak at shift = 0, flat elsewhere
 This proves ACT responds to SPECIFIC phase, not generic oscillations.
+```
+
+### Task 9.3: Dilation/Stretching Test [COMPUTE]
+```
+Purpose: Test whether the template's ℓ-scale is also specific
+
+Method:
+1. Define dilation factor α: template_dilated(ℓ) = template(α × ℓ)
+2. Test α = 0.9, 0.95, 1.0, 1.05, 1.1 (±10% scaling)
+3. Fit A_sh for each dilated template
+
+Expected result:
+- A_sh peaks at α = 1.0 (no dilation)
+- A_sh drops significantly at α = 0.9 or 1.1
+
+This proves ACT responds to the SPECIFIC ℓ-scale of the shoulder, 
+not just any oscillatory pattern that could be stretched to fit.
+
+Deliverable: Add column to shifted-template table or separate figure
 ```
 
 ---
@@ -478,13 +590,14 @@ Alternative: "ACT DR6 Detects a High-ℓ Feature Below Planck's Resolution"
 
 ## Week 1-2: CRITICAL CHAINS
 - [ ] Task 1.1: Fixed-geometry ACT test
-- [ ] Task 5.1: Planck ℓmax test
+- [ ] Task 5.1: Planck ℓmax = 1500 test
 - [ ] Task 6.1: ΛCDM validation numbers
+- [ ] Task 7.2: Low-ℓ only EDE test (ACT ℓmax = 1500)
 
 ## Week 2-3: FIGURES
 - [ ] Task 2.1: ACT residual figure (THE MONEY PLOT)
 - [ ] Task 8.1: Λ posterior figure
-- [ ] Task 9.2: Continuous shift test figure
+- [ ] Task 9.1-9.3: Continuous shift + dilation test figure
 - [ ] Task 1.2: Parameter trajectory figure
 
 ## Week 3-4: TEXT REVISIONS
@@ -496,7 +609,12 @@ Alternative: "ACT DR6 Detects a High-ℓ Feature Below Planck's Resolution"
 - [ ] Task 10.1: PTE details
 - [ ] All minor text fixes
 
-## Week 4+: POLISH AND REVIEW
+## Week 4-6: OPTIONAL ENHANCEMENTS
+- [ ] Task 5.3: Planck injection simulation (if time)
+- [ ] Task 3 (Option A): Frequency splits (if time)
+- [ ] Task 3 (Option C): Full systematics battery (if time)
+
+## Week 6+: POLISH AND REVIEW
 - [ ] Full paper read-through
 - [ ] Figure quality check
 - [ ] Bibliography cleanup
@@ -506,17 +624,45 @@ Alternative: "ACT DR6 Detects a High-ℓ Feature Below Planck's Resolution"
 
 # SUCCESS CRITERIA
 
-Before submission, we must be able to answer:
+Before submission, we must be able to answer each hostile question:
 
-1. **"Is the shoulder in ACT's data?"** → Yes, Task 1.1 shows it at fixed geometry
-2. **"Show me the data"** → Figure from Task 2.1
-3. **"Is this foreground?"** → Addressed in Task 3, partial answer
-4. **"Was the template fitted?"** → No, Task 4.1 gives provenance
-5. **"Does Planck reject EDE?"** → No, Task 5.1 shows it's beam limitation
-6. **"Is your pipeline correct?"** → Yes, Task 6.1 validates ΛCDM
-7. **"Why 95% recovery?"** → Task 7.1 explains
-8. **"Show the Λ constraint"** → Figure from Task 8.1
-9. **"Is the phase specific?"** → Figure from Task 9.2
+## Fatal Questions (Paper rejected if not answered)
 
-When ALL these questions have strong answers, the paper is ready.
+| Question | Answer | Evidence |
+|----------|--------|----------|
+| "If ACT detects the shoulder, why does ACT-only reject EDE?" | DESI breaks degeneracy; shoulder is visible at fixed geometry | Task 1.1, 1.2, 1.3 |
+| "Show me the data" | Here's the residual plot | Task 2.1 figure |
+| "Is this foreground?" | We acknowledge limitation OR show frequency splits | Task 3 |
+| "Is your pipeline trustworthy?" | We reproduce official ΛCDM | Task 6.1, 6.2 |
+
+## Major Questions (Major revision if not answered)
+
+| Question | Answer | Evidence |
+|----------|--------|----------|
+| "Was the template fitted to ACT?" | No, canonical EDE params from Poulin 2019 | Task 4.1 |
+| "Planck rejects your model" | Penalty localized to beam-suppressed ℓ | Task 5.1, 5.2 |
+| "95% recovery is too good" | Template derived FROM EDE theory | Task 7.1 |
+| "Is high-ℓ the only driver of Λ?" | We test with ℓmax = 1500 | Task 7.2 |
+| "Show the Λ posterior" | Here it is | Task 8.1 figure |
+| "Is the phase/scale specific?" | Shift and dilation tests | Task 9.1-9.3 |
+
+## Moderate Questions (Minor revision if not answered)
+
+| Question | Answer | Evidence |
+|----------|--------|----------|
+| "How did you do phase scrambling?" | Details provided | Task 10.1 |
+| "How many PTE simulations?" | N = 10,000, method stated | Task 10.1 |
+| "σ₈ vs S₈?" | Corrected | Task 11.1 |
+| "Where is Paper I?" | Cited or self-contained | Task 11.2 |
+
+## The Ultimate Test
+
+A referee should not be able to say any of:
+- "They never showed me the data" ❌
+- "They never validated their pipeline" ❌  
+- "They never tested for foregrounds" ❌
+- "They never explained the ACT-only penalty" ❌
+- "They never showed the Λ posterior" ❌
+
+When ALL these are addressed, the paper is bulletproof.
 
