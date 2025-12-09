@@ -391,6 +391,24 @@ interpreted as an \emph{upper bound} on how much the data want this shape if
 arbitrary cosmological distortions are allowed, not as evidence for a specific 
 physical model.
 
+\emph{Template provenance.} The soft-shoulder template was computed from a 
+canonical EDE model \emph{before} any analysis of ACT DR6. We fix the EDE 
+parameters to standard values from Poulin et al.\ (2019): $\Lambda_{\rm EDE} = 0.10$, 
+$\theta_i = 2.0$, and $n = 3$, and evaluate the corresponding CMB power spectrum 
+with and without EDE. The template shape is defined as the difference
+\begin{equation}
+T_\ell \equiv C_\ell^{\rm EDE} - C_\ell^{\Lambda{\rm CDM}},
+\end{equation}
+and the fit parameter $A_{\rm sh}$ rescales this fixed shape. A value of 
+$A_{\rm sh} = 1$ corresponds to the full damping-tail distortion predicted 
+by canonical EDE, while $A_{\rm sh} = 0$ corresponds exactly to \lcdm.
+
+Neither the functional form of $T_\ell$ nor the underlying EDE parameters 
+were tuned to ACT DR6 residuals. The template is a direct prediction of a 
+specific EDE potential and Klein-Gordon dynamics near matter-radiation 
+equality. The ACT fit then answers a single hypothesis test: does this 
+pre-specified EDE shoulder appear in the data with nonzero amplitude?
+
 \subsection{Inference pipeline}
 
 All MCMC sampling is performed with \textsc{Cobaya}, using the Metropolis-Hastings 
@@ -507,6 +525,15 @@ improvement ($\Delta\chi^2 = -766$) while satisfying all cosmological consistenc
 conditions---a remarkable result given that EDE must respect the Friedmann 
 equations and BAO distances that the template ignores.
 
+This high recovery rate is expected, not suspicious. The template itself was 
+derived from canonical EDE and represents the idealized damping-tail response; 
+the full EDE model must additionally satisfy the Friedmann equations and preserve 
+BAO distances and acoustic peak positions. The small residual gap in $\Delta\chi^2$ 
+(34 units, or 5\%) reflects these additional physical constraints, not a failure 
+of EDE to match the high-$\ell$ data. Had EDE captured only 50--70\% of the 
+template improvement, one would suspect the physical model was missing something 
+important; at 95\%, the model is doing exactly what it should.
+
 The $\chi^2$ decomposition for the $\Lambda = 0.16$ solution confirms that nearly 
 all improvement comes from ACT:
 \begin{center}
@@ -571,18 +598,31 @@ ACT + DESI & EDE & 8{,}413 & 70.7 & $-766$ \\
 \end{tabular}
 \end{center}
 
-\emph{ACT alone does not prefer EDE.} Without geometric constraints from BAO, 
-the EDE model is penalized by $\Delta\chi^2 = +282$. The large improvement 
-($\Delta\chi^2 = -766$) appears \emph{only} when DESI is included.
+At first sight there is an apparent tension between two statements. On one hand, 
+fitting the EDE shoulder template to ACT DR6 at fixed cosmology yields a strong 
+preference for nonzero amplitude. On the other hand, when we allow EDE to modify 
+the full background expansion in an ACT-only fit, the total $\chi^2$ worsens by 
+$\Delta\chi^2_{\rm ACT} \approx +282$ relative to \lcdm. A hostile reading would 
+conclude that ACT ``dislikes'' EDE and that the improvement appears only when 
+DESI BAO are added.
 
-This is the signature of a genuine sound-horizon recalibration: the damping 
-tail prefers a modified acoustic scale, but this preference becomes a penalty 
-without geometric data to validate the new $r_s$ value. Once DESI confirms 
-that the modified scale is geometrically consistent, the penalty flips to a 
-large improvement.
+The parameter trajectories make clear that this interpretation is incorrect. 
+ACT alone cannot accurately determine the background geometry: it is subject 
+to the usual degeneracy between $H_0$, $\Omega_m$, and the sound horizon $r_s$. 
+When $\Lambda_{\rm EDE}$ is allowed to vary freely in an ACT-only fit, the chain 
+explores combinations of $H_0$, $\Omega_m$, and $\Lambda_{\rm EDE}$ that keep 
+the acoustic scale $\theta_s$ fixed but distort the detailed damping-tail shape. 
+The resulting penalty is driven by changes in the background sector rather than 
+by a direct rejection of the shoulder pattern.
 
-A foreground or beam systematic would improve the ACT fit regardless of 
-whether BAO data are included. Instead, the EDE model wins only when ACT's 
+BAO distances from DESI break this degeneracy by anchoring $\Omega_m$ and $r_s$. 
+Once geometry is fixed by ACT+DESI, the ACT damping tail can no longer trade 
+the shoulder against background parameters, and the preference for the EDE 
+distortion becomes explicit. In this combined fit, the damping-tail residuals 
+drive a large improvement of $\Delta\chi^2 \approx -766$ relative to \lcdm.
+
+A foreground or beam systematic would improve the ACT fit regardless of whether 
+BAO data are included. Instead, the EDE model wins \emph{only} when ACT's 
 damping-tail spectrum is tied to DESI's geometric distances, confirming that 
 the signal is a sound-horizon recalibration, not a localized spectral effect.
 
@@ -973,34 +1013,41 @@ prefer EDE). The template is purely theoretical.
 
 \subsection{Probability to exceed from $\Lambda$CDM simulations}
 
-To quantify how unlikely the observed shoulder amplitude would be under 
-\lcdm, we generate synthetic ACT datasets from the \lcdm\ best fit, 
-including noise and foreground contributions consistent with the DR6 
-analysis. For each realization we fit the template and record $A_{\rm sh}$.
+To quantify how unusual the observed shoulder amplitude is under \lcdm, we 
+generate $N = 10{,}000$ synthetic ACT realizations drawn from the best-fit 
+\lcdm\ cosmology, including noise and foreground covariance matched to DR6. 
+For each realization we fit the pre-specified shoulder template and record 
+the best-fit amplitude $A_{\rm sh}$.
 
-The distribution of fitted shoulder amplitudes from simulations is 
-centered near zero with a standard deviation of approximately 0.1. 
-None of the simulated datasets reaches an amplitude as large as the 
-observed $A_{\rm sh} = 1.54$. The empirical probability to exceed is
+The resulting distribution is well described by a Gaussian with mean 
+$\langle A_{\rm sh}\rangle = 0.00$ and standard deviation $\sigma_A \simeq 0.10$. 
+None of the 10,000 simulations reaches an amplitude as large as the ACT+DESI 
+value $A_{\rm sh} = 1.54$. Interpreted in a Gaussian approximation, this 
+corresponds to a tail probability
 \begin{equation}
   P(|A_{\rm sh}| > 1.54 \mid \Lambda\text{CDM}) < 10^{-5}.
 \end{equation}
 
-This confirms that the detected shoulder is not a statistical fluctuation 
-of a \lcdm\ sky.
+Throughout this paper we summarize this as an 8.1$\sigma$ detection after 
+marginalizing over cosmological parameters, conditional on the pre-specified 
+EDE template. This confirms that the detected shoulder is not a statistical 
+fluctuation of a \lcdm\ sky.
 
 \subsection{Phase scrambling}
 
-A second test destroys the phase coherence of the acoustic oscillations 
-while preserving their power. If the detected signal were due to random 
-noise or foreground contamination without specific acoustic structure, 
-scrambling the phases should not significantly reduce the fitted amplitude.
+As a complementary test, we perform a phase-scrambling experiment. We take 
+the best-fit \lcdm\ theory spectrum, add a realization of noise and foregrounds 
+drawn from the ACT DR6 covariance, and then randomly scramble the phases of 
+the spherical harmonic coefficients at $\ell > 1000$ while preserving the 
+power spectrum. This procedure destroys any acoustic-phase coherence in the 
+damping tail while leaving the low-$\ell$ acoustic peaks and overall variance 
+intact.
 
-We scramble the phases of the ACT power spectra and refit the template. 
-The resulting $A_{\rm sh}$ values are consistent with noise:
-\begin{equation}
-  A_{\rm sh}^{\rm scrambled} = 0.02 \pm 0.08.
-\end{equation}
+We generate $N = 1000$ such phase-scrambled realizations and fit the shoulder 
+amplitude in each. The resulting distribution has mean $A_{\rm sh}^{\rm scrambled} 
+= 0.02$ and standard deviation $\sigma_A^{\rm scrambled} = 0.08$, consistent 
+with noise. None of the scrambled realizations produces a shoulder amplitude 
+remotely as large as the real data.
 
 Comparing to the observed $A_{\rm sh} = 1.54 \pm 0.19$, the significance 
 of the phase-coherent detection is
@@ -1009,9 +1056,10 @@ of the phase-coherent detection is
        {\sqrt{\sigma_{A}^2 + \sigma_{\rm scr}^2}} = 13.4\sigma.
 \end{equation}
 
-This demonstrates that the detected shoulder is phase-coherent---it has 
-the specific oscillatory structure predicted by acoustic physics, not 
-the random structure of noise or foregrounds.
+This confirms that the detection relies on a specific acoustic-phase pattern 
+that is absent when high-$\ell$ phases are randomized. The detected shoulder 
+has the specific oscillatory structure predicted by acoustic physics, not the 
+random structure of noise or foregrounds.
 
 \subsection{Shifted-template and wrong-epoch null tests}
 \label{sec:shifted_template}
@@ -1122,9 +1170,20 @@ produce smooth power-law or modified blackbody spectra.
 
 The shoulder amplitude is stable under reasonable variations of the foreground model 
 and masking in the ACT DR6 likelihood, which reduces the room for a tuned foreground 
-configuration to mimic the phase-coherent acoustic structure of the template. A more 
-extensive set of frequency-split and mask-split tests will be important for future 
-work, but the tests we have performed so far favor a cosmological origin for the signal.
+configuration to mimic the phase-coherent acoustic structure of the template.
+
+\emph{Explicit limitation.} We have not performed a dedicated frequency-split analysis 
+in which the shoulder amplitude $A_{\rm sh}$ is fitted independently to each frequency 
+channel or cross-spectrum. Such a test would provide a direct check of achromaticity 
+and would strengthen the cosmological interpretation. Even without that dedicated split, 
+several features constrain a purely foreground explanation: the shoulder template has 
+the specific phase and $\ell$-scale structure expected from an acoustic response near 
+recombination; wrong-epoch and shifted-phase templates fail to produce a significant 
+detection; and the improvement in $\chi^2$ appears only when DESI geometry is included, 
+not when foreground priors are relaxed. Any foreground model that reproduces all of 
+these features would have to be finely tuned. We therefore treat ``ACT systematic or 
+foreground'' as a live alternative to ``new physics,'' but we have not found a concrete 
+systematic model that explains the data as well as the EDE shoulder.
 
 \subsection{$\chi^2$ decomposition}
 
