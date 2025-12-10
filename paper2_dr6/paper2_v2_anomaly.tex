@@ -71,8 +71,62 @@ by modifying late-time physics is increasingly overconstrained. Attention
 has thus turned to the pre-recombination era, where reducing the sound 
 horizon $r_s$ can naturally yield a higher $H_0$.
 
-In this paper, we fit a fixed, theory-motivated damping-tail template to 
-ACT DR6 high-$\ell$ data. We find:
+\subsection{Prior work on Early Dark Energy}
+
+Early Dark Energy (EDE) was proposed as a mechanism to raise $H_0$ from CMB 
+data by injecting energy near matter-radiation equality, thereby reducing 
+the sound horizon \cite{Poulin2019,Smith2020,Karwal2016}. The original 
+axion-like EDE model of \cite{Poulin2019} showed that a scalar field with 
+potential $V(\phi) \propto [1-\cos(\phi/f)]^n$ can provide $\sim$10\% of 
+the energy density at $z \sim 3500$ and raise $H_0$ by several km/s/Mpc 
+while preserving the acoustic peak structure.
+
+Subsequent work revealed a tension between ACT and Planck in their 
+preference for EDE. \cite{Hill2022} analyzed ACT DR4 and found that ACT 
+prefers the existence of EDE at $>$99.7\% CL with $f_{\rm EDE} = 
+0.091^{+0.020}_{-0.036}$ and $H_0 = 70.9^{+1.0}_{-2.0}$~\kms, favoring 
+EDE over \lcdm\ at roughly 3$\sigma$ significance. In contrast, Planck 
+alone yields $f_{\rm EDE} < 0.087$ (95\% CL) and no evidence for EDE. 
+\cite{Hill2022} noted: ``Understanding whether these differing constraints 
+are physical in nature, due to systematics, or simply a rare statistical 
+fluctuation is of high priority.''
+
+This ACT--Planck discrepancy has been examined from multiple angles. 
+\cite{Smith2022} showed that EDE is not excluded by large-scale structure 
+data, addressing concerns about $\sigma_8$ tension. \cite{Poulin2023} 
+analyzed ACT data without late-time priors and found $H_0 = 71.6^{+1.1}_{-1.4}$~\kms, 
+reinforcing the ACT preference. \cite{Hill2020} cautioned that EDE does 
+not fully restore cosmological concordance when all datasets are combined. 
+More recently, \cite{Efstathiou2024,Tristram2024} have emphasized residual 
+tensions in Planck's damping tail that may be relevant to EDE constraints.
+
+\subsection{What this paper adds}
+
+Prior EDE analyses fit the \emph{full model} with multiple free parameters 
+($f_{\rm EDE}$, $z_c$, $\theta_i$, $n$), making significance claims subject 
+to look-elsewhere corrections and parameter-volume effects. We take a 
+different approach: we fix the template shape from theory \emph{before} 
+examining the data and fit only a single amplitude parameter $A_{\rm sh}$.
+
+This ``matched-filter'' approach has three advantages:
+\begin{enumerate}
+\item \textbf{Sharper hypothesis test.} With one free parameter, significance 
+is unambiguous: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$) vs.\ the null 
+hypothesis $A_{\rm sh} = 0$.
+\item \textbf{Truly blind.} The template shape is derived from canonical 
+EDE parameters \cite{Poulin2019} before any analysis of ACT DR6. There is 
+no tuning.
+\item \textbf{Falsifiable across experiments.} The single number $A_{\rm sh}$ 
+can be measured by SPT-3G, Simons Observatory, and CMB-S4 with their own 
+systematics. A consistent result would be compelling; an inconsistent 
+result would point to experiment-specific effects.
+\end{enumerate}
+
+We also incorporate DESI Year-1 BAO \cite{DESI2024}, which was unavailable 
+for \cite{Hill2022}. DESI provides a tighter geometric anchor that breaks 
+parameter degeneracies and isolates the damping-tail signal (Section~\ref{sec:act_vs_desi}).
+
+In this paper, we fit the fixed template to ACT DR6 high-$\ell$ data. We find:
 
 \begin{itemize}
 \item \textbf{ACT prefers nonzero amplitude:} $A_{\rm sh} = 1.54 \pm 0.19$ 
