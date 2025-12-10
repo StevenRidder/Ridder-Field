@@ -1712,7 +1712,7 @@ the CMB blackbody law, not dust or cluster physics. A tSZ-CIB correlation
 would produce a monotonic $\ell$-dependence, not the oscillatory pattern 
 with specific acoustic phase that we observe.
 
-\emph{Phase coherence.} The 13.4$\sigma$ phase-coherence result 
+\emph{Phase coherence.} The 10.5$\sigma$ phase-coherence result 
 (Section~\ref{sec:robust}) shows the signal matches a specific acoustic 
 pattern. Foregrounds do not produce phase-coherent acoustic oscillations---they 
 produce smooth power-law or modified blackbody spectra.
@@ -1819,6 +1819,57 @@ Higher $\theta_i$ $\to$ smaller $r_s$ & Pass \\
 
 All tests pass, confirming that the underlying cosmological calculations 
 are correct.
+
+\subsection{Summary of robustness tests}
+
+Table~\ref{tab:robustness_summary} consolidates all robustness tests 
+performed in this analysis.
+
+\begin{table}[t]
+\centering
+\caption{Summary of robustness tests. The soft-shoulder detection 
+survives all tests, demonstrating it is not an artifact of analysis 
+choices, foregrounds, or pipeline errors.}
+\begin{tabular}{llc}
+\toprule
+Test Category & Specific Test & Result \\
+\midrule
+\multicolumn{3}{l}{\textit{Statistical robustness}} \\
+& PTE (10,000 \lcdm\ sims) & $P < 10^{-4}$ \\
+& Phase scrambling (1,000 templates) & $10.5\sigma$ \\
+& Shifted template ($\pm$150 bins) & Peak at 0 \\
+& Dilation ($\alpha = 0.85$--$1.15$) & Peak at $\alpha=1$ \\
+\midrule
+\multicolumn{3}{l}{\textit{Foreground/frequency}} \\
+& 90 GHz channel & $\Lambda = 0.135 \pm 0.003$ \\
+& 150 GHz channel & $\Lambda = 0.146 \pm 0.006$ \\
+& 90 vs 150 consistency & $1.5\sigma$ (achromatic) \\
+& 220 GHz (CIB-dominated) & Excess visible \\
+\midrule
+\multicolumn{3}{l}{\textit{Geometry/degeneracy}} \\
+& Fixed-geometry test & $\Delta\chi^2 = -1{,}557$ \\
+& ACT-only vs ACT+DESI & Degeneracy broken \\
+& DESI ``manufacture'' attack & Refuted \\
+\midrule
+\multicolumn{3}{l}{\textit{Model/template}} \\
+& Wrong-epoch EDE ($z_c \sim 10^3$) & Null detection \\
+& Physical EDE recovery & 95\% of template \\
+& AIC/BIC model comparison & $\Delta\rm{AIC} = -764$ \\
+\midrule
+\multicolumn{3}{l}{\textit{Pipeline validation}} \\
+& \lcdm\ reproduction & Within $0.5\sigma$ \\
+& $\chi^2$ match to published & Within $\pm 5$ \\
+& Boltzmann code tests (9 checks) & All pass \\
+\bottomrule
+\end{tabular}
+\label{tab:robustness_summary}
+\end{table}
+
+The detection passes statistical, foreground, geometric, and pipeline 
+tests. We have not found any analysis variation that eliminates the 
+signal. The only pathway we have identified to a null result is 
+independent experiments (SPT-3G, Simons Observatory) failing to 
+reproduce the detection, which would point to an ACT-specific systematic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
@@ -2072,6 +2123,61 @@ damping tail, indicating that these experiments provide a powerful test
 of whether the preference is cosmological or experiment-specific. 
 Our main contribution is to turn a qualitative ACT--Planck discrepancy into 
 a single parameter $A_{\rm sh}$ that can be tested by upcoming experiments.
+
+\subsection{Polarization and lensing predictions}
+
+At the noise levels of current ACT DR6 TE/EE data, the EDE effect in 
+polarization is expected to be subdominant. The template produces a 
+$\sim$0.3\% modification in EE at $\ell > 2000$, compared to ACT's 
+per-mode uncertainty of $\sim$1\% in this regime. A future dataset with 
+noise levels of $\sim$5~$\mu$K-arcmin should detect or refute this 
+at $\sim$3$\sigma$.
+
+For CMB lensing, the EDE model predicts $S_8 = \sigma_8(\Omega_m/0.3)^{0.5} 
+\approx 0.77$, intermediate between the Planck \lcdm\ value ($S_8 \approx 0.83$) 
+and current weak lensing constraints ($S_8 \approx 0.76$). Stage IV weak 
+lensing surveys (Rubin, Euclid, Roman) will test whether this intermediate 
+value is favored.
+
+\subsection{Scientific value of either outcome}
+
+We emphasize that \emph{both} possible outcomes of future tests are 
+scientifically valuable:
+
+\textbf{If the shoulder is confirmed by SPT-3G and Simons Observatory:} 
+This would establish the first detection of pre-recombination physics 
+beyond \lcdm\ in the CMB damping tail, with implications for the Hubble 
+tension and early-universe physics. The EDE interpretation would provide 
+a simultaneous resolution of the $H_0$ and $S_8$ tensions.
+
+\textbf{If the shoulder is not confirmed:} This would identify a 
+percent-level, high-$\ell$ systematic in ACT DR6 that is crucial for 
+CMB-S4 science. Understanding ground-based systematics at this level 
+is essential for achieving CMB-S4's primordial gravity wave targets, 
+which require sub-percent control of the damping tail. In this scenario, 
+the main legacy would be methodological: the template approach, geometric 
+ceiling analysis, and robustness battery developed here would remain 
+valuable for future analyses.
+
+Either way, the ACT--Planck discrepancy revealed by our template test 
+demands explanation. We have provided a framework for obtaining that 
+explanation through falsifiable predictions.
+
+\subsection{How to reproduce this analysis}
+
+For independent verification, we provide the essential components:
+\begin{enumerate}
+\item \textbf{Template definition:} The soft-shoulder template is 
+$T(\ell) = C_\ell^{\rm EDE} - C_\ell^{\rm \Lambda CDM}$ for canonical 
+EDE parameters $\Lambda_{\rm EDE} = 0.10$, $\theta_i = 2.0$, $n = 3$ 
+(Section~\ref{sec:template}).
+\item \textbf{Fitting procedure:} Standard $\chi^2$ minimization of 
+$A_{\rm sh}$ against published ACT DR6 bandpowers with the official 
+covariance matrix.
+\item \textbf{Geometry anchoring:} Fix background cosmology to DESI+Planck 
+\lcdm\ best-fit or marginalize jointly with BAO.
+\end{enumerate}
+Any group with access to ACT DR6 bandpowers can reproduce our template fit.
 
 \emph{Code availability.} The modified \textsc{CLASS} implementation used in 
 this analysis will be made publicly available upon publication. MCMC chains, 
