@@ -41,6 +41,9 @@ the data. We fit a single amplitude parameter $A_{\rm sh}$ to ACT DR6 and Planck
 $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), with $\Delta\chi^2 = -766$ 
 relative to \lcdm. The improvement is localized: 90\% comes from ACT's 
 high-$\ell$ likelihood ($\ell > 1500$); BAO and supernovae contribute $\pm 1$.
+Crucially, a fixed-geometry test where background cosmological parameters are 
+frozen shows ACT spectra alone prefer the shoulder by $\Delta\chi^2 \approx -1{,}500$, 
+confirming the signal is internal to ACT, not manufactured by DESI.
 
 \textbf{Asymmetry:} The same template applied to Planck yields 
 $\Delta\chi^2 = +121$, with 89\% of the penalty from Planck high-$\ell$. 
@@ -229,15 +232,15 @@ costs Planck $\chi^2$.}
 % \includegraphics[width=\columnwidth]{figures/two_regimes.pdf}
 \fbox{\parbox{0.9\columnwidth}{\centering\vspace{3cm}
 \textbf{Figure 4: The Two-Regime Picture}\\[0.5em]
-Low $\Lambda \approx 0.16$ (Paper II): Spectral effect at $\ell > 2000$\\
+Low $\Lambda \approx 0.16$: Spectral effect at $\ell > 2000$\\
 ACT sees it, Planck cannot\\[0.5em]
-High $\Lambda \approx 0.8$ (Paper I): Geometric effect at $\ell < 1500$\\
+High $\Lambda \approx 0.8$: Geometric effect at $\ell < 1500$\\
 Planck sees it, ACT doesn't benefit
 \vspace{3cm}}}
 \caption{Schematic of the two EDE regimes. \emph{Left:} Low $\Lambda \approx 0.16$ 
-(this paper) produces a spectral ``soft shoulder'' concentrated at $\ell > 2000$, 
+produces a spectral ``soft shoulder'' concentrated at $\ell > 2000$, 
 which ACT detects but Planck cannot resolve. \emph{Right:} High $\Lambda \approx 0.8$ 
-(Paper~I) produces a geometric sound-horizon shift visible at $\ell < 1500$, 
+produces a geometric sound-horizon shift visible at $\ell < 1500$, 
 which Planck can measure. The same field with different $\Lambda$ accesses 
 different observational regimes depending on the experiment's resolution.}
 \label{fig:tworegimes}
@@ -426,7 +429,7 @@ indicates that the data prefer the presence of this specific damping-tail patter
 
 \textbf{Provenance.} The shape and phase of $T_\ell^{\rm soft}$ are not tuned to 
 the data analyzed in this work. They are obtained from a concrete early-time model 
-(the ``Ridder field'' scalar) that saturates the geometric ceiling and therefore 
+(a monodromy-inspired EDE scalar) that saturates the geometric ceiling and therefore 
 represent a generic prediction of percent-level sound-horizon shrinkage under the 
 CMB+BAO distance scaffold. In the analysis that follows, we do not commit to that 
 specific model. Instead, we ask a simpler question: given the standard \lcdm\ 
@@ -491,7 +494,7 @@ We consider three model classes:
 \emph{\lcdm\ baseline.} The standard six-parameter model with parameters 
 $\{\omega_b, \omega_c, H_0, \tau, \ln(10^{10}A_s), n_s\}$.
 
-\emph{Physical EDE (Ridder field).} We add a scalar field that contributes 
+\emph{Physical EDE (monodromy-inspired).} We add a scalar field that contributes 
 energy density near recombination, following the general framework of 
 \cite{Poulin2019,Smith2020}. The field evolves in a potential $V(\phi) \propto 
 [1 - \cos(\phi/f)]^n$ with $n = 3$, which produces a reasonably sharp shelf in 
@@ -543,7 +546,7 @@ pre-specified EDE shoulder appear in the data with nonzero amplitude?
 All MCMC sampling is performed with \textsc{Cobaya}, using the Metropolis-Hastings 
 sampler with adaptive covariance learning. We run chains until the Gelman-Rubin 
 convergence criterion reaches $R - 1 < 0.03$. Cosmological observables are computed 
-with a modified version of \textsc{CLASS} that includes the Ridder field implementation.
+with a modified version of \textsc{CLASS} that includes the monodromy EDE implementation.
 
 For each model comparison, we report the best-fit \chisq\ and the improvement 
 $\Delta\chi^2$ relative to \lcdm\ with the same dataset combination. We decompose 
@@ -1086,26 +1089,27 @@ The expected penalty from forcing a 1\% pattern into a 3--5\% noise regime is:
 \end{equation}
 This accounts for a substantial fraction of the observed $+108$ penalty.
 
-\subsection{Contrast with high-$\Lambda$ (Paper I)}
+\subsection{The two-regime structure}
 
-This resolution asymmetry explains why Planck tolerated the high-$\Lambda$ EDE 
-of Paper I but rejects the low-$\Lambda$ EDE of this paper:
+The resolution asymmetry is explained by the two-regime structure of EDE. 
+At different $\Lambda_{\rm EDE}$ values, the model affects different multipole ranges:
 \begin{center}
 \begin{tabular}{lcccc}
 \toprule
 $\Lambda$ regime & Physical effect & Peak $\ell$ & Planck $\Delta\chi^2$ & ACT $\Delta\chi^2$ \\
 \midrule
-High ($\sim 0.8$, Paper I) & Geometric ($r_s$ shrinkage) & $<1500$ & $\sim -5$ & $+965$ \\
-Low ($\sim 0.16$, this paper) & Spectral (damping tail) & $>2000$ & $+121$ & $-766$ \\
+High ($\sim 0.8$) & Geometric ($r_s$ shrinkage) & $<1500$ & $\sim -5$ & $+965$ \\
+Low ($\sim 0.16$) & Spectral (damping tail) & $>2000$ & $+121$ & $-766$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Paper I's high-$\Lambda$ regime affects $\ell < 1500$ where Planck is precise; 
-this paper's low-$\Lambda$ regime affects $\ell > 2000$ where Planck has 
+The high-$\Lambda$ regime affects $\ell < 1500$ where Planck is precise; 
+the low-$\Lambda$ regime affects $\ell > 2000$ where Planck has 
 limited sensitivity due to beam suppression.
 
 \subsection{Two interpretations}
+\label{sec:interpretations}
 
 The resolution asymmetry admits two interpretations:
 
@@ -1121,17 +1125,22 @@ The feature could be an unidentified systematic effect in ACT's high-$\ell$
 measurements that mimics an EDE-like shoulder. Planck's null result would 
 then be the ``correct'' cosmology.
 
-\emph{Why beam errors are unlikely:} Beam systematics typically manifest as 
-broad tilts or specific harmonic ringing tied to the scan strategy and 
-optical path. The observed signal has a \emph{cosmological} phase structure 
-determined by $r_s$---it correlates with the acoustic peak positions, not 
-with any known ACT instrumental frequency. Furthermore, beam errors scale 
-with frequency (larger beams at lower $\nu$), while the CMB signal is 
-achromatic. The ACT likelihood marginalizes over frequency-dependent 
-components; the residual preference for EDE implies a blackbody-law signal, 
-not a beam artifact. Finally, the signal requires ACT+DESI to appear 
-(Section~\ref{sec:act_vs_desi}); a pure beam error would show up in 
-ACT-only fits, which instead \emph{penalize} EDE.
+\emph{Constraints on a systematic explanation.} To mimic this cosmological 
+signal, a systematic would need to satisfy three simultaneous conditions:
+\begin{enumerate}
+\item \textbf{Achromaticity:} It must be consistent between 90 and 150~GHz, 
+ruling out standard frequency-dependent beam leakage or thermal dust emission.
+\item \textbf{Phase coherence:} It must be phase-locked to the cosmological 
+acoustic scale with 10.5$\sigma$ coherence (Section~\ref{sec:phase_scrambling}), 
+ruling out random noise or scan-synchronous pickup.
+\item \textbf{Geometric dependency:} It must appear only when the background 
+geometry is anchored to DESI (Section~\ref{sec:act_vs_desi}), disappearing 
+when the background parameters are free to adjust to absorb the residual.
+\end{enumerate}
+We are aware of no instrumental effect in ACT DR6 that meets these criteria. 
+While beam systematics can produce high-$\ell$ power excesses, they typically 
+manifest as broad tilts or specific harmonic ringing tied to the scan strategy, 
+not as blackbody-law oscillations aligned with the acoustic peaks.
 
 We cannot definitively distinguish these interpretations with current data. 
 However, the ACT detection passes multiple robustness tests 
@@ -1160,10 +1169,10 @@ ACT--Planck tension in $\sigma_8$. We do not claim the penalty is \emph{entirely
 explained by noise-fitting, but $\sim 60$\% arises from Planck's beam-suppressed 
 regime, supporting the resolution-asymmetry interpretation.
 
-\textbf{The high-$\Lambda$ workaround.} In Paper~I, Planck accepted EDE at high 
-$\Lambda \sim 0.8$ ($\Delta\chi^2 \approx -5$), which produces geometric effects 
-at $\ell < 1500$ while avoiding spectral structure at $\ell > 2000$. The fact 
-that satisfying Planck required avoiding its noise-dominated regime supports 
+\textbf{The high-$\Lambda$ workaround.} At high $\Lambda \sim 0.8$, Planck 
+accepts EDE ($\Delta\chi^2 \approx -5$) because the effect produces geometric 
+changes at $\ell < 1500$ while avoiding spectral structure at $\ell > 2000$. 
+The fact that satisfying Planck requires avoiding its noise-dominated regime supports 
 the interpretation that Planck's high-$\ell$ constraints are instrument-limited.
 
 \subsection{Summary: The resolution-dependent detection}
@@ -1251,7 +1260,7 @@ theory, not fitted to data}. The procedure was:
 \begin{enumerate}
 \item Compute the theoretical $C_\ell^{\rm EDE}$ spectrum for canonical 
 EDE parameters ($\Lambda_{\rm EDE} \approx 0.1$, $\theta_i = 2.0$, $n = 3$) 
-using the Ridder field equations of motion
+using the EDE scalar field equations of motion
 \item Compute the \lcdm\ spectrum with the same cosmological parameters 
 except $\Lambda_{\rm EDE} = 0$
 \item Define the template as the \emph{difference}: 
@@ -1671,8 +1680,8 @@ may represent the true value, with both the Planck \lcdm\ inference
 
 \emph{Effect of external $H_0$ priors:} Imposing a SH0ES-like prior forcing 
 $H_0$ toward 73~\kms\ worsens the fit, consistent with the geometric ceiling 
-from Paper~I. TRGB-like priors ($H_0 \sim 70$~\kms) are neutral or mildly 
-compatible. This confirms that ACT+DESI data naturally prefer $H_0 \approx 70$--71, 
+established in Section~\ref{sec:geometry}. TRGB-like priors ($H_0 \sim 70$~\kms) 
+are neutral or mildly compatible. This confirms that ACT+DESI data naturally prefer $H_0 \approx 70$--71, 
 and pushing beyond this range incurs a substantial $\chi^2$ penalty.
 
 \subsection{Conditional: Derived $H_0$}
@@ -1711,13 +1720,14 @@ and CMB-S4 (1.0$'$) will all have sensitivity comparable to or exceeding
 ACT at $\ell > 2000$. Planck PR4 with improved beam modeling may also 
 show marginal sensitivity at $\ell > 2000$.
 
-\subsection{Relationship to Paper~I}
+\subsection{The two-regime synthesis}
 
-Paper~I (high $\Lambda \approx 0.8$) established the geometric ceiling 
-$H_0 < 71$~\kms\ using Planck's $\ell < 1500$ precision. Paper~II (low 
-$\Lambda \approx 0.16$) performs the spectral selection using ACT's 
-$\ell > 2000$ resolution. Together, they identify a unique solution: 
-$\Lambda \approx 0.15$, $H_0 \approx 70.7$~\kms, $\sigma_8 \approx 0.75$.
+The geometric ceiling (Section~\ref{sec:geometry}) establishes that 
+$H_0 < 71$~\kms\ using Planck's $\ell < 1500$ precision. The template 
+test (Sections~\ref{sec:act}--\ref{sec:planck}) performs the spectral 
+selection using ACT's $\ell > 2000$ resolution. Together, these 
+constraints identify a unique solution at $\Lambda \approx 0.15$, 
+$H_0 \approx 70.7$~\kms, $\sigma_8 \approx 0.75$.
 
 \subsection{Conditional: The $\Lambda = 0.16$ parameter space}
 
@@ -1818,6 +1828,8 @@ to ACT DR6 and Planck with identical methodology.
 \item Best-fit amplitude: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$)
 \item $\chi^2$ improvement: $\Delta\chi^2 = -766$ relative to \lcdm
 \item Localization: 90\% from ACT high-$\ell$ ($\ell > 1500$); BAO/SNe neutral
+\item Fixed-geometry test: $\Delta\chi^2 \approx -1{,}500$ with background frozen---the 
+signal is internal to ACT, not manufactured by DESI
 \end{itemize}
 
 \textbf{Planck result:}
