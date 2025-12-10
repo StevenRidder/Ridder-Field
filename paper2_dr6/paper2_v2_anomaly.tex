@@ -38,14 +38,10 @@ and phase are fixed from early-time physics before looking at any data, and
 we introduce a single amplitude parameter $A_{\rm sh}$ that modulates this
 template on top of a standard \lcdm\ spectrum.
 
-Applied to ACT DR6, the template is strongly favored. ACT prefers
-$A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), improving the fit by
-$\Delta\chi^2 = -766$ relative to pure \lcdm, with about 90\% of the gain
-coming from high-$\ell$ temperature data ($\ell > 1500$). A fixed-geometry
-test, in which background parameters are frozen to the ACT+DESI best-fit
-values, shows that ACT spectra alone prefer the shoulder pattern by
-$\Delta\chi^2 \approx -1{,}500$: the signal is internal to the damping tail,
-not manufactured by low-redshift distance data.
+Applied to ACT DR6, the template is strongly favored: $A_{\rm sh} = 1.54 \pm 0.19$ 
+(8.1$\sigma$), with $\Delta\chi^2 \approx -770$ relative to pure \lcdm\ and the 
+improvement localized to the damping tail ($\ell > 1500$). A fixed-geometry 
+diagnostic confirms the signal is internal to ACT, not driven by distance data.
 
 Applied to Planck, the same template is not detected. Planck prefers
 $A_{\rm sh} \approx 0$ and penalizes the ACT-preferred amplitude with
@@ -59,11 +55,12 @@ show that the shoulder detection in ACT is phase-coherent with the acoustic
 peaks, statistically robust, and achromatic at 90 and 150~GHz. As a concrete
 example, we map the ACT-preferred template amplitude onto a simple early dark
 energy model, which yields $H_0 \simeq 70.7$~\kms\ and $\sigma_8 \simeq 0.75$
-when combined with DESI BAO; the same model is disfavored by Planck+DESI,
-which penalizes its high-$\ell$ damping-tail structure. We outline specific
-tests for SPT-3G, Simons Observatory, and CMB-S4 that can decide whether this
-template preference reflects pre-recombination physics or an ACT-specific
-systematic.
+when combined with DESI BAO. We use this model only to illustrate how such 
+a damping-tail preference would map onto pre-recombination physics; we do 
+not claim that this model is favored when Planck high-$\ell$ data are included. 
+We outline specific tests for SPT-3G, Simons Observatory, and CMB-S4 that 
+can decide whether this template preference reflects pre-recombination 
+physics or an ACT-specific systematic.
 \end{abstract}
 
 \maketitle
@@ -106,13 +103,14 @@ by repeating exactly this template test.
 We structure the paper to address this fork. Section~\ref{sec:geometry} 
 establishes the ``geometric ceiling'' on $H_0$ that makes this damping-tail 
 feature a necessary consequence of raising the Hubble constant. 
+Section~\ref{sec:data} describes our data and methodology.
 Sections~\ref{sec:act} and~\ref{sec:planck} present the template fits 
 and quantify the resolution asymmetry. Section~\ref{sec:robust} subjects 
 the detection to rigorous null tests, including phase scrambling and 
-frequency splits. Finally, we derive the definitive tests that SPT-3G and 
-Simons Observatory must perform to confirm or refute this result.
-
-Section~\ref{sec:data} describes our data and methodology.
+frequency splits. Section~\ref{sec:discussion} maps the template amplitude 
+onto a concrete early dark energy model as an illustrative interpretation, 
+and derives the definitive tests that SPT-3G and Simons Observatory must 
+perform to confirm or refute this result.
 
 %----------------------------------------------------------------------
 % FIGURE 1: Beam comparison
@@ -290,7 +288,8 @@ peaks and the damping tail once $r_s$ is modified.
     \caption{Geometric ceiling for early-time models that shrink $r_s$. For each 
     fixed value of $H_0$ the remaining parameters are re-optimized against 
     Planck and DESI. The rapid growth in $\chi^2$ above $H_0 \simeq 70$~\kms\ 
-    defines the ceiling.}
+    defines the ceiling. The numbers shown are representative values from a 
+    scan over early-time models and are not intended as model-independent bounds.}
     \label{tab:ceiling}
     \begin{tabular}{ccc}
         \hline\hline
@@ -896,11 +895,10 @@ where $N_{\rm eff} \approx 3000$ is the effective number of data points
 Both criteria decisively favor EDE over \lcdm\ for the ACT+DESI combination. 
 The Occam penalty for the extra parameters ($\sim$4 for AIC, $\sim$16 for BIC) 
 is negligible compared to the $\chi^2$ improvement. On standard interpretation 
-scales, $|\Delta\text{AIC}| > 10$ constitutes ``decisive evidence,'' and 
-$|\Delta\text{BIC}| > 10$ constitutes ``very strong evidence.'' Our 
-values of $|\Delta| \sim 750$--$760$ are orders of magnitude beyond 
-these thresholds. These information criteria therefore confirm that, at the 
-level of the ACT+DESI spectra, a one-parameter shoulder distortion is strongly 
+scales, $|\Delta\text{AIC}| > 10$ and $|\Delta\text{BIC}| > 10$ indicate 
+strong model preference. With $|\Delta| \sim 750$--$760$, the information 
+criteria confirm that, at the level of the ACT+DESI spectra, a one-parameter 
+shoulder distortion is strongly 
 preferred over pure \lcdm. They do not, by themselves, establish that the 
 specific early dark energy model is favored once Planck high-$\ell$ data 
 are included.
@@ -1023,9 +1021,12 @@ function is $B(\ell) \approx 0.02$. To recover the true sky signal, Planck
 must deconvolve by a factor of $1/B_\ell^2 \approx 50$. This amplifies any 
 baseline noise or residual foregrounds by 50$\times$. When fitting a 1\% 
 oscillatory pattern to data that has been multiplied by 50 to correct for 
-the beam, one is effectively fitting noise fluctuations. This is why the 
-$+121$ penalty is a \emph{prediction} of the noise model, not a failure of 
-the physics.
+the beam, one is effectively fitting noise fluctuations. This is why a 
+$\chi^2$ penalty in Planck's high-$\ell$ regime is expected on resolution 
+grounds, independent of the underlying cosmology. We emphasize that this 
+argument uses only the official Planck likelihood; additional systematics 
+beyond the published noise model could modify the detailed partition but 
+are not expected to change the qualitative conclusion.
 
 When the EDE model is applied to Planck:
 \begin{itemize}
@@ -1482,19 +1483,6 @@ Any foreground model that reproduces all of these features would have to be fine
 tuned. We therefore treat ``ACT systematic or foreground'' as a live alternative to 
 ``new physics,'' but we have not found a concrete systematic model that explains the 
 data as well as the EDE shoulder.
-
-\emph{Explicit CIB defense.} The Cosmic Infrared Background (CIB) is a potential 
-contaminant at $\ell > 2000$. However, several features of our detection argue 
-against CIB contamination: (a)~CIB follows a modified blackbody spectrum peaking 
-at $\sim$350~GHz, with decreasing amplitude at lower frequencies; the shoulder 
-detection uses 90--220~GHz data where CIB is subdominant to CMB. (b)~The ACT DR6 
-likelihood explicitly marginalizes over CIB amplitude and spectral index; any 
-CIB component absorbed by these nuisance parameters would not appear as a 
-cosmological signal. (c)~CIB angular power is approximately Poisson ($C_\ell \approx$ 
-const) plus clustered ($C_\ell \propto \ell^{0.8}$); neither matches the oscillatory, 
-phase-coherent structure of the soft shoulder. (d)~The shifted-template null test 
-shows that shifting the phase by 30 bins destroys the signal (27$\sigma \to 1.8\sigma$); 
-CIB cannot produce phase-locked oscillations at specific acoustic peak positions.
 
 \emph{Frequency-split achromaticity test.} To definitively test whether the shoulder
 is cosmological (achromatic) or foreground-driven (frequency-dependent), we run 
