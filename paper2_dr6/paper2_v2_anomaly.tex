@@ -34,10 +34,10 @@
 We report an 8.1$\sigma$ formal preference in ACT DR6 + DESI for a phase-coherent 
 damping-tail template at $\ell > 1500$, yielding $\Delta\chi^2 = -766$ relative to 
 \lcdm. The improvement is localized: 90\% comes from ACT's high-$\ell$ likelihood, 
-while BAO and supernovae remain neutral. Probability-to-exceed tests ($P < 10^{-4}$ 
-from 10,000 simulations), phase-scrambling checks (7.5$\sigma$ coherence), and 
-frequency-split analyses (achromatic across 90--150~GHz) confirm this is not a 
-statistical fluctuation or foreground contamination.
+while BAO and supernovae remain neutral. Shifted-template null tests 
+(detection vanishes when phase is shifted), and frequency-split analyses 
+(achromatic across 90--150~GHz) confirm this is not a statistical fluctuation 
+or foreground contamination.
 
 The same model applied to Planck + DESI gives $\Delta\chi^2 = +121$, with 89\% of 
 the penalty localized to Planck's beam-suppressed high-$\ell$ regime. We demonstrate 
@@ -132,9 +132,9 @@ $\Lambda = 0.145$ gives $\Delta\chi^2 = -766$.
 on Planck, with 89\% from the high-$\ell$ likelihood.
 \item \textbf{Resolution asymmetry:} Beam and noise modeling shows this 
 is consistent with ACT's superior high-$\ell$ sensitivity.
-\item \textbf{Robustness:} PTE tests yield $P < 10^{-4}$ (10,000 simulations); 
-phase scrambling confirms 7.5$\sigma$ coherence; frequency splits show 
-achromaticity at 90/150~GHz.
+\item \textbf{Robustness:} Shifted-template tests confirm phase-specificity; 
+frequency splits show achromaticity at 90/150~GHz; $\chi^2$ decomposition 
+shows 90\% of improvement from ACT high-$\ell$.
 \item \textbf{Conditional cosmology:} If cosmological, the best-fit yields 
 $H_0 = 70.7$~\kms, $\sigma_8 = 0.753$.
 \item \textbf{Falsifiable predictions:} SPT-3G should detect at 3--5$\sigma$ 
@@ -1142,85 +1142,68 @@ Note that the template parameters were \emph{not} derived from
 Planck+DESI fits (which, as we show in Section~\ref{sec:planck}, do not 
 prefer EDE). The template is purely theoretical.
 
-\subsection{Probability to exceed from $\Lambda$CDM simulations}
+\subsection{Statistical significance}
 \label{sec:pte}
 
-To quantify how unusual the observed shoulder amplitude is under \lcdm, we 
-generate $N = 10{,}000$ synthetic ACT realizations using a Fisher matrix 
-approach. We model the ACT DR6 noise as 15~$\mu$K-arcmin white noise with 
-a 1.4$'$ beam, include cosmic variance for $f_{\rm sky} = 0.4$, and compute 
-the template-fitting uncertainty $\sigma_A$ from the Fisher information:
-\begin{equation}
-  \sigma_A^{-2} = \sum_{\ell=1500}^{3500} \frac{t_\ell^2}{\sigma_{C_\ell}^2},
-\end{equation}
-where $t_\ell$ is the template shape and $\sigma_{C_\ell}$ includes cosmic 
-variance and noise. This yields $\sigma_A = 0.165$ for the damping-tail fit.
+The template amplitude $A_{\rm sh} = 1.54 \pm 0.19$ is detected at 8.1$\sigma$ 
+significance after marginalizing over cosmological parameters. This uncertainty 
+comes directly from the MCMC posterior, which includes cosmic variance, 
+instrumental noise, and foreground marginalization as implemented in the 
+ACT DR6 likelihood.
 
-For each of the 10,000 realizations, we draw $A_{\rm sh}$ from the null 
-distribution $\mathcal{N}(0, \sigma_A)$ and record the result. The 
-distribution has mean $\langle A_{\rm sh}\rangle = 0.00$ and standard 
-deviation 0.166 (matching the Fisher prediction). None of the 10,000 
-simulations exceeds the observed $A_{\rm sh} = 1.54$, giving an empirical 
-probability-to-exceed
-\begin{equation}
-  P(|A_{\rm sh}| > 1.54 \mid \Lambda\text{CDM}) < 10^{-4}.
-\end{equation}
-The Gaussian tail probability gives $P \approx 10^{-20}$ (9.3$\sigma$), 
-though we conservatively quote $P < 10^{-4}$ based on the empirical 
-bound from finite simulations.
+\emph{Limitations.} We have not performed full end-to-end simulations 
+(generating mock CMB skies, processing through the ACT pipeline, and 
+refitting). Such simulations would require collaboration-level resources 
+and are beyond the scope of this work. The 8.1$\sigma$ significance should 
+be interpreted as a formal preference within the likelihood framework, 
+conditional on the ACT DR6 covariance matrix correctly capturing all 
+statistical and systematic uncertainties.
 
-Throughout this paper we summarize this as an 8.1$\sigma$ detection after 
-marginalizing over cosmological parameters (which inflates the uncertainty 
-from 0.165 to 0.19), conditional on the pre-specified EDE template. This 
-confirms that the detected shoulder is not a statistical fluctuation of 
-a \lcdm\ sky (Figure~\ref{fig:robustness}, panel a).
+\emph{What we can claim.} The detection significance derives from three 
+independent lines of evidence:
+\begin{enumerate}
+\item The MCMC posterior for $A_{\rm sh}$ excludes zero at $>$8$\sigma$.
+\item The $\chi^2$ improvement ($\Delta\chi^2 = -766$) far exceeds the 
+penalty for one additional parameter.
+\item The improvement is localized to ACT high-$\ell$ (90\%), with BAO 
+and SNe neutral---inconsistent with a parameter-space artifact.
+\end{enumerate}
 
-\subsection{Phase scrambling}
+\subsection{Phase coherence argument}
 \label{sec:phase_scrambling}
 
-As a complementary test, we perform a phase-scrambling experiment. We take 
-the best-fit \lcdm\ theory spectrum and randomly scramble the phases of 
-the harmonic coefficients at $\ell > 1000$ while preserving the power 
-spectrum. This procedure destroys any acoustic-phase coherence in the 
-damping tail while leaving the low-$\ell$ acoustic peaks and overall 
-variance intact.
+The template detection is not simply a matter of fitting amplitude---it 
+requires the correct \emph{phase} of the oscillatory pattern. The EDE 
+shoulder has a specific phase relationship to the acoustic peaks, 
+determined by the timing of the energy injection relative to recombination.
 
-We generate $N = 1{,}000$ such phase-scrambled realizations and fit the 
-shoulder template in each. The resulting distribution has mean 
-$A_{\rm sh}^{\rm scrambled} = -0.003$ and standard deviation 
-$\sigma_A^{\rm scrambled} = 0.08$, consistent with noise 
-(Figure~\ref{fig:robustness}, panel b). The maximum $|A_{\rm sh}|$ across 
-all scrambled realizations is 0.29---still a factor of 5 below the 
-observed value.
+\emph{Why phase matters.} A random oscillatory pattern in the damping tail 
+would not consistently align with the acoustic structure. The fact that 
+the EDE template (with its physically-determined phase) fits significantly 
+better than \lcdm\ indicates the detected pattern has the correct phase 
+coherence.
 
-Comparing to the observed $A_{\rm sh} = 1.54 \pm 0.19$, the significance 
-of the phase-coherent detection is
-\begin{equation}
-  \frac{A_{\rm sh} - A_{\rm sh}^{\rm scrambled}}
-       {\sqrt{\sigma_{A}^2 + \sigma_{\rm scr}^2}} = 7.5\sigma.
-\end{equation}
+\emph{Shifted-template test.} As a direct test, we shift the template in 
+$\ell$-space and refit. At the correct phase (shift $= 0$), the detection 
+is significant. When shifted by $|\Delta\ell| > 50$, the amplitude drops 
+to zero (Section~\ref{sec:shifted_template}). This confirms the detection 
+is phase-specific, not a generic high-$\ell$ excess.
 
-This confirms that the detection relies on a specific acoustic-phase 
-pattern that is absent when high-$\ell$ phases are randomized. The 
-detected shoulder has the specific oscillatory structure predicted by 
-acoustic physics, not the random structure of noise or foregrounds.
+\emph{Limitation.} We have not performed full phase-scrambled simulations 
+through the ACT pipeline. The phase-coherence argument is based on the 
+shifted-template test, which directly probes whether the detection requires 
+the correct phase.
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/robustness_tests.pdf}
-\caption{Robustness tests for the soft shoulder detection. 
-\textbf{(a)} PTE test: Distribution of $A_{\rm sh}$ from 10,000 \lcdm\ 
-simulations (blue). The observed value (dashed line) lies at 9.3$\sigma$ 
-from the null distribution; none of 10,000 simulations exceeds it. 
-\textbf{(b)} Phase scrambling: Distribution of $A_{\rm sh}$ from 1,000 
-realizations with scrambled phases at $\ell > 1000$ (orange). The observed 
-value (dashed, with 1$\sigma$ shading) shows 7.5$\sigma$ phase coherence. 
-\textbf{(c)} Shifted template: Detection significance as a function of 
+\includegraphics[width=\columnwidth]{figures/shifted_template.pdf}
+\caption{Shifted-template null test. Detection significance as a function of 
 template shift $\Delta\ell$. The peak at shift$=0$ (6.7$\sigma$) confirms 
 sensitivity to the specific EDE phase; shifting by $|\Delta\ell| > 50$ 
-destroys the detection.}
-\label{fig:robustness}
-\end{figure*}
+destroys the detection. This demonstrates the detection requires the 
+correct oscillatory phase, not just any high-$\ell$ structure.}
+\label{fig:shifted_template}
+\end{figure}
 
 \subsection{Shifted-template and wrong-epoch null tests}
 \label{sec:shifted_template}
@@ -1707,8 +1690,8 @@ preferred EDE parameters would need revision.
 high-$\ell$ template ($\Delta\chi^2 = -766$).
 \item Localization: 90\% of the improvement comes from ACT at $\ell > 1500$; 
 BAO and supernovae are neutral.
-\item Robustness: PTE ($P < 10^{-4}$), phase coherence (7.5$\sigma$), 
-achromaticity (90/150~GHz consistent).
+\item Robustness: Shifted-template test (phase-specific), frequency splits 
+(achromatic at 90/150~GHz), $\chi^2$ decomposition (90\% from ACT high-$\ell$).
 \item Resolution asymmetry: Planck's penalty is concentrated where its 
 beam suppresses sensitivity.
 \end{enumerate}
