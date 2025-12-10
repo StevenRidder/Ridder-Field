@@ -204,24 +204,36 @@ costs Planck $\chi^2$.}
 \end{figure}
 
 %----------------------------------------------------------------------
-% FIGURE 4: Two-regime schematic
+% FIGURE 4: Geometry vs Spectral-Shape Schematic
 %----------------------------------------------------------------------
 \begin{figure}[t]
 \centering
-% \includegraphics[width=\columnwidth]{figures/two_regimes.pdf}
-\fbox{\parbox{0.9\columnwidth}{\centering\vspace{3cm}
-\textbf{Figure 4: The Two-Regime Picture}\\[0.5em]
-Low $\Lambda \approx 0.16$: Spectral effect at $\ell > 2000$\\
-ACT sees it, Planck cannot\\[0.5em]
-High $\Lambda \approx 0.8$: Geometric effect at $\ell < 1500$\\
-Planck sees it, ACT doesn't benefit
-\vspace{3cm}}}
-\caption{Schematic of the two EDE regimes. \emph{Left:} Low $\Lambda \approx 0.16$ 
-produces a spectral ``soft shoulder'' concentrated at $\ell > 2000$, 
-which ACT detects but Planck cannot resolve. \emph{Right:} High $\Lambda \approx 0.8$ 
-produces a geometric sound-horizon shift visible at $\ell < 1500$, 
-which Planck can measure. The same field with different $\Lambda$ accesses 
-different observational regimes depending on the experiment's resolution.}
+\fbox{\parbox{0.95\columnwidth}{
+\textbf{Schematic: Geometry vs.\ Spectral-Shape Information in EDE Fits}\\[0.5em]
+The horizontal axis is the EDE energy fraction at peak, $\Lambda_{\rm EDE}$.
+The vertical split illustrates two qualitatively different regimes.
+
+\vspace{0.5em}
+\textit{High-$\Lambda_{\rm EDE}$ geometry-dominated regime ($\Lambda \simeq 0.8$):}
+The primary effect is to reduce the sound horizon and shift background distances 
+at fixed observed angular scales. Fits are constrained mainly by CMB+BAO geometry 
+(Planck + DESI), and the damping tail plays a secondary role. This is the regime 
+explored in early EDE literature focused on reshaping background expansion.
+
+\vspace{0.5em}
+\textit{Low-$\Lambda_{\rm EDE}$ spectrum-dominated regime ($\Lambda \simeq 0.16$):}
+For the smaller energy fractions we study here, the dominant observable is a 
+localized modification of the CMB damping tail at $\ell \gtrsim 1500$. The background 
+geometry remains close to \lcdm\ and is fixed by DESI, while ACT measures a residual 
+spectral feature. Planck contributes primarily through geometry since its beam 
+suppresses sensitivity in the relevant $\ell$ range.
+
+\vspace{0.5em}
+\textit{This paper focuses on the spectrum-dominated regime.}
+}}
+\caption{Conceptual division between geometry-dominated and spectrum-dominated 
+EDE constraints. We treat background distances and damping-tail spectral structure 
+as two coupled aspects of a single measurement problem.}
 \label{fig:tworegimes}
 \end{figure}
 
@@ -630,9 +642,24 @@ Planck+DESI EDE vs \lcdm & $+121$ & Penalty, 89\% from high $\ell$ \\
 \bottomrule
 \end{tabular}
 \end{center}
-The relationships: physical EDE captures 95\% of the template improvement 
-while respecting additional constraints; the fixed-geometry test shows the 
-preference is internal to ACT spectra.
+It is useful to understand the relationship between these statistics:
+\begin{itemize}
+\item At \emph{fixed} \lcdm\ cosmology, the one-parameter template fit 
+improves the ACT+DESI likelihood by $\Delta\chi^2 \approx -770$ with 
+$A_{\rm sh} = 1.10 \pm 0.04$ (27.7$\sigma$).
+\item Allowing the background cosmology to vary increases the improvement 
+to $\Delta\chi^2 \approx -800$ with $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$).
+\item The \emph{physical} EDE model ($\Lambda = 0.16$), which has one 
+additional parameter relative to \lcdm\ but must also match BAO distances, 
+growth history, and the full acoustic structure, recovers 
+$\Delta\chi^2 = -766$---about 95\% of the template improvement.
+\item At fixed ACT+DESI EDE geometry, ACT TT alone prefers the shoulder by 
+$\Delta\chi^2 = -1{,}557$, demonstrating the preference is internal to ACT 
+spectra and not DESI-driven.
+\end{itemize}
+In other words, the physical model captures most of the improvement of 
+the agnostic template while satisfying the additional consistency 
+conditions required of a complete cosmological model.
 
 \begin{figure*}[t]
 \centering
@@ -1073,12 +1100,18 @@ suppresses the signal and the EDE model predicts oscillatory structure that
 Planck cannot resolve. This supports the interpretation that Planck is being 
 penalized for fitting signal to noise, not for disagreeing with the physics.
 
-\emph{Geometry vs.\ shape.} Crucially, at fixed ACT+DESI EDE geometry, 
-Planck TT \emph{actually prefers} the EDE shoulder shape over a smooth 
-\lcdm\ tail ($\Delta\chi^2_{\rm Planck,TT} = -22$; see Section~\ref{sec:fixed_geometry}). 
-The positive $\Delta\chi^2 = +121$ quoted above for Planck+DESI EDE reflects 
-the cost of moving Planck's background parameters away from its \lcdm-preferred 
-geometry, not an intrinsic dislike of the shoulder's harmonic structure. 
+\emph{Interpretation of the Planck penalty.} The $\Delta\chi^2 = +121$ 
+should not be interpreted as Planck rejecting the shoulder itself. The 
+Planck high-$\ell$ data are beam-suppressed in exactly the multipole 
+range where the EDE-induced distortion is largest, so the oscillatory 
+structure lies partly in the noise-dominated regime for Planck.
+
+At fixed ACT+DESI EDE geometry, Planck TT \emph{actually prefers} the 
+EDE shoulder shape over a smooth \lcdm\ tail ($\Delta\chi^2_{\rm Planck,TT} = -22$; 
+see Section~\ref{sec:fixed_geometry}). The positive $\Delta\chi^2 = +121$ 
+therefore arises from a mismatch in the inferred geometry and sound horizon, 
+not from an intrinsic disagreement about the spectral shape.
+
 In other words, Planck penalizes the \emph{geometry} associated with the 
 ACT shoulder, while its high-$\ell$ TT residuals at that geometry still 
 benefit modestly from the same damping-tail enhancement.
@@ -1322,14 +1355,38 @@ cross-check, not an independent detection.
 Throughout the paper we use the 8.1$\sigma$ marginalized value in the abstract 
 and introduction; the others are reported where they arise.
 
-\subsection{The look-elsewhere effect}
+\subsection{Posterior tuning and the look-elsewhere effect}
 
-A potential concern with any high-significance detection is the 
-look-elsewhere effect: if one searches over many possible signal 
-locations, a nominally 5$\sigma$ fluctuation may occur by chance.
+A natural concern is that the template might have been tuned to ACT 
+after looking at the data, which would invalidate naive significance 
+estimates. We address this in three steps.
 
-We address this directly: \emph{the template shape is derived from EDE 
-theory, not fitted to data}. The procedure was:
+\textbf{First}, the template parameters are fixed by theory and by 
+previous Planck analyses, not by ACT. The values $\Lambda_{\rm EDE} = 0.10$, 
+$\theta_i = 2.0$, and $n = 3$ are taken from the canonical EDE 
+configuration of \cite{Poulin2019}, and the resulting spectral distortion 
+is computed by solving the scalar-field dynamics in that model. There are 
+no additional shape parameters adjusted to match ACT residuals.
+
+\textbf{Second}, the detection is sensitive to the specific acoustic 
+phase pattern predicted by this EDE configuration, not merely to the 
+presence of extra power in the damping tail. In Section~\ref{sec:phase} 
+we show that phase-scrambled templates with identical overall amplitude 
+and scale fail to reproduce the ACT residuals, yielding a phase-coherence 
+significance of 10.5$\sigma$. This demonstrates that it is the particular 
+sequence of peaks and troughs associated with EDE that is preferred, not 
+an arbitrarily chosen oscillatory distortion.
+
+\textbf{Third}, the detection is sharply localized in multipole space. 
+Shifting the template by $\Delta\ell \gtrsim 30$ destroys the improvement 
+in $\chi^2$, which is incompatible with a broad scan over many possible 
+positions and shapes. When these three facts are combined with our Monte 
+Carlo analysis of ACT-like skies (Section~\ref{sec:pte}), the residual 
+look-elsewhere freedom is already effectively accounted for in the quoted 
+8.1$\sigma$ marginalized significance.
+
+\vspace{0.5em}
+\noindent\textit{Template construction procedure:}
 \begin{enumerate}
 \item Compute the theoretical $C_\ell^{\rm EDE}$ spectrum for canonical 
 EDE parameters ($\Lambda_{\rm EDE} \approx 0.1$, $\theta_i = 2.0$, $n = 3$) 
@@ -1552,12 +1609,34 @@ express itself unambiguously.
 
 \subsection{Foreground contamination}
 
-A common concern with high-$\ell$ CMB detections is foreground 
-contamination. ACT data at $\ell > 1000$ includes contributions from 
-thermal Sunyaev-Zel'dovich (tSZ) effect and cosmic infrared background 
-(CIB). Could our ``soft shoulder'' be a mis-modeled foreground spectrum?
+Foreground contamination is strongly disfavored by three independent 
+lines of evidence:
 
-Three arguments disfavor this interpretation:
+\textbf{(1) Frequency independence.} The detection is nearly 
+frequency-independent between 90 and 150~GHz. Fitting these channels 
+separately yields $\Lambda_{\rm EDE} = 0.135 \pm 0.003$ and 
+$\Lambda_{\rm EDE} = 0.146 \pm 0.006$, which agree within $1.5\sigma$. 
+Thermal SZ and CIB contamination would produce stronger frequency dependence.
+
+\textbf{(2) Phase coherence.} The signal exhibits precise acoustic 
+phase coherence. The 10.5$\sigma$ phase-coherence test shows that ACT 
+residuals match the specific sequence of peaks and troughs predicted 
+by EDE, and are incompatible with smooth power-law distortions 
+characteristic of radio and infrared foregrounds.
+
+\textbf{(3) Geometry dependence.} The preference appears only when 
+ACT is tied to DESI's background distances. A foreground or beam 
+systematic would improve the ACT fit regardless of whether BAO 
+information is included, which is not what we observe.
+
+We are not aware of any realistic foreground or instrumental effect 
+that simultaneously satisfies these frequency, phase, and geometry 
+constraints.
+
+\vspace{0.5em}
+\noindent\textit{Detailed discussion:} ACT data at $\ell > 1000$ 
+includes contributions from tSZ and CIB. Three additional arguments 
+disfavor a foreground interpretation:
 
 \emph{Spectral localization.} If we were fitting foregrounds, the 
 \chisq\ improvement would be scattered across the spectrum. Instead, 
