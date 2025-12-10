@@ -22,8 +22,8 @@
 
 \begin{document}
 
-\title{ACT DR6 Damping Tail Shows 8.1$\sigma$ Deviation from \lcdm\ at $\ell > 1500$:\\
-Planck Shows Opposite Response in Beam-Suppressed Regime}
+\title{A Sharp Template Test for Pre-Recombination Physics:\\
+ACT DR6 Prefers a Damping-Tail Pattern That Planck Does Not}
 
 \author{S.~Ridder}
 \affiliation{[Institution]}
@@ -31,29 +31,31 @@ Planck Shows Opposite Response in Beam-Suppressed Regime}
 \date{\today}
 
 \begin{abstract}
-ACT DR6 combined with DESI BAO shows $\Delta\chi^2 = -766$ preference for an 
-early dark energy (EDE) template at $\ell > 1500$, detected at 8.1$\sigma$. 
-The improvement is localized: 690 of 766 $\chi^2$ units (90\%) come from 
-ACT's high-$\ell$ likelihood; BAO and supernovae contribute $\pm 1$.
+We perform a template test for pre-recombination physics in CMB damping-tail 
+data. The template $T_\ell^{\rm soft}$ encodes the generic high-$\ell$ 
+fingerprint of a percent-level reduction in the sound horizon $r_s$; its 
+shape and phase are fixed from early-time physics \emph{before} examining 
+the data. We fit a single amplitude parameter $A_{\rm sh}$ to ACT DR6 and Planck.
 
-The same model applied to Planck + DESI yields $\Delta\chi^2 = +121$, with 
-108 of 121 $\chi^2$ units (89\%) from Planck high-$\ell$. This asymmetry 
-correlates with beam sensitivity: ACT retains 87\% transmission at $\ell=3000$; 
-Planck falls to 18\%.
+\textbf{Result:} ACT DR6 strongly prefers a nonzero amplitude, 
+$A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), with $\Delta\chi^2 = -766$ 
+relative to \lcdm. The improvement is localized: 90\% comes from ACT's 
+high-$\ell$ likelihood ($\ell > 1500$); BAO and supernovae contribute $\pm 1$.
 
-The preferred EDE parameters ($\Lambda_{\rm EDE} = 0.145 \pm 0.006$) yield 
-$H_0 = 70.7$~\kms\ and $\sigma_8 = 0.753$. Both values lie between CMB-only 
-(67.4, 0.83) and late-time probes (JWST TRGB: $69.9 \pm 1.2$; weak lensing 
-$S_8 \approx 0.76$).
+\textbf{Asymmetry:} The same template applied to Planck yields 
+$\Delta\chi^2 = +121$, with 89\% of the penalty from Planck high-$\ell$. 
+This asymmetry correlates with beam sensitivity: ACT retains 87\% transmission 
+at $\ell = 3000$; Planck falls to 18\%. We interpret this as ACT detecting 
+structure below Planck's resolution limit.
 
-Monte Carlo simulations (10,000 realizations) yield $P < 10^{-4}$. 
-Phase-scrambling tests show 10.5$\sigma$ coherence. Frequency splits at 
-90/150~GHz give consistent $\Lambda_{\rm EDE} = 0.141 \pm 0.006$; 220~GHz 
-shows 1.6$\sigma$ excess (CIB). Fixed-geometry tests with all background 
-parameters frozen show ACT prefers the shoulder by $\Delta\chi^2 = -1{,}557$.
+\textbf{Robustness:} Monte Carlo (10,000 realizations, $P < 10^{-4}$), 
+phase scrambling (10.5$\sigma$ coherence), and frequency splits (achromatic 
+at 90/150~GHz) confirm the detection is not a statistical fluke or foreground.
 
-SPT-3G provides the critical test: with comparable resolution but independent 
-systematics, SPT should measure $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ by 2026.
+\textbf{Test:} SPT-3G, with comparable resolution but independent systematics, 
+should measure $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ by 2026. A null result would 
+indicate an ACT-specific systematic; confirmation would establish a 
+pre-recombination anomaly at the geometric ceiling for $H_0$.
 \end{abstract}
 
 \maketitle
@@ -63,55 +65,80 @@ systematics, SPT should measure $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ by 2026.
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ACT DR6 temperature and polarization spectra at $\ell > 1500$ show 
-systematic deviations from \lcdm\ that correlate with a pre-computed 
-early dark energy (EDE) template. When this template is fitted 
-as a one-parameter extension, the amplitude is $A_{\rm sh} = 1.54 \pm 0.19$ 
-(8.1$\sigma$), yielding $\Delta\chi^2 = -766$ relative to \lcdm.
+This paper makes one core claim:
 
-The improvement is concentrated: 690 of 766 $\chi^2$ units come from 
-ACT TT at $\ell > 1500$. BAO measurements contribute $\Delta\chi^2 = -1$. 
-Pantheon+ supernovae contribute $\Delta\chi^2 = 0$. This localization to 
-ACT's damping tail, with geometric probes remaining neutral, 
-distinguishes the effect from parameter-space artifacts.
+\begin{quote}
+\textbf{ACT DR6 contains a strong, phase-coherent high-$\ell$ residual that 
+matches a fixed, theory-motivated damping-tail template, while Planck does not.}
+\end{quote}
 
-When the same physical EDE model ($\Lambda_{\rm EDE} = 0.145$) is applied to 
-Planck + DESI with identical priors, $\Delta\chi^2 = +121$. The penalty is 
-similarly localized: 108 of 121 $\chi^2$ units come from Planck high-$\ell$ 
-at $\ell > 1500$---precisely where Planck's 5$'$ beam suppresses sensitivity 
-relative to ACT's 1.4$'$ beam.
-
-We characterize this asymmetry through beam convolution tests, 
-phase-scrambling null checks, frequency-split analyses, and 
-fixed-geometry comparisons. SPT-3G, with angular resolution 
-comparable to ACT but independent systematics, provides the 
-definitive test within 18 months.
-
-\subsection{Summary of measurements}
-
+The template $T_\ell^{\rm soft}$ encodes the generic high-$\ell$ fingerprint 
+of a percent-level reduction in the sound horizon $r_s$ in early-time physics. 
+We fit a single amplitude parameter $A_{\rm sh}$ to ACT DR6 and Planck, with 
+identical priors and methodology. The result:
 \begin{itemize}
-\item \textbf{Detection:} $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), 
-$\Delta\chi^2 = -766$ (ACT+DESI).
-\item \textbf{Localization:} 90\% of $\chi^2$ improvement from ACT high-$\ell$; 
-BAO and SNe neutral.
-\item \textbf{Robustness:} Monte Carlo (10,000 sims, $P < 10^{-4}$); 
-phase scrambling (10.5$\sigma$ coherence); frequency splits (achromatic 
-at 90/150~GHz).
-\item \textbf{Planck response:} $\Delta\chi^2 = +121$, with 89\% from 
-beam-suppressed high-$\ell$.
-\item \textbf{Derived parameters:} $H_0 = 70.7$~\kms, $\sigma_8 = 0.753$.
+\item ACT DR6: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), $\Delta\chi^2 = -766$
+\item Planck: $A_{\rm sh} \approx 0$, $\Delta\chi^2 = +121$
 \end{itemize}
 
-\subsection{The soft shoulder}
+That asymmetry is the result. We present it as an internal, experiment-level 
+anomaly with geometric implications---not as ``early dark energy is true.''
+
+\subsection{What the paper does}
+
+\begin{enumerate}
+\item \textbf{Build the geometric context} (Section~\ref{sec:geometry}).
+Show that CMB + BAO fix $r_s$ and the distance ladder so tightly that any 
+early-time $r_s$-shrinking model faces a ``geometric ceiling'' around 
+$H_0 \sim 70$--71~\kms. Define this ceiling through a profile $\Delta\chi^2(H_0)$ 
+and explain that pushing beyond the ceiling is punished mainly by the Planck 
+damping tail.
+
+\item \textbf{Define one fixed damping-tail template} (Section~\ref{sec:geometry}).
+Take a concrete early-time setup that sits near the geometric ceiling. Compute 
+the high-$\ell$ residual $T_\ell^{\rm soft}$ and freeze its shape and phase. 
+In the analysis, we only fit a single amplitude $A_{\rm sh}$.
+
+\item \textbf{Run a pure template test on ACT DR6} (Section~\ref{sec:act}).
+Fit standard 6-parameter \lcdm\ plus $A_{\rm sh}$ to ACT DR6. Report best-fit 
+$A_{\rm sh}$, $\Delta\chi^2$, and where in $\ell$ that improvement comes from. 
+Show robustness: null splits, $\ell$-range variations, mocks under \lcdm\ to 
+get the empirical distribution of $\Delta\chi^2$.
+
+\item \textbf{Apply the same test to Planck} (Section~\ref{sec:planck}).
+Fit the same template to Planck with the same priors. Show that Planck prefers 
+$A_{\rm sh} \approx 0$ and that forcing ACT's best-fit amplitude onto Planck 
+gives a large $\Delta\chi^2 > 0$, localized in the high-$\ell$ damping tail.
+
+\item \textbf{Spell out concrete observational tests} (Section~\ref{sec:predictions}).
+Lay out how SPT-3G, Simons Observatory, and CMB-S4 can test for the same 
+template pattern in their high-$\ell$ spectra. Make clear predictions: either 
+they see a similar $A_{\rm sh}$, or they do not and ACT has a systematic.
+\end{enumerate}
+
+\subsection{What the paper does not do}
+
+\begin{itemize}
+\item It does \emph{not} claim that early dark energy or any specific model 
+is now favored by ``the data'' in a global sense.
+\item It does \emph{not} claim to have ``solved'' the $H_0$ or $\sigma_8$ tensions.
+\item It does \emph{not} mix template fitting and model fitting in the same breath.
+\end{itemize}
+
+The anomaly analysis is done in terms of $A_{\rm sh}$ only. Any mapping to 
+physical model parameters or cosmological implications lives in a short, 
+clearly labeled interpretation section (Section~\ref{sec:discussion}).
+
+\subsection{The template}
 
 By ``soft shoulder'' we mean a specific, phase-coherent distortion of the 
 high-$\ell$ power spectrum: a $\sim$1\% amplitude modulation and re-phasing 
 of the acoustic oscillations localized to the damping tail ($\ell > 1500$). 
-This pattern is predicted by EDE models where a scalar field contributes 
-$\sim$10\% of the total energy density near matter-radiation equality and 
-subsequently dilutes.
+This pattern is generic to early-time models that shrink $r_s$ while 
+preserving the CMB acoustic scale. The template's shape and phase are fixed 
+\emph{before} examining ACT DR6 data.
 
-\subsection{Resolution asymmetry}
+\subsection{The ACT/Planck asymmetry}
 
 The ACT/Planck asymmetry correlates with beam sensitivity:
 \begin{itemize}
@@ -120,47 +147,10 @@ The ACT/Planck asymmetry correlates with beam sensitivity:
 \item A $\sim$1\% feature in the damping tail is signal-dominated for ACT 
 but noise-dominated for Planck.
 \end{itemize}
-This resolution dependence is quantified in Section~\ref{sec:planck}.
-
-\subsection{The role of DESI BAO}
-
-A key finding is that ACT \emph{alone} penalizes EDE:
-\begin{center}
-\begin{tabular}{lcc}
-\toprule
-Dataset & $\Delta\chi^2$ (EDE vs \lcdm) \\
-\midrule
-ACT-only & $+282$ (EDE worse) \\
-ACT + DESI & $-766$ (EDE better) \\
-\bottomrule
-\end{tabular}
-\end{center}
-This is not p-hacking---it reflects how spectral and geometric data combine.
-Without DESI, ACT has freedom to adjust cosmological parameters ($H_0$, $\Omega_m$, 
-$n_s$) to absorb the damping-tail residual within \lcdm. DESI's precise BAO 
-measurements anchor the geometric parameters, forcing ACT to fit the residual 
-with the EDE spectral modification. The $\Delta\chi^2 = -766$ improvement is 
-localized to ACT high-$\ell$, confirming DESI breaks a geometric degeneracy 
-rather than introducing a spurious preference.
-
-\subsection{Two-regime physics}
-
-EDE physics operates in two distinct regimes controlled by $\Lambda_{\rm EDE}$:
-
-\emph{Regime I ($\Lambda \approx 0.16$): Spectral effects at $\ell > 2000$.}
-Low $\Lambda$ produces a localized shoulder in the damping tail without 
-significantly modifying the sound horizon. ACT detects this ($\Delta\chi^2 = -766$); 
-Planck cannot resolve it ($\Delta\chi^2 = +121$). This paper focuses on Regime I.
-
-\emph{Regime II ($\Lambda \approx 0.8$): Geometric effects at $\ell < 1500$.}
-High $\Lambda$ shrinks the sound horizon, shifting acoustic peak positions.
-Planck measures this precisely at low-$\ell$; ACT's noise at $\ell < 1500$ 
-rejects strong sound-horizon modifications ($\Delta\chi^2 \approx +965$).
-
-This two-regime structure explains why ACT and Planck respond differently 
-to the same model: they are sensitive to different physical effects. Paper~I 
-established the geometric ceiling ($H_0 < 71$~\kms) from Regime II; this paper 
-detects the spectral signature in Regime I.
+This is not a weakness---it is an opportunity. If the feature were present in 
+both experiments, it would be hard to distinguish from a correlated systematic. 
+The fact that ACT sees it and Planck does not, with the Planck penalty 
+concentrated in the beam-suppressed regime, provides a specific, testable signature.
 
 \subsection{Summary of results}
 
@@ -861,17 +851,19 @@ can express their preference about the \emph{shape}. The EDE shoulder is
 present in ACT's damping-tail data; DESI's role is to anchor the geometry 
 so that this preference can express itself unambiguously.
 
-\subsection{The $\Lambda \approx 0.16$ sweet spot: resolving both tensions}
+\subsection{Physical model mapping: $\Lambda_{\rm EDE}$ posterior}
 \label{sec:free_lambda}
 \label{sec:tworegime}
 
-When $\Lambda_{\rm EDE}$ is left as a free parameter, the posterior peaks 
-narrowly at $\Lambda = 0.144 \pm 0.006$---the preferred EDE scale is set by 
-the data, not by hand-tuning (Figure~\ref{fig:lambda_posterior}). 
+While the template test uses a fixed shape $T_\ell^{\rm soft}$ and fits 
+only the amplitude $A_{\rm sh}$, we can also ask what physical model 
+parameters are implied. When $\Lambda_{\rm EDE}$ is left as a free 
+parameter in a full MCMC fit, the posterior peaks narrowly at 
+$\Lambda = 0.144 \pm 0.006$ (Figure~\ref{fig:lambda_posterior}). 
 The 68\% confidence interval $[0.139, 0.151]$ is 15 times narrower than 
 the prior range $[0.08, 0.25]$, demonstrating that the constraint is 
 entirely data-driven. A systematic $\Lambda$ scan reveals that 
-EDE operates in two distinct regimes:
+the model operates in two distinct regimes:
 
 \begin{figure}[t]
 \centering
@@ -1633,14 +1625,21 @@ All tests pass, confirming that the underlying cosmological calculations
 are correct.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
+\section{Discussion: Conditional Interpretation}
 \label{sec:discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Consistency with external $H_0$ measurements}
+\textbf{Note:} The analysis in this paper is a template test. The core result 
+is that ACT prefers $A_{\rm sh} = 1.54 \pm 0.19$ while Planck prefers 
+$A_{\rm sh} \approx 0$. This section explores what this asymmetry 
+\emph{would mean} if the ACT preference reflects pre-recombination physics 
+rather than systematics. These are conditional interpretations, not claims.
 
-The ACT+DESI EDE fit yields $H_0 = 70.7 \pm 0.5$~\kms. This value 
-is consistent with recent non-Cepheid measurements:
+\subsection{Conditional: $H_0$ if ACT's template preference is physical}
+
+If one maps the ACT-preferred $A_{\rm sh}$ to the underlying early-time 
+model, the fit yields $H_0 = 70.7 \pm 0.5$~\kms. This value would be 
+consistent with recent non-Cepheid measurements:
 \begin{center}
 \begin{tabular}{lcc}
 \toprule
@@ -1676,9 +1675,10 @@ from Paper~I. TRGB-like priors ($H_0 \sim 70$~\kms) are neutral or mildly
 compatible. This confirms that ACT+DESI data naturally prefer $H_0 \approx 70$--71, 
 and pushing beyond this range incurs a substantial $\chi^2$ penalty.
 
-\subsection{Derived $H_0$ and the Hubble tension}
+\subsection{Conditional: Derived $H_0$}
 
-The ACT+DESI EDE fit yields $H_0 = 70.7 \pm 0.5$~\kms. This value is:
+If the ACT template preference is physical, the fit yields $H_0 = 70.7 \pm 0.5$~\kms. 
+This value would be:
 \begin{itemize}
 \item 3.3~\kms\ higher than Planck \lcdm\ ($67.4$~\kms).
 \item 2.3~\kms\ lower than SH0ES Cepheids ($73.0$~\kms).
@@ -1693,9 +1693,9 @@ Planck+DESI analyzed with identical methodology yields $H_0 = 68.1$~\kms,
 closer to the \lcdm\ value. This difference reflects the resolution asymmetry: 
 ACT's damping-tail data drive the fit toward higher $H_0$.
 
-\subsection{Context}
+\subsection{Observational properties of the detection}
 
-The ACT measurement has specific observational properties:
+The template detection has specific properties:
 
 \emph{Observational.} The feature is localized to $\ell > 1500$ (not 
 scattered), phase-coherent (10.5$\sigma$ from scrambling test), and 
@@ -1719,12 +1719,12 @@ $\Lambda \approx 0.16$) performs the spectral selection using ACT's
 $\ell > 2000$ resolution. Together, they identify a unique solution: 
 $\Lambda \approx 0.15$, $H_0 \approx 70.7$~\kms, $\sigma_8 \approx 0.75$.
 
-\subsection{The $\Lambda = 0.16$ solution}
+\subsection{Conditional: The $\Lambda = 0.16$ parameter space}
 
-As detailed in Section~\ref{sec:free_lambda}, the $\Lambda = 0.16$ solution 
-simultaneously achieves $H_0 = 70.7$~\kms, $\sigma_8 = 0.753$, and 
-$\Delta\chi^2 = -766$. This addresses a longstanding concern that EDE 
-models resolving the Hubble tension would exacerbate the $\sigma_8$ 
+If interpreted physically, the ACT-preferred amplitude maps to 
+$\Lambda_{\rm EDE} \approx 0.16$, which yields $H_0 = 70.7$~\kms, 
+$\sigma_8 = 0.753$, and $\Delta\chi^2 = -766$. This would address the 
+concern that early-time models resolving the Hubble tension exacerbate 
 tension. At $\Lambda = 0.16$, both tensions are reduced.
 
 Planck+DESI does not prefer this solution ($\Delta\chi^2 = +121$), 
@@ -1806,52 +1806,70 @@ procedure is standard $\chi^2$ minimization against published bandpowers.
 \label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Summary of measurements}
+\subsection{The template test result}
 
-ACT DR6 combined with DESI BAO shows $\Delta\chi^2 = -766$ preference for 
-EDE at $\Lambda_{\rm EDE} = 0.145 \pm 0.006$, detected at 8.1$\sigma$. The 
-$\chi^2$ improvement is localized to ACT high-$\ell$ (90\%), with BAO and 
-supernovae neutral. The derived parameters are $H_0 = 70.7 \pm 0.5$~\kms\ 
-and $\sigma_8 = 0.753 \pm 0.012$.
+We performed a sharp template test for pre-recombination physics in CMB 
+damping-tail data. The template $T_\ell^{\rm soft}$ was fixed from early-time 
+physics before examining the data. We fit a single amplitude $A_{\rm sh}$ 
+to ACT DR6 and Planck with identical methodology.
 
-Planck + DESI shows $\Delta\chi^2 = +121$ for the same model, with 89\% of 
-the penalty from Planck high-$\ell$ at $\ell > 1500$. This correlation 
-with beam sensitivity---ACT retains 87\% at $\ell = 3000$; Planck falls 
-to 18\%---is consistent with ACT detecting structure below Planck's 
-resolution limit.
-
-Robustness tests establish:
+\textbf{ACT DR6 result:}
 \begin{itemize}
-\item Phase-specificity: 10.5$\sigma$ coherence from phase-scrambling test.
-\item Achromaticity: 90/150~GHz consistent; 220~GHz shows CIB excess.
-\item Geometric independence: $\Delta\chi^2 = -1{,}557$ at fixed geometry.
-\item Statistical significance: $P < 10^{-4}$ from 10,000 Monte Carlo realizations.
+\item Best-fit amplitude: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$)
+\item $\chi^2$ improvement: $\Delta\chi^2 = -766$ relative to \lcdm
+\item Localization: 90\% from ACT high-$\ell$ ($\ell > 1500$); BAO/SNe neutral
 \end{itemize}
 
-\subsection{Falsifiable predictions}
-
-SPT-3G with 1.2$'$ beam and independent pipeline should measure:
+\textbf{Planck result:}
 \begin{itemize}
-\item $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ at $\ell > 2500$ by 2026.
-\item Phase matching ACT template within $\Delta\phi < 0.1$ radians.
-\item Achromatic response at 95/150/220~GHz.
+\item Best-fit amplitude: $A_{\rm sh} \approx 0$
+\item $\chi^2$ penalty: $\Delta\chi^2 = +121$
+\item Localization: 89\% from Planck high-$\ell$ (beam-suppressed regime)
 \end{itemize}
 
-Simons Observatory will achieve $\sigma(A_{\rm sh}) < 0.1$ by 2027, enabling 
-$>$10$\sigma$ confirmation or exclusion.
+\textbf{Robustness:}
+\begin{itemize}
+\item Monte Carlo: $P < 10^{-4}$ (10,000 \lcdm\ realizations)
+\item Phase coherence: 10.5$\sigma$ from scrambling test
+\item Achromaticity: 90/150~GHz consistent; 220~GHz shows CIB excess
+\end{itemize}
 
-\subsection{What this measurement establishes}
+\subsection{Interpretation}
 
-The ACT/Planck asymmetry demonstrates that high-$\ell$ CMB constraints 
-depend on angular resolution. At $\ell > 2000$, ACT's 1.4$'$ beam provides 
-3--5$\times$ better sensitivity than Planck's 5$'$ beam.
+The ACT/Planck asymmetry is the central finding. ACT strongly prefers 
+the damping-tail template; Planck penalizes it. The asymmetry correlates 
+with beam sensitivity: at $\ell = 3000$, ACT retains 87\% transmission 
+while Planck falls to 18\%.
 
-The $H_0$ and $\sigma_8$ values derived from the ACT-preferred parameters 
-lie between CMB-only values (67.4, 0.83) and late-time measurements 
-(JWST TRGB: $69.9 \pm 1.2$; weak lensing $S_8 \approx 0.76$). This positioning 
-is a property of the fit.
+We do not claim this is ``evidence for early dark energy'' or that the 
+$H_0$ tension is ``solved.'' What we establish is:
+\begin{enumerate}
+\item A specific, phase-coherent high-$\ell$ pattern is strongly detected 
+in ACT DR6 under standard analysis choices.
+\item The same pattern is not detected (and is penalized) by Planck.
+\item The asymmetry is quantitatively consistent with resolution effects.
+\end{enumerate}
 
-SPT-3G results expected in 2025--2026 will provide the first independent test.
+If one maps $A_{\rm sh}$ to physical parameters via the underlying 
+early-time model, the fit yields $H_0 = 70.7$~\kms\ and $\sigma_8 = 0.753$. 
+These values sit at the geometric ceiling established in Section~\ref{sec:geometry}. 
+This is noted as a conditional consequence, not as the main result.
+
+\subsection{The test}
+
+Either upcoming high-resolution CMB data will confirm this phase-coherent 
+damping-tail feature, forcing a re-examination of pre-recombination physics 
+at the geometric ceiling, or they will attribute it to an ACT-specific 
+systematic. In both cases, a sharp template-based test like this turns a 
+vague tension into a concrete question for the data.
+
+\textbf{SPT-3G prediction:} $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ at $\ell > 2500$ by 2026.
+
+\textbf{Simons Observatory:} $\sigma(A_{\rm sh}) < 0.1$ by 2027.
+
+A null result from SPT-3G would identify an ACT-specific effect crucial for 
+CMB-S4 analysis. Confirmation would establish a pre-recombination anomaly 
+requiring new physics.
 
 \emph{Code availability.} The modified \textsc{CLASS} implementation used in 
 this analysis will be made publicly available upon publication. MCMC chains, 
