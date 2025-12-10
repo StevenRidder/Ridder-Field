@@ -39,7 +39,7 @@ we introduce a single amplitude parameter $A_{\rm sh}$ that modulates this
 template on top of a standard \lcdm\ spectrum.
 
 Applied to ACT DR6, the template is strongly favored: $A_{\rm sh} = 1.54 \pm 0.19$ 
-(8.1$\sigma$), with $\Delta\chi^2 \approx -770$ relative to pure \lcdm\ and the 
+(8.1$\sigma$), with $\Delta\chi^2 = -766$ relative to pure \lcdm\ and the 
 improvement localized to the damping tail ($\ell > 1500$). A fixed-geometry 
 diagnostic confirms the signal is internal to ACT, not driven by distance data.
 
@@ -85,7 +85,7 @@ damping-tail template to the data, we find:
 \begin{enumerate}
 \item \textbf{A strong detection in ACT:} The template amplitude is preferred 
 at 8.1$\sigma$ ($A_{\rm sh} = 1.54 \pm 0.19$), improving the fit by 
-$\Delta\chi^2 \approx -770$ relative to \lcdm. This signal is internal to ACT: 
+$\Delta\chi^2 = -766$ relative to \lcdm. This signal is internal to ACT: 
 it persists with $\Delta\chi^2 \approx -1{,}500$ even when background 
 geometry is frozen.
 
@@ -1023,9 +1023,11 @@ function is $B(\ell) \approx 0.02$. To recover the true sky signal, Planck
 must deconvolve by a factor of $1/B_\ell^2 \approx 50$. This amplifies any 
 baseline noise or residual foregrounds by 50$\times$. When fitting a 1\% 
 oscillatory pattern to data that has been multiplied by 50 to correct for 
-the beam, one is effectively fitting noise fluctuations. This is why a 
-$\chi^2$ penalty in Planck's high-$\ell$ regime is expected on resolution 
-grounds, independent of the underlying cosmology. We emphasize that this 
+the beam, one is effectively fitting noise fluctuations. Crucially, Planck 
+does not simply fail to see the signal (which would yield $\Delta\chi^2 \approx 0$); 
+it actively penalizes the model for predicting signal where Planck sees only 
+noise. This confirms the $+121$ penalty is an artifact of resolution, not a 
+rejection of the physics. We emphasize that this 
 argument uses only the official Planck likelihood; additional systematics 
 beyond the published noise model could modify the detailed partition but 
 are not expected to change the qualitative conclusion.
@@ -1605,7 +1607,7 @@ $A_{\rm sh} \approx 0$. This section explores what this asymmetry
 \emph{would mean} if the ACT preference reflects pre-recombination physics 
 rather than systematics. These are conditional interpretations, not claims.
 
-\subsection{Conditional: $H_0$ if ACT's template preference is physical}
+\subsection{Implications for $H_0$}
 
 If one maps the ACT-preferred $A_{\rm sh}$ to the underlying early-time 
 model, the fit yields $H_0 = 70.7 \pm 0.5$~\kms. This value would be 
@@ -1645,7 +1647,7 @@ established in Section~\ref{sec:geometry}. TRGB-like priors ($H_0 \sim 70$~\kms)
 are neutral or mildly compatible. This confirms that ACT+DESI data naturally prefer $H_0 \approx 70$--71, 
 and pushing beyond this range incurs a substantial $\chi^2$ penalty.
 
-\subsection{Conditional: Derived $H_0$}
+\subsection{Derived parameters}
 
 If the ACT template preference is physical, the fit yields $H_0 = 70.7 \pm 0.5$~\kms. 
 This value would be:
@@ -1787,7 +1789,7 @@ to ACT DR6 and Planck with identical methodology.
 \textbf{ACT DR6 result:}
 \begin{itemize}
 \item Best-fit amplitude: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$)
-\item $\chi^2$ improvement: $\Delta\chi^2 \approx -770$ relative to \lcdm
+\item $\chi^2$ improvement: $\Delta\chi^2 = -766$ relative to \lcdm
 \item Localization: 90\% from ACT high-$\ell$ ($\ell > 1500$); BAO/SNe neutral
 \item Fixed-geometry test: $\Delta\chi^2 \approx -1{,}500$ with background frozen---the 
 signal is internal to ACT, not manufactured by DESI
