@@ -478,7 +478,9 @@ pre-specified EDE shoulder appear in the data with nonzero amplitude?
 All MCMC sampling is performed with \textsc{Cobaya}, using the Metropolis-Hastings 
 sampler with adaptive covariance learning. We run chains until the Gelman-Rubin 
 convergence criterion reaches $R - 1 < 0.03$. Cosmological observables are computed 
-with a modified version of \textsc{CLASS} that includes the monodromy EDE implementation.
+with a modified version of \textsc{CLASS} that includes the monodromy EDE implementation. 
+Robustness tests (Section~\ref{sec:robust}) use the same likelihood implementation 
+to generate mock ACT skies and fit phase-scrambled templates.
 
 For each model comparison, we report the best-fit \chisq\ and the improvement 
 $\Delta\chi^2$ relative to \lcdm\ with the same dataset combination. We decompose 
@@ -1201,6 +1203,25 @@ The robustness tests in Section~\ref{sec:robust} address this question.
 \section{Robustness Tests}
 \label{sec:robust}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We subject the ACT template detection to a battery of null tests. Four 
+tests form the backbone of this section:
+\begin{enumerate}
+\item \textbf{Monte Carlo PTE} (Section~\ref{sec:pte}): 10,000 \lcdm\ 
+realizations with ACT-like noise establish that $A_{\rm sh} = 1.54$ has 
+$P < 10^{-4}$ under the null hypothesis.
+\item \textbf{Phase scrambling} (Section~\ref{sec:phase_scrambling}): 
+1,000 phase-scrambled templates confirm the signal is phase-coherent 
+with acoustic structure (10.5$\sigma$).
+\item \textbf{Frequency-split achromaticity}: 
+90 and 150~GHz channels yield consistent $\Lambda_{\rm EDE}$, ruling out 
+CIB-driven systematics (see Table~\ref{tab:freq_split}).
+\item \textbf{ACT-only vs ACT+DESI} (Section~\ref{sec:fixed_geometry}): 
+The signal appears only when geometry is pinned by DESI, confirming 
+sound-horizon recalibration rather than generic high-$\ell$ noise.
+\end{enumerate}
+Subsequent subsections address specific alternative explanations 
+(foregrounds, wrong-epoch templates, code validation).
 
 \subsection{The look-elsewhere effect}
 
