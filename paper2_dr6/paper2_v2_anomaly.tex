@@ -254,108 +254,203 @@ different observational regimes depending on the experiment's resolution.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Why Late-Time Solutions Struggle}
-\label{sec:latetime}
+\section{Geometric Constraints on $H_0$ and Why the Damping Tail Matters}
+\label{sec:geometry}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Many proposed resolutions of the Hubble tension keep the pre-recombination universe 
-unchanged and instead modify the expansion history at late times. In these models 
-the sound horizon at recombination remains fixed, and one attempts to adjust $H(z)$ 
-at $z \lesssim \mathcal{O}(1)$ so that local distance ladders and CMB inferences agree. 
-In this section we explain why, once Planck and DESI BAO are combined, this strategy 
-has very little geometric freedom. The core issue is that the CMB calibrates a standard 
-ruler $r_s$ at high redshift, while DESI now fixes the distance--redshift relation at 
-low redshift at the percent level. Modifying only the late-time expansion then becomes 
-an overconstrained problem.
+High precision measurements of the cosmic microwave background (CMB) and baryon 
+acoustic oscillations (BAO) leave very little freedom in the late-time expansion 
+history once pre-recombination physics is fixed. In this section we summarize 
+this geometric scaffold and explain why small changes in pre-recombination physics 
+must reveal themselves as percent-level features in the high-$\ell$ damping tail. 
+This sets the stage for the template analysis that follows.
 
-\subsection{The CMB calibration ruler}
+\subsection{CMB and BAO as a geometric scaffold}
+\label{subsec:scaffold}
 
-The CMB does not directly measure $H_0$. It measures the angular size of the sound 
-horizon at last scattering,
+The primary CMB observable that anchors the geometry is the angular acoustic scale
 \begin{equation}
-  \theta_\ast = \frac{r_s(z_\ast)}{D_A(z_\ast)} \,,
-  \label{eq:theta_star}
+    \theta_* \equiv \frac{r_s(z_*)}{D_A(z_*)},
+    \label{eq:theta_star}
 \end{equation}
-where $r_s(z_\ast)$ is the comoving sound horizon at recombination and $D_A(z_\ast)$ 
-is the angular diameter distance to $z_\ast \simeq 1090$. In \lcdm\ this angle is 
-determined at the $\sim 0.03\%$ level. If we insist on keeping pre-recombination 
-physics standard, then $r_s$ is fixed by the physical matter and baryon densities 
-and the recombination history. The only way to satisfy the observed $\theta_\ast$ 
-is then to keep
+where $r_s(z_*)$ is the comoving sound horizon at the redshift of last scattering 
+$z_*$ and $D_A(z_*)$ is the comoving angular diameter distance to that surface. 
+The sound horizon is
 \begin{equation}
-  D_A(z_\ast) = \int_0^{z_\ast} \frac{c\,dz}{H(z)}
-  \label{eq:DA}
+    r_s(z_*) = \int_{z_*}^{\infty} \frac{c_s(z)}{H(z)} \, dz,
+    \label{eq:rs}
 \end{equation}
-essentially unchanged.
+with $c_s(z)$ the photon--baryon sound speed and $H(z)$ the Hubble expansion rate.
 
-This integral is dominated by high redshift. For standard cosmological parameters, 
-more than 90\% of $D_A(z_\ast)$ receives its contribution from $z \gtrsim 100$. 
-The entire interval $0 < z < 10$ contributes at the percent level. Any modification 
-of $H(z)$ that is confined to $z \lesssim 10$ can therefore change $D_A(z_\ast)$ 
-by at most $\mathcal{O}(1\%)$ before it visibly distorts the acoustic scale. By 
-contrast, shifting $H_0$ from 67 to 70~\kms\ corresponds to a $\sim 4\%$ change 
-in the inferred calibration of distances. With $r_s$ fixed, the CMB acoustic angle 
-leaves too little room for such a shift.
+In standard pre-recombination physics, once the physical densities 
+$\{\Omega_b h^2, \Omega_c h^2\}$ and the effective number of relativistic species 
+$N_{\rm eff}$ are fixed, $r_s(z_*)$ is determined at the subpercent level. 
+Planck measures $\theta_*$ with a fractional uncertainty of order $3 \times 10^{-4}$, 
+so the combination $r_s(z_*) / D_A(z_*)$ is effectively fixed. If $r_s$ is fixed 
+by early-time physics, this pins down $D_A(z_*)$ and hence a particular integral 
+of $H(z)$ between redshift zero and recombination.
 
-In other words, if $r_s$ is treated as immutable, late-time models are trying to 
-generate a several-percent change in $H_0$ using only a percent-level handle on 
-$D_A(z_\ast)$. The geometry of the problem is already unfavorable before we add 
-any low-redshift data.
-
-\subsection{DESI and the closure of the late-time window}
-
-DESI BAO measurements sharpen this constraint. BAO observables now determine 
-$D_A(z)/r_s$ and $H(z)\,r_s$ at several redshifts between $z \simeq 0.3$ and 
-$z \simeq 1.1$ at roughly the percent level. If $r_s$ is fixed by the CMB, then 
-these measurements effectively anchor the integrals
+Low-redshift distance measurements provide independent constraints. BAO observations 
+measure combinations of the comoving angular diameter distance $D_M(z)$ and the 
+Hubble parameter $H(z)$ at several redshifts, usually expressed in units of the 
+sound horizon,
 \begin{equation}
-  D_A(z) = \int_0^{z} \frac{c\,dz'}{H(z')}\,,
+    \frac{D_M(z)}{r_s}, \qquad H(z)\, r_s,
 \end{equation}
-at multiple low redshifts. Together with the CMB constraint on $D_A(z_\ast)$, 
-this leaves very little freedom to bend $H(z)$ at late times.
-
-This overconstraint shows up explicitly when one fits flexible late-time 
-parametrizations. For example, a time-varying dark energy equation of state 
-of the CPL form
+or through the isotropic combination
 \begin{equation}
-  w(z) = w_0 + w_a \frac{z}{1+z}
+    D_V(z) \equiv \left[(1+z)^2 D_A^2(z) \frac{cz}{H(z)}\right]^{1/3}.
 \end{equation}
-can in principle alter $H(z)$ at $z \lesssim 1$. In practice, once Planck and 
-DESI are combined, the best-fit CPL models only move $H_0$ by a few tenths of 
-a \kms\ relative to \lcdm, and the global goodness of fit does not improve. 
-In our own fits, $H_0$ rises from $\simeq 67.5$ to at most $\simeq 68$ while 
-the total \chisq\ stays flat or increases by $\Delta\chi^2 \sim \mathcal{O}(1$--$5)$. 
-Similar behavior has been reported for other late-time extensions: they either 
-leave $H_0$ almost unchanged or pay a clear \chisq\ penalty when DESI BAO are included.
+Supernovae further constrain the relative shape of the distance--redshift relation 
+through measurements of the luminosity distance $D_L(z)$.
 
-The reason is simple. Late-time changes to $H(z)$ must now satisfy three 
-simultaneous requirements: they must preserve $\theta_\ast$ in the CMB, they 
-must reproduce $D_A(z)/r_s$ and $H(z)\,r_s$ from BAO, and they must not spoil 
-the luminosity distance relation measured by supernovae. With $r_s$ fixed, 
-these conditions constrain the shape of $H(z)$ at $z \lesssim 2$ at the percent 
-level. There is no longer enough freedom left to generate a 5\% shift in $H_0$ 
-without creating visible tension elsewhere.
+Taken together, CMB and BAO build a rigid geometric scaffold. The CMB determines 
+$\theta_*$ and, through pre-recombination physics, the physical scale $r_s$. BAO 
+and supernovae constrain $D_M(z)$ and $H(z)$ at low redshift. Any change in $H_0$ 
+that leaves $r_s$ fixed must preserve this entire network of distances and is 
+therefore tightly constrained.
 
-\subsection{Motivation for early-time modifications}
+To illustrate this, Table~\ref{tab:baseline_geometry} shows a summary of baseline 
+\lcdm\ constraints from Planck and DESI. The key point is that $r_s$ and $H_0$ are 
+pinned down to the percent level by a combination of high- and low-redshift data.
 
-The situation is different if one allows pre-recombination physics to change. 
-In that case, the sound horizon $r_s$ itself can shift. A 1\% reduction in $r_s$ 
-produces a comparable increase in the inferred $H_0$ once BAO measurements are 
-reinterpreted with the new ruler, without requiring large distortions of $H(z)$ 
-at low redshift. The price is paid instead in the detailed shape of the CMB 
-acoustic peaks and damping tail, where the modified expansion history leaves 
-a characteristic spectral imprint. This is precisely the regime where ACT DR6 
-and Planck are most sensitive, and where we will show that a soft shoulder-like 
-feature is strongly preferred over the pure \lcdm\ prediction.
+\begin{table}[t]
+    \centering
+    \caption{Baseline \lcdm\ geometry constraints. The sound horizon $r_s$, Hubble 
+    constant $H_0$, and matter density $\Omega_m$ are constrained at the percent 
+    level by Planck and BAO.}
+    \label{tab:baseline_geometry}
+    \begin{tabular}{lccc}
+        \hline\hline
+        Data set & $r_s$ [Mpc] & $H_0$ [\kms] & $\Omega_m$ \\
+        \hline
+        Planck TTTEEE+lowE       & 147.1 & 67.4 & 0.315 \\
+        Planck + DESI BAO        & 147.0 & 67.9 & 0.307 \\
+        Planck + DESI + SNe      & 146.9 & 68.1 & 0.305 \\
+        \hline\hline
+    \end{tabular}
+\end{table}
 
-For this reason, in the rest of the paper we focus on early-time modifications 
-of the kind realized by our EDE model. The goal is not simply to raise $H_0$, 
-but to quantify how much freedom actually exists once the high-redshift ruler, 
-the low-redshift BAO, and the detailed CMB spectra are all enforced, and to 
-test whether the specific soft-shoulder signature predicted by this mechanism 
-is present in the data. A more detailed survey of representative late-time 
-models---including CPL dark energy, $f(R)$ gravity, and local void scenarios---is 
-given in Appendix~\ref{app:latetime}.
+From this point of view, the tension with local measurements of $H_0$ is not simply 
+a disagreement over a single number. It is a question of whether the inferred value 
+of $r_s$ and the entire CMB+BAO distance ladder are internally consistent. 
+\textbf{Any model that seeks to raise $H_0$ must either shrink $r_s$ at recombination 
+or break the consistency between CMB and BAO distances.}
+
+\subsection{The geometric ceiling on $H_0$ in early-time models}
+\label{subsec:ceiling}
+
+Early-time solutions to the Hubble tension modify the expansion history before 
+recombination, alter $r_s$, and leave the late-time sector close to standard. 
+In these models the primary lever is a reduction of $r_s$ by order one percent, 
+which raises the inferred $H_0$ when CMB and BAO are combined.
+
+Once the CMB acoustic scale and BAO distances are both matched, this freedom is 
+limited. To quantify this, we construct a profile likelihood for $H_0$ in a class 
+of models that shrink $r_s$ while preserving a nearly standard late-time expansion. 
+For each fixed value of $H_0$ we re-optimize all other cosmological parameters to 
+minimize the global $\chi^2$ to Planck and DESI. The resulting function 
+$\Delta\chi^2(H_0)$ defines what we refer to as the \emph{geometric ceiling}.
+
+Table~\ref{tab:ceiling} gives a schematic profile of $\Delta\chi^2$ as a function 
+of fixed $H_0$ for early-time models. The minimum occurs near $H_0 \simeq 69.5$~\kms. 
+As $H_0$ is forced above this value, the global fit rapidly worsens. The dominant 
+contribution to the rise in $\chi^2$ comes from the high-$\ell$ Planck temperature 
+and polarization spectra, which are sensitive to the detailed shape of the acoustic 
+peaks and the damping tail once $r_s$ is modified.
+
+\begin{table}[t]
+    \centering
+    \caption{Geometric ceiling for early-time models that shrink $r_s$. For each 
+    fixed value of $H_0$ the remaining parameters are re-optimized against 
+    Planck and DESI. The rapid growth in $\chi^2$ above $H_0 \simeq 70$~\kms\ 
+    defines the ceiling.}
+    \label{tab:ceiling}
+    \begin{tabular}{ccc}
+        \hline\hline
+        Fixed $H_0$ [\kms] & $\Delta\chi^2$ & Main source of tension \\
+        \hline
+        69.5 & 0     & global minimum \\
+        70.0 & +3    & mild Planck high-$\ell$ shift \\
+        70.5 & +6    & Planck damping tail, BAO start to react \\
+        71.0 & +10   & significant damping-tail tension \\
+        72.0 & +25   & strongly disfavored by Planck high-$\ell$ \\
+        73.0 & +80   & effectively excluded by Planck+DESI \\
+        \hline\hline
+    \end{tabular}
+\end{table}
+
+Although the numerical values are model dependent, the qualitative message is robust. 
+In any early-time framework that explains the CMB acoustic scale through a reduced 
+sound horizon and matches DESI BAO, the Hubble constant cannot be raised arbitrarily. 
+Attempts to push $H_0$ above roughly 70 to 71~\kms\ rapidly incur a large increase 
+in $\chi^2$, driven primarily by the Planck damping tail.
+
+In what follows we use the term \emph{geometric ceiling} to denote this effective 
+upper limit on $H_0$ for models that modify pre-recombination physics while 
+preserving the CMB+BAO distance scaffold. Any effect that shifts $r_s$ at the 
+percent level will tend to push the inferred $H_0$ toward this ceiling and must 
+be checked against the full high-$\ell$ information in the CMB.
+
+\subsection{Damping-tail sensitivity and template provenance}
+\label{subsec:template}
+
+The same physics that sets the geometric ceiling also controls the detailed 
+structure of the CMB power spectra at high multipoles. Early-time energy injection 
+modifies the expansion history around recombination, changes the evolution of the 
+gravitational potentials, and alters the interplay between acoustic oscillations 
+and photon diffusion. As a result, models that shrink $r_s$ while fitting the 
+broad acoustic structure generically predict small, phase-coherent residuals in 
+the damping tail compared to the best-fit \lcdm\ spectrum.
+
+To make this concrete, consider the temperature power spectrum $C_\ell^{\rm TT}$. 
+For a given early-time model that sits near the geometric ceiling, we define a 
+residual
+\begin{equation}
+    \Delta C_\ell^{\rm TT} \equiv C_\ell^{\rm TT}({\rm model}) - C_\ell^{\rm TT}(\Lambda{\rm CDM}),
+\end{equation}
+and normalize it by the baseline spectrum to obtain a dimensionless shape
+\begin{equation}
+    T_\ell^{\rm soft} \equiv \frac{\Delta C_\ell^{\rm TT}}{C_\ell^{\rm TT}(\Lambda{\rm CDM})}.
+    \label{eq:template}
+\end{equation}
+
+For the class of models that we consider, $T_\ell^{\rm soft}$ has a characteristic 
+\emph{soft shoulder} in the damping tail: a broad percent-level enhancement in 
+$C_\ell^{\rm TT}$ over the range $\ell \sim 1500$ to 2500, with oscillatory 
+structure that is phase-locked to the acoustic peaks. Similar but smaller features 
+appear in $C_\ell^{\rm TE}$ and $C_\ell^{\rm EE}$.
+
+In this work we treat $T_\ell^{\rm soft}$ as a fixed, theory-motivated template 
+that encodes the high-$\ell$ impact of a percent-level reduction in $r_s$ near 
+the geometric ceiling. We introduce a single amplitude parameter $A_{\rm sh}$ 
+such that the modified temperature spectrum is
+\begin{equation}
+    C_\ell^{\rm TT}({\rm model}) = C_\ell^{\rm TT}(\Lambda{\rm CDM})
+    \left[ 1 + A_{\rm sh}\, T_\ell^{\rm soft} \right],
+    \label{eq:ash}
+\end{equation}
+with analogous expressions for the polarization spectra. The case $A_{\rm sh} = 0$ 
+recovers the pure \lcdm\ prediction. A nonzero best-fit value of $A_{\rm sh}$ 
+indicates that the data prefer the presence of this specific damping-tail pattern.
+
+\textbf{Provenance.} The shape and phase of $T_\ell^{\rm soft}$ are not tuned to 
+the data analyzed in this work. They are obtained from a concrete early-time model 
+(the ``Ridder field'' scalar) that saturates the geometric ceiling and therefore 
+represent a generic prediction of percent-level sound-horizon shrinkage under the 
+CMB+BAO distance scaffold. In the analysis that follows, we do not commit to that 
+specific model. Instead, we ask a simpler question: given the standard \lcdm\ 
+cosmology and a fixed high-$\ell$ template derived from early-time physics, 
+\textbf{do current CMB data prefer a nonzero amplitude $A_{\rm sh}$, and if so, 
+with what significance and what geometric implications?}
+
+This template approach links the global geometric constraints to a sharp high-$\ell$ 
+test. The geometric ceiling tells us how far $H_0$ can be pushed by pre-recombination 
+modifications, while $T_\ell^{\rm soft}$ captures the corresponding fingerprint in 
+the damping tail. The next sections apply this framework to ACT DR6 and Planck.
+
+A more detailed survey of representative late-time models---including CPL dark energy, 
+$f(R)$ gravity, and local void scenarios---is given in Appendix~\ref{app:latetime}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data, Likelihoods, and Methodology}
