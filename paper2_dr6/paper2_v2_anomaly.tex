@@ -31,34 +31,38 @@ ACT DR6 Prefers a Damping-Tail Pattern That Planck Does Not}
 \date{\today}
 
 \begin{abstract}
-We perform a template test for pre-recombination physics in CMB damping-tail 
-data. The template $T_\ell^{\rm soft}$ encodes the generic high-$\ell$ 
-fingerprint of a percent-level reduction in the sound horizon $r_s$; its 
-shape and phase are fixed from early-time physics \emph{before} examining 
-the data. We fit a single amplitude parameter $A_{\rm sh}$ to ACT DR6 and Planck.
+We perform a template test for pre-recombination physics in the CMB damping 
+tail. The template $T_\ell^{\rm soft}$ encodes the high-$\ell$ signature of 
+a percent-level reduction in the sound horizon $r_s$. Its shape and phase 
+are fixed from early-time physics before examining the data. We introduce 
+a single amplitude parameter $A_{\rm sh}$ that rescales this template on 
+top of a standard \lcdm\ spectrum.
 
-\textbf{Result:} ACT DR6 strongly prefers a nonzero amplitude, 
-$A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), with $\Delta\chi^2 = -766$ 
-relative to \lcdm. The improvement is localized: 90\% comes from ACT's 
-high-$\ell$ likelihood ($\ell > 1500$); BAO and supernovae contribute $\pm 1$.
-Crucially, a fixed-geometry test where background cosmological parameters are 
-frozen shows ACT spectra alone prefer the shoulder by $\Delta\chi^2 \approx -1{,}500$, 
-confirming the signal is internal to ACT, not manufactured by DESI.
+Applied to ACT DR6, the template is detected with high significance. ACT 
+prefers $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), improving the fit by 
+$\Delta\chi^2 = -766$ relative to pure \lcdm. Ninety percent of this 
+improvement comes from ACT high-$\ell$ temperature data ($\ell > 1500$); 
+BAO and supernovae are neutral at the level of $|\Delta\chi^2| \lesssim 1$. 
+A fixed-geometry test, where background cosmological parameters are held 
+fixed, shows that ACT spectra alone prefer the shoulder pattern by 
+$\Delta\chi^2 \approx -1{,}500$, confirming that the signal is internal 
+to the damping tail and not manufactured by distance data.
 
-\textbf{Asymmetry:} The same template applied to Planck yields 
-$\Delta\chi^2 = +121$, with 89\% of the penalty from Planck high-$\ell$. 
-This asymmetry correlates with beam sensitivity: ACT retains 87\% transmission 
-at $\ell = 3000$; Planck falls to 18\%. We interpret this as ACT detecting 
-structure below Planck's resolution limit.
+Applied to Planck, the same template is not detected. Planck prefers 
+$A_{\rm sh} \approx 0$ and penalizes the ACT-like amplitude with 
+$\Delta\chi^2 = +121$, of which 89\% arises from high-$\ell$ TTTEEE 
+data in the beam-suppressed regime. This asymmetry correlates with 
+angular resolution: ACT retains high signal-to-noise at $\ell \sim 3000$, 
+while Planck becomes noise-dominated once beam deconvolution is applied.
 
-\textbf{Robustness:} Monte Carlo (10,000 realizations, $P < 10^{-4}$), 
-phase scrambling (10.5$\sigma$ coherence), and frequency splits (achromatic 
-at 90/150~GHz) confirm the detection is not a statistical fluke or foreground.
-
-\textbf{Test:} SPT-3G, with comparable resolution but independent systematics, 
-should measure $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ by 2026. A null result would 
-indicate an ACT-specific systematic; confirmation would establish a 
-pre-recombination anomaly at the geometric ceiling for $H_0$.
+Monte Carlo simulations, phase-scrambled templates, and frequency-split 
+fits show that the shoulder detection in ACT is phase coherent with the 
+acoustic peaks, statistically robust, and achromatic at 90 and 150~GHz. 
+\emph{If interpreted as a pre-recombination feature}, a concrete early 
+dark energy model that produces this template maps to $H_0 \simeq 70.7$~\kms\ 
+and $\sigma_8 \simeq 0.75$. We outline concrete tests for SPT-3G, Simons 
+Observatory, and CMB-S4 to determine whether this resolution-dependent 
+asymmetry arises from pre-recombination physics or ACT-specific systematics.
 \end{abstract}
 
 \maketitle
@@ -68,39 +72,29 @@ pre-recombination anomaly at the geometric ceiling for $H_0$.
 \label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Thesis.} We show that ACT DR6 high-$\ell$ data, when combined with 
-Planck, already impose a sharp binary choice on cosmology: either a concrete 
-pre-recombination feature that reshapes the $H_0$ and $S_8$ tensions, or a 
-specific class of ACT-like systematics. We derive the decisive tests that 
-forthcoming CMB experiments must perform to resolve this fork.
+\subsection{The main result}
 
-The significance of this result lies not in a specific model, but in the 
-binary choice it imposes. Small-scale CMB data already force a decision 
-between new pre-recombination physics and a specific class of ACT 
-systematics---and we show exactly what that choice looks like and how to test it.
+We construct a fixed, theory-motivated damping-tail template $T_\ell^{\rm soft}$ 
+and fit a single amplitude $A_{\rm sh}$ to current CMB data. ACT DR6 prefers 
+$A_{\rm sh} \neq 0$ with large $\Delta\chi^2$ improvement, while Planck prefers 
+$A_{\rm sh} \approx 0$ and penalizes the same template in its high-$\ell$ 
+likelihood. This defines a sharp, internal CMB inconsistency that depends on 
+angular resolution.
 
-\subsection{The core finding}
-
-This paper makes one concrete claim:
-
-\begin{quote}
-\textbf{ACT DR6 contains a strong, phase-coherent high-$\ell$ residual that 
-matches a fixed, theory-motivated damping-tail template, while Planck does not.}
-\end{quote}
-
-The template $T_\ell^{\rm soft}$ encodes the generic high-$\ell$ fingerprint 
-of a percent-level reduction in the sound horizon $r_s$ in early-time physics. 
-We fit a single amplitude parameter $A_{\rm sh}$ to ACT DR6 and Planck, with 
-identical priors and methodology. The result:
+The core measurement:
 \begin{itemize}
 \item ACT DR6: $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$), $\Delta\chi^2 = -766$
 \item Planck: $A_{\rm sh} \approx 0$, $\Delta\chi^2 = +121$
 \end{itemize}
 
-This is not a vague ``tension.'' It is a sharp, well-posed null test that 
-\lcdm\ fails in ACT but not in Planck. We identify the exact knob in early-time 
-physics that ACT is pulling on, and we show that smooth late-time fixes cannot 
-reproduce it.
+The template $T_\ell^{\rm soft}$ encodes the generic high-$\ell$ fingerprint 
+of a percent-level reduction in the sound horizon $r_s$ in early-time physics. 
+Its shape and phase are fixed \emph{before} examining ACT DR6 data. We fit 
+only the amplitude $A_{\rm sh}$, treating it as a single observable.
+
+In the discussion we outline two broad interpretations of this result---pre-recombination 
+physics versus ACT-specific systematics---and the observational tests that can 
+distinguish them.
 
 \subsection{What the paper does}
 
@@ -287,7 +281,7 @@ This sets the stage for the template analysis that follows.
 The primary CMB observable that anchors the geometry is the angular acoustic scale
 \begin{equation}
     \theta_* \equiv \frac{r_s(z_*)}{D_A(z_*)},
-    \label{eq:theta_star}
+  \label{eq:theta_star}
 \end{equation}
 where $r_s(z_*)$ is the comoving sound horizon at the redshift of last scattering 
 $z_*$ and $D_A(z_*)$ is the comoving angular diameter distance to that surface. 
@@ -912,7 +906,8 @@ shrinking $r_s$ and pushing $H_0$ toward 70--71~\kms, but $\sigma_8$ rises
 back toward 0.84 and the fit quality degrades.
 
 The transition zone at $\Lambda \approx 0.16$ is special---it simultaneously 
-achieves the best fit \emph{and} resolves both tensions:
+achieves the best fit \emph{and} would ameliorate both tensions if the 
+template detection is cosmological:
 \begin{center}
 \begin{tabular}{lccccc}
 \toprule
@@ -1877,7 +1872,7 @@ with beam sensitivity: at $\ell = 3000$, ACT retains 87\% transmission
 while Planck falls to 18\%.
 
 We do not claim this is ``evidence for early dark energy'' or that the 
-$H_0$ tension is ``solved.'' What we establish is:
+$H_0$ tension is ``solved.'' What the data show is:
 \begin{enumerate}
 \item A specific, phase-coherent high-$\ell$ pattern is strongly detected 
 in ACT DR6 under standard analysis choices.
@@ -1902,27 +1897,26 @@ vague tension into a concrete question for the data.
 
 \textbf{Simons Observatory:} $\sigma(A_{\rm sh}) < 0.1$ by 2027.
 
-A null result from SPT-3G would identify an ACT-specific effect crucial for 
-CMB-S4 analysis. Confirmation would establish a pre-recombination anomaly 
-requiring new physics.
+A null result from SPT-3G would identify an ACT-specific systematic effect 
+important for CMB-S4 analysis. Confirmation with independent systematics 
+would strongly favor a pre-recombination origin for the anomaly.
 
-\subsection{The binary choice}
+\subsection{Two interpretations}
 
-ACT DR6 high-$\ell$ data, when combined with Planck, already impose a sharp 
-binary choice on cosmology. Either:
+Taken at face value, the ACT result and the Planck result point to two broad 
+classes of explanations:
 \begin{enumerate}
-\item \textbf{New physics:} A concrete pre-recombination feature exists that 
-reshapes the $H_0$ and $S_8$ tensions, visible only to high-resolution CMB 
-experiments, or
-\item \textbf{Systematics:} ACT has a specific class of high-$\ell$ systematic 
-that mimics cosmological structure with achromatic, phase-coherent properties.
+\item \textbf{Pre-recombination physics:} A real damping-tail feature that 
+only high-resolution experiments can resolve.
+\item \textbf{ACT-specific systematic:} An effect that passes current 
+achromaticity and phase-coherence checks but is not cosmological.
 \end{enumerate}
 
-We have derived the decisive tests---SPT-3G by 2026, Simons Observatory by 
-2027---that forthcoming CMB experiments must perform to resolve this fork. 
-The significance of this work is not a specific model, but a roadmap: we 
-specify the exact signature, the required precision, and the expected 
-significance under each hypothesis. The test is falsifiable and imminent.
+We have structured this analysis so that both interpretations make clear, 
+falsifiable predictions for upcoming data. SPT-3G (2026) and Simons Observatory 
+(2027) can repeat exactly this template test with independent systematics. 
+Our main contribution is to turn a qualitative ACT--Planck discrepancy into 
+a single parameter $A_{\rm sh}$ that can be tested by upcoming experiments.
 
 \emph{Code availability.} The modified \textsc{CLASS} implementation used in 
 this analysis will be made publicly available upon publication. MCMC chains, 
