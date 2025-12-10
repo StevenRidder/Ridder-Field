@@ -29,7 +29,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ---
 
-## CURRENT STATUS (Updated: 2025-12-10 06:45 UTC)
+## CURRENT STATUS (Updated: 2025-12-10 07:45 UTC)
 
 ### MAJOR MILESTONE: FREQUENCY ACHROMATICITY PROVEN ✅
 **Frequency-split test completed with 200 samples per channel:**
@@ -46,6 +46,14 @@ If you want a package that survives hostile review, the highest-leverage items a
 - Weighted average of CMB channels: Λ = 0.141 ± 0.006
 
 **This proves the shoulder is cosmological, not foreground!**
+
+### Figures Generated
+| Figure | File | Status | In Paper |
+|--------|------|--------|----------|
+| Money Plot (ACT residuals) | `figures/money_plot.pdf` | ✅ Done | Fig 5 |
+| Λ Posterior | `figures/lambda_posterior.pdf` | 📝 Placeholder | Fig 6 |
+| Frequency Achromaticity | `figures/frequency_achromaticity.pdf` | ✅ Done | Fig 7 |
+| Beam Comparison | `figures/beam_comparison.pdf` | 📝 Placeholder | Fig X |
 
 ### MAJOR MILESTONE: KILLER QUESTION ANSWERED ✅
 - **Task 1.1 COMPLETE**: Fixed-geometry test proves shoulder is in ACT's data

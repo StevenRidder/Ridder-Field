@@ -1369,7 +1369,8 @@ CIB cannot produce phase-locked oscillations at specific acoustic peak positions
 
 \emph{Frequency-split achromaticity test.} To definitively test whether the shoulder
 is cosmological (achromatic) or foreground-driven (frequency-dependent), we run 
-separate EDE fits using only 90~GHz, 150~GHz, or 220~GHz TT spectra from ACT DR6:
+separate EDE fits using only 90~GHz, 150~GHz, or 220~GHz TT spectra from ACT DR6
+(Figure~\ref{fig:freq_achromaticity}):
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
@@ -1386,6 +1387,20 @@ consistent at 1.5$\sigma$, yielding a weighted average of $\Lambda_{\rm EDE}
 = 0.141 \pm 0.006$, matching the full combined analysis. The 220~GHz channel 
 shows a 1.6$\sigma$ excess ($\Lambda = 0.187$), as expected from CIB 
 contamination absorbing into the EDE amplitude.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/frequency_achromaticity.pdf}
+\caption{Frequency-split achromaticity test. \emph{Left:} $\Lambda_{\rm EDE}$ 
+posterior distributions from separate fits to 90, 150, and 220~GHz TT spectra. 
+The 90 and 150~GHz posteriors overlap within 1.5$\sigma$, demonstrating 
+achromaticity at CMB-dominated frequencies. The 220~GHz posterior is shifted 
+to higher $\Lambda$, consistent with CIB contamination. \emph{Right:} Summary 
+showing the weighted 90/150~GHz average $\Lambda = 0.141$ (dashed green line), 
+matching the combined ACT+DESI result. This frequency independence rules out 
+foreground origin of the soft shoulder.}
+\label{fig:freq_achromaticity}
+\end{figure}
 
 \textbf{This frequency independence at CMB-dominated channels rules out 
 foreground origin.} A tSZ or CIB signal would scale with frequency according 
