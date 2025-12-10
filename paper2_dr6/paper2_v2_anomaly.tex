@@ -121,8 +121,46 @@ The ACT/Planck asymmetry correlates with beam sensitivity:
 but noise-dominated for Planck.
 \end{itemize}
 This resolution dependence is quantified in Section~\ref{sec:planck}.
-We demonstrate this explicitly in Section~\ref{sec:planck} with beam 
-simulations and $\ell$-cut tests.
+
+\subsection{The role of DESI BAO}
+
+A key finding is that ACT \emph{alone} penalizes EDE:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Dataset & $\Delta\chi^2$ (EDE vs \lcdm) \\
+\midrule
+ACT-only & $+282$ (EDE worse) \\
+ACT + DESI & $-766$ (EDE better) \\
+\bottomrule
+\end{tabular}
+\end{center}
+This is not p-hacking---it reflects how spectral and geometric data combine.
+Without DESI, ACT has freedom to adjust cosmological parameters ($H_0$, $\Omega_m$, 
+$n_s$) to absorb the damping-tail residual within \lcdm. DESI's precise BAO 
+measurements anchor the geometric parameters, forcing ACT to fit the residual 
+with the EDE spectral modification. The $\Delta\chi^2 = -766$ improvement is 
+localized to ACT high-$\ell$, confirming DESI breaks a geometric degeneracy 
+rather than introducing a spurious preference.
+
+\subsection{Two-regime physics}
+
+EDE physics operates in two distinct regimes controlled by $\Lambda_{\rm EDE}$:
+
+\emph{Regime I ($\Lambda \approx 0.16$): Spectral effects at $\ell > 2000$.}
+Low $\Lambda$ produces a localized shoulder in the damping tail without 
+significantly modifying the sound horizon. ACT detects this ($\Delta\chi^2 = -766$); 
+Planck cannot resolve it ($\Delta\chi^2 = +121$). This paper focuses on Regime I.
+
+\emph{Regime II ($\Lambda \approx 0.8$): Geometric effects at $\ell < 1500$.}
+High $\Lambda$ shrinks the sound horizon, shifting acoustic peak positions.
+Planck measures this precisely at low-$\ell$; ACT's noise at $\ell < 1500$ 
+rejects strong sound-horizon modifications ($\Delta\chi^2 \approx +965$).
+
+This two-regime structure explains why ACT and Planck respond differently 
+to the same model: they are sensitive to different physical effects. Paper~I 
+established the geometric ceiling ($H_0 < 71$~\kms) from Regime II; this paper 
+detects the spectral signature in Regime I.
 
 \subsection{Summary of results}
 
@@ -1504,14 +1542,10 @@ are correct.
 \label{sec:discussion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Implications if the ACT signal is real}
+\subsection{Consistency with external $H_0$ measurements}
 
-The ACT-preferred EDE model yields a sound horizon approximately 1\% 
-smaller than the \lcdm\ prediction. This shift is driven by ACT's 
-high-$\ell$ data; Planck+DESI does not prefer it.
-
-The finding would be particularly compelling in light of the convergence 
-of independent $H_0$ measurements from non-Cepheid techniques:
+The ACT+DESI EDE fit yields $H_0 = 70.7 \pm 0.5$~\kms. This value 
+is consistent with recent non-Cepheid measurements:
 \begin{center}
 \begin{tabular}{lcc}
 \toprule
@@ -1580,9 +1614,7 @@ This modification propagates to all CMB-calibrated distances.
 \emph{Future tests.} SPT-3G (1.2$'$ beam), Simons Observatory (1.0$'$), 
 and CMB-S4 (1.0$'$) will all have sensitivity comparable to or exceeding 
 ACT at $\ell > 2000$. Planck PR4 with improved beam modeling may also 
-show marginal sensitivity at $\ell > 2000$. 
-Until the ACT/Planck asymmetry is resolved, the broader implications 
-remain speculative.
+show marginal sensitivity at $\ell > 2000$.
 
 \subsection{Relationship to Paper~I}
 
@@ -1631,13 +1663,13 @@ with CIB contamination visible at 220~GHz.
 a 0.3\% effect, below current noise. A future dataset with 
 $\lesssim 5~\mu$K-arcmin noise should detect the EE shoulder at $\sim 3\sigma$.
 
-\emph{Weak lensing.} If the EDE interpretation is correct, Stage~IV weak 
-lensing surveys should find $S_8 \approx 0.77$ in flat \lcdm\ fits---intermediate 
-between Planck ($S_8 \approx 0.83$) and current weak lensing ($S_8 \approx 0.76$).
+\emph{Weak lensing.} The EDE model predicts Stage~IV weak lensing surveys 
+will find $S_8 \approx 0.77$ in flat \lcdm\ fits---intermediate between 
+Planck ($S_8 \approx 0.83$) and current weak lensing ($S_8 \approx 0.76$).
 
-If the ACT signal is a systematic, SPT-3G and Simons Observatory should 
-\emph{not} see it, and will instead confirm Planck's null result. Either 
-outcome is scientifically valuable.
+SPT-3G and Simons Observatory provide the critical test. A detection 
+confirms the ACT measurement; a null result identifies an ACT-specific 
+systematic relevant for CMB-S4 analysis.
 
 \subsection{Model agnosticism}
 \label{sec:agnostic}
