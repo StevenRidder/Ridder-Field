@@ -134,19 +134,12 @@ concludes.
 %----------------------------------------------------------------------
 \begin{figure}[t]
 \centering
-% \includegraphics[width=\columnwidth]{figures/beam_comparison.pdf}
-\fbox{\parbox{0.9\columnwidth}{\centering\vspace{2cm}
-\textbf{Figure 1: Beam Window Functions}\\[0.5em]
-Planck (5') vs ACT (1.4') beam suppression\\
-Soft shoulder region ($\ell = 2000$--$3500$) highlighted\\
-Shows 3--5$\times$ sensitivity advantage for ACT
-\vspace{2cm}}}
-\caption{Beam window functions $B(\ell)$ for Planck (blue) and ACT DR6 (red). 
-The green shaded region ($\ell = 2000$--$3500$) marks where the soft shoulder 
-has maximum amplitude. Planck's beam suppresses signal to $<20\%$ in this 
-range, while ACT retains $>80\%$ sensitivity. This resolution asymmetry 
-explains why ACT detects the shoulder ($\Delta\chi^2 = -766$) while Planck 
-is penalized ($\Delta\chi^2 = +121$).}
+\includegraphics[width=\columnwidth]{figures/beam_comparison.pdf}
+\caption{Beam window functions $B(\ell)^2$ for Planck (red, 5$'$) and ACT DR6 
+(blue, 1.4$'$). \emph{Left:} At $\ell = 3000$, Planck's beam suppresses power 
+to $<1\%$ while ACT retains $>50\%$. \emph{Right:} ACT's resolution advantage 
+exceeds 100$\times$ in the soft shoulder region (green shading, $\ell = 2000$--$3500$). 
+This explains why ACT detects the shoulder while Planck is penalized.}
 \label{fig:beam}
 \end{figure}
 
@@ -155,18 +148,12 @@ is penalized ($\Delta\chi^2 = +121$).}
 %----------------------------------------------------------------------
 \begin{figure*}[t]
 \centering
-% \includegraphics[width=\textwidth]{figures/chi2_decomposition.pdf}
-\fbox{\parbox{0.9\textwidth}{\centering\vspace{3cm}
-\textbf{Figure 2: $\chi^2$ Decomposition by Likelihood Component}\\[0.5em]
-Left panel: ACT + DESI (EDE wins by $-766$, 90\% from ACT damping tail)\\
-Right panel: Planck + DESI (EDE penalized by $+121$, 89\% from Planck high-$\ell$)
-\vspace{3cm}}}
-\caption{Breakdown of $\Delta\chi^2$ (EDE $-$ \lcdm) by likelihood component. 
-\emph{Left:} ACT + DESI shows a $-766$ improvement, with 90\% 
-($-690$ of $-766$) localized to the ACT damping tail. BAO and SNe 
-are neutral. \emph{Right:} Planck + DESI shows a $+121$ penalty, with 89\% 
-($+108$ of $+121$) from Planck high-$\ell$ TTTEEE---the same multipole range 
-where Planck's beam suppresses sensitivity.}
+\includegraphics[width=0.8\textwidth]{figures/chi2_decomposition.pdf}
+\caption{$\chi^2$ decomposition by likelihood component showing $\Delta\chi^2$ 
+(EDE $-$ \lcdm) from ACT + DESI. The improvement is overwhelmingly localized to 
+ACT TT high-$\ell$ ($\Delta\chi^2 = -680$, 90\% of total), with minor contributions 
+from ACT TE/EE. BAO and SNe remain neutral, confirming geometric consistency. 
+Total: $\Delta\chi^2 = -766$.}
 \label{fig:chi2decomp}
 \end{figure*}
 
@@ -175,17 +162,13 @@ where Planck's beam suppresses sensitivity.}
 %----------------------------------------------------------------------
 \begin{figure}[t]
 \centering
-% \includegraphics[width=\columnwidth]{figures/noise_comparison.pdf}
-\fbox{\parbox{0.9\columnwidth}{\centering\vspace{2cm}
-\textbf{Figure 3: Effective Noise vs Shoulder Amplitude}\\[0.5em]
-Planck noise exceeds 1\% shoulder at $\ell > 1500$\\
-ACT noise below shoulder amplitude to $\ell \sim 3000$
-\vspace{2cm}}}
-\caption{Effective fractional noise $\sigma(C_\ell)/C_\ell$ as a function of 
-multipole for Planck (blue) and ACT (red). The horizontal green line marks 
-the $\sim 1\%$ shoulder amplitude. In the soft shoulder region ($\ell > 2000$), 
-ACT has signal-to-noise $>1$ while Planck has signal-to-noise $\ll 1$. 
-Fitting a coherent 1\% pattern to noise costs $\chi^2$, explaining Planck's penalty.}
+\includegraphics[width=\columnwidth]{figures/noise_comparison.pdf}
+\caption{Signal vs beam-deconvolved noise for ACT (blue) and Planck (red). 
+The CMB TT power spectrum (black) is signal-dominated for ACT to $\ell \sim 4000$, 
+but Planck becomes noise-dominated at $\ell > 2000$ after beam deconvolution. 
+The soft shoulder region (green shading) is where ACT retains high S/N while 
+Planck's noise exceeds the signal, explaining why fitting a coherent pattern 
+costs Planck $\chi^2$.}
 \label{fig:noise}
 \end{figure}
 

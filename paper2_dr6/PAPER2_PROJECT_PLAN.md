@@ -31,7 +31,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ## CURRENT STATUS (Updated: 2025-12-10 08:00 UTC)
 
-### 📋 SUBMISSION CHECKLIST (Paper Readiness: 99%)
+### 📋 SUBMISSION CHECKLIST (Paper Readiness: 100%)
 
 | Item | Status | Notes |
 |------|--------|-------|
@@ -42,10 +42,12 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Template provenance | ✅ Done | Section 3.2 |
 | Pipeline validation | ✅ Done | Section 3.3 |
 | Λ posterior figure | ✅ Done | Fig 6 - Λ=0.145±0.006 |
-| Beam comparison figure | 📝 Placeholder | Fig 1 (nice-to-have) |
+| Beam comparison figure | ✅ Done | Fig 1 |
+| χ² decomposition figure | ✅ Done | Fig 2 |
+| Noise comparison figure | ✅ Done | Fig 3 |
 | Error bars on Fig 5B | ⚠️ Optional | Data has built-in errors |
 
-**Remaining work:** Generate Λ posterior figure and beam comparison (optional)
+**All figures complete. Paper is ready for submission.**
 
 ---
 
@@ -71,7 +73,9 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Money Plot (ACT residuals) | `figures/money_plot.pdf` | ✅ Done | Fig 5 |
 | Λ Posterior | `figures/lambda_posterior.pdf` | ✅ Done | Fig 6 |
 | Frequency Achromaticity | `figures/frequency_achromaticity.pdf` | ✅ Done | Fig 7 (Table 4) |
-| Beam Comparison | `figures/beam_comparison.pdf` | 📝 Placeholder | Fig 1 |
+| Beam Comparison | `figures/beam_comparison.pdf` | ✅ Done | Fig 1 |
+| χ² Decomposition | `figures/chi2_decomposition.pdf` | ✅ Done | Fig 2 |
+| Noise Comparison | `figures/noise_comparison.pdf` | ✅ Done | Fig 3 |
 
 ### MAJOR MILESTONE: KILLER QUESTION ANSWERED ✅
 - **Task 1.1 COMPLETE**: Fixed-geometry test proves shoulder is in ACT's data
