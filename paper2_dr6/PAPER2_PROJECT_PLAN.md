@@ -31,7 +31,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 
 ## CURRENT STATUS (Updated: 2025-12-10 08:00 UTC)
 
-### 📋 SUBMISSION CHECKLIST (Paper Readiness: 98%)
+### 📋 SUBMISSION CHECKLIST (Paper Readiness: 99%)
 
 | Item | Status | Notes |
 |------|--------|-------|
@@ -41,7 +41,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Fixed-geometry test | ✅ Done | Δχ² = -1,579 proves shoulder in data |
 | Template provenance | ✅ Done | Section 3.2 |
 | Pipeline validation | ✅ Done | Section 3.3 |
-| Λ posterior figure | 📝 Placeholder | Fig 6 (needs generation) |
+| Λ posterior figure | ✅ Done | Fig 6 - Λ=0.145±0.006 |
 | Beam comparison figure | 📝 Placeholder | Fig 1 (nice-to-have) |
 | Error bars on Fig 5B | ⚠️ Optional | Data has built-in errors |
 
@@ -69,7 +69,7 @@ If you want a package that survives hostile review, the highest-leverage items a
 | Figure | File | Status | In Paper |
 |--------|------|--------|----------|
 | Money Plot (ACT residuals) | `figures/money_plot.pdf` | ✅ Done | Fig 5 |
-| Λ Posterior | `figures/lambda_posterior.pdf` | 📝 Placeholder | Fig 6 |
+| Λ Posterior | `figures/lambda_posterior.pdf` | ✅ Done | Fig 6 |
 | Frequency Achromaticity | `figures/frequency_achromaticity.pdf` | ✅ Done | Fig 7 (Table 4) |
 | Beam Comparison | `figures/beam_comparison.pdf` | 📝 Placeholder | Fig 1 |
 
