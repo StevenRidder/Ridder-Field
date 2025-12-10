@@ -560,9 +560,28 @@ this to $A_{\rm sh} = 1.54 \pm 0.19$ (8.1$\sigma$, $\Delta\chi^2 \approx -800$).
 Both represent highly significant detections, with 90\% of the improvement 
 from ACT's damping tail.
 
-This is the primary observational result: \emph{ACT DR6 contains a 
-phase-coherent, shoulder-like feature at $\ell > 1500$ that \lcdm\ does 
-not predict.}
+Under the ACT DR6 likelihood and our pipeline, ACT high-$\ell$ residuals 
+are very well described by this fixed shoulder template, whereas a smooth 
+\lcdm\ damping tail is not.
+
+\emph{Summary of $\Delta\chi^2$ values.} For reference, we collect the 
+various $\Delta\chi^2$ numbers that appear in this paper:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Test & $\Delta\chi^2$ & Context \\
+\midrule
+Template, cosmology fixed & $-770$ & 27.7$\sigma$, no marginalization \\
+Template, cosmology marginalized & $-800$ & 8.1$\sigma$, ACT+DESI \\
+Physical EDE ($\Lambda = 0.16$) & $-766$ & Recovers 95\% of template \\
+Fixed-geometry EDE vs \lcdm & $-1{,}557$ & Background frozen \\
+Planck+DESI EDE vs \lcdm & $+121$ & Penalty, 89\% from high $\ell$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The relationships: physical EDE captures 95\% of the template improvement 
+while respecting additional constraints; the fixed-geometry test shows the 
+preference is internal to ACT spectra.
 
 \begin{figure*}[t]
 \centering
@@ -612,8 +631,7 @@ and the reduction in $\sigma_8$ from 0.82 to 0.75.
 
 The $\Lambda = 0.16$ EDE solution achieves $\Delta\chi^2 = -766$ relative to \lcdm, 
 with $H_0 = 70.7 \pm 0.5$~\kms\ (matching JWST TRGB) and $\sigma_8 = 0.753 \pm 0.012$ 
-(matching weak lensing). This represents a highly significant improvement in fit quality 
-for the ACT+DESI combination, localized almost entirely to the damping tail. When 
+(matching weak lensing). This improvement is localized almost entirely to the damping tail. When 
 Planck high-$\ell$ data replace ACT, the same low-$\Lambda$ EDE model is instead 
 penalized (Section~\ref{sec:planck}), so we treat this EDE realization as an 
 interpretation of the ACT template preference, not as a globally preferred 
@@ -622,7 +640,7 @@ cosmological model.
 As shown above (Section~\ref{sec:template}), the template fit achieves 
 $\Delta\chi^2 \approx -800$. The physical EDE model captures $\sim$95\% of this 
 improvement ($\Delta\chi^2 = -766$) while satisfying all cosmological consistency 
-conditions---a remarkable result given that EDE must respect the Friedmann 
+conditions. This is notable because EDE must respect the Friedmann 
 equations and BAO distances that the template ignores.
 
 The template has one degree of freedom ($A_{\rm sh}$) and fits only $\ell > 1500$. 
@@ -680,6 +698,14 @@ through the shape of the acoustic oscillations, not just their angular scale.
 
 \subsection{ACT alone vs.\ ACT + DESI: the geometry is essential}
 \label{sec:act_vs_desi}
+
+The logic in brief: (1) ACT alone does not prefer EDE in a full cosmological 
+fit because a geometric degeneracy lets \lcdm\ absorb part of the shoulder 
+into background shifts. (2) The one-parameter template test does not have 
+this freedom; at any fixed \lcdm\ background, adding the shoulder improves 
+the fit. (3) DESI breaks the degeneracy; once geometry is fixed, the only 
+way to accommodate the residuals is through the high-$\ell$ spectral shape, 
+so the full EDE model recovers almost all of the template's $\Delta\chi^2$.
 
 A critical test of whether the signal is a genuine sound-horizon modification 
 or merely a high-$\ell$ artifact is to compare ACT alone with ACT + DESI:
@@ -894,7 +920,8 @@ with $n = 2$ fixed. With $\Delta\chi^2 = -766$ and $\Delta k = 2$:
 where $N_{\rm eff} \approx 3000$ is the effective number of data points 
 (ACT bandpowers + BAO + SNe + low-$\ell$ modes).
 
-Both criteria decisively favor EDE over \lcdm\ for the ACT+DESI combination. 
+Information criteria reflect the same strong preference for the one-parameter 
+shoulder distortion when ACT is used as the high-$\ell$ dataset. 
 The Occam penalty for the extra parameters ($\sim$4 for AIC, $\sim$16 for BIC) 
 is negligible compared to the $\chi^2$ improvement. On standard interpretation 
 scales, $|\Delta\text{AIC}| > 10$ and $|\Delta\text{BIC}| > 10$ indicate 
@@ -1224,6 +1251,18 @@ sound-horizon recalibration rather than generic high-$\ell$ noise.
 \end{enumerate}
 Subsequent subsections address specific alternative explanations 
 (foregrounds, wrong-epoch templates, code validation).
+
+\emph{Significance bookkeeping.} Several $\sigma$ values appear in this paper:
+\begin{itemize}
+\item 27.7$\sigma$: template amplitude at \emph{fixed} \lcdm\ cosmology (no 
+parameter marginalization).
+\item 8.1$\sigma$: template amplitude after marginalizing over cosmology and 
+geometry with ACT+DESI. This is the headline number.
+\item 10.5$\sigma$: phase coherence from the scrambling test---an internal 
+cross-check, not an independent detection.
+\end{itemize}
+Throughout the paper we use the 8.1$\sigma$ marginalized value in the abstract 
+and introduction; the others are reported where they arise.
 
 \subsection{The look-elsewhere effect}
 
