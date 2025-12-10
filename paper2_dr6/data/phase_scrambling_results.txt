@@ -1,0 +1,9 @@
+# Phase Scrambling Test Results
+# N_sims = 1000
+#
+A_correct = 1.697767
+A_scrambled_mean = -0.001250
+A_scrambled_std = 0.161574
+A_scrambled_max = 0.543726
+z_phase_coherence = 10.52
+n_exceed = 0
