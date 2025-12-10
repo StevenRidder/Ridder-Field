@@ -1370,18 +1370,26 @@ CIB cannot produce phase-locked oscillations at specific acoustic peak positions
 \emph{Frequency-split achromaticity test.} To definitively test whether the shoulder
 is cosmological (achromatic) or foreground-driven (frequency-dependent), we run 
 separate EDE fits using only 90~GHz, 150~GHz, or 220~GHz TT spectra from ACT DR6
-(Figure~\ref{fig:freq_achromaticity}):
-\begin{center}
+(Table~\ref{tab:freq_split}, Figure~\ref{fig:freq_achromaticity}).
+
+\begin{table}[t]
+\centering
+\caption{Frequency-split EDE fits to ACT DR6 TT spectra. Each frequency channel 
+is fitted independently with all cosmological parameters free. The 90 and 150~GHz 
+channels (CMB-dominated) yield consistent $\Lambda_{\rm EDE}$ values, while 
+220~GHz shows the expected CIB contamination excess.}
+\label{tab:freq_split}
 \begin{tabular}{lccc}
 \toprule
-Frequency & $\Lambda_{\rm EDE}$ & $\chi^2_{\rm min}$ & CIB expectation \\
+Frequency & $\Lambda_{\rm EDE}$ & $\chi^2_{\rm min}$ & Interpretation \\
 \midrule
 90 GHz  & $0.135 \pm 0.003$ & 531 & CMB-dominated \\
 150 GHz & $0.146 \pm 0.006$ & 581 & CMB-dominated \\
 220 GHz & $0.187 \pm 0.029$ & 378 & CIB-contaminated \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table}
+
 The 90 and 150~GHz channels---where CMB dominates over foregrounds---are 
 consistent at 1.5$\sigma$, yielding a weighted average of $\Lambda_{\rm EDE} 
 = 0.141 \pm 0.006$, matching the full combined analysis. The 220~GHz channel 
@@ -1579,7 +1587,10 @@ $\sigma(A_{\rm sh}) < 0.1$, enabling detection or exclusion at $>10\sigma$
 
 \emph{Frequency independence.} The amplitude $A_{\rm sh}$ should be 
 identical at 90, 150, and 220~GHz when measured in thermodynamic CMB units. 
-Any frequency dependence would indicate foreground contamination.
+Any frequency dependence would indicate foreground contamination. Our 
+frequency-split tests (Section~\ref{sec:robust}) provide a template for 
+future analyses: CMB signals should be achromatic across 90/150~GHz, 
+with CIB contamination visible at 220~GHz.
 
 \emph{Polarization.} At ACT DR6 precision, EE is expected to show at most 
 a 0.3\% effect, below current noise. A future dataset with 
