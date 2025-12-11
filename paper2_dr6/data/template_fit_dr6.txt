@@ -1,0 +1,13 @@
+# A1: Template Fit ACT DR6 (damping tail ell > 1500)
+# TT points: 435
+# chi2_LCDM (raw) = 69796.1
+#
+# EDE template (H0=71 - LCDM):
+#   A = 0.173 +/- 0.043
+#   Significance = 4.0 sigma
+#   Delta_chi2 = -16.2
+#
+# Oscillatory template:
+#   A = -0.003 +/- 0.004
+#   Significance = -0.9 sigma
+#   Delta_chi2 = -0.8

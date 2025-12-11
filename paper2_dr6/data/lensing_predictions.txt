@@ -1,0 +1,11 @@
+# Lensing and CMB Predictions: EDE-like vs ΛCDM
+# Computed with CLASS - no assumed template, pure theory
+
+# ΛCDM: H0=67.36 km/s/Mpc, σ8=0.8229
+# EDE:  H0=71.00 km/s/Mpc, σ8=0.8968
+
+# Differences (EDE - ΛCDM) / ΛCDM:
+TT_damping_tail_pct: -5.64
+EE_damping_tail_pct: -4.42
+lensing_L100_500_pct: +13.47
+sigma8_change_pct: +8.98

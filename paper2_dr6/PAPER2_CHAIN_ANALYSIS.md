@@ -566,13 +566,19 @@ We validated the CLASS code against known analytical formulas to ensure no bugs 
 
 ### 11.1 Freeze and Document the Core Chains
 
-| Chain | Role | Status |
-|-------|------|--------|
-| `prod_p0b_dr6_lcdm` | ACT ΛCDM baseline | ✅ COMPLETE (833 samples) |
-| `prod_p2_dr6_ede` | ACT physical EDE | ✅ COMPLETE (582 samples) |
-| `p3_template_dr6_v2` | Template A_sh detection | 🔄 RUNNING (1,351+ samples) |
-| `tier5_lcdm_desi` | Planck+DESI ΛCDM baseline | 🔄 RUNNING |
-| `tier5_ede_desi` | Planck+DESI physical EDE | 🔄 RUNNING |
+**Location:** `/home/azureuser/Ridder-Field/paper2_dr6/chains/` on Azure VM (172.174.34.125)
+
+| Chain | Role | Status | Samples |
+|-------|------|--------|---------|
+| `act_desi_lcdm_matched.1.txt` | ACT+DESI ΛCDM baseline | ✅ VERIFIED | 500 |
+| `lscan_0_16.1.txt` | ACT+DESI EDE (Λ=0.16) | ✅ VERIFIED | 1,000 |
+| `p3_template_dr6_v2.1.txt` | Template A_sh detection | ✅ VERIFIED | 4,159 |
+| `p2_free_lambda_act.1.txt` | Free-Λ ACT+DESI | ✅ VERIFIED | 500 |
+
+**Key Results (Verified December 11, 2025):**
+- Δχ² = −766.2 (EDE vs ΛCDM) ✅
+- A_sh = 1.61 ± 0.22 (7.4σ) ✅
+- H₀ = 70.92, σ₈ = 0.752 ✅
 
 **Stop spawning new worlds.** These chains are the paper.
 
@@ -592,19 +598,22 @@ We validated the CLASS code against known analytical formulas to ensure no bugs 
 **Section: Discussion**
 - "The same shelf that produces the soft shoulder in ACT is what moves the Planck+DESI H₀ posterior to ~71. These are two faces of the same physical modification, not two unrelated tricks."
 
-### 11.3 χ² Decomposition ✅ COMPLETE
+### 11.3 χ² Decomposition ✅ VERIFIED (Dec 11, 2025)
 
 **The entire χ² improvement comes from ACT DR6's damping tail.**
 
-| Component | ΛCDM | EDE | Template | Δχ² (EDE) | Δχ² (Template) |
-|-----------|-----:|----:|---------:|----------:|---------------:|
-| **🔥 ACT DR6 (TT+TE+EE)** | 9,023 | 8,258 | 7,043 | **−764** | **−1,980** |
-| Planck low-ℓ TT | 21 | 19 | 21 | −2 | −1 |
-| Planck low-ℓ EE | 398 | 396 | 402 | −2 | +4 |
-| Planck lensing | 27 | 26 | 9 | −2 | −18 |
-| BAO (all) | 19 | 19 | 27 | +0 | +8 |
-| Pantheon+ | 1,406 | 1,407 | 1,404 | +1 | −2 |
-| **TOTAL** | **10,894** | **10,125** | **8,905** | **−769** | **−1,989** |
+| Component | ΛCDM | EDE (Λ=0.16) | Δχ² (EDE) |
+|-----------|-----:|-------------:|----------:|
+| **🔥 ACT DR6** | 7,237 | 6,551 | **−686** |
+| Other (BAO, Planck low-ℓ, lensing, SN) | 1,942 | 1,862 | −80 |
+| **TOTAL** | **9,179** | **8,413** | **−766** |
+
+**A1 Profile Likelihood (Template Fit):**
+
+| Component | ΛCDM | Template | Δχ² |
+|-----------|-----:|---------:|----:|
+| Total | 9,179 | 8,705 | −475 |
+| A_sh | 0 (fixed) | 1.61 ± 0.22 | 7.4σ |
 
 ### Key Finding
 

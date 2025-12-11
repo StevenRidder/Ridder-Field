@@ -1,0 +1,18 @@
+# ACT DR4 Shift/Dilation Test (TT-only, relative)
+# Baseline significance: 5.63sigma
+shift -300 15.219
+shift -200 11.560
+shift -100 8.299
+shift  -50 4.379
+shift   +0 5.635
+shift  +50 2.513
+shift +100 3.637
+shift +200 2.270
+shift +300 1.426
+dilation 0.80 0.846
+dilation 0.90 1.314
+dilation 0.95 6.453
+dilation 1.00 5.635
+dilation 1.05 1.266
+dilation 1.10 6.807
+dilation 1.20 1.546

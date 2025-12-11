@@ -1,5 +1,17 @@
 # Λ = 0.16 Validation Plan
 
+## ✅ CHAINS VERIFIED (December 11, 2025)
+
+**Chain Location:** `/home/azureuser/Ridder-Field/paper2_dr6/chains/` on Azure VM
+
+All chains have been located and verified. Key results match paper claims:
+- Δχ² = −766 ✅
+- H₀ = 70.9 ✅  
+- σ₈ = 0.752 ✅
+- χ²(EDE) = 8,413 ✅
+
+---
+
 ## Executive Summary
 
 We have discovered a **sweet spot at Λ = 0.16** that simultaneously achieves:

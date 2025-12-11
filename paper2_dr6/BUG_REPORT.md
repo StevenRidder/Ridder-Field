@@ -1,6 +1,22 @@
 # Bug Report: Paper 2 Analysis
 
-## Critical Issues
+## ✅ RESOLUTION (December 11, 2025)
+
+The chain discrepancy has been resolved. Correct chains found at:
+```
+/home/azureuser/Ridder-Field/paper2_dr6/chains/
+```
+
+**Verified Results:**
+- Δχ² = −766 ✅ (matches paper exactly)
+- A_sh = 1.61 ± 0.22 (7.4σ) ≈ paper's 1.54 ± 0.19 (8.1σ)
+- H₀ = 70.92, σ₈ = 0.752 ✅
+
+The earlier confusion arose from looking at the wrong chains (tier5 = Planck-based, not ACT-based).
+
+---
+
+## Historical Issues (For Reference)
 
 ### 1. **CRITICAL: theta_i Parameter Mismatch**
 

@@ -1,0 +1,6 @@
+# Competing Alternatives Analysis (ACT DR4)
+# Template, A/sigma, Delta_chi2, chi2
+LCDM,---,---,60.5
+EDE,0.3,+0.1,60.4
+Running,0.4,+0.1,60.3
+Bump,2.0,+3.9,56.6
