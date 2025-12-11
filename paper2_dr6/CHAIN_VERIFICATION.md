@@ -126,6 +126,75 @@ The Δχ² = −766 is the primary result and matches exactly.
 
 ---
 
+## A3: Competing Alternatives
+
+### Template Comparison
+| Extension | Type | Δχ² | Significance |
+|-----------|------|-----|--------------|
+| ΛCDM (baseline) | --- | 0 | --- |
+| + Running (α_s) | Smooth | −70 | ~2σ |
+| + Gaussian bump | Localized | −120 | ~3σ |
+| + EDE shoulder | Oscillatory | **−475** | **7.4σ** |
+
+**Key finding:** EDE template wins by factor of 4-7x over alternatives.
+
+Neither running nor a Gaussian bump can reproduce:
+- The oscillatory structure (5 peaks in ℓ=1500-3000)
+- The phase coherence (10.5σ from scrambling test)
+- The ℓ-localization (shift by 300 ℓ kills detection)
+
+---
+
+## B1: Multi-Frequency Constraints
+
+### Frequency-Specific Results
+| Channel | Λ_EDE | σ | H₀ | χ²_min |
+|---------|-------|---|-----|--------|
+| 90 GHz | 0.135 | 0.003 | 70.8 | 951 |
+| 150 GHz | 0.146 | 0.006 | 71.0 | 998 |
+| 220 GHz | 0.187 | 0.029 | 71.0 | 794 |
+
+### Achromaticity Test
+- **90 vs 150 GHz:** Δ = 0.011 (1.5σ) → **ACHROMATIC** ✅
+- **CMB weighted avg:** Λ = 0.138 ± 0.003
+- **220 vs CMB:** Δ = 0.049 (1.7σ) → CIB visible
+
+### Foreground Spectral Test
+Observed ratio Λ(90)/Λ(150) = 0.93 ± 0.05
+
+| Foreground | Expected Ratio | Rejection |
+|------------|----------------|-----------|
+| CMB | 1.00 | 1.4σ ✅ |
+| tSZ | 1.80 | **17σ** ❌ |
+| CIB | 0.35 | **11σ** ❌ |
+
+**Conclusion:** Signal is achromatic (CMB-like), ruling out tSZ and CIB origin.
+
+---
+
+## C1: Geometry vs Spectrum Figure
+
+### Data Points for H₀-r_s Plot
+| Model | H₀ (km/s/Mpc) | r_s (Mpc) | Source |
+|-------|---------------|-----------|--------|
+| Planck 2018 ΛCDM | 67.4 ± 0.5 | 147.1 | Planck PR4 |
+| ACT+DESI ΛCDM | 69.7 ± 0.4 | ~144.6 | This work |
+| ACT+DESI EDE (Λ=0.16) | 70.9 ± 0.3 | ~141.9 | This work |
+| SH0ES | 73.0 ± 1.0 | --- | Riess+ 2022 |
+
+### Figure Elements
+1. **Blue ellipse**: Planck+BAO ΛCDM (geometry ceiling)
+2. **Gray band**: ACT-only degeneracy (elongated along H₀-r_s)
+3. **Red point**: ACT+DESI EDE at (70.9, 142)
+4. **Green band**: SH0ES measurement
+
+### Key Physics
+- DESI breaks the ACT degeneracy by anchoring geometry
+- ACT damping tail then selects the EDE point via Δχ² = -766
+- Geometry sets the **boundary**, spectrum selects the **point**
+
+---
+
 ## Zenodo Archive Checklist
 
 When archiving to Zenodo, include:
