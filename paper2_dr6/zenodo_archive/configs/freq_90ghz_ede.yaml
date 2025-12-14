@@ -1,0 +1,137 @@
+theory:
+  classy:
+    extra_args:
+      output: tCl, pCl, lCl
+      l_max_scalars: 9000
+      lensing: true
+      gauge: newtonian
+      recombination: recfast
+      non_linear: none
+      N_ncdm: 1
+      m_ncdm: 0.06
+      N_ur: 2.0328
+      n_ridder: 3
+      theta_i_ridder: 2.0
+      beta_ridder: 0.0
+      f_axion_ridder: 1.0e+27
+  mflike.BandpowerForeground: null
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  act_dr6_mflike.ACTDR6MFLike:
+    requested_cls:
+    - tt
+    - te
+    - ee
+    defaults:
+      symmetrize: false
+      polarizations:
+      - TT
+      - TE
+      - ET
+      - EE
+      polarizations_auto:
+      - TT
+      - TE
+      - EE
+      lmax: 8500
+      scales:
+        TT:
+        - 2
+        - 8500
+        TE:
+        - 2
+        - 8500
+        ET:
+        - 2
+        - 8500
+        EE:
+        - 2
+        - 8500
+    data:
+      experiments:
+      - dr6_pa5_f090
+      - dr6_pa6_f090
+      spectra:
+      - experiments:
+        - dr6_pa5_f090
+        - dr6_pa5_f090
+        polarizations:
+        - TT
+        scales:
+          TT:
+          - 1000
+          - 8500
+      - experiments:
+        - dr6_pa6_f090
+        - dr6_pa6_f090
+        polarizations:
+        - TT
+        scales:
+          TT:
+          - 1000
+          - 8500
+      - experiments:
+        - dr6_pa5_f090
+        - dr6_pa6_f090
+        polarizations:
+        - TT
+        scales:
+          TT:
+          - 1000
+          - 8500
+params:
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+    latex: \log(10^{10} A_\mathrm{s})
+  A_s:
+    value: 'lambda logA: 1e-10*np.exp(logA)'
+    latex: A_s
+  n_s:
+    prior:
+      min: 0.9
+      max: 1.05
+    ref: 0.9649
+    proposal: 0.004
+  H0:
+    prior:
+      min: 60
+      max: 80
+    ref: 71.0
+    proposal: 0.5
+  omega_b:
+    prior:
+      min: 0.019
+      max: 0.025
+    ref: 0.02211
+    proposal: 0.0002
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.14
+    ref: 0.1141
+    proposal: 0.001
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.057
+    proposal: 0.006
+  Lambda_EDE_ridder:
+    prior:
+      min: 0.08
+      max: 0.25
+    ref: 0.14
+    proposal: 0.02
+sampler:
+  mcmc:
+    max_samples: 200
+    Rminus1_stop: 0.2
+    max_tries: 50000
+packages_path: /home/azureuser/packages
+output: freq_90ghz_ede

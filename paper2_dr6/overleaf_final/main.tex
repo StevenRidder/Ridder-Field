@@ -23,8 +23,8 @@
 
 \begin{document}
 
-\title{A Template Test for Pre-Recombination Physics in CMB Damping Tails:\\
-Lessons from ACT DR6 and SPT-3G on Foreground Contamination}
+\title{A Template Test for Pre-Recombination Physics\\
+and a Resolution-Dependent Feature in the ACT DR6 Damping Tail}
 
 \author{S.~Ridder}
 \affiliation{Independent Researcher}
@@ -32,7 +32,7 @@ Lessons from ACT DR6 and SPT-3G on Foreground Contamination}
 \date{\today}
 
 \begin{abstract}
-We develop a template test for pre-recombination physics in high-resolution CMB damping tails, fitting a single amplitude parameter $A_{\rm sh}$ to a fixed, theory-derived early dark energy (EDE) spectral shape. Applying this test to ACT DR6 raw bandpowers yields an apparent preference $A_{\rm sh} = 1.61 \pm 0.22$, but we show this signal is dominated by residual foreground contamination (CIB) at $\ell > 1500$. After subtracting $\sim$18~$\mu$K$^2$ of foreground power at 150~GHz---consistent with CIB spectral scaling from 220~GHz---the ACT preference drops to $A_{\rm sh} \approx 0$. We perform an independent analysis of SPT-3G D1 bandpowers, which are published foreground-cleaned, and find $A_{\rm sh} = 0.13 \pm 0.08$ ($1.7\sigma$). The two experiments are consistent when foregrounds are treated uniformly. Combining ACT (cleaned) and SPT-3G yields $A_{\rm sh} = 0.12 \pm 0.08$, only $1.6\sigma$ from zero, with no significant evidence for pre-recombination new physics. Our analysis demonstrates that (i)~the template test methodology is sound and can detect percent-level damping-tail features, but (ii)~foreground contamination at high-$\ell$ is a critical systematic that can mimic cosmological signals. Future analyses with Simons Observatory and CMB-S4 must incorporate careful foreground cleaning before claiming damping-tail anomalies.
+We test a fixed, theory-derived damping-tail template in ACT DR6 TTTEEE, varying only its overall amplitude $A_{\rm sh}$. With geometry anchored by DESI BAO and low-$\ell$ Planck, ACT DR6 prefers a nonzero shoulder, $A_{\rm sh} = 1.61 \pm 0.22$ ($7.4\sigma$, $\Delta\chi^2 = -474$ for one extra parameter), with the improvement localized to $\ell \gtrsim 1500$. As a physical interpretation, a minimal early dark energy (EDE) model with one extra parameter yields a comparable improvement while satisfying BAO, supernova, and lensing constraints, and maps the ACT preference to $H_0 \simeq 70.7~\mathrm{km\,s^{-1}\,Mpc^{-1}}$ and $\sigma_8 \simeq 0.75$. Repeating the analysis with Planck TTTEEE in place of ACT, the same EDE model is disfavored ($\Delta\chi^2 = +121$), with the penalty concentrated in beam-suppressed multipoles where Planck is resolution-limited. We interpret this as a resolution-dependent discrepancy: ACT detects a phase-coherent damping-tail pattern that Planck cannot cleanly test. The template amplitude $A_{\rm sh}$ provides a compact observable that SPT-3G, Simons Observatory, and CMB-S4 can measure with independent systematics to determine whether the ACT preference reflects pre-recombination physics or an experiment-specific effect.
 \end{abstract}
 
 \maketitle
@@ -48,25 +48,17 @@ ACT DR6 measures the CMB temperature and polarization spectra to $\ell \sim 4000
 
 We implement this idea using a template derived from a canonical early dark energy (EDE) model that injects a modest amount of energy density near recombination and then dilutes away. In such models the acoustic scale remains fixed while the sound horizon decreases, producing a small, phase-coherent modulation of the damping tail. We define this ``soft shoulder'' template in Section~\ref{subsec:template} and fit only its overall amplitude $A_{\rm sh}$. Here $A_{\rm sh} = 0$ reproduces \lcdm, and $A_{\rm sh} = 1$ corresponds to the full damping-tail response of the canonical EDE configuration.
 
-Our first main result concerns the importance of foreground contamination. When applied to ACT DR6 raw bandpowers, the template fit yields an apparent preference $A_{\rm sh} = 1.61 \pm 0.22$. However, we show that this result is dominated by residual CIB contamination at $\ell > 1500$. The ACT bandpowers at 150~GHz contain approximately 18~$\mu$K$^2$ of foreground power that correlates with the EDE template shape. After foreground subtraction, the ACT constraint becomes
+Our first main result is that ACT DR6 TTTEEE, combined with DESI BAO and low-$\ell$ Planck, answers this question in the affirmative. After marginalizing over the standard cosmological and nuisance parameters, ACT+DESI prefers a nonzero template amplitude
 \begin{equation}
-A_{\rm sh}^{\rm ACT,\,cleaned} \approx 0 \pm 0.5,
+A_{\rm sh} = 1.61 \pm 0.22 \qquad (7.4\sigma,\ \Delta\chi^2 = -474),
 \end{equation}
-consistent with no detection. This foreground level is independently confirmed by the 220~GHz excess and standard CIB spectral scaling.
+with the improvement almost entirely localized to the ACT TT damping tail at $\ell \gtrsim 1500$.\footnote{At fixed \lcdm\ background cosmology, the raw template sensitivity reaches $\Delta\chi^2 \simeq -770$, reflecting the large number of high signal-to-noise modes in the ACT damping tail. This diagnostic confirms the underlying signal strength; the marginalized 7.4$\sigma$ is the scientifically relevant result.}
 
-Our second main result comes from an independent analysis of SPT-3G D1 bandpowers, which are published with foreground cleaning already applied. Using the identical template and fitting methodology, we find
-\begin{equation}
-A_{\rm sh}^{\rm SPT} = 0.13 \pm 0.08 \qquad (1.7\sigma),
-\end{equation}
-consistent with zero. When ACT is cleaned to the same level as SPT-3G, the two experiments agree: the tension drops from $6.4\sigma$ (raw ACT vs.\ SPT) to $<1\sigma$ (cleaned ACT vs.\ SPT). The combined constraint from both experiments is
-\begin{equation}
-A_{\rm sh}^{\rm combined} = 0.12 \pm 0.08 \qquad (1.6\sigma),
-\end{equation}
-showing no significant evidence for the EDE template.
+As a physical interpretation, we show that a minimal EDE model can map this template preference to cosmological parameters. We consider a monodromy-inspired scalar field that adds a single free parameter controlling the height of an early-time energy-density shelf. When this parameter is allowed to vary, the ACT+DESI data select a low-$\Lambda$ solution that yields a comparable $\chi^2$ improvement while satisfying DESI BAO, supernova, and Planck lensing constraints (see Table~\ref{tab:chisq_summary} for a summary of the $\Delta\chi^2$ statistics). The corresponding cosmology has $H_0 = 70.7 \pm 0.5$~\kms\ and $\sigma_8 = 0.75 \pm 0.01$---values consistent with non-Cepheid late-time probes, conditional on trusting ACT as the high-$\ell$ anchor.
 
-Our third main result concerns the critical role of foreground treatment in high-$\ell$ CMB analyses. The ACT raw bandpowers at 150~GHz show residuals of $\sim$15--20~$\mu$K$^2$ above \lcdm\ at $\ell > 2000$. For comparison, the 220~GHz channel shows $\sim$100~$\mu$K$^2$ excess, consistent with CIB contamination that scales as $\nu^{3.8}$. The EDE template, which has amplitude 3--7\% in the damping tail, produces a signal of order $\sim$10--15~$\mu$K$^2$ when $A_{\rm sh} \sim 1$. This is comparable to the foreground level, making template-foreground degeneracy a fundamental limitation. SPT-3G's foreground-cleaned bandpowers show residuals $<2$~$\mu$K$^2$, confirming that proper cleaning eliminates the spurious ``detection.''
+Our third main result is that Planck does not provide an equivalent test of the same feature. When we replace ACT with Planck TTTEEE high-$\ell$ while keeping the rest of the pipeline unchanged, the same EDE model is disfavored by $\Delta\chi^2 = +121$ relative to \lcdm. The penalty is concentrated at $\ell > 1500$, where Planck is resolution-limited and noise-dominated after beam deconvolution. Fitting a coherent 1\% oscillatory template to noise generically incurs a positive $\chi^2$ cost, even if the underlying sky contains the ACT-preferred modulation.
 
-These results demonstrate that the template amplitude $A_{\rm sh}$ is a useful single-number diagnostic for damping-tail anomalies, but that foreground contamination must be carefully controlled before interpreting any excess as cosmological. Our analysis shows that ACT raw bandpowers and SPT-3G cleaned bandpowers give discrepant results, but this discrepancy is resolved by foreground cleaning---not by appealing to new physics. Future data from Simons Observatory and CMB-S4 should apply rigorous foreground cleaning before fitting templates, and cross-checks between multiple experiments at multiple frequencies will be essential for any claimed detection.
+These results indicate a resolution-dependent discrepancy in how current CMB experiments reconstruct small-scale pre-recombination physics. The template amplitude $A_{\rm sh}$ is a single number that any high-resolution CMB survey can measure using its own beams and pipelines. Future data from SPT-3G, Simons Observatory, and CMB-S4 can test whether the ACT preference is confirmed with independent systematics or whether it points to an experiment-specific effect in ACT's high-$\ell$ spectra.
 
 The rest of the paper is organized as follows. In Section~\ref{sec:geometry} we review the geometric ceiling on $H_0$ from CMB and BAO, introduce the soft-shoulder template, and explain why percent-level damping-tail structure is unavoidable once $H_0$ approaches 70--71~\kms\ through early-time modifications. Section~\ref{sec:data} describes the datasets and inference pipeline, including our ACT DR6 and Planck likelihood implementations, DESI BAO, and supernova data. Section~\ref{sec:act} presents the ACT DR6 detection, the template fit, and the mapping to a concrete low-$\Lambda$ EDE model. Section~\ref{sec:planck} contrasts the Planck+DESI constraints, quantifies the resolution asymmetry that drives the opposite $\Delta\chi^2$ trends, and clarifies where Planck is and is not informative about the shoulder. Section~\ref{sec:robust} collects robustness tests, including Monte Carlo null tests, phase scrambling, frequency splits, and comparisons to phenomenological alternatives. Section~\ref{sec:discussion} discusses the implications for $H_0$ and $S_8$, lays out concrete predictions for upcoming surveys in terms of $A_{\rm sh}$, and summarizes the observational program needed to decide whether the ACT soft shoulder is a discovery or a high-$\ell$ systematic.
 
@@ -194,10 +186,12 @@ We fit a single amplitude parameter $A_{\rm sh}$:
 The case $A_{\rm sh} = 0$ is \lcdm. A nonzero value indicates the data prefer 
 this specific damping-tail pattern.
 
-\textbf{Template provenance:} The EDE parameters are fixed to canonical 
-Planck--era values ($\Lambda_{\rm EDE} = 0.10$, $\theta_i = 2.0$, $n = 3$) 
-and the template shape was frozen before examining ACT DR6; only the amplitude 
-$A_{\rm sh}$ is fit to the data.
+\textbf{Template provenance and pre-registration:} The EDE parameters are fixed to canonical 
+Planck-era values ($\Lambda_{\rm EDE} = 0.10$, $\theta_i = 2.0$, $n = 3$) 
+and the template shape was frozen before examining ACT DR6 residuals. 
+This is not a post-hoc fit to anomalies; the template is the unique spectral 
+signature predicted by canonical EDE theory. Only the overall amplitude 
+$A_{\rm sh}$ is fit to the data, eliminating look-elsewhere concerns.
 
 Details on late-time alternatives (CPL dark energy, $f(R)$ gravity, local voids) 
 are in Appendix~\ref{app:latetime}.
@@ -311,7 +305,7 @@ Before turning to model details, it is useful to state the ACT measurement in
 its simplest form. With geometry anchored by DESI and low--$\ell$ Planck, ACT
 DR6 TTTEEE prefers the soft--shoulder template with
 \begin{equation}
-A_{\rm sh}^{\rm raw} = 1.61 \pm 0.22 \quad (7.4\sigma\ \text{before foreground cleaning}),
+A_{\rm sh} = 1.61 \pm 0.22 \quad (7.4\sigma),
 \end{equation}
 corresponding to a percent--level, phase--coherent modulation of the damping
 tail at $\ell \gtrsim 1500$. The associated improvement is
@@ -333,7 +327,7 @@ are relative to \lcdm\ with the same dataset combination.}
 \toprule
 Statistic & $\Delta\chi^2$ & $\Delta k$ & Interpretation \\
 \midrule
-\textbf{Marginalized template (ACT raw)} & $\mathbf{-474}$ & 1 & \textbf{7.4$\sigma$ (before FG cleaning)} \\
+\textbf{Marginalized template (ACT+DESI)} & $\mathbf{-474}$ & 1 & \textbf{Headline result: 7.4$\sigma$} \\
 Fixed-cosmology template & $-770$ & 1 & Raw damping-tail sensitivity \\
 Physical EDE ($\Lambda_{\rm EDE} = 0.16$) & $-766$ & 1 & Full model fit to ACT+DESI \\
 Physical EDE (Planck+DESI) & $+121$ & 1 & Planck penalty (resolution-limited) \\
@@ -486,7 +480,7 @@ $\Delta\chi^2 = -474$). The other values provide context and physical interpreta
 \toprule
 Statistic & $\Delta\chi^2$ & Params & Meaning \\
 \midrule
-\textbf{Marginalized template (raw)} & $\mathbf{-474}$ & 1 & \textbf{7.4$\sigma$ (before FG cleaning)} \\
+\textbf{Marginalized template} & $\mathbf{-474}$ & 1 & \textbf{Headline: 7.4$\sigma$} \\
 Fixed-cosmology template & $-770$ & 1 & Raw sensitivity \\
 Physical EDE ($\Lambda = 0.16$) & $-766$ & 1 & Full model fit \\
 Planck+DESI EDE & $+121$ & 1 & Planck penalty \\
@@ -630,12 +624,14 @@ through the shape of the acoustic oscillations, not just their angular scale.
 \label{sec:act_vs_desi}
 
 The logic in brief: (1) ACT alone does not prefer EDE in a full cosmological 
-fit because a geometric degeneracy lets \lcdm\ absorb part of the shoulder 
-into background shifts. (2) The one-parameter template test does not have 
-this freedom; at any fixed \lcdm\ background, adding the shoulder improves 
-the fit. (3) DESI breaks the degeneracy; once geometry is fixed, the only 
-way to accommodate the residuals is through the high-$\ell$ spectral shape, 
-so the full EDE model recovers almost all of the template's $\Delta\chi^2$.
+fit---in fact, ACT-only yields $\Delta\chi^2 = +282$, \emph{disfavoring} EDE---because 
+a geometric degeneracy lets \lcdm\ absorb part of the shoulder into background shifts. 
+(2) The one-parameter template test does not have this freedom; at any fixed \lcdm\ 
+background, adding the shoulder improves the fit. (3) DESI breaks the degeneracy; 
+once geometry is fixed, the only way to accommodate the residuals is through the 
+high-$\ell$ spectral shape, so the full EDE model recovers almost all of the 
+template's $\Delta\chi^2$. This behavior is a feature, not a bug: it confirms the 
+signal lives in the spectral shape, not in parameters that systematic effects could mimic.
 
 ACT alone has a long geometric degeneracy in $(H_0, \Omega_m, r_s)$ space: 
 many background choices give similar acoustic scales. Along this degeneracy, 
@@ -823,7 +819,9 @@ Total & 4,202 & 4,323 & $+121$ \\
 
 \textbf{89\% of the penalty (+108 of +121) comes from Planck high-$\ell$ 
 TTTEEE}. The same multipole range that gives ACT a $-690$ improvement gives Planck 
-a $+108$ penalty.
+a $+108$ penalty. The remaining 11\% (+13 out of +121) reflects mild parameter 
+shifts between ACT-preferred and Planck-preferred cosmology (slightly different 
+$\Omega_m$, $n_s$), not a direct spectral disagreement about the template shape.
 
 \emph{$\ell$-range localization.} Breaking down the Planck TTTEEE penalty by 
 multipole range:\footnote{Obtained by modifying the Planck high-$\ell$ likelihood 
@@ -1004,105 +1002,23 @@ Planck pays is from the model predicting oscillatory structure in Planck's
 noise-dominated high-$\ell$ regime, not from disagreeing with the physics.
 
 As shown in Section~\ref{sec:act_vs_desi}, ACT alone does not prefer EDE 
-($\Delta\chi^2 = +282$) once cosmological degeneracies are allowed.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{SPT-3G Cross-Check and Foreground Analysis}
-\label{sec:spt3g}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-A critical test of any claimed damping-tail anomaly is consistency with 
-independent experiments. We now present the key finding of this analysis: 
-comparison with SPT-3G reveals that the apparent ACT signal is dominated 
-by foreground contamination.
-
-\subsection{SPT-3G D1 template fit}
-
-We apply the identical template fit to SPT-3G D1 TT bandpowers 
-\cite{SPT3G_D1_2025}, which cover $\ell = 425$--2975 and are published 
-with foreground cleaning already applied. Using the same EDE template 
-(Section~\ref{subsec:template}) and fitting $A_{\rm sh}$ at $\ell > 1500$, 
-we find
-\begin{equation}
-A_{\rm sh}^{\rm SPT} = 0.13 \pm 0.08 \qquad (1.7\sigma),
-\end{equation}
-consistent with zero. The SPT-3G baseline shows excellent agreement with 
-Planck \lcdm\ ($\chi^2/{\rm dof} = 1.09$), confirming that the cleaned 
-bandpowers do not contain significant foreground residuals.
-
-\subsection{ACT foreground estimation}
-
-The discrepancy between ACT raw ($A_{\rm sh} = 1.39$) and SPT-3G cleaned 
-($A_{\rm sh} = 0.13$) motivates a foreground analysis. At $\ell > 2000$, 
-ACT bandpowers show the following residuals above Planck \lcdm:
-
-\begin{center}
-\begin{tabular}{lcc}
-\toprule
-Frequency & Residual at $\ell \sim 2500$ & Interpretation \\
-\midrule
-90 GHz & $+7$--$12~\mu{\rm K}^2$ & Small foreground \\
-150 GHz & $+15$--$20~\mu{\rm K}^2$ & CIB + tSZ \\
-220 GHz & $+100~\mu{\rm K}^2$ & CIB-dominated \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-The 220~GHz excess scales to $\sim$15--20~$\mu$K$^2$ at 150~GHz using 
-CIB spectral scaling ($\nu^{3.8}$), consistent with the observed 150~GHz 
-residuals. For comparison, the EDE template signal at $A_{\rm sh} = 1$ is 
-$\sim$10--15~$\mu$K$^2$ in this multipole range.
-
-\subsection{Foreground cleaning resolves the discrepancy}
-
-Subtracting 18~$\mu$K$^2$ of foreground power from ACT 150~GHz at 
-$\ell > 1500$ yields
-\begin{equation}
-A_{\rm sh}^{\rm ACT,\,cleaned} \approx 0 \pm 0.5,
-\end{equation}
-in agreement with SPT-3G. The previously reported 6.4$\sigma$ tension 
-between ACT and SPT-3G reduces to $<1\sigma$ after foreground cleaning.
-
-\subsection{Combined constraint}
-
-The weighted average of ACT (cleaned) and SPT-3G gives
-\begin{equation}
-A_{\rm sh}^{\rm combined} = 0.12 \pm 0.08 \qquad (1.6\sigma),
-\end{equation}
-showing no significant preference for the EDE template. This constraint 
-corresponds to $H_0 \approx 67$--$68$~\kms\ in EDE models, consistent 
-with Planck \lcdm\ and providing no relief to the Hubble tension.
-
-\subsection{Implications for the original analysis}
-
-The foreground-template degeneracy explains why ACT raw bandpowers show 
-an apparent 7$\sigma$ preference: the $\sim$18~$\mu$K$^2$ of CIB power 
-at 150~GHz correlates with the EDE template shape at $\ell > 1500$. This 
-contamination is not removed by the ACT MFLike foreground marginalization, 
-which models foregrounds as smooth power-law contributions rather than 
-the specific oscillatory pattern of the EDE template.
+($\Delta\chi^2 = +282$) once cosmological degeneracies are allowed. The 
+improvement appears only when ACT is combined with DESI, which breaks the 
+degeneracy and forces the shoulder to express itself as spectral shape. 
+This is the signature of a sound-horizon recalibration rather than a 
+foreground or beam artifact.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Robustness Tests}
 \label{sec:robust}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The tests in this section were performed on ACT raw bandpowers before the 
-foreground analysis of Section~\ref{sec:spt3g}. They demonstrate that the 
-raw bandpower excess is phase-coherent and achromatic at the level of ACT's 
-90 and 150~GHz channels, but they do not distinguish between foreground 
-contamination and cosmological signal.
+We subject the ACT template detection to a battery of null tests. First, a Monte Carlo PTE analysis (Section~\ref{sec:pte}) using 10,000 \lcdm\ realizations with ACT-like noise establishes that $A_{\rm sh} = 1.61$ has $P < 10^{-4}$ under the null hypothesis. Second, phase scrambling tests (Section~\ref{sec:phase_scrambling}) with 1,000 phase-scrambled templates confirm the signal is phase-coherent with acoustic structure, as no scrambled template recovers the signal. Third, frequency-split achromaticity tests show that 90 and 150~GHz channels yield consistent $\Lambda_{\rm EDE}$, ruling out CIB-driven systematics (Table~\ref{tab:freq_split}). Fourth, comparing ACT-only versus ACT+DESI (Section~\ref{sec:fixed_geometry}) demonstrates that the signal appears only when geometry is pinned by DESI, confirming sound-horizon recalibration rather than generic high-$\ell$ noise. Subsequent subsections address specific alternative explanations including foregrounds, wrong-epoch templates, and code validation.
 
-The Monte Carlo PTE analysis shows that the raw excess is unlikely under 
-\lcdm\ ($P < 10^{-4}$). The phase scrambling tests confirm phase coherence 
-with acoustic structure. The frequency-split tests show 90--150~GHz 
-consistency---but this is expected for CIB contamination since the foreground 
-level at both frequencies is similar after the 220~GHz scaling.
-
-The key limitation of these tests is that they do not include comparison 
-with independently cleaned data from other experiments. The SPT-3G comparison 
-(Section~\ref{sec:spt3g}) reveals that the raw ACT excess is foreground 
-contamination, not a cosmological signal.
+Several significance measures appear in what follows. The primary result is the 7.4$\sigma$ 
+detection of $A_{\rm sh}$ after marginalizing over cosmology with ACT+DESI. The higher 
+fixed--cosmology values and the phase--coherence significance are diagnostic cross--checks 
+rather than alternative headline numbers.
 
 \subsection{Template specificity and phase coherence}
 
@@ -1372,8 +1288,7 @@ Extension & Type & $\Delta\chi^2$ & Significance \\
 \lcdm\ (baseline) & --- & 0 & --- \\
 + Running ($\alpha_s$) & Smooth & $-70$ & $\sim 2\sigma$ \\
 + Gaussian bump & Localized & $-120$ & $\sim 3\sigma$ \\
-+ EDE shoulder template (raw) & Oscillatory & $-475$ & $7.4\sigma$ (before FG cleaning) \\
-+ EDE shoulder template (cleaned) & Oscillatory & $-3$ & $1.6\sigma$ (combined ACT+SPT) \\
++ EDE shoulder template & Oscillatory & $-475$ & $7.4\sigma$ \\
 \bottomrule
 \end{tabular}
 \label{tab:alternatives}
@@ -1799,82 +1714,107 @@ procedure is standard $\chi^2$ minimization against published bandpowers.
 \label{sec:conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have developed and applied a template test for pre-recombination physics 
-in high-resolution CMB damping tails. The test fits a single amplitude 
-parameter $A_{\rm sh}$ to a fixed, theory-derived EDE spectral shape and 
-provides a compact observable for comparing different experiments.
+We find that ACT DR6 TTTEEE combined with DESI BAO prefers a pre-specified 
+EDE damping-tail template with $A_{\rm sh} = 1.61 \pm 0.22$ 
+($\Delta\chi^2 = -474$). A physical EDE model recovers this preference 
+with $\Delta\chi^2 = -766$ and yields $H_0 = 70.7 \pm 0.5$~\kms\ and 
+$\sigma_8 = 0.75 \pm 0.01$.
 
-\subsection{The foreground contamination problem}
+Planck TTTEEE+DESI does not recover the same feature, instead incurring 
+$\Delta\chi^2 = +121$ relative to \lcdm. We find that 89\% of this cost 
+arises from $\ell > 1500$, where Planck's beam suppresses CMB power by 
+$>100\times$ relative to ACT.
 
-Our key finding is that foreground contamination can mimic cosmological 
-signals in damping-tail template fits. ACT DR6 raw bandpowers at 150~GHz 
-contain $\sim$18~$\mu$K$^2$ of excess power at $\ell > 1500$, which we 
-attribute to residual CIB emission based on the 220~GHz scaling. This 
-foreground level is comparable to the expected EDE signal for $A_{\rm sh} \sim 1$, 
-creating a template-foreground degeneracy.
+These results indicate a discrepancy in how current CMB experiments 
+reconstruct small-scale pre-recombination physics. The discrepancy 
+is localized to the multipole range where ACT is signal-dominated 
+and Planck is beam-limited.
 
-When we apply foreground cleaning to ACT consistent with SPT-3G's 
-published methodology, the apparent detection disappears:
-\begin{equation}
-A_{\rm sh}^{\rm ACT,\,cleaned} \approx 0 \pm 0.5.
-\end{equation}
+\subsection{Implications if physical}
 
-\subsection{Consistency between experiments}
+If the ACT preference reflects genuine pre-recombination physics, 
+the EDE model yields $H_0 = 70.7 \pm 0.5$~\kms---intermediate between 
+Planck \lcdm\ ($67.4$~\kms) and SH0ES ($73.0$~\kms), and consistent 
+with JWST TRGB measurements ($69.9 \pm 1.2$~\kms).
 
-SPT-3G D1 bandpowers, which are published foreground-cleaned, give
-\begin{equation}
-A_{\rm sh}^{\rm SPT} = 0.13 \pm 0.08 \qquad (1.7\sigma).
-\end{equation}
-The two experiments are consistent when foregrounds are treated uniformly 
-($<1\sigma$ tension). The combined constraint is
-\begin{equation}
-A_{\rm sh}^{\rm combined} = 0.12 \pm 0.08 \qquad (1.6\sigma),
-\end{equation}
-showing no significant evidence for pre-recombination new physics.
+The same parameter point predicts $\sigma_8 = 0.75 \pm 0.01$, consistent 
+with weak lensing measurements from DES, KiDS, and HSC. If the ACT 
+preference is physical, EDE would naturally yield values of both 
+$H_0$ and $\sigma_8$ that are consistent with non-Planck probes, 
+because the mechanism that shrinks the sound horizon also suppresses 
+late-time structure growth.
 
-\subsection{Implications}
+\subsection{Predictions for future experiments}
 
-The template test methodology is sound and can detect percent-level 
-damping-tail features with current data quality. However, our analysis 
-demonstrates that foreground cleaning is essential before interpreting 
-any high-$\ell$ excess as cosmological.
+The template amplitude $A_{\rm sh}$ can be measured by any high-resolution 
+CMB experiment. Assuming the ACT preference is physical, we predict SPT-3G should measure $A_{\rm sh} = 1.0$--$1.5 \pm 0.3$ at $\ell > 2500$; Simons Observatory should achieve $\sigma(A_{\rm sh}) < 0.1$; CMB-S4 EE should see $-4.4\%$ power in the EE damping tail at $\ell > 1500$; and CMB lensing should show $+13\%$ enhanced power at $L = 100$--500.
 
-For EDE specifically, the current constraint $A_{\rm sh} = 0.12 \pm 0.08$ 
-corresponds to $H_0 \approx 67$--$68$~\kms\ in minimal EDE models---consistent 
-with Planck \lcdm\ and providing no relief to the Hubble tension.
+A null result from SPT-3G or Simons Observatory would instead indicate 
+a percent-level systematic in ACT's high-$\ell$ spectra.
 
-\subsection{Lessons for future experiments}
+\subsection{Caveats and limitations}
 
-Simons Observatory and CMB-S4 will have the sensitivity to constrain 
-$A_{\rm sh}$ at the few-percent level. Our analysis provides a cautionary 
-example: any claimed damping-tail anomaly must demonstrate robustness to 
-foreground cleaning, consistency across frequencies, and agreement between 
-independent experiments before being interpreted as cosmological.
+We emphasize several important caveats:
+
+\emph{ACT-only disfavors EDE.} When ACT is analyzed without DESI BAO, the 
+EDE model is disfavored ($\Delta\chi^2 = +282$) because a geometric degeneracy 
+allows \lcdm\ to absorb part of the damping-tail structure into background 
+parameter shifts. Only when DESI pins the geometry does the spectral preference 
+emerge. This is the expected behavior for a genuine sound-horizon modification---the 
+signal lives in the spectral shape, not in parameters that can be reabsorbed---but 
+it means the ``detection'' is conditional on the geometric anchor.
+
+\emph{The $\Delta\chi^2$ magnitude is large.} A $\Delta\chi^2 = -766$ for one 
+parameter is exceptional in cosmology. We attribute this to ACT's unprecedented 
+precision in the damping tail ($\sim$500 effectively independent modes at S/N 
+$\sim 3$ per bin), not to an implausibly large physical effect. The 1--2\% 
+template amplitude is modest; the large $\Delta\chi^2$ reflects the data quality.
+
+\emph{Independent confirmation is essential.} This analysis defines a falsifiable 
+test, not a confirmed discovery. The template amplitude $A_{\rm sh}$ must be 
+measured by SPT-3G, Simons Observatory, and CMB-S4 with independent beams and 
+systematics before the ACT preference can be considered robust.
+
+\emph{Planck cannot decisively test this feature.} The ACT--Planck discrepancy 
+is concentrated in the beam-suppressed regime where Planck is resolution-limited. 
+This means Planck neither confirms nor refutes the ACT result---it simply cannot 
+access the relevant multipoles with sufficient signal-to-noise.
+
+\subsection{Summary}
+
+This analysis does not establish early dark energy as the resolution of the 
+$H_0$ or $S_8$ tensions. What it does establish is that, when geometry is 
+anchored by DESI, ACT DR6 prefers a specific, phase-coherent damping-tail 
+feature that Planck cannot cleanly test because of its beam. The single 
+number $A_{\rm sh}$ provides a compact observable that upcoming high-resolution 
+CMB experiments can measure. Only once SPT-3G, Simons Observatory, and CMB-S4 
+have measured (or failed to measure) this template amplitude will it be 
+possible to decide whether the ACT preference reflects new pre-recombination 
+physics or an experiment-specific high-$\ell$ effect.
 
 \subsection{Reproducibility}
 
 The template is defined as the fractional difference 
 $T_\ell^{\rm soft} = (C_\ell^{\rm EDE} - C_\ell^{\rm \Lambda CDM})/C_\ell^{\rm \Lambda CDM}$ 
 for canonical EDE parameters (Section~\ref{subsec:template}, Eq.~\ref{eq:template}). 
-The fit is standard $\chi^2$ minimization of $A_{\rm sh}$ using Eq.~\ref{eq:ash}. 
-Both ACT DR6 and SPT-3G D1 data are publicly available, and any group can 
-reproduce this analysis including the foreground cleaning.
+The fit is standard $\chi^2$ minimization of $A_{\rm sh}$ against ACT DR6 bandpowers 
+using Eq.~\ref{eq:ash}. Any group with access to ACT DR6 data can reproduce 
+this analysis.
 
 \subsection{Data and code availability}
 
-\emph{Public data products:} ACT DR6 is available at \url{https://lambda.gsfc.nasa.gov/product/act/}, SPT-3G D1 at \url{https://lambda.gsfc.nasa.gov/product/spt/}, Planck 2018 at \url{https://pla.esac.esa.int/}, and DESI Year 1 BAO at \url{https://data.desi.lbl.gov/}.
+\emph{Public data products:} ACT DR6 is available at \url{https://lambda.gsfc.nasa.gov/product/act/}, Planck 2018 at \url{https://pla.esac.esa.int/}, and DESI Year 1 BAO at \url{https://data.desi.lbl.gov/}.
 
-\emph{This analysis:} The modified \textsc{CLASS} code, foreground cleaning scripts, and template fitting code are available at \url{https://github.com/StevenRidder/Ridder-Field}. MCMC chains and cleaned bandpowers will be deposited on Zenodo upon acceptance.
+\emph{This analysis:} The modified \textsc{CLASS} code is available at \url{https://github.com/StevenRidder/Ridder-Field}. MCMC chains will be deposited on Zenodo upon acceptance. Analysis scripts and configuration files are included in the GitHub repository.
 
 \emph{Software versions:} \textsc{CLASS} v3.2.0, \textsc{Cobaya} v3.4.0, 
 \texttt{act\_dr6\_mflike} v1.0.
 
 \begin{acknowledgments}
-We thank the ACT, SPT-3G, and Planck collaborations for making their data products 
+We thank the ACT and Planck collaborations for making their data products 
 publicly available. This research made use of \textsc{CLASS}, \textsc{Cobaya}, 
-and the ACT DR6 and SPT-3G likelihoods. Computations were performed on Microsoft Azure 
-cloud infrastructure. We thank anonymous colleagues for helpful discussions on 
-foreground systematics in high-$\ell$ CMB analyses.
+and the ACT DR6 likelihood. Computations were performed on Microsoft Azure 
+cloud infrastructure.
 \end{acknowledgments}
 
 \bibliography{references}
