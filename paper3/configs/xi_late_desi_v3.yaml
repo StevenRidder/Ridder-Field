@@ -1,0 +1,56 @@
+# COPY OF WORKING xi_late_fulldata + DESI
+theory:
+  classy:
+    extra_args:
+      output: tCl pCl lCl mPk
+      l_max_scalars: 2600
+      lensing: yes
+      gauge: newtonian
+      Omega_Lambda: 0
+      non_linear: halofit
+      P_k_max_1/Mpc: 10
+      xi_late: 0.05
+
+likelihood:
+  planck_2018_lowl.TT: null
+  planck_2018_lowl.EE: null
+  planck_2018_highl_plik.TTTEEE: null
+  planck_2018_lensing.clik: null
+  bao.desi_2024_bao_all: null
+  sn.pantheon: null
+
+params:
+  A_s:
+    prior: {min: 1.5e-9, max: 3.0e-9}
+    ref: {dist: norm, loc: 2.1e-9, scale: 0.05e-9}
+  n_s:
+    prior: {min: 0.9, max: 1.1}
+    ref: {dist: norm, loc: 0.9649, scale: 0.01}
+  H0:
+    prior: {min: 60, max: 80}
+    ref: {dist: norm, loc: 70.5, scale: 1.0}
+  omega_b:
+    prior: {min: 0.019, max: 0.025}
+    ref: {dist: norm, loc: 0.02237, scale: 0.0005}
+  omega_cdm:
+    prior: {min: 0.10, max: 0.14}
+    ref: {dist: norm, loc: 0.1180, scale: 0.005}
+  tau_reio:
+    prior: {min: 0.02, max: 0.12}
+    ref: {dist: norm, loc: 0.0544, scale: 0.008}
+  w0_fld:
+    prior: {min: -1.3, max: -0.9}
+    ref: {dist: norm, loc: -1.05, scale: 0.03}
+  wa_fld:
+    value: 0
+  A_planck: {prior: {dist: norm, loc: 1, scale: 0.0025}, ref: 1, proposal: 0.001}
+
+sampler:
+  mcmc:
+    Rminus1_stop: 0.03
+    max_tries: 10000
+    learn_proposal: True
+    drag: True
+    max_samples: 5000
+
+output: /home/ridderadmin/ridder_v2/late_time/chains/xi_late_desi_v3
