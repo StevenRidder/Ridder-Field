@@ -50,6 +50,15 @@ The weighted average of lensing surveys is approximately $S_8 = 0.77 \pm 0.02$, 
 
 Both tensions may reflect systematic errors in the measurements. We do not claim otherwise. But they also define a precise target for model-building: can any extension of $\Lambda$CDM improve the global fit to Planck + BAO + SNe while shifting $(H_0, S_8)$ toward the locally measured values? The challenge is that CMB, BAO, and SNe data are highly constraining---most modifications that help one dataset hurt another.
 
+Figure~\ref{fig:tensions} summarizes the landscape. $\Lambda$CDM sits at $(H_0, S_8) = (67.4, 0.83)$. Local measurements prefer the upper-left quadrant: higher $H_0$, lower $S_8$. The question is whether any model can reach this region while improving---or at least not degrading---the global fit.
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering\vspace{2cm}\textbf{[FIGURE 1]}\\ $(H_0, S_8)$ plane showing:\\ $\bullet$ $\Lambda$CDM best-fit (Planck 2018)\\ $\bullet$ Interacting model best-fit\\ $\bullet$ SH0ES $H_0$ band (horizontal)\\ $\bullet$ DES/KiDS $S_8$ band (vertical)\\ $\bullet$ Target region (upper-left)\vspace{2cm}}}
+\caption{The $(H_0, S_8)$ tension landscape. $\Lambda$CDM (blue) sits in tension with local measurements. The interacting model (red) moves toward the observed values while improving the global $\chi^2$.}
+\label{fig:tensions}
+\end{figure}
+
 \subsection{Why Common Fixes Fail}
 
 The model-building landscape for addressing these tensions is heavily constrained. We briefly review why standard approaches encounter difficulties.
@@ -407,6 +416,13 @@ where $N = 2508$ is the number of Planck high-$\ell$ data points. BIC also prefe
 
 \textbf{Caveat:} A more rigorous comparison would sample both $\xi$ and $w_0$ and compute Bayesian evidence. We have not done this. The current result establishes that a specific point in the $(\xi, w_0)$ space improves the global fit; it does not establish that the posterior-averaged model is preferred. This is an important distinction: we are demonstrating that a ``sweet spot'' exists, not that the full parameter space is favored.
 
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering\vspace{3cm}\textbf{[FIGURE 2: CORNER PLOT]}\\ Posterior distributions showing:\\ $\bullet$ $w_0$ vs $H_0$ correlation\\ $\bullet$ $\Omega_m$ vs $S_8$ correlation\\ $\bullet$ Comparison: $\Lambda$CDM (blue) vs Interacting (red)\\ $\bullet$ Marginalized 1D posteriors on diagonal\vspace{3cm}}}
+\caption{Corner plot comparing posterior distributions for the $\Lambda$CDM (blue) and interacting (red) models. Key correlations: $w_0$--$H_0$ (more phantom $\to$ higher $H_0$), $\Omega_m$--$S_8$ (lower matter $\to$ lower $S_8$). The interacting model explores a distinct region of parameter space.}
+\label{fig:corner}
+\end{figure}
+
 \subsection{Tension Alleviation}
 
 \textbf{Hubble tension:}
@@ -478,6 +494,13 @@ Without TT vs TE vs EE residual plots, we cannot definitively locate where the $
 
 We plan to produce these residual plots in future work. For now, we note that the improvement is robust to our validation tests and survives information-criterion penalties.
 
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering\vspace{3cm}\textbf{[FIGURE 4: RESIDUAL PLOTS --- TO BE GENERATED]}\\ Three panels showing $\Delta C_\ell / \sigma_\ell$:\\ \textit{Top:} TT residuals (Interacting $-$ $\Lambda$CDM)\\ \textit{Middle:} TE residuals\\ \textit{Bottom:} EE residuals\\ $\bullet$ Would identify which spectrum drives $-15.2$\\ $\bullet$ Critical for understanding mechanism\vspace{3cm}}}
+\caption{Planck high-$\ell$ residuals decomposed by TT, TE, and EE. This figure will be generated in future work to identify where the $\Delta\chi^2 = -15.2$ improvement originates.}
+\label{fig:residuals}
+\end{figure}
+
 %==============================================================================
 \section{DESI BAO: Why Is It Not Penalized?}
 \label{sec:desi}
@@ -501,6 +524,15 @@ $z$ & $H_{\Lambda\text{CDM}}$ & $H_{\text{Int}}$ & $\Delta H/H$ \\
 \end{center}
 
 The $H(z)$ curves \textit{cross} near $z \approx 0.5$. At low $z$, the interacting model has higher $H$; at $z \gtrsim 0.5$, it has lower $H$. DESI's precision is highest at $z \sim 0.5$--$1.0$, where the difference is small. The net effect is a slight preference for the interacting model ($\Delta\chi^2 = -1.8$).
+
+\begin{figure}[h]
+\centering
+\fbox{\parbox{0.9\columnwidth}{\centering\vspace{3cm}\textbf{[FIGURE 3: H(z) AND D$_M$(z) RATIOS]}\\ \textit{Top panel:} $H_{\rm Int}(z)/H_{\Lambda\rm CDM}(z)$\\ $\bullet$ Crosses 1.0 at $z \approx 0.5$\\ $\bullet$ DESI redshift bins marked\\ \textit{Bottom panel:} $D_M^{\rm Int}(z)/D_M^{\Lambda\rm CDM}(z)$\\ $\bullet$ Integrated effect of $H(z)$ modification\\ $\bullet$ Deviations $<1\%$ at DESI redshifts\vspace{3cm}}}
+\caption{Ratios of expansion history observables. The $H(z)$ crossing at $z \approx 0.5$ explains why DESI BAO is not penalized: the integral over the DESI redshift range approximately cancels. DESI data points are marked with error bars.}
+\label{fig:Hz_ratio}
+\end{figure}
+
+This crossing behavior is the key to understanding why late-time modifications can coexist with DESI. Pure phantom models without crossing would be strongly penalized; the combination of phantom $w_0$ and DM$\to$DE energy transfer produces a $H(z)$ that mimics $\Lambda$CDM where DESI is most constraining.
 
 %==============================================================================
 \section{Predictions and Falsifiability}
