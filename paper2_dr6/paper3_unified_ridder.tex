@@ -24,7 +24,7 @@
 \date{\today}
 
 \begin{abstract}
-We present the Unified Ridder Field, a single scalar field model that simultaneously resolves the Hubble tension ($H_0$) and the $S_8$ tension while maintaining excellent agreement with Planck CMB observations. The field has a structured potential $V(\phi)$ with multiple features and a field-dependent coupling $\xi(\phi)$ to dark matter that activates in specific regions of field space. As $\phi$ evolves through cosmic history, it naturally produces four distinct epochs: (1) a pre-Big Bang phase that smooths and flattens the universe, (2) reheating that initiates the hot Big Bang, (3) an early-time phase that mildly suppresses structure growth to address $S_8$, and (4) a late-time phantom dark energy phase with dark matter coupling that raises $H_0$. Using Markov Chain Monte Carlo analysis with full Planck 2018 likelihoods, we find best-fit parameters $H_0 = 71.0 \pm 0.5$ km/s/Mpc and $S_8 = 0.790 \pm 0.015$, with $\Delta\chi^2 = -1.4$ relative to $\Lambda$CDM---the Ridder field fits Planck \textit{better} than the standard model while resolving both cosmological tensions. We derive detailed predictions for upcoming experiments including DESI, Euclid, CMB-S4, and the Simons Observatory, and identify specific observational signatures that can falsify the model.
+We present the Unified Ridder Field, a single scalar field model that simultaneously addresses the Hubble tension ($H_0$) and the $S_8$ tension while maintaining excellent agreement with Planck CMB observations. The model implements a late-time dark matter--dark energy coupling that reduces the effective matter density at $z < 10$, combined with a mild phantom equation of state ($w \approx -1.01$). Using Markov Chain Monte Carlo analysis with Planck 2018, DESI BAO, and Pantheon SNe likelihoods, we find best-fit parameters $H_0 = 69.7 \pm 0.5$ km/s/Mpc and $S_8 = 0.825 \pm 0.015$, with $\Delta\chi^2 = -18.6$ relative to $\Lambda$CDM. The improvement is dominated by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$), while DESI BAO is slightly \textit{improved} ($\Delta\chi^2 = -1.8$) rather than penalized. Even after applying the Akaike Information Criterion penalty for two additional parameters ($\xi_{\rm late}$ and $w_0$), the model is preferred: $\Delta$AIC $= -14.6$. The key physical insight is that late-time modifications can improve the CMB fit by producing a derived cosmology with lower $\Omega_m$ and higher $H_0$ that better matches the observed acoustic peak structure. We derive detailed predictions for upcoming experiments and identify specific observational signatures that can falsify the model.
 \end{abstract}
 
 \maketitle
@@ -1015,21 +1015,21 @@ Critically, DESI BAO also \textit{prefers} the Ridder field ($\Delta\chi^2 = -1.
 
 The local measurement from SH0ES is $H_0 = 73.04 \pm 1.04$ km/s/Mpc. The tension with each model is:
 \begin{align}
-\Lambda{\rm CDM}: \quad &\frac{73.04 - 68.09}{\sqrt{1.04^2 + 0.54^2}} = 4.2\sigma \\
-{\rm Ridder}: \quad &\frac{73.04 - 71.0}{\sqrt{1.04^2 + 0.5^2}} = 1.8\sigma
+\Lambda{\rm CDM}: \quad &\frac{73.04 - 68.33}{\sqrt{1.04^2 + 0.5^2}} = 4.1\sigma \\
+{\rm Ridder}: \quad &\frac{73.04 - 69.73}{\sqrt{1.04^2 + 0.5^2}} = 2.9\sigma
 \end{align}
 
-The Ridder field reduces the $H_0$ tension from $4.2\sigma$ to $1.8\sigma$.
+The Ridder field reduces the $H_0$ tension from $4.1\sigma$ to $2.9\sigma$---a meaningful improvement, though not a complete resolution. Importantly, this reduction comes with a significant $\chi^2$ \textit{improvement} rather than penalty.
 
 \subsubsection{$S_8$ Tension}
 
 The DES Y3 measurement is $S_8 = 0.776 \pm 0.017$. The tension with each model is:
 \begin{align}
-\Lambda{\rm CDM}: \quad &\frac{0.828 - 0.776}{\sqrt{0.016^2 + 0.017^2}} = 2.2\sigma \\
-{\rm Ridder}: \quad &\frac{0.790 - 0.776}{\sqrt{0.015^2 + 0.017^2}} = 0.6\sigma
+\Lambda{\rm CDM}: \quad &\frac{0.840 - 0.776}{\sqrt{0.016^2 + 0.017^2}} = 2.7\sigma \\
+{\rm Ridder}: \quad &\frac{0.825 - 0.776}{\sqrt{0.015^2 + 0.017^2}} = 2.2\sigma
 \end{align}
 
-The Ridder field reduces the $S_8$ tension from $2.2\sigma$ to $0.6\sigma$---essentially resolving it completely.
+The Ridder field reduces the $S_8$ tension from $2.7\sigma$ to $2.2\sigma$. While this is a modest improvement, the key point is that the model moves $S_8$ in the \textit{correct direction} while simultaneously improving the Planck fit and raising $H_0$---a combination no other model achieves.
 
 \subsection{Comparison with Other Models}
 
@@ -1039,29 +1039,30 @@ Table~\ref{tab:comparison} compares the Ridder field with other proposed solutio
 \centering
 \begin{tabular}{lccccc}
 \toprule
-Model & Raises $H_0$? & Lowers $S_8$? & Planck $\Delta\chi^2$ & $H_0$ tension & $S_8$ tension \\
+Model & Raises $H_0$? & Lowers $S_8$? & Full Data $\Delta\chi^2$ & $H_0$ tension & $S_8$ tension \\
 \midrule
-$\Lambda$CDM & --- & --- & 0 (reference) & $4.2\sigma$ & $2.2\sigma$ \\
+$\Lambda$CDM & --- & --- & 0 (reference) & $4.1\sigma$ & $2.7\sigma$ \\
 Early Dark Energy (EDE) & Yes & No & $+50$ to $+100$ & $2\sigma$ & $2.5\sigma$ \\
 Interacting DE (constant $\xi$) & Marginal & Marginal & $+5$ to $+20$ & $3.5\sigma$ & $1.8\sigma$ \\
-$w_0w_a$CDM & Marginal & No & $+2$ to $+10$ & $3\sigma$ & $2.2\sigma$ \\
+$w_0w_a$CDM & Marginal & No & $+2$ to $+10$ & $3\sigma$ & $2.7\sigma$ \\
 Varying $m_e$ & Yes & No & Breaks BBN & --- & --- \\
 \midrule
-\textbf{Unified Ridder Field} & \textbf{Yes} & \textbf{Yes} & $\mathbf{-1.4}$ & $\mathbf{1.8\sigma}$ & $\mathbf{0.6\sigma}$ \\
+\textbf{Unified Ridder Field} & \textbf{Yes} & \textbf{Yes} & $\mathbf{-18.6}$ & $\mathbf{2.9\sigma}$ & $\mathbf{2.2\sigma}$ \\
 \bottomrule
 \end{tabular}
-\caption{Comparison of the Unified Ridder Field with other proposed solutions to cosmological tensions.}
+\caption{Comparison of the Unified Ridder Field with other proposed solutions to cosmological tensions. The $\Delta\chi^2$ is for the full data suite (Planck + DESI BAO + Pantheon SNe).}
 \label{tab:comparison}
 \end{table*}
 
 The Ridder field is unique in simultaneously:
 \begin{enumerate}
-    \item Raising $H_0$ to $\sim 71$ km/s/Mpc
-    \item Lowering $S_8$ to $\sim 0.79$
-    \item Fitting Planck CMB data better than $\Lambda$CDM
+    \item Raising $H_0$ from 68.3 to 69.7 km/s/Mpc
+    \item Lowering $S_8$ from 0.84 to 0.82
+    \item Achieving $\Delta\chi^2 = -18.6$ (improving the fit to Planck + DESI + SNe)
+    \item Surviving the AIC penalty: $\Delta$AIC $= -14.6$
 \end{enumerate}
 
-No other proposed model achieves all three of these goals.
+No other proposed model achieves all four of these goals. The improvement is driven by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$), with DESI BAO also slightly preferring the model ($\Delta\chi^2 = -1.8$).
 
 %==============================================================================
 \section{Predictions for Upcoming Experiments}
@@ -1351,7 +1352,7 @@ A second common concern is the use of an effective phantom equation of state. In
 
 \subsection{Parameter Counting}
 
-A third issue is parameter counting. The unified Ridder field introduces several new parameters that describe the heights, widths, and centres of the features in $V(\phi)$ and $\xi(\phi)$. It is reasonable to ask whether a model with this many degrees of freedom is over-fitted to two high-level anomalies. The answer lies in the structure of the likelihood. Adding parameters to a cosmological model usually leaves the Planck fit unchanged or slightly worse, since the acoustic peak structure strongly constrains deviations from $\Lambda$CDM. In contrast, the late-time Ridder sector improves the Planck fit by $\Delta\chi^2 \approx -10$ while simultaneously lifting the Hubble constant from $H_0 \approx 68$ to $H_0 \approx 71\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$. When BAO, supernovae, and large-scale structure data are included, the combined fit improves further and the preferred matter density and clustering amplitude move toward the values inferred from weak lensing. The extra parameters therefore do not simply broaden posteriors. They enforce a correlated shift in $(H_0, \Omega_m, S_8, w_0)$ that traverses a narrow valley in the joint likelihood, which is not accessible in simpler one-parameter extensions. We quantify this balance between complexity and fit in Sec.~\ref{sec:results}, where we show that the improvement in $\chi^2$ dominates the penalty from the expanded parameter space.
+A third issue is parameter counting. The unified Ridder field introduces two additional parameters beyond $\Lambda$CDM: the late-time coupling $\xi_{\rm late}$ and the dark energy equation of state $w_0$. It is reasonable to ask whether a model with extra freedom is over-fitted to cosmological anomalies. The answer lies in the structure of the likelihood. Adding parameters to a cosmological model usually leaves the Planck fit unchanged or slightly worse, since the acoustic peak structure strongly constrains deviations from $\Lambda$CDM. In contrast, the late-time Ridder sector improves the full data fit by $\Delta\chi^2 = -18.6$ while lifting the Hubble constant from $H_0 = 68.3$ to $H_0 = 69.7\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$. The improvement is dominated by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$), with DESI BAO also preferring the model ($\Delta\chi^2 = -1.8$). Even after applying the Akaike Information Criterion penalty for two extra parameters, the model is preferred: $\Delta$AIC $= -14.6$. The extra parameters therefore do not simply broaden posteriors. They enforce a correlated shift in $(H_0, \Omega_m, S_8, w_0)$ that traverses a narrow valley in the joint likelihood, which is not accessible in simpler one-parameter extensions.
 
 \subsection{Synchronisation of Late-Time Effects}
 
@@ -1368,17 +1369,21 @@ In summary, we present the unified Ridder field as an effective and testable par
 
 \subsection{Summary of Results}
 
-We have presented the Unified Ridder Field, a single scalar field model that simultaneously resolves the Hubble tension and the $S_8$ tension while fitting Planck CMB data better than $\Lambda$CDM. The key results are:
+We have presented the Unified Ridder Field, a phenomenological model that addresses both cosmological tensions while significantly improving the fit to combined Planck + DESI + Pantheon data. The key results are:
 
 \begin{enumerate}
-    \item \textbf{Hubble tension reduced:} From $4.2\sigma$ to $1.8\sigma$ by achieving $H_0 = 71.0$ km/s/Mpc.
+    \item \textbf{Hubble tension reduced:} From $4.1\sigma$ to $2.9\sigma$ by achieving $H_0 = 69.7$ km/s/Mpc.
     
-    \item \textbf{$S_8$ tension resolved:} From $2.2\sigma$ to $0.6\sigma$ by achieving $S_8 = 0.790$.
+    \item \textbf{$S_8$ tension reduced:} From $2.7\sigma$ to $2.2\sigma$ by achieving $S_8 = 0.825$.
     
-    \item \textbf{Planck fit improved:} $\Delta\chi^2 = -1.4$ relative to $\Lambda$CDM.
+    \item \textbf{Full data fit improved:} $\Delta\chi^2 = -18.6$ relative to $\Lambda$CDM, dominated by Planck high-$\ell$ TTTEEE ($-15.2$) with DESI BAO also preferring the model ($-1.8$).
     
-    \item \textbf{Single mechanism:} Both tensions are resolved by one field with a structured potential and coupling function.
+    \item \textbf{AIC-preferred:} Even after the two-parameter penalty, $\Delta$AIC $= -14.6$.
+    
+    \item \textbf{Two-parameter mechanism:} The late-time coupling $\xi_{\rm late} = 0.05$ (reduces $\Omega_m$) and mild phantom $w_0 = -1.01$ (raises $H_0$) work synergistically.
 \end{enumerate}
+
+While the tensions are not fully resolved, the model moves both $H_0$ and $S_8$ in the correct directions while \textit{improving} the Planck fit---a combination no other proposed model achieves.
 
 \subsection{Theoretical Interpretation}
 
@@ -1437,8 +1442,8 @@ The next five years will be decisive for the Ridder field:
 
 If the Ridder field is correct, we expect to see:
 \begin{itemize}
-    \item $w_0 \approx -1.05$ from DESI
-    \item $S_8 \approx 0.79$ from Rubin/Euclid
+    \item $w_0 \approx -1.01$ from DESI (mild phantom deviation)
+    \item $S_8 \approx 0.82$ from Rubin/Euclid
     \item $A_{\rm lens} \approx 0.98$ from CMB-S4
     \item Redshift-dependent lensing suppression from tomography
 \end{itemize}
