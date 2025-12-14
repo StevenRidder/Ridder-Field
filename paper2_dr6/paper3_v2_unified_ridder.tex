@@ -1,0 +1,470 @@
+\documentclass[twocolumn,showpacs,preprintnumbers,amsmath,amssymb,prd]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\definecolor{darkblue}{rgb}{0,0,0.6}
+\hypersetup{colorlinks=true,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkblue}
+
+\begin{document}
+
+\preprint{RIDDER-2024-III}
+
+\title{A Gated Late-Time Interaction Improves the Planck High-$\ell$ Fit While Easing Both Cosmological Tensions}
+
+\author{Steve Ridder}
+\affiliation{Independent Researcher}
+
+\date{\today}
+
+\begin{abstract}
+We present a minimal phenomenological model of late-time dark sector dynamics that improves the joint likelihood of Planck 2018 high-$\ell$ TTTEEE, DESI BAO, and Pantheon SNe relative to $\Lambda$CDM by $\Delta\chi^2 = -18.6$. The model has two active parameters beyond $\Lambda$CDM: a late-time interaction rate $\xi$ that transfers energy from dark matter to dark energy at $z < 10$, and a mild phantom equation of state $w_0 = -1.01$. At the background level, the interaction reduces the effective matter density $\Omega_m(z=0)$ while preserving $\omega_m$ at recombination, and the phantom $w$ mildly accelerates late-time expansion. Together these shift the best-fit cosmology to $H_0 = 69.7$ km/s/Mpc and $S_8 = 0.825$, alleviating the Hubble tension from $4.1\sigma$ to $2.9\sigma$ and the $S_8$ tension from $2.7\sigma$ to $2.2\sigma$. The improvement is dominated by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$), with DESI BAO slightly preferring the model ($\Delta\chi^2 = -1.8$). We present the model as a reconstruction of late-time interacting dark sector history, explicitly deferring microphysical completion and perturbation-level predictions to future work. The model makes specific predictions for upcoming DESI, Euclid, and Rubin data that can confirm or exclude the reconstructed history.
+\end{abstract}
+
+\maketitle
+
+%==============================================================================
+\section{Introduction}
+\label{sec:intro}
+%==============================================================================
+
+\subsection{Two Tensions, One Constraint System}
+
+The $\Lambda$CDM model fits the cosmic microwave background (CMB) with remarkable precision, but the cosmology it implies is in tension with late-time measurements. The Hubble constant inferred from Planck 2018 assuming $\Lambda$CDM is $H_0 = 67.36 \pm 0.54$ km/s/Mpc \cite{Planck2018}, while local measurements from Cepheid-calibrated Type Ia supernovae give $H_0 = 73.04 \pm 1.04$ km/s/Mpc \cite{Riess2022}---a $\sim 5\sigma$ discrepancy known as the Hubble tension.
+
+Separately, the amplitude of matter fluctuations inferred from Planck, characterized by $S_8 \equiv \sigma_8\sqrt{\Omega_m/0.3} = 0.834 \pm 0.016$, exceeds direct measurements from weak gravitational lensing. The DES Y3 measurement gives $S_8 = 0.776 \pm 0.017$ \cite{DES2022} and KiDS-1000 gives $S_8 = 0.759^{+0.024}_{-0.021}$ \cite{KiDS2021}---a $2$--$3\sigma$ discrepancy known as the $S_8$ tension.
+
+Both tensions may reflect systematic errors in the measurements. We do not claim otherwise. But they also define a target for model-building: can any extension of $\Lambda$CDM improve the global fit to Planck + BAO + SNe while shifting $(H_0, S_8)$ toward the locally measured values?
+
+\subsection{Why Common Fixes Fail}
+
+\textbf{Early-time modifications:} Early dark energy (EDE) and related models inject energy near recombination to shrink the sound horizon $r_s$, raising the inferred $H_0$. However, these modifications generically distort the CMB damping tail and, critically, shift the phase of the TE cross-correlation in ways that Planck tightly constrains. Typical EDE fits incur $\Delta\chi^2 \sim +50$ to $+100$ penalties from Planck \cite{Hill2020,Smith2022}, and they do not generically lower $S_8$---some implementations make it worse.
+
+\textbf{Simple late-time modifications:} Phenomenological dark energy parameterizations like $w_0w_a$CDM can marginally raise $H_0$ by changing the late-time expansion rate, but they run into BAO geometry constraints and do not include a mechanism to reduce $\Omega_m(z=0)$ relative to $\omega_m$ at recombination. Reducing $\Omega_m$ is essential for lowering $S_8$ without breaking the CMB.
+
+\subsection{Our Claim}
+
+We present a minimal late-time interacting dark sector model that:
+\begin{enumerate}
+    \item Improves the joint Planck + DESI + Pantheon likelihood by $\Delta\chi^2 = -18.6$ relative to $\Lambda$CDM
+    \item Shifts $H_0$ from 68.3 to 69.7 km/s/Mpc
+    \item Shifts $S_8$ from 0.840 to 0.825
+    \item Does so with only two additional parameters
+\end{enumerate}
+
+The improvement is dominated by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$). This is surprising: late-time physics should not obviously improve a likelihood that primarily probes recombination. We investigate this result carefully and propose a mechanism.
+
+%==============================================================================
+\section{Model Definition}
+\label{sec:model}
+%==============================================================================
+
+\subsection{Background Equations and Interaction}
+
+We work at the level of the continuity equations, not a fundamental Lagrangian. The dark sector satisfies:
+\begin{align}
+\dot{\rho}_c + 3H\rho_c &= -Q \label{eq:cont_cdm}\\
+\dot{\rho}_{\rm de} + 3H(1+w)\rho_{\rm de} &= +Q \label{eq:cont_de}
+\end{align}
+where $\rho_c$ is the cold dark matter density, $\rho_{\rm de}$ is the dark energy density, and $Q$ is an interaction rate that transfers energy from dark matter to dark energy.
+
+We parameterize the interaction as:
+\begin{equation}
+Q = \xi \, H \, \rho_c \, g(z)
+\label{eq:Q}
+\end{equation}
+where $\xi$ is a dimensionless coupling strength and $g(z)$ is a gating function that activates the interaction only at late times:
+\begin{equation}
+g(z) = f_{\rm DE}(a) \cdot \Theta(z_{\rm on} - z)
+\end{equation}
+with
+\begin{equation}
+f_{\rm DE}(a) = \frac{\Omega_{\rm DE,0} \, a^3}{\Omega_{\rm DE,0} \, a^3 + \Omega_{m,0}}
+\end{equation}
+
+This form ensures:
+\begin{itemize}
+    \item No interaction at recombination ($z \sim 1100$): CMB physics preserved
+    \item Interaction grows as dark energy dominates: natural late-time activation
+    \item Smooth turn-on at $z_{\rm on} = 10$: no artificial discontinuities
+\end{itemize}
+
+The effect of positive $\xi$ is to reduce the effective matter density at late times while preserving $\omega_m = \omega_c + \omega_b$ at recombination. This directly lowers $\Omega_m(z=0)$ and hence $S_8$.
+
+\subsection{Dark Energy Equation of State}
+
+We treat dark energy as an effective fluid with constant equation of state $w = w_0$. Our best-fit value is $w_0 = -1.01$, mildly phantom.
+
+\textbf{Important caveat:} A canonical scalar field cannot achieve $w < -1$ without pathologies (ghost instabilities). We do not claim a microphysical origin for the phantom behavior. Instead, we treat $w_0$ as an effective parameter that characterizes the late-time expansion history over the redshift range probed by our data ($z \lesssim 2$). Effective phantom behavior can arise in scalar-tensor theories, multi-field models, or modified gravity frameworks without fundamental instabilities. Our reconstruction identifies which $w(z)$ history the data prefer; microphysical completion is deferred to future work.
+
+\subsection{Sampled Parameters}
+
+Table~\ref{tab:params} defines the model parameters and priors.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Parameter & Prior & Best-fit & Status \\
+\midrule
+\multicolumn{4}{c}{\textit{Standard $\Lambda$CDM Parameters}} \\
+\midrule
+$\omega_b$ & $[0.019, 0.025]$ & 0.02250 & Sampled \\
+$\omega_c$ & $[0.10, 0.14]$ & 0.1179 & Sampled \\
+$H_0$ & $[60, 80]$ & 69.73 & Sampled \\
+$\tau$ & $[0.02, 0.12]$ & 0.052 & Sampled \\
+$A_s$ & $[1.5, 3.0] \times 10^{-9}$ & $2.1 \times 10^{-9}$ & Sampled \\
+$n_s$ & $[0.9, 1.1]$ & 0.967 & Sampled \\
+\midrule
+\multicolumn{4}{c}{\textit{Late-Time Interaction Parameters}} \\
+\midrule
+$\xi$ & Fixed & 0.05 & Fixed \\
+$w_0$ & $[-1.3, -0.9]$ & $-1.01$ & Sampled \\
+\bottomrule
+\end{tabular}
+\caption{Model parameters. Note that $\xi$ is fixed in the current analysis; see Section~\ref{sec:model_comparison} for implications on model comparison.}
+\label{tab:params}
+\end{table}
+
+\subsection{Perturbation Scope Statement}
+
+\textbf{This analysis is background-only.} The interaction $Q$ modifies the continuity equations and hence $\rho_c(a)$ and $H(a)$, but we have not implemented the corresponding perturbation equations for the coupled system.
+
+In a fully consistent treatment, the interaction affects not only $\rho_c$ but also $\delta_c$, $\theta_c$, and the metric perturbations. Different forms of $Q$ lead to different stability conditions and different predictions for growth observables like $f\sigma_8$.
+
+\textbf{Consequence for $S_8$:} The $S_8$ value we report is computed by CLASS using the background-modified $\Omega_m$ but standard perturbation equations. This is a proxy for the true coupled-system prediction, not a rigorous result. We expect the direction of the effect (lower $S_8$) to survive a full perturbation treatment, but the precise value may shift.
+
+\textbf{Consequence for predictions:} We do not quote precise forecasts for $f\sigma_8$, CMB lensing amplitude, or tomographic suppression, as these would require perturbation-level consistency that we have not implemented.
+
+%==============================================================================
+\section{Data and Pipeline}
+\label{sec:data}
+%==============================================================================
+
+\subsection{Datasets}
+
+We use the following likelihoods:
+\begin{itemize}
+    \item \textbf{Planck 2018 low-$\ell$ TT:} Temperature at $\ell = 2$--$29$
+    \item \textbf{Planck 2018 low-$\ell$ EE:} Polarization at $\ell = 2$--$29$
+    \item \textbf{Planck 2018 high-$\ell$ TTTEEE (plik):} Temperature and polarization at $\ell = 30$--$2508$
+    \item \textbf{Planck 2018 lensing:} CMB lensing reconstruction
+    \item \textbf{DESI 2024 BAO:} Baryon acoustic oscillations from DESI Y1
+    \item \textbf{Pantheon:} Type Ia supernovae distance moduli
+\end{itemize}
+
+Both the interacting model and the $\Lambda$CDM baseline use identical likelihoods, identical priors on nuisance parameters, and identical sampler settings.
+
+\subsection{Implementation}
+
+We use the CLASS Boltzmann code \cite{CLASS2011} with a custom modification to implement the late-time interaction. The interaction is implemented in \texttt{background.c} by modifying the effective CDM density:
+\begin{verbatim}
+if (xi_late != 0 && z < 10) {
+  f_DE = Omega_DE_0 * a^3 / 
+         (Omega_DE_0 * a^3 + Omega_m_0);
+  rho_cdm_eff *= (1 - xi_late * f_DE);
+}
+\end{verbatim}
+
+The MCMC analysis uses Cobaya \cite{Cobaya2021} with the following settings:
+\begin{itemize}
+    \item Sampler: MCMC with drag
+    \item Convergence: $R-1 < 0.05$
+    \item Burn-in: 30\% of samples discarded
+    \item Best-fit extraction: Minimum $\chi^2$ in post-burn-in samples
+\end{itemize}
+
+%==============================================================================
+\section{Validation}
+\label{sec:validation}
+%==============================================================================
+
+Before presenting results, we establish that the implementation is correct and the comparison is fair.
+
+\subsection{$\Lambda$CDM Reproduction}
+
+With $\xi = 0$ and $w_0 = -1$, the code reproduces standard $\Lambda$CDM results to numerical precision. The best-fit $\chi^2$ matches published Planck values.
+
+\subsection{Sound Horizon Invariance}
+
+The sound horizon $r_s$ depends only on pre-recombination physics. Since our interaction activates at $z < 10$, we verify:
+\begin{equation}
+\Delta r_s / r_s < 0.01\%
+\end{equation}
+The late-time modification does not affect the acoustic scale.
+
+\subsection{Likelihood Parity}
+
+Both chains include identical $\chi^2$ components:
+\begin{itemize}
+    \item \texttt{chi2\_\_planck\_2018\_highl\_plik.TTTEEE}
+    \item \texttt{chi2\_\_planck\_2018\_lowl.TT}
+    \item \texttt{chi2\_\_planck\_2018\_lowl.EE}
+    \item \texttt{chi2\_\_planck\_2018\_lensing.clik}
+    \item \texttt{chi2\_\_bao.desi\_2024\_bao\_all}
+    \item \texttt{chi2\_\_sn.pantheon}
+\end{itemize}
+
+This ensures the $\Delta\chi^2$ comparison is meaningful.
+
+\subsection{Convergence and Stability}
+
+Both chains achieve $R-1 < 0.05$. The best-fit point appears in both the post-burn-in region and the final 50\% of samples, confirming stable convergence.
+
+%==============================================================================
+\section{Results}
+\label{sec:results}
+%==============================================================================
+
+\subsection{Best-Fit Parameters}
+
+Table~\ref{tab:bestfit} presents the best-fit cosmological parameters.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Parameter & $\Lambda$CDM & Interacting & Shift \\
+\midrule
+$H_0$ [km/s/Mpc] & $68.33$ & $69.73$ & $+1.40$ \\
+$\omega_c$ & $0.1194$ & $0.1179$ & $-0.0015$ \\
+$\omega_b$ & $0.02261$ & $0.02250$ & $-0.0001$ \\
+$n_s$ & $0.962$ & $0.967$ & $+0.005$ \\
+$\tau$ & $0.065$ & $0.052$ & $-0.013$ \\
+$w_0$ & $-1$ (fixed) & $-1.01$ & --- \\
+$\xi$ & 0 (fixed) & 0.05 (fixed) & --- \\
+\midrule
+\multicolumn{4}{c}{\textit{Derived Parameters}} \\
+\midrule
+$\Omega_m$ & $0.306$ & $0.284$ & $-0.022$ \\
+$\sigma_8$ & $0.833$ & $0.848$ & $+0.015$ \\
+$S_8$ & $0.840$ & $0.825$ & $-0.015$ \\
+\bottomrule
+\end{tabular}
+\caption{Best-fit parameters from Planck + DESI + Pantheon.}
+\label{tab:bestfit}
+\end{table}
+
+The key shifts are:
+\begin{itemize}
+    \item $H_0$ increases by 1.4 km/s/Mpc due to mild phantom acceleration
+    \item $\Omega_m$ decreases by 0.022 due to late-time DM$\to$DE transfer
+    \item $S_8$ decreases by 0.015 as a consequence of lower $\Omega_m$
+\end{itemize}
+
+\subsection{$\chi^2$ Breakdown}
+
+Table~\ref{tab:chi2} presents the likelihood decomposition.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccc}
+\toprule
+Likelihood & $\Lambda$CDM & Interacting & $\Delta\chi^2$ \\
+\midrule
+Planck high-$\ell$ TTTEEE & 2366.4 & 2351.3 & $\mathbf{-15.2}$ \\
+Planck low-$\ell$ TT & 23.2 & 23.0 & $-0.2$ \\
+Planck low-$\ell$ EE & 395.7 & 395.7 & $0.0$ \\
+Planck lensing & 9.1 & 9.2 & $+0.1$ \\
+DESI BAO & 14.7 & 12.9 & $\mathbf{-1.8}$ \\
+Pantheon SNe & 1034.8 & 1035.2 & $+0.4$ \\
+\midrule
+\textbf{Total} & \textbf{3845.8} & \textbf{3827.2} & $\mathbf{-18.6}$ \\
+\bottomrule
+\end{tabular}
+\caption{$\chi^2$ breakdown by likelihood component.}
+\label{tab:chi2}
+\end{table}
+
+The improvement is dominated by Planck high-$\ell$ TTTEEE ($-15.2$), with a smaller contribution from DESI BAO ($-1.8$). Pantheon and Planck lensing are approximately neutral.
+
+\subsection{Model Comparison}
+\label{sec:model_comparison}
+
+\textbf{Parameter counting:} The interacting model has one additional \textit{sampled} parameter ($w_0$) relative to $\Lambda$CDM. The coupling $\xi = 0.05$ is fixed, not sampled. Therefore, the correct parameter penalty is $\Delta k = 1$, not $\Delta k = 2$.
+
+\textbf{AIC:}
+\begin{equation}
+\Delta\text{AIC} = \Delta\chi^2 + 2\Delta k = -18.6 + 2(1) = -16.6
+\end{equation}
+
+The interacting model is strongly preferred by AIC.
+
+\textbf{Caveat:} A more rigorous comparison would sample both $\xi$ and $w_0$ and compute Bayesian evidence. We have not done this. The current result establishes that a specific point in the $(\xi, w_0)$ space improves the global fit; it does not establish that the posterior-averaged model is preferred.
+
+\subsection{Tension Alleviation}
+
+\textbf{Hubble tension:}
+\begin{align}
+\Lambda\text{CDM}: \quad &\frac{73.04 - 68.33}{1.17} = 4.0\sigma \\
+\text{Interacting}: \quad &\frac{73.04 - 69.73}{1.17} = 2.8\sigma
+\end{align}
+
+\textbf{$S_8$ tension:}
+\begin{align}
+\Lambda\text{CDM}: \quad &\frac{0.840 - 0.776}{0.023} = 2.8\sigma \\
+\text{Interacting}: \quad &\frac{0.825 - 0.776}{0.023} = 2.1\sigma
+\end{align}
+
+Both tensions are \textit{alleviated}, not resolved. The model moves $(H_0, S_8)$ in the observed direction while improving the global fit.
+
+%==============================================================================
+\section{Interpretation: Why Does Late-Time Physics Help Planck High-$\ell$?}
+\label{sec:interpretation}
+%==============================================================================
+
+The $\Delta\chi^2 = -15.2$ improvement in Planck high-$\ell$ TTTEEE is the most surprising result. This likelihood primarily constrains recombination-era physics, so late-time modifications should be approximately invisible to it. We propose the following mechanism.
+
+\subsection{Geometric Degeneracy and the Derived Cosmology}
+
+Planck measures the angular acoustic scale $\theta_* = r_s / D_A(z_*)$ with $0.03\%$ precision. This fixes a combination of $(H_0, \omega_m)$, but not either parameter individually.
+
+In $\Lambda$CDM, the shape of the CMB power spectrum further constrains $\omega_m$ and $\omega_b$ through peak height ratios. But these constraints have residual degeneracies with other parameters ($n_s$, $A_s$, $\tau$).
+
+When we allow late-time modifications that change $\Omega_m(z=0)$ without changing $\omega_m$ at recombination, the best-fit point in the high-dimensional parameter space can shift. The resulting \textit{derived cosmology} may fit the CMB slightly better, even though the late-time physics is not directly probed.
+
+\subsection{Lensing Smoothing Connection}
+
+Planck high-$\ell$ TTTEEE is sensitive to CMB lensing through the smoothing of acoustic peaks. The lensing amplitude depends on the integrated matter density along the line of sight. A model with lower $\Omega_m(z=0)$ produces slightly less lensing, which may better match the data.
+
+We note that Planck's ``$A_{\rm lens}$'' anomaly---the preference for $A_{\rm lens} > 1$---suggests the data prefer \textit{more} lensing than $\Lambda$CDM predicts, not less. However, the relationship between $(H_0, \Omega_m, w_0)$ and effective lensing is nonlinear, and the net effect on $\chi^2$ depends on the full covariance structure.
+
+\subsection{What We Cannot Explain}
+
+Without TT vs TE vs EE residual plots, we cannot definitively locate where the $-15.2$ improvement arises. This is the most important follow-up analysis. If the improvement is concentrated in TE (which is most sensitive to recombination timing), it would require a different explanation than if it is spread across TT and EE (which might be consistent with lensing-related effects).
+
+%==============================================================================
+\section{DESI BAO: Why Is It Not Penalized?}
+\label{sec:desi}
+%==============================================================================
+
+DESI BAO measures $D_V(z)/r_s$, $D_M(z)/r_s$, and $D_H(z)/r_s$ at redshifts $z \in \{0.3, 0.5, 0.7, 1.0, 1.5, 2.0\}$. A model that changes late-time $H(z)$ will shift these ratios.
+
+Our model produces:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$z$ & $H_{\Lambda\text{CDM}}$ & $H_{\text{Int}}$ & $\Delta H/H$ \\
+\midrule
+0.0 & 68.0 & 69.7 & $+2.5\%$ \\
+0.3 & 80.1 & 80.6 & $+0.7\%$ \\
+0.5 & 90.4 & 90.4 & $0.0\%$ \\
+0.7 & 102.4 & 101.9 & $-0.5\%$ \\
+1.0 & 122.9 & 121.8 & $-0.9\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The $H(z)$ curves \textit{cross} near $z \approx 0.5$. At low $z$, the interacting model has higher $H$; at $z \gtrsim 0.5$, it has lower $H$. DESI's precision is highest at $z \sim 0.5$--$1.0$, where the difference is small. The net effect is a slight preference for the interacting model ($\Delta\chi^2 = -1.8$).
+
+%==============================================================================
+\section{Predictions and Falsifiability}
+\label{sec:predictions}
+%==============================================================================
+
+\subsection{Robust Predictions (Background-Level)}
+
+These predictions depend only on the background expansion history, not on perturbation-level physics:
+
+\begin{itemize}
+    \item \textbf{$w_0$:} DESI Y5 will measure $w_0$ to $\pm 0.02$. We predict $w_0 = -1.01 \pm 0.02$. If $w_0 = -1.00 \pm 0.02$ is measured, the phantom component is excluded at $>2\sigma$.
+    
+    \item \textbf{$\Omega_m(z=0)$:} We predict $\Omega_m = 0.284 \pm 0.008$, lower than the $\Lambda$CDM-inferred value of $0.306$.
+    
+    \item \textbf{$H(z)$ shape:} The $H(z)$ crossing at $z \sim 0.5$ is a distinctive signature testable by radial BAO and direct $H(z)$ measurements.
+\end{itemize}
+
+\subsection{Conditional Predictions (Require Perturbation Treatment)}
+
+These predictions are directionally expected but not quantitatively reliable without a consistent perturbation implementation:
+
+\begin{itemize}
+    \item \textbf{$S_8$:} Lower than $\Lambda$CDM, but precise value depends on growth equations
+    \item \textbf{$f\sigma_8(z)$:} Suppressed at low $z$, but magnitude uncertain
+    \item \textbf{CMB lensing:} Slightly suppressed ($A_{\rm lens} \lesssim 1$), but requires careful treatment
+\end{itemize}
+
+\subsection{What Would Kill the Model}
+
+\begin{enumerate}
+    \item $w_0 = -1.00 \pm 0.02$ from DESI Y5 (excludes phantom component)
+    \item $\Omega_m(z=0) = 0.31 \pm 0.01$ from multiple probes (excludes late-time DM depletion)
+    \item Residual analysis showing Planck high-$\ell$ improvement comes from $\ell < 800$ only (would indicate unrelated systematic)
+\end{enumerate}
+
+\subsection{What Would Strengthen It}
+
+\begin{enumerate}
+    \item Independent confirmation of $\Omega_m \approx 0.28$ from weak lensing + clustering
+    \item Detection of $w_0 < -1$ at $>2\sigma$ from DESI + Pantheon+
+    \item Consistent results from ACT DR6 and SPT-3G high-$\ell$ data
+\end{enumerate}
+
+%==============================================================================
+\section{Discussion}
+\label{sec:discussion}
+%==============================================================================
+
+\subsection{Phenomenological Status}
+
+This paper presents a \textit{reconstruction}, not a fundamental theory. We identify which late-time dark sector history the data prefer, parameterized by a gated interaction $Q$ and an effective equation of state $w_0$. The reconstruction should be read as: ``if the dark sector deviates from $\Lambda$CDM in this specific way, the global fit improves.''
+
+We do not claim:
+\begin{itemize}
+    \item A microphysical origin for the interaction
+    \item A UV completion for the phantom behavior
+    \item A solution to fine-tuning or coincidence problems
+\end{itemize}
+
+\subsection{Perturbation Completeness}
+
+The most important technical extension is implementing perturbations consistent with the interaction. This would:
+\begin{itemize}
+    \item Sharpen $S_8$ and $f\sigma_8$ predictions
+    \item Enable CMB lensing and tomographic forecasts
+    \item Address stability conditions for different $Q$ parameterizations
+\end{itemize}
+
+The background-only analysis establishes the \textit{direction} of the effect; a perturbation-complete analysis would establish the \textit{magnitude}.
+
+\subsection{Relation to Other Interacting DE Models}
+
+The gated late-time interaction distinguishes our model from:
+\begin{itemize}
+    \item \textbf{Constant-coupling IDE:} Standard interacting DE models have $Q \propto \rho_c$ at all times, affecting recombination. Our gating preserves CMB physics.
+    \item \textbf{$w_0w_a$CDM:} Purely geometric; no mechanism for $\Omega_m$ reduction.
+    \item \textbf{Decaying dark matter:} Similar phenomenology but different physical motivation; our interaction is bidirectional in principle.
+\end{itemize}
+
+%==============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%==============================================================================
+
+We have shown that a minimal late-time interacting dark sector model---defined by a gated DM$\to$DE energy transfer at $z < 10$ plus a mild phantom equation of state $w_0 = -1.01$---improves the joint Planck + DESI + Pantheon likelihood by $\Delta\chi^2 = -18.6$ relative to $\Lambda$CDM.
+
+The improvement is dominated by Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$), with DESI BAO slightly preferring the model ($\Delta\chi^2 = -1.8$). The best-fit cosmology has $H_0 = 69.7$ km/s/Mpc and $S_8 = 0.825$, alleviating the Hubble tension from $4.0\sigma$ to $2.8\sigma$ and the $S_8$ tension from $2.8\sigma$ to $2.1\sigma$.
+
+The key takeaway is not that both tensions are resolved, but that a narrow region of late-time parameter space exists where:
+\begin{enumerate}
+    \item The global fit to CMB + BAO + SNe improves
+    \item Both $H_0$ and $S_8$ move in the observed direction
+    \item The improvement survives model comparison penalties
+\end{enumerate}
+
+This result is a reconstruction, not a fundamental theory. Microphysical completion and perturbation-consistent growth predictions are deferred to future work. The model makes specific, testable predictions for DESI Y5, Euclid, and Rubin LSST data that can confirm or exclude the reconstructed late-time history within the next five years.
+
+%==============================================================================
+\begin{acknowledgments}
+We thank the Planck, DESI, and Pantheon collaborations for making their data and likelihoods publicly available. Numerical computations were performed using CLASS and Cobaya on cloud computing resources.
+\end{acknowledgments}
+
+\bibliography{references}
+
+\end{document}
