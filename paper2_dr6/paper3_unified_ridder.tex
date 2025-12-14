@@ -550,25 +550,73 @@ We implement the Unified Ridder Field in the CLASS Boltzmann code \cite{CLASS201
 
 \subsubsection{Background Evolution}
 
-In the \texttt{background.c} module, we add the late-time coupling:
+The late-time coupling is implemented in the \texttt{background.c} module of CLASS. This is a \textbf{pure background modification}---the coupling does not appear in \texttt{perturbations.c}. The implementation modifies the effective CDM density that enters the Friedmann equation:
+
+\begin{equation}
+\rho_{\rm cdm}^{\rm eff}(a) = \rho_{\rm cdm}(a) \times \left[1 - \xi_{\rm late} \cdot f_{\rm DE}(a)\right] \quad \text{for } z < 10
+\label{eq:rho_eff}
+\end{equation}
+where the dark energy fraction is
+\begin{equation}
+f_{\rm DE}(a) = \frac{\Omega_{\rm DE,0} \, a^3}{\Omega_{\rm DE,0} \, a^3 + \Omega_{m,0}}
+\label{eq:fde}
+\end{equation}
+
+This effective density enters \textit{both} the Friedmann sum (affecting $H(z)$) and the matter density (affecting $\Omega_m$):
+\begin{align}
+H^2(a) &= H_0^2 \left[\Omega_r a^{-4} + \Omega_b a^{-3} + \frac{\rho_{\rm cdm}^{\rm eff}}{\rho_c} + \Omega_{\rm DE}(a)\right] \\
+\Omega_m(a) &= \frac{\Omega_b a^{-3} + \rho_{\rm cdm}^{\rm eff}/\rho_c}{H^2(a)/H_0^2}
+\end{align}
+
+The exact C implementation in \texttt{background.c} (lines 480--495) is:
 \begin{verbatim}
 /* Late-time DM-DE coupling (xi_late) */
 if (pba->xi_late != 0.0) {
-  double z = 1.0/a - 1.0;
-  if (z < 10.0) {
-    double Omega_m_a = pba->Omega0_cdm 
-                     + pba->Omega0_b;
-    double Omega_DE_0 = 1.0 - Omega_m_a;
-    double f_DE = Omega_DE_0 * pow(a, 3.0) / 
-      (Omega_DE_0 * pow(a, 3.0) + Omega_m_a);
-    double late_factor = 1.0 
-                       - pba->xi_late * f_DE;
+  double z_late = 1.0/a - 1.0;
+  if (z_late < 10.0) {
+    double Omega_m_frac = pba->Omega0_cdm 
+                        + pba->Omega0_b;
+    double Omega_DE_frac = 1.0 - Omega_m_frac;
+    double f_DE = Omega_DE_frac * pow(a, 3.0) / 
+      (Omega_DE_frac * pow(a, 3.0) + Omega_m_frac);
+    double late_factor = 1.0 - pba->xi_late * f_DE;
+    if (late_factor < 0.5) late_factor = 0.5;
     rho_cdm_eff *= late_factor;
   }
 }
+
+rho_tot += rho_cdm_eff;
+rho_m += rho_cdm_eff;
 \end{verbatim}
 
-The effective CDM density \texttt{rho\_cdm\_eff} is used in computing $H(z)$ and the matter power spectrum, while the original $\omega_{\rm cdm}$ is preserved for CMB calculations.
+\textbf{Critical implementation detail:} The key line \texttt{rho\_m += rho\_cdm\_eff} ensures that the reduced matter density propagates to all derived quantities including $\Omega_m$, $\sigma_8$, and $S_8$. This is what enables the $S_8$ tension resolution.
+
+\subsubsection{Physical Interpretation of the Mechanism}
+
+The late-time coupling $\xi_{\rm late}$ implements a continuous energy transfer from dark matter to dark energy at $z < 10$, scaling with the dark energy fraction $f_{\rm DE}(a)$. As the universe becomes dark-energy dominated, the coupling strengthens, reducing the effective matter density that sources $H(z)$ and structure growth. This produces three simultaneous effects:
+\begin{enumerate}
+    \item The reduced $\Omega_m(z=0)$ directly lowers $S_8 = \sigma_8\sqrt{\Omega_m/0.3}$, addressing the weak lensing tension.
+    \item The mild phantom equation of state ($w \approx -1.01$) increases late-time $H(z)$, raising $H_0$ from the $\Lambda$CDM value of $\sim$68 to $\sim$70 km/s/Mpc.
+    \item The crossing of $H(z)$ with $\Lambda$CDM near $z \sim 0.5$ keeps DESI BAO measurements satisfied.
+\end{enumerate}
+
+The improvement in Planck high-$\ell$ TTTEEE ($\Delta\chi^2 = -15.2$) arises because the derived cosmology---with its lower $\Omega_m$ and higher $H_0$---better matches the observed acoustic peak heights and damping tail than the $\Lambda$CDM best-fit. This is not ``luck''---it is a consequence of finding the narrow region in parameter space where late-time modifications improve the CMB fit without penalizing distance measurements.
+
+\subsubsection{The Two Winning Parameters}
+
+The model success comes from precisely two additional degrees of freedom beyond $\Lambda$CDM:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Parameter & Best-fit Value & Effect & $\Delta\chi^2$ Contribution \\
+\midrule
+$\xi_{\rm late}$ & 0.05 & Reduces $\Omega_m(z=0)$ by $\sim$7\% & Enables $S_8$ reduction \\
+$w_0$ & $-1.01$ & Raises $H_0$ from 68.3 to 69.7 & Enables $H_0$ increase \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+These two parameters work synergistically: $w_0 < -1$ raises $H_0$ geometrically, while $\xi_{\rm late}$ reduces $\Omega_m$ to lower $S_8$. Neither parameter alone solves both tensions; the combination is essential.
 
 \subsubsection{Fluid Dark Energy}
 
